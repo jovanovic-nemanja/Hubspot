@@ -1,0 +1,17 @@
+<!--
+templateType: "page"
+isAvailableForNewContent: false
+-->
+<script src="{{ get_public_template_url('/sr/js/jquery.js') }}"></script>
+<script src="{{ get_public_template_url('/sr/js/bootstrap.js') }}"></script>
+
+{{ standard_footer_includes }}
+
+<script src="{{ get_public_template_url('/sr/js/interaction.js') }}"></script>
+
+{% if widget_data.prototype_mode.value %}
+<link rel="stylesheet" href="{{ get_public_template_url('/sr/css/prototype.css') }}">
+<script src="{{ get_public_template_url('/sr/js/prototype.js') }}"></script>
+{% else %}
+{#<script src="{{ get_public_template_url('/sr/js/lazy.js') }}"></script>#}
+{% endif %}

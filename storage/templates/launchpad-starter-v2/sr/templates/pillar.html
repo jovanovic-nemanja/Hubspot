@@ -1,0 +1,531 @@
+
+{% import "/sr/templates/variables.html" as var %}
+
+{% choice "number_of_chapters" label='Number of Chapters', value='3', choices='1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20', export_to_template_context=True %}
+{% boolean "show_sticky_share" label='Show Sticky Share', value=True, no_wrapper=True, export_to_template_context=True %}
+
+{{ var.template('header.html') }}
+
+<body class="{% block body_class %}{% text 'body_class' label="Body Class" no_wrapper=True %}{% endblock %}">
+
+
+	{% block page_content %}
+			
+		{% widget_container "masthead_flex" label="Masthead Flex" %}
+		{% end_widget_container %}
+
+		<div class="chapters">
+
+			{% if widget_data.number_of_chapters.value >= 1 %}
+				<div id="chapter-01" class="chapter">
+					<div class="chapter-inner">
+						{% if hub_id == 123 %}
+							<span>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('pillar-chapter-title-01.html', {'label': 'Chapter 01','heading': 'Chapter 01'}) }}
+								</div>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('sr-multicol-media-01.html', {'col_enable_cta': 0}) }}
+								</div>
+							</span>
+						{% else %}
+							{% widget_container "chapter_01", label="Chapter 01" %}
+							{% end_widget_container %}
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+
+			{% if widget_data.number_of_chapters.value >= 2 %}
+				<div id="chapter-02" class="chapter">
+					<div class="chapter-inner">
+						{% if hub_id == 123 %}
+							<span>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('pillar-chapter-title-01.html', {'label': 'Chapter 02','heading': 'Chapter 02'}) }}
+								</div>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('sr-multicol-media-01.html', {'col_enable_cta': 0}) }}
+								</div>
+							</span>
+						{% else %}
+							{% widget_container "chapter_02", label="Chapter 02" %}
+							{% end_widget_container %}
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+
+			{% if widget_data.number_of_chapters.value >= 3 %}
+				<div id="chapter-03" class="chapter">
+					<div class="chapter-inner">
+						{% if hub_id == 123 %}
+							<span>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('pillar-chapter-title-01.html', {'label': 'Chapter 03','heading': 'Chapter 03'}) }}
+								</div>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('sr-multicol-media-01.html', {'col_enable_cta': 0}) }}
+								</div>
+							</span>
+						{% else %}
+							{% widget_container "chapter_03", label="Chapter 03" %}
+							{% end_widget_container %}
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+
+			{% if widget_data.number_of_chapters.value >= 4 %}
+				<div id="chapter-04" class="chapter">
+					<div class="chapter-inner">
+						{% if hub_id == 123 %}
+							<span>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('pillar-chapter-title-01.html', {'label': 'Chapter 04','heading': 'Chapter 04'}) }}
+								</div>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('sr-multicol-media-01.html', {'col_enable_cta': 0}) }}
+								</div>
+							</span>
+						{% else %}
+							{% widget_container "chapter_04", label="Chapter 04" %}
+							{% end_widget_container %}
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+
+			{% if widget_data.number_of_chapters.value >= 5 %}
+				<div id="chapter-05" class="chapter">
+					<div class="chapter-inner">
+						{% if hub_id == 123 %}
+							<span>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('pillar-chapter-title-01.html', {'label': 'Chapter 05','heading': 'Chapter 05'}) }}
+								</div>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('sr-multicol-media-01.html', {'col_enable_cta': 0}) }}
+								</div>
+							</span>
+						{% else %}
+							{% widget_container "chapter_05", label="Chapter 05" %}
+							{% end_widget_container %}
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+
+			{% if widget_data.number_of_chapters.value >= 6 %}
+				<div id="chapter-06" class="chapter">
+					<div class="chapter-inner">
+						{% if hub_id == 123 %}
+							<span>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('pillar-chapter-title-01.html', {'label': 'Chapter 06','heading': 'Chapter 06'}) }}
+								</div>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('sr-multicol-media-01.html', {'col_enable_cta': 0}) }}
+								</div>
+							</span>
+						{% else %}
+							{% widget_container "chapter_06", label="Chapter 06" %}
+							{% end_widget_container %}
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+
+			{% if widget_data.number_of_chapters.value >= 7 %}
+				<div id="chapter-07" class="chapter">
+					<div class="chapter-inner">
+						{% if hub_id == 123 %}
+							<span>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('pillar-chapter-title-01.html', {'label': 'Chapter 07','heading': 'Chapter 07'}) }}
+								</div>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('sr-multicol-media-01.html', {'col_enable_cta': 0}) }}
+								</div>
+							</span>
+						{% else %}
+							{% widget_container "chapter_07", label="Chapter 07" %}
+							{% end_widget_container %}
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+
+			{% if widget_data.number_of_chapters.value >= 8 %}
+				<div id="chapter-08" class="chapter">
+					<div class="chapter-inner">
+						{% if hub_id == 123 %}
+							<span>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('pillar-chapter-title-01.html', {'label': 'Chapter 08','heading': 'Chapter 08'}) }}
+								</div>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('sr-multicol-media-01.html', {'col_enable_cta': 0}) }}
+								</div>
+							</span>
+						{% else %}
+							{% widget_container "chapter_08", label="Chapter 08" %}
+							{% end_widget_container %}
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+
+			{% if widget_data.number_of_chapters.value >= 9 %}
+				<div id="chapter-09" class="chapter">
+					<div class="chapter-inner">
+						{% if hub_id == 123 %}
+							<span>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('pillar-chapter-title-01.html', {'label': 'Chapter 09','heading': 'Chapter 09'}) }}
+								</div>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('sr-multicol-media-01.html', {'col_enable_cta': 0}) }}
+								</div>
+							</span>
+						{% else %}
+							{% widget_container "chapter_09", label="Chapter 09" %}
+							{% end_widget_container %}
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+
+			{% if widget_data.number_of_chapters.value >= 10 %}
+				<div id="chapter-10" class="chapter">
+					<div class="chapter-inner">
+						{% if hub_id == 123 %}
+							<span>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('pillar-chapter-title-01.html', {'label': 'Chapter 10','heading': 'Chapter 10'}) }}
+								</div>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('sr-multicol-media-01.html', {'col_enable_cta': 0}) }}
+								</div>
+							</span>
+						{% else %}
+							{% widget_container "chapter_10", label="Chapter 10" %}
+							{% end_widget_container %}
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+
+			{% if widget_data.number_of_chapters.value >= 11 %}
+				<div id="chapter-11" class="chapter">
+					<div class="chapter-inner">
+						{% if hub_id == 123 %}
+							<span>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('pillar-chapter-title-01.html', {'label': 'Chapter 11','heading': 'Chapter 11'}) }}
+								</div>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('sr-multicol-media-01.html', {'col_enable_cta': 0}) }}
+								</div>
+							</span>
+						{% else %}
+							{% widget_container "chapter_11", label="Chapter 11" %}
+							{% end_widget_container %}
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+
+			{% if widget_data.number_of_chapters.value >= 12 %}
+				<div id="chapter-12" class="chapter">
+					<div class="chapter-inner">
+						{% if hub_id == 123 %}
+							<span>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('pillar-chapter-title-01.html', {'label': 'Chapter 12','heading': 'Chapter 12'}) }}
+								</div>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('sr-multicol-media-01.html', {'col_enable_cta': 0}) }}
+								</div>
+							</span>
+						{% else %}
+							{% widget_container "chapter_12", label="Chapter 12" %}
+							{% end_widget_container %}
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+
+			{% if widget_data.number_of_chapters.value >= 13 %}
+				<div id="chapter-13" class="chapter">
+					<div class="chapter-inner">
+						{% if hub_id == 123 %}
+							<span>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('pillar-chapter-title-01.html', {'label': 'Chapter 13','heading': 'Chapter 13'}) }}
+								</div>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('sr-multicol-media-01.html', {'col_enable_cta': 0}) }}
+								</div>
+							</span>
+						{% else %}
+							{% widget_container "chapter_13", label="Chapter 13" %}
+							{% end_widget_container %}
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+
+			{% if widget_data.number_of_chapters.value >= 14 %}
+				<div id="chapter-14" class="chapter">
+					<div class="chapter-inner">
+						{% if hub_id == 123 %}
+							<span>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('pillar-chapter-title-01.html', {'label': 'Chapter 14','heading': 'Chapter 14'}) }}
+								</div>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('sr-multicol-media-01.html', {'col_enable_cta': 0}) }}
+								</div>
+							</span>
+						{% else %}
+							{% widget_container "chapter_14", label="Chapter 14" %}
+							{% end_widget_container %}
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+
+			{% if widget_data.number_of_chapters.value >= 15 %}
+				<div id="chapter-15" class="chapter">
+					<div class="chapter-inner">
+						{% if hub_id == 123 %}
+							<span>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('pillar-chapter-title-01.html', {'label': 'Chapter 15','heading': 'Chapter 15'}) }}
+								</div>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('sr-multicol-media-01.html', {'col_enable_cta': 0}) }}
+								</div>
+							</span>
+						{% else %}
+							{% widget_container "chapter_15", label="Chapter 15" %}
+							{% end_widget_container %}
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+
+			{% if widget_data.number_of_chapters.value >= 16 %}
+				<div id="chapter-16" class="chapter">
+					<div class="chapter-inner">
+						{% if hub_id == 123 %}
+							<span>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('pillar-chapter-title-01.html', {'label': 'Chapter 16','heading': 'Chapter 16'}) }}
+								</div>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('sr-multicol-media-01.html', {'col_enable_cta': 0}) }}
+								</div>
+							</span>
+						{% else %}
+							{% widget_container "chapter_16", label="Chapter 16" %}
+							{% end_widget_container %}
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+
+			{% if widget_data.number_of_chapters.value >= 17 %}
+				<div id="chapter-17" class="chapter">
+					<div class="chapter-inner">
+						{% if hub_id == 123 %}
+							<span>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('pillar-chapter-title-01.html', {'label': 'Chapter 17','heading': 'Chapter 17'}) }}
+								</div>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('sr-multicol-media-01.html', {'col_enable_cta': 0}) }}
+								</div>
+							</span>
+						{% else %}
+							{% widget_container "chapter_17", label="Chapter 17" %}
+							{% end_widget_container %}
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+
+			{% if widget_data.number_of_chapters.value >= 18 %}
+				<div id="chapter-18" class="chapter">
+					<div class="chapter-inner">
+						{% if hub_id == 123 %}
+							<span>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('pillar-chapter-title-01.html', {'label': 'Chapter 18','heading': 'Chapter 18'}) }}
+								</div>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('sr-multicol-media-01.html', {'col_enable_cta': 0}) }}
+								</div>
+							</span>
+						{% else %}
+							{% widget_container "chapter_18", label="Chapter 18" %}
+							{% end_widget_container %}
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+
+			{% if widget_data.number_of_chapters.value >= 19 %}
+				<div id="chapter-19" class="chapter">
+					<div class="chapter-inner">
+						{% if hub_id == 123 %}
+							<span>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('pillar-chapter-title-01.html', {'label': 'Chapter 19','heading': 'Chapter 19'}) }}
+								</div>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('sr-multicol-media-01.html', {'col_enable_cta': 0}) }}
+								</div>
+							</span>
+						{% else %}
+							{% widget_container "chapter_19", label="Chapter 19" %}
+							{% end_widget_container %}
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+
+			{% if widget_data.number_of_chapters.value >= 20 %}
+				<div id="chapter-20" class="chapter">
+					<div class="chapter-inner">
+						{% if hub_id == 123 %}
+							<span>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('pillar-chapter-title-01.html', {'label': 'Chapter 20','heading': 'Chapter 20'}) }}
+								</div>
+								<div class="hs_cos_wrapper">
+									{{ var.sr_custom_module('sr-multicol-media-01.html', {'col_enable_cta': 0}) }}
+								</div>
+							</span>
+						{% else %}
+							{% widget_container "chapter_20", label="Chapter 20" %}
+							{% end_widget_container %}
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+			
+			{% if widget_data.show_sticky_share.value %}
+				{% require_css %}
+					<style>
+						.sr-social-share {
+							border: 1px solid #EBEBEB;
+							display: inline-block;
+							padding: 0.93rem 0.55rem;
+							border-radius: 100px;
+							background: #fff;
+							text-align: center;
+						}
+						.sr-social-share .sr-social-share-heading {
+							padding-left: 0.625rem;
+							font-size: 0.56rem;
+							text-transform: uppercase;
+							color: #C0C0C0;
+							letter-spacing: 1px;
+							vertical-align: middle;
+						}
+						@media only screen and (min-width: 992px) {
+							.sr-social-share {
+								opacity: 0;
+								position: fixed;
+								left: 2.18rem;
+								top: 45%;
+								transform: translateY(-50%);
+								transition: all 0.15s ease-in-out;
+								animation-timing-function: ease-in-out;
+								animation-fill-mode: backwards;
+							}
+							.sr-social-share:hover {
+								top: 44.5%;
+								border-color: #f5f5f5;
+								box-shadow: 10px 15px 60px 0 rgba(0, 0, 0, 0.1);
+							}
+							.sr-social-share.active {
+								left: 2.81rem;;
+								opacity: 1;
+							}
+							.sr-social-share span,
+							.sr-social-share span a {
+								display: block;
+								margin: 0.31rem auto;
+							}
+							.sr-social-share .sr-social-share-heading {
+								padding-left: 0;
+								margin-bottom: 0.625rem;
+							}
+							.sr-social-share .hs_cos_wrapper_type_social_sharing {
+								font-size: 0;
+							}
+						}
+
+						@media (max-width: 991px) {
+							.sr-social-share-wrapper {
+								display: -webkit-box;
+								display: -ms-flexbox;
+								display: flex;
+								-webkit-box-pack: center;
+									-ms-flex-pack: center;
+										justify-content: center;
+								margin: 1.875rem auto;
+							}
+						}
+
+					</style>
+				{% end_require_css %}
+				
+				{{ require_js(get_public_template_url('/sr/js/ScrollMagic.js')) }}
+
+				{% require_js %}
+					<script>
+						$(window).bind("load", function() {
+							var controller = new ScrollMagic.Controller();
+							if ($('.sr-social-share').length) {
+								var articleHeight = $('.chapters').height() - ($(window).height()/2);
+								var socialToggle = new ScrollMagic.Scene({triggerElement: '.chapters', duration: articleHeight, triggerHook: 'onLeave', offset: '-50'})
+								// .addIndicators() // add indicators (requires plugin)
+								.setClassToggle(".sr-social-share", "active") // add class toggle
+								.addTo(controller);
+							}
+						});
+					</script>
+				{% end_require_js %}
+				
+				<div class="sr-social-share-wrapper">
+					<div class="sr-social-share">
+						<span class="sr-social-share-heading">Share</span>
+						{% if hub_id == 123 %}
+							<span>
+								<a href="#"><img src="https://www.sprocketrocket.co/hubfs/LLv2/images/icon-blog-twitter.png?noresize" width="24" /></a>
+								<a href="#"><img src="https://www.sprocketrocket.co/hubfs/LLv2/images/icon-blog-linkedin.png?noresize" width="24" /></a>
+								<a href="#"><img src="https://www.sprocketrocket.co/hubfs/LLv2/images/icon-blog-facebook.png?noresize" width="24" /></a>
+								<a href="#"><img src="https://www.sprocketrocket.co/hubfs/LLv2/images/icon-blog-google-plus.png?noresize" width="24" /></a>
+							</span>
+						{% else %}
+							{% widget_block social_sharing "my_social_sharing" label='Social Sharing', use_page_url=True, overrideable=True  %}
+								{% widget_attribute "twitter" is_json=True %}{"custom_link_format": "", "enabled": true, "network": "twitter", "img_src": "https://www.sprocketrocket.co/hubfs/LLv2/images/icon-blog-twitter.png?noresize"}{% end_widget_attribute %}
+								{% widget_attribute "linkedin" is_json=True %}{"custom_link_format": "", "enabled": true, "network": "linkedin", "img_src": "https://www.lean-labs.com/hubfs/LLv2/images/icon-blog-linkedin.png?noresize"}{% end_widget_attribute %}
+								{% widget_attribute "facebook" is_json=True %}{"custom_link_format": "", "enabled": true, "network": "facebook", "img_src": "https://www.lean-labs.com/hubfs/LLv2/images/icon-blog-facebook.png?noresize"}{% end_widget_attribute %}
+								{% widget_attribute "google_plus" is_json=True %}{"custom_link_format": "", "enabled": true, "network": "google_plus", "img_src": "https://www.lean-labs.com/hubfs/LLv2/images/icon-blog-google-plus.png?noresize"}{% end_widget_attribute %}
+							{% end_widget_block %}
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+
+		</div>
+	{% endblock %}
+
+	{{ var.template('footer-includes.html') }}
+</body>
+</html>

@@ -1,0 +1,2731 @@
+{
+    "custom_module": {
+        "author": "cristian@lean-labs.com",
+        "tags": ["ver-4.0.0"],
+        "name": "SR Base",
+        "global": true,
+        "override_global": true,
+        "css_assets": [],
+        "editable_contexts": [],
+        "external_js": [],
+        "icon": "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": [
+            "PAGE",
+            "BLOG_POST",
+            "BLOG_LISTING"
+        ],
+        "js_assets": [],
+        "other_assets": [],
+        "fields": [
+            {
+                "id": "df86beac-6463-c384-7826-05aa029e9985",
+                "name": "typography",
+                "label": "Typography",
+                "required": false,
+                "locked": true,
+                "children": [
+                    {
+                        "id": "custom_font",
+                        "name": "custom_font",
+                        "label": "Custom Font",
+                        "help_text": "Documentation coming soon",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    {
+                        "id": "15fcda13-97d9-4d33-8667-27b644313a20",
+                        "name": "primary_font",
+                        "label": "Primary Font",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "custom_font",
+                            "controlling_value_regex": "false",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": {
+                                "color": true,
+                                "size": true
+                            }
+                        },
+                        "load_external_fonts": true,
+                        "type": "font",
+                        "default": {
+                            "font_set": "GOOGLE",
+                            "color": "#494A52",
+                            "size": 16,
+                            "font": "Poppins"
+                        }
+                    },
+                    {
+                        "id": "4d009442-9e1e-2c86-0a8f-05c2ef9feea4",
+                        "name": "base_font_size",
+                        "label": "Base Font Size",
+                        "required": true,
+                        "locked": false,
+                        "display": "text",
+                        "step": 1,
+                        "type": "number",
+                        "default": 16
+                    },
+                    {
+                        "id": "9e1e9e1e-9e1e-9e1e-9e1e-05c2ef9faae4",
+                        "name": "base_font_weight",
+                        "label": "Base Font Weight",
+                        "required": true,
+                        "locked": false,
+                        "display": "text",
+                        "step": 100,
+                        "type": "number",
+                        "default": 300
+                    },
+                    {
+                        "id": "4d009442-9e1e-2c86-0a8f-05c2ef9faae4",
+                        "name": "base_line_height",
+                        "label": "Base Line Height",
+                        "help_text": "Value in px",
+                        "required": true,
+                        "locked": false,
+                        "display": "text",
+                        "min": 0,
+                        "max": 999999,
+                        "step": 1,
+                        "type": "number",
+                        "default": 24
+                    },
+                    {
+                        "id": "2a79e431-90b0-b770-7ad9-fc9f077001bf",
+                        "name": "show_display_headings",
+                        "label": "Show Display Headings",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    {
+                        "id": "5a8ccae6-f35e-5003-31b7-91f40cc7ff47",
+                        "name": "display1",
+                        "label": "Display 1",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "2a79e431-90b0-b770-7ad9-fc9f077001bf",
+                            "controlling_value_regex": "true",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "children": [
+                            {
+                                "id": "10c8ce6d-b935-f05e-761d-0b5f1f4a5744",
+                                "name": "display1_font",
+                                "label": "Display 1 Font",
+                                "help_text": "Font name from Google Fonts",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "false",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": {
+                                        "color": true,
+                                        "size": true
+                                    }
+                                },
+                                "load_external_fonts": true,
+                                "type": "font",
+                                "default": {
+                                    "font_set": "GOOGLE",
+                                    "size": 80,
+                                    "variant": "700",
+                                    "font": "Poppins"
+                                }
+                            },
+                            {
+                                "id": "2e7fd0db-7007-5f60-99e7-8397f7060711",
+                                "name": "display1_font_size",
+                                "label": "Display 1 Font Size",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 1,
+                                "type": "number",
+                                "default": 95
+                            },
+                            {
+                                "id": "display1_font_weight",
+                                "name": "display1_font_weight",
+                                "label": "Display 1 Font Weight",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 100,
+                                "type": "number",
+                                "default": 500
+                            },
+                            {
+                                "id": "display1_advanced_settings",
+                                "name": "display1_advanced_settings",
+                                "label": "Advanced settings",
+                                "required": false,
+                                "locked": false,
+                                "display": "checkbox",
+                                "type": "boolean",
+                                "default": false
+                            },
+                            {
+                                "id": "display1_line_height",
+                                "name": "display1_line_height",
+                                "label": "Display 1 Line Height",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "display1_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            },
+                            {
+                                "id": "display1_letter_spacing",
+                                "name": "display1_letter_spacing",
+                                "label": "Display 1 Letter Spacing",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "display1_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "display1_font": {
+                                "font_set": "GOOGLE",
+                                "size": 80,
+                                "variant": "700",
+                                "font": "Poppins"
+                            },
+                            "display1_font_size": 95
+                        }
+                    },
+                    {
+                        "id": "5a8ccae6-f35e-5003-31b7-91f40cc7ff42",
+                        "name": "display2",
+                        "label": "Display 2",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "2a79e431-90b0-b770-7ad9-fc9f077001bf",
+                            "controlling_value_regex": "true",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "children": [
+                            {
+                                "id": "1e3ddf49-6913-ce25-36fa-3fae4468a8a9",
+                                "name": "display2_font",
+                                "label": "Display 2 Font",
+                                "help_text": "Font name from Google Fonts",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "false",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": {
+                                        "color": true,
+                                        "size": true
+                                    }
+                                },
+                                "load_external_fonts": true,
+                                "type": "font",
+                                "default": {
+                                    "font_set": "GOOGLE",
+                                    "variant": "700",
+                                    "font": "Poppins"
+                                }
+                            },
+                            {
+                                "id": "0c548b97-6644-58f8-d832-dd404960d657",
+                                "name": "display2_font_size",
+                                "label": "Display 2 Font Size",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 1,
+                                "type": "number",
+                                "default": 80
+                            },
+                            {
+                                "id": "display2_font_weight",
+                                "name": "display2_font_weight",
+                                "label": "Display 2 Font Weight",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 100,
+                                "type": "number",
+                                "default": 500
+                            },
+                            {
+                                "id": "display2_advanced_settings",
+                                "name": "display2_advanced_settings",
+                                "label": "Advanced settings",
+                                "required": false,
+                                "locked": false,
+                                "display": "checkbox",
+                                "type": "boolean",
+                                "default": false
+                            },
+                            {
+                                "id": "display2_line_height",
+                                "name": "display2_line_height",
+                                "label": "Display 2 Line Height",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "display2_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            },
+                            {
+                                "id": "display2_letter_spacing",
+                                "name": "display2_letter_spacing",
+                                "label": "Display 2 Letter Spacing",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "display2_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "display2_font": {
+                                "font_set": "GOOGLE",
+                                "variant": "700",
+                                "font": "Poppins"
+                            },
+                            "display2_font_size": 80
+                        }
+                    },
+                    {
+                        "id": "5a8ccae6-f35e-5003-31b7-91f40cc7ff43",
+                        "name": "display3",
+                        "label": "Display 3",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "2a79e431-90b0-b770-7ad9-fc9f077001bf",
+                            "controlling_value_regex": "true",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "children": [
+                            {
+                                "id": "90b6308b-a277-b573-6e62-0df30ec74e8d",
+                                "name": "display3_font",
+                                "label": "Display 3 Font",
+                                "help_text": "Font name from Google Fonts",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "false",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": {
+                                        "color": true,
+                                        "size": true
+                                    }
+                                },
+                                "load_external_fonts": true,
+                                "type": "font",
+                                "default": {
+                                    "font_set": "GOOGLE",
+                                    "variant": "700",
+                                    "font": "Poppins"
+                                }
+                            },
+                            {
+                                "id": "6e796b6c-22b7-48ca-7ec1-51dc0bb6a0ea",
+                                "name": "display3_font_size",
+                                "label": "Display 3 Font Size",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 1,
+                                "type": "number",
+                                "default": 75
+                            },
+                            {
+                                "id": "display3_font_weight",
+                                "name": "display3_font_weight",
+                                "label": "Display 3 Font Weight",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 100,
+                                "type": "number",
+                                "default": 500
+                            },
+                            {
+                                "id": "display3_advanced_settings",
+                                "name": "display3_advanced_settings",
+                                "label": "Advanced settings",
+                                "required": false,
+                                "locked": false,
+                                "display": "checkbox",
+                                "type": "boolean",
+                                "default": false
+                            },
+                            {
+                                "id": "display3_line_height",
+                                "name": "display3_line_height",
+                                "label": "Display 3 Line Height",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "display3_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            },
+                            {
+                                "id": "display3_letter_spacing",
+                                "name": "display3_letter_spacing",
+                                "label": "Display 3 Letter Spacing",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "display3_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "display3_font": {
+                                "font_set": "GOOGLE",
+                                "variant": "700",
+                                "font": "Poppins"
+                            },
+                            "display3_font_size": 75
+                        }
+                    },
+                    {
+                        "id": "5a8ccae6-f35e-5003-31b7-91f40cc7ff44",
+                        "name": "display4",
+                        "label": "Display 4",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "2a79e431-90b0-b770-7ad9-fc9f077001bf",
+                            "controlling_value_regex": "true",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "children": [
+                            {
+                                "id": "8572a25d-9d1c-58c5-6d9d-c009383b0ead",
+                                "name": "display4_font",
+                                "label": "Display 4 Font",
+                                "help_text": "Font name from Google Fonts",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "false",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": {
+                                        "color": true,
+                                        "size": true
+                                    }
+                                },
+                                "load_external_fonts": true,
+                                "type": "font",
+                                "default": {
+                                    "font_set": "GOOGLE",
+                                    "variant": "700",
+                                    "font": "Poppins"
+                                }
+                            },
+                            {
+                                "id": "526dedff-8b6c-0fba-43fa-6199017475d5",
+                                "name": "display4_font_size",
+                                "label": "Display 4 Font Size",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 1,
+                                "type": "number",
+                                "default": 60
+                            },
+                            {
+                                "id": "display4_font_weight",
+                                "name": "display4_font_weight",
+                                "label": "Display 4 Font Weight",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 100,
+                                "type": "number",
+                                "default": 500
+                            },
+                            {
+                                "id": "display4_advanced_settings",
+                                "name": "display4_advanced_settings",
+                                "label": "Advanced settings",
+                                "required": false,
+                                "locked": false,
+                                "display": "checkbox",
+                                "type": "boolean",
+                                "default": false
+                            },
+                            {
+                                "id": "display4_line_height",
+                                "name": "display4_line_height",
+                                "label": "Display 4 Line Height",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "display4_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            },
+                            {
+                                "id": "display4_letter_spacing",
+                                "name": "display4_letter_spacing",
+                                "label": "Display 4 Letter Spacing",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "display4_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "display4_font": {
+                                "font_set": "GOOGLE",
+                                "variant": "700",
+                                "font": "Poppins"
+                            },
+                            "display4_font_size": 60
+                        }
+                    },
+                    {
+                        "id": "3182f59a-b6e2-96bd-b978-c8f0fef8d781",
+                        "name": "h1",
+                        "label": "H1",
+                        "required": false,
+                        "locked": false,
+                        "children": [
+                            {
+                                "id": "f510978b-d9ee-c8da-58d2-dc25e31e9c67",
+                                "name": "h1_font",
+                                "label": "H1 Font",
+                                "help_text": "Font name from Google Fonts",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "false",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": {
+                                        "color": true,
+                                        "size": true
+                                    }
+                                },
+                                "load_external_fonts": true,
+                                "type": "font",
+                                "default": {
+                                    "font_set": "GOOGLE",
+                                    "size": 36,
+                                    "variant": "600",
+                                    "font": "Poppins"
+                                }
+                            },
+                            {
+                                "id": "e42baf75-aafa-c2a5-1409-ed62edb9bda8",
+                                "name": "h1_font_size",
+                                "label": "H1 Font Size",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": 40
+                            },
+                            {
+                                "id": "h1_font_weight",
+                                "name": "h1_font_weight",
+                                "label": "H1 Font Weight",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 100,
+                                "type": "number",
+                                "default": 500
+                            },
+                            {
+                                "id": "h1_advanced_settings",
+                                "name": "h1_advanced_settings",
+                                "label": "Advanced settings",
+                                "required": false,
+                                "locked": false,
+                                "display": "checkbox",
+                                "type": "boolean",
+                                "default": false
+                            },
+                            {
+                                "id": "h1_line_height",
+                                "name": "h1_line_height",
+                                "label": "H1 Line Height",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "h1_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            },
+                            {
+                                "id": "h1_letter_spacing",
+                                "name": "h1_letter_spacing",
+                                "label": "H1 Letter Spacing",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "h1_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "h1_font": {
+                                "font_set": "GOOGLE",
+                                "size": 36,
+                                "variant": "600",
+                                "font": "Poppins"
+                            },
+                            "h1_font_size": 40,
+                            "advanced_settings": false
+                        }
+                    },
+                    {
+                        "id": "bd002a58-ffcc-e608-4434-13190a496ff0",
+                        "name": "h2",
+                        "label": "H2",
+                        "required": false,
+                        "locked": false,
+                        "children": [
+                            {
+                                "id": "8b2c7ed7-498e-6a1f-964b-ee24fc1b0214",
+                                "name": "h2_font",
+                                "label": "H2 Font",
+                                "help_text": "Font name from Google Fonts",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "false",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": {
+                                        "color": true,
+                                        "size": true
+                                    }
+                                },
+                                "load_external_fonts": true,
+                                "type": "font",
+                                "default": {
+                                    "font_set": "GOOGLE",
+                                    "variant": "600",
+                                    "font": "Poppins"
+                                }
+                            },
+                            {
+                                "id": "c65c164d-e99b-bb5b-0e76-c26cb9de4519",
+                                "name": "h2_font_size",
+                                "label": "H2 Font Size",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": 32
+                            },
+                            {
+                                "id": "h2_font_weight",
+                                "name": "h2_font_weight",
+                                "label": "H2 Font Weight",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 100,
+                                "type": "number",
+                                "default": 500
+                            },
+                            {
+                                "id": "h2_advanced_settings",
+                                "name": "h2_advanced_settings",
+                                "label": "Advanced settings",
+                                "required": false,
+                                "locked": false,
+                                "display": "checkbox",
+                                "type": "boolean",
+                                "default": false
+                            },
+                            {
+                                "id": "h2_line_height",
+                                "name": "h2_line_height",
+                                "label": "H2 Line Height",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "h2_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            },
+                            {
+                                "id": "h2_letter_spacing",
+                                "name": "h2_letter_spacing",
+                                "label": "H2 Letter Spacing",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "h2_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "h2_font": {
+                                "font_set": "GOOGLE",
+                                "variant": "600",
+                                "font": "Poppins"
+                            },
+                            "h2_font_size": 32
+                        }
+                    },
+                    {
+                        "id": "6a7b14bf-ed4e-bca6-7f3e-c2478063c62c",
+                        "name": "h3",
+                        "label": "H3",
+                        "required": false,
+                        "locked": false,
+                        "children": [
+                            {
+                                "id": "94481345-8f81-01d8-ae60-aabc92a87cbe",
+                                "name": "h3_font",
+                                "label": "H3 Font",
+                                "help_text": "Font name from Google Fonts",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "false",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": {
+                                        "color": true,
+                                        "size": true
+                                    }
+                                },
+                                "load_external_fonts": true,
+                                "type": "font",
+                                "default": {
+                                    "font_set": "GOOGLE",
+                                    "variant": "600",
+                                    "font": "Poppins"
+                                }
+                            },
+                            {
+                                "id": "7979bc71-80c9-c0b5-9423-b23a7ec51a1a",
+                                "name": "h3_font_size",
+                                "label": "H3 Font Size",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": 28
+                            },
+                            {
+                                "id": "h3_font_weight",
+                                "name": "h3_font_weight",
+                                "label": "H3 Font Weight",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 100,
+                                "type": "number",
+                                "default": 500
+                            },
+                            {
+                                "id": "h3_advanced_settings",
+                                "name": "h3_advanced_settings",
+                                "label": "Advanced settings",
+                                "required": false,
+                                "locked": false,
+                                "display": "checkbox",
+                                "type": "boolean",
+                                "default": false
+                            },
+                            {
+                                "id": "h3_line_height",
+                                "name": "h3_line_height",
+                                "label": "H3 Line Height",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "h3_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            },
+                            {
+                                "id": "h3_letter_spacing",
+                                "name": "h3_letter_spacing",
+                                "label": "H3 Letter Spacing",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "h3_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "h3_font": {
+                                "font_set": "GOOGLE",
+                                "variant": "600",
+                                "font": "Poppins"
+                            },
+                            "h3_font_size": 28
+                        }
+                    },
+                    {
+                        "id": "80e14e2a-c94c-27fb-6f21-b55d7843b922",
+                        "name": "h4",
+                        "label": "H4",
+                        "required": false,
+                        "locked": false,
+                        "children": [
+                            {
+                                "id": "d331e235-7a5f-d721-6b01-22604f8ac3e7",
+                                "name": "h4_font",
+                                "label": "H4 Font",
+                                "help_text": "Font name from Google Fonts",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "false",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": {
+                                        "color": true,
+                                        "size": true
+                                    }
+                                },
+                                "load_external_fonts": true,
+                                "type": "font",
+                                "default": {
+                                    "font_set": "GOOGLE",
+                                    "variant": "600",
+                                    "font": "Poppins"
+                                }
+                            },
+                            {
+                                "id": "cf4766cd-b09b-7f08-521c-78e8c7c23667",
+                                "name": "h4_font_size",
+                                "label": "H4 Font Size",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": 24
+                            },
+                            {
+                                "id": "h4_font_weight",
+                                "name": "h4_font_weight",
+                                "label": "H4 Font Weight",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 100,
+                                "type": "number",
+                                "default": 500
+                            },
+                            {
+                                "id": "h4_advanced_settings",
+                                "name": "h4_advanced_settings",
+                                "label": "Advanced settings",
+                                "required": false,
+                                "locked": false,
+                                "display": "checkbox",
+                                "type": "boolean",
+                                "default": false
+                            },
+                            {
+                                "id": "h4_line_height",
+                                "name": "h4_line_height",
+                                "label": "H4 Line Height",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "h4_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            },
+                            {
+                                "id": "h4_letter_spacing",
+                                "name": "h4_letter_spacing",
+                                "label": "H4 Letter Spacing",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "h4_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "h4_font": {
+                                "font_set": "GOOGLE",
+                                "variant": "600",
+                                "font": "Poppins"
+                            },
+                            "h4_font_size": 24
+                        }
+                    },
+                    {
+                        "id": "9ae72ad4-5937-b759-87fd-13f2ddf7dcd4",
+                        "name": "h5",
+                        "label": "H5",
+                        "required": false,
+                        "locked": false,
+                        "children": [
+                            {
+                                "id": "7a2df29d-a45f-1cbb-0541-45b97dada0a8",
+                                "name": "h5_font",
+                                "label": "H5 Font",
+                                "help_text": "Font name from Google Fonts",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "false",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": {
+                                        "color": true,
+                                        "size": true
+                                    }
+                                },
+                                "load_external_fonts": true,
+                                "type": "font",
+                                "default": {
+                                    "font_set": "GOOGLE",
+                                    "variant": "600",
+                                    "font": "Poppins"
+                                }
+                            },
+                            {
+                                "id": "0e7496a8-e6d3-7d68-eee2-9618062c60ab",
+                                "name": "h5_font_size",
+                                "label": "H5 Font Size",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": 20
+                            },
+                            {
+                                "id": "h5_font_weight",
+                                "name": "h5_font_weight",
+                                "label": "H5 Font Weight",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 100,
+                                "type": "number",
+                                "default": 500
+                            },
+                            {
+                                "id": "h5_advanced_settings",
+                                "name": "h5_advanced_settings",
+                                "label": "Advanced settings",
+                                "required": false,
+                                "locked": false,
+                                "display": "checkbox",
+                                "type": "boolean",
+                                "default": false
+                            },
+                            {
+                                "id": "h5_line_height",
+                                "name": "h5_line_height",
+                                "label": "H5 Line Height",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "h5_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            },
+                            {
+                                "id": "h5_letter_spacing",
+                                "name": "h5_letter_spacing",
+                                "label": "H5 Letter Spacing",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "h5_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "h5_font": {
+                                "font_set": "GOOGLE",
+                                "variant": "600",
+                                "font": "Poppins"
+                            },
+                            "h5_font_size": 20
+                        }
+                    },
+                    {
+                        "id": "5b95a821-0b0c-aff8-7e3d-a2a3c19ae8e1",
+                        "name": "h6",
+                        "label": "H6",
+                        "required": false,
+                        "locked": false,
+                        "children": [
+                            {
+                                "id": "9f0280b8-7d54-0ae8-5c0b-c7633f6351f5",
+                                "name": "h6_font",
+                                "label": "H6 Font",
+                                "help_text": "Font name from Google Fonts",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "false",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": {
+                                        "color": true,
+                                        "size": true
+                                    }
+                                },
+                                "load_external_fonts": true,
+                                "type": "font",
+                                "default": {
+                                    "font_set": "GOOGLE",
+                                    "font": "Poppins"
+                                }
+                            },
+                            {
+                                "id": "53f54f07-7207-e34f-592a-f9fdd08914a3",
+                                "name": "h6_font_size",
+                                "label": "H6 Font Size",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": 18
+                            },
+                            {
+                                "id": "h6_font_weight",
+                                "name": "h6_font_weight",
+                                "label": "H6 Font Weight",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 100,
+                                "type": "number",
+                                "default": 500
+                            },
+                            {
+                                "id": "h6_advanced_settings",
+                                "name": "h6_advanced_settings",
+                                "label": "Advanced settings",
+                                "required": false,
+                                "locked": false,
+                                "display": "checkbox",
+                                "type": "boolean",
+                                "default": false
+                            },
+                            {
+                                "id": "h6_line_height",
+                                "name": "h6_line_height",
+                                "label": "H6 Line Height",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "h6_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            },
+                            {
+                                "id": "h6_letter_spacing",
+                                "name": "h6_letter_spacing",
+                                "label": "H6 Letter Spacing",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "h6_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "h6_font": {
+                                "font_set": "GOOGLE",
+                                "font": "Poppins"
+                            },
+                            "h6_font_size": 18
+                        }
+                    },
+                    {
+                        "id": "0549e7b8-11d5-36d1-9c69-97925ff4e63d",
+                        "name": "blockquote",
+                        "label": "Blockquote",
+                        "required": false,
+                        "locked": false,
+                        "children": [
+                            {
+                                "id": "703872c3-c49e-19bd-6764-98639f711ecd",
+                                "name": "blockquote_font",
+                                "label": "Blockquote Font",
+                                "help_text": "Font name from Google Fonts",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "false",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": {
+                                        "color": true,
+                                        "size": true
+                                    }
+                                },
+                                "load_external_fonts": true,
+                                "type": "font",
+                                "default": {
+                                    "font_set": "GOOGLE",
+                                    "font": "Poppins"
+                                }
+                            },
+                            {
+                                "id": "c2d5d1e5-93d3-a0a6-cc38-241cf307d51e",
+                                "name": "blockquote_font_size",
+                                "label": "Blockquote Font Size",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": 20
+                            },
+                            {
+                                "id": "blockquote_font_weight",
+                                "name": "blockquote_font_weight",
+                                "label": "Blockquote Font Weight",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 100,
+                                "type": "number",
+                                "default": 400
+                            },
+                            {
+                                "id": "blockquote_advanced_settings",
+                                "name": "blockquote_advanced_settings",
+                                "label": "Advanced settings",
+                                "required": false,
+                                "locked": false,
+                                "display": "checkbox",
+                                "type": "boolean",
+                                "default": false
+                            },
+                            {
+                                "id": "blockquote_line_height",
+                                "name": "blockquote_line_height",
+                                "label": "Blockquote Line Height",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "blockquote_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            },
+                            {
+                                "id": "blockquote_letter_spacing",
+                                "name": "blockquote_letter_spacing",
+                                "label": "Blockquote Letter Spacing",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "blockquote_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "blockquote_font": {
+                                "font_set": "GOOGLE",
+                                "font": "Poppins"
+                            },
+                            "blockquote_font_size": 20
+                        }
+                    },
+                    {
+                        "id": "0e27ecb4-447a-f87f-1382-3c524efd5a77",
+                        "name": "lead_paragraph",
+                        "label": "Lead Paragraph",
+                        "required": false,
+                        "locked": false,
+                        "children": [
+                            {
+                                "id": "typography.lead_paragraph.lead_paragraph_font",
+                                "name": "lead_paragraph_font",
+                                "label": "Lead Paragraph Font",
+                                "help_text": "Font name from Google Fonts",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "false",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": {
+                                        "color": true,
+                                        "size": true
+                                    }
+                                },
+                                "load_external_fonts": true,
+                                "type": "font",
+                                "default": {
+                                    "font_set": "GOOGLE",
+                                    "variant": "300",
+                                    "font": "Poppins"
+                                }
+                            },
+                            {
+                                "id": "257eabb4-cd8f-359f-1c80-7bb45c4398f1",
+                                "name": "lead_paragraph_font_size",
+                                "label": "Lead Paragraph Font Size",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": 20
+                            },
+                            {
+                                "id": "lead_font_weight",
+                                "name": "lead_font_weight",
+                                "label": "Lead Font Weight",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "custom_font",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 100,
+                                "type": "number",
+                                "default": 400
+                            },
+                            {
+                                "id": "lead_advanced_settings",
+                                "name": "lead_advanced_settings",
+                                "label": "Advanced settings",
+                                "required": false,
+                                "locked": false,
+                                "display": "checkbox",
+                                "type": "boolean",
+                                "default": false
+                            },
+                            {
+                                "id": "lead_line_height",
+                                "name": "lead_line_height",
+                                "label": "Lead Line Height",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "lead_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            },
+                            {
+                                "id": "lead_letter_spacing",
+                                "name": "lead_letter_spacing",
+                                "label": "Lead Letter Spacing",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "lead_advanced_settings",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": null
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "lead_paragraph_font": {
+                                "font_set": "GOOGLE",
+                                "variant": "300",
+                                "font": "Poppins"
+                            },
+                            "lead_paragraph_font_size": 20
+                        }
+                    },
+                    {
+                        "id": "ce3e0607-fe28-c0ca-4975-a1798ed09ddd",
+                        "name": "small_font_size",
+                        "label": "Small Font Size",
+                        "help_text": "Value in px",
+                        "required": false,
+                        "locked": false,
+                        "display": "text",
+                        "step": 0,
+                        "type": "number",
+                        "default": 13
+                    },
+                    {
+                        "id": "19ef861f-6673-15fa-c1c8-94f450e109f8",
+                        "name": "responsive_typography",
+                        "label": "Responsive Typography",
+                        "required": true,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    {
+                        "id": "62e107a1-1e9e-a715-8881-6646e3815e47",
+                        "name": "small_screens_font_size",
+                        "label": "Small Screens Font Size",
+                        "help_text": "Value in px",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "19ef861f-6673-15fa-c1c8-94f450e109f8",
+                            "controlling_value_regex": "true",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "text",
+                        "step": 1,
+                        "type": "number",
+                        "default": 14
+                    },
+                    {
+                        "id": "2c9e5b3e-1bca-ec28-adce-a1003c3f86b9",
+                        "name": "medium_screens_font_size",
+                        "label": "Medium Screens Font Size",
+                        "help_text": "Value in px",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "19ef861f-6673-15fa-c1c8-94f450e109f8",
+                            "controlling_value_regex": "true",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "text",
+                        "step": 1,
+                        "type": "number",
+                        "default": 16
+                    },
+                    {
+                        "id": "8b72a333-75f1-4bce-5113-a07a7ca85d81",
+                        "name": "large_screens_font_size",
+                        "label": "Large Screens Font Size",
+                        "help_text": "Value in px",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "19ef861f-6673-15fa-c1c8-94f450e109f8",
+                            "controlling_value_regex": "true",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "text",
+                        "step": 1,
+                        "type": "number",
+                        "default": 18
+                    },
+                    {
+                        "id": "46a57311-fea0-6f57-55a2-ee126cccd5ff",
+                        "name": "line_height_percentage",
+                        "label": "Line Height Percentage",
+                        "help_text": "Use to calculate line height",
+                        "required": true,
+                        "locked": false,
+                        "display": "text",
+                        "step": 0.05,
+                        "type": "number",
+                        "default": 1.35
+                    },
+                    {
+                        "id": "b855a105-2c62-05a0-e0a7-d9ee9e274190",
+                        "name": "margin_percentage",
+                        "label": "Margin Percentage",
+                        "help_text": "Use to calculate margin below headers",
+                        "required": true,
+                        "locked": false,
+                        "display": "text",
+                        "step": 0,
+                        "type": "number",
+                        "default": 0.5
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "custom_font": false,
+                    "primary_font": {
+                        "font_set": "GOOGLE",
+                        "color": "#494A52",
+                        "size": 16,
+                        "font": "Poppins"
+                    },
+                    "base_font_size": 16,
+                    "base_font_weight": 300,
+                    "base_line_height": 24,
+                    "show_display_headings": false,
+                    "display1": {
+                        "display1_font": {
+                            "font_set": "GOOGLE",
+                            "size": 80,
+                            "variant": "700",
+                            "font": "Poppins"
+                        },
+                        "display1_font_size": 95
+                    },
+                    "display2": {
+                        "display2_font": {
+                            "font_set": "GOOGLE",
+                            "variant": "700",
+                            "font": "Poppins"
+                        },
+                        "display2_font_size": 80
+                    },
+                    "display3": {
+                        "display3_font": {
+                            "font_set": "GOOGLE",
+                            "variant": "700",
+                            "font": "Poppins"
+                        },
+                        "display3_font_size": 75
+                    },
+                    "display4": {
+                        "display4_font": {
+                            "font_set": "GOOGLE",
+                            "variant": "700",
+                            "font": "Poppins"
+                        },
+                        "display4_font_size": 60
+                    },
+                    "h1": {
+                        "h1_font": {
+                            "font_set": "GOOGLE",
+                            "size": 36,
+                            "variant": "600",
+                            "font": "Poppins"
+                        },
+                        "h1_font_size": 40,
+                        "advanced_settings": false
+                    },
+                    "h2": {
+                        "h2_font": {
+                            "font_set": "GOOGLE",
+                            "variant": "600",
+                            "font": "Poppins"
+                        },
+                        "h2_font_size": 32
+                    },
+                    "h3": {
+                        "h3_font": {
+                            "font_set": "GOOGLE",
+                            "variant": "600",
+                            "font": "Poppins"
+                        },
+                        "h3_font_size": 28
+                    },
+                    "h4": {
+                        "h4_font": {
+                            "font_set": "GOOGLE",
+                            "variant": "600",
+                            "font": "Poppins"
+                        },
+                        "h4_font_size": 24
+                    },
+                    "h5": {
+                        "h5_font": {
+                            "font_set": "GOOGLE",
+                            "variant": "600",
+                            "font": "Poppins"
+                        },
+                        "h5_font_size": 20
+                    },
+                    "h6": {
+                        "h6_font": {
+                            "font_set": "GOOGLE",
+                            "font": "Poppins"
+                        },
+                        "h6_font_size": 18
+                    },
+                    "blockquote": {
+                        "blockquote_font": {
+                            "font_set": "GOOGLE",
+                            "font": "Poppins"
+                        },
+                        "blockquote_font_size": 20
+                    },
+                    "lead_paragraph": {
+                        "lead_paragraph_font": {
+                            "font_set": "GOOGLE",
+                            "variant": "300",
+                            "font": "Poppins"
+                        },
+                        "lead_paragraph_font_size": 20
+                    },
+                    "small_font_size": 13,
+                    "responsive_typography": true,
+                    "small_screens_font_size": 14,
+                    "medium_screens_font_size": 16,
+                    "large_screens_font_size": 18,
+                    "line_height_percentage": 1.35,
+                    "margin_percentage": 0.5
+                }
+            },
+            {
+                "id": "colors",
+                "name": "colors",
+                "label": "Colors",
+                "required": false,
+                "locked": true,
+                "children": [
+                    {
+                        "id": "colors.primary",
+                        "name": "primary",
+                        "label": "Primary",
+                        "required": true,
+                        "locked": false,
+                        "type": "color",
+                        "default": {
+                            "color": "#0c63ff",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "colors.secondary",
+                        "name": "secondary",
+                        "label": "Secondary",
+                        "required": true,
+                        "locked": false,
+                        "type": "color",
+                        "default": {
+                            "color": "#f5f7f9",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "colors.tertiary",
+                        "name": "tertiary",
+                        "label": "Tertiary",
+                        "required": true,
+                        "locked": false,
+                        "type": "color",
+                        "default": {
+                            "color": "#232031",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "colors.body_color",
+                        "name": "body_color",
+                        "label": "Body Color",
+                        "required": true,
+                        "locked": false,
+                        "type": "color",
+                        "default": {
+                            "color": "#87909e",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "colors.headings_color",
+                        "name": "headings_color",
+                        "label": "Headings Color",
+                        "required": true,
+                        "locked": false,
+                        "type": "color",
+                        "default": {
+                            "color": "#30343b",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "colors.link_color",
+                        "name": "link_color",
+                        "label": "Link Color",
+                        "required": true,
+                        "locked": false,
+                        "type": "color",
+                        "default": {
+                            "color": "#0c63ff",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "colors.link_hover_color",
+                        "name": "link_hover_color",
+                        "label": "Link Hover Color",
+                        "required": true,
+                        "locked": false,
+                        "type": "color",
+                        "default": {
+                            "color": "#0da6ff",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "colors.link_visited_color",
+                        "name": "link_visited_color",
+                        "label": "Link Visited Color",
+                        "required": true,
+                        "locked": false,
+                        "type": "color",
+                        "default": {
+                            "color": "#0da6ff",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "colors.body_bg",
+                        "name": "body_bg",
+                        "label": "Body Bg",
+                        "required": true,
+                        "locked": false,
+                        "type": "color",
+                        "default": {
+                            "color": "#fff",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "colors.borders",
+                        "name": "borders",
+                        "label": "Borders",
+                        "required": true,
+                        "locked": false,
+                        "type": "color",
+                        "default": {
+                            "color": "#e5e7ea",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "9b8ecb47-e18c-0064-a97c-9c284ca772ba",
+                        "name": "utility_colors",
+                        "label": "Utility Colors",
+                        "required": false,
+                        "locked": false,
+                        "children": [
+                            {
+                                "id": "colors.dark",
+                                "name": "dark",
+                                "label": "Dark",
+                                "required": true,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#343a40",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "colors.light",
+                                "name": "light",
+                                "label": "Light",
+                                "required": true,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#f8f9fa",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "colors.danger",
+                                "name": "danger",
+                                "label": "Danger",
+                                "required": true,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#dc3545",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "colors.warning",
+                                "name": "warning",
+                                "label": "Warning",
+                                "required": true,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#ffc107",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "colors.info",
+                                "name": "info",
+                                "label": "Info",
+                                "required": true,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#17a2b8",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "colors.success",
+                                "name": "success",
+                                "label": "Success",
+                                "required": true,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#28a745",
+                                    "opacity": 100
+                                }
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "dark": {
+                                "color": "#343a40",
+                                "opacity": 100
+                            },
+                            "light": {
+                                "color": "#f8f9fa",
+                                "opacity": 100
+                            },
+                            "danger": {
+                                "color": "#dc3545",
+                                "opacity": 100
+                            },
+                            "warning": {
+                                "color": "#ffc107",
+                                "opacity": 100
+                            },
+                            "info": {
+                                "color": "#17a2b8",
+                                "opacity": 100
+                            },
+                            "success": {
+                                "color": "#28a745",
+                                "opacity": 100
+                            }
+                        }
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "primary": {
+                        "color": "#0c63ff",
+                        "opacity": 100
+                    },
+                    "secondary": {
+                        "color": "#f5f7f9",
+                        "opacity": 100
+                    },
+                    "tertiary": {
+                        "color": "#232031",
+                        "opacity": 100
+                    },
+                    "body_color": {
+                        "color": "#87909e",
+                        "opacity": 100
+                    },
+                    "headings_color": {
+                        "color": "#30343b",
+                        "opacity": 100
+                    },
+                    "link_color": {
+                        "color": "#0c63ff",
+                        "opacity": 100
+                    },
+                    "link_hover_color": {
+                        "color": "#0da6ff",
+                        "opacity": 100
+                    },
+                    "link_visited_color": {
+                        "color": "#0da6ff",
+                        "opacity": 100
+                    },
+                    "body_bg": {
+                        "color": "#fff",
+                        "opacity": 100
+                    },
+                    "borders": {
+                        "color": "#e5e7ea",
+                        "opacity": 100
+                    },
+                    "utility_colors": {
+                        "dark": {
+                            "color": "#343a40",
+                            "opacity": 100
+                        },
+                        "light": {
+                            "color": "#f8f9fa",
+                            "opacity": 100
+                        },
+                        "danger": {
+                            "color": "#dc3545",
+                            "opacity": 100
+                        },
+                        "warning": {
+                            "color": "#ffc107",
+                            "opacity": 100
+                        },
+                        "info": {
+                            "color": "#17a2b8",
+                            "opacity": 100
+                        },
+                        "success": {
+                            "color": "#28a745",
+                            "opacity": 100
+                        }
+                    }
+                }
+            },
+            {
+                "id": "958dde0c-aee2-f3e8-8342-1e463ff30197",
+                "name": "buttons_inputs",
+                "label": "Buttons & Inputs",
+                "required": false,
+                "locked": true,
+                "children": [
+                    {
+                        "id": "136e50cb-1535-6a5a-784e-995a3432eaa4",
+                        "name": "button_font",
+                        "label": "Button Font",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "custom_font",
+                            "controlling_value_regex": "false",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": {
+                                "color": true
+                            }
+                        },
+        
+                        "load_external_fonts": true,
+                        "type": "font",
+                        "default": {
+                            "font_set": "GOOGLE",
+                            "size": 16,
+                            "color": "#000",
+                            "variant": "regular",
+                            "fallback": "sans-serif",
+                            "size_unit": "px",
+                            "font": "Poppins"
+                        }
+                    },
+                    {
+                        "id": "button_font_size",
+                        "name": "button_font_size",
+                        "label": "Button Font Size",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "custom_font",
+                            "controlling_value_regex": "true",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "text",
+                        "step": 1,
+                        "type": "number",
+                        "default": 16
+                    },
+                    {
+                        "id": "button_font_weight",
+                        "name": "button_font_weight",
+                        "label": "Button Font Weight",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "custom_font",
+                            "controlling_value_regex": "true",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "text",
+                        "step": 100,
+                        "type": "number",
+                        "default": 300
+                    },
+                    {
+                        "id": "button_advanced_settings",
+                        "name": "button_advanced_settings",
+                        "label": "Advanced settings",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    {
+                        "id": "button_letter_spacing",
+                        "name": "button_letter_spacing",
+                        "label": "Button Letter Spacing",
+                        "help_text": "Value in px",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "button_advanced_settings",
+                            "controlling_value_regex": "true",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "text",
+                        "step": 0,
+                        "type": "number",
+                        "default": null
+                    },
+                    {
+                        "id": "fccab815-a1db-f252-20c0-cd1defe160d4",
+                        "name": "height",
+                        "label": "Height",
+                        "help_text": "Value in px",
+                        "required": false,
+                        "locked": false,
+                        "display": "text",
+                        "step": 1,
+                        "type": "number",
+                        "default": 48
+                    },
+                    {
+                        "id": "d3b03ae5-2b47-881c-955d-c94baee80c27",
+                        "name": "button_l_r_padding",
+                        "label": "L/R Padding",
+                        "help_text": "Value in px",
+                        "required": false,
+                        "locked": false,
+                        "display": "text",
+                        "step": 0,
+                        "type": "number",
+                        "default": 20
+                    },
+                    {
+                        "id": "eb9c88a6-d39a-fb0a-8c7b-b5d507cf0649",
+                        "name": "button_border_radius",
+                        "label": "Border Radius",
+                        "help_text": "Value in px",
+                        "required": false,
+                        "locked": true,
+                        "display": "text",
+                        "step": 1,
+                        "type": "number",
+                        "default": 3
+                    },
+                    {
+                        "id": "58272293-e573-6be2-a8fb-876e5459c98a",
+                        "name": "button_border_width",
+                        "label": "Border Width",
+                        "help_text": "Value in px",
+                        "required": false,
+                        "locked": true,
+                        "display": "text",
+                        "step": 1,
+                        "type": "number",
+                        "default": 1
+                    },
+                    {
+                        "id": "d9f99a14-f542-8e83-adb5-633f56721e16",
+                        "name": "size_large",
+                        "label": "Size Large",
+                        "required": false,
+                        "locked": false,
+                        "children": [
+                            {
+                                "id": "760083ad-2a10-d88a-af1f-5e7dea6e8d4a",
+                                "name": "height",
+                                "label": "Height",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 1,
+                                "type": "number",
+                                "default": 52
+                            },
+                            {
+                                "id": "8020bd9a-c2f8-24ae-c7a2-2cd3ccc39f1b",
+                                "name": "font_size",
+                                "label": "Font Size",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": 20
+                            },
+                            {
+                                "id": "69dc113b-32cf-54f0-76ee-f6b0877098a8",
+                                "name": "button_l_r_padding",
+                                "label": "L/R Padding",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": 24
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "height": 52,
+                            "font_size": 20,
+                            "button_l_r_padding": 24
+                        }
+                    },
+                    {
+                        "id": "ba2de6c5-7413-8023-e5aa-a497c5fdfee5",
+                        "name": "size_small",
+                        "label": "Size Small",
+                        "required": false,
+                        "locked": false,
+                        "children": [
+                            {
+                                "id": "da7494ab-353f-6d9c-fc72-c19e61be9159",
+                                "name": "height",
+                                "label": "Height",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 1,
+                                "type": "number",
+                                "default": 38
+                            },
+                            {
+                                "id": "d0bcb26e-62a2-8336-4cf3-0305c15cb024",
+                                "name": "font_size",
+                                "label": "Font Size",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": 12
+                            },
+                            {
+                                "id": "74a9ed8d-9cae-7f8a-30ca-86d4b81deeb4",
+                                "name": "button_l_r_padding",
+                                "label": "L/R Padding",
+                                "help_text": "Value in px",
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": 16
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "height": 38,
+                            "font_size": 12,
+                            "button_l_r_padding": 16
+                        }
+                    },
+                    {
+                        "id": "d4c93fbe-1d4b-0694-ed07-208961f43eaa",
+                        "name": "enable_primary_button_color_override",
+                        "label": "Primary Button Color Override",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    {
+                        "id": "17288f79-9410-ac49-f497-74389bca8e81",
+                        "name": "primary_button_override",
+                        "label": "Primary Button Override",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "d4c93fbe-1d4b-0694-ed07-208961f43eaa",
+                            "controlling_value_regex": "true",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "children": [
+                            {
+                                "id": "25d18ae6-d3d6-f01b-8788-2c0f092df3e9",
+                                "name": "primary_button_background_color",
+                                "label": "Primary Button Background Color",
+                                "required": false,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#0c63ff",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "4c0d7622-5410-f665-fcd4-f335be784030",
+                                "name": "primary_button_text_color",
+                                "label": "Primary Button Text Color",
+                                "required": false,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#ffffff",
+                                    "opacity": 100
+                                }
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "primary_button_background_color": {
+                                "color": "#0c63ff",
+                                "opacity": 100
+                            },
+                            "primary_button_text_color": {
+                                "color": "#ffffff",
+                                "opacity": 100
+                            }
+                        }
+                    },
+                    {
+                        "id": "9590123e-6e9c-e984-d46e-a7cf6c3059ab",
+                        "name": "enable_secondary_button_color_override",
+                        "label": "Secondary Button Color Override",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    {
+                        "id": "72a28b6c-0f48-6903-f7c4-df005ef67edf",
+                        "name": "secondary_button_override",
+                        "label": "Secondary Button Override",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "9590123e-6e9c-e984-d46e-a7cf6c3059ab",
+                            "controlling_value_regex": "true",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "children": [
+                            {
+                                "id": "0018d3ca-f2b1-346d-0e0f-1ea92344255b",
+                                "name": "secondary_button_background_color",
+                                "label": "Secondary Button Background Color",
+                                "required": false,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#F5F7F9",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "6463d215-f51c-5b74-5cfb-d88d3e515b8b",
+                                "name": "secondary_button_text_color",
+                                "label": "Secondary Button Text Color",
+                                "required": false,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#0c63ff",
+                                    "opacity": 100
+                                }
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "secondary_button_background_color": {
+                                "color": "#F5F7F9",
+                                "opacity": 100
+                            },
+                            "secondary_button_text_color": {
+                                "color": "#0c63ff",
+                                "opacity": 100
+                            }
+                        }
+                    },
+                    {
+                        "id": "9590123e-6e9c-e984-d46e-a7cf6c3059ac",
+                        "name": "enable_tertiary_button_color_override",
+                        "label": "Tertiary Button Color Override",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    {
+                        "id": "72a28b6c-0f48-6903-f7c4-df005ef67ede",
+                        "name": "tertiary_button_override",
+                        "label": "Tertiary Button Override",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "9590123e-6e9c-e984-d46e-a7cf6c3059ac",
+                            "controlling_value_regex": "true",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "children": [
+                            {
+                                "id": "0018d3ca-f2b1-346d-0e0f-1ea92344255c",
+                                "name": "tertiary_button_background_color",
+                                "label": "Tertiary Button Background Color",
+                                "required": false,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#232031",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "6463d215-f51c-5b74-5cfb-d88d3e515b88",
+                                "name": "tertiary_button_text_color",
+                                "label": "Tertiary Button Text Color",
+                                "required": false,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#fff",
+                                    "opacity": 100
+                                }
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "tertiary_button_background_color": {
+                                "color": "#232031",
+                                "opacity": 100
+                            },
+                            "tertiary_button_text_color": {
+                                "color": "#fff",
+                                "opacity": 100
+                            }
+                        }
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "button_font": {
+                        "font_set": "GOOGLE",
+                        "size": 16,
+                        "color": "#000",
+                        "variant": "regular",
+                        "fallback": "sans-serif",
+                        "size_unit": "px",
+                        "font": "Poppins"
+                    },
+                    "height": 48,
+                    "button_l_r_padding": 20,
+                    "button_border_radius": 3,
+                    "button_border_width": 1,
+                    "size_large": {
+                        "height": 52,
+                        "font_size": 20,
+                        "button_l_r_padding": 24
+                    },
+                    "size_small": {
+                        "height": 38,
+                        "font_size": 12,
+                        "button_l_r_padding": 16
+                    },
+                    "enable_primary_button_color_override": false,
+                    "primary_button_override": {
+                        "primary_button_background_color": {
+                            "color": "#0c63ff",
+                            "opacity": 100
+                        },
+                        "primary_button_text_color": {
+                            "color": "#ffffff",
+                            "opacity": 100
+                        }
+                    },
+                    "enable_secondary_button_color_override": false,
+                    "secondary_button_override": {
+                        "secondary_button_background_color": {
+                            "color": "#F5F7F9",
+                            "opacity": 100
+                        },
+                        "secondary_button_text_color": {
+                            "color": "#0c63ff",
+                            "opacity": 100
+                        }
+                    },
+                    "enable_tertiary_button_color_override": false,
+                    "tertiary_button_override": {
+                        "tertiary_button_background_color": {
+                            "color": "#232031",
+                            "opacity": 100
+                        },
+                        "tertiary_button_text_color": {
+                            "color": "#fff",
+                            "opacity": 100
+                        }
+                    }
+                }
+            },
+            {
+                "id": "a4f021ce-fb61-17ed-deae-3a3a989cb34d",
+                "name": "paddings_spacers",
+                "label": "Padding & Spacers",
+                "required": false,
+                "locked": true,
+                "children": [
+                    {
+                        "id": "6a1b5c3f-febd-bed7-a236-bb0eec0fb6f5",
+                        "name": "sr_spacer_25",
+                        "label": "SR Spacer 25",
+                        "help_text": "Value in px",
+                        "required": false,
+                        "locked": false,
+                        "display": "text",
+                        "step": 1,
+                        "type": "number",
+                        "default": 25
+                    },
+                    {
+                        "id": "b2790956-626f-d59b-4a35-27af916f9650",
+                        "name": "sr_spacer_50",
+                        "label": "SR Spacer 50",
+                        "help_text": "Value in px",
+                        "required": false,
+                        "locked": false,
+                        "display": "text",
+                        "step": 1,
+                        "type": "number",
+                        "default": 50
+                    },
+                    {
+                        "id": "efd66f44-7732-ebed-c07b-054e327eb6c0",
+                        "name": "sr_spacer_75",
+                        "label": "SR Spacer 75",
+                        "help_text": "Value in px",
+                        "required": false,
+                        "locked": false,
+                        "display": "text",
+                        "step": 1,
+                        "type": "number",
+                        "default": 75
+                    },
+                    {
+                        "id": "f58895fd-8bbe-8d3a-3722-f9a1c965ee86",
+                        "name": "sr_spacer_100",
+                        "label": "SR Spacer 100",
+                        "help_text": "Value in px",
+                        "required": false,
+                        "locked": false,
+                        "display": "text",
+                        "step": 1,
+                        "type": "number",
+                        "default": 100
+                    },
+                    {
+                        "id": "b91b9513-ffe8-7007-c096-c41dc75f94e1",
+                        "name": "sr_padding_half",
+                        "label": "SR Padding Half",
+                        "help_text": "Value in px",
+                        "required": false,
+                        "locked": false,
+                        "display": "text",
+                        "step": 0,
+                        "type": "number",
+                        "default": 50
+                    },
+                    {
+                        "id": "b5927007-b544-e916-4810-fb6ce7caf7ce",
+                        "name": "sr_padding_full",
+                        "label": "SR Padding Full",
+                        "help_text": "Value in px",
+                        "required": false,
+                        "locked": false,
+                        "display": "text",
+                        "step": 0,
+                        "type": "number",
+                        "default": 100
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "sr_spacer_25": 25,
+                    "sr_spacer_50": 50,
+                    "sr_spacer_75": 75,
+                    "sr_spacer_100": 100,
+                    "sr_padding_half": 50,
+                    "sr_padding_full": 100
+                }
+            }
+        ],
+        "source": ""
+    },
+    "custom_module_template": "sr-base.html",
+    "files": []
+}

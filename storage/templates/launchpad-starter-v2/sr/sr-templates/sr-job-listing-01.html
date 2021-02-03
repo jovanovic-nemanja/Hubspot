@@ -1,0 +1,341 @@
+{% if module.enabled %}
+
+	{% require_css %}
+		<style type="text/css">
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: {{ module.design_settings.background_custom.color }};
+				}
+			{% endif %}
+			.sr-job-listing-01 .listing-tooltip {
+				position: absolute;
+				right: 0;
+				bottom: 50%;
+				transform: translateY(50%);
+			}
+			.sr-job-listing-01 .listing-wrapper ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.sr-job-listing-01 .listing-wrapper ul li {
+				background-color:#fff;
+				position:relative;
+				border:1px solid #e5e7ea;
+				margin-bottom:0.625rem;
+			}
+			.sr-job-listing-01 .listing-wrapper {
+				width:100%;
+				padding-top:0.625rem;
+			}
+			.sr-job-listing-01 .hs-accordion__item-icon {
+				position: absolute;
+				height: 2rem;
+				width: 2rem;
+				right: 0;
+				top: 50%;
+				-webkit-transform: translateY(-50%);
+				-ms-transform: translateY(-50%);
+				transform: translateY(-50%);
+				border: 2px solid;
+				border-radius: 50%;
+				-webkit-transition: all .2s ease-in;
+				-o-transition: all .2s ease-in;
+				transition: all .2s ease-in;
+				pointer-events: none;
+			}
+			.sr-job-listing-01 span.p.bg-primary {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				-webkit-transform: translate(-50%,-50%);
+				-ms-transform: translate(-50%,-50%);
+				transform: translate(-50%,-50%);
+				height: 2.5px;
+				width: .7rem;
+				background: #fff !important;
+			}
+			.sr-job-listing-01 span.b.bg-primary {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				-webkit-transform: translate(-50%,-50%);
+				-ms-transform: translate(-50%,-50%);
+				transform: translate(-50%,-50%);
+				height: .7rem;
+				width: 2.5px;
+				background-color: #fff!important;
+			}
+			.sr-job-listing-01 span.b.bg-primary {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				-webkit-transform: translate(-50%,-50%);
+				-ms-transform: translate(-50%,-50%);
+				transform: translate(-50%,-50%);
+				height: .7rem;
+				width: 2.5px;
+				background-color: #fff;
+			}
+			.sr-job-listing-01 .listing-content {
+				border-bottom: 1px solid #f4f4f4;
+				padding: 1.563rem 0px;
+				width: 100%;
+				position: relative
+			}
+			.sr-job-listing-01 .listing-wrapper ul li:last-child .listing-content {
+				border: none;
+			}
+			.sr-job-listing-01 .post-meta {
+				font-size: 0.875rem;
+				color:#87909e;
+				line-height:1.25rem;
+			}
+			.sr-job-listing-01 .post-info {
+				position: absolute;
+				right: 0;
+				top: 50%;
+				transform: translateY(-50%);
+				color: #307fe2;
+			}
+			.sr-job-listing-01 span.post-category {
+				padding-right:1.375rem;
+			}
+			.sr-job-listing-01 span.post-location {
+				padding-left: 1.375rem;
+				position: relative;
+			}
+			.sr-job-listing-01 span.post-location:before {
+				border-left: 1px solid #ebebeb;
+				content: "";
+				height: 11px;
+				left: -2px;
+				position: absolute;
+				top: 5px;
+				width: 1px;
+			}
+			.sr-job-listing-01 .modal-dialog {
+				max-width: 750px;
+			}
+			.sr-job-listing-01 button.job-btn,
+			.sr-job-listing-01 a.job-btn {
+				display:block;
+				background: 0;
+				border: 0;
+				width: 100%;
+				padding: 0 1.563rem;
+				text-align: left;
+				-webkit-transition: all 0.2s ease;
+				-o-transition: all 0.2s ease;
+				transition: all 0.2s ease;
+				box-shadow: 15px 10px 20px 0 rgba(0, 0, 0, 0.0);
+			}
+			.sr-job-listing-01 a.job-btn button.job-btn {
+				padding:0;
+			}
+			.sr-job-listing-01 button.job-btn:hover,
+			.sr-job-listing-01 a.job-btn:hover {
+				box-shadow: 15px 10px 20px 0 rgba(0, 0, 0, 0.05);
+				cursor: pointer;
+			}
+			.sr-job-listing-01 a.job-btn button.job-btn:hover {
+				box-shadow:none;
+			}
+			.sr-job-listing-01 button.job-btn:focus,
+			.sr-job-listing-01 a.job-btn:focus {
+				outline: none;
+			}
+			.sr-job-listing-01 .modal-body {
+				padding:2rem !important;
+				text-align:left;
+			}
+			.sr-job-listing-01 .modal-header {
+				padding:2rem !important;
+			}
+			.sr-job-listing-01 .listing-title h5 {
+				font-size:1rem;
+				line-height:1.25rem;
+			}
+			.sr-job-listing-01 .modal-footer>div {
+				margin: 0 !important;
+			}
+			@media (max-width: 767px) { 
+				.sr-job-listing-01 .description p {
+					font-size:1.128rem;
+				}
+				.sr-job-listing-01 .listing-content {
+					padding:1.389rem 0;
+				}
+				.sr-job-listing-01 .listing-title h5 { 
+					font-size:0.903rem;
+					line-height:1.111rem;
+				}
+				.sr-job-listing-01 .post-meta {
+					font-size: 0.778rem;
+					line-height:1.111rem;
+				}
+				.sr-job-listing-01 .hs-accordion__item-icon {
+					width:2.222rem;
+					height:2.222rem;
+				}
+				.sr-job-listing-01 button.job-btn,
+				.sr-job-listing-01 a.job-btn{
+					padding: 0 1.25rem;
+				}
+			}
+		</style>
+	{% end_require_css %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% else %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-job-listing-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>Job Listing 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+    {% endif %}
+	{% endif %}
+	
+	<div class="sr-job-listing-01 {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} sr-padding-{{ module.design_settings.top_bottom_padding }}{% if module.design_settings.class %} {{ module.design_settings.class }}{% endif %}{% if module.use_image_as_background %} sr-bg-image{% endif %}{% if module.text_align != 'auto' %} text-{{module.text_align}}{% endif %}{% if module.design_settings.border_top %} sr-line-top{% endif %}{% if module.design_settings.border_bottom %} sr-line-bottom{% endif %} prototype-no-background {{ name }} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}"{% if module.id %}id="{{ module.id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }} content-wrapper">
+			{% if module.design_settings.container_width != 'max' %}
+			<div class="row">
+				<div class="{{ width_class }}">
+			{% endif %}
+					{% if module.heading || module.description %}
+					<div class="intro-section sr-spacer-bottom-25">
+						{% if module.heading %}
+							<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} section-heading">{{ module.heading }}</h{{module.heading_size}}>
+						{% endif %}
+						{% if module.description %}
+							<div class="description">{{ module.description }}</div>
+						{% endif %}
+					</div>
+					{% endif %}
+						<div class="listing-wrapper">
+							<ul>
+								{% for item in module.listing %}
+									<li>
+										{% if item.direct_link %}<button type="button" class="job-btn" data-toggle="modal" data-target="#{{item.title|replace(' ', '-')|lower}}">{% endif %}
+										{% if !item.direct_link %}<a target="_blank" class="job-btn" href="{{item.job_link}}">{% endif %}
+											<div class="listing-content">
+												<div class="listing-title"><h5>{{ item.title }}</h5></div>
+												<div class="post-meta"> 
+													<span class="post-category">{{ item.category }}</span> 
+													<span class="post-location">{{ item.location }}</span> 
+												</div>
+													<span class="bg-primary border-primary hs-accordion__item-icon">
+														<span class="p bg-primary"></span>
+														<span class="b bg-primary"></span>
+													</span>
+												</div>
+												{% if !item.direct_link %}</a>{% endif %}
+										{% if item.direct_link %}</button>{% endif %}
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
+			{% if module.design_settings.container_width != 'max' %}
+				</div>
+			</div>
+			{% endif %}
+		</div>
+		
+		{% for item in module.listing %}
+			{% if item.direct_link %}
+			<div class="modal fade" id="{{item.title|replace(' ', '-')|lower}}" tabindex="-1" role="dialog" aria-labelledby="{{item.title|replace(' ', '-')|lower}}" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">{{item.title}}</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+
+						<div class="modal-body">
+							{{item.job_text}}
+						</div>
+
+						{% if item.cta_one.cta_type != 'none' || item.cta_two.cta_type != 'none' %}
+						<div class="modal-footer">
+							{% if item.cta_one.cta_type != 'none' %}
+							<div class="btn-wrapper btn-{{ item.cta_one.cta_style }}-wrapper btn-wrapper-sm">
+								<a class="cta_button mx-1" href="#" data-dismiss="modal">{{ item.cta_one.button_text }}</a>
+							</div>
+							{% endif %}
+
+							{% if item.cta_two.cta_type != 'none' %}
+							<div class="btn-wrapper btn-{{ item.cta_two.cta_style }}-wrapper btn-wrapper-sm">
+								{% if item.cta_two.cta_type == 'btn' %}
+								<a href="{{ item.cta_two.link }}" class="cta_button mx-1">{{ item.cta_two.button_text }}</a>
+								{% elif item.cta_two.cta_type == 'cta' %}
+								{% cta guid="{{ item.cta_two.cta }}" %}
+								{% endif %}
+							</div>
+							{% endif %}
+						</div>
+						{% endif %}
+
+					</div>
+				</div>
+			</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+
+{% endif %}
+
+{% require_js %}
+	<script>
+		{% set query = request.query_dict.listing %}
+		{% if query %}
+			$('#{{query}}').modal('show');
+		{% endif %}
+	</script>
+{% end_require_js %}

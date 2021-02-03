@@ -1,0 +1,28 @@
+<!--
+templateType: "page"
+isAvailableForNewContent: false
+-->
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<title>{{ page_meta.html_title }}</title>
+		<meta name="description" content="{{ content.meta_description }}">
+		
+		{{ favicon_link }}
+
+		<!-- Prototype Mode -->
+		{% boolean "prototype_mode" label='Prototype Mode', value=False, no_wrapper=True, export_to_template_context=True %}
+		
+		<!-- Include Font Awesome -->
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+
+		<!-- Include Bootstrap 4.3.1 -->
+		<link href="{{ get_asset_url('/sr/css/bootstrap.css') }}" rel="stylesheet" media="all">
+
+		<link rel="stylesheet" type="text/css" href="{{ get_asset_url('/sr/css/sr-base.css') }}">
+
+		{{ standard_header_includes }}
+
+	</head>

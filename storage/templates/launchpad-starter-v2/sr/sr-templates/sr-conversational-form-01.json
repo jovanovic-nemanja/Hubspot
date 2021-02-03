@@ -1,0 +1,612 @@
+{
+	"custom_module": {
+		"author": "ernesto@lean-labs.com",
+		"tags": ["ver-2.0.0"],
+		"name": "SR Conversational Form 01",
+		"css_assets": [],
+		"editable_contexts": [],
+		"external_js": [],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+		"js_assets": [],
+		"other_assets": [],
+		"fields": [
+			{
+				"default": true,
+				"label": "Enabled",
+				"name": "enabled",
+				"type": "boolean"
+			},
+			{
+				"type": "group",
+				"name": "design_settings",
+				"label": "Design Settings",
+				"children": [
+					
+							{
+								"default": null,
+								"label": "ID",
+								"name": "sr_module_id",
+								"type": "text"
+							},
+							{
+								"default": null,
+								"label": "Class",
+								"name": "class",
+								"type": "text"
+							},
+							{
+								"choices": [
+									[
+										"container", "Page"
+									],
+									[
+										"container-fluid", "Full Width"
+									]
+								],
+								"default": "container",
+								"display": "select",
+								"label": "Layout",
+								"name": "layout",
+								"type": "choice",
+								"required": true
+							},
+							{
+								"choices": [
+									[
+										"min", "Minimum"
+									],
+									[
+										"narrow", "Narrow"
+									],
+									[
+										"wide", "Wide"
+									],
+									[
+										"max", "Maximum"
+									]
+								],
+								"default": "max",
+								"display": "select",
+								"label": "Container Width",
+								"name": "container_width",
+								"type": "choice",
+								"required": true
+							},
+							{
+								"choices": [
+									[
+										"auto", "Use default values"
+									],
+									[
+										"zero", "No Padding"
+									],
+									[
+										"half", "Small padding"
+									],
+									[
+										"full", "Large padding"
+									]
+								],
+								"default": "full",
+								"display": "select",
+								"label": "Top Bottom Padding",
+								"name": "top_bottom_padding",
+								"type": "choice",
+								"required": true
+							},
+							{
+								"default": false,
+								"label": "Border Top",
+								"name": "border_top",
+								"type": "boolean"
+							},
+							{
+								"default": false,
+								"label": "Border Bottom",
+								"name": "border_bottom",
+								"type": "boolean"
+							},
+							{
+								"choices": [
+									[
+										"image", "Image"
+									],
+									[
+										"color", "Color"
+									],
+									[
+										"custom", "Custom"
+									],
+									[
+										"gradient", "Gradient"
+									]
+								],
+								"id": "content_box_bg_option",
+								"default": "color",
+								"display": "select",
+								"label": "Content Box Background Option",
+								"name": "content_box_bg_option",
+								"type": "choice",
+								"required": true
+							},
+							{
+								"default": {
+									"src": "",
+									"alt": ""
+								},
+								"label": "Content Box Background Image",
+								"name": "content_box_bg_image",
+								"visibility": {
+									"controlling_field": "content_box_bg_option",
+									"controlling_value_regex": "image",
+									"operator": "EQUAL"
+								},
+								"type": "image"
+							},
+							{
+								"default": {
+									"color": "#343a40",
+									"opacity": 30
+								},
+								"label": "Content Box Background Overlay Color",
+								"name": "content_box_bg_overlay_color",
+								"visibility": {
+									"controlling_field": "content_box_bg_option",
+									"controlling_value_regex": "image",
+									"operator": "EQUAL"
+								},
+								"help_text": "Recommended Width: 2880x1920px",
+								"type": "color"
+							},
+							{
+								"choices": [
+									[
+										"primary",
+										"Primary"
+									],
+									[
+										"secondary",
+										"Secondary"
+									],
+									[
+										"tertiary",
+										"Tertiary"
+									],
+									[
+										"white",
+										"White"
+									],
+									[
+										"black",
+										"Black"
+									],
+									[
+										"dark",
+										"Dark"
+									],
+									[
+										"light",
+										"Light"
+									],
+									[
+										"success",
+										"Success"
+									],
+									[
+										"info",
+										"Info"
+									],
+									[
+										"warning",
+										"Warning"
+									],
+									[
+										"danger",
+										"Danger"
+									],
+									[
+										"none",
+										"None"
+									]
+								],
+								"default": "light",
+								"display": "select",
+								"label": "Content Box Background Color",
+								"name": "content_box_bg_color",
+								"type": "choice",
+								"visibility": {
+									"controlling_field": "content_box_bg_option",
+									"controlling_value_regex": "color",
+									"operator": "EQUAL"
+								},
+								"required": true
+							},
+							{
+								"default": {
+									"color": "#fff",
+									"opacity": 100
+								},
+								"label": "Content Box Background Custom Color",
+								"name": "content_box_bg_custom",
+								"visibility": {
+									"controlling_field": "content_box_bg_option",
+									"controlling_value_regex": "custom",
+									"operator": "EQUAL"
+								},
+								"type": "color"
+							},
+							{
+								"choices": [
+									[
+										"image", "Image"
+									],
+									[
+										"color", "Color"
+									],
+									[
+										"custom", "Custom"
+									]
+								],
+								"id": "form_box_bg_option",
+								"default": "color",
+								"display": "select",
+								"label": "Form Box Background Option",
+								"name": "form_box_bg_option",
+								"type": "choice",
+								"required": true
+							},
+							{
+								"default": {
+									"src": "",
+									"alt": ""
+								},
+								"label": "Form Box Background Image",
+								"name": "form_box_bg_image",
+								"visibility": {
+									"controlling_field": "form_box_bg_option",
+									"controlling_value_regex": "image",
+									"operator": "EQUAL"
+								},
+								"type": "image"
+							},
+							{
+								"default": {
+									"color": "#343a40",
+									"opacity": 30
+								},
+								"label": "Form Box Background Overlay Color",
+								"name": "form_box_bg_overlay_color",
+								"visibility": {
+									"controlling_field": "form_box_bg_option",
+									"controlling_value_regex": "image",
+									"operator": "EQUAL"
+								},
+								"help_text": "Recommended Width: 2880x1920px",
+								"type": "color"
+							},
+							{
+								"choices": [
+									[
+										"primary",
+										"Primary"
+									],
+									[
+										"secondary",
+										"Secondary"
+									],
+									[
+										"tertiary",
+										"Tertiary"
+									],
+									[
+										"white",
+										"White"
+									],
+									[
+										"black",
+										"Black"
+									],
+									[
+										"dark",
+										"Dark"
+									],
+									[
+										"light",
+										"Light"
+									],
+									[
+										"success",
+										"Success"
+									],
+									[
+										"info",
+										"Info"
+									],
+									[
+										"warning",
+										"Warning"
+									],
+									[
+										"danger",
+										"Danger"
+									],
+									[
+										"none",
+										"None"
+									]
+								],
+								"default": "primary",
+								"display": "select",
+								"label": "Form Box Background Color",
+								"name": "form_box_bg_color",
+								"type": "choice",
+								"visibility": {
+									"controlling_field": "form_box_bg_option",
+									"controlling_value_regex": "color",
+									"operator": "EQUAL"
+								},
+								"required": true
+							},
+							{
+								"default": {
+									"color": "#fff",
+									"opacity": 100
+								},
+								"label": "Form Box Background Custom Color",
+								"name": "form_box_bg_custom",
+								"visibility": {
+									"controlling_field": "form_box_bg_option",
+									"controlling_value_regex": "custom",
+									"operator": "EQUAL"
+								},
+								"type": "color"
+							}
+			]},
+			{
+				"id": "heading",
+				"default": "Modular Design Tool Free Trial",
+				"label": "Heading",
+				"name": "heading",
+				"type": "text"
+			},
+			{
+				"choices": [
+					[
+						"1", "H1"
+					],
+					[
+						"2", "H2"
+					],
+					[
+						"3", "H3"
+					],
+					[
+						"4", "H4"
+					],
+					[
+						"5", "H5"
+					],
+					[
+						"6", "H6"
+					]
+				],
+				"default": "2",
+				"display": "select",
+				"label": "Heading Size",
+				"name": "heading_size",
+				"visibility" : {
+					"controlling_field" : "heading",
+					"controlling_value_regex" : null,
+					"operator" : null,
+					"access" : null
+				},
+				"type": "choice",
+				"required": true
+			},
+			{
+                "name": "heading_display_size",
+                "label": "Heading Display Size",
+                "required": true,
+                "locked": false,
+				"display": "select",
+				"visibility": {
+                    "controlling_field": "heading",
+                    "controlling_value_regex": null,
+                    "operator": null,
+                    "access": null
+                },
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "h1",
+                        "H1"
+                    ],
+                    [
+                        "h2",
+                        "H2"
+                    ],
+                    [
+                        "h3",
+                        "H3"
+                    ],
+                    [
+                        "h4",
+                        "H4"
+                    ],
+                    [
+                        "h5",
+                        "H5"
+                    ],
+                    [
+                        "h6",
+                        "H6"
+                    ],
+                    [
+                        "display-4",
+                        "L"
+                    ],
+                    [
+                        "display-3",
+                        "XL"
+                    ],
+                    [
+                        "display-2",
+                        "XXL"
+                    ],
+                    [
+                        "display-1",
+                        "XXXL"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            },
+			{
+				"default": "Sign-up for the free trial to give our platform a spin.",
+				"label": "Description",
+				"name": "description",
+				"type": "richtext"
+			},
+			{
+				"choices": [
+					[
+						"auto", "Auto"
+					],
+					[
+						"left", "Left"
+					],
+					[
+						"center", "Center"
+					],
+					[
+						"right", "Right"
+					]
+				],
+				"default": "auto",
+				"display": "select",
+				"label": "Text Align",
+				"name": "text_align",
+				"type": "choice",
+				"required": true
+			},
+			{
+				"choices": [
+					[
+						"auto", "Auto"
+					],
+					[
+						"primary", "Primary"
+					],
+					[
+						"secondary", "Secondary"
+					],
+					[
+						"tertiary", "Tertiary"
+					],
+					[
+						"white", "White"
+					],
+					[
+						"black", "Black"
+					],
+					[
+						"dark", "Dark"
+					],
+					[
+						"light", "Light"
+					],
+					[
+						"success", "Success"
+					],
+					[
+						"info", "Info"
+					],
+					[
+						"warning", "Warning"
+					],
+					[
+						"danger", "Danger"
+					]
+				],
+				"default": "auto",
+				"display": "select",
+				"label": "Text Color",
+				"name": "text_color",
+				"type": "choice",
+				"required": true
+			},
+			{
+				"id": "1",
+				"name": "form",
+				"children": [
+					{
+						"name": "form",
+						"label": "Form",
+						"type": "form",
+						"default": {
+							"response_type": "redirect",
+							"message": "Thanks for submitting the form."
+						}
+					},
+					{
+						"id": "notifications_are_overridden",
+						"name": "notifications_are_overridden",
+						"label": "Send form notifications to specified email addresses instead of the form defaults",
+						"type": "boolean",
+						"default": false
+					},
+					{
+						"name": "notifications_override_email_addresses",
+						"label": "Email Addresses",
+						"visibility": {
+							"controlling_field": "notifications_are_overridden",
+							"controlling_value_regex": "true",
+							"operator": "EQUAL"
+						},
+						"type": "email",
+						"default": null
+					},
+					{
+						"id": "follow_up_type_simple",
+						"name": "follow_up_type_simple",
+						"label": "Send a follow-up email",
+						"type": "boolean",
+						"default": false
+					},
+					{
+						"name": "simple_email_for_live_id",
+						"label": "Email",
+						"visibility": {
+							"controlling_field": "follow_up_type_simple",
+							"controlling_value_regex": "true",
+							"operator": "EQUAL"
+						},
+						"type": "followupemail",
+						"default": null
+					}
+				],
+				"label": "Form",
+				"type": "group",
+				"default": {
+					"form": {
+						"response_type": "redirect",
+						"message": "Thanks for submitting the form."
+					},
+					"notifications_are_overridden": false,
+					"follow_up_type_automation": false,
+					"follow_up_type_simple": false
+				}
+			}
+		],
+		"source": ""
+	},
+	"custom_module_template": "sr-conversational-form-01.html",
+	"available_builder": true,
+	"category": 9,
+	"files": []
+}

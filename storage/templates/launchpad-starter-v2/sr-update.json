@@ -1,0 +1,71 @@
+{
+    "template": [],
+    "custom_modules": [
+        {
+            "path": "/launchpad-starter-v2/sr/sr-templates/theme.json",
+            "parentPath": "/sr/",
+            "name": "theme.json"
+        },
+        {
+            "path": "/launchpad-starter-v2/sr/sr-templates/fields.json",
+            "parentPath": "/sr/",
+            "name": "fields.json"
+        },
+        {
+            "path": "/launchpad-starter-v2/sr/templates/variables.html",
+            "parentPath": "/sr/templates/",
+            "name": "variables.html"
+        },
+        {
+            "path": "/launchpad-starter-v2/sr/templates/header.html",
+            "parentPath": "/sr/templates/",
+            "name": "header.html"
+        },
+        {
+            "path": "/launchpad-starter-v2/sr/templates/footer-includes.html",
+            "parentPath": "/sr/templates/",
+            "name": "footer-includes.html"
+        },
+        {
+            "path": "/launchpad-starter-v2/sr/templates/page.html",
+            "parentPath": "/sr/templates/",
+            "name": "page.html"
+        },
+        {
+            "path": "/launchpad-starter-v2/sr/templates/dnd_page.html",
+            "parentPath": "/sr/templates/",
+            "name": "dnd_page.html"
+        },
+        {
+            "path": "/launchpad-starter-v2/sr/templates/modules.html",
+            "parentPath": "/sr/templates/",
+            "name": "modules.html"
+        },
+        {
+            "path": "/launchpad-starter-v2/sr/css/sr-base.css",
+            "parentPath": "/sr/css/",
+            "name": "sr-base.css"
+        },
+        {
+            "path": "/launchpad-starter-v2/sr/css/bootstrap.css",
+            "parentPath": "/sr/css/",
+            "name": "bootstrap.css"
+        },
+        {
+            "path": "/launchpad-starter-v2/sr/js/bootstrap.js",
+            "parentPath": "/sr/js/",
+            "name": "bootstrap.js"
+        },
+        {
+            "path": "/launchpad-starter-v2/sr/js/interaction.js",
+            "parentPath": "/sr/js/",
+            "name": "interaction.js"
+        },
+        {
+            "path": "/launchpad-starter-v2/sr/js/jquery.js",
+            "parentPath": "/sr/js/",
+            "name": "jquery.js"
+        }
+    ],
+    "files": []
+}

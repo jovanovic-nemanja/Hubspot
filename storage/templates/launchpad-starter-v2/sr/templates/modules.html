@@ -1,0 +1,91 @@
+
+{% import "sr/templates/variables.html" as var %}
+
+<!-- enable label field modules page to show labels -->
+{% boolean "show_labels" label='Show Labels', value=True, no_wrapper=True, export_to_template_context=True %}
+{{ var.template('header.html') }}
+
+{% require_css %}
+	<style>
+    .side-panel {
+      position:fixed;
+      left:0;
+      top:0;
+      padding:0 1rem;
+      display:block;
+      z-index:9999;
+	  padding:0.5rem;
+    }
+    .side-panel h5 {
+      text-align:center;
+      font-size: 1rem;
+      margin-bottom: 0;
+    }
+
+    select#labelDropDown {
+      color: #262628;
+      background-color: #fff;
+      top: 1rem;
+      left: .5rem;
+      z-index: 9999;
+      padding: .5rem 1rem;
+      border-radius: 5px;
+      text-transform: capitalize;
+      -webkit-transition: all 0.6s ease;
+      -o-transition: all 0.6s ease;
+      transition: all 0.6s ease;
+	  min-width: 300px;
+    }
+    .sr-module-label {
+      padding:1rem 0;
+    }
+    .sr-module-label.bg-secondary.border-primary {
+      background-color: var(--primary)!important;
+      color:#fff!Important;
+      filter: brightness(110%);
+    }
+    .sr-module-label h5 {
+      color:#fff!Important;
+    }
+	</style>
+{% end_require_css %}
+
+
+{% if widget_data.show_labels.value %}
+<div class="side-panel bg-white">
+  <div class="toggle"></div>
+  <select name="dropDown" id="labelDropDown">
+	  <option class="option-first">Select Module to View</option>
+  </select>
+</div>
+	{% require_js %}
+	<script>
+		$('.sr-module-label').each(function() {
+			var id = this.id.replace("sr", "SR").replace("label-", " ").replace(/-/g, ' ');
+			$( "#labelDropDown" ).append( "<option value='#" + this.id + "'>"+id+"</option>" );
+		});
+		
+		var dropDownValue = document.getElementById("labelDropDown");
+		dropDownValue.onchange = function() {
+			$("html, body").animate({
+					scrollTop: $(this.value).offset().top
+				},
+				400,
+				function() {
+					window.location.hash = this.value;
+				}
+			);
+		};
+	</script>
+	{% end_require_js %}
+{% endif %}
+
+
+<body class="{% block body_class %}{% text 'body_class' label="Body Class" no_wrapper=True %}{% endblock %}">
+  {% widget_container "main_flexible_column" no_wrapper=True %}
+	
+	{% end_widget_container %}
+
+	{{ var.template('footer-includes.html') }}
+</body>
+</html>

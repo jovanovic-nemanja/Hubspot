@@ -1,0 +1,55 @@
+
+
+{% set baseDir = "/sr/templates/" %}
+{% set sr_baseDir = "/sr/sr-templates/" %}
+{% set assetDir = "//cdn2.hubspot.net/hubfs/" + site_settings.portal_id + "/sr-build" %}
+{% set sr_assetDir = "//cdn2.hubspot.net/hubfs/" + site_settings.portal_id + "/sr-assets" %}
+{% set imgDir = assetDir + "/images" %}
+
+{% macro template(value) %}
+	{% set values = baseDir + value %}
+	{% include values %}
+{% endmacro %}
+
+{% macro sr_template(value) %}
+	{% set values = sr_baseDir + value %}
+	{% include values %}
+{% endmacro %}
+
+{% macro flex(value, id) %}
+	{% widget_container label="{{value}}" %}
+	{% end_widget_container %}
+{% endmacro %}
+
+{% macro custom_module(src, value) %}
+
+	{% set module = value %}
+	{% set values = baseDir + src %}
+	{% include values %}
+{% endmacro %}
+
+{% macro sr_custom_module(src, value) %}
+	{% set module = value %}
+	{% set values = sr_baseDir + src %}
+	{% include values %}
+{% endmacro %}
+
+{#
+{% macro image(src, width, alt, custom)  %}
+    <img data-lazy="{{ resize_image_url(src, width) }}" data-lazy-2x="{{ resize_image_url(src, width*2) }}"  src="{{ resize_image_url(src, '100') }}" alt="{{ alt }}" width="{{ width }}" {% if custom %}{{custom}}{% endif %} style="width: {{width}}px"/>
+{% endmacro %}
+#}
+
+{% macro image(src, width, alt, custom)  %}
+<img src="{{ resize_image_url(src, width) }}" srcset="{{ resize_image_url(src, width) }} 1x, {{ resize_image_url(src, width*2) }} 2x"  alt="{{ alt }}" width="{{ width }}" {% if custom %}{{custom}}{% endif %} />
+{% endmacro %}
+
+{% macro bg_image(src, width)  %}
+		{% set img = resize_image_url(src, width) %}
+		{% set img2x = resize_image_url(src, width*2) %}
+		background-image: url({{ img }}); 
+		background-image: -webkit-image-set(url({{ img }}) 1x, url({{ img2x }}) 2x);
+		background-image: -moz-image-set(url({{ img }}) 1x, url({{ img2x }}) 2x);
+		background-image: -o-image-set(url({{ img }}) 1x, url({{ img2x }}) 2x);
+		background-image: -ms-image-set(url({{ img }}) 1x, url({{ img2x }}) 2x);
+{% endmacro %}

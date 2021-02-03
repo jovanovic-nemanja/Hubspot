@@ -1,0 +1,445 @@
+{% if module.enabled %}
+
+{% if module.design_settings.container_width == 'min' %}
+{% set width_class = 'col-md-6 offset-md-3' %}
+{% elif module.design_settings.container_width == 'narrow' %}
+{% set width_class = 'col-md-8 offset-md-2' %}
+{% elif module.design_settings.container_width == 'wide' %}
+{% set width_class = 'col-md-10 offset-md-1' %}
+{% elif module.design_settings.container_width == 'max' %}
+{% set width_class = 'col-md-12' %}	
+{% endif %}
+
+<!-- Label For Modules Data Page -->
+{% if widget_data.show_labels.value %}
+{% if module.hidden_name %}
+<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+	<h5>{{module.hidden_name}}</h5>
+	<i class="fa fa-chevron-down" aria-hidden="true"></i>
+</div>
+{% else %}
+<div id="label-sr-hero-02" class="sr-module-label bg-secondary border-primary text-center ">
+	<h5>SR Hero 02</h5>
+	<i class="fa fa-chevron-down" aria-hidden="true"></i>
+</div>
+{% endif %}
+{% endif %}
+
+<div {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %} class="{{ name }} sr-cover-parallax sr-hero-02 {{ module.design_settings.class }} prototype-no-background">
+	<div class="overflow">
+
+		{% if module.design_settings.background_option != 'video' %}
+		<div class="sr-cover-image {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} "></div>
+		{% else %}
+		<div class="sr-cover-bg-wrapper">
+			<video playsinline autoplay muted loop class="overlay-{{ module.overlay }}" {% if module.image %}poster="{{ module.image.src }}"{% endif %}>
+				{% if module.design_settings.background_video_WEBM %}
+				<source src="{{ module.design_settings.background_video_WEBM }}" type="video/webm">
+				{% endif %}
+				{% if module.design_settings.background_video_MP4 %}
+				<source src="{{ module.design_settings.background_video_MP4 }}" type="video/mp4">
+				{% endif %}
+				{% if module.design_settings.background_video_OOG %}
+				<source src="{{ module.design_settings.background_video_OOG }}" type="video/ogg">
+				{% endif %}
+			</video>
+		</div>
+		{% endif %}
+
+		<div class="{{ module.design_settings.layout }}">
+			<div class="row no-gutters">
+				<div class="{{ width_class }}">
+					<div class="sr-cover d-flex align-items-center {% if module.height == 'auto' %}sr-spacer-100{% else %}height-{{ module.height }}{% endif %} ">
+						<div class="sr-cover-inner">
+							<div class="row hero-row {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %}">
+								<div class="content_col {% if module.slides.slides|length > 0 %}{{module.columns.content_col_width}}{% else %}col-md-12{% endif %} {% if module.text_color != 'auto' %}text-{{ module.text_color }} {% endif %}">
+									
+									{% if module.sub_heading %}<{{module.sub_heading_size}} class="{% if module.sub_heading_display_size != 'auto' %}{{ module.sub_heading_display_size }}{% endif %} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.sub_heading }}</{{module.sub_heading_size}}>{% endif %}
+
+									{% if module.heading %}<{{module.heading_size}} class="{% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %} {% if module.heading_display_size != 'auto' %} {{ module.heading_display_size }}{% endif %}">{{ module.heading }}</{{module.heading_size}}>{% endif %}
+
+									{% if module.content %}{{ module.content }}{% endif %}
+
+									{% if module.cta_one.cta_type != 'none' || module.cta_two.cta_type != 'none' %}
+									<div class="sr-spacer-top-25 cta-wrapper">
+									
+										{% if module.cta_one.cta_type != 'none' %}
+										<div class="btn-wrapper btn-{{ module.cta_one.cta_style }}-wrapper">
+											{% if module.cta_one.cta_type == 'btn' %}
+											<a href="{{ module.cta_one.link }}" class="cta_button">{{ module.cta_one.button_text }}</a>
+											{% elif module.cta_one.cta_type == 'cta' %}
+											{% cta guid="{{ module.cta_one.cta }}" %}
+											{% endif %}
+										</div>
+										{% endif %}
+
+										{% if module.cta_two.cta_type != 'none' %}
+										<div class="btn-wrapper btn-{{ module.cta_two.cta_style }}-wrapper">
+											{% if module.cta_two.cta_type == 'btn' %}
+											<a href="{{ module.cta_two.link }}" class="cta_button">{{ module.cta_two.button_text }}</a>
+											{% elif module.cta_two.cta_type == 'cta' %}
+											{% cta guid="{{ module.cta_two.cta }}" %}
+											{% endif %}
+										</div>
+										{% endif %}
+									</div>
+								{% endif %}
+							</div>
+							{% if module.slides.slides|length > 0 %}
+							<div class="slider_col {{module.columns.slider_col_width}} text-right img-fluid">
+								<div id="slickSlider-{{name}}" class="sr-hero-02-slick" {% if module.slides.slides|length > 1 %}style="display: none"{% endif %}>
+									{% for item in module.slides.slides %}
+									<div class="hero-img">
+										{% if item.slide_image.src %}
+											{% if item.sr_default_image_size %}
+												{{ var.image(item.slide_image.src, '800', item.slide_image.alt) }}
+											{% else %}
+												{{ var.image(item.slide_image.src, item.slide_image.width, item.slide_image.alt) }}
+											{% endif %}
+										{% endif %}
+									</div>
+									{% endfor %}
+								</div>
+							</div>
+							{% endif %}
+						</div>
+						{% if module.features.design_settings.position == 'in' %}
+						{% if module.features.features|length > 0 %}
+						<div class="row feature-row sr-spacer-top-50">
+							{% for item in module.features.features %}
+							<div class="col-md-{{ module.features.design_settings.columns }}">
+								<div class="hero-feature {% if module.features.design_settings.background_option == 'color' %}bg-{{ module.features.design_settings.background_color }} border-{{ module.features.design_settings.background_color }}{% endif %} {% if module.features.design_settings.text_color != 'auto' %}text-{{ module.features.design_settings.text_color }} {% endif %} {% if module.features.design_settings.text_align != 'auto' %}text-{{ module.features.design_settings.text_align }} {% endif %}" {% if module.features.design_settings.background_option == 'custom' %}style="background-color: rgba({{ module.features.design_settings.background_custom.color|convert_rgb }}, {% if module.features.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.features.design_settings.background_custom.opacity }}); border-color: rgba({{ module.features.design_settings.background_custom.color|convert_rgb }}, {% if module.features.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.features.design_settings.background_custom.opacity }});"{% endif %}>
+									{% if item.image.src %}
+									{% if item.sr_default_image_size %}
+									{{ var.image(item.image.src, '64', item.image.alt) }}
+									{% else %}
+									{{ var.image(item.image.src, item.image.width, item.image.alt) }}
+									{% endif %}
+									{% endif %}
+									<div class="hero-feature-content sr-spacer-top-25">
+										{{item.content}}
+									</div>
+									{% if module.features.design_settings.background_option == 'image' %}<div class='feat-overlay' style="background: rgba({{ module.features.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.features.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.features.design_settings.background_overlay_color.opacity }});"></div>{% endif %}
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+						{% endif %}
+						{% endif %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div> <!-- .overflow -->
+</div> <!-- .sr-hero-02 -->
+
+{% if module.features.design_settings.position == 'out' || module.features.design_settings.position == 'overlap' %}
+{% if module.features.features|length > 0 %}
+<div class="{{ name }} sr-cover-parallax sr-hero-02 {% if module.features.design_settings.position == 'overlap' %}hero-overlap sr-spacer-bottom-50{% else %}sr-spacer-50{% endif %}">
+	<div class="{{ module.design_settings.layout }}">
+		<div class="row">
+			<div class="{{ width_class }}">
+				<div class="row feature-row">
+					{% for item in module.features.features %}
+					<div class="col-md-{{ module.features.design_settings.columns }}">
+						<div class="hero-feature {% if module.features.design_settings.background_option == 'color' %}bg-{{ module.features.design_settings.background_color }} border-{{ module.features.design_settings.background_color }}{% endif %} {% if module.features.design_settings.text_color != 'auto' %}text-{{ module.features.design_settings.text_color }} {% endif %} {% if module.features.design_settings.text_align != 'auto' %}text-{{ module.features.design_settings.text_align }} {% endif %}" {% if module.features.design_settings.background_option == 'custom' %}style="background-color: rgba({{ module.features.design_settings.background_custom.color|convert_rgb }}, {% if module.features.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.features.design_settings.background_custom.opacity }}); border-color: rgba({{ module.features.design_settings.background_custom.color|convert_rgb }}, {% if module.features.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.features.design_settings.background_custom.opacity }});"{% endif %}>
+							{% if item.image.src %}
+							{% if item.sr_default_image_size %}
+							{{ var.image(item.image.src, '64', item.image.alt) }}
+							{% else %}
+							{{ var.image(item.image.src, item.image.width, item.image.alt) }}
+							{% endif %}
+							{% endif %}
+							<div class="hero-feature-content sr-spacer-top-25">
+								{{item.content}}
+							</div>
+							{% if module.features.design_settings.background_option == 'image' %}<div class='feat-overlay' style="background: rgba({{ module.features.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.features.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.features.design_settings.background_overlay_color.opacity }});"></div>{% endif %}
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endif %}
+{% endif %}
+
+{% require_css %}
+<style type="text/css">
+	{% if module.design_settings.background_option == 'image' %}
+	.{{ name }} .sr-cover-image {
+		{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		position: relative;
+	}
+	@media (min-width: 768px) {
+		.{{ name }} .sr-cover-image {
+			{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+		}
+	}
+	.{{ name }} .sr-cover-image:before {
+		content: "";
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;    
+		background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});
+	}
+	.{{ name }} .container, .{{ name }} .container-fluid {
+		position: relative;
+	}
+	{% elif module.design_settings.background_option == 'video' %}
+	.sr-hero-02 .sr-cover-bg-wrapper video {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		min-width: 100%;
+		min-height: 100%;
+		width: auto;
+		height: auto;
+		-ms-transform: translateX(-50%) translateY(-50%);
+		-moz-transform: translateX(-50%) translateY(-50%);
+		-webkit-transform: translateX(-50%) translateY(-50%);
+		transform: translateX(-50%) translateY(-50%);
+	}
+	.{{ name }} .sr-cover-bg-wrapper:after {
+		content: "";
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});
+	}
+	{% elif module.design_settings.background_option == 'gradient' %}
+	.{{ name }} .sr-cover-image {
+		background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+	}
+	{% elif module.design_settings.background_option == 'custom' %}
+	.{{ name }} .sr-cover-image {
+		background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+	}
+	{% endif %}
+	.sr-hero-02 .container {
+		position: relative;
+	}
+	.sr-hero-02 .hero-row {
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+	.sr-hero-02 .sr-cover-inner > .row > div.col-md-10 {
+		padding-left: 0;
+	}
+	.sr-hero-02.sr-cover-parallax {
+		position: relative;
+	}
+	.sr-hero-02.sr-cover-parallax .overflow {
+		position: relative;
+		overflow: hidden;
+	}
+	.sr-hero-02 .sr-cover-image {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+		-webkit-background-size: cover;
+		background-size: cover;
+		-moz-transform: translate3d(0,0,0);
+		-webkit-transform: translate3d(0,0,0);
+		transform: translate3d(0,0,0);
+	}
+	.sr-hero-02 > .container {
+		position: relative;
+	}
+	.{{ name }}.hero-overlap {
+		margin-top: -4rem;
+	}
+	.sr-hero-02 .row.feature-row > div {
+		margin: 15px 0;
+	}
+	.sr-hero-02 .sr-cover-inner {
+		margin: 0 auto;
+		width: 100%;
+		-webkit-transition: all ease-in-out .1s;
+		-o-transition: all ease-in-out .1s;
+		transition: all ease-in-out .1s;
+	}
+	.sr-hero-02 .feat-overlay {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
+	}
+	.sr-hero-02 .slick-dots {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		margin: 0;
+		padding-left: 0;
+		padding-right: 0;
+		list-style-type: none;
+		position: relative;
+		list-style: none;
+		height: 40px;
+	}
+	.sr-hero-02 .slick-dots li {
+		margin: 0px 6px;
+		width: 7px;
+		height: 7px;
+	}
+	.sr-hero-02 .slick-dots button {
+		display: block;
+		width: 6px;
+		height: 6px;
+		padding: 0; 
+		border: none;
+		border-radius: 100%;
+		text-indent: -9999px;
+		-webkit-transition: all ease-in-out .2s;
+		-o-transition: all ease-in-out .2s;
+		transition: all ease-in-out .2s;
+		box-shadow: 0 0 0 2px transparent;
+		background: var(--white);
+		display: inline-block;
+	}
+	.sr-hero-02 .slick-dots li.slick-active button {
+		background-color: transparent !important;
+		box-shadow: 0 0 0 2px var(--white);
+	}
+	.sr-hero-02 button:focus {
+		outline: 0;
+		outline: 0; 
+	}
+	.sr-hero-02 .sr-cover-inner .img-fluid img {
+		max-width: 100%;
+		display: inline-block;
+		height: auto;
+	}
+	.sr-hero-02 button.slick-arrow {
+		display: none !important;
+	}
+	.sr-hero-02 .hero-feature {
+		position: relative;
+		background: rgb(255, 255, 255);
+		border-radius: 0px;
+		{% if module.features.design_settings.background_option != 'image' %}
+		border: 1px solid rgb(229, 231, 234);
+		{% endif %}
+		height: 100%;
+		padding: 1.5rem;
+		background-size: cover;
+		background-position: center;
+	}
+	.sr-hero-02 .hero-feature .hero-feature-content, 
+	.sr-hero-02 .hero-feature img {
+		position: relative;
+		z-index: 1;
+	}
+	.sr-hero-02 .hero-feature p:last-child {
+		margin: 0;
+	}
+	.{{ name }} .btn-wrapper {
+		padding: 0 .5rem;
+	}
+	.{{ name }} .cta-wrapper {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		{% if module.text_align == 'center' %} 
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+		{% elif module.text_align == 'left' %} 
+		-webkit-box-pack: start;
+		-ms-flex-pack: start;
+		justify-content: flex-start;
+		{% elif module.text_align == 'right' %} 
+		-webkit-box-pack: end;
+		-ms-flex-pack: end;
+		justify-content: flex-end;
+		{% endif %}
+		margin: 0 -.5rem;
+	}
+	{% if module.columns.col_order == 'reverse' %}
+		.{{ name }} .content_col {
+			order: 2
+		}
+		.{{ name }} .slider_col {
+			order: 1
+		}
+	{% else %}	
+		.{{ name }} .content_col {
+			order: 1
+		}
+		.{{ name }} .slider_col {
+			order: 2
+		}
+	{% endif %}
+	@media only screen and (max-width : 768px) {
+		{% if module.columns.mobile_col_order == 'reverse' %}
+			.{{ name }} .content_col {
+				order: 2
+			}
+			.{{ name }} .slider_col {
+				order: 1
+			}
+		{% else %}	
+			.{{ name }} .content_col {
+				order: 1
+			}
+			.{{ name }} .slider_col {
+				order: 2
+			}
+		{% endif %}
+		.sr-hero-02 .sr-hero-02-slick {
+			padding-top: 3rem;
+		}
+		.sr-hero-02 .row.feature-row > div {
+			margin: .75rem 0;
+		}
+	}
+	.{{ name }} .height-auto     { min-height: 0vh; }
+	.{{ name }} .height-small    { padding: 8rem 0; }
+	.{{ name }} .height-medium   { padding: 14rem 0; }
+	.{{ name }} .height-large    { padding: 20rem 0; }
+	.{{ name }} .height-full     { min-height: 100vh; }
+
+	
+</style>
+{% end_require_css %}
+
+{% if module.slides.slides|length > 1 %}
+{{ require_css(var.sr_assetDir + '/css/slick.css') }}
+{% require_js %}
+<script src="{{var.sr_assetDir}}/js/slick.min.js"></script>
+<script>
+	$('#slickSlider-{{name}}').slick({
+	  dots: {% if module.slides.options.dot_navigation %}true{% else %}false{% endif %},
+	  arrow: false,
+	  infinite: true,
+	  {% if module.slides.options.autoplay %}autoplay: true,{% endif %}
+	  autoplaySpeed: {{ module.slides.options.autoplay_speed }}000,
+	  slidesToShow: 1
+	  });
+	$('#slickSlider-{{name}}').fadeIn(1000);
+</script>
+{% end_require_js %}
+{% endif %}
+
+{% endif %}

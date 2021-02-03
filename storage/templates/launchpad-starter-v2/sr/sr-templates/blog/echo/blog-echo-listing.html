@@ -1,0 +1,205 @@
+<!--
+  templateType: "blog"
+  isAvailableForNewContent: true
+-->
+
+{% import "/sr/templates/variables.html" as var %}
+
+{{ var.template('blog-echo-header.html') }}
+
+<body class="blog">
+
+	{# If author page #}
+	{% if blog_author %}
+		<div class="author-profile">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 col-md-8 offset-md-2">
+						<div class="author-profile-info">
+							{% if blog_author.avatar %}
+								<img src="{{ blog_author.avatar }}" alt="{{ blog_author.display_name }}" class="avatar" />
+							{% endif %}
+							<span class="author-name">{{ blog_author.display_name }}</span>
+						</div>
+						{% if blog_author.bio %}
+							<div class="author-profile-bio">
+								{{ blog_author.bio }}
+							</div>
+						{% endif %}
+						{% if blog_author.has_social_profiles %}
+						<div class="author-profile-socials">
+							<div class="social-profiles">
+								{% if blog_author.twitter %}
+									<a href="{{ blog_author.twitter }}" target="_blank" class="no-decoration"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+								{% endif %}
+								{% if blog_author.facebook %}
+									<a href="{{ blog_author.facebook }}" target="_blank" class="no-decoration"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+								{% endif %}
+								{% if blog_author.linkedin %}
+									<a href="{{ blog_author.linkedin }}" target="_blank" class="no-decoration"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+								{% endif %}
+							</div>
+						</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+	
+	{# Blog Hero Post #}
+	{% if is_listing_view && !topic && !blog_author && current_page_num == 1 %}
+		{% for content in contents %}
+			{% if loop.index == 1 %}
+				<div class="blog-hero d-flex align-items-center" style="background-image:url('{{ content.featured_image }}');">
+					<div class="container">
+						<div class="row">
+							<div class="col-12 col-md-8">
+								<div class="blog-hero-content text-white">
+									{% for topic in content.topic_list %}
+										{% if loop.first %}
+											<div class="tag">
+												<a class="text-white" href="{{ group.absolute_url }}/topic/{{ topic.slug }}">{{ topic.name }}</a>
+											</div>
+										{% endif %}
+									{% endfor %}
+									<div class="data">
+										{{ content.publish_date_local_time|datetimeformat('%b %d, %Y') }} <span class="bull">&bull;</span> {% if content.blog_post_author %}<a class="author-link text-white" href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">{{ content.blog_post_author.full_name }}</a>{% endif %}
+									</div>
+									<h2>{{ content.name }}</h2>
+									<a href="{{ content.absolute_url }}" class="btn btn-primary">Read More</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+	
+	{# Breadcrumbs #}
+	<div class="sr-sticky-breadcrumb">
+		<div class="sr-sticky-breadcrumb-heading">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="row d-flex justify-content-between align-items-center">
+							<div class="col-auto">
+								{% set current_section = ' &raquo; Latest Articles' %}
+								{% if topic %}
+								{% set current_section = topic|replace("-"," ")%}
+								{% endif %}
+								{% if blog_author %}
+								{% set current_section = '' %}
+								{% endif %}
+								<a href="{{ group.absolute_url }}">{{ group.public_title }}</a><span class="current-section">{% if topic %} &raquo;{% endif %} {{ current_section }}</span>
+							</div>
+							<div class="col-auto">
+								<a href="#" class="sr-sticky-breadcrumb-trigger">
+									Categories
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="sr-sticky-breadcrumb-categories" style="display: none;">
+			<div class="container">
+				{% set blog_topics = blog_topics(group.id, 250) %}
+				<ul>
+					{% for item in blog_topics %}
+					<li><a class="btn btn-outline-primary" href="{{ group.absolute_url }}/topic/{{ item.slug }}">{{ item.name }}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	{# Listing #}
+	<div class="articles-list bg-light sr-spacer-100">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="row latest-posts">
+						{% for content in contents %}
+						{% if loop.index > 1 %}
+						<div class="col-12 col-sm-6 col-md-4">
+							<div class="article-panel">
+								<a href="{{ content.absolute_url }}">
+								<div class="article-meta">
+									<span class="date">{{ content.publish_date_local_time|datetimeformat('%b %d, %Y') }} </span><span class="bull">&bull;</span>
+									<span class="reading-minutes">
+										{% set initialPostWords = content.post_body|wordcount %}
+										{% set calculatedPostWords = (initialPostWords/100) * 100 %}
+										{% set finishedPostWords = calculatedPostWords|divide(300)|round(2) %}
+										{% set number = finishedPostWords|round %}
+										{% if number < 1 %}
+										{% else %}
+										{{ finishedPostWords|round }} min read
+										{% endif %}
+									</span>
+									{% if group.allow_comments %}<span class="bull">&bull;</span><span class="comment-count"><i class="fa fa-comment-o" aria-hidden="true"></i> {{ content.comment_count }}</span>{% endif %}
+								</div>
+								<div class="article-img">
+									<img src="{{ content.featured_image }}" alt="{{ content.featured_image.alt }}" class="img-fluid">
+								</div>
+								<div class="article-content">
+									<div class="tag">{% for topic in content.topic_list %}{{ topic.name }}{% if !loop.last %}, {% endif %}{% endfor %}</div>
+									<h3>{{ content.name }}</h3>
+									<div class="data">{% if content.blog_post_author %}By {{ content.blog_post_author.full_name }}{% endif %}</div>
+
+								</div>
+								</a>
+							</div>
+						</div>
+						{% endif %}
+						{% endfor %}
+					</div>
+
+					{% if not simple_list_page %}
+					<div class="blog-pagination">
+						<div class="container">						
+							{% if last_page_num %}
+							<a class="previous-posts-link" href="{{ blog_page_link(last_page_num) }}">Prev</a>
+							{% endif %}
+							<a class="all-posts-link" href="{{ group.absolute_url }}/all">All posts</a>
+							{% if next_page_num %}
+							<a class="next-posts-link" href="{{ blog_page_link(next_page_num) }}">Next</a>
+							{% endif %}
+						</div>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	{{ require_js(get_asset_url('/sr/js/ScrollMagic.js')) }}
+	
+	{% require_js %}
+	<script>
+		if ($(window).width() > 992) {
+			var blog_controller  = new ScrollMagic.Controller();
+
+			var blogscene = new ScrollMagic.Scene({
+				triggerElement: ".latest-posts",
+				duration: ($('.latest-posts').height() - $('.sticky').height() - 500),
+				triggerHook: 0.15,
+				reverse: true 
+			}).setPin(".sticky").addTo(blog_controller );
+		}
+		if($('.sr-sticky-breadcrumb-trigger').length) {
+			$('.sr-sticky-breadcrumb-trigger').click(function(e){
+				$('.sr-sticky-breadcrumb-categories').slideToggle();
+				e.preventDefault();
+			});
+		}
+	</script>
+	{% end_require_js %}
+
+	{{ var.template('blog-echo-footer-includes.html') }}
+</body>
+</html>

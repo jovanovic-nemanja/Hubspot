@@ -1,0 +1,753 @@
+// -----------------------------------------------------------------------------------
+//
+//  Lean Labs LaunchPad Base Theme
+//
+//  Author: @helloteichner
+//  Version: 2.0.0
+//
+// -----------------------------------------------------------------------------------
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600');
+
+// -----------------------------------------------------------------------------------
+//  Colors
+// -----------------------------------------------------------------------------------
+
+$theme-colors: (
+	"primary":                  #0C63FF,
+	"secondary":                #F5F7F9,
+	"success":                  #28a745,
+	"info":                     #17a2b8,
+	"warning":                  #ffc107,
+	"danger":                   #dc3545,
+	"light":                    #f8f9fa,
+	"dark":                     #343a40,
+	"white":                    #ffffff,
+	"ui-1":                     #ffffff,
+	"ui-2":                     #ffffff,
+	"ui-3":                     #ffffff,
+	"ui-4":                     #ffffff,
+	"ui-5":                     #ffffff,
+	"ui-6":                     #ffffff,
+	"ui-7":                     #ffffff,
+	"ui-8":                     #ffffff,
+	"ui-9":                     #ffffff,
+	"ui-10":                    #ffffff,
+	"gradient1from":            #0C63FF,
+	"gradient1to":              #1897FF,
+	"gradient2from":            #393097,
+	"gradient2to":              #FF5A71,
+	"borders":                  #E5E7EA
+);
+
+$body-bg:                     #fff;
+$body-color:                  #87909E;
+
+$link-color:                  $body-color;
+$link-decoration:             none;
+$link-hover-color:            map_get($theme-colors, 'primary');
+$link-hover-decoration:       underline;
+
+@mixin gradient($from, $to) {
+  background-color: $from;
+  background-image: -webkit-linear-gradient(224deg, $from 0%, $to 100%);
+  background-image: -o-linear-gradient(224deg, $from 0%, $to 100%);
+  background-image: linear-gradient(-134deg, $from 0%, $to 100%);
+}
+
+//-----------------------------------------------------------------------------------
+//  Typography
+//-----------------------------------------------------------------------------------
+
+$font-size-base: 16;
+$percentage: 1.25;
+$margin_percentage: 2.75;
+            
+$lead-font-size:              ($font-size-base * 1.25 / $font-size-base) !default;
+$lead-font-weight:            300 !default;
+
+$small-font-size:              ($font-size-base * 0.875 / $font-size-base) !default;
+
+$font-family-sans-serif:      'Poppins', sans-serif;
+$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-base:            $font-family-sans-serif;
+
+$font-size-lg:                $font-size-base * 1.25 + 0rem;
+$font-size-sm:                $font-size-base * .875 + 0rem;
+
+$h1-font-size:                $font-size-base * 2.5 / $font-size-base + 0rem;
+$h2-font-size:                $font-size-base * 2 / $font-size-base + 0rem;
+$h3-font-size:                $font-size-base * 1.75 / $font-size-base + 0rem;
+$h4-font-size:                $font-size-base * 1.5 / $font-size-base + 0rem;
+$h5-font-size:                $font-size-base * 1.25 / $font-size-base + 0rem;
+$h6-font-size:                $font-size-base / $font-size-base + 0rem;
+
+$headings-font-family:        inherit;
+$headings-font-weight:        500;
+$headings-line-height:        1.2;
+$headings-color:              #30343B;
+
+// Bootstrap 4
+@import "sr/scss/bootstrap/bootstrap";
+
+body {
+	line-height: 1.5rem;
+	font-size: $font-size-base / $font-size-base + 0rem;
+}
+h1 {
+	line-height: $h1-font-size * $percentage;
+	font-weight: 600;
+	margin-bottom: $h1-font-size / $margin_percentage;
+}
+h2 { 
+	line-height: $h2-font-size * $percentage;
+	font-weight: 600;
+	margin-bottom: $h2-font-size / $margin_percentage;
+}
+h3 {
+	line-height: $h3-font-size * $percentage;
+	font-weight: 600;
+	margin-bottom: $h3-font-size / $margin_percentage;
+}
+h4 {
+	line-height: $h4-font-size * $percentage;
+	font-weight: 600;
+	margin-bottom: $h4-font-size / $margin_percentage;
+}
+h5 {
+	line-height: $h5-font-size * $percentage;
+	font-weight: 500;
+	margin-bottom: $h5-font-size / $margin_percentage;
+}
+h6 {
+	line-height: $h6-font-size * $percentage;
+	font-weight: 500;
+	margin-bottom: $h6-font-size / $margin_percentage;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	letter-spacing: .03rem;
+}
+.display-1, .display-2, .display-3, .display-4 {
+	font-weight: 600
+}
+
+p {
+	margin-top: 0;
+	margin-bottom: 1.25rem;
+	letter-spacing: 0.0055rem;
+	&.lead,
+	&.large {
+		font-size: $lead-font-size + 0rem;
+		line-height: 1.5;
+		font-weight: 400;
+	}
+	&.small {
+		font-size: $small-font-size + 0rem;
+	}
+}
+
+.small, small {
+	font-size: $small-font-size + 0rem;
+}
+
+blockquote {
+	font-size: 1.375rem;
+	font-style: italic;
+	font-weight: 300;
+	line-height: 1.27;
+}
+
+a {
+	text-decoration: $link-decoration!important;
+	&:hover,
+	&.hover:not(.btn) {
+		color: $link-hover-color;
+	}
+}
+
+p a {
+	color: inherit;
+	border-bottom: 1px solid $link-hover-color;
+	&:hover {
+		color: $link-hover-color;
+	}
+}
+
+// Responsive Typography
+@include media-breakpoint-up(xs) { html { font-size: .8rem; }}
+@include media-breakpoint-up(md) { html { font-size: .9rem; }}
+@include media-breakpoint-up(lg) { html { font-size: 1rem; }}
+
+// Buttons
+.btn {
+	font-size: $font-size-base / $font-size-base - 0.1rem;
+	border-radius: 3px;
+	line-height: 1.25rem;
+	text-align: center;
+	padding: .75rem 1.05rem !important;
+	border-width: 1px;
+	font-weight: 500;
+
+	// Colors
+	&.btn-primary {
+	}
+	&.btn-secondary {
+		color: map_get($theme-colors, 'primary');
+	}
+	&.btn-outline-primary {
+	}
+	&.btn-outline-secondary {
+	}
+	&.btn-gradient1 {
+		color: #fff;
+		@include gradient(map_get($theme-colors, 'gradient1from'), map_get($theme-colors, 'gradient1to'));
+		border: none;
+		padding: .69rem .75rem;
+		&:hover {
+			background: map_get($theme-colors, 'secondary');
+			color: $body-color;
+		}
+	}
+	&.btn-gradient2 {
+		color: #fff;
+		@include gradient(map_get($theme-colors, 'gradient2from'), map_get($theme-colors, 'gradient2to'));
+		border: none;
+		padding: .69rem .75rem;
+		&:hover {
+			background: map_get($theme-colors, 'secondary');
+			color: $body-color;
+		}
+	}
+
+	// Sizes
+	&.btn-sm {
+		padding: .5rem .75rem !important;
+		font-size: $font-size-base / $font-size-base - 0.25rem;
+	}
+	&.btn-md {
+		padding: .75rem 1.05rem !important;
+		font-size: $font-size-base / $font-size-base - 0.1rem;
+	}
+	&.btn-lg {
+		padding: 1.05rem 1.5rem !important;
+		font-size: $font-size-base / $font-size-base - 0.1rem;
+	}
+}
+
+.btn-wrapper {
+	.cta_button {
+		@extend .btn;
+	}
+	&.btn-primary-wrapper .cta_button, &.btn-primary-wrapper .hs-form input[type="submit"], &.btn-primary-wrapper .hs-form input[type="button"] {
+		@extend .btn-primary;
+	}
+	&.btn-secondary-wrapper .cta_button, &.btn-secondary-wrapper .hs-form input[type="submit"], &.btn-secondary-wrapper .hs-form input[type="button"] {
+		@extend .btn-secondary;
+	}
+	&.btn-white-wrapper .cta_button, &.btn-white-wrapper .hs-form input[type="submit"], &.btn-white-wrapper .hs-form input[type="button"] {
+		@extend .btn-white;
+	}
+	&.btn-outline-primary-wrapper .cta_button, &.btn-outline-primary-wrapper .hs-form input[type="submit"], &.btn-outline-primary-wrapper .hs-form input[type="button"] {
+		@extend .btn-outline-primary;
+	}
+	&.btn-outline-secondary-wrapper .cta_button, &.btn-outline-secondary-wrapper .hs-form input[type="submit"], &.btn-outline-secondary-wrapper .hs-form input[type="button"] {
+		@extend .btn-outline-secondary;
+	}
+	&.btn-outline-white-wrapper .cta_button, &.btn-outline-white-wrapper .hs-form input[type="submit"], &.btn-outline-white-wrapper .hs-form input[type="button"] {
+		@extend .btn-outline-white;
+	}
+	&.btn-gradient1-wrapper .cta_button {
+		color: #fff;
+		@include gradient(map_get($theme-colors, 'gradient1from'), map_get($theme-colors, 'gradient1to'));
+		border: none;
+		padding: .69rem .75rem;
+		&:hover {
+			background: map_get($theme-colors, 'secondary');
+			color: $body-color;
+		}
+	}
+	&.btn-gradient2-wrapper .cta_button {
+		color: #fff;
+		@include gradient(map_get($theme-colors, 'gradient2from'), map_get($theme-colors, 'gradient2to'));
+		border: none;
+		padding: .69rem .75rem;
+		&:hover {
+			background: map_get($theme-colors, 'secondary');
+			color: $body-color;
+		}
+	}
+	&.btn-wrapper-sm .cta_button {
+		padding: .5rem .75rem !important;
+		font-size: $font-size-base / $font-size-base - 0.25rem;
+	}
+	&.btn-wrapper-md .cta_button {
+		padding: .75rem 1.05rem !important;
+		font-size: $font-size-base / $font-size-base - 0.1rem;
+	}
+	&.btn-wrapper-lg .cta_button {
+		padding: 1.05rem 1.5rem !important;
+		font-size: $font-size-base / $font-size-base - 0.1rem;
+	}
+}
+
+//-----------------------------------------------------------------------------------
+//  Shared (needs cleanup)
+//-----------------------------------------------------------------------------------
+
+.block { display: table; }
+.circle { border-radius: 100%; }
+.divider {
+	display: block;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	padding: 0 0 13px 0;
+	margin: 0 0 40px;
+}
+.text-center-mobile { text-align: center; }
+.max-responsive { max-width: 100%; height: auto !important; }
+.antialiased { -webkit-font-smoothing: antialiased; }
+
+.animated {
+	transition: all .3s ease-in-out;
+	animation-timing-function: ease-in-out;
+}
+
+.animated-fast {
+	transition: all .15s ease-in-out;
+	animation-timing-function: ease-in-out;
+}
+
+.sr-line-top { border-top: 1px solid map_get($theme-colors, 'borders'); }
+.sr-line-bottom { border-bottom: 1px solid map_get($theme-colors, 'borders'); }
+
+// == standard padding ==
+.sr-padding-zero {
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}
+.sr-padding-half {
+	padding-top: 3.125rem !important;
+	padding-bottom: 3.125rem !important;
+}
+.sr-padding-full {
+	padding-top: 6.25rem !important;
+	padding-bottom: 6.25rem !important;
+}
+
+// == standard spacers ==
+.sr-spacer-25 {
+	padding-top: 25 / $font-size-base + 0rem;
+	padding-bottom: 25 / $font-size-base + 0rem;
+}
+.sr-spacer-top-25 {
+	padding-top: 25 / $font-size-base + 0rem;
+}
+.sr-spacer-bottom-25 {
+	padding-bottom: 25 / $font-size-base + 0rem;
+}
+
+.sr-spacer-50 {
+	padding-top: 50 / $font-size-base + 0rem;
+	padding-bottom: 50 / $font-size-base + 0rem;
+}
+.sr-spacer-top-50 {
+	padding-top: 50 / $font-size-base + 0rem;
+}
+.sr-spacer-bottom-50 {
+	padding-bottom: 50 / $font-size-base + 0rem;
+}
+
+.sr-spacer-75 {
+	padding-top: 75 / $font-size-base + 0rem;
+	padding-bottom: 75 / $font-size-base + 0rem;
+}
+.sr-spacer-top-75 {
+	padding-top: 75 / $font-size-base + 0rem;
+}
+.sr-spacer-bottom-75 {
+	padding-bottom: 75 / $font-size-base + 0rem;
+}
+
+.sr-spacer-100 {
+	padding-top: 100 / $font-size-base + 0rem;
+	padding-bottom: 100 / $font-size-base + 0rem;
+}
+.sr-spacer-top-100 {
+	padding-top: 100 / $font-size-base + 0rem;
+}
+.sr-spacer-bottom-100 {
+	padding-bottom: 100 / $font-size-base + 0rem;
+}
+
+@media (max-width: 576px) {
+	// == standard spacers ==
+	.sr-spacer-25-sm {
+		padding-top: 25 / $font-size-base + 0rem;
+		padding-bottom: 25 / $font-size-base + 0rem;
+	}
+	.sr-spacer-top-25-sm {
+		padding-top: 25 / $font-size-base + 0rem;
+	}
+	.sr-spacer-bottom-25-sm {
+		padding-bottom: 25 / $font-size-base + 0rem;
+	}
+
+	.sr-spacer-50-sm {
+		padding-top: 50 / $font-size-base + 0rem;
+		padding-bottom: 50 / $font-size-base + 0rem;
+	}
+	.sr-spacer-top-50-sm {
+		padding-top: 50 / $font-size-base + 0rem;
+	}
+	.sr-spacer-bottom-50-sm {
+		padding-bottom: 50 / $font-size-base + 0rem;
+	}
+
+	.sr-spacer-75-sm {
+		padding-top: 75 / $font-size-base + 0rem;
+		padding-bottom: 75 / $font-size-base + 0rem;
+	}
+	.sr-spacer-top-75-sm {
+		padding-top: 75 / $font-size-base + 0rem;
+	}
+	.sr-spacer-bottom-75-sm {
+		padding-bottom: 75 / $font-size-base + 0rem;
+	}
+
+	.sr-spacer-100-sm {
+		padding-top: 100 / $font-size-base + 0rem;
+		padding-bottom: 100 / $font-size-base + 0rem;
+	}
+	.sr-spacer-top-100-sm {
+		padding-top: 100 / $font-size-base + 0rem;
+	}
+	.sr-spacer-bottom-100-sm {
+		padding-bottom: 100 / $font-size-base + 0rem;
+	}
+}
+
+@media (max-width: 768px) {
+	// == standard spacers ==
+	.sr-spacer-25-md {
+		padding-top: 25 / $font-size-base + 0rem;
+		padding-bottom: 25 / $font-size-base + 0rem;
+	}
+	.sr-spacer-top-25-md {
+		padding-top: 25 / $font-size-base + 0rem;
+	}
+	.sr-spacer-bottom-25-md {
+		padding-bottom: 25 / $font-size-base + 0rem;
+	}
+
+	.sr-spacer-50-md {
+		padding-top: 50 / $font-size-base + 0rem;
+		padding-bottom: 50 / $font-size-base + 0rem;
+	}
+	.sr-spacer-top-50-md {
+		padding-top: 50 / $font-size-base + 0rem;
+	}
+	.sr-spacer-bottom-50-md {
+		padding-bottom: 50 / $font-size-base + 0rem;
+	}
+
+	.sr-spacer-75-md {
+		padding-top: 75 / $font-size-base + 0rem;
+		padding-bottom: 75 / $font-size-base + 0rem;
+	}
+	.sr-spacer-top-75-md {
+		padding-top: 75 / $font-size-base + 0rem;
+	}
+	.sr-spacer-bottom-75-md {
+		padding-bottom: 75 / $font-size-base + 0rem;
+	}
+
+	.sr-spacer-100-md {
+		padding-top: 100 / $font-size-base + 0rem;
+		padding-bottom: 100 / $font-size-base + 0rem;
+	}
+	.sr-spacer-top-100-md {
+		padding-top: 100 / $font-size-base + 0rem;
+	}
+	.sr-spacer-bottom-100-md {
+		padding-bottom: 100 / $font-size-base + 0rem;
+	}
+}
+
+@media (max-width: 992px) {
+	// == standard spacers ==
+	.sr-spacer-25-lg {
+		padding-top: 25 / $font-size-base + 0rem;
+		padding-bottom: 25 / $font-size-base + 0rem;
+	}
+	.sr-spacer-top-25-lg {
+		padding-top: 25 / $font-size-base + 0rem;
+	}
+	.sr-spacer-bottom-25-lg {
+		padding-bottom: 25 / $font-size-base + 0rem;
+	}
+
+	.sr-spacer-50-lg {
+		padding-top: 50 / $font-size-base + 0rem;
+		padding-bottom: 50 / $font-size-base + 0rem;
+	}
+	.sr-spacer-top-50-lg {
+		padding-top: 50 / $font-size-base + 0rem;
+	}
+	.sr-spacer-bottom-50-lg {
+		padding-bottom: 50 / $font-size-base + 0rem;
+	}
+
+	.sr-spacer-75-lg {
+		padding-top: 75 / $font-size-base + 0rem;
+		padding-bottom: 75 / $font-size-base + 0rem;
+	}
+	.sr-spacer-top-75-lg {
+		padding-top: 75 / $font-size-base + 0rem;
+	}
+	.sr-spacer-bottom-75-lg {
+		padding-bottom: 75 / $font-size-base + 0rem;
+	}
+
+	.sr-spacer-100-lg {
+		padding-top: 100 / $font-size-base + 0rem;
+		padding-bottom: 100 / $font-size-base + 0rem;
+	}
+	.sr-spacer-top-100-lg {
+		padding-top: 100 / $font-size-base + 0rem;
+	}
+	.sr-spacer-bottom-100-lg {
+		padding-bottom: 100 / $font-size-base + 0rem;
+	}
+}
+
+@media (max-width: 1200px) {
+	// == standard spacers ==
+	.sr-spacer-25-xl {
+		padding-top: 25 / $font-size-base + 0rem;
+		padding-bottom: 25 / $font-size-base + 0rem;
+	}
+	.sr-spacer-top-25-xl {
+		padding-top: 25 / $font-size-base + 0rem;
+	}
+	.sr-spacer-bottom-25-xl {
+		padding-bottom: 25 / $font-size-base + 0rem;
+	}
+
+	.sr-spacer-50-xl {
+		padding-top: 50 / $font-size-base + 0rem;
+		padding-bottom: 50 / $font-size-base + 0rem;
+	}
+	.sr-spacer-top-50-xl {
+		padding-top: 50 / $font-size-base + 0rem;
+	}
+	.sr-spacer-bottom-50-xl {
+		padding-bottom: 50 / $font-size-base + 0rem;
+	}
+
+	.sr-spacer-75-xl {
+		padding-top: 75 / $font-size-base + 0rem;
+		padding-bottom: 75 / $font-size-base + 0rem;
+	}
+	.sr-spacer-top-75-xl {
+		padding-top: 75 / $font-size-base + 0rem;
+	}
+	.sr-spacer-bottom-75-xl {
+		padding-bottom: 75 / $font-size-base + 0rem;
+	}
+
+	.sr-spacer-100-xl {
+		padding-top: 100 / $font-size-base + 0rem;
+		padding-bottom: 100 / $font-size-base + 0rem;
+	}
+	.sr-spacer-top-100-xl {
+		padding-top: 100 / $font-size-base + 0rem;
+	}
+	.sr-spacer-bottom-100-xl {
+		padding-bottom: 100 / $font-size-base + 0rem;
+	}
+}
+
+
+/* All HubSpot Forms
+	 ========================================================================== */
+
+.hs-form {
+
+	// Multi-col
+	fieldset {
+		font-size: $font-size-base / $font-size-base + 0rem;
+		padding: 0.25rem 0.5rem;
+		&.form-columns-1 {}
+		&.form-columns-2 {
+			.field {
+				@media only screen and (min-width: 992px) {
+					width: calc(50% - 5.5px);
+					display: inline-block;
+					float: left;
+
+					& + .field {
+						margin-left: 11px;
+					}
+
+				}
+			}
+		}
+		&.form-columns-3 {
+			.field {
+				@media only screen and (min-width: 992px) {
+					width: calc(33.33% - 7.33px);
+					display: inline-block;
+					float: left;
+
+					& + .field {
+						margin-left: 11px;
+					}
+
+				}
+			}
+		}
+		.field {
+			margin: 0 0 0.625rem;
+		}
+	}
+
+	::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+		color: $body-color;
+	}
+	:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+		color: $body-color;
+	}
+	::-moz-placeholder { /* Mozilla Firefox 19+ */
+		color: $body-color;
+	}
+	:-ms-input-placeholder { /* Internet Explorer 10-11 */
+		color: $body-color;
+	}
+	::-ms-input-placeholder { /* Microsoft Edge */
+		color: $body-color;
+	}
+	::placeholder { /* Most modern browsers support this now. */
+		color: $body-color;
+	}
+
+	.hs-field-desc {
+		font-size: .8em;
+		margin: 0 0 .5em;
+	}
+
+	// Field Types
+	input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]),
+	textarea,
+	select,
+	input[readonly]:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]) {
+		-webkit-appearance: none;
+		color: $body-color;
+		@extend .form-control;
+		background: #fff;
+		font-size: 0.875rem;
+		padding: .75rem .75rem;
+		border-color: map_get($theme-colors, 'borders');
+		&:focus {
+			border-color: #B4B5B4;
+			box-shadow: none;
+		}
+	}
+	input[type="radio"], input[type="checkbox"] {
+		margin-right: 2px;
+	}
+	select {
+		background: url('https://www.sprocketrocket.co/hubfs/sprocket-rocket/images/icon-select.png') #F9F8F7;
+		background-position: calc(100% - 12px) center;
+		background-repeat: no-repeat;
+		line-height: 1;
+		height: auto;
+	}
+
+	input[type="submit"],
+	input[type="button"] {
+		@extend .btn;
+		@extend .btn-primary;
+		display: block;
+		border-radius: 3px;
+	}
+
+	// List
+	.inputs-list {
+		margin: 0;
+		padding: 0;
+		li {
+			list-style: none;
+		}
+	}
+
+	// Error
+	.hs-error-msgs {
+		font-size: .8rem;
+		color: map_get($theme-colors, 'danger');
+		margin: .5rem 0 0;
+	}
+
+	// Submit
+	.hs_submit {
+		margin-top: 2.05em;
+	}
+
+}
+
+.form-input-lg input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]), .form-control-lg {
+	padding: 1.4rem .75rem !important;
+	font-size: 0.875rem;
+}
+.form-input-md input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]), .form-control-md {
+	padding: .75rem .75rem !important;
+	font-size: 0.875rem;
+}
+.form-input-sm input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]), .form-control-md {
+	padding: .45rem .75rem !important;
+	font-size: 0.875rem;
+}
+
+.field > label, .form-group label {
+	margin: 0 0 0.3rem;
+	color: $headings-color;
+	font-size: 0.875rem;
+}
+
+.form-control {
+	-webkit-appearance: none;
+	color: $body-color;
+	background: #fff;
+	font-size: 0.875rem;
+	padding: .75rem .75rem;
+	border-color: map_get($theme-colors, 'borders');
+	&:focus {
+		border-color: #B4B5B4;
+		box-shadow: none;
+	}
+
+}
+
+.form-control-lg, .form-wrapper-lg input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]) {
+	padding: 1.4rem .75rem;
+	font-size: 0.875rem;
+}
+.form-control-md, .form-wrapper-md input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]) {
+	padding: .75rem .75rem;
+	font-size: 0.875rem;
+}
+.form-control-sm, .form-wrapper-sm input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]) {
+	padding: .2rem .75rem;
+	font-size: 0.875rem;
+	height: auto;
+}
+
+.hs-form-field {
+	margin-bottom: 1rem;
+}
+
+.hs-form select:not([size]):not([multiple]), select.form-control:not([size]):not([multiple]) {
+    height: auto;
+}
+
+//-----------------------------------------------------------------------------------
+//  TEMP CODE - To be moved into modules
+//-----------------------------------------------------------------------------------

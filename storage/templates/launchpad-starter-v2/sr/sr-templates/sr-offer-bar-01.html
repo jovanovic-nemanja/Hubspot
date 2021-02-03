@@ -1,0 +1,238 @@
+{% if module.enabled %}
+
+	{% require_css %}
+		<style>
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;    
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			.sr-offer-bar-01 .section-heading {
+				margin: 0 0 1.25rem;
+			}
+			.sr-offer-bar-01 .sr-offer-bar-01-image,
+			.sr-offer-bar-01 .sr-offer-bar-01-content {
+				margin: 0 0 1.25rem;
+			}
+			{% if module.text_color != 'auto' %}
+			.sr-offer-bar-01 .field > label, .sr-offer-bar-01 .form-group label {
+				color: inherit !important
+			}
+			{% endif %}
+			.sr-offer-bar-01 .hs-form fieldset {
+				padding: 0 !important;
+			}
+			.sr-offer-bar-01 .hs-form fieldset .field {
+				margin: 0 !important;
+			}
+			
+			.sr-offer-bar-01 .form-control, .sr-offer-bar-01 .hs-form input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]), .sr-offer-bar-01 .hs-form textarea, .sr-offer-bar-01 .hs-form select, .sr-offer-bar-01 .hs-form input[readonly]:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]) {
+				padding: 1.375rem 0.9375rem !important;
+			}
+			.sr-offer-bar-01 .hs-form .hs-error-msgs {
+				display: none !important;
+			}
+			.sr-offer-bar-01  .hs-form-field {
+				margin-bottom: 0;
+			}
+			
+			{% if module.text_color != 'auto' %} 
+				.sr-offer-bar-01  .form-title {
+					color: inherit;
+				}
+			{% endif %}
+			@media only screen and (min-width: 992px) {
+				.sr-offer-bar-01 .hs-form .hs_submit { 
+					margin: 0;
+				}
+				.sr-offer-bar-01 .hs-form .hs_submit input { 
+					width: 100%;
+				}
+				.sr-offer-bar-01 form.hs-form.stacked.hs-custom-form {
+					display: -ms-flexbox !important;
+					display: -webkit-box !important;
+					display: flex !important;
+					-webkit-box-align: end;
+					-ms-flex-align: end;
+					align-items: flex-end;
+				}
+				.sr-offer-bar-01 .hs-form fieldset, .sr-offer-bar-01 .hs-form-field {
+					padding: 0 !important;
+					flex: 70%;
+					max-width: 70%;
+					width: 70%;
+				}
+				.sr-offer-bar-01 .hs-form .hs_submit {
+					margin-left: 1.5rem !important;
+				}
+			}
+			@media only screen and (min-width: 992px) {
+				.sr-offer-bar-01 .sr-offer-bar-01-image,
+				.sr-offer-bar-01 .sr-offer-bar-01-content {
+					margin: 0;
+				}
+			}
+			@media (max-width: 767px) {
+				.sr-offer-bar-01 .heading, .sr-offer-bar-01 .sr-offer-bar-01-image, .sr-offer-bar-01 .description {
+					text-align: center
+				}
+				.sr-offer-bar-01 .actions {
+					text-align: center;
+					margin-top: 2rem;
+				}
+				.sr-offer-bar-01 .hs-form input[type="submit"], .sr-offer-bar-01 .hs-form input[type="button"] {
+					display: inline-block;
+				}
+			}
+			
+
+			
+		
+		</style>
+	{% end_require_css %}
+	
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-offer-bar-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Offer Bar 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+    {% endif %}
+	{% endif %}
+	
+	<div class="sr-offer-bar-01 {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.class %}{{ module.design_settings.class }}{% endif %} {% if module.design_settings.border_top %}sr-line-top{% endif %} {% if module.design_settings.border_bottom %}sr-line-bottom{% endif %} {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %} prototype-no-background {{ name }}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }}">
+			{% if module.design_settings.container_width != 'max' %}
+			<div class="row">
+				<div class="{{ width_class }} ">
+			{% endif %}
+					<div class="row d-flex align-items-center">
+						{% if module.image.src %}
+							<div class="col-md-4 sr-col sr-offer-bar-01-image text-center">
+								{% if module.sr_default_image_size %}
+									{{ var.image(module.image.src, '160', module.image.alt, 'class="img-fluid"') }}
+								{% else %}
+									{{ var.image(module.image.src, module.image.width, module.image.alt, 'class="img-fluid"') }}
+								{% endif %}
+							</div>
+						{% endif %}
+						<div class="col {% if module.image.src %}col-md-6 {% else %} col-md-12 {% endif %} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">
+							<div class="row d-flex align-items-center">
+								<div class="col-md-12 col-lg-12 sr-col sr-offer-bar-01-content">
+									{% if module.heading %}
+										<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} heading {% if module.text_color != 'auto' %} text-{{ module.text_color }}{% endif %} ">{{ module.heading}}</h{{module.heading_size}}>
+									{% endif %}
+									<div class="description">
+										{% if module.description %}
+											{{ module.description }}
+										{% endif %}
+									</div>
+									
+									<div class="btn-wrapper btn-{{module.cta_style}}-wrapper sr-spacer-top-25">
+										{% if hub_id == 123 || !module.form.form.form_id %}
+											<div id="hs_form_target_module_3540739632">
+												<form class="hs-form stacked hs-custom-form" >
+													<div class="hs_email field hs-form-field">
+														<label>
+															<span>Email address</span>
+															<span class="hs-form-required">*</span>
+														</label>
+														<div class="hs-field-desc" style="display:none;"></div>
+														<div class="input">
+															<input class="hs-input" name="email" placeholder="" required="" type="email" value="Placeholder">
+														</div>
+													</div>
+													<div class="hs_submit">
+														<div class="hs-field-desc" style="display:none;"></div>
+														<div class="actions">
+															<input class="hs-button" type="submit" value="Download Guide">
+														</div>
+													</div>
+												</form>
+											</div>
+										{% else %}
+											{% if module.form.title is truthy %}
+												{% set no_title = False %}
+											{% else %}
+												{% set no_title = True %}
+											{% endif %}
+											{% if module.form.form.form_id %}
+												{% form
+													form_key="{{name}}",
+													form_to_use="{{module.form.form.form_id}}"
+													title="{{module.form.title}}"
+													no_title="{{no_title}}"
+													follow_up_type_simple="{{module.form.follow_up_type_simple}}"
+													simple_email_for_live_id="{{module.form.simple_email_for_live_id}}"
+													follow_up_type_automation="{{module.form.follow_up_type_automation}}"
+													response_response_type="{{module.form.form.response_type}}"
+													response_redirect_id="{{module.form.form.redirect_id}}"
+													response_redirect_url="{{module.form.form.redirect_url}}"
+													response_message="{{module.form.form.message}}"
+													notifications_are_overridden="{{module.form.notifications_are_overridden}}"
+													notifications_override_email_addresses="{{module.form.notifications_override_email_addresses}}"
+													gotowebinar_webinar_key="{{module.form.form.gotowebinar_webinar_key}}"
+												%}
+											{% endif %}
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+			{% if module.design_settings.container_width != 'max' %}	
+				</div>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+
+{% endif %}

@@ -1,0 +1,245 @@
+{% if module.enabled %}
+
+	{% if module.parallax %}
+	
+		{{ require_js(var.sr_assetDir + '/js/gsap.js') }}
+		{{ require_js(var.sr_assetDir + '/js/ScrollMagic.min.js') }}
+		{{ require_js(var.sr_assetDir + '/js/animation.gsap.min.js') }}
+
+		{% require_js %}
+			<script type="text/javascript">
+				$(function() {
+					var controller = new ScrollMagic.Controller();
+
+					// build scene
+					var scene = new ScrollMagic.Scene({
+							triggerElement: '.{{ name }}.sr-cover-parallax',
+							triggerHook: 'onLeave',
+							duration: "60%"
+						})
+						.setTween(".{{ name }} .sr-cover-inner", {
+							y: 120
+						})
+						.addTo(controller);
+
+				});
+
+				var controllerparallaxbanner = new ScrollMagic.Controller({globalSceneOptions: {triggerHook: "onEnter", duration: "250%"}});
+				new ScrollMagic.Scene({triggerElement: ".{{ name }}.sr-cover-parallax"}).setTween(".{{ name }} .sr-cover-image", {y: "80%", ease: Linear.easeNone}).addTo(controllerparallaxbanner);
+
+				var controlleropacitybanner = new ScrollMagic.Controller({globalSceneOptions: {triggerHook: "onLeave", duration: "50%"}});
+				new ScrollMagic.Scene({triggerElement: ".{{ name }}.sr-cover-parallax"}).setTween(".{{ name }} .sr-cover-image", {opacity: .4, ease: Linear.easeNone}).addTo(controlleropacitybanner);
+			</script>
+		{% end_require_js %}
+	{% endif %}
+	
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% else %}
+		{% set width_class = 'col-md-12' %}
+	{% endif %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-hero-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Hero 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+    {% endif %}
+	{% endif %}
+	
+	<div {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %} class="{{ name }} sr-hero-01 sr-cover-parallax {{ module.design_settings.class }} prototype-no-background {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} ">
+		
+		{% if module.design_settings.background_option != 'video' %}
+		<div class="sr-cover-image overlay-{{ module.overlay }}"></div>
+		{% else %}
+		<div class="sr-cover-bg-wrapper">
+			<video playsinline autoplay muted loop class="overlay-{{ module.overlay }}" {% if module.image %}poster="{{ module.image.src }}"{% endif %}>
+				{% if module.design_settings.background_video_WEBM %}
+					<source src="{{ module.design_settings.background_video_WEBM }}" type="video/webm">
+				{% endif %}
+				{% if module.design_settings.background_video_MP4 %}
+					<source src="{{ module.design_settings.background_video_MP4 }}" type="video/mp4">
+				{% endif %}
+				{% if module.design_settings.background_video_OOG %}
+					<source src="{{ module.design_settings.background_video_OOG }}" type="video/ogg">
+				{% endif %}
+			</video>
+		</div>
+		{% endif %}
+
+		<div class="{{module.design_settings.layout}}">
+			{% if module.design_settings.container_width != 'max' %}
+			<div class="row">
+				<div class="{{ width_class }}">
+			{% endif %}
+					<div class="col-12">
+						<div class="sr-cover d-flex align-items-center {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %} {% if module.height == 'auto' %}sr-spacer-100{% else %}height-{{ module.height }}{% endif %}">
+							<div class="sr-cover-inner {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">
+
+								<{{module.sub_heading_size}} class="{% if module.sub_heading_display_size != 'auto' %}{{ module.sub_heading_display_size }}{% endif %} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.sub_heading }}</{{module.sub_heading_size}}>
+
+								{% if module.heading %}<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.heading }}</h{{module.heading_size}}>{% endif %}
+								
+								{% if module.content %}<div class="description">{{ module.content }} </div>{% endif %}
+
+								{% if module.cta_one.cta_type != 'none' || module.cta_two.cta_type != 'none' %}
+									<div class="sr-spacer-top-25 cta-wrapper">
+										{% if module.cta_one.cta_type != 'none' %}
+										<div class="btn-wrapper btn-{{ module.cta_one.cta_style }}-wrapper">
+											{% if module.cta_one.cta_type == 'btn' %}
+												<a href="{{ module.cta_one.link }}" class="cta_button">{{ module.cta_one.button_text }}</a>
+											{% elif module.cta_one.cta_type == 'cta' %}
+												{% cta guid="{{ module.cta_one.cta }}" %}
+											{% endif %}
+										</div>
+										{% endif %}
+
+										{% if module.cta_two.cta_type != 'none' %}
+										<div class="btn-wrapper btn-{{ module.cta_two.cta_style }}-wrapper">
+											{% if module.cta_two.cta_type == 'btn' %}
+												<a href="{{ module.cta_two.link }}" class="cta_button">{{ module.cta_two.button_text }}</a>
+											{% elif module.cta_two.cta_type == 'cta' %}
+												{% cta guid="{{ module.cta_two.cta }}" %}
+											{% endif %}
+										</div>
+										{% endif %}
+									</div>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+			{% if module.design_settings.container_width != 'max' %}
+				</div>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+
+	{% require_css %}
+		<style type="text/css">
+			.{{ name }} {
+				position: relative;
+				overflow: hidden;
+				background: #000;
+			}
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }}{
+					background: {{ module.design_settings.background_overlay_color.color }}
+				}
+				 .{{ name }} .sr-cover-image {	
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					width: 100%;
+					{% if module.parallax %}
+					height: 150%;
+					top: -50%;
+					background-position: bottom;
+					{% else %}
+					height: 100%;
+					top: 0%;
+					background-position: center;
+					{% endif %}
+					position: absolute;
+					background-size: cover;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} .sr-cover-image {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }} .sr-cover-image:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});
+				}
+			{% elif module.design_settings.background_option == 'video' %}
+			.{{ name }}{
+				background: {{ module.design_settings.background_overlay_color.color }}
+			}
+			.sr-hero-01 .sr-cover-bg-wrapper video {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				min-width: 100%;
+				min-height: 100%;
+				width: auto;
+				height: auto;
+				-ms-transform: translateX(-50%) translateY(-50%);
+				-moz-transform: translateX(-50%) translateY(-50%);
+				-webkit-transform: translateX(-50%) translateY(-50%);
+				transform: translateX(-50%) translateY(-50%);
+			}
+			.{{ name }} .sr-cover-bg-wrapper:after {
+				content: "";
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});
+			}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			.{{ name }} .sr-cover-inner {
+				margin: 0 auto;
+				width: 100%;
+			}
+			.{{ name }} .cta-wrapper {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				{% if module.text_align == 'center' %} 
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				justify-content: center;
+				{% elif module.text_align == 'left' %} 
+				-webkit-box-pack: start;
+				-ms-flex-pack: start;
+				justify-content: flex-start;
+				{% elif module.text_align == 'right' %} 
+				-webkit-box-pack: end;
+				-ms-flex-pack: end;
+				justify-content: flex-end;
+				{% endif %}
+			}
+			.{{ name }} .btn-wrapper {
+				padding: 0 .25rem;
+			}
+			@media (max-width: 768px) { 
+				.{{ name }} br {
+					display: none;
+				}
+			}
+			.{{ name }} .height-auto     { min-height: 0vh; }
+			.{{ name }} .height-small    { padding: 8rem 0; }
+			.{{ name }} .height-medium   { padding: 14rem 0; }
+			.{{ name }} .height-large    { padding: 20rem 0; }
+			.{{ name }} .height-full     { min-height: 100vh; }
+			
+			.{{ name }} .description p:last-child {
+				margin-bottom: 0;
+			}	
+		</style>
+	{% end_require_css %}
+{% endif %}

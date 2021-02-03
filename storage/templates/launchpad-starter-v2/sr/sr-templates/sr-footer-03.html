@@ -1,0 +1,196 @@
+{% if module.enabled %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% else %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-footer-03" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Footer 03</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+	
+	<div class="sr-footer-03 {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.class %}{{ module.design_settings.class }}{% endif %} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %} {{ name }}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }}">
+			
+			{% if module.design_settings.container_width != 'max' %}
+				<div class="row">
+					<div class="{{ width_class }}">
+			{% endif %}
+
+					<div class="{% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %}">
+						
+						<div class="nav-logo">
+							
+							{{ var.image(module.logo.src, module.logo.width, module.logo.alt) }}
+							
+						</div>
+
+						<div class="nav-main">
+							{% if hub_id == 123 || !module.menu %}
+								<ul>
+									<li><a href="/">First nav item</a></li>
+									<li><a href="/">Second nav item</a></li>
+									<li><a href="/">Third nav item</a></li>
+									<li><a href="/">Forth nav item</a></li>
+									<li><a href="/">Fifth nav item</a></li>
+								</ul>
+							{% else %}
+								{% menu id='{{ module.menu }}' overrideable=False, flyouts='false', max_levels='1', flow='horizontal'  %}
+							{% endif %}
+						</div>
+
+						<ul class="social">
+							{% for item in module.icons %}
+								<li><a class="no-decoration" href="{{item.link}}"><i class="fa {{item.icon}}" aria-hidden="true"></i></a></li>
+							{% endfor %}
+						</ul>
+
+						<div class="copyright">{{module.small_text}}</div>
+					</div>
+					
+		{% if module.design_settings.container_width != 'max' %}
+				</div>
+			</div>
+		{% endif %}
+
+		</div>
+	</div>
+	
+	{% require_css %}
+		<style>
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			.nav-main {
+				padding: 3rem 0 3.5rem 0;
+			}
+			.sr-footer-03 ul {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				-webkit-box-pack: start;
+				-ms-flex-pack: start;
+				justify-content: flex-start;
+			}
+			.sr-footer-03 ul.social {
+				padding-bottom: 3rem;
+			}
+			.sr-footer-03 ul.social li i {
+				border-radius: 50%;
+				background: #87909e;
+				width: 32px;
+				height: 32px;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				justify-content: center;
+				color: #fff;
+			}
+			.sr-footer-03 ul.social li {
+				margin: 0 .75rem;
+			}
+			.sr-footer-03 .nav-main li {
+				width: 50%;
+				margin: .5rem 0;
+			}
+			.sr-footer-03 .nav-main li a:not(:hover), .copyright a:not(:hover) {
+				color: inherit;
+			}
+			.sr-footer-03 ul {
+				-ms-flex-wrap: wrap;
+				flex-wrap: wrap;
+			}
+			{% if module.text_align == 'center' %}
+				.sr-footer-03 ul {
+					-webkit-box-pack: center;
+					-ms-flex-pack: center;
+					justify-content: center;
+				}
+			{% endif %}
+			{% if module.text_align == 'left' || module.text_align == 'auto' %}
+			.sr-footer-03 .nav-main li:first-child, .sr-footer-03 ul.social li:first-child {
+				margin-left: 0;
+			}
+			{% endif %}
+			{% if module.text_align == 'right' %}
+				.sr-footer-03 ul {
+					-webkit-box-pack: end;
+					-ms-flex-pack: end;
+					justify-content: flex-end;
+				}
+				.sr-footer-03 .nav-main li:last-child, .sr-footer-03 ul.social li:last-child {
+					margin-right: 0;
+				}
+			{% endif %}
+			@media (min-width: 768px) { 
+				.sr-footer-03 ul {
+					-ms-flex-wrap: nowrap;
+				}
+				.sr-footer-03 .nav-main li {
+					margin: 0 1.75rem;
+					width: auto;
+				}
+			}
+		
+		</style>
+	{% end_require_css %}
+
+{% endif %}

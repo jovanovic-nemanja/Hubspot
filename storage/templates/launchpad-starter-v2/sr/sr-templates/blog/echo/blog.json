@@ -1,0 +1,44 @@
+{
+	"name": "Echo",
+	"template": [
+		{
+			"category_id": "3",
+			"folder": "sr/templates",
+			"template_type": "6",
+			"path": "sr/templates/blog-echo-header.html",
+			"source": "launchpad-starter-v2/sr/sr-templates/blog/echo/blog-echo-header.html"
+		},
+		{
+			"category_id": "3",
+			"folder": "sr/templates",
+			"template_type": "6",
+			"path": "sr/templates/blog-echo-footer-includes.html",
+			"source": "launchpad-starter-v2/sr/sr-templates/blog/echo/blog-echo-footer-includes.html"
+		},
+		{
+			"category_id": "3",
+			"folder": "sr/templates",
+			"template_type": "6",
+			"path": "sr/templates/blog-echo-listing.html",
+			"source": "launchpad-starter-v2/sr/sr-templates/blog/echo/blog-echo-listing.html",
+			"is_available_for_new_content": true
+		},
+		{
+			"category_id": "3",
+			"folder": "sr/templates",
+			"template_type": "6",
+			"path": "sr/templates/blog-echo-single.html",
+			"source": "launchpad-starter-v2/sr/sr-templates/blog/echo/blog-echo-single.html",
+			"is_available_for_new_content": true
+		},
+		{
+			"category_id": "0",
+			"css_or_js_template": true,
+			"template_type": "24",
+			"folder": "sr/css",
+			"path": "sr/css/blog-echo.css",
+			"source": "launchpad-starter-v2/sr/sr-templates/blog/echo/css/blog-echo.css"
+		}
+	],
+	"files": []
+}

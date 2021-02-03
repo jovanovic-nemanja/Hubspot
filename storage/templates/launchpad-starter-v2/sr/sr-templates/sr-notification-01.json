@@ -1,0 +1,1807 @@
+{
+    "custom_module": {
+        "author": "bradley@lean-labs.com",
+        "tags": ["ver-1.0.0"],
+        "name": "SR Notification 01",
+        "css_assets": [],
+        "editable_contexts": [],
+        "external_js": [],
+        "icon": "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": [
+            "PAGE",
+            "BLOG_POST",
+            "BLOG_LISTING"
+        ],
+        "js_assets": [],
+        "other_assets": [],
+        "fields": [
+            {
+                "id": "e41ddf6d-62f7-ed32-9ba5-9b024bf6e1e2",
+                "name": "design_settings",
+                "label": "Design Settings",
+                "required": false,
+                "locked": false,
+                "children": [
+                    {
+                        "id": "d8c40fe4-97ab-04cc-2d2c-265c7072963d",
+                        "name": "position",
+                        "label": "Position",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "tl",
+                                "Top Left"
+                            ],
+                            [
+                                "tr",
+                                "Top Right"
+                            ],
+                            [
+                                "bl",
+                                "Bottom Left"
+                            ],
+                            [
+                                "br",
+                                "Bottom Right"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "bl"
+                    },
+                    {
+                        "id": "7b5d085c-ed2b-4a88-56ef-6a44a88e0742",
+                        "name": "border_radius",
+                        "label": "Border Radius",
+                        "help_text": "In PX",
+                        "required": false,
+                        "locked": false,
+                        "display": "text",
+                        "step": 1,
+                        "type": "number",
+                        "default": 8
+                    },
+                    {
+                        "id": "e5f94b12-6cab-41f8-8a32-33497627af11",
+                        "name": "background_color",
+                        "label": "Background Color",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "custom",
+                                "Custom"
+                            ],
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "success",
+                                "Success"
+                            ],
+                            [
+                                "info",
+                                "Info"
+                            ],
+                            [
+                                "warning",
+                                "Warning"
+                            ],
+                            [
+                                "danger",
+                                "Danger"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "white"
+                    },
+                    {
+                        "id": "870f704b-0dd7-da7c-950e-1304273964bc",
+                        "name": "background_custom",
+                        "label": "Background Custom",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "e5f94b12-6cab-41f8-8a32-33497627af11",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#0C5394",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "1f6ac08c-132b-2b41-6734-b64f8f514cb3",
+                        "name": "text_align",
+                        "label": "Text Align",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "auto",
+                                "Auto"
+                            ],
+                            [
+                                "left",
+                                "Left"
+                            ],
+                            [
+                                "center",
+                                "Center"
+                            ],
+                            [
+                                "right",
+                                "Right"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "auto"
+                    },
+                    {
+                        "id": "73df9f7d-4958-7401-4d98-175d40a156c2",
+                        "name": "text_color",
+                        "label": "Text Color",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "auto",
+                                "Auto"
+                            ],
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "success",
+                                "Success"
+                            ],
+                            [
+                                "info",
+                                "Info"
+                            ],
+                            [
+                                "warning",
+                                "Warning"
+                            ],
+                            [
+                                "danger",
+                                "Danger"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "dark"
+                    },
+                    {
+                        "id": "f75db8cd-715c-e761-41aa-cff47316c97d",
+                        "name": "client_name_text_color",
+                        "label": "Feature Text Color",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "auto",
+                                "Auto"
+                            ],
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "success",
+                                "Success"
+                            ],
+                            [
+                                "info",
+                                "Info"
+                            ],
+                            [
+                                "warning",
+                                "Warning"
+                            ],
+                            [
+                                "danger",
+                                "Danger"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "primary"
+                    },
+                    {
+                        "id": "89feb78a-f9df-3dfa-5720-7c3bade13cd8",
+                        "name": "show_on_mobile",
+                        "label": "Show on Mobile",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": true
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "position": "bl",
+                    "border_radius": 8,
+                    "background_color": "white",
+                    "background_custom": {
+                        "color": "#0C5394",
+                        "opacity": 100
+                    },
+                    "text_align": "auto",
+                    "text_color": "dark",
+                    "client_name_text_color": "primary",
+                    "show_on_mobile": true
+                }
+            },
+            {
+                "id": "4acdd7a0-77c3-f327-6920-5721b2318182",
+                "name": "notification_type",
+                "label": "Notification Type",
+                "required": true,
+                "locked": false,
+                "display": "select",
+                "choices": [
+                    [
+                        "conversion",
+                        "Conversion"
+                    ],
+                    [
+                        "countdown",
+                        "Countdown"
+                    ],
+                    [
+                        "email",
+                        "Email"
+                    ],
+                    [
+                        "information",
+                        "Information"
+                    ],
+                    [
+                        "review",
+                        "Review"
+                    ],
+                    [
+                        "social",
+                        "Social Share"
+                    ]
+                ],
+                "type": "choice",
+                "default": "information"
+            },
+            {
+                "id": "3b953ebf-ebf0-8b4b-6c74-ee7456f2d132",
+                "name": "conversion",
+                "label": "Conversion ",
+                "required": false,
+                "locked": false,
+                "occurrence": {
+                    "min": null,
+                    "max": null,
+                    "sorting_label_field": null,
+                    "default": 4
+                },
+                "visibility": {
+                    "controlling_field": "4acdd7a0-77c3-f327-6920-5721b2318182",
+                    "controlling_value_regex": "conversion",
+                    "operator": "EQUAL",
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "children": [
+                    {
+                        "id": "51f93572-cc77-f368-db1b-886bd7a8df25",
+                        "name": "image",
+                        "label": "Image",
+                        "help_text": "Recommended Size: 40x40",
+                        "required": false,
+                        "locked": false,
+                        "responsive": true,
+                        "resizable": true,
+                        "show_loading": false,
+                        "type": "image",
+                        "default": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/06.jpg",
+                            "alt": "06",
+                            "width": 40,
+                            "height": 40,
+                            "max_width": 128,
+                            "max_height": 128
+                        }
+                    },
+                    {
+                        "id": "a241d329-d1df-bdc5-427a-9756c74449a0",
+                        "name": "title",
+                        "label": "Title",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Kaila Terrell from Reykjavik"
+                    },
+                    {
+                        "id": "968cb087-3a42-9057-80f4-ffa321aebfb2",
+                        "name": "description",
+                        "label": "Description",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Just got a FREE Prototyping Demo"
+                    },
+                    {
+                        "id": "aeca279d-a7b4-ce9c-3285-55142a74e231",
+                        "name": "time",
+                        "label": "Time",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "10 mins ago"
+                    },
+                    {
+                        "id": "a7b1c6b4-50dc-c530-2ecb-7b59e2e10492",
+                        "name": "client",
+                        "label": "Feature Text",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Get your demo"
+                    },
+                    {
+                        "id": "911ab245-2371-cd61-d3ac-8d164355c21d",
+                        "name": "enable_link",
+                        "label": "Enable Link",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    {
+                        "id": "91e70ccd-7dbd-59ce-ca20-d93ab960c347",
+                        "name": "link",
+                        "label": "Link",
+                        "required": false,
+                        "locked": false,
+                        "supported_types": [
+                            "EXTERNAL",
+                            "CONTENT",
+                            "FILE"
+                        ],
+                        "type": "link",
+                        "default": {
+                            "url": {
+                                "type": "EXTERNAL",
+                                "href": "https://www.sprocketrocket.co/",
+                                "content_id": null
+                            },
+                            "open_in_new_tab": false,
+                            "no_follow": false
+                        }
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": [
+                    {
+                        "image": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/06.jpg",
+                            "alt": "06",
+                            "width": 40,
+                            "height": 40,
+                            "max_width": 128,
+                            "max_height": 128
+                        },
+                        "title": "Kaila Terrell from Reykjavik",
+                        "description": "Just got a FREE Prototyping Demo",
+                        "time": "10 mins ago",
+                        "client": "Get your demo",
+                        "enable_link": true,
+                        "link": {
+                            "url": {
+                                "type": "EXTERNAL",
+                                "href": "https://www.sprocketrocket.co/",
+                                "content_id": null
+                            },
+                            "open_in_new_tab": false,
+                            "no_follow": false
+                        }
+                    },
+                    {
+                        "image": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/06.jpg",
+                            "alt": "06",
+                            "width": 40,
+                            "height": 40,
+                            "max_width": 128,
+                            "max_height": 128
+                        },
+                        "title": "Kaila Terrell from Reykjavik",
+                        "description": "Just got a FREE Prototyping Demo",
+                        "time": "10 mins ago",
+                        "client": "Get your demo",
+                        "enable_link": true,
+                        "link": {
+                            "url": {
+                                "type": "EXTERNAL",
+                                "href": "https://www.sprocketrocket.co/",
+                                "content_id": null
+                            },
+                            "open_in_new_tab": false,
+                            "no_follow": false
+                        }
+                    },
+                    {
+                        "image": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/06.jpg",
+                            "alt": "06",
+                            "width": 40,
+                            "height": 40,
+                            "max_width": 128,
+                            "max_height": 128
+                        },
+                        "title": "Kaila Terrell from Reykjavik",
+                        "description": "Just got a FREE Prototyping Demo",
+                        "time": "10 mins ago",
+                        "client": "Get your demo",
+                        "enable_link": true,
+                        "link": {
+                            "url": {
+                                "type": "EXTERNAL",
+                                "href": "https://www.sprocketrocket.co/",
+                                "content_id": null
+                            },
+                            "open_in_new_tab": false,
+                            "no_follow": false
+                        }
+                    },
+                    {
+                        "image": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/06.jpg",
+                            "alt": "06",
+                            "width": 40,
+                            "height": 40,
+                            "max_width": 128,
+                            "max_height": 128
+                        },
+                        "title": "Kaila Terrell from Reykjavik",
+                        "description": "Just got a FREE Prototyping Demo",
+                        "time": "10 mins ago",
+                        "client": "Get your demo",
+                        "enable_link": true,
+                        "link": {
+                            "url": {
+                                "type": "EXTERNAL",
+                                "href": "https://www.sprocketrocket.co/",
+                                "content_id": null
+                            },
+                            "open_in_new_tab": false,
+                            "no_follow": false
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "70eef976-5490-88a1-f476-ede468c5c539",
+                "name": "review",
+                "label": "Review",
+                "required": false,
+                "locked": false,
+                "occurrence": {
+                    "min": null,
+                    "max": null,
+                    "sorting_label_field": "2d11740f-23fb-12ca-773b-f72253a843dd",
+                    "default": 4
+                },
+                "visibility": {
+                    "controlling_field": "4acdd7a0-77c3-f327-6920-5721b2318182",
+                    "controlling_value_regex": "review",
+                    "operator": "EQUAL",
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "children": [
+                    {
+                        "id": "32de0964-955e-cdec-8780-31f3d80da16f",
+                        "name": "image",
+                        "label": "Image",
+                        "help_text": "Recommended Size: 65x65",
+                        "required": false,
+                        "locked": false,
+                        "responsive": true,
+                        "resizable": true,
+                        "show_loading": false,
+                        "type": "image",
+                        "default": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/05.jpg",
+                            "alt": "Gabrielle Francis",
+                            "width": 65,
+                            "height": 65,
+                            "max_width": 128,
+                            "max_height": 128
+                        }
+                    },
+                    {
+                        "id": "2d11740f-23fb-12ca-773b-f72253a843dd",
+                        "name": "title",
+                        "label": "Title",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Gabrielle Francis"
+                    },
+                    {
+                        "id": "b8629745-560a-fbbf-f29d-dd0811ff70b7",
+                        "name": "stars",
+                        "label": "Stars",
+                        "required": false,
+                        "locked": false,
+                        "display": "text",
+                        "min": 0,
+                        "max": 5,
+                        "step": 1,
+                        "type": "number",
+                        "default": 0
+                    },
+                    {
+                        "id": "4a232f58-41f4-46c6-2187-f3458f8f87ba",
+                        "name": "description",
+                        "label": "Description",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "\"I am using Sprocket Rocket for my new project and love every bit of it. While the great design convinced me in the first place, it is also a professional template to work with in the long run.\""
+                    },
+                    {
+                        "id": "549b97c9-8668-ada8-f3e9-9d517fbde5ab",
+                        "name": "client",
+                        "label": "Feature Text",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Inbound Marketer, HubSpot"
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": [
+                    {
+                        "image": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/05.jpg",
+                            "alt": "Gabrielle Francis",
+                            "width": 65,
+                            "height": 65,
+                            "max_width": 128,
+                            "max_height": 128
+                        },
+                        "title": "Gabrielle Francis",
+                        "stars": 0,
+                        "description": "\"I am using Sprocket Rocket for my new project and love every bit of it. While the great design convinced me in the first place, it is also a professional template to work with in the long run.\"",
+                        "client": "Inbound Marketer, HubSpot"
+                    },
+                    {
+                        "image": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/05.jpg",
+                            "alt": "Gabrielle Francis",
+                            "width": 65,
+                            "height": 65,
+                            "max_width": 128,
+                            "max_height": 128
+                        },
+                        "title": "Gabrielle Francis",
+                        "stars": 0,
+                        "description": "\"I am using Sprocket Rocket for my new project and love every bit of it. While the great design convinced me in the first place, it is also a professional template to work with in the long run.\"",
+                        "client": "Inbound Marketer, HubSpot"
+                    },
+                    {
+                        "image": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/05.jpg",
+                            "alt": "Gabrielle Francis",
+                            "width": 65,
+                            "height": 65,
+                            "max_width": 128,
+                            "max_height": 128
+                        },
+                        "title": "Gabrielle Francis",
+                        "stars": 0,
+                        "description": "\"I am using Sprocket Rocket for my new project and love every bit of it. While the great design convinced me in the first place, it is also a professional template to work with in the long run.\"",
+                        "client": "Inbound Marketer, HubSpot"
+                    },
+                    {
+                        "image": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/05.jpg",
+                            "alt": "Gabrielle Francis",
+                            "width": 65,
+                            "height": 65,
+                            "max_width": 128,
+                            "max_height": 128
+                        },
+                        "title": "Gabrielle Francis",
+                        "stars": 0,
+                        "description": "\"I am using Sprocket Rocket for my new project and love every bit of it. While the great design convinced me in the first place, it is also a professional template to work with in the long run.\"",
+                        "client": "Inbound Marketer, HubSpot"
+                    }
+                ]
+            },
+            {
+                "id": "e6110b82-8989-28bb-8ed5-dc38ede1d0a6",
+                "name": "information",
+                "label": "Information",
+                "required": false,
+                "locked": false,
+                "visibility": {
+                    "controlling_field": "4acdd7a0-77c3-f327-6920-5721b2318182",
+                    "controlling_value_regex": "information",
+                    "operator": "EQUAL",
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "children": [
+                    {
+                        "id": "b35eccfc-0785-88d6-2b37-8b45e8789909",
+                        "name": "image",
+                        "label": "Image",
+                        "help_text": "Recommended Size: 75x75",
+                        "required": false,
+                        "locked": false,
+                        "responsive": true,
+                        "resizable": true,
+                        "show_loading": false,
+                        "type": "image",
+                        "default": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/Sprocket%20Rocket%20Icon.png",
+                            "alt": "Sprocket%20Rocket%20Icon",
+                            "width": 70,
+                            "height": 75,
+                            "max_width": 132,
+                            "max_height": 142
+                        }
+                    },
+                    {
+                        "id": "69e4d89a-696e-c442-48b1-62dcd696fe16",
+                        "name": "title",
+                        "label": "Title",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Sprocket Rocket sale!"
+                    },
+                    {
+                        "id": "4042beb6-d37e-5482-0a4d-8e05b642b1cf",
+                        "name": "description",
+                        "label": "Description",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Act now to save before the price increases"
+                    },
+                    {
+                        "id": "051d4e6e-1f9d-559b-63c7-94fa3ed56ea3",
+                        "name": "client",
+                        "label": "Feature Text",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Get Sprocket Rocket Premium!"
+                    },
+                    {
+                        "id": "8933adc7-446f-c86f-95af-da20b6bab2ca",
+                        "name": "enable_link",
+                        "label": "Link",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    {
+                        "id": "14adc82c-7193-5f96-c4bd-b456eb662f97",
+                        "name": "link",
+                        "label": "Link",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "8933adc7-446f-c86f-95af-da20b6bab2ca",
+                            "controlling_value_regex": "true",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "supported_types": [
+                            "EXTERNAL",
+                            "CONTENT",
+                            "FILE",
+                            "EMAIL_ADDRESS",
+                            "BLOG"
+                        ],
+                        "type": "link",
+                        "default": {
+                            "url": {
+                                "type": "EXTERNAL",
+                                "href": "https://www.sprocketrocket.co/",
+                                "content_id": null
+                            },
+                            "open_in_new_tab": false,
+                            "no_follow": false
+                        }
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "image": {
+                        "size_type": "exact",
+                        "src": "https://www.lean-labs.com/hubfs/Sprocket%20Rocket%20Icon.png",
+                        "alt": "Sprocket%20Rocket%20Icon",
+                        "width": 70,
+                        "height": 75,
+                        "max_width": 132,
+                        "max_height": 142
+                    },
+                    "title": "Sprocket Rocket sale!",
+                    "description": "Act now to save before the price increases",
+                    "client": "Get Sprocket Rocket Premium!",
+                    "enable_link": true,
+                    "link": {
+                        "url": {
+                            "type": "EXTERNAL",
+                            "href": "https://www.sprocketrocket.co/",
+                            "content_id": null
+                        },
+                        "open_in_new_tab": false,
+                        "no_follow": false
+                    }
+                }
+            },
+            {
+                "id": "3dc61e24-252f-521f-fe26-f2f2b0863afd",
+                "name": "email",
+                "label": "Email",
+                "required": false,
+                "locked": false,
+                "visibility": {
+                    "controlling_field": "4acdd7a0-77c3-f327-6920-5721b2318182",
+                    "controlling_value_regex": "email",
+                    "operator": "EQUAL",
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "children": [
+                    {
+                        "id": "ec7b74d0-f4a2-1396-4273-5d33f5db950b",
+                        "name": "title",
+                        "label": "Title",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Weekly Newsletter"
+                    },
+                    {
+                        "id": "eea77a84-9e49-9e93-1bf4-ddc38a0e5097",
+                        "name": "description",
+                        "label": "Description",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "We're sharing our secrets with our loyal readers. Subscribe & download our latest resource"
+                    },
+                    {
+                        "id": "f7ccabdb-ba9d-2c40-c9a7-28bce7e9597a",
+                        "name": "form",
+                        "label": "Form",
+                        "help_text": "Works best with only an email field, with placeholder text.",
+                        "inline_help_text": "",
+                        "required": false,
+                        "locked": false,
+                        "type": "form",
+                        "default": {
+                            "form_id": "05284613-1f5e-4b70-889d-1e65aeb2b3c6",
+                            "response_type": "inline",
+                            "message": "Thanks for submitting the form.",
+                            "gotowebinar_webinar_key": null,
+                            "form_type": "HUBSPOT"
+                        }
+                    },
+                    {
+                        "id": "c6ab8ad7-8870-b85a-58b9-e8edb4f894e9",
+                        "name": "button_style",
+                        "label": "Button Style ",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "cta_type",
+                            "controlling_value_regex": "none",
+                            "operator": "NOT_EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "select",
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "outline-primary",
+                                "Outline Primary"
+                            ],
+                            [
+                                "outline-secondary",
+                                "Outline Secondary"
+                            ],
+                            [
+                                "outline-tertiary",
+                                "Outline Tertiary"
+                            ],
+                            [
+                                "outline-white",
+                                "Outline White"
+                            ],
+                            [
+                                "outline-black",
+                                "Outline Black"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "tertiary"
+                    },
+                    {
+                        "id": "9052ed1e-30e4-9000-a416-93695306e03a",
+                        "name": "client",
+                        "label": "Feature Text",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Sprocket Rocket"
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "title": "Weekly Newsletter",
+                    "description": "We're sharing our secrets with our loyal readers. Subscribe & download our latest resource",
+                    "form": {
+                        "form_id": "05284613-1f5e-4b70-889d-1e65aeb2b3c6",
+                        "response_type": "inline",
+                        "message": "Thanks for submitting the form.",
+                        "gotowebinar_webinar_key": null,
+                        "form_type": "HUBSPOT"
+                    },
+                    "button_style": "tertiary",
+                    "client": "Sprocket Rocket"
+                }
+            },
+            {
+                "id": "74a0cdc2-3e89-26e0-f574-abea8a81ae89",
+                "name": "countdown",
+                "label": "Countdown",
+                "required": false,
+                "locked": false,
+                "visibility": {
+                    "controlling_field": "4acdd7a0-77c3-f327-6920-5721b2318182",
+                    "controlling_value_regex": "countdown",
+                    "operator": "EQUAL",
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "children": [
+                    {
+                        "id": "2c6a62bd-5dc0-47a7-ec73-9db0647c5c67",
+                        "name": "title",
+                        "label": "Title",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Rebuilding Moz.com"
+                    },
+                    {
+                        "id": "aa780f5d-6b85-4af6-1cb3-98ad1ada4aad",
+                        "name": "description",
+                        "label": "Description",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Free webinar by us"
+                    },
+                    {
+                        "id": "075c3b10-faf2-31e0-51e1-39a8a3111d2f",
+                        "name": "teaser",
+                        "label": "Teaser",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Wednesday, October 14th, 12:00 PM CST"
+                    },
+                    {
+                        "id": "328d1cb2-180e-7edb-67ef-7dc5c3102755",
+                        "name": "offer_type",
+                        "label": "Offer Type",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "form",
+                                "Form"
+                            ],
+                            [
+                                "btn",
+                                "Button"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "form"
+                    },
+                    {
+                        "id": "14dc066a-dcbe-2cb8-fbbc-ecaa34ad6532",
+                        "name": "form",
+                        "label": "Form",
+                        "help_text": "Works best with only an email field, with placeholder text.",
+                        "inline_help_text": "",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "328d1cb2-180e-7edb-67ef-7dc5c3102755",
+                            "controlling_value_regex": "form",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "form",
+                        "default": {
+                            "form_id": "05284613-1f5e-4b70-889d-1e65aeb2b3c6",
+                            "response_type": "inline",
+                            "message": "Thanks for submitting the form.",
+                            "gotowebinar_webinar_key": null,
+                            "form_type": "HUBSPOT"
+                        }
+                    },
+                    {
+                        "id": "cta.cta_style",
+                        "name": "cta_style",
+                        "label": "Button Style",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "328d1cb2-180e-7edb-67ef-7dc5c3102755",
+                            "controlling_value_regex": "form",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "select",
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "outline-primary",
+                                "Outline Primary"
+                            ],
+                            [
+                                "outline-secondary",
+                                "Outline Secondary"
+                            ],
+                            [
+                                "outline-tertiary",
+                                "Outline Tertiary"
+                            ],
+                            [
+                                "outline-white",
+                                "Outline White"
+                            ],
+                            [
+                                "outline-black",
+                                "Outline Black"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "tertiary"
+                    },
+                    {
+                        "id": "cta",
+                        "name": "cta",
+                        "label": "CTA",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "328d1cb2-180e-7edb-67ef-7dc5c3102755",
+                            "controlling_value_regex": "btn",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "children": [
+                            {
+                                "id": "cta_type",
+                                "name": "cta_type",
+                                "label": "CTA Type",
+                                "required": true,
+                                "locked": false,
+                                "display": "select",
+                                "choices": [
+                                    [
+                                        "cta",
+                                        "HubSpot CTA"
+                                    ],
+                                    [
+                                        "btn",
+                                        "Button"
+                                    ]
+                                ],
+                                "type": "choice",
+                                "default": "btn"
+                            },
+                            {
+                                "id": "c824027e-eaa3-2d10-30e0-d2bb8b7c5254",
+                                "name": "cta_style",
+                                "label": "CTA Style copy",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "cta_type",
+                                    "controlling_value_regex": "none",
+                                    "operator": "NOT_EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "select",
+                                "choices": [
+                                    [
+                                        "primary",
+                                        "Primary"
+                                    ],
+                                    [
+                                        "secondary",
+                                        "Secondary"
+                                    ],
+                                    [
+                                        "tertiary",
+                                        "Tertiary"
+                                    ],
+                                    [
+                                        "white",
+                                        "White"
+                                    ],
+                                    [
+                                        "black",
+                                        "Black"
+                                    ],
+                                    [
+                                        "outline-primary",
+                                        "Outline Primary"
+                                    ],
+                                    [
+                                        "outline-secondary",
+                                        "Outline Secondary"
+                                    ],
+                                    [
+                                        "outline-tertiary",
+                                        "Outline Tertiary"
+                                    ],
+                                    [
+                                        "outline-white",
+                                        "Outline White"
+                                    ],
+                                    [
+                                        "outline-black",
+                                        "Outline Black"
+                                    ],
+                                    [
+                                        "none",
+                                        "None"
+                                    ]
+                                ],
+                                "type": "choice",
+                                "default": "tertiary"
+                            },
+                            {
+                                "id": "cta.cta",
+                                "name": "cta",
+                                "label": "CTA",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "cta_type",
+                                    "controlling_value_regex": "cta",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "type": "cta",
+                                "default": ""
+                            },
+                            {
+                                "id": "cta.button_text",
+                                "name": "button_text",
+                                "label": "Button Text",
+                                "required": false,
+                                "locked": false,
+                                "validation_regex": "",
+                                "visibility": {
+                                    "controlling_field": "cta_type",
+                                    "controlling_value_regex": "btn",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "allow_new_line": false,
+                                "show_emoji_picker": false,
+                                "type": "text",
+                                "default": "Learn More"
+                            },
+                            {
+                                "id": "57726bc0-090c-88e2-6142-be5da556bc90",
+                                "name": "link",
+                                "label": "Link",
+                                "required": false,
+                                "locked": false,
+                                "supported_types": [
+                                    "EXTERNAL",
+                                    "CONTENT",
+                                    "FILE",
+                                    "EMAIL_ADDRESS",
+                                    "BLOG"
+                                ],
+                                "type": "link",
+                                "default": {
+                                    "url": {
+                                        "type": "EXTERNAL",
+                                        "href": "https://www.sprocketrocket.co/",
+                                        "content_id": null
+                                    },
+                                    "open_in_new_tab": false,
+                                    "no_follow": false
+                                }
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "cta_type": "btn",
+                            "cta_style": "tertiary",
+                            "cta": "",
+                            "button_text": "Learn More",
+                            "link": {
+                                "url": {
+                                    "type": "EXTERNAL",
+                                    "href": "https://www.sprocketrocket.co/",
+                                    "content_id": null
+                                },
+                                "open_in_new_tab": false,
+                                "no_follow": false
+                            }
+                        }
+                    },
+                    {
+                        "id": "26bf86c4-fee0-3f80-366f-05c0aa9a54db",
+                        "name": "client",
+                        "label": "Feature Text",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Sprocket Rocket"
+                    },
+                    {
+                        "id": "1e3db657-ae4f-b175-e812-a0b382f8ba64",
+                        "name": "date",
+                        "label": "Date",
+                        "required": false,
+                        "locked": false,
+                        "step": 30,
+                        "type": "datetime",
+                        "default": 1603112400000
+                    },
+                    {
+                        "id": "1957443c-80b1-c9c8-beb4-540aa6ac8753",
+                        "name": "background_color",
+                        "label": "Countdown Background Color",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "custom",
+                                "Custom"
+                            ],
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "success",
+                                "Success"
+                            ],
+                            [
+                                "info",
+                                "Info"
+                            ],
+                            [
+                                "warning",
+                                "Warning"
+                            ],
+                            [
+                                "danger",
+                                "Danger"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "primary"
+                    },
+                    {
+                        "id": "7bcc11d1-b769-06d3-9925-21be3d00a41a",
+                        "name": "text_color",
+                        "label": "Countdown Text Color",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "auto",
+                                "Auto"
+                            ],
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "success",
+                                "Success"
+                            ],
+                            [
+                                "info",
+                                "Info"
+                            ],
+                            [
+                                "warning",
+                                "Warning"
+                            ],
+                            [
+                                "danger",
+                                "Danger"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "white"
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "title": "Rebuilding Moz.com",
+                    "description": "Free webinar by us",
+                    "teaser": "Wednesday, October 14th, 12:00 PM CST",
+                    "offer_type": "form",
+                    "form": {
+                        "form_id": "05284613-1f5e-4b70-889d-1e65aeb2b3c6",
+                        "response_type": "inline",
+                        "message": "Thanks for submitting the form.",
+                        "gotowebinar_webinar_key": null,
+                        "form_type": "HUBSPOT"
+                    },
+                    "cta_style": "tertiary",
+                    "cta": {
+                        "cta_type": "btn",
+                        "cta_style": "tertiary",
+                        "cta": "",
+                        "button_text": "Learn More",
+                        "link": {
+                            "url": {
+                                "type": "EXTERNAL",
+                                "href": "https://www.sprocketrocket.co/",
+                                "content_id": null
+                            },
+                            "open_in_new_tab": false,
+                            "no_follow": false
+                        }
+                    },
+                    "client": "Sprocket Rocket",
+                    "date": 1603112400000,
+                    "background_color": "primary",
+                    "text_color": "white"
+                }
+            },
+            {
+                "id": "29b93c0f-d5f9-526c-6972-e4aae85e8f5e",
+                "name": "social_share",
+                "label": "Social Share",
+                "required": false,
+                "locked": false,
+                "visibility": {
+                    "controlling_field": "4acdd7a0-77c3-f327-6920-5721b2318182",
+                    "controlling_value_regex": "social",
+                    "operator": "EQUAL",
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "children": [
+                    {
+                        "id": "569c5d7c-d571-732b-d60e-96e43c6f3d9d",
+                        "name": "title",
+                        "label": "Title",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Tell Your Friends"
+                    },
+                    {
+                        "id": "cadd4594-c925-9d15-193a-58d6a38b38bf",
+                        "name": "description",
+                        "label": "Description",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "We appreciate all the shares to support us! Thank you!"
+                    },
+                    {
+                        "id": "9d79ab81-36f9-8ed3-cce6-afeaf0c9df0f",
+                        "name": "client",
+                        "label": "Feature Text",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Sprocket Rocket"
+                    },
+                    {
+                        "id": "ac32c17d-18b9-1102-0f8f-cffd205d19ba",
+                        "name": "facebook",
+                        "label": "Facebook",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    {
+                        "id": "4acb3990-ade0-b06d-815d-7dfd51e3ee6d",
+                        "name": "twitter",
+                        "label": "Twitter",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    {
+                        "id": "315f67bd-97cc-bdf6-3bb8-cc4b196ca9c3",
+                        "name": "linkedin",
+                        "label": "Linkedin",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": true
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "title": "Tell Your Friends",
+                    "description": "We appreciate all the shares to support us! Thank you!",
+                    "client": "Sprocket Rocket",
+                    "facebook": true,
+                    "twitter": true,
+                    "linkedin": true
+                }
+            },
+            {
+                "id": "66166d30-5eb6-de4b-6932-541267e15bf6",
+                "name": "settings",
+                "label": "Settings",
+                "required": false,
+                "locked": false,
+                "children": [
+                    {
+                        "id": "e1cd4f72-992a-523b-9399-5b104d52acf4",
+                        "name": "start_delay",
+                        "label": "Start Delay",
+                        "help_text": "The time is seconds till the first notification shows",
+                        "required": false,
+                        "locked": false,
+                        "display": "text",
+                        "min": 1,
+                        "step": 1,
+                        "type": "number",
+                        "default": 1
+                    },
+                    {
+                        "id": "1841dec2-5a80-76a1-6ba0-05f673f6e77e",
+                        "name": "show_time",
+                        "label": "Show Time",
+                        "help_text": "The time In seconds for the notification to show",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "03d964e9-de1b-49d1-59bf-f3b769a834c5",
+                            "controlling_value_regex": "false",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "text",
+                        "min": 1,
+                        "step": 1,
+                        "type": "number",
+                        "default": 10
+                    },
+                    {
+                        "id": "03d964e9-de1b-49d1-59bf-f3b769a834c5",
+                        "name": "always_show",
+                        "label": "Always Show",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "4acdd7a0-77c3-f327-6920-5721b2318182",
+                            "controlling_value_regex": "countdown|email|information|social",
+                            "operator": "MATCHES_REGEX",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    {
+                        "id": "bd40f4e7-f08e-8440-bd36-afa9e558a055",
+                        "name": "delay",
+                        "label": "Delay",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "4acdd7a0-77c3-f327-6920-5721b2318182",
+                            "controlling_value_regex": "review|conversion",
+                            "operator": "MATCHES_REGEX",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "children": [
+                            {
+                                "id": "e9faa641-bfa8-d32e-acf4-2827a06d9407",
+                                "name": "delay",
+                                "label": "Delay",
+                                "help_text": "The time is seconds between showing the next notification",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "d4b031c0-1dbb-dc2d-cee8-5485b41d9930",
+                                    "controlling_value_regex": "true",
+                                    "operator": "NOT_EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "min": 1,
+                                "step": 1,
+                                "type": "number",
+                                "default": 2
+                            },
+                            {
+                                "id": "d4b031c0-1dbb-dc2d-cee8-5485b41d9930",
+                                "name": "randomize_delay",
+                                "label": "Randomize Delay",
+                                "help_text": "Toggle on if you want to randomize the time between notifications",
+                                "required": false,
+                                "locked": false,
+                                "display": "checkbox",
+                                "type": "boolean",
+                                "default": false
+                            },
+                            {
+                                "id": "a3ce7cb9-4f27-360f-9bca-7bdc0ebe96fa",
+                                "name": "delay_min",
+                                "label": "Delay Min",
+                                "help_text": "The minimum time in seconds that that random delay can be",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "d4b031c0-1dbb-dc2d-cee8-5485b41d9930",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "min": 1,
+                                "step": 1,
+                                "type": "number",
+                                "default": 10
+                            },
+                            {
+                                "id": "fdc5dc7e-82d6-bef5-1447-a416061a1490",
+                                "name": "delay_max",
+                                "label": "Delay Max",
+                                "help_text": "The maximum time in seconds that that random delay can be",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "d4b031c0-1dbb-dc2d-cee8-5485b41d9930",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "text",
+                                "min": 1,
+                                "step": 1,
+                                "type": "number",
+                                "default": 20
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "delay": 2,
+                            "randomize_delay": false,
+                            "delay_min": 10,
+                            "delay_max": 20
+                        }
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "start_delay": 1,
+                    "show_time": 10,
+                    "always_show": false,
+                    "delay": {
+                        "delay": 2,
+                        "randomize_delay": false,
+                        "delay_min": 10,
+                        "delay_max": 20
+                    }
+                }
+            }
+        ],
+        "source": ""
+    },
+    "custom_module_template": "sr-notification-01.html",
+    "available_builder": true,
+    "category": 9,
+    "files": []
+}

@@ -1,0 +1,789 @@
+{
+    "custom_module": {
+        "author": "bradley@lean-labs.com",
+        "tags": [
+            "ver-2.0.0"
+        ],
+        "name": "SR Nav Dropdown 01",
+        "css_assets": [],
+        "editable_contexts": [],
+        "external_js": [],
+        "global": true,
+        "override_global": true,
+        "icon": "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": [
+            "PAGE",
+            "BLOG_POST",
+            "BLOG_LISTING"
+        ],
+        "js_assets": [],
+        "other_assets": [],
+        "fields": [
+            {
+                "id": "a6880dbb-3020-7c03-a2c9-833565d75452",
+                "name": "layout",
+                "label": "Layout",
+                "required": true,
+                "locked": true,
+                "display": "select",
+                "choices": [
+                    [
+                        "container-fluid",
+                        "Full Width"
+                    ],
+                    [
+                        "container",
+                        "Container"
+                    ]
+                ],
+                "type": "choice",
+                "default": "container"
+            },
+            {
+                "id": "cf89a099-afb0-0dcc-f674-eec98a37cd4a",
+                "name": "design_settings",
+                "label": "Design Settings",
+                "required": false,
+                "locked": true,
+                "children": [
+                    {
+                        "id": "e0b00e85-1a2d-85f2-00e5-8b1d506d2711",
+                        "name": "font_style",
+                        "label": "Font Style",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": null,
+                            "controlling_value_regex": null,
+                            "operator": "NOT_EMPTY",
+                            "access": null,
+                            "hidden_subfields": {
+                                "color": true,
+                                "styles": false
+                            }
+                        },
+                        "load_external_fonts": true,
+                        "type": "font",
+                        "default": {
+                            "font": "Poppins",
+                            "size": {
+                                "units": "px",
+                                "value": 16
+                            },
+                            "color": "#000",
+                            "styles": {
+                                "text-decoration": "none"
+                            },
+                            "variant": "regular",
+                            "fallback": "sans-serif",
+                            "font_set": "GOOGLE",
+                            "size_unit": "px"
+                        }
+                    },
+                    {
+                        "id": "36d74f80-b1b0-07d6-07b8-27497410b483",
+                        "name": "uppercase",
+                        "label": "Uppercase",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    {
+                        "id": "d59640d7-bdc4-057a-339c-03315fd07f3e",
+                        "name": "font_color_default",
+                        "label": "Font Color Default",
+                        "required": false,
+                        "locked": false,
+                        "type": "color",
+                        "default": {
+                            "color": "#23262a",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "2dc8500a-27dd-b08c-acfa-bec40a8c4146",
+                        "name": "font_color_scroll",
+                        "label": "Font Color on Scroll",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "9d835a47-f10b-0b3b-d9ef-5011ba68cfd5",
+                            "controlling_value_regex": "true",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#23262a",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "aa7e82c0-48a1-2158-f030-22b657243d3a",
+                        "name": "background",
+                        "label": "Background",
+                        "required": false,
+                        "locked": false,
+                        "type": "color",
+                        "default": {
+                            "color": "#ffffff",
+                            "opacity": 100
+                        }
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "font_style": {
+                        "font": "Poppins",
+                        "size": {
+                            "units": "px",
+                            "value": 16
+                        },
+                        "color": "#000",
+                        "styles": {
+                            "text-decoration": "none"
+                        },
+                        "variant": "regular",
+                        "fallback": "sans-serif",
+                        "font_set": "GOOGLE",
+                        "size_unit": "px"
+                    },
+                    "uppercase": false,
+                    "font_color_default": {
+                        "color": "#23262a",
+                        "opacity": 100
+                    },
+                    "font_color_scroll": {
+                        "color": "#23262a",
+                        "opacity": 100
+                    },
+                    "background": {
+                        "color": "#ffffff",
+                        "opacity": 100
+                    }
+                }
+            },
+            {
+                "id": "a7b3f1da-49d2-70e2-2571-1f67096c2528",
+                "name": "logo_default",
+                "label": "Logo Default",
+                "required": false,
+                "locked": true,
+                "responsive": true,
+                "resizable": true,
+                "show_loading": false,
+                "type": "image",
+                "default": {
+                    "alt": "sr-logo-white-small",
+                    "src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-logo-small.png",
+                    "width": 175,
+                    "size_type": "auto"
+                }
+            },
+            {
+                "id": "9b281190-652b-2d33-76d8-d8b5c78394bd",
+                "name": "logo_scroll",
+                "label": "Logo on Scroll",
+                "required": false,
+                "locked": true,
+                "visibility": {
+                    "controlling_field": "9d835a47-f10b-0b3b-d9ef-5011ba68cfd5",
+                    "controlling_value_regex": "true",
+                    "operator": "EQUAL",
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "responsive": true,
+                "resizable": true,
+                "show_loading": false,
+                "type": "image",
+                "default": {
+                    "alt": "sr-logo-small",
+                    "src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-logo-small.png",
+                    "width": 175,
+                    "size_type": "auto"
+                }
+            },
+            {
+                "id": "632df938-ffb1-7abd-ef1d-5faf6753a3cf",
+                "name": "logo_on_mobile",
+                "label": "Logo on Mobile",
+                "required": false,
+                "locked": true,
+                "responsive": true,
+                "resizable": true,
+                "show_loading": false,
+                "type": "image",
+                "default": {
+                    "alt": "sr-logo-small",
+                    "src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-logo-small.png",
+                    "width": 175,
+                    "size_type": "auto"
+                }
+            },
+            {
+                "id": "6e6e4be9-9a18-813b-5542-a1f4c9f08ce4",
+                "name": "logo_link",
+                "label": "Logo Link",
+                "required": false,
+                "locked": true,
+                "supported_types": [
+                    "EXTERNAL",
+                    "CONTENT",
+                    "FILE",
+                    "EMAIL_ADDRESS",
+                    "BLOG"
+                ],
+                "type": "link",
+                "default": {
+                    "url": {
+                        "href": "https://www.sprocketrocket.co/",
+                        "type": "EXTERNAL",
+                        "content_id": null
+                    },
+                    "no_follow": false,
+                    "open_in_new_tab": false
+                }
+            },
+            {
+                "id": "70c47715-3fba-2410-8871-3d5d7c0e6aef",
+                "name": "menu",
+                "label": "Menu",
+                "required": false,
+                "locked": true,
+                "type": "menu"
+            },
+            {
+                "id": "menu_align",
+                "name": "menu_align",
+                "label": "Menu Alignment",
+                "required": true,
+                "locked": true,
+                "display": "select",
+                "choices": [
+                    [
+                        "mr-auto",
+                        "Left"
+                    ],
+                    [
+                        "ml-auto",
+                        "Right"
+                    ]
+                ],
+                "type": "choice",
+                "default": "ml-auto"
+            },
+            {
+                "id": "cta",
+                "name": "cta",
+                "label": "CTA One",
+                "required": false,
+                "locked": true,
+                "children": [
+                    {
+                        "id": "cta_type",
+                        "name": "cta_type",
+                        "label": "CTA Type",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "cta",
+                                "HubSpot CTA"
+                            ],
+                            [
+                                "btn",
+                                "Button"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "btn"
+                    },
+                    {
+                        "id": "cta.cta_style",
+                        "name": "cta_style",
+                        "label": "CTA Style",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "cta_type",
+                            "controlling_value_regex": "none",
+                            "operator": "NOT_EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "select",
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "outline-primary",
+                                "Outline Primary"
+                            ],
+                            [
+                                "outline-secondary",
+                                "Outline Secondary"
+                            ],
+                            [
+                                "outline-tertiary",
+                                "Outline Tertiary"
+                            ],
+                            [
+                                "outline-white",
+                                "Outline White"
+                            ],
+                            [
+                                "outline-black",
+                                "Outline Black"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "primary"
+                    },
+                    {
+                        "id": "5ebcbf7a-8052-463a-bde8-cf65478595da",
+                        "name": "cta_size",
+                        "label": "CTA Size",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "auto",
+                                "Default"
+                            ],
+                            [
+                                "sm",
+                                "Small"
+                            ],
+                            [
+                                "lg",
+                                "Large"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "sm"
+                    },
+                    {
+                        "id": "cta.cta",
+                        "name": "cta",
+                        "label": "CTA",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "cta_type",
+                            "controlling_value_regex": "cta",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "cta"
+                    },
+                    {
+                        "id": "cta.button_text",
+                        "name": "button_text",
+                        "label": "Button Text",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "visibility": {
+                            "controlling_field": "cta_type",
+                            "controlling_value_regex": "btn",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Get Started"
+                    },
+                    {
+                        "id": "cta.link",
+                        "name": "link",
+                        "label": "Link",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "visibility": {
+                            "controlling_field": "cta_type",
+                            "controlling_value_regex": "btn",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "#"
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "cta_type": "btn",
+                    "cta_style": "primary",
+                    "cta_size": "sm",
+                    "button_text": "Get Started",
+                    "link": "#"
+                }
+            },
+            {
+                "id": "d5bf9b19-ae13-bd97-db90-c065828c6708",
+                "name": "cta_two",
+                "label": "CTA Two",
+                "required": false,
+                "locked": true,
+                "children": [
+                    {
+                        "id": "ad68cb66-cdbc-21fb-1709-af7201cba425",
+                        "name": "cta_type",
+                        "label": "CTA Type",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "cta",
+                                "HubSpot CTA"
+                            ],
+                            [
+                                "btn",
+                                "Button"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "none"
+                    },
+                    {
+                        "id": "6a7252c9-cb97-d1f1-c1fc-d08c3c6cc30b",
+                        "name": "cta_style",
+                        "label": "CTA Style",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "ad68cb66-cdbc-21fb-1709-af7201cba425",
+                            "controlling_value_regex": "none",
+                            "operator": "NOT_EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "select",
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "outline-primary",
+                                "Outline Primary"
+                            ],
+                            [
+                                "outline-secondary",
+                                "Outline Secondary"
+                            ],
+                            [
+                                "outline-tertiary",
+                                "Outline Tertiary"
+                            ],
+                            [
+                                "outline-white",
+                                "Outline White"
+                            ],
+                            [
+                                "outline-black",
+                                "Outline Black"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "outline-primary"
+                    },
+                    {
+                        "id": "a0df247f-5aa8-ddd8-46e6-4629d6fd5af1",
+                        "name": "cta_size",
+                        "label": "CTA Size",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "auto",
+                                "Default"
+                            ],
+                            [
+                                "sm",
+                                "Small"
+                            ],
+                            [
+                                "lg",
+                                "Large"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "sm"
+                    },
+                    {
+                        "id": "ae33752f-675c-5beb-442e-885eeabb3313",
+                        "name": "cta",
+                        "label": "CTA",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "ad68cb66-cdbc-21fb-1709-af7201cba425",
+                            "controlling_value_regex": "cta",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "cta"
+                    },
+                    {
+                        "id": "b91909ed-1cac-bffc-b9f2-4d8132536cfd",
+                        "name": "button_text",
+                        "label": "Button Text",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "visibility": {
+                            "controlling_field": "ad68cb66-cdbc-21fb-1709-af7201cba425",
+                            "controlling_value_regex": "btn",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Get Started"
+                    },
+                    {
+                        "id": "cba2bef5-613f-aa54-576f-a6dc86d06a62",
+                        "name": "link",
+                        "label": "Link",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "visibility": {
+                            "controlling_field": "ad68cb66-cdbc-21fb-1709-af7201cba425",
+                            "controlling_value_regex": "btn",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "#"
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "cta_type": "none",
+                    "cta_style": "outline-primary",
+                    "cta_size": "sm",
+                    "button_text": "Get Started",
+                    "link": "#"
+                }
+            },
+            {
+                "id": "9d835a47-f10b-0b3b-d9ef-5011ba68cfd5",
+                "name": "fixed",
+                "label": "Fixed",
+                "required": false,
+                "locked": true,
+                "display": "checkbox",
+                "type": "boolean",
+                "default": true
+            },
+            {
+                "id": "e15f9c59-2462-c641-2327-ffec2b4a0307",
+                "name": "transparent",
+                "label": "Transparent",
+                "required": false,
+                "locked": true,
+                "display": "checkbox",
+                "type": "boolean",
+                "default": false
+            },
+            {
+                "id": "enable_search",
+                "name": "enable_search",
+                "label": "Enable Search",
+                "required": false,
+                "locked": true,
+                "display": "checkbox",
+                "type": "boolean",
+                "default": false
+            },
+            {
+                "id": "bbd7ddcf-b468-5403-3916-2906d1f9526b",
+                "name": "enable_top_bar",
+                "label": "Enable Top Bar",
+                "required": false,
+                "locked": true,
+                "display": "checkbox",
+                "type": "boolean",
+                "default": false
+            },
+            {
+                "id": "35040449-396f-0cd7-63b2-c8d6a0569833",
+                "name": "top_bar",
+                "label": "Top Bar",
+                "required": false,
+                "locked": true,
+                "visibility": {
+                    "controlling_field": "bbd7ddcf-b468-5403-3916-2906d1f9526b",
+                    "controlling_value_regex": "true",
+                    "operator": "EQUAL",
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "children": [
+                    {
+                        "id": "dd6f8bef-cb0e-7515-8e26-9b78200eabfc",
+                        "name": "left_menu",
+                        "label": "Left Menu",
+                        "required": false,
+                        "locked": false,
+                        "type": "menu"
+                    },
+                    {
+                        "id": "1cbc559d-5baa-674a-5c8c-3ac51a515faa",
+                        "name": "right_menu",
+                        "label": "Right Menu",
+                        "required": false,
+                        "locked": false,
+                        "type": "menu"
+                    },
+                    {
+                        "id": "2fcfcb2f-3785-7ff4-6c37-ea1b1127c6f8",
+                        "name": "top_bar_text",
+                        "label": "Top Bar Text",
+                        "required": false,
+                        "locked": false,
+                        "type": "richtext"
+                    },
+                    {
+                        "id": "0b3ce3ad-6440-64b4-c763-ee7519e3f3bd",
+                        "name": "font_color",
+                        "label": "Font Color",
+                        "required": false,
+                        "locked": false,
+                        "type": "color",
+                        "default": {
+                            "color": "#ffffff",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "a39297df-a6a8-4b4c-93db-d631b615a244",
+                        "name": "background_color",
+                        "label": "Background Color",
+                        "required": false,
+                        "locked": false,
+                        "type": "color",
+                        "default": {
+                            "color": "#0c63ff",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "a2dd3301-b1bd-5261-0a1e-8b79e5d54bf0",
+                        "name": "show_close_button",
+                        "label": "Show Close Button",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": true
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "font_color": {
+                        "color": "#ffffff",
+                        "opacity": 100
+                    },
+                    "background_color": {
+                        "color": "#0c63ff",
+                        "opacity": 100
+                    },
+                    "show_close_button": true
+                }
+            }
+        ],
+        "source": ""
+    },
+    "custom_module_template": "sr-nav-dropdown-01.html",
+    "available_builder": true,
+    "category": 1,
+    "is_free": true,
+    "files": [
+        {
+            "file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/headroom.js",
+            "folder_paths": "sr-assets/js"
+        },
+        {
+            "file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/TweenMax.min.js",
+            "folder_paths": "sr-assets/js"
+        }
+    ]
+}

@@ -1,0 +1,249 @@
+{% if module.enabled %}
+
+	{% if hub_id == 123 %}
+		{% set posts = placeholder.posts %}
+	{% else %}
+		{% set posts = blog_recent_posts(module.blog, 3) %}
+	{% endif %}
+
+	{% if hub_id == 123 || posts|length == 0 %} 
+		{% set placeholder = {
+			'posts': [
+				{
+					'name': 'The Most Common Problems of Building a Growth Strategy',
+					'post_summary': 'Growth doesn\'t happen by accident. And, if it were easy, no company would ever go out of business. The harsh reality is that most companies do go out of business for various reasons.',
+					'absolute_url': 'https://www.lean-labs.com/blog/problems-building-growth-strategy',
+					'topic_list': [
+						{
+							'name': 'GROWTH MARKETING'
+						}
+					],
+					'blog_post_author': {
+						'display_name': 'Ryan Scott'
+					},
+					'featured_image': 'https://www.lean-labs.com/hubfs/growth-marketing-strategy.jpg'
+				},
+				{
+					'name': 'Reviewing the HubSpot CMS Hub: Is It All It\'s Cracked Up to Be?',
+					'post_summary': 'Does the hunt for the perfect CMS (Content Management System) seem endless? With so many options available, it can be challenging to determine which one is the right fit for your needs.',
+					'absolute_url': 'https://www.lean-labs.com/blog/reviewing-hubspot-cms-hub',
+					'topic_list': [
+						{
+							'name': 'HUBSPOT'
+						}
+					],
+					'blog_post_author': {
+						'display_name': 'Chris DuBois'
+					},
+					'featured_image': 'https://www.lean-labs.com/hubfs/blog_post_imgs/Featured%20Images/reviewing-hubspot-CMS-hub.jpg'
+				},
+				{
+					'name': '5 Web Design Tips for the New HubSpot CMS Hub',
+					'post_summary': 'Ultimately, there are tons of ways to design a web page. The trick comes from knowing what elements work together — or not at all. What do you need your website to accomplish? What design is going to appeal to your audience? Which design elements best support your brand’s message?',
+					'absolute_url': 'https://www.lean-labs.com/blog/web-design-tips-hubspot-cms-hub',
+					'topic_list': [
+						{
+							'name': 'HUBSPOT'
+						}
+					],
+					'blog_post_author': {
+						'display_name': 'Chris DuBois'
+					},
+					'featured_image': 'https://www.lean-labs.com/hubfs/blog_post_imgs/Featured%20Images/hubspot-cms-hub.jpg'
+				}
+			]
+		} %}
+		{% set posts = placeholder.posts %}
+	{% endif %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-articles-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Articles 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+	
+	<div class="sr-cards-articles-02 {{ name }} {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }} {% endif %}sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.class %}{{ module.design_settings.class }} {% endif %}{% if module.design_settings.border_top %}sr-line-top {% endif %}{% if module.design_settings.border_bottom %}sr-line-bottom {% endif %} {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }}">
+            {% if module.design_settings.container_width != 'max' %}
+            <div class="row">
+                <div class="{{ width_class }}">
+            {% endif %}
+					{% if module.heading %}
+						<h2 class="heading {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.heading }}</h2>
+					{% endif %}
+					{% if module.description %}
+						<div class="description {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %} ">
+							{{ module.description }}
+						</div>
+					{% endif %}
+					<div class="cards-wrapper text-left sr-spacer-top-25">
+						<div class="cards-row row justify-content-between">
+							{% for post in posts %}
+								<div class="article-item col-md-4">
+										
+									<a title="{{ post.name }}" href="{{ post.absolute_url }}">
+										
+										{% if module.show_image %}<img src="{{post.featured_image}}" alt="{{post.name}}">{% endif %}
+										
+										{% if module.show_tag %}
+										{% for topic in post.topic_list %}
+										{% if loop.first %}
+										<div class="topic-details small">
+											<span class="topic-name">{{ topic.name }}</span>
+										</div>
+										{% endif %}
+										{% endfor %}
+										{% endif %}
+
+										<h5 class="post-name">{{post.name}}</h5>
+
+										{% if module.show_author %}
+											<div class="author-details small">
+												by <span class="author-name">{{post.blog_post_author.display_name}}</span>
+											</div>
+										{% endif %}
+
+										{% if module.show_blog_content %}<div class="summary">{{post.post_summary|truncatehtml(140)|striptags}}</div>{% endif %}
+										
+										<div class="btn-wrapper btn-{{ module.button_style }}-wrapper {% if !module.show_blog_content %}sr-spacer-top-50{% endif %}">
+											<span class="article-readmore cta_button">{{module.button_text}}</span>
+										</div>
+									</a>
+								</div>
+							{% endfor%}
+						</div>
+					</div>	
+					{% if module.cta.cta_type != 'none' %}
+						<div class="btn-wrapper btn-{{ module.cta.cta_style }}-wrapper pt-5">
+							{% if module.cta.cta_type == 'btn' %}
+								<a href="{{ module.cta.link }}" class="cta_button">{{ module.cta.button_text }}</a>
+							{% elif module.cta.cta_type == 'cta' %}
+								{% cta guid="{{ module.cta.cta }}" %}
+							{% elif module.cta.cta_type == 'modal' %}
+								<a class="cta_button modal-btn" data-toggle="modal" data-target="{{module.cta.modal_link}}">{{module.cta.modal_button_text}}</a>
+							{% endif %}
+						</div>
+					{% endif %}
+			{% if module.design_settings.container_width != 'max' %}
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+
+	{% require_css %}
+		<style type="text/css">
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;    
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});	
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			.sr-cards-articles-02 .article-item a {
+				background-color: #fff;
+				color: inherit;
+				padding: 1rem;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-wrap: wrap;
+				    flex-wrap: wrap;
+				height: 100%;
+				-ms-flex-line-pack: start;
+				    align-content: flex-start;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				    -ms-flex-direction: column;
+				        flex-direction: column;
+				
+				-webkit-box-shadow: 0 3px 20px 0 rgba(0,0,0,0.1);
+				box-shadow: 0 3px 20px 0 rgba(0,0,0,0.1);
+				position: relative;
+				-webkit-transition: all 420ms cubic-bezier(.165,.84,.44,1);
+				-o-transition: all 420ms cubic-bezier(.165,.84,.44,1);
+				transition: all 420ms cubic-bezier(.165,.84,.44,1);
+				-webkit-transform: scale(1);
+				    -ms-transform: scale(1);
+				        transform: scale(1);
+			}
+			.sr-cards-articles-02 .article-item a:hover {
+				-webkit-box-shadow: 0 3px 20px 0 rgba(0,0,0,0.2);
+				box-shadow: 0 3px 20px 0 rgba(0,0,0,0.2);
+				-webkit-transform: scale(1.05);
+				-ms-transform: scale(1.05);
+				transform: scale(1.05);
+			}
+			.sr-cards-articles-02 .topic-details {
+				margin-top: 1rem;
+			}
+			.sr-cards-articles-02 .author-details {
+				line-height: 1;
+			}
+			.sr-cards-articles-02 .post-name {
+				margin-bottom: 0.25rem;
+				margin-top: 0.5rem;
+			}
+			.sr-cards-articles-02 .article-readmore {
+				color: var(--link_color);
+			}
+			.sr-cards-articles-02 .summary {
+				padding: 1rem 0;
+				font-size: 0.9rem;
+				line-height: 1.45rem;
+			}
+			.sr-cards-articles-02 .btn-wrapper {
+				margin-top: auto;
+			}
+		</style>
+	{% end_require_css %}
+{% endif %}

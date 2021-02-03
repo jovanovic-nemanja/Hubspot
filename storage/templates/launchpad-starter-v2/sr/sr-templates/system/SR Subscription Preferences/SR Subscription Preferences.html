@@ -1,0 +1,19 @@
+	{% import "/sr/templates/variables.html" as var %}
+
+	{{ var.template('header.html') }}
+
+	<body class="{% block body_class %}{% text 'body_class' label="Body Class" no_wrapper=True %}{% endblock %}">
+		{% custom_widget "SR Nav Dropdown 01" widget_name='SR Nav Dropdown 01' %}
+		<div class="sr-line-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 offset-md-2 sr-spacer-100 ">
+						{% email_subscriptions "email_subscriptions" header='Your Email Address', unsubscribe_all_text='Or check here to never receive any emails:', overrideable=True, subheader_text='<p>\n                                If this is not your email address, please ignore this page since the email associated with this page was most likely forwarded to you.\n                            </p>', unsubscribe_all_option='Unsubscribe me from all mailing lists.', unsubscribe_single_text='Uncheck the types of emails you do not want to receive:', button_text='Update email preferences', label='Subscription Preferences' %}
+					</div>
+				</div>
+			</div>
+		</div>
+		{% custom_widget "SR Footer 04" widget_name='SR Footer 04' %}
+		{{ var.template('footer-includes.html') }}
+	</body>
+</html>

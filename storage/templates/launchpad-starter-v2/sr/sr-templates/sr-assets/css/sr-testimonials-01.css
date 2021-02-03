@@ -1,0 +1,60 @@
+/* ================================ Content ============================== */
+
+.sr-testimonials {
+    margin: 50px 0;
+}
+.sr-testimonials-pane {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    padding: 30px;
+    background: #ddd;
+}
+
+
+/* Content */
+
+.sr-testimonials-content {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 30px;
+}
+
+
+/* Info */
+
+.sr-testimonials-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.sr-testimonials-photo {
+    margin-right: 10px;
+}
+    .sr-testimonials-photo img {
+        border-radius: 50%;
+    }
+.sr-testimonials-author {
+
+}
+    .sr-testimonials-name {
+
+    }
+    .sr-testimonials-company {
+        
+    }
+
+/* ================================ Tabs ============================== */
+
+.sr-testimonials-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0;
+}
+.sr-testimonials-tabs li {
+    list-style: none;
+    padding: 30px 20px 0;
+}

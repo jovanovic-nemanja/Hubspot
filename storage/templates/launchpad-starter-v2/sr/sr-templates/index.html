@@ -1,0 +1,66 @@
+{% import "custom/page/templates/variables.html" as var %}
+
+
+{{ var.sr_template('_header.html') }}
+
+<body>
+  <div class="pl-topnav">
+    <a href="index.html"><strong>SR</strong> Pattern Library</a>
+  </div>
+  <div class="pl-wrapper">
+    {{ var.sr_template('_nav.html') }}
+    <div class="pl-body">
+      <div class="pl-panel">
+        <div class="pl-panel-heading">
+          <h2>Overview</h2>
+          <p>
+            SR is a component library that is shared across projects, allowing you to build pages quickly by using predefined patterns. Each pattern is defined as a custom module and includes all CSS / JS dependencies required for the pattern to function properly.
+          </p>
+        </div>
+      </div>
+      <div class="pl-panel">
+        <div class="pl-panel-heading">
+          <h2>How it Works</h2>
+          <p>
+            Every new project, once setup, has access to all custom modules of the library, which are used to create live wireframes (in HubSpot).<br />
+            To add a pattern to a page, you go to <code>Edit Page (in HubSpot)</code> → <code>Edit Modules</code> → <code>Add new module</code>
+          </p>
+        </div>
+        <div class="pl-panel-footer">
+          <h2>From Wireframe to Design</h2>
+          <p>
+            The difference between a ‘wireframe page’ and a ‘designed page’ is the CSS file included in <code>header.html</code><br />
+            <code>wireframe.css</code> / <code>.less</code> is a trimmed down version of <code>base.css</code> / <code>.less</code> with basic color and font declarations.
+            <div class="alert alert-warning">
+              <strong>Note:</strong> wireframe.css / less doesn't currently exist.
+            </div>
+          </p>
+        </div>
+        <div class="pl-panel-footer">
+          <h2>The Library</h2>
+          <p>
+            The SR Pattern Library contains 3 types of elements:
+          </p>
+          <ul>
+            <li>
+              <code>Components</code> — elements such as cards or forms that can be used on their own or can be combined into a module. To allow for components to be reused these do not include containers.
+            </li>
+            <li>
+              <code>Modules</code> — elements such as page sections, mastheads, footers.
+            </li>
+            <li>
+              <code>Pages</code> — blog, blog single, landing pages, 404s.
+            </li>
+          </ul>
+          <div class="alert alert-warning">
+            <strong>Note:</strong> We mostly use modules and pages at the moment.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+	{{ var.sr_template('_footer-includes.html') }}
+
+</body>
+</html>

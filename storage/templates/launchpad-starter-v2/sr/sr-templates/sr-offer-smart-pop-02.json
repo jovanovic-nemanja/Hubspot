@@ -1,0 +1,214 @@
+{
+	"custom_module": {
+		"author": "bradley@lean-labs.com",
+		"tags": ["ver-1.0.0"],
+		"name": "SR Offer Smart Pop 02",
+		"css_assets": [],
+		"editable_contexts": [],
+		"external_js": [],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+		"js_assets": [],
+		"other_assets": [],
+		"fields": [{
+				"default": true,
+				"label": "Enabled",
+				"name": "enabled",
+				"type": "boolean"
+			},
+			{
+				"default": null,
+				"label": "ID",
+				"name": "sr_module_id",
+				"type": "text"
+			},
+			{
+				"default": null,
+				"label": "Class",
+				"name": "class",
+				"type": "text"
+			},
+			{
+				"default": "Meet all of your inbound goals and objectives.",
+				"label": "Teaser",
+				"name": "teaser",
+				"type": "text"
+			},
+			{
+				"default": "Light Years Ahead",
+				"label": "Heading",
+				"name": "heading",
+				"type": "text"
+			},
+			{
+				"default": "Get started on website and landing pages right away with little to no learning curve.",
+				"label": "Description",
+				"name": "description",
+				"type": "text"
+			},
+			{
+				"default": {
+					"src": "https://www.lean-labs.com/hs-fs/hubfs/sr-assets/images/sr-logo-icon.png",
+					"alt": "Describe Your Image"
+				},
+				"label": "Image",
+				"name": "image",
+				"type": "image"
+			},
+			{
+				"default": {
+					"src": "https://www.lean-labs.com/hubfs/sr-assets/images/strategy-kit-cover.png",
+					"alt": "Describe Your Image"
+				},
+				"label": "Opened Image",
+				"name": "opened_image",
+				"type": "image"
+			},
+			{
+				"id": "1",
+				"name": "form",
+				"children": [{
+						"name": "title",
+						"label": "Form Title",
+						"type": "text",
+						"default": null
+					},
+					{
+						"name": "form",
+						"label": "Form",
+						"type": "form",
+						"default": {
+							"response_type": "redirect",
+							"message": "Thanks for submitting the form."
+						}
+					},
+					{
+						"id": "notifications_are_overridden",
+						"name": "notifications_are_overridden",
+						"label": "Send form notifications to specified email addresses instead of the form defaults",
+						"type": "boolean",
+						"default": false
+					},
+					{
+						"name": "notifications_override_email_addresses",
+						"label": "Email Addresses",
+						"visibility": {
+							"controlling_field": "notifications_are_overridden",
+							"controlling_value_regex": "true",
+							"operator": "EQUAL"
+						},
+						"type": "email",
+						"default": null
+					},
+					{
+						"id": "follow_up_type_simple",
+						"name": "follow_up_type_simple",
+						"label": "Send a follow-up email",
+						"type": "boolean",
+						"default": false
+					},
+					{
+						"name": "simple_email_for_live_id",
+						"label": "Email",
+						"visibility": {
+							"controlling_field": "follow_up_type_simple",
+							"controlling_value_regex": "true",
+							"operator": "EQUAL"
+						},
+						"type": "followupemail",
+						"default": null
+					}
+				],
+				"label": "Form",
+				"type": "group",
+				"default": {
+					"form": {
+						"response_type": "redirect",
+						"message": "Thanks for submitting the form."
+					},
+					"notifications_are_overridden": false,
+					"follow_up_type_automation": false,
+					"follow_up_type_simple": false
+				}
+			},
+			{
+				"choices": [
+					[
+						"auto", "Auto"
+					],
+					[
+						"primary", "Primary"
+					],
+					[
+						"secondary", "Secondary"
+					],
+					[
+						"tertiary", "Tertiary"
+					],
+					[
+						"white", "White"
+					],
+					[
+						"black", "Black"
+					],
+					[
+						"dark", "Dark"
+					],
+					[
+						"light", "Light"
+					],
+					[
+						"success", "Success"
+					],
+					[
+						"info", "Info"
+					],
+					[
+						"warning", "Warning"
+					],
+					[
+						"danger", "Danger"
+					]
+				],
+				"default": "auto",
+				"display": "select",
+				"label": "Text Color",
+				"name": "text_color",
+				"type": "choice",
+				"required": true
+			},
+			{
+				"default": {
+					"color": "#0c63ff"
+				},
+				"label": "Border Color",
+				"name": "border_color",
+				"type": "color"
+			},
+			{
+				"default": {
+					"color": "#f8f9fa"
+				},
+				"label": "Background Color",
+				"name": "background_color",
+				"type": "color"
+			}
+		],
+		"source": ""
+	},
+	"custom_module_template": "sr-offer-smart-pop-02.html",
+	"available_builder": true,
+	"files": [{
+		"file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/animation.gsap.min.js",
+		"folder_paths": "sr-assets/js"
+	},
+	{
+		"file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/ScrollMagic.min.js",
+		"folder_paths": "sr-assets/js"
+	},
+	{
+		"file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/gsap.js",
+		"folder_paths": "sr-assets/js"
+	}]
+}

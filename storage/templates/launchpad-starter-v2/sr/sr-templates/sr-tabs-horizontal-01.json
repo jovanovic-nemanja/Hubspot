@@ -1,0 +1,212 @@
+{
+	"custom_module": {
+		"author": "reg@lean-labs.com",
+		"tags": ["ver-2.0.0"],
+		"name": "SR Tabs Horizontal 01",
+		"css_assets": [ ],
+		"editable_contexts": [ ],
+		"external_js": [ ],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+		"js_assets": [ ],
+		"other_assets": [ ],
+		"fields": [
+			{
+				"name": "enabled",
+				"label": "Enabled",
+				"default": true,
+				"type": "boolean"
+			},
+			{
+				"default": null,
+				"label": "ID",
+				"name": "sr_module_id",
+				"type": "text"
+			},
+			{
+				"default": null,
+				"label": "Class",
+				"name": "class",
+				"type": "text"
+			},
+			{
+				"id": 1,
+				"label": "Tab Item",
+				"name": "tab_item",
+				"type": "group",
+				"occurrence": {
+					"max": 5,
+					"min": 2,
+					"default": 5
+				},
+				"children": [
+					{
+						"default": "What is Lorem Ipsum?",
+						"label": "Tab Title",
+						"name": "tab_title",
+						"type": "text"
+					},
+					{
+						"default": "The standard Lorem Ipsum passage",
+						"label": "Tab Subtitle",
+						"name": "tab_subtitle",
+						"type": "text"
+					},
+					{
+						"id": "",
+						"default": "<p class='lead'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lobortis eleifend convallis. Quisque ex arcu, laoreet in ante quis, convallis laoreet odio. Cras quis neque non purus efficitur feugiat non at dui. Ut velit libero, ultricies eu nulla dictum, porta egestas orci. Nam varius lacinia urna, sed venenatis nunc porta eu. Quisque in blandit lectus, vel blandit quam. <br><br>In a massa nisl. Pellentesque nec dui et arcu mattis porttitor eu quis tellus. Sed vel tortor eget enim euismod facilisis et ultricies erat. Pellentesque molestie felis eu ex sollicitudin, at dictum nisl luctus. Mauris metus arcu, finibus at sem et, vestibulum eleifend quam. Cras augue ligula, molestie dictum orci in, dapibus rutrum erat. Etiam porttitor gravida mauris posuere volutpat. Quisque fringilla sapien id aliquet venenatis.</p>",
+						"label": "Tab Content",
+						"name": "tab_content",
+						"type": "richtext"
+					},
+					{
+						"default": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/professional-design.png",
+							"alt": "Tab Image",
+							"width":"128",
+							"height":"128"
+						},
+						"label": "Tab Image",
+						"name": "tab_image",
+						"type": "image"
+					},
+					{
+						"default": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/professional-design-blue.png",
+							"alt": "Tab Hover Image",
+							"width":"128",
+							"height":"128"
+						},
+						"label": "Tab Hover Image",
+						"name": "tab_hover_image",
+						"type": "image"
+					},
+					{
+						"default": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/bg-sample.jpg",
+							"alt":"Tab Slide Image",
+							"width":"750",
+							"height": "750"
+						},
+						"label": "Tab Side Image",
+						"name": "tab_side_image",
+						"type": "image"
+					}
+				],
+				"default" : [
+					{
+						"tab_title": "Professional Design",
+						"tab_subtitle": "Achieve virtually any look and layout from within the template",
+						"tab_content": "<h3>Professional Design</h3><p class='lead'>By the time a trend is being mass-marketed -- like many of the ones mentioned in this article -- innovators are already experimenting with new strategies behind the scenes. With this in mind, it's important to keep trends in perspective by following the ones that compliment your business and continuing to experiment outside of mainstream practices.</p>",
+						"tab_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/professional-design.png",
+							"alt": "Tab Image",
+							"width":"128",
+							"height":"128"
+						},
+						"tab_hover_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/professional-design-blue.png",
+							"alt": "Tab Hover Image",
+							"width":"128",
+							"height":"128"
+						},
+						"tab_side_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/bg-sample.jpg",
+							"alt":"Tab Slide Image"
+						}
+					},
+					{
+						"tab_title": "Inbound Strategy",
+						"tab_subtitle": "Meet all of your inbound goals and objectives",
+						"tab_content": "<h3>Inbound Strategy</h3><p class='lead'>Quickly and efficiently build the materials you need to support your inbound marketing strategy. Drag and drop building blocks including testimonials, forms, calls-to-action, and more.</p>",
+						"tab_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/inbound-strategy.png",
+							"alt": "Tab Image",
+							"width":"128",
+							"height":"128"
+						},
+						"tab_hover_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/inbound-strategy-blue.png",
+							"alt": "Tab Hover Image",
+							"width":"128",
+							"height":"128"
+						},
+						"tab_side_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/bg-sample.jpg",
+							"alt":"Tab Slide Image"
+						}
+					},
+					{
+						"tab_title": "Unlimited Power",
+						"tab_subtitle": "Build as many pages as you need for your high-conversion website",
+						"tab_content": "<h3>Unlimited Power</h3><p class='lead'>Sprocket Rocket lets you transform your rapid prototype into a beautiful design by adjusting every aspect to fit brand standards.</p>",
+						"tab_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/unlimited-power.png",
+							"alt": "Tab Image",
+							"width":"128",
+							"height":"128"
+						},
+						"tab_hover_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/built-for-everyone-blue.png",
+							"alt": "Tab Hover Image",
+							"width":"128",
+							"height":"128"
+						},
+						"tab_side_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/bg-sample.jpg",
+							"alt":"Tab Slide Image"
+						}
+					},
+					{
+						"tab_title": "Built for Everyone",
+						"tab_subtitle": "Easy-of-use ensures new users learn to use prototyping tools",
+						"tab_content": "<h3>Built for Everyone</h3><p class='lead'>Collaborate seamlessly across devices from wherever you may be – whether you’re in the office, on the go, or making last-minute changes before your next meeting.</p>",
+						"tab_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/built-for-everyone.png",
+							"alt": "Tab Image",
+							"width":"128",
+							"height":"128"
+						},
+						"tab_hover_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/unlimited-power-blue.png",
+							"alt": "Tab Hover Image",
+							"width":"128",
+							"height":"128"
+						},
+						"tab_side_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/bg-sample.jpg",
+							"alt":"Tab Slide Image"
+						}
+					},
+					{
+						"tab_title": "White-Glove Service",
+						"tab_subtitle": "The design sprints are a qhite glove service",
+						"tab_content": "<h3>White-Glove Service</h3><p class='lead'>From start-to-finish, the design and strategy team provide all of the guidance and expertise necessary to build a high-conversion website.</p>",
+						"tab_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/white-glove-service.png",
+							"alt": "Tab Image",
+							"width":"128",
+							"height":"128"
+						},
+						"tab_hover_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/white-glove-service-blue.png",
+							"alt": "Tab Hover Image",
+							"width":"128",
+							"height":"128"
+						},
+						"tab_side_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/bg-sample.jpg",
+							"alt":"Tab Slide Image"
+						}
+					}
+				]
+			}
+		],
+		"source": ""
+	},
+	"custom_module_template": "sr-tabs-horizontal-01.html",
+	"available_builder": true,
+	"category": 5,
+	"files": []
+}

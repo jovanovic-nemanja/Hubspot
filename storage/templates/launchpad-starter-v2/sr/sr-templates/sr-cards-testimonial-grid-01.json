@@ -1,0 +1,631 @@
+{
+  "custom_module": {
+	"author": "adrian@lean-labs.com",
+    "tags": ["ver-1.0.3"],
+	"name": "SR Cards Testimonial Grid 01",
+	"css_assets": [],
+	"editable_contexts": [],
+	"external_js": [],
+	"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+	"purchased": true,
+	"hostTemplateTypes": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+	"js_assets": [],
+	"other_assets": [],
+	"fields": [{
+				"default": true,
+				"label": "Enabled",
+				"name": "enabled",
+				"type": "boolean"
+			},
+			{
+                "type": "group",
+                "name": "design_settings",
+                "label": "Design Settings",
+                "children": [
+                    {
+                        "default": null,
+                        "label": "ID",
+                        "name": "sr_module_id",
+                        "type": "text"
+                    },
+                    {
+                        "default": null,
+                        "label": "Class",
+                        "name": "class",
+                        "type": "text"
+                    },
+                    {
+                        "choices": [
+                            [
+                                "container",
+                                "Page"
+                            ],
+                            [
+                                "container-fluid",
+                                "Full Width"
+                            ]
+                        ],
+                        "default": "container",
+                        "display": "select",
+                        "label": "Layout",
+                        "name": "layout",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "choices": [
+                            [
+                                "min",
+                                "Minimum"
+                            ],
+                            [
+                                "narrow",
+                                "Narrow"
+                            ],
+                            [
+                                "wide",
+                                "Wide"
+                            ],
+                            [
+                                "max",
+                                "Maximum"
+                            ]
+                        ],
+                        "default": "max",
+                        "display": "select",
+                        "label": "Container Width",
+                        "name": "container_width",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "choices": [
+                            [
+                                "auto",
+                                "Use default values"
+                            ],
+                            [
+                                "zero",
+                                "No Padding"
+                            ],
+                            [
+                                "half",
+                                "Small padding"
+                            ],
+                            [
+                                "full",
+                                "Large padding"
+                            ],
+                            [
+                                "custom",
+                                "Custom padding"
+                            ]
+                        ],
+                        "id": "top_bottom_padding",
+                        "default": "full",
+                        "display": "select",
+                        "label": "Top Bottom Padding",
+                        "name": "top_bottom_padding",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "name": "custom_padding",
+                        "type": "text",
+                        "label": "Custom Padding",
+                        "help_text": "Top, Right, Bottom, Left",
+                        "visibility": {
+                            "controlling_field": "top_bottom_padding",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL",
+                            "access": null
+                        },
+                        "default": "1rem 0rem 1rem 0rem"
+                    },
+                    {
+                        "choices": [
+                            [
+                                "image",
+                                "Image"
+                            ],
+                            [
+                                "color",
+                                "Color"
+                            ],
+                            [
+                                "custom",
+                                "Custom"
+                            ],
+                            [
+								"gradient", "Gradient"
+							]
+                        ],
+                        "id": "background_option",
+                        "default": "color",
+                        "display": "select",
+                        "label": "Background Option",
+                        "name": "background_option",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+						"default": {
+							"color": "#0c63ff"
+						},
+						"label": "Background Gradient From",
+						"name": "background_gradient_from",
+						"visibility": {
+							"controlling_field": "background_option",
+							"controlling_value_regex": "gradient",
+							"operator": "EQUAL"
+						},
+						"type": "color"
+					},
+					{
+						"default": {
+							"color": "#1897ff"
+						},
+						"label": "Background Gradient To",
+						"name": "background_gradient_to",
+						"visibility": {
+							"controlling_field": "background_option",
+							"controlling_value_regex": "gradient",
+							"operator": "EQUAL"
+						},
+						"type": "color"
+					},
+                    {
+                        "default": {
+                            "src": "",
+                            "alt": ""
+                        },
+                        "label": "Background Image",
+                        "name": "background_image",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL"
+                        },
+                        "type": "image"
+                    },
+                    {
+                        "default": {
+                            "color": "#343a40",
+                            "opacity": 30
+                        },
+                        "label": "Background Overlay Color",
+                        "name": "background_overlay_color",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL"
+                        },
+                        "help_text": "Recommended Width: 2880x1920px",
+                        "type": "color"
+                    },
+                    {
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "success",
+                                "Success"
+                            ],
+                            [
+                                "info",
+                                "Info"
+                            ],
+                            [
+                                "warning",
+                                "Warning"
+                            ],
+                            [
+                                "danger",
+                                "Danger"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "default": "light",
+                        "display": "select",
+                        "label": "Background Color",
+                        "name": "background_color",
+                        "type": "choice",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "color",
+                            "operator": "EQUAL"
+                        },
+                        "required": true
+                    },
+                    {
+                        "default": {
+                            "color": "#fff"
+                        },
+                        "label": "Background Custom",
+                        "name": "background_custom",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL"
+                        },
+                        "type": "color"
+                    },
+                    {
+                        "default": false,
+                        "label": "Border Top",
+                        "name": "border_top",
+                        "type": "boolean"
+                    },
+                    {
+                        "default": false,
+                        "label": "Border Bottom",
+                        "name": "border_bottom",
+                        "type": "boolean"
+                    }
+                ]
+            },
+			{
+				"id": "heading",
+				"default": "Sprocket Rocket Testimonials",
+				"label": "Heading",
+				"name": "heading",
+				"type": "text"
+			},
+			{
+				"choices": [
+					[
+						"1", "H1"
+					],
+					[
+						"2", "H2"
+					],
+					[
+						"3", "H3"
+					],
+					[
+						"4", "H4"
+					],
+					[
+						"5", "H5"
+					],
+					[
+						"6", "H6"
+					]
+				],
+				"default": "2",
+				"display": "select",
+				"label": "Heading Size",
+				"name": "heading_size",
+				"visibility" : {
+					"controlling_field" : "heading",
+					"controlling_value_regex" : null,
+					"operator" : null,
+					"access" : null
+				},
+				"type": "choice",
+				"required": true
+			},
+			{
+                "name": "heading_display_size",
+                "label": "Heading Display Size",
+                "required": true,
+                "locked": false,
+				"display": "select",
+				"visibility": {
+                    "controlling_field": "heading",
+                    "controlling_value_regex": null,
+                    "operator": null,
+                    "access": null
+                },
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "h1",
+                        "H1"
+                    ],
+                    [
+                        "h2",
+                        "H2"
+                    ],
+                    [
+                        "h3",
+                        "H3"
+                    ],
+                    [
+                        "h4",
+                        "H4"
+                    ],
+                    [
+                        "h5",
+                        "H5"
+                    ],
+                    [
+                        "h6",
+                        "H6"
+                    ],
+                    [
+                        "display-4",
+                        "L"
+                    ],
+                    [
+                        "display-3",
+                        "XL"
+                    ],
+                    [
+                        "display-2",
+                        "XXL"
+                    ],
+                    [
+                        "display-1",
+                        "XXXL"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            },
+			{
+				"default": "",
+				"label": "Description",
+				"name": "description",
+				"type": "richtext"
+			},
+			{
+				"id": "enable_card_scrolling",
+				"default": false,
+				"label": "Enable Card Scrolling",
+				"name": "enable_card_scrolling",
+				"help_text": "Only enable this feature when there are at least 3 cards",
+				"type": "boolean"
+			},
+			{
+				"choices": [
+					[
+						"right2left", "Right to Left"
+					],
+					[
+						"left2right", "Left to Right"
+					]
+				],
+				"default": "right2left",
+				"display": "select",
+				"label": "Card Scroll Direction",
+				"name": "card_scroll_direction",
+				"type": "choice",
+				"visibility": {
+					"controlling_field": "enable_card_scrolling",
+					"controlling_value_regex": "true",
+					"operator": "EQUAL"
+				},
+				"required": true
+			},
+			{
+				"default": "0.5",
+				"label": "Card Scroll Speed",
+				"name": "card_scroll_speed",
+				"help_text": "Numbers only (decimals allowed)",
+				"visibility": {
+					"controlling_field": "enable_card_scrolling",
+					"controlling_value_regex": "true",
+					"operator": "EQUAL"
+				},
+				"type": "text"
+			},
+			{
+				"id": 1,
+				"label": "Cards",
+				"name": "cards",
+				"type": "group",
+				"occurrence": {
+					"min": 1
+				},
+				"children": [
+					{
+						"default": "The template is really nice and offers quite a large set of options. Its beautiful and the coding is done quickly and seamlessly. Thank you!",
+						"label": "Quote",
+						"name": "quote",
+						"type": "richtext"
+					},
+					{
+						"default": {
+							"src": "https://www.sprocketrocket.co/hubfs/sr-assets/pattern-library/sr-cards-testimonial-slider-02/02.jpg",
+							"width": "50",
+							"height": "50",
+							"alt": "Author"
+						},
+						"label": "Author Image",
+						"name": "author_image",
+						"type": "image",
+						"help_text": "Recommended size: 100x100px"
+					},
+					{
+						"default": true,
+						"label": "SR Default Image Size",
+						"name": "sr_default_image_size",
+						"type": "boolean"
+					},
+					{
+						"default": "Chris Sanford",
+						"label": "Author Name",
+						"name": "author_name",
+						"type": "text"
+					},
+					{
+						"default": "Product Designer, Google",
+						"label": "Author Title",
+						"name": "author_title",
+						"type": "text"
+					}
+				],
+				"default": [{
+						"quote": "The template is really nice and offers quite a large set of options. Its beautiful and the coding is done quickly and seamlessly. Thank you!",
+						"author_image": {
+							"src": "https://www.sprocketrocket.co/hubfs/sr-assets/pattern-library/sr-cards-testimonial-slider-02/02.jpg"
+						},
+						"sr_default_image_size": true,
+						"author_name": "Chris Sanford",
+						"author_title": "Product Designer, <br>Google"
+					},
+					{
+						"quote": "Ive had the pleasure of working with Sprocket Rocket since its inception and find it to be an invaluable tool in helping modernize our HubSpot build process.",
+						"author_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-articles-01-author-02.jpg"
+						},
+						"sr_default_image_size": true,
+						"author_name": "Gabrielle Francis",
+						"author_title": "Product Designer, Google"
+					},
+					{
+						"quote": "I am using Sprocket Rocket for my new project and love every bit of it. While the great design convinced me in the first place, it is also a professional template to work with in the long run.",
+						"author_image": {
+							"src": "https://www.sprocketrocket.co/hubfs/sr-assets/pattern-library/sr-cards-testimonial-slider-02/02.jpg"
+						},
+						"sr_default_image_size": true,
+						"author_name": "Denisse Atkinson",
+						"author_title": "Product Designer, Google"
+					},
+					{
+						"quote": "I think of this as a design resource that really helps you find the vision on sections and pages that often can seem boring to design. It does a great job of providing you alternative options that you can easily extend.",
+						"author_image": {
+							"src": "https://www.sprocketrocket.co/hubfs/sr-assets/pattern-library/sr-cards-testimonial-slider-02/05.jpg"
+						},
+						"sr_default_image_size": true,
+						"author_name": "Justin Galloway",
+						"author_title": "Product Designer, Google"
+					},
+					{
+						"quote": "I had a great experience working with the team. I quickly learned how to use the tool on my own and if I ever got stuck, they were there to answer my questions. Would definitely recommend!",
+						"author_image": {
+							"src": "https://www.sprocketrocket.co/hubfs/sr-assets/pattern-library/sr-cards-testimonial-slider-02/06.jpg"
+						},
+						"sr_default_image_size": true,
+						"author_name": "Kaila Terrell",
+						"author_title": "Product Designer, Google"
+					}
+				]
+			},
+			{
+				"default": {
+					"color": "#0C63FF"
+				},
+				"label": "Quote Color",
+				"name": "quote_color",
+				"type": "color"
+			},
+			{
+				"choices": [
+					[
+						"auto", "Auto"
+					],
+					[
+						"left", "Left"
+					],
+					[
+						"center", "Center"
+					],
+					[
+						"right", "Right"
+					]
+				],
+				"default": "center",
+				"display": "select",
+				"label": "Text Align",
+				"name": "text_align",
+				"type": "choice",
+				"required": true
+			},
+			{
+				"choices": [
+					[
+						"auto", "Auto"
+					],
+					[
+						"primary", "Primary"
+					],
+					[
+						"secondary", "Secondary"
+					],
+					[
+						"tertiary", "Tertiary"
+					],
+					[
+						"white", "White"
+					],
+					[
+						"black", "Black"
+					],
+					[
+						"dark", "Dark"
+					],
+					[
+						"light", "Light"
+					],
+					[
+						"success", "Success"
+					],
+					[
+						"info", "Info"
+					],
+					[
+						"warning", "Warning"
+					],
+					[
+						"danger", "Danger"
+					]
+				],
+				"default": "auto",
+				"display": "select",
+				"label": "Text Color",
+				"name": "text_color",
+				"type": "choice",
+				"required": true
+			}
+		],
+	"source": ""
+  },
+  "custom_module_template": "sr-cards-testimonial-grid-01.html",
+  "available_builder": true,
+  "category": 7,
+  "is_free": true,
+  "files": [
+		{
+			"file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/grouploop-ll-1.0.3.min.js",
+			"folder_paths": "sr-assets/js"
+		},
+		{
+			"file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/grouploop-ll-1.0.3.js",
+			"folder_paths": "sr-assets/js"
+		}
+	]
+}

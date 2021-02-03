@@ -1,0 +1,19 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: SR Drag & Drop Page
+-->
+
+    {% import "/sr/templates/variables.html" as var %}
+ 
+    {{ var.template('header.html') }}
+
+    <body class="{% block body_class %}{% text 'body_class' label="Body Class" no_wrapper=True %}{% endblock %}">
+
+      {% dnd_area "body_dnd_area" label="Main content" %}
+
+      {% end_dnd_area %}
+
+      {{ var.template('footer-includes.html') }}
+    </body>
+</html>

@@ -1,0 +1,15 @@
+{
+	"name": "Services v1",
+	"custom_modules": [
+		"sr-nav-dropdown-01.json",
+		"sr-cards-grid-02.json",
+		"sr-two-col-04.json",
+		"sr-two-col-03.json",
+		"sr-two-col-04.json",
+		"sr-tabs-accordion-01.json",
+		"sr-offer-bar-04.json",
+		"sr-footer-04.json"
+	],
+	"module_overrides": {},
+	"page_overrides": {}
+}

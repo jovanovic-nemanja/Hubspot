@@ -1,0 +1,246 @@
+{% if module.enabled %}
+
+	{% if module.enabled %}
+		{% if module.design_settings.container_width == 'min' %}
+			{% set width_class = 'col-md-6 offset-md-3' %}
+		{% elif module.design_settings.container_width == 'narrow' %}
+			{% set width_class = 'col-md-8 offset-md-2' %}
+		{% elif module.design_settings.container_width == 'wide' %}
+			{% set width_class = 'col-md-10 offset-md-1' %}
+		{% else %}
+			{% set width_class = 'col-md-10 offset-md-1' %}
+		{% endif %}
+	{% endif %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-faq-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR FAQ 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+	
+	<div class="sr-faq-01 sr-padding-{{ module.design_settings.top_bottom_padding }}{% if module.design_settings.class %} {{ module.design_settings.class }}{% endif %}{% if module.design_settings.border_top %} sr-line-top{% endif %}{% if module.design_settings.border_bottom %} sr-line-bottom{% endif %} {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} prototype-no-background {{ name }}"{% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }}">
+			{% if module.design_settings.container_width != 'max' %}
+				<div class="row">
+					<div class="{{ width_class }}">
+			{% endif %}
+						<div class="row">
+							<div class="col-md-4">
+								{% if module.heading ||  module.description %}
+									<div class="sr-spacer-bottom-50 sr-spacer-top-25">
+										{% if module.heading %}
+											<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} heading {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %} {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %}">{{ module.heading}}</h{{module.heading_size}}>
+										{% endif %}
+										
+										{% if module.description %}
+											<div class="description {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %} {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %}">{{ module.description}}</div>
+										{% endif %}
+									</div>
+								{% endif %}
+							</div>
+							<div class="col-md-7 offset-md-1">
+								<div id="slickSlider-{{name}}">
+									{% for item in module.faq %}
+										<div class="faq-item">
+											<h5 class="faq-question">{{ item.faq_question }}</h5>
+											<div class="faq-answer">
+												{{ item.faq_answer }}
+											</div>
+										</div>
+									{% endfor %}
+								</div>
+								{% if module.faq|length > module.number_of_items_to_show %}
+								<div id="{{name}}loadMore" class="text-right d-none d-md-block">
+									<a href="#" class="btn btn-{{ module.button.button_style }}">{{ module.button.button_text }}</a>
+								</div>
+								{% endif %}
+							</div>
+						</div>
+
+		{% if module.design_settings.container_width != 'max' %}
+				</div>
+			</div>
+		{% endif %}	
+
+		</div>
+	</div>
+
+	{{ require_js(var.sr_assetDir + '/js/slick.min.js') }}
+	{% require_js %}
+	<script>
+			{% if module.faq|length > module.number_of_items_to_show %}
+			$(".{{name}} #{{name}}loadMore").on('click', function (e) {
+				e.preventDefault();
+				$(".{{name}} .faq-item").slice(0, 99).show();
+				$(this).remove();
+			});
+			{% endif %}
+			function mobileOnlySlider() {
+				$('#slickSlider-{{name}}').slick({
+					autoplay: false,
+					dots: true,
+					arrows: false
+				});
+			}
+			if(window.innerWidth < 768) {
+				mobileOnlySlider();
+			}
+	
+			$(window).resize(function(e){
+				if(window.innerWidth < 768) {
+					if(!$('#slickSlider-{{name}}').hasClass('slick-initialized')){
+						mobileOnlySlider();
+					}
+
+				} else {
+					if($('#slickSlider-{{name}}').hasClass('slick-initialized')){
+						$('#slickSlider-{{name}}').slick('unslick');
+					}
+				}
+			});
+
+		</script>
+	{% end_require_js %}
+
+	{% require_css %}
+		<style>
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;    
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});	
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}	
+
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			.sr-faq-01 .section-heading {
+				padding-top: 1.3125rem;
+				margin-bottom: 2rem;
+			}
+			.sr-faq-01 .faq-item {
+				padding: 1.875rem;
+				background: #fff;
+				margin: 0 0 1rem;
+				position: relative;
+			}
+			{% if module.faq|length > module.number_of_items_to_show %}
+			@media (min-width: 768px) {
+				.{{name}} .faq-item:nth-child(n+{{ module.number_of_items_to_show + 1}}) {
+					display: none;  
+				}
+			}
+			{% endif %}
+			.sr-faq-01 .faq-item::before, .sr-faq-01 .faq-item::after {
+				content: '';
+				width: 2rem;
+				height: 2rem;
+				background: #fff;
+				position: absolute;
+				top: 50%;
+				left: -1px;
+				-webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+				transform: translateX(-50%) translateY(-50%) rotate(45deg);
+				z-index: -1;
+			}
+			.sr-faq-01 .faq-item::after {
+				border-color: #fff;
+				-webkit-transform: translateX(-40%) translateY(-50%) rotate(45deg);
+				transform: translateX(-40%) translateY(-50%) rotate(45deg);
+				z-index: 1;
+			}
+			.sr-faq-01 .slick-dots {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				justify-content: center;
+				margin: 0;
+				padding-left: 0;
+				padding-right: 0;
+				list-style-type: none;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				position: relative;
+				bottom: 0;
+			}
+			.sr-faq-01 .slick-dots li {
+				margin: 0 0.1rem
+			}
+			.sr-faq-01 .slick-dots button {
+				display: block;
+				width: 7px;
+				height: 7px;
+				padding: 0; 
+				border: none;
+				border-radius: 100%;
+				text-indent: -9999px;
+				-webkit-transition: all ease-in-out .2s;
+				-o-transition: all ease-in-out .2s;
+				transition: all ease-in-out .2s;
+				margin: 4px;
+				box-shadow: 0 0 0 2px transparent;
+				background: var(--primary);
+			}
+			.sr-faq-01 .slick-dots li.slick-active button {
+				background-color: transparent !important;
+				box-shadow: 0 0 0 2px var(--primary);
+			}
+			.sr-faq-01 button:focus {
+				outline: 0;
+				outline: 0; 
+			}
+			.sr-faq-01 ul.slick-dots {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				justify-content: center;
+				list-style: none;
+			}
+		</style>
+		{{ require_css(var.sr_assetDir + '/css/slick.css') }}
+	{% end_require_css %}
+{% endif %}

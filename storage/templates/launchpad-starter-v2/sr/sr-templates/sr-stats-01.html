@@ -1,0 +1,159 @@
+{% if module.enabled %}
+
+	{% require_css %}
+		<style type="text/css">
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;    
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});	
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			.{{ name }} .stats-wrapper h2 {
+				font-size: 5.5rem;
+				line-height: 6rem;
+			}
+			.{{ name }} .stats-wrapper p {
+				font-size: 1.25rem;
+				color: {{module.description_text_color.color}}
+			}
+			.{{ name }} .no-head p {
+				font-size: 2rem;
+				font-weight: 600;	
+				line-height: 2.5rem;
+				margin: 1rem 0;
+			}
+			.{{ name }} .stat {
+				margin-bottom: 2rem;
+			}
+			@media (min-width: 768px) { 
+				.{{ name }} .stat {
+					margin-bottom: 0;
+				}
+				.{{ name }} .stats-wrapper {
+					display: -webkit-box;
+					display: -ms-flexbox;
+					display: flex;
+					-webkit-box-pack: justify;
+					-ms-flex-pack: justify;
+					justify-content: space-between;
+					-webkit-box-align: center;
+					-ms-flex-align: center;
+					align-items: center;
+					-ms-flex-wrap: wrap;
+					flex-wrap: wrap;
+				}
+				.{{ name }} .stats-wrapper div {
+					-webkit-box-flex: 33%;
+					-ms-flex: 33%;
+					flex: 33%
+				}
+			}
+		
+		</style>
+	{% end_require_css %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-stats-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Stats 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+
+	<div class="sr-stats {{ name }} {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }} {% endif %}sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.class %}{{ module.design_settings.class }} {% endif %}{% if module.design_settings.border_top %}sr-line-top {% endif %}{% if module.design_settings.border_bottom %}sr-line-bottom {% endif %}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }}">
+            {% if module.design_settings.container_width != 'max' %}
+            <div class="row">
+                <div class="{{ width_class }}">
+            {% endif %}
+						<div class="{% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">
+							{% if module.heading %}
+								<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} heading {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.heading }}</h{{module.heading_size}}>
+							{% endif %}
+							{% if module.description %}
+								<div class="description">
+									{{ module.description }}
+								</div>
+							{% endif %}
+							<div class="stats-wrapper">
+								{% for item in module.stats %}
+									<div class="stat {% if !item.stat_number %}no-head{% endif %}">
+										{% if item.stat_number %}<h2 class="{% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}"><span class="counter">{{item.stat_number}}</span>{{item.headline}}</h2>{% endif %}
+										{% if item.description %}<p>{{item.description}}</p>{% endif %}
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+			{% if module.design_settings.container_width != 'max' %}
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+
+	{% if module.animate_stats %}
+	{{ require_js(var.sr_assetDir + '/js/waypoints.min.js', "footer") }}
+	{{ require_js(var.sr_assetDir + '/js/jquery.counterup.min.js', "footer") }}
+  	{{ require_js(var.sr_assetDir + '/js/jquery.migrate.min.js', "footer") }}
+
+	{% require_js position="footer" %}
+		<script>
+			$(document).ready(function($) {
+				$('.{{name}} .counter').counterUp({
+					delay: 10,
+					time: {{module.animation_speed}}
+				});
+			});
+		</script>
+	{% end_require_js %}
+	{% endif %}
+
+{% endif %}

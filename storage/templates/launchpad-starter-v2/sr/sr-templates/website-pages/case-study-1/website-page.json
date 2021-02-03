@@ -1,0 +1,17 @@
+{
+	"name": "Case Study v1",
+	"custom_modules": [
+		"sr-nav-dropdown-01.json",
+		"sr-hero-01.json",
+		"sr-one-col-01.json",
+		"sr-stats-02.json",
+		"sr-two-col-01.json",
+		"sr-one-col-01.json",
+		"sr-hero-parallax-01.json",
+		"sr-tabs-testimonials-01.json",
+		"sr-offer-one-col-01.json",
+		"sr-footer-04.json"
+	],
+	"module_overrides": {},
+	"page_overrides": {}
+}

@@ -1,0 +1,25 @@
+{
+	"name": "Search Results",
+	"templates": [
+		{
+			"category_id": "0",
+			"template_type": "27",
+			"folder": "sr/templates",
+			"path": "sr/templates/SR Search Results.html",
+			"source": "launchpad-starter-v2/sr/sr-templates/system/SR Search Results/SR Search Results.html",
+			"is_available_for_new_content": true
+		},
+		{
+			"category_id": "0",
+			"css_or_js_template": true,
+			"template_type": "24",
+			"folder": "sr/css",
+			"path": "sr/css/sr-search.css",
+			"source": "launchpad-starter-v2/sr/sr-templates/system/SR Search Results/sr-search.css"
+		}
+	],
+	"custom_modules": [
+		"sr-nav-dropdown-01.json",
+		"sr-footer-04.json"
+	]
+}

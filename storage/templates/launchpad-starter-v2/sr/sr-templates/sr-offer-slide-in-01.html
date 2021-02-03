@@ -1,0 +1,255 @@
+{% if module.enabled %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% else %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	{% require_css %}
+		<style>
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;    
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			
+			.sr-offer-slide-in-01 .hs-form .hs_submit {
+				margin-top: 0;
+			}
+			.sr-offer-slide-in-01 .hide-button {
+				border: none;
+			}
+			.sr-offer-slide-in-01 .sr-offer-slide-in-01-form .hs-form fieldset {
+				padding:0;
+			}
+			.sr-offer-slide-in-01 .sr-offer-slide-in-01-form {
+				background-color:#fff;
+				padding:3.6rem 2.5rem;
+			}
+			.sr-offer-slide-in-01 .sr-offer-slide-in-01-form label {
+				font-weight:500;
+			}
+			.sr-offer-slide-in-01 .sr-offer-slide-in-01-form h3 {
+				color:#30343b;
+				font-size:1.5rem;
+				line-height: 1.9rem;
+				margin-bottom:2rem;
+			}
+			.sr-offer-slide-in-01.bg-dark .hide-button,
+			.sr-offer-slide-in-01 .text-light .hide-button,
+			.sr-offer-slide-in-01 .text-white .hide-button {
+				color: #fff;
+			}
+			.sr-offer-slide-in-01 .text-white .hide-button i {
+				font-weight:600;
+			}
+			.sr-offer-slide-in-01 .hs-form input[type=submit].hs-button.primary {
+					display:block;
+					width: 100%;
+					text-align:center;
+			}
+			@media only screen and (max-width:768px) {
+				.sr-offer-slide-in-01 .sr-offer-slide-in-01-content {
+					text-align:center;
+				}
+				.sr-offer-slide-in-01 .sr-offer-slide-in-01-content {
+					padding-top:3.125rem;
+				}
+			}
+			@media only screen and (max-width:575px) {
+				.sr-offer-slide-in-01 .sr-offer-slide-in-01-form {
+					margin:0 0.938rem;
+				}
+				.sr-offer-slide-in-01 .sr-offer-slide-in-01-form h3 {
+					font-size:1.219rem;
+				}
+				.sr-offer-slide-in-01-content img {
+					transform: scale(0.8);
+				}
+			}
+		
+		</style>
+	{% end_require_css %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-offer-slide-in-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Offer Slide In 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+	
+	<div class="sr-offer-slide-in-01 {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.class %}{{ module.design_settings.class }}{% endif %} {% if module.design_settings.border_top %}sr-line-top{% endif %} {% if module.design_settings.border_bottom %}sr-line-bottom{% endif %} {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %} prototype-no-background {{ name }}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }}">
+			{% if module.design_settings.container_width != 'max' %}
+			<div class="row">
+				<div class="{{ width_class }}">
+			{% endif %}
+					<div class="row ">
+						<div class="d-flex col-12 justify-content-center p-4 {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">
+							<a href="#" class="hide-button">Hide  <i class="fa fa-angle-up" aria-hidden="true"></i></a>
+						</div>
+					</div>
+					<div class="row d-flex">
+						<div class="col sr-col {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">
+							<div class="row d-flex ">
+								<div class="col-md-6 sr-offer-slide-in-01-form order-md-2">
+									{% if !module.form.form.form_id || hub_id == 123 %}
+										<div id="hs_form_target_module_3540739632">
+											<h3 class="hs_cos_wrapper form-title">Get The Growth-Driven Design Strategy Kit</h3>
+											<form class="hs-form stacked hs-custom-form" >
+												<fieldset class="form-columns-1" data-reactid=".0.1:$1">
+													<div class="hs_email field hs-form-field">
+														<label>
+															<span>Email address</span>
+															<span class="hs-form-required">*</span>
+														</label>
+														<div class="hs-field-desc" style="display:none;"></div>
+														<div class="input">
+															<input class="hs-input" name="email" placeholder="" required="" type="email" value="Placeholder Text">
+														</div>
+													</div>
+												</fieldset>
+												<div class="hs_submit">
+													<div class="hs-field-desc" style="display:none;"></div>
+													<div class="actions">
+														<input class="hs-button primary large" type="submit" value="Download Now">
+													</div>
+												</div>
+											</form>
+										</div>
+									{% else %}
+										{% if module.form.title is truthy %}
+											{% set no_title = False %}
+										{% else %}
+											{% set no_title = True %}
+										{% endif %}
+										{% if module.form.form.form_id %}
+											{% form
+												form_key="{{name}}",
+												form_to_use="{{module.form.form.form_id}}"
+												title="{{module.form.title}}"
+												no_title="{{no_title}}"
+												follow_up_type_simple="{{module.form.follow_up_type_simple}}"
+												simple_email_for_live_id="{{module.form.simple_email_for_live_id}}"
+												follow_up_type_automation="{{module.form.follow_up_type_automation}}"
+												response_response_type="{{module.form.form.response_type}}"
+												response_redirect_id="{{module.form.form.redirect_id}}"
+												response_redirect_url="{{module.form.form.redirect_url}}"
+												response_message="{{module.form.form.message}}"
+												notifications_are_overridden="{{module.form.notifications_are_overridden}}"
+												notifications_override_email_addresses="{{module.form.notifications_override_email_addresses}}"
+												gotowebinar_webinar_key="{{module.form.form.gotowebinar_webinar_key}}"
+											%}
+										{% endif %}
+									{% endif %}
+								</div>
+								<div class="col-md-6 sr-col sr-offer-slide-in-01-content order-md-1">
+									{% if module.sr_default_image_size %}
+										{{ var.image(module.bling_image.src, '220', module.bling_image.alt) }}
+									{% else %}
+										{{ var.image(module.bling_image.src, module.bling_image.width, module.bling_image.alt) }}
+									{% endif %}
+
+									{% if module.heading ||  module.description %}
+									<div class="sr-spacer-top-50 sr-spacer-bottom-50 pr-xl-5">
+									{% if module.heading %}
+										<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} heading {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.heading}}</h{{module.heading_size}}>
+									{% endif %}
+									{% if module.description %}
+										<div class="description pr-xl-5">{{ module.description}}</div>
+									{% endif %}
+									</div>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+			{% if module.design_settings.container_width != 'max' %}
+				</div>
+			</div>
+		{% endif %}
+		</div>
+	</div>
+
+	{% if module.slide_in_on_scroll %}
+		{% require_js %}
+			<script type="text/javascript">
+				$(".sr-offer-slide-in-01.{{ name }} .hide-button").on("click", function() {
+					$(".sr-offer-slide-in-01.{{ name }}").data('hidden', true);
+					$(".sr-offer-slide-in-01.{{ name }}").fadeOut();
+					return false;
+				});
+
+				$.fn.isInViewport = function() {
+					var elementTop = $(this).offset().top;
+					var elementBottom = elementTop + $(this).outerHeight();
+					var viewportTop = $(window).scrollTop();
+					var viewportBottom = viewportTop + $(window).height();
+					return elementBottom > viewportTop && elementTop < viewportBottom;
+				};
+				$(function() {
+					if ($('.{{ name }}.sr-offer-slide-in-01').isInViewport()){
+						$('.{{ name }}.sr-offer-slide-in-01').hide();
+						$('.{{ name }}.sr-offer-slide-in-01').delay(500).slideDown();
+					} else {
+						$('.{{ name }}.sr-offer-slide-in-01').hide();
+					}
+					$(window).on('resize scroll', function() {
+						if (!$('.{{ name }}.sr-offer-slide-in-01').data('hidden')){
+							if ($('.{{ name }}.sr-offer-slide-in-01').isInViewport() && !$('.{{ name }}.sr-offer-slide-in-01').is(':visible')){
+								$('.{{ name }}.sr-offer-slide-in-01').delay(500).slideDown();
+							}
+						}
+					});
+				});
+			</script>
+		{% end_require_js %}
+	{% endif %}
+{% endif %}

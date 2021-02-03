@@ -1,0 +1,11 @@
+{
+	"name": "Sales Rep",
+	"custom_modules": [
+		"sr-nav-min-01.json",
+		"sr-meeting-01.json",
+		"sr-cards-testimonial-slider-01.json",
+		"sr-clients-01.json",
+		"sr-offer-bar-03.json",
+		"sr-footer-min-01.json"
+	]
+}

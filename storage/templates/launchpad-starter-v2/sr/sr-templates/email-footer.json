@@ -1,0 +1,128 @@
+{
+	"custom_module": {
+		"author": "bradley@lean-labs.com",
+		"tags": ["ver-1.0.0"],
+		"name": "Email Footer",
+		"css_assets": [],
+		"editable_contexts": [],
+		"external_js": [],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": ["EMAIL"],
+		"js_assets": [],
+		"other_assets": [],
+		"fields": [{
+				"default": true,
+				"label": "Enabled",
+				"name": "enabled",
+				"type": "boolean"
+			},
+			{
+				"name": "footer_text",
+				"label": "Footer Text",
+				"type": "richtext",
+				"default": "As those teams grow, transparency and collaboration becomes integrated in how they communicate and work together."
+			},
+			{
+				"name": "padding",
+				"label": "Padding",
+				"type": "text",
+				"default": "50px"
+			},
+			{
+				"id": 1,
+				"name": "background",
+				"label": "Background",
+				"children": [{
+					"id": 2,
+					"name": "background",
+					"label": "Background",
+					"children": [{
+						"id": 22,
+						"name": "background_color",
+						"label": "Background Color",
+						"type": "color",
+						"default": {
+							"color": "#33323D",
+							"opacity": 100
+						}
+					},
+					{
+						"id": 3,
+						"name": "background_image",
+						"label": "Background Image",
+						"resizable": false,
+						"type": "image",
+						"default": {
+							"src": "",
+							"alt": null
+						}
+					},
+					{
+						"id": 4,
+						"name": "background_size",
+						"label": "Background Size",
+						"display": "select",
+						"choices": [
+							["auto", "Auto"],
+							["cover", "Cover"],
+							["contain", "Contain"]
+						],
+						"type": "choice",
+						"default": ""
+					},
+					{
+						"id": 5,
+						"name": "background_position",
+						"label": "Background Position",
+						"display": "select",
+						"choices": [
+							["left top", "left top"],
+							["left center", "left center"],
+							["left bottom", "left bottom"],
+							["right top", "right top"],
+							["right center", "right center"],
+							["right bottom", "right bottom"],
+							["center top", "center top"],
+							["center center", "center center"],
+							["center bottom_", "center bottom\t"]
+						],
+						"type": "choice",
+						"default": ""
+					}],
+					"type": "group",
+					"default": {
+						"background_color": {
+							"color": "#33323D",
+							"opacity": 100
+						},
+						"background_image": {
+							"src": "",
+							"alt": null
+						},
+						"background_size": "",
+						"background_position": ""
+					}
+				}],
+				"type": "group",
+				"default": {
+					"background": {
+						"background_color": {
+							"color": "#33323D",
+							"opacity": 100
+						},
+						"background_image": {
+							"src": "",
+							"alt": null
+						},
+						"background_size": "",
+						"background_position": ""
+					}
+				}
+			}
+		],
+		"source": ""
+	},
+	"custom_module_template": "email-footer.html",
+	"files": []
+}

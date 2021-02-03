@@ -1,0 +1,228 @@
+<!--
+  templateType: "blog"
+  isAvailableForNewContent: true
+-->
+
+{% import "/sr/templates/variables.html" as var %}
+
+{{ var.template('blog-echo-header.html') }}
+
+<body class="blog" data-spy="scroll" data-target=".pin-nav" data-offset="50">
+
+	{# ===================================================================================== }
+		Load navigation
+	{ ===================================================================================== #}
+	
+	<div class="blog-featured-image" style="background-image: url('{{ content.featured_image }}');"></div>
+	
+	{# Breadcrumbs #}
+	<div class="sr-sticky-breadcrumb">
+		<div class="sr-sticky-breadcrumb-heading">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="row d-flex justify-content-between align-items-center">
+							<div class="col-auto">
+								{% set current_section = ' &raquo; Latest Articles' %}
+								{% if topic %}
+								{% set current_section = topic|replace("-"," ")%}
+								{% endif %}
+								{% if blog_author %}
+								{% set current_section = '' %}
+								{% endif %}
+								<a href="{{ group.absolute_url }}">{{ group.public_title }}</a><span class="current-section">{% if topic %} &raquo;{% endif %} {{ current_section }}</span>
+							</div>
+							<div class="col-auto">
+								<a href="#" class="sr-sticky-breadcrumb-trigger">
+									Categories
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="sr-sticky-breadcrumb-categories" style="display: none;">
+			<div class="container">
+				{% set blog_topics = blog_topics(group.id, 250) %}
+				<ul>
+					{% for item in blog_topics %}
+					<li><a class="btn btn-outline-primary" href="{{ group.absolute_url }}/topic/{{ item.slug }}">{{ item.name }}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	{# Blog Post #}
+	<div class="blog-heading sr-spacer-top-50">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-md-8 offset-md-2">
+					{% for topic in content.topic_list %}
+						{% if loop.first %}
+							<div class="tag">
+								<a href="{{ group.absolute_url }}/topic/{{ topic.slug }}">{{ topic.name }}</a>
+							</div>
+						{% endif %}
+					{% endfor %}
+					<div class="data">
+						{{ content.publish_date_local_time|datetimeformat('%b %d, %Y') }} <span class="bull">&bull;</span> {% if content.blog_post_author %}<a class="author-link" href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">{{ content.blog_post_author.full_name }}</a>{% endif %}
+					</div>
+					<h1>{{ content.name }}</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="blog-content sr-spacer-bottom-50">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<article>
+
+						{{ content.post_body }}
+
+						<div class="sr-social-share">
+							<span class="sr-social-share-heading">Share</span>
+
+							{{ require_js(get_asset_url('/sr/js/ScrollMagic.js')) }}
+
+							{% require_js %}
+							<script>
+								$(window).bind("load", function() {
+									if ($('.sr-social-share')) {
+										var controller = new ScrollMagic.Controller();
+										var articleHeight = $('article').height() - ($(window).height()/2);
+										var socialToggle = new ScrollMagic.Scene({triggerElement: 'article', duration: articleHeight, triggerHook: 'onLeave', offset: '-50'})
+										// .addIndicators() // add indicators (requires plugin)
+										.setClassToggle(".sr-social-share", "active") // add class toggle
+										.addTo(controller);
+									}
+								});
+							</script>
+							{% end_require_js %}
+
+							{% widget_block social_sharing "my_social_sharing" label='Social Sharing', use_page_url=True, overrideable=True  %}
+								{% widget_attribute "twitter" is_json=True %}{"custom_link_format": "", "enabled": true, "network": "twitter", "img_src": "https://www.lean-labs.com/hubfs/LLv2/images/icon-blog-twitter.png?noresize"}{% end_widget_attribute %}
+								{% widget_attribute "linkedin" is_json=True %}{"custom_link_format": "", "enabled": true, "network": "linkedin", "img_src": "https://www.lean-labs.com/hubfs/LLv2/images/icon-blog-linkedin.png?noresize"}{% end_widget_attribute %}
+								{% widget_attribute "facebook" is_json=True %}{"custom_link_format": "", "enabled": true, "network": "facebook", "img_src": "https://www.lean-labs.com/hubfs/LLv2/images/icon-blog-facebook.png?noresize"}{% end_widget_attribute %}
+								{% widget_attribute "google_plus" is_json=True %}{"custom_link_format": "", "enabled": true, "network": "google_plus", "img_src": "https://www.lean-labs.com/hubfs/LLv2/images/icon-blog-google-plus.png?noresize"}{% end_widget_attribute %}
+							{% end_widget_block %}
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	{# Author #}
+	<div class="author-section sr-spacer-bottom-50">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 offset-md-3 text-center">
+					{% if content.blog_post_author %}
+					<span class="author">Published by 
+						<a class="author-link" href="{{ group.absolute_url }}/author/{{ content.blog_post_author.slug }}">{{ content.blog_post_author.display_name }}</a>
+					</span>
+					{% endif %}
+					{{ content.publish_date_local_time|datetimeformat('%B %e, %Y') }}
+					
+					{% if content.blog_post_author.avatar %}
+					<div class="avatar">
+						<img src="{{ content.blog_post_author.avatar }}" alt="{{ content.blog_post_author.full_name }}" />
+					</div>
+					{% endif %}
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{# Comments #}
+	{% if group.allow_comments %}
+	<div class="blog-comments sr-spacer-bottom-50">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<a href="#" class="blog-comments-trigger">Comments</a>
+					<div class="blog-comments-wrapper">
+						{% blog_comments "blog_comments" overrideable=False, label='Blog Comments' %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endif %}
+
+	{# Related #}
+	{% if content.topic_list %}
+		<div class="blog-related-posts">
+			<div class="container">
+				<div class="row">
+					{% for topic in content.topic_list %}
+						{% if loop.first %}
+							{% set related_posts = blog_recent_topic_posts(group.id, topic.slug, 8) %}
+							{% for post in related_posts %}
+								{% unless content.absolute_url == post.absolute_url %}
+									{% if loop.index < 4 %}
+									<div class="col-12 col-md-6 col-md-4 hs">
+										<div class="article-panel">
+											<div class="article-img">
+												<a href="{{ post.absolute_url }}">
+													<img src="{{ post.featured_image }}" alt="{{ post.featured_image.alt }}" class="img-fluid">
+												</a>
+											</div>
+											<div class="article-content">
+												{% for topic in post.topic_list %}
+													{% if loop.first %}
+														<div class="tag">
+															<a href="{{ group.absolute_url }}/topic/{{ topic.slug }}">{{ topic.name }}</a>
+														</div>
+													{% endif %}
+												{% endfor %}
+												<div class="data">
+													{{ post.publish_date_local_time|datetimeformat('%m.%e.%Y') }} {% if post.blog_post_author %}<a class="author-link" href="{{ blog_author_url(group.id, post.blog_post_author.slug) }}">{{ post.blog_post_author.full_name }}</a>{% endif %}
+												</div>
+												<h3><a href="{{ post.absolute_url }}">{{ post.name }}</a></h3>
+											</div>
+										</div>
+									</div>
+									{% endif %}
+								{% endunless %}
+							{% endfor %}
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	{% endif %}
+
+	{# ===================================================================================== }
+		Load Footer module.
+	{ ===================================================================================== #}
+
+	{% require_js %}
+		<script>
+			// Slide on click
+			if($('.sr-sticky-breadcrumb-trigger').length) {
+				$('.sr-sticky-breadcrumb-trigger').click(function(e){
+					$('.sr-sticky-breadcrumb-categories').slideToggle();
+					e.preventDefault();
+				});
+			}
+
+			// Blog comments trigger
+			$('.blog-comments-trigger').click(function(e){
+				$('.blog-comments-wrapper').slideToggle();
+				$(this).toggleClass('open');
+				e.preventDefault();
+			});
+		</script>
+	{% end_require_js %}
+
+	{{ var.template('blog-echo-footer-includes.html') }}
+
+</body>
+</html>

@@ -1,0 +1,674 @@
+{# -----------------------------------------------------------------------------------
+
+	Lean Labs LaunchPad Base Theme
+
+	Author: @helloteichner
+	Version: 3.0.0
+
+----------------------------------------------------------------------------------- #}
+
+{% set color = 
+	{
+		'primary':                  module.color.primary.color,
+		'secondary':                module.color.secondary.color,
+		'success':                  '#28a745',
+		'info':                     '#17a2b8',
+		'warning':                  '#ffc107',
+		'danger':                   '#dc3545',
+		'light':                    '#f8f9fa',
+		'dark':                     '#343a40',
+		'white':                    '#ffffff',
+		'ui-1':                     '#ffffff',
+		'ui-2':                     '#ffffff',
+		'ui-3':                     '#ffffff',
+		'ui-4':                     '#ffffff',
+		'ui-5':                     '#ffffff',
+		'ui-6':                     '#ffffff',
+		'ui-7':                     '#ffffff',
+		'ui-8':                     '#ffffff',
+		'ui-9':                     '#ffffff',
+		'ui-10':                    '#ffffff',
+		'gradient1from':            '#0C63FF',
+		'gradient1to':              '#1897FF',
+		'gradient2from':            '#393097',
+		'gradient2to':              '#FF5A71',
+		'borders':                  '#E5E7EA',
+		'body_bg':                  '#fff',
+		'body_color':               '#87909E',
+		'link_color':               '#87909E',
+		'link_hover_color':         '#87909E',
+		'bradley':                  'purple'
+	} 
+%}
+
+{% set font_size_base = 16 %}
+{% set percentage = 1.25 %}
+{% set margin_percentage = 2.75 %}
+{% set link_decoration = 'none' %}
+
+{% set typography = 
+	{
+		'lead_font_size':           1.25,
+		'lead_font_weight':         300,
+		'small_font_size':          0.875,
+		'font_family_sans_serif':   'sans-serif',
+		'h1_font_size':             2.5,
+		'h2_font_size':             2,
+		'h3_font_size':             1.75,
+		'h4_font_size':             1.5,
+		'h5_font_size':             1.25,
+		'h6_font_size':             1,
+		'headings_font_family':     'inherit',
+		'headings_font_weight':     500,
+		'headings_line_height':     1.2,
+		'headings_color':           '#30343B'
+	} 
+%}
+
+<h1>Hello World.</h1>
+<h2>Hello World.</h2>
+<h3>Hello World.</h3>
+<h4>Hello World.</h4>
+<h5>Hello World.</h5>
+<h6>Hello World.</h6>
+<p class="lead">
+	In addition to printing the values of variables and dictionary attributes in a template, you can also define your own variables. You can store strings, booleans, integers,  sequences, or create dictionaries within a single variable.
+</p>
+<p>
+	In addition to printing the values of variables and dictionary attributes in a template, you can also define your own variables. You can store strings, booleans, integers,  sequences, or create dictionaries within a single variable. Variables are defined within statement delimiters using the word "set". Once stored, variables can then be printed by stating the variable name as an expression. Below you can see various types of information stored in variables and then printed.
+</p>
+
+{{ typography.h1_font_size }} asd
+
+<link href="https://fonts.googleapis.com/css?family={{ module.typography.body_font }}" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family={{ module.typography.heading_font }}" rel="stylesheet">
+
+<style>
+	
+	/* ----------------------------------------------------------------------------------- */
+	/*  Shared
+	/* ----------------------------------------------------------------------------------- */
+
+	.block { display: table; }
+	.circle { border-radius: 100%; }
+	.divider {
+		display: block;
+		border-bottom: 1px solid rgba(0,0,0,0.1);
+		padding: 0 0 13px 0;
+		margin: 0 0 40px;
+	}
+	.text-center-mobile { text-align: center; }
+	.max-responsive { max-width: 100%; height: auto !important; }
+	.antialiased { -webkit-font-smoothing: antialiased; }
+
+	{% macro animated() %}
+		transition: all .3s ease-in-out;
+		animation-timing-function: ease-in-out;
+	{% endmacro %}
+
+	.animated {
+		{{ animated() }}
+	}
+
+	{% macro animated_fast() %}
+		transition: all .15s ease-in-out;
+		animation-timing-function: ease-in-out;
+	{% endmacro %}
+
+	.animated-fast {
+		{{ animated_fast() }}
+	}
+
+	.sr-line-top { border-top: 1px solid {{ color.borders }}; }
+	.sr-line-bottom { border-bottom: 1px solid {{ color.borders }}; }
+
+	/* ----------------------------------------------------------------------------------- */
+	/*  Typography
+	/* ----------------------------------------------------------------------------------- */
+
+	html, body {
+		line-height: 1.5rem;
+		font-family: '{{ module.typography.body_font }}';
+		font-size: {{ font_size_base + 'px' }};
+	}
+
+	h1 {
+		font-size: {{ typography.h1_font_size + 'rem'}};
+		line-height: {{ typography.h1_font_size * percentage + 'rem'}};
+		font-weight: 600;
+		margin-bottom: {{ typography.h1_font_size / margin_percentage + 'rem'}};
+	}
+	h2 { 
+		font-size: {{ typography.h2_font_size + 'rem'}};
+		line-height: {{ typography.h2_font_size * percentage + 'rem'}};
+		font-weight: 600;
+		margin-bottom: {{ typography.h2_font_size / margin_percentage + 'rem'}};
+	}
+	h3 {
+		font-size: {{ typography.h3_font_size + 'rem'}};
+		line-height: {{ typography.h3_font_size * percentage + 'rem'}};
+		font-weight: 600;
+		margin-bottom: {{ typography.h3_font_size / margin_percentage + 'rem'}};
+	}
+	h4 {
+		font-size: {{ typography.h4_font_size + 'rem'}};
+		line-height: {{ typography.h4_font_size * percentage + 'rem'}};
+		font-weight: 600;
+		margin-bottom: {{ typography.h4_font_size / margin_percentage + 'rem'}};
+	}
+	h5 {
+		font-size: {{ typography.h5_font_size + 'rem'}};
+		line-height: {{ typography.h5_font_size * percentage + 'rem'}};
+		font-weight: 500;
+		margin-bottom: {{ typography.h5_font_size / margin_percentage + 'rem'}};
+	}
+	h6 {
+		font-size: {{ typography.h6_font_size + 'rem'}};
+		line-height: {{ typography.h6_font_size * percentage + 'rem'}};
+		font-weight: 500;
+		margin-bottom: {{ typography.h6_font_size / margin_percentage + 'rem'}};
+	}
+	h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+		letter-spacing: .03rem;
+		font-family: '{% if module.typography.heading_font == 'Permanent+Marker' %}Permanent Marker{% else %}{{ module.typography.heading_font }}{% endif %}';
+	}
+	.display-1, .display-2, .display-3, .display-4 {
+		font-weight: 600
+	}
+
+	p {
+		margin-top: 0;
+		margin-bottom: 1.25rem;
+		letter-spacing: 0.0055rem;
+	}
+
+	p.lead, p.large {
+		font-size: {{ typography.lead_font_size + 'rem' }};
+		line-height: 1.5;
+		font-weight: 400;
+	}
+
+	p.small, .small, small {
+		font-size: {{ typography.small_font_size + 'rem' }};
+	}
+
+	blockquote {
+		font-size: 1.375rem;
+		font-style: italic;
+		font-weight: 300;
+		line-height: 1.27;
+	}
+
+	blockquote {
+		font-size: 1.375rem;
+		font-style: italic;
+		font-weight: 300;
+		line-height: 1.27;
+	}
+
+	a {
+		text-decoration: {{ link_decoration }};
+	}
+
+	a.hover, a.hover:not(.btn) {
+		color: {{ color.link_hover_color }};
+	}
+
+	p a {
+		color: inherit;
+		border-bottom: 1px solid {{ color.link_hover_color }};
+	}
+
+	p a:hover {
+		color: {{ color.link_hover_color }};
+	}
+
+	/* Responsive Typography */
+	html { font-size: .8rem; }
+	@media (min-width: 768px) { html { font-size: .9rem; }}
+	@media (min-width: 992px) { html { font-size: 1rem; }}
+
+	/* ----------------------------------------------------------------------------------- */
+	/*  Buttons
+	/* ----------------------------------------------------------------------------------- */
+
+
+
+	{% macro btn() %}
+		{{ animated_fast() }}
+		font-size: {{ 0.9 + 'rem' }};
+		border-radius: 3px;
+		line-height: 1.25rem;
+		text-align: center;
+		padding: .75rem 1.05rem !important;
+		border: 1px solid;
+		font-weight: 500;
+		display: inline-block;
+	{% endmacro %}
+
+	.btn {
+		{{ btn() }}
+	}
+
+	/* Sizes */
+	btn.btn-sm {
+		padding: .5rem .75rem !important;
+		font-size: {{ font_size_base / $font_size_base - 0.25 + 'rem' }};
+	}
+	btn.btn-md {
+		padding: .75rem 1.05rem !important;
+		font-size: {{ font_size_base / $font_size_base - 0.1 + 'rem' }};
+	}
+	btn.btn-lg {
+		padding: 1.05rem 1.5rem !important;
+		font-size: {{ font_size_base / $font_size_base - 0.1 + 'rem' }};
+	}
+}
+
+	.btn-wrapper .cta_button {
+		font-size: {{ font_size_base / $font_size_base - 0.1 + 'rem' }};
+		border-radius: 3px;
+		line-height: 1.25rem;
+		text-align: center;
+		padding: .75rem 1.05rem !important;
+		border-width: 1px;
+		font-weight: 500;
+	}
+
+	/* ----------------------------------------------------------------------------------- */
+	/*  Standard Padding
+	/* ----------------------------------------------------------------------------------- */
+
+	.sr-padding-zero {
+		padding-top: 0 !important;
+		padding-bottom: 0 !important;
+	}
+	.sr-padding-half {
+		padding-top: 3.125rem !important;
+		padding-bottom: 3.125rem !important;
+	}
+	.sr-padding-full {
+		padding-top: 6.25rem !important;
+		padding-bottom: 6.25rem !important;
+	}
+
+	/* ----------------------------------------------------------------------------------- */
+	/*  Standard Spacers
+	/* ----------------------------------------------------------------------------------- */
+
+	.sr-spacer-25 {
+		padding-top: {{ 25 / font_size_base + 'rem' }};
+		padding-bottom: {{ 25 / font_size_base + 'rem' }};
+	}
+	.sr-spacer-top-25 {
+		padding-top: {{ 25 / font_size_base + 'rem' }};
+	}
+	.sr-spacer-bottom-25 {
+		padding-bottom: {{ 25 / font_size_base + 'rem' }};
+	}
+
+	.sr-spacer-50 {
+		padding-top: {{ 50 / font_size_base + 'rem' }};
+		padding-bottom: {{ 50 / font_size_base + 'rem' }};
+	}
+	.sr-spacer-top-50 {
+		padding-top: {{ 50 / font_size_base + 'rem' }};
+	}
+	.sr-spacer-bottom-50 {
+		padding-bottom: {{ 50 / font_size_base + 'rem' }};
+	}
+
+	.sr-spacer-75 {
+		padding-top: {{ 75 / font_size_base + 'rem' }};
+		padding-bottom: {{ 75 / font_size_base + 'rem' }};
+	}
+	.sr-spacer-top-75 {
+		padding-top: {{ 75 / font_size_base + 'rem' }};
+	}
+	.sr-spacer-bottom-75 {
+		padding-bottom: {{ 75 / font_size_base + 'rem' }};
+	}
+
+	.sr-spacer-100 {
+		padding-top: {{ 100 / font_size_base + 'rem' }};
+		padding-bottom: {{ 100 / font_size_base + 'rem' }};
+	}
+	.sr-spacer-top-100 {
+		padding-top: {{ 100 / font_size_base + 'rem' }};
+	}
+	.sr-spacer-bottom-100 {
+		padding-bottom: {{ 100 / font_size_base + 'rem' }};
+	}
+
+
+	{% for key, val in color.items() %}
+
+		/* Button color classes */
+		{% set btn_css_class = 'btn-' + key %}
+		{% set btn_hubl_class = 'btn_' + key %}
+		{% set btn_outline_css_class = 'btn-outline-' + key %}
+		{% set btn_outline_hubl_class = 'btn_outline_' + key %}
+
+		{% macro btn_hubl_class() %}
+			color: #fff;
+			background-color: {{ val }};
+			border-color: {{ val }} !important;
+		{% endmacro %}
+
+		.{{ btn_css_class }} {
+			{{ btn_hubl_class() }}
+		}
+
+		.{{ btn_css_class }}:hover {
+			color: #fff;
+			background-color: {{ val }};
+			filter: brightness(110%);
+		}
+
+		.btn-wrapper.{{ btn_css_class }}-wrapper .cta_button,
+		input[type=submit].hs-button.{{ key }},
+		.btn-wrapper.{{ btn_css_class }}-wrapper .hs-form input[type="submit"],
+		.btn-wrapper.{{ btn_css_class }}-wrapper .hs-form input[type="button"] {
+			{{ btn() }}
+			{{ btn_hubl_class() }}
+		}
+
+		.btn-wrapper.{{ btn_css_class }}-wrapper .cta_button:hover,
+		input[type=submit].hs-button.{{ key }}:hover,
+		.btn-wrapper.{{ btn_css_class }}-wrapper .hs-form input[type="submit"]:hover,
+		.btn-wrapper.{{ btn_css_class }}-wrapper .hs-form input[type="button"]:hover {
+			{{ btn() }}
+			{{ btn_hubl_class() }}
+			color: #fff;
+			background-color: {{ val }};
+			filter: brightness(110%);
+			text-decoration: none;
+		}
+
+		{% macro btn_outline_hubl_class() %}
+			color: {{ val }};
+			background-color: transparent;
+			border-color: {{ val }} !important;
+		{% endmacro %}
+
+		.{{ btn_outline_css_class }} {
+			{{ btn_outline_hubl_class() }}
+		}
+
+		.{{ btn_outline_css_class }}:hover {
+			color: #fff;
+			background-color: {{ val }};
+		}
+
+		.btn-wrapper.{{ btn_outline_css_class }}-wrapper .cta_button,
+		.btn-wrapper.{{ btn_outline_css_class }}-wrapper .hs-form input[type="submit"],
+		.btn-wrapper.{{ btn_outline_css_class }}-wrapper .hs-form input[type="button"] {
+			{{ btn() }}
+			{{ btn_outline_hubl_class() }}
+		}
+
+		.btn-wrapper.{{ btn_outline_css_class }}-wrapper .cta_button:hover,
+		.btn-wrapper.{{ btn_outline_css_class }}-wrapper .hs-form input[type="submit"]:hover,
+		.btn-wrapper.{{ btn_outline_css_class }}-wrapper .hs-form input[type="button"]:hover {
+			{{ btn() }}
+			{{ btn_outline_hubl_class() }}
+			color: #fff;
+			background-color: {{ val }};
+		}
+
+		/* Text color classes */
+		{% set text_css_class = 'text-' + key %}
+		{% set text_hubl_class = 'text_' + key %}
+
+		{% macro text_hubl_class() %}
+			color: {{ val }};
+		{% endmacro %}
+
+		.{{ text_css_class }} {
+			{{ text_hubl_class() }}
+		}
+
+		/* Background color classes */	
+		{% set bg_css_class = 'bg-' + key %}
+		{% set bg_hubl_class = 'bg_' + key %}
+
+		{% macro bg_hubl_class() %}
+			background-color: {{ val }};
+		{% endmacro %}
+
+		.{{ bg_css_class }} {
+			{{ bg_hubl_class() }}
+		}
+
+		/* Border color classes */		
+		{% set border_css_class = 'border-' + key %}
+		{% set border_hubl_class = 'border_' + key %}
+
+		{% macro border_hubl_class() %}
+			border-color: {{ val }};
+		{% endmacro %}
+
+		.{{ border_css_class }} {
+			{{ border_hubl_class() }}
+		}
+
+	{% endfor %}
+
+	/* ----------------------------------------------------------------------------------- */
+	/*  HubSpot Forms
+	/* ----------------------------------------------------------------------------------- */
+
+	.hs-form fieldset {
+		font-size: 1rem;
+		padding: 0.25rem 0.5rem; 
+	}
+
+	@media only screen and (min-width: 992px) {
+		.hs-form fieldset.form-columns-2 .field {
+			width: calc(50% - 5.5px);
+			display: inline-block;
+			float: left; 
+		}
+
+		.hs-form fieldset.form-columns-2 .field + .field {
+			margin-left: 11px; 
+		}
+	}
+
+	@media only screen and (min-width: 992px) {
+		.hs-form fieldset.form-columns-3 .field {
+			width: calc(33.33% - 7.33px);
+			display: inline-block;
+			float: left; 
+		}
+
+		.hs-form fieldset.form-columns-3 .field + .field {
+			margin-left: 11px; 
+		} 
+	}
+
+	.hs-form fieldset .field {
+		margin: 0 0 0.625rem; 
+	}
+
+	.hs-form ::-webkit-input-placeholder {
+		/* WebKit, Blink, Edge */
+		color: #87909E; 
+	}
+
+	.hs-form ::-moz-placeholder {
+		/* Mozilla Firefox 19+ */
+		color: #87909E; 
+	}
+
+	.hs-form :-ms-input-placeholder {
+		/* Internet Explorer 10-11 */
+		color: #87909E;
+	}
+
+	.hs-form ::-ms-input-placeholder {
+		/* Microsoft Edge */
+		color: #87909E;
+	}
+
+	.hs-form ::placeholder {
+		/* Most modern browsers support this now. */
+		color: #87909E;
+	}
+
+	.hs-form .hs-field-desc {
+		font-size: .8em;
+		margin: 0 0 .5em;
+	}
+
+	.hs-form input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]),
+	.hs-form textarea,
+	.hs-form select,
+	.hs-form input[readonly]:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]) {
+		-webkit-appearance: none;
+		color: #87909E;
+		background: #fff;
+		font-size: 0.875rem;
+		padding: .75rem .75rem;
+		border-color: #E5E7EA; 
+	}
+
+	.hs-form input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]):focus,
+	.hs-form textarea:focus,
+	.hs-form select:focus,
+	.hs-form input[readonly]:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]):focus {
+		border-color: #B4B5B4;
+		box-shadow: none; 
+	}
+
+	.hs-form input[type="radio"], .hs-form input[type="checkbox"] {
+		margin-right: 2px;
+	}
+
+	.hs-form select {
+		background: url("https://www.sprocketrocket.co/hubfs/sprocket-rocket/images/icon-select.png") #F9F8F7;
+		background-position: calc(100% - 12px) center;
+		background-repeat: no-repeat;
+		line-height: 1;
+		height: auto;
+	}
+
+	.hs-form input[type="submit"],
+	.hs-form input[type="button"] {
+		{{ btn() }}
+		display: block;
+		border-radius: 3px;
+	}
+
+	.hs-form .inputs-list {
+		margin: 0;
+		padding: 0;
+	}
+
+	.hs-form .inputs-list li {
+		list-style: none; 
+	}
+
+	.hs-form .hs-error-msgs {
+		font-size: .8rem;
+		color: #dc3545;
+		margin: .5rem 0 0;
+	}
+
+	.hs-form .hs_submit {
+		margin-top: 2.05em;
+	}
+
+	.hs-form .form-input-lg input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]), .hs-form .form-control-lg {
+		padding: 1.4rem .75rem !important;
+		font-size: 0.875rem;
+	}
+
+	.hs-form .form-input-md input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]), .hs-form .form-control-md {
+		padding: .75rem .75rem !important;
+		font-size: 0.875rem;
+	}
+
+	.hs-form .form-input-sm input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]), .hs-form .form-control-md {
+		padding: .45rem .75rem !important;
+		font-size: 0.875rem;
+	}
+
+	.field > label, .form-group label {
+		margin: 0 0 0.3rem;
+		color: #30343B;
+		font-size: 0.875rem;
+	}
+
+	.form-control, .hs-form input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]),
+	.hs-form textarea,
+	.hs-form select,
+	.hs-form input[readonly]:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]) {
+		-webkit-appearance: none;
+		color: #87909E;
+		background: #fff;
+		font-size: 0.875rem;
+		padding: .75rem .75rem;
+		border-color: #E5E7EA;
+		border-style: solid;
+		border-width: 1px;
+	}
+
+	.form-control:focus, .hs-form input:focus:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]),
+	.hs-form textarea:focus,
+	.hs-form select:focus {
+		border-color: #B4B5B4;
+		box-shadow: none;
+	}
+
+	.form-control-lg, .form-wrapper-lg input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]) {
+		padding: 1.4rem .75rem;
+		font-size: 0.875rem;
+	}
+
+	.form-control-md, .form-wrapper-md input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]) {
+		padding: .75rem .75rem;
+		font-size: 0.875rem;
+	}
+
+	.form-control-sm, .form-wrapper-sm input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]) {
+		padding: .2rem .75rem;
+		font-size: 0.875rem;
+		height: auto;
+	}
+
+	.hs-form-field {
+		margin-bottom: 1rem;
+	}
+
+	.hs-form select:not([size]):not([multiple]), select.form-control:not([size]):not([multiple]),
+	.hs-form select:not([size]):not([multiple]) {
+		height: auto;
+	}
+
+</style>
+
+{#
+<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-dark">Dark</button>
+<button type="button" class="btn btn-link">Link</button>
+<br>
+<button type="button" class="btn btn-outline-primary">Primary</button>
+<button type="button" class="btn btn-outline-secondary">Secondary</button>
+<button type="button" class="btn btn-outline-success">Success</button>
+<button type="button" class="btn btn-outline-danger">Danger</button>
+<button type="button" class="btn btn-outline-warning">Warning</button>
+<button type="button" class="btn btn-outline-info">Info</button>
+<button type="button" class="btn btn-outline-light">Light</button>
+<button type="button" class="btn btn-outline-dark">Dark</button>
+<button type="button" class="btn btn-outline-link">Link</button>
+
+<button type="button" class="btn btn-bradley">aaa</button>
+<button type="button" class="btn btn-outline-bradley">aaa</button>
+#}

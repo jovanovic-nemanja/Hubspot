@@ -1,0 +1,169 @@
+{% if module.enabled %}
+
+	{% require_css %}
+		<style type="text/css">
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			@media (max-width: 767px) {
+				.sr-two-col-07 .col-left {
+					margin-bottom: 4rem;
+				}
+			}
+			.sr-two-col-07 .sr-feature-check {
+				list-style-type: none;
+				padding: 0;
+			}
+			.sr-two-col-07 .sr-feature-check > li {
+				position: relative;
+				padding: 0 0 2.25rem 3.5rem;
+			}
+			.sr-two-col-07 .sr-feature-check > li:last-child {
+				padding-bottom: 0
+			}
+			@media (max-width: 767px) {
+				.sr-two-col-07 .sr-feature-check > li {
+					padding-bottom: 1.5rem;
+				}
+			}
+			@media (min-width: 768px) and (max-width: 1199px) {
+				.sr-two-col-07 .sr-feature-check > li {
+					padding-bottom: 1.75rem;
+				}
+			}
+			.sr-two-col-07 .sr-feature-check > li::before {
+				content: '\f00c';
+				font-family: fontawesome;
+				font-size: 1.25rem;
+				width: 2.5rem;
+				height: 2.5rem;
+				display: block;
+				line-height: 2.5rem;
+				text-align: center;
+				position: absolute;
+				left: 0;
+				top: -0.5rem;
+				border-radius: 50%;
+				background-color: {{ module.check_background_color.color }};
+				color: {{ module.check_color.color }}
+			}
+		</style>
+	{% end_require_css %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	{% if module.left_col_size|int == 6 %}
+		{% set first_col_width = 'col-md-6' %}
+		{% set second_col_width = 'col-md-5 offset-sm-1' %}
+	{% elif module.left_col_size|int == 8 %}
+		{% set first_col_width = 'col-md-8' %}
+		{% set second_col_width = 'col-md-4' %}
+	{% elif module.left_col_size|int == 9 %}
+		{% set first_col_width = 'col-md-9' %}
+		{% set second_col_width = 'col-md-3' %}
+	{% endif %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-two-col-07" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Two Col 07</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+
+	<div class="sr-two-col-07 {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.class %}{{ module.design_settings.class }}{% endif %} {% if module.design_settings.border_top %}sr-line-top{% endif %} {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %} {% if module.design_settings.border_bottom %}sr-line-bottom{% endif %} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %} prototype-no-background {{ name }}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }}">
+			{% if module.design_settings.container_width != 'max' %}
+				<div class="row">
+					<div class="{{ width_class }}">
+			{% endif %}
+						<div class="row{% if module.vertical_align_center %} align-items-center{% endif %}">
+							<div class="{{first_col_width}} col-left">
+								{% if module.heading %}
+									<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} heading {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.heading}}</h{{module.heading_size}}>
+								{% endif %}
+
+								{% if module.description %}
+									<p class="description">{{ module.description}}</p>
+								{% endif %}
+								{% if module.cta.cta_type != 'none' %}
+									<div class="btn-wrapper btn-{{ module.cta.cta_style }}-wrapper">
+										{% if module.cta.cta_type == 'btn' %}
+											<a href="{{ module.cta.link }}" class="cta_button">{{ module.cta.button_text }}</a>
+										{% elif module.cta.cta_type == 'cta' %}
+											{% cta guid="{{ module.cta.cta }}" %}
+										{% endif %}
+									</div>
+								{% endif %}
+							</div>
+							<div class="{{second_col_width}} col-right">
+								{% if module.side_content %}
+									<div class="side-content">
+										{{module.side_content}}
+									</div>
+								{% endif %}
+								{% if module.side_list %}
+								<ul class="sr-feature-check text-left">
+									{% for item in module.side_list %}
+										<li>{{ item.list_item }}</li>
+									{% endfor %}
+								</ul>
+								{% endif %}
+							</div>
+						</div>
+			{% if module.design_settings.container_width != 'max' %}
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+{% endif %}

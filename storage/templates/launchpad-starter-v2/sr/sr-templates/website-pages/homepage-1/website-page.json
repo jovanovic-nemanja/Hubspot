@@ -1,0 +1,15 @@
+{
+	"name": "Homepage v1",
+	"custom_modules": [
+		"sr-nav-dropdown-01.json",
+		"sr-hero-01.json",
+		"sr-three-col-02.json",
+		"sr-one-col-media-01.json",
+		"sr-two-col-04.json",
+		"sr-two-col-03.json",
+		"sr-offer-bar-03.json",
+		"sr-footer-04.json"
+	],
+	"module_overrides": {},
+	"page_overrides": {}
+}

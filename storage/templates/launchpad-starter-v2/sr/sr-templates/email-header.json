@@ -1,0 +1,104 @@
+{
+	"custom_module": {
+		"author": "bradley@lean-labs.com",
+		"tags": ["ver-1.0.1"],
+		"name": "Email Header",
+		"css_assets": [],
+		"editable_contexts": [],
+		"external_js": [],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": ["EMAIL"],
+		"js_assets": [],
+		"other_assets": [],
+		"fields": [{
+			"default": true,
+			"label": "Enabled",
+			"name": "enabled",
+			"type": "boolean"
+		},
+		{
+			"name": "logo",
+			"label": "Logo",
+			"type": "image",
+			"default": {
+				"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-full-black-logo.png",
+				"alt": "Logo",
+				"width": 230,
+				"height": 60
+			}
+		},
+		{
+			"id": 3,
+			"name": "social",
+			"label": "Social",
+			"occurrence": {
+				"min": null,
+				"max": null,
+				"sorting_label_field": null,
+				"default": 4
+			},
+			"children": [{
+					"id": 7,
+					"name": "social_image",
+					"label": "Social Image",
+					"type": "image",
+					"default": {
+						"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-social-facebook-1.png",
+						"alt": "Facebook",
+						"width": 24,
+						"height": 24
+					}
+				},
+				{
+					"id": 8,
+					"name": "link",
+					"label": "Link",
+					"type": "text",
+					"default": "#"
+				}
+			],
+			"type": "group",
+			"default": [{
+					"social_image": {
+						"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-social-facebook-1.png",
+						"alt": "Facebook",
+						"width": 24,
+						"height": 24
+					},
+					"link": "#"
+				},
+				{
+					"social_image": {
+						"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-social-twitter-1.png",
+						"alt": "Twitter",
+						"width": 24,
+						"height": 24
+					},
+					"link": "#"
+				},
+				{
+					"social_image": {
+						"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-social-linkedin-1.png",
+						"alt": "LinkedIn",
+						"width": 24,
+						"height": 24
+					},
+					"link": "#"
+				},
+				{
+					"social_image": {
+						"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-social-instagram-1.png",
+						"alt": "Instagram",
+						"width": 24,
+						"height": 24
+					},
+					"link": "#"
+				}
+			]
+		}],
+		"source": ""
+	},
+	"custom_module_template": "email-header.html",
+	"files": []
+}

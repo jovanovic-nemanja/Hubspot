@@ -1,0 +1,945 @@
+{
+    "custom_module": {
+        "author": "cristian@lean-labs.com",
+        "tags": ["ver-2.0.3"],
+        "name": "SR Hero 04",
+        "css_assets": [],
+        "editable_contexts": [],
+        "external_js": [],
+        "icon": "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": [
+            "PAGE",
+            "BLOG_POST",
+            "BLOG_LISTING"
+        ],
+        "js_assets": [],
+        "other_assets": [],
+        "fields": [
+            {
+                "default": true,
+                "help_text": "",
+                "label": "Enabled",
+                "name": "enabled",
+                "type": "boolean"
+            },
+            {
+                "type": "group",
+                "name": "design_settings",
+                "label": "Design Settings",
+                "children": [
+                    {
+                        "default": "",
+                        "help_text": "",
+                        "label": "ID",
+                        "name": "sr_module_id",
+                        "type": "text"
+                    },
+                    {
+                        "default": "",
+                        "help_text": "",
+                        "label": "Class",
+                        "name": "class",
+                        "type": "text"
+                    },
+                    {
+                        "choices": [
+                            [
+                                "container",
+                                "Page"
+                            ],
+                            [
+                                "container-fluid",
+                                "Full Width"
+                            ]
+                        ],
+                        "default": "container",
+                        "display": "select",
+                        "label": "Layout",
+                        "name": "layout",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "choices": [
+                            [
+                                "min",
+                                "Minimum"
+                            ],
+                            [
+                                "narrow",
+                                "Narrow"
+                            ],
+                            [
+                                "wide",
+                                "Wide"
+                            ],
+                            [
+                                "max",
+                                "Maximum"
+                            ]
+                        ],
+                        "default": "wide",
+                        "display": "select",
+                        "label": "Container Width",
+                        "name": "container_width",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "choices": [
+                            [
+                                "image",
+                                "Image"
+                            ],
+                            [
+                                "color",
+                                "Color"
+                            ],
+                            [
+                                "video",
+                                "Video"
+                            ],
+                            [
+                                "custom",
+                                "Custom"
+                            ],
+                            [
+								"gradient", "Gradient"
+							]
+                        ],
+                        "id": "background_option",
+                        "default": "image",
+                        "display": "select",
+                        "label": "Background Option",
+                        "name": "background_option",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+						"default": {
+							"color": "#0c63ff"
+						},
+						"label": "Background Gradient From",
+						"name": "background_gradient_from",
+						"visibility": {
+							"controlling_field": "background_option",
+							"controlling_value_regex": "gradient",
+							"operator": "EQUAL"
+						},
+						"type": "color"
+					},
+					{
+						"default": {
+							"color": "#1897ff"
+						},
+						"label": "Background Gradient To",
+						"name": "background_gradient_to",
+						"visibility": {
+							"controlling_field": "background_option",
+							"controlling_value_regex": "gradient",
+							"operator": "EQUAL"
+						},
+						"type": "color"
+					},
+                    {
+                        "picker": "file",
+                        "name": "background_video_MP4",
+                        "type": "file",
+                        "label": "Background Video [MP4]",
+                        "default": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-hero-video.mp4",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "video",
+                            "operator": "EQUAL"
+                        }
+                    },
+                    {
+                        "picker": "file",
+                        "name": "background_video_WEBM",
+                        "type": "file",
+                        "label": "Background Video [WEBM]",
+                        "default": "",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "video",
+                            "operator": "EQUAL"
+                        }
+                    },
+                    {
+                        "picker": "file",
+                        "name": "background_video_OOG",
+                        "type": "file",
+                        "label": "Background Video [OOG]",
+                        "default": "",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "video",
+                            "operator": "EQUAL"
+                        }
+                    },
+                    {
+                        "default": {
+                            "src": "https://www.sprocketrocket.co/hs-fs/hubfs/sr-assets/images/bg-sr-hero-06.jpg"
+                        },
+                        "help_text": "Recommended size: 2880x1920px | Also fallback while the video is loading",
+                        "label": "Background Image",
+                        "name": "background_image",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "(image|video)",
+                            "operator": "MATCHES_REGEX",
+                            "access": null
+                        },
+                        "type": "image"
+                    },
+                    {
+                        "default": {
+                            "color": "#33323D",
+                            "opacity": 0
+                        },
+                        "label": "Background Overlay Color",
+                        "name": "background_overlay_color",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "(image|video)",
+                            "operator": "MATCHES_REGEX",
+                            "access": null
+                        },
+                        "help_text": "Recommended Width: 2880x1920px",
+                        "type": "color"
+                    },
+                    {
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "success",
+                                "Success"
+                            ],
+                            [
+                                "info",
+                                "Info"
+                            ],
+                            [
+                                "warning",
+                                "Warning"
+                            ],
+                            [
+                                "danger",
+                                "Danger"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "default": "white",
+                        "display": "select",
+                        "label": "Background Color",
+                        "name": "background_color",
+                        "type": "choice",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "color",
+                            "operator": "EQUAL"
+                        },
+                        "required": true
+                    },
+                    {
+                        "default": {
+                            "color": "#fff"
+                        },
+                        "label": "Background Custom",
+                        "name": "background_custom",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL"
+                        },
+                        "type": "color"
+                    }
+                ]
+            },
+            {
+                "allow_new_line": false,
+                "default": "",
+                "validation_regex": "",
+                "name": "sub_heading",
+                "show_emoji_picker": false,
+                "id": "sub_heading",
+                "label": "Sub Heading",
+                "locked": false,
+                "type": "text",
+                "required": false
+            },
+            {
+                "default": "h6",
+                "display": "select",
+                "name": "sub_heading_size",
+                "id": "sub_header_type",
+                "label": "Sub Heading Size",
+                "locked": false,
+                "choices": [
+                    [
+                        "h1",
+                        "H1"
+                    ],
+                    [
+                        "h2",
+                        "H2"
+                    ],
+                    [
+                        "h3",
+                        "H3"
+                    ],
+                    [
+                        "h4",
+                        "H4"
+                    ],
+                    [
+                        "h5",
+                        "H5"
+                    ],
+                    [
+                        "h6",
+                        "H6"
+                    ]
+                ],
+                "type": "choice",
+                "visibility": {
+                    "controlling_field": "sub_heading",
+                    "controlling_value_regex": null,
+                    "operator": null,
+                    "access": null
+                },
+                "required": true
+            },
+			{
+                "name": "sub_heading_display_size",
+                "label": "Sub Heading Display Size",
+                "required": true,
+                "locked": false,
+				"display": "select",
+				"visibility": {
+                    "controlling_field": "sub_heading",
+                    "controlling_value_regex": null,
+                    "operator": null,
+                    "access": null
+                },
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "h1",
+                        "H1"
+                    ],
+                    [
+                        "h2",
+                        "H2"
+                    ],
+                    [
+                        "h3",
+                        "H3"
+                    ],
+                    [
+                        "h4",
+                        "H4"
+                    ],
+                    [
+                        "h5",
+                        "H5"
+                    ],
+                    [
+                        "h6",
+                        "H6"
+                    ],
+                    [
+                        "display-4",
+                        "L"
+                    ],
+                    [
+                        "display-3",
+                        "XL"
+                    ],
+                    [
+                        "display-2",
+                        "XXL"
+                    ],
+                    [
+                        "display-1",
+                        "XXXL"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            },
+            {
+                "id": "heading",
+                "default": "Designed for Everyone",
+                "label": "Heading",
+                "name": "heading",
+                "type": "text"
+            },
+            {
+                "choices": [
+                    [
+                        "1",
+                        "H1"
+                    ],
+                    [
+                        "2",
+                        "H2"
+                    ],
+                    [
+                        "3",
+                        "H3"
+                    ],
+                    [
+                        "4",
+                        "H4"
+                    ],
+                    [
+                        "5",
+                        "H5"
+                    ],
+                    [
+                        "6",
+                        "H6"
+                    ]
+                ],
+                "default": "1",
+                "display": "select",
+                "label": "Heading Size",
+                "name": "heading_size",
+                "type": "choice",
+                "visibility": {
+                    "controlling_field": "heading",
+                    "controlling_value_regex": null,
+                    "operator": null,
+                    "access": null
+                },
+                "required": true
+            },
+			{
+                "name": "heading_display_size",
+                "label": "Heading Display Size",
+                "required": true,
+                "locked": false,
+				"display": "select",
+				"visibility": {
+                    "controlling_field": "heading",
+                    "controlling_value_regex": null,
+                    "operator": null,
+                    "access": null
+                },
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "h1",
+                        "H1"
+                    ],
+                    [
+                        "h2",
+                        "H2"
+                    ],
+                    [
+                        "h3",
+                        "H3"
+                    ],
+                    [
+                        "h4",
+                        "H4"
+                    ],
+                    [
+                        "h5",
+                        "H5"
+                    ],
+                    [
+                        "h6",
+                        "H6"
+                    ],
+                    [
+                        "display-4",
+                        "L"
+                    ],
+                    [
+                        "display-3",
+                        "XL"
+                    ],
+                    [
+                        "display-2",
+                        "XXL"
+                    ],
+                    [
+                        "display-1",
+                        "XXXL"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            },
+            {
+                "default": "<p class=\"lead\">Sprocket Rocket is an easy-to-use HubSpot template that is loaded with<br>all the features you will ever need.</p>",
+                "label": "Content",
+                "name": "content",
+                "type": "richtext"
+            },
+            {
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "left",
+                        "Left"
+                    ],
+                    [
+                        "center",
+                        "Center"
+                    ],
+                    [
+                        "right",
+                        "Right"
+                    ]
+                ],
+                "default": "center",
+                "display": "select",
+                "label": "Text Align",
+                "name": "text_align",
+                "type": "choice",
+                "required": true
+            },
+            {
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "primary",
+                        "Primary"
+                    ],
+                    [
+                        "secondary",
+                        "Secondary"
+                    ],
+                    [
+                        "tertiary",
+                        "Tertiary"
+                    ],
+                    [
+                        "white",
+                        "White"
+                    ],
+                    [
+                        "black",
+                        "Black"
+                    ],
+                    [
+                        "dark",
+                        "Dark"
+                    ],
+                    [
+                        "light",
+                        "Light"
+                    ],
+                    [
+                        "success",
+                        "Success"
+                    ],
+                    [
+                        "info",
+                        "Info"
+                    ],
+                    [
+                        "warning",
+                        "Warning"
+                    ],
+                    [
+                        "danger",
+                        "Danger"
+                    ]
+                ],
+                "default": "auto",
+                "display": "select",
+                "label": "Text Color",
+                "name": "text_color",
+                "type": "choice",
+                "required": true
+            },
+            {
+                "id": "cta_one",
+                "name": "cta_one",
+                "type": "group",
+                "label": "CTA One",
+                "children": [
+                    {
+                        "id": "cta_type",
+                        "name": "cta_type",
+                        "type": "choice",
+                        "required": true,
+                        "label": "CTA Type",
+                        "display": "select",
+                        "choices": [
+                            [
+                                "cta",
+                                "HubSpot CTA"
+                            ],
+                            [
+                                "btn",
+                                "Button"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "default": "none"
+                    },
+                    {
+                        "name": "cta_style",
+                        "type": "choice",
+                        "required": true,
+                        "label": "CTA Style",
+                        "visibility": {
+                            "controlling_field": "cta_type",
+                            "controlling_value_regex": "none",
+                            "operator": "NOT_EQUAL",
+                            "access": null
+                        },
+                        "display": "select",
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "outline-primary",
+                                "Outline Primary"
+                            ],
+                            [
+                                "outline-secondary",
+                                "Outline Secondary"
+                            ],
+                            [
+                                "outline-tertiary",
+                                "Outline Tertiary"
+                            ],
+                            [
+                                "outline-white",
+                                "Outline White"
+                            ],
+                            [
+                                "outline-black",
+                                "Outline Black"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "default": "primary"
+                    },
+                    {
+                        "name": "cta",
+                        "type": "cta",
+                        "label": "CTA",
+                        "visibility": {
+                            "controlling_field": "cta_type",
+                            "controlling_value_regex": "cta",
+                            "operator": "EQUAL",
+                            "access": null
+                        },
+                        "default": ""
+                    },
+                    {
+                        "name": "button_text",
+                        "type": "text",
+                        "label": "Button Text",
+                        "visibility": {
+                            "controlling_field": "cta_type",
+                            "controlling_value_regex": "btn",
+                            "operator": "EQUAL",
+                            "access": null
+                        },
+                        "hierarchical": false,
+                        "max_depth": 0,
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "default": "Get Started Now"
+                    },
+                    {
+                        "name": "link",
+                        "type": "text",
+                        "label": "Link",
+                        "visibility": {
+                            "controlling_field": "cta_type",
+                            "controlling_value_regex": "btn",
+                            "operator": "EQUAL",
+                            "access": null
+                        },
+                        "default": "#"
+                    }
+                ],
+                "default": {
+                    "cta_type": "none",
+                    "cta_style": "primary",
+                    "cta": "",
+                    "button_text": "Get Started Now",
+                    "link": "#"
+                }
+            },
+            {
+                "id": "cta_two",
+                "name": "cta_two",
+                "type": "group",
+                "label": "CTA Two",
+                "sortable": false,
+                "required": false,
+                "locked": false,
+                "hierarchical": false,
+                "max_depth": 0,
+                "children": [
+                    {
+                        "id": "cta_type_two",
+                        "name": "cta_type",
+                        "type": "choice",
+                        "required": true,
+                        "label": "CTA Type",
+                        "display": "select",
+                        "choices": [
+                            [
+                                "cta",
+                                "HubSpot CTA"
+                            ],
+                            [
+                                "btn",
+                                "Button"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "default": "none"
+                    },
+                    {
+                        "name": "cta_style",
+                        "type": "choice",
+                        "required": true,
+                        "label": "CTA Style",
+                        "visibility": {
+                            "controlling_field": "cta_type_two",
+                            "controlling_value_regex": "none",
+                            "operator": "NOT_EQUAL",
+                            "access": null
+                        },
+                        "display": "select",
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "outline-primary",
+                                "Outline Primary"
+                            ],
+                            [
+                                "outline-secondary",
+                                "Outline Secondary"
+                            ],
+                            [
+                                "outline-tertiary",
+                                "Outline Tertiary"
+                            ],
+                            [
+                                "outline-white",
+                                "Outline White"
+                            ],
+                            [
+                                "outline-black",
+                                "Outline Black"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "default": "outline-white"
+                    },
+                    {
+                        "name": "cta",
+                        "type": "cta",
+                        "label": "CTA",
+                        "visibility": {
+                            "controlling_field": "cta_type_two",
+                            "controlling_value_regex": "cta",
+                            "operator": "EQUAL",
+                            "access": null
+                        },
+                        "default": ""
+                    },
+                    {
+                        "name": "button_text",
+                        "type": "text",
+                        "label": "Button Text",
+                        "visibility": {
+                            "controlling_field": "cta_type_two",
+                            "controlling_value_regex": "btn",
+                            "operator": "EQUAL",
+                            "access": null
+                        },
+                        "default": "Watch The Video"
+                    },
+                    {
+                        "name": "link",
+                        "type": "text",
+                        "label": "Link",
+                        "validation_regex": "",
+                        "visibility": {
+                            "controlling_field": "cta_type_two",
+                            "controlling_value_regex": "btn",
+                            "operator": "EQUAL",
+                            "access": null
+                        },
+                        "default": "#"
+                    }
+                ],
+                "default": {
+                    "cta_type": "none",
+                    "cta_style": "outline-white",
+                    "cta": "",
+                    "button_text": "Watch The Video",
+                    "link": "#"
+                }
+            },
+            {
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "small",
+                        "Small"
+                    ],
+                    [
+                        "medium",
+                        "Medium"
+                    ],
+                    [
+                        "large",
+                        "Large"
+                    ],
+                    [
+                        "full",
+                        "Full"
+                    ]
+                ],
+                "default": "medium",
+                "display": "select",
+                "label": "Height",
+                "name": "height",
+                "type": "choice",
+                "required": true
+            },
+            {
+                "default": false,
+                "help_text": "",
+                "label": "Parallax",
+                "name": "parallax",
+                "type": "boolean"
+            },
+            {
+                "default": "SR Hero 04",
+                "label": "hidden_name",
+                "name": "hidden_name",
+                "type": "text",
+                "locked": true
+            }
+        ],
+        "source": ""
+    },
+    "custom_module_template": "sr-hero-01.html",
+    "available_builder": true,
+    "category": 3,
+    "files": [
+        {
+            "file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/animation.gsap.min.js",
+            "folder_paths": "sr-assets/js"
+        },
+        {
+            "file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/ScrollMagic.min.js",
+            "folder_paths": "sr-assets/js"
+        },
+        {
+            "file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/gsap.js",
+            "folder_paths": "sr-assets/js"
+        }
+    ]
+}

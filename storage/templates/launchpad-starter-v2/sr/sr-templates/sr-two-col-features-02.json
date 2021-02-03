@@ -1,0 +1,593 @@
+{
+	"custom_module": {
+		"author": "reg@lean-labs.com",
+		"tags": ["ver-2.0.0"],
+		"name": "SR Two Col Features 02",
+		"css_assets": [ ],
+		"editable_contexts": [ ],
+		"external_js": [ ],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+		"js_assets": [ ],
+		"other_assets": [ ],
+		"fields": [
+			{
+				"default": true,
+				"label": "Enabled",
+				"name": "enabled",
+				"type": "boolean"
+			},
+			{
+				"default": null,
+				"label": "ID",
+				"name": "sr_module_id",
+				"type": "text"
+			},
+			{
+				"default": null,
+				"label": "Class",
+				"name": "class",
+				"type": "text"
+			},
+			{
+				"choices": [
+					[
+						"container", "Page"
+					],
+					[
+						"container-fluid", "Full Width"
+					]
+				],
+				"default": "container",
+				"display": "select",
+				"label": "Layout",
+				"name": "layout",
+				"type": "choice",
+				"required": true
+			},
+			{
+				"choices": [
+					[
+						"min", "Minimum"
+					],
+					[
+						"narrow", "Narrow"
+					],
+					[
+						"wide", "Wide"
+					],
+					[
+						"max", "Maximum"
+					]
+				],
+				"default": "max",
+				"display": "select",
+				"label": "Container Width",
+				"name": "container_width",
+				"type": "choice",
+				"required": true
+			},
+			{
+				"default": "Sprocket Rocket Feature List",
+				"label": "Heading",
+				"name": "heading",
+				"type": "text"
+			},
+			{
+				"choices": [
+					[
+						"1", "H1"
+					],
+					[
+						"2", "H2"
+					],
+					[
+						"3", "H3"
+					],
+					[
+						"4", "H4"
+					],
+					[
+						"5", "H5"
+					],
+					[
+						"6", "H6"
+					]
+				],
+				"default": "2",
+				"display": "select",
+				"label": "Heading Size",
+				"name": "heading_size",
+				"visibility" : {
+					"controlling_field" : "heading",
+					"controlling_value_regex" : null,
+					"operator" : null,
+					"access" : null
+				},
+				"type": "choice",
+				"required": true
+			},
+			{
+                "name": "heading_display_size",
+                "label": "Heading Display Size",
+                "required": true,
+                "locked": false,
+				"display": "select",
+				"visibility": {
+                    "controlling_field": "heading",
+                    "controlling_value_regex": null,
+                    "operator": null,
+                    "access": null
+                },
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "h1",
+                        "H1"
+                    ],
+                    [
+                        "h2",
+                        "H2"
+                    ],
+                    [
+                        "h3",
+                        "H3"
+                    ],
+                    [
+                        "h4",
+                        "H4"
+                    ],
+                    [
+                        "h5",
+                        "H5"
+                    ],
+                    [
+                        "h6",
+                        "H6"
+                    ],
+                    [
+                        "display-4",
+                        "L"
+                    ],
+                    [
+                        "display-3",
+                        "XL"
+                    ],
+                    [
+                        "display-2",
+                        "XXL"
+                    ],
+                    [
+                        "display-1",
+                        "XXXL"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            },
+			{
+				"default": "",
+				"label": "Description",
+				"name": "description",
+				"type": "richtext"
+			},
+			{
+				"choices": [
+					[
+						"auto", "Auto"
+					],
+					[
+						"primary", "Primary"
+					],
+					[
+						"secondary", "Secondary"
+					],
+					[
+						"tertiary", "Tertiary"
+					],
+					[
+						"white", "White"
+					],
+					[
+						"black", "Black"
+					],
+					[
+						"dark", "Dark"
+					],
+					[
+						"light", "Light"
+					],
+					[
+						"success", "Success"
+					],
+					[
+						"info", "Info"
+					],
+					[
+						"warning", "Warning"
+					],
+					[
+						"danger", "Danger"
+					]
+				],
+				"default": "auto",
+				"display": "select",
+				"label": "Text Color",
+				"name": "text_color",
+				"type": "choice",
+				"required": true
+			},
+			{
+				"choices": [
+					[
+						"auto", "Auto"
+					],
+					[
+						"left", "Left"
+					],
+					[
+						"center", "Center"
+					],
+					[
+						"right", "Right"
+					]
+				],
+				"default": "center",
+				"display": "select",
+				"label": "Text Align",
+				"name": "text_align",
+				"type": "choice",
+				"required": true
+			},
+			{
+				"default": "<img src='https://www.lean-labs.com/hubfs/sprocket-rocket/images/placeholder-video.png' />",
+				"label": "Left Side Content",
+				"name": "left_side",
+				"type": "richtext",
+				"help_text": "Place image, embed video or add text"
+			},
+			{
+				"choices": [
+					[
+						"top", "Top"
+					],
+					[
+						"center", "Center"
+					]
+				],
+				"default": "top",
+				"display": "select",
+				"label": "Features Vertical Align",
+				"name": "features_vertical_align",
+				"type": "choice",
+				"required": true
+			},
+			{
+				"id": 1,
+				"label": "Features",
+				"name": "features",
+				"type": "group",
+				"occurrence": {
+					"min": 1
+				},
+				"children": [
+					{
+						"default": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-two-col-features-02-icon1.png",
+							"alt": "Image Alt Text",
+							"width": "60"
+						},
+						"label": "Feature Image",
+						"name": "feature_image",
+						"type": "image",
+						"help_text": "Recommended size: 120x120px"
+					},
+					{
+						"default": "Lorem Ipsum",
+						"label": "Feature Heading",
+						"name": "feature_heading",
+						"type": "text"
+					},
+					{
+						"default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+						"label": "Feature Content",
+						"name": "feature_content",
+						"type": "richtext"
+					},
+					{
+						"default": true,
+						"id": "enable_link_wrapper",
+						"label": "Enable Link",
+						"name": "enable_link_wrapper",
+						"type": "boolean"
+					},
+					{
+						"name" : "feature_url",
+						"label" : "Feature URL",
+						"required" : false,
+						"locked" : false,
+						"supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+						"type" : "link",
+						"default" : {
+						  "url" : {
+							"content_id" : null,
+							"type" : "EXTERNAL",
+							"href" : ""
+						  },
+						  "open_in_new_tab" : false,
+						  "no_follow" : false
+						},
+						"visibility": {
+							"controlling_field": "enable_link_wrapper",
+							"controlling_value_regex": "true",
+							"operator": "EQUAL"
+						}
+					}
+				],
+				"default" : [
+					{
+						"feature_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/mountain.png",
+							"width": "60",
+							"alt": ""
+						},
+						"feature_heading": "Achieve virtually any look and layout from within the template.",
+						"feature_content": "<p>Easy and fast adjustments of elements is possible with Core template. Find our more about our all-in-one programmatic template.</p>",
+						"feature_url.href": "https://www.lean-labs.com/"
+					},
+					{
+						"feature_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/strategy.png",
+							"width": "60",
+							"alt": ""
+						},
+						"feature_heading": "Inbound Strategy",
+						"feature_content": "<p>Meet all of your inbound goals and objectives.</p>",
+						"feature_url.href": "https://www.lean-labs.com/"
+					},
+					{
+						"feature_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/badge.png",
+							"width": "60",
+							"alt": ""
+						},
+						"feature_heading": "Unlimited Power",
+						"feature_content": "<p>Build as many pages as you need for your high-conversion website.</p>",
+						"feature_url.href": "https://www.lean-labs.com/"
+					},
+					{
+						"feature_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/team.png",
+							"width": "60",
+							"alt": ""
+						},
+						"feature_heading": "Built for Everyone",
+						"feature_content": "<p>Easy-of-use ensures new users learn to use prototyping tools. </p>",
+						"feature_url.href": "https://www.lean-labs.com/"
+					},
+					{
+						"feature_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/rocket.png",
+							"width": "60",
+							"alt": ""
+						},
+						"feature_heading": "White-Glove Service",
+						"feature_content": "<p>The design sprints are a white glove service. </p>",
+						"feature_url.href": "https://www.lean-labs.com/"
+					},
+					{
+						"feature_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/deadline.png",
+							"width": "60",
+							"alt": ""
+						},
+						"feature_heading": "Quick Prototyping",
+						"feature_content": "<p>Choose from a vast selection of modules and drag-and-drop.</p>",
+						"feature_url.href": "https://www.lean-labs.com/"
+					}
+				]
+			},
+			{
+				"choices": [
+				  [
+					"auto", "Use default values"
+				  ],
+				  [
+					"zero", "No Padding"
+				  ],
+				  [
+					"half", "Small padding"
+				  ],
+				  [
+					"full", "Large padding"
+				  ],
+				  [
+					"custom", "Custom Padding"
+				  ]
+				],
+				"id": "top_bottom_padding",
+				"default": "full",
+				"display": "select",
+				"label": "Top Bottom Padding",
+				"name": "top_bottom_padding",
+				"type": "choice",
+				"required": true
+			},
+			{
+				"name" : "custom_padding",
+				"type" : "text",
+				"label" : "Custom Padding",
+				"help_text" : "Top, Right, Bottom, Left",
+				"visibility" : {
+				  "controlling_field" : "top_bottom_padding",
+				  "controlling_value_regex" : "custom",
+				  "operator" : "EQUAL",
+				  "access" : null
+				},
+				"default" : "1rem 0rem 1rem 0rem"
+			},
+			{
+				"default": false,
+				"label": "Border Top",
+				"name": "border_top",
+				"type": "boolean"
+			},
+			{
+				"default": false,
+				"label": "Border Bottom",
+				"name": "border_bottom",
+				"type": "boolean"
+			},
+			{
+				"choices": [
+					[
+						"image", "Image"
+					],
+					[
+						"color", "Color"
+					],
+					[
+						"custom", "Custom"
+					],
+					[
+						"gradient", "Gradient"
+					]
+				],
+				"id": "background_option",
+				"default": "color",
+				"display": "select",
+				"label": "Background Option",
+				"name": "background_option",
+				"type": "choice",
+				"required": true
+			},
+			{
+				"default": {
+					"color": "#0c63ff"
+				},
+				"label": "Background Gradient From",
+				"name": "background_gradient_from",
+				"visibility": {
+					"controlling_field": "background_option",
+					"controlling_value_regex": "gradient",
+					"operator": "EQUAL"
+				},
+				"type": "color"
+			},
+			{
+				"default": {
+					"color": "#1897ff"
+				},
+				"label": "Background Gradient To",
+				"name": "background_gradient_to",
+				"visibility": {
+					"controlling_field": "background_option",
+					"controlling_value_regex": "gradient",
+					"operator": "EQUAL"
+				},
+				"type": "color"
+			},
+			{
+				"default": {
+					"src": "",
+					"alt": ""
+				},
+				"label": "Background Image",
+				"name": "background_image",
+				"visibility": {
+					"controlling_field": "background_option",
+					"controlling_value_regex": "image",
+					"operator": "EQUAL"
+				},
+				"type": "image"
+			},
+			{
+				"default": {
+					"color": "#343a40",
+					"opacity": 30
+				},
+				"label": "Background Overlay Color",
+				"name": "background_overlay_color",
+				"visibility": {
+					"controlling_field": "background_option",
+					"controlling_value_regex": "image",
+					"operator": "EQUAL"
+				},
+				"type": "color"
+			},
+			{
+				"choices": [
+					[
+									"primary", "Primary"
+								],
+								[
+									"secondary", "Secondary"
+								],
+								[
+									"tertiary", "Tertiary"
+								],
+								[
+									"white", "White"
+								],
+								[
+									"black", "Black"
+								],
+								[
+									"dark", "Dark"
+								],
+								[
+									"light", "Light"
+								],
+								[
+									"success", "Success"
+								],
+								[
+									"info", "Info"
+								],
+								[
+									"warning", "Warning"
+								],
+								[
+									"danger", "Danger"
+								],
+								[
+									"none", "None"
+								]
+				],
+				"default": "light",
+				"display": "select",
+				"label": "Background Color",
+				"name": "background_color",
+				"type": "choice",
+				"visibility": {
+					"controlling_field": "background_option",
+					"controlling_value_regex": "color",
+					"operator": "EQUAL"
+				},
+				"required": true
+			},
+			{
+				"default": {
+					"color": "#fff"
+				},
+				"label": "Background Custom",
+				"name": "background_custom",
+				"visibility": {
+					"controlling_field": "background_option",
+					"controlling_value_regex": "custom",
+					"operator": "EQUAL"
+				},
+				"type": "color"
+			}
+		],
+		"source": ""
+	},
+	"custom_module_template": "sr-two-col-features-02.html",
+	"available_builder": true,
+	"category": 4,
+	"files": []
+}

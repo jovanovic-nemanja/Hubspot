@@ -1,0 +1,183 @@
+{% if module.enabled %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% else %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	{# ======== module CSS ======== #}
+
+	{% require_css %}
+		<style>
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;    
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});	
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: {{ module.design_settings.background_custom.color }};
+				}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			.pillar-nav-toc-01 .container {
+				position: relative;
+			}
+			.pillar-nav-toc-01 label {
+				font-size: 3rem;
+			}
+
+			.pillar-nav-toc-01 .heading {
+				margin-bottom:0.8rem;
+			}
+
+			.pillar-nav-toc-01 .section-heading {
+				margin: 0 0 1.25rem;
+			}
+			.pillar-nav-toc-01 .pillar-nav-toc-01-list li {
+				list-style: none;
+				display: block;
+			}
+			.pillar-nav-toc-01 .pillar-nav-toc-01-list li + li {
+				margin-top: 1.25rem;
+			}
+			.pillar-nav-toc-01 .pillar-nav-toc-01-list li a {
+				background: #fff;
+				border: 1px solid #e5e7ea;
+				display: block;
+				color: #30343b;
+				font-weight: normal;
+				line-height:normal;
+				font-size: 1.25rem;
+				position: relative;
+				transition: all ease-in-out .2s;
+				padding: 1.5rem 1.594rem 1.5rem 1.594rem;
+			}
+			.pillar-nav-toc-01 .pillar-nav-toc-01-list li a:hover {
+				box-shadow: 0 2px 10px 0 rgba(0,0,0,.1);
+			}
+			.pillar-nav-toc-01 .pillar-nav-toc-01-list li a span {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				font-weight: 700;
+				font-size: 4.73rem;
+				color: #F7751F;
+				color: var(--primary);
+				opacity: .1;   
+				display: -webkit-box;   
+				display: -ms-flexbox;   
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				justify-content: center;
+			}
+
+			@media (max-width:767px) {
+				.pillar-nav-toc-01 .pillar-nav-toc-01-list li a {
+					font-size:0.972rem;
+					padding:2.188rem 1.25rem 1.979rem 1.25rem;
+				}
+				.pillar-nav-toc-01 .pillar-nav-toc-01-list li a span {
+					font-size:5.163rem;
+				}
+				.pillar-nav-toc-01 .heading {
+					margin-bottom:0;
+					font-size:1.806rem;
+				}
+			} 
+			
+		</style>
+	{% end_require_css %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-pillar-nav-toc-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Pillar Nav TOC 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+	
+	<div class="pillar-nav-toc-01 {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %} {% if module.design_settings.class %}{{ module.design_settings.class }}{% endif %} {% if module.design_settings.border_top %}sr-line-top{% endif %} {% if module.design_settings.border_bottom %}sr-line-bottom{% endif %} {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %} prototype-no-background {{ name }}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }}">
+			{% if module.design_settings.container_width != 'max' %}
+			<div class="row">
+				<div class="{{ width_class }}">
+			{% endif %}
+				{% if module.heading ||  module.description %}
+					<div class="sr-spacer-bottom-50">
+						{% if module.heading %}
+							<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} heading {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.heading}}</h{{module.heading_size}}>
+						{% endif %}
+						{% if module.description %}
+							<div class="description {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.description}}</div>
+						{% endif %}
+					</div>
+				{% endif %}
+			<div class="pillar-nav-toc-01-list {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}"></div>
+			{% if module.design_settings.container_width != 'max' %}
+				</div>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+  {% require_js %}
+	<script>
+		// Assign each chapter title to TOC
+		$('.pillar-chapter-title').each(function(index){
+			var id = 'chapter-'+ (index+1);
+			$(this).attr('id', id);
+			var text = $(this).find('.heading').text();
+			var index = index + 1;
+			$('.{{ name  }} .pillar-nav-toc-01-list').append('<li><a class="{% if module.text_color != "auto" %}text-{{ module.text_color }}{% endif %}" href="#' + id + '" class="scroll">' + text + '<span>' + index + '</span></a></li>');
+		});
+	</script>
+  {% end_require_js %}
+
+{% endif %}

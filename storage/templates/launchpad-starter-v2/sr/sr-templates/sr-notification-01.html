@@ -1,0 +1,718 @@
+<div id="notification" class="{% if !module.design_settings.show_on_mobile %} d-none d-md-block {% endif %} {{ module.design_settings.position }} {% if module.notification_type == "information" && module.information.enable_link %} linked {% endif %} hide" data-type="{{ module.notification_type }}" data-start="{{ module.settings.start_delay }}"  data-delay="{{ module.settings.delay.delay }}" {% if (module.notification_type == "countdown" || module.notification_type == "email" || module.notification_type == "information" || module.notification_type == "social") && !module.settings.always_show %} data-show="{{ module.settings.show_time }}" {% endif %} {% if module.notification_type == "review" || module.notification_type == "conversion" %} data-show="{{ module.settings.show_time }}" {% endif %} data-random="{{module.settings.delay.randomize_delay}}" {% if module.settings.delay.randomize_delay && (module.notification_type == "review" || module.notification_type == "conversion") %}data-delaymin="{{ module.settings.delay.delay_min }}" data-delaymax="{{ module.settings.delay.delay_max }}"{% endif %}>
+	<div class="notification-wrapper bg-{{ module.design_settings.background_color }}" style="border-radius: {{ module.design_settings.border_radius }}px;{% if module.design_settings.background_color == 'custom' %}background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});{% endif %}">
+		<div class="notification-content text-{{ module.design_settings.text_color }} text-{{ module.design_settings.text_align }}">
+			{% if module.notification_type == "conversion" %}
+			<a class="linked text-{{ module.design_settings.text_color }}">
+				<img src="" class="notification-image">
+				<div class='w-100'>
+					<div class="notification-header d-flex">
+						<p class="w-100"><strong class="notification-title"></strong></p>
+					</div>
+
+					<p class="notification-description"></p>
+
+					<div class="notification-footer d-flex">
+						<div class="notification-time"></div>
+						<p class="notification-client text-{{ module.design_settings.client_name_text_color }}"></p>
+					</div>
+				</div>
+			</a>
+			{# conversion #}
+			{% elif module.notification_type == "review" %}
+			<img src="" class="notification-image">
+			<div class='w-100'>
+				<div class="notification-header d-flex">
+					<p><strong class="notification-title"></strong></p>
+					<div id="review-stars" class="">
+						<div class="notification-star">★</div>
+						<div class="notification-star">★</div>
+						<div class="notification-star">★</div>
+						<div class="notification-star">★</div>
+						<div class="notification-star">★</div>
+					</div>
+				</div>
+
+				<p class="notification-description"></p>
+
+				<div class="notification-footer">
+					<p class="notification-client mb-0 text-{{ module.design_settings.client_name_text_color }}"></p>
+				</div>
+			</div>
+			{# review #}
+			{% elif module.notification_type == "information" %}
+
+				{% if module.information.enable_link %}
+				{% set href = module.information.link.url.href %}
+				{% if module.information.link.url.type is equalto "EMAIL_ADDRESS" %}
+				{% set href = "mailto:" + href %}
+				{% endif %}
+				<a class="linked text-{{ module.design_settings.text_color }}" href="{{ href }}" {% if module.information.link.open_in_new_tab %}target="_blank"{% endif %} {% if module.information.link.no_follow %}rel="nofollow"{% endif %}>
+				{% endif %}
+
+				{% if module.information.image.src %}
+				{% set sizeAttrs = 'width="{{ module.information.image.width }}" height="{{ module.information.image.height }}"' %}
+				{% if module.information.image.size_type == 'auto' %}
+				{% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+				{% elif module.information.image.size_type == 'auto_custom_max' %}
+				{% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ module.information.image.max_width }}px; max-height: {{ module.information.image.max_height }}px"' %}
+				{% endif %}
+				<img class="notification-image" src="{{ module.information.image.src }}" alt="{{ module.information.image.alt }}" {{ sizeAttrs }}>
+				{% endif %}
+				<div class='w-100'>
+					{% if module.information.title %}
+					<div class="notification-header">
+						<p><strong class="notification-title">{{ module.information.title }}</strong></p>
+					</div>
+					{% endif %}
+
+					{% if module.email.description %}
+					<p class="notification-description">{{ module.information.description }}</p>
+					{% endif %}
+
+
+					{% if module.information.client %}
+					<div class="notification-footer">
+						<p class="notification-client text-{{ module.design_settings.client_name_text_color }} mb-0">{{ module.information.client }}</p>
+					</div>
+					{% endif %}
+				</div>
+				{% if module.information.enable_link %}
+				</a>
+				{% endif %}
+			{# information #}	
+			{% elif module.notification_type == "email" %}
+			<div class='w-100'>
+
+				{% if module.email.title %}
+				<div class="notification-header">
+					<p class="h5"><strong class="notification-title">{{ module.email.title }}</strong></p>
+				</div>
+				{% endif %}
+
+				{% if module.email.description %}
+				<p class="notification-description">{{ module.email.description }}</p>
+				{% endif %}
+
+				{% if module.email.form.form_id %}
+				<div class="notification-form btn-wrapper btn-{{ module.email.button_style }}-wrapper">
+					{% form
+						form_to_use="{{ module.email.form.form_id }}"
+						response_response_type="{{ module.email.form.response_type }}"
+						response_message="{{ module.email.form.message }}"
+						response_redirect_id="{{ module.email.form.redirect_id }}"
+						response_redirect_url="{{module.email.form.redirect_url}}"
+						gotowebinar_webinar_key="{{ module.email.form.gotowebinar_webinar_key }}"
+					%}
+				</div>
+				{% endif %}
+
+				{% if module.email.client %}
+				<div class="notification-footer">
+					<p class="notification-client text-{{ module.design_settings.client_name_text_color }} mb-0">{{ module.email.client }}</p>
+				</div>
+				{% endif %}
+			</div>
+			{# email #}
+			{% elif module.notification_type == "countdown" %}
+			<div class='w-100'>
+
+				{% if module.countdown.title %}
+				<div class="notification-header">
+					<p class="h5"><strong class="notification-title">{{ module.countdown.title }}</strong></p>
+				</div>
+				{% endif %}
+
+				{% if module.countdown.description %}
+				<p class="notification-description">{{ module.countdown.description }}</p>
+				{% endif %}
+
+				{% if module.countdown.teaser %}
+				<p class="notification-teaser">{{ module.countdown.teaser }}</p>
+				{% endif %}
+
+				<ul id="countdown-date" data-date="{{ module.countdown.date|datetimeformat('%b %d, %Y %H:%M:%S') }}">
+					<li><span class="bg-{{ module.countdown.background_color }} text-{{ module.countdown.text_color }}" id="d">13</span>days</li>
+					<li><span class="bg-{{ module.countdown.background_color }} text-{{ module.countdown.text_color }}" id="hr">17</span>hours</li>
+					<li><span class="bg-{{ module.countdown.background_color }} text-{{ module.countdown.text_color }}" id="min">13</span>minutes</li>
+					<li class="d-none d-md-block"><span class="bg-{{ module.countdown.background_color }} text-{{ module.countdown.text_color }}" id="sec">25</span>seconds</li>
+				</ul>
+
+				{% if module.countdown.form.form_id && module.countdown.offer_type == 'form' %}
+				<div class="notification-form btn-wrapper btn-{{ module.countdown.cta_style }}-wrapper">
+					{% form
+						form_to_use="{{ module.countdown.form.form_id }}"
+						response_response_type="{{ module.countdown.form.response_type }}"
+						response_message="{{ module.countdown.form.message }}"
+						response_redirect_id="{{ module.countdown.form.redirect_id }}"
+						response_redirect_url="{{module.countdown.form.redirect_url}}"
+						gotowebinar_webinar_key="{{ module.countdown.form.gotowebinar_webinar_key }}"
+					%}
+				</div>
+				{% endif %}
+
+				{% if module.countdown.offer_type == 'btn' %}
+
+
+				<div class="btn-wrapper btn-{{ module.countdown.cta.cta_style }}-wrapper mb-3">
+					{% if module.countdown.cta.cta_type == 'btn' %}
+					{% set href = module.countdown.cta.link.url.href %}
+					{% if module.countdown.cta.link.url.type is equalto "EMAIL_ADDRESS" %}
+					{% set href = "mailto:" + href %}
+					{% endif %}
+					<a href="{{ href }}" class="cta_button">{{ module.countdown.cta.button_text }}</a>
+					{% elif module.countdown.cta.cta_type == 'cta' %}
+					{% cta guid="{{ module.countdown.cta.cta }}" %}
+					{% endif %}
+				</div>
+				{% endif %}
+
+				{% if module.countdown.client %}
+				<div class="notification-footer">
+					<p class="notification-client text-{{ module.design_settings.client_name_text_color }} mb-0">{{ module.countdown.client }}</p>
+				</div>
+				{% endif %}
+			</div>
+			{# countdown #}
+			{% elif module.notification_type == "social" %}
+			<div class='w-100'>
+				
+				{% if module.social_share.title %}
+				<div class="notification-header">
+					<p class="h5"><strong class="notification-title">{{ module.social_share.title }}</strong></p>
+				</div>
+				{% endif %}
+				
+				<div class="notification-share-buttons d-sm-flex">
+					{% if module.social_share.facebook %}
+					<a class="share-button share-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{content.absolute_url}}&src={{content.absolute_url}}" target="_blank">Facebook</a>
+					{% endif %}
+					{% if module.social_share.twitter %}
+					<a class="share-button share-twitter" href="https://twitter.com/intent/tweet?url={{content.absolute_url}}&text={{page_meta.name}} via" target="_blank">Twitter</a>
+					{% endif %}
+					{% if module.social_share.linkedin %}
+					<a class="share-button share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url={{content.absolute_url}}" target="_blank">Linkedin</a>
+					{% endif %}
+				</div>
+
+				{% if module.social_share.description %}
+				<p class="notification-description mb-3">{{ module.social_share.description }}</p>
+				{% endif %}
+				
+				{% if module.social_share.client %}
+				<div class="notification-footer">
+					<p class="notification-client text-{{ module.design_settings.client_name_text_color }} mb-0">{{ module.social_share.client }}</p>
+				</div>
+				{% endif %}
+			</div>
+			{% endif %} 
+			{# social #}
+		</div> {# notification-content #}
+	</div> {# notification-wrapper #}
+	
+	{% if (module.notification_type == "countdown" || module.notification_type == "email" || module.notification_type == "information" || module.notification_type == "social") && module.settings.always_show %}
+	<button class="notification-close" onclick="getElementById('notification').classList.add('hide'); getElementById('notification').classList.remove('show')">
+		<i class="fa fa-times" aria-hidden="true"></i>
+	</button>
+	{% endif %}
+</div> {# notification #}
+
+{% require_css %}
+<style>
+	#notification {
+		position: fixed;
+		-webkit-transition: all 0.6s ease;
+		-o-transition: all 0.6s ease;
+		transition: all 0.6s ease;
+		z-index: 1000;
+		margin-bottom: 0;
+	}
+	#notification.linked:hover {
+		margin-bottom: 0.25rem;
+	}
+	#notification.tl {
+		top: 2rem;
+		left: 2rem;
+	}
+	#notification.tr {
+		top: 2rem;
+		right: 2rem;
+	}
+	#notification.bl {
+		bottom: 2rem;
+		left: 2rem;
+	}
+	#notification.br {
+		bottom: 2rem;
+		right: 2rem;
+	}
+	.notification-wrapper {
+		-webkit-box-shadow: 0 10px 15px -3px rgba(0,0,0,.08),0 4px 6px -2px rgba(0,0,0,.04);
+		box-shadow: 0 10px 15px -3px rgba(0,0,0,.08),0 4px 6px -2px rgba(0,0,0,.04);
+		padding: 0.75rem;
+		-webkit-transition: all 0.2s ease;
+		-o-transition: all 0.2s ease;
+		transition: all 0.2s ease;
+	}
+	#notification.linked .notification-wrapper:hover {
+		-webkit-box-shadow: 0 10px 15px -3px rgba(0,0,0,.20),0 4px 6px -2px rgba(0,0,0,.16);
+		box-shadow: 0 10px 15px -3px rgba(0,0,0,.20),0 4px 6px -2px rgba(0,0,0,.16);
+	}
+	#notification {
+		max-width: 400px;
+		min-width: 250px;
+	}
+	#notification .notification-close {
+		position: absolute;
+		top: 2px;
+		right: 3px;
+		width: 15px;
+		height: 15px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: none;
+		font-size: 10px;
+		z-index: 99999;
+		background: none;
+		opacity: .2;
+	}
+	.notification-content *:not(img):not(input):empty,
+	.notification-content img[src=""] {
+		display: none;
+		visibility: hidden;
+	}
+	#notification .notification-footer {
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: row;
+		flex-direction: row;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+		font-size: .7rem;
+	}
+	#notification .notification-header {
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: row;
+		flex-direction: row;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+	#notification .notification-content,
+	#notification .notification-content > a {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: row;
+		flex-direction: row;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		font-size: .8rem;
+		line-height: 1.25rem;
+	}
+	#notification[data-type="conversion"] .notification-title,
+	#notification[data-type="information"] .notification-title,
+	#notification[data-type="review"] .notification-title {
+		font-size: 0.9rem;
+	}
+	#notification[data-type="conversion"] .notification-content img,
+	#notification[data-type="information"] .notification-content img,
+	#notification[data-type="review"] .notification-content img {
+		max-width: 100px;
+		height: auto;
+		margin-right: 0.75rem;
+	}
+	#notification[data-type="conversion"] .notification-content img,
+	#notification[data-type="review"] .notification-content img {
+		border-radius: 50%;
+	}
+	#notification[data-type="conversion"] .notification-content p,
+	#notification[data-type="information"] .notification-content p,
+	#notification[data-type="review"] .notification-content p {
+		margin: 0;
+	}
+	#notification[data-type="email"] .notification-wrapper {
+		padding: 1rem;
+	}
+	#notification[data-type="email"] form,
+	#notification[data-type="countdown"] form {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex
+	}
+	#notification[data-type="email"] .field > label,
+	#notification[data-type="countdown"] .field > label,
+	#notification[data-type="email"] .hs-form .hs-error-msgs,
+	#notification[data-type="countdown"] .hs-form .hs-error-msgs{
+		display: none !important;
+	}
+	#notification[data-type="email"] .hs_submit,
+	#notification[data-type="countdown"] .hs_submit {
+		margin: 0;
+	}
+	#notification[data-type="email"] .hs-button,
+	#notification[data-type="countdown"] .hs-button {
+		border-top-left-radius: 0 !important;
+		border-bottom-left-radius: 0 !important;
+	}
+	#notification[data-type="email"] .hs_email {
+		-webkit-box-flex: 1;
+		-ms-flex: 1;
+		flex: 1;
+	}
+	#notification[data-type="review"] #review-stars {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: row;
+		flex-direction: row;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+	#notification[data-type="review"] .notification-star {
+		color: #e1e7ef;
+	}
+	#notification[data-type="review"] .notification-description {
+		font-style: italic;
+	}
+	#notification[data-type="review"] #review-stars.stars-0 {
+		display: none;
+	}
+	#notification[data-type="review"] #review-stars.stars-1 .notification-star:nth-child(-n+1),
+	#notification[data-type="review"] #review-stars.stars-2 .notification-star:nth-child(-n+2),
+	#notification[data-type="review"] #review-stars.stars-3 .notification-star:nth-child(-n+3),
+	#notification[data-type="review"] #review-stars.stars-4 .notification-star:nth-child(-n+4),
+	#notification[data-type="review"] #review-stars.stars-5 .notification-star:nth-child(-n+5) {
+		color: #FF9D28;   
+	}
+	#notification[data-type="social"] .notification-share-buttons {
+		display: block;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: row;
+		flex-direction: row;
+		-ms-flex-pack: distribute;
+		justify-content: space-around;
+		width: 100%;
+		margin: 1rem 0;
+	}
+	#notification[data-type="social"] .share-button {
+		background: #000;
+		color: #fff;
+		display: inline-block;
+		border-radius: 4px;
+		margin: 0.25rem;
+		padding: 6px 10px;
+		text-align: center;
+		font-weight: 700;
+		font-size: 0.9rem;
+		border-bottom: 2px #00000014 solid;
+		border-right: 2px #00000014 solid;
+	}
+	#notification[data-type="social"] .share-button.share-facebook {
+		background: #3c5a99!important;
+	}
+	#notification[data-type="social"] .share-button.share-twitter {
+		background: #1da1f2!important;
+	}
+	#notification[data-type="social"] .share-button.share-linkedin {
+		background: #0077b5!important;
+	}
+	#notification[data-type="countdown"] p.notification-teaser {
+		font-size: .8rem;
+		text-decoration: underline;
+		margin-bottom: 1rem;
+	}
+	#notification[data-type="countdown"] ul#countdown-date {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: row;
+		flex-direction: row;
+		width: 100%;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+		margin-bottom: 1rem;
+		list-style: none;
+		padding: 0;
+	}
+	#notification[data-type="countdown"] ul#countdown-date li {
+		font-size: .75rem;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+	#notification[data-type="countdown"] ul#countdown-date li span {
+		padding: 4px 8px;
+		font-size: 1rem;
+		border-radius: 3px;
+		width: 35px;
+		text-align: center;
+		display: block;
+		margin: 0 auto;
+	}
+	#notification[data-type="countdown"] input.hs-button.primary.large, 
+	#notification[data-type="countdown"] input,
+	#notification[data-type="countdown"] .cta_button,
+	#notification[data-type="email"] input.hs-button.primary.large, 
+	#notification[data-type="email"] input,
+	#notification[data-type="email"] .cta_button {
+		height: 2.5rem !important;
+		font-size: .75rem !important;
+	}
+
+	@media (max-width: 401px) { 
+		#notification {
+			max-width: 100%;
+			max-width: min(100%,400px);
+			min-width: auto;
+			left: 2rem;
+			right: 2rem;
+		}
+	}
+	#notification.tl.hide,
+	#notification.bl.hide {
+		-webkit-transition: all 0.6s ease;
+		-o-transition: all 0.6s ease;
+		transition: all 0.6s ease;
+		left: -500px;
+		right: auto;
+	}
+	#notification.tr.hide,
+	#notification.br.hide  {
+		-webkit-transition: all 0.6s ease;
+		-o-transition: all 0.6s ease;
+		transition: all 0.6s ease;
+		right: -500px;
+		left: auto;
+	}
+	@media (max-width: 768px) { 
+		#notification[data-type="email"] {
+			left: 2rem;
+			right: 2rem;
+			max-width: 100%;
+		}
+		#notification[data-type="email"].hide {
+			left: -110%;
+		}
+	}
+</style>
+{% end_require_css %}
+
+
+{% require_js %}
+<script>
+	{# JavaScript object to store the HubL info #}
+	{% if module.notification_type == "conversion" %}
+	const objects = {{ module.conversion|tojson }}; 
+	{% elif module.notification_type == "review" %}
+	const objects = {{ module.review|tojson }};
+	{% endif %}
+
+	const el = document.getElementById("notification"); // Get the notification element
+
+	//Store the Module settting in JS	
+	let startDelay = parseInt(el.getAttribute('data-start')),
+		showTime = parseInt(el.getAttribute('data-show')),
+		delay = parseInt(el.getAttribute('data-delay')),
+		delayMin = parseInt(el.getAttribute('data-delaymin')),
+		delayMax = parseInt(el.getAttribute('data-delaymax')),
+		delayRand = el.getAttribute('data-random');
+
+	// Check the type and fire the appropriate function
+	// passing boolean delayRand to determine whether the delay is random or not
+	switch(el.getAttribute('data-type')) {
+		case "conversion":
+		case "review":
+			build(delayRand);
+			break;
+		case "countdown":
+			countdown(delayRand);
+			break;
+		case "email":
+		case "information":
+		case "social":
+			show(delayRand);
+			break;
+	}
+
+	// Dynamically build the notification box
+	// for conversion and reviews options 
+	function build(random) {
+
+		var objArray = [];
+		var buildobjArray = (function() {
+			for (key in objects) {
+				if (objects.hasOwnProperty(key)){
+					objArray.push(objects[key]);
+				}
+			}
+		})();
+
+		// Method to use to loop to get the next object
+		var displayNotifications = {
+			max : objArray.length, 
+			current : 0,
+			timeout : null,
+			go : function() {
+
+				let rand = 0; 
+
+				// if delayRand was true or not
+				if(random == "true") {
+					rand = showTime + Math.floor(Math.random() * (delayMax - delayMin + 1) + delayMin); // Set rand to a random number between the min and max
+				} else {
+					rand = showTime + delay // Set rand to the showTime
+				}
+
+				this.current = Math.floor(Math.random() * objArray.length)
+
+				update(objArray[this.current]); // update function used to update the HTML in the box
+
+				showEl(el) // Show the notification box
+
+				// Hide the notification box after the showTime has passede
+				setTimeout(function(){ 
+					hideEl(el) // Hide the notification box
+				}, showTime * 1000);
+
+				// Start displayNotifications with the set rand delay 
+				this.timeout = setTimeout(function() { 
+					displayNotifications.go(); 
+				}, rand * 1000);
+			}
+		}
+
+		// Start displayNotifications with the set delay
+		setTimeout(function(){ 
+			displayNotifications.go();
+		}, startDelay * 1000);
+	}
+
+	// Show the notification box
+	// for email, information and social options 
+	function show() {
+		setTimeout(function(){ 
+			showEl(el)
+
+			if(showTime) {
+				setTimeout(function(){ 
+					hideEl(el)
+				}, showTime * 1000);
+			}
+
+		}, startDelay * 1000);
+	}
+
+	// Start the countdown and show the notification box
+	// for the countdown option 
+	function countdown(random) {
+		// Set the date we're counting down to
+		var countDownDate = new Date(document.getElementById("countdown-date").getAttribute('data-date')).getTime();
+
+		// Update the count down every 1 second
+		var x = setInterval(function() {
+
+			// Get today's date and time
+			var now = new Date().getTime();
+
+			// Find the distance between now and the count down date
+			var distance = countDownDate - now;
+
+			// Time calculations for days, hours, minutes and seconds
+			var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+			//Update the notification box countdown
+			document.getElementById("d").innerHTML = days
+			document.getElementById("hr").innerHTML = hours
+			document.getElementById("min").innerHTML = minutes
+			document.getElementById("sec").innerHTML = seconds
+
+		}, 1000);
+
+		show() // Show the notification box
+	}
+
+	//Function for updating the notification box HTML
+	function update(obj) {
+
+		//Grab all the elements
+		let title = el.querySelector('.notification-title'),
+			description = el.querySelector('.notification-description'),
+			image = el.querySelector('.notification-image'),
+			time = el.querySelector('.notification-time'),
+			client = el.querySelector('.notification-client'),
+			stars = el.querySelector('#review-stars'),
+			linked = el.querySelector('.linked');
+
+		// Check whether the elements exsist or not 
+		// and update them accordingly
+
+		if(title) {
+			title.innerHTML = obj.title;
+		}
+		if(description) {
+			description.innerHTML = obj.description;
+		}
+		if(image) {
+			image.src = obj.image.src;
+			image.width = obj.image.width;
+		}
+		if(time) {
+			time.innerHTML = obj.time;
+		}
+		if(client) {
+			client.innerHTML = obj.client;
+		}
+		if(stars) {
+			stars.setAttribute('class', "stars-" + obj.stars);
+		}
+		if(linked && obj.enable_link) {
+			linked.href = obj.link.url.href;
+		}
+		if(el.querySelector('.linked')) {
+			if(el.querySelector('.linked').getAttribute('href')) {
+				el.classList.add("linked");
+			} else {
+				el.classList.remove("linked");
+			}	
+		}
+	}
+
+	// Function to show the notification box
+	function showEl(i) {
+		i.classList.add("show");
+		i.classList.remove("hide");
+	}
+
+	// Function to hide the notification box
+	function hideEl(i) {
+		i.classList.add("hide");
+		i.classList.remove("show");
+	}
+</script>
+{% end_require_js %}

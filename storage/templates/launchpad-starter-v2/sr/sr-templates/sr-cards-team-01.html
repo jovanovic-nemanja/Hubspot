@@ -1,0 +1,203 @@
+{% if module.enabled %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% else %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	{% require_css %}
+		<style>
+
+		{% if module.design_settings.background_option == 'image' %}
+			.{{ name }} {
+				{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+			}
+			@media (min-width: 768px) {
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+				}
+			}
+			.{{ name }}:before {
+				content: "";
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});
+			}
+			.{{ name }} .container, .{{ name }} .container-fluid {
+				position: relative;
+			}
+		{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+			.{{ name }} {
+				background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+			}
+		{% endif %}
+		{% if module.design_settings.top_bottom_padding == "custom" %}
+			.{{ name }} {
+				padding: {{ module.design_settings.custom_padding }};
+			}
+		{% endif %}
+		.sr-cards-team {
+			background-position: center center;
+			background-size: cover;
+		}
+		.sr-cards-team .section-heading {
+			text-align: center;
+		}
+		.sr-cards-team .team-card {
+			position:relative;
+			width: 100%;
+			border: solid 1px #e5e7ea;
+			background-color:#fff;
+			text-align: center;
+			padding-top: 4.75rem;
+			height:100%;
+		}
+		.sr-cards-team .team-column {
+			margin-top: 78px;
+		}
+		.sr-cards-team .team-card .card-img-top {
+			width:96px;
+			height:96px;
+			margin:0 auto;
+			position:absolute;
+			border-radius:50%;
+			top: -48px;
+			left: calc(50% - 48px);
+			background-position: center;
+			background-size: cover;
+		}
+		.sr-cards-team .card-text-wrapper .card-title {
+			font-weight:500;
+			line-height:1.563rem;
+			margin-bottom:0.625rem;
+		}
+		.sr-cards-team .team-card .card-text-wrapper {
+			padding:0 1.875rem 3.156rem 1.875rem;
+		}
+		.sr-cards-team .card-link-wrapper {
+			display: block;
+			width: 100%;
+		}
+		@media (min-width: 768px) {
+			.sr-cards-team .team-column:nth-child(-n+3) {
+				margin-top: 48px; 
+			}
+		}
+		@media (max-width: 767px) {
+			.sr-cards-team .intro-section {
+				padding-bottom:2.778rem;
+			}
+			.sr-cards-team h5.card-title {
+				font-size:1.128rem;
+				line-height:1.389rem;
+				margin-bottom:0;
+			}
+			.sr-cards-team .card-text {
+				font-size:0.903rem;
+				line-height:1.319rem;
+			}
+			.sr-cards-team .description{
+				font-size:0.903rem;
+				line-height:normal;
+			}
+			.sr-cards-team .team-card {
+				padding-top:4.722rem;
+			}
+			.sr-cards-team .intro-section h2.heading {
+				font-size: 1.806rem;
+				line-height:2.292rem
+			}
+			.sr-cards-team .team-column {
+				margin-top: 78px;
+			}
+			.sr-cards-team .call-to-action-section a {
+				font-size:0.778rem;
+				line-height:normal;
+			}
+			.sr-cards-team .team-card .card-text-wrapper {
+				padding-bottom:4.167rem;
+			}
+		}
+		
+		</style>
+	{% end_require_css %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-cards-team-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Cards Team 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+
+	<div class="sr-cards-team {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} sr-padding-{{ module.design_settings.top_bottom_padding }}{% if module.design_settings.class %} {{ module.design_settings.class }}{% endif %}{% if module.design_settings.border_top %} sr-line-top{% endif %}{% if module.design_settings.border_bottom %} sr-line-bottom{% endif %} sr-module {{ name }}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }}">
+
+			{% if module.design_settings.container_width != 'max' %}
+			<div class="row">
+				<div class="{{ width_class }}">
+			{% endif %}
+					{% if module.heading || module.description || module.cta.cta_type != 'none'%}
+					<div class="intro-section sr-spacer-bottom-50 {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">
+						{% if module.heading %}
+							<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} heading {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.heading}}</h{{module.heading_size}}>
+						{% endif %}
+						{% if module.description %}
+							<div class="description">{{ module.description}}</div>
+						{% endif %}
+						{% if module.cta.cta_type != 'none' %}
+							<div class="call-to-action-section btn-wrapper btn-{{ module.cta.cta_style }}-wrapper sr-spacer-top-25">
+								{% if module.cta.cta_type == 'btn' %}
+									<a href="{{ module.cta.link }}" class="cta_button">{{ module.cta.button_text }}</a>
+								{% elif module.cta.cta_type == 'cta' %}
+									{% cta guid="{{ module.cta.cta }}" %}
+								{% endif %}
+							</div>
+						{% endif %}
+					</div>
+					{% endif %}
+					<div class="section-content">
+						<div class="row justify-content-around">
+							{% for item in module.card %}
+							<div class="col-md-4 team-column">
+								<div class="team-card">
+									<div class="card-img-top" style="background-image: url({{ item.team_image.src }})"></div>
+									<div class="card-text-wrapper">
+										<h5 class="card-title">{{ item.team_name }}</h5>
+										<div class="card-text">{{ item.team_title }}</div>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+			{% if module.design_settings.container_width != 'max' %}	
+				</div>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+{% endif %}

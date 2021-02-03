@@ -1,0 +1,393 @@
+{
+	"custom_module": {
+		"author": "ernesto@lean-labs.com",
+        "tags": ["ver-1.0.2"],
+		"name": "SR Tabs Horizontal 02",
+		"css_assets": [ ],
+		"editable_contexts": [ ],
+		"external_js": [ ],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+		"js_assets": [ ],
+		"other_assets": [ ],
+		"fields": [
+			{
+				"name": "enabled",
+				"label": "Enabled",
+				"default": true,
+				"type": "boolean"
+			},
+			{
+                "type": "group",
+                "name": "design_settings",
+                "label": "Design Settings",
+                "children": [
+                    {
+                        "default": null,
+                        "label": "ID",
+                        "name": "sr_module_id",
+                        "type": "text"
+                    },
+                    {
+                        "default": null,
+                        "label": "Class",
+                        "name": "class",
+                        "type": "text"
+                    },
+                    {
+                        "choices": [
+                            [
+                                "container",
+                                "Page"
+                            ],
+                            [
+                                "container-fluid",
+                                "Full Width"
+                            ]
+                        ],
+                        "default": "container",
+                        "display": "select",
+                        "label": "Layout",
+                        "name": "layout",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "choices": [
+                            [
+                                "min",
+                                "Minimum"
+                            ],
+                            [
+                                "narrow",
+                                "Narrow"
+                            ],
+                            [
+                                "wide",
+                                "Wide"
+                            ],
+                            [
+                                "max",
+                                "Maximum"
+                            ]
+                        ],
+                        "default": "max",
+                        "display": "select",
+                        "label": "Container Width",
+                        "name": "container_width",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "choices": [
+                            [
+                                "auto",
+                                "Use default values"
+                            ],
+                            [
+                                "zero",
+                                "No Padding"
+                            ],
+                            [
+                                "half",
+                                "Small padding"
+                            ],
+                            [
+                                "full",
+                                "Large padding"
+                            ],
+                            [
+                                "custom",
+                                "Custom padding"
+                            ]
+                        ],
+                        "id": "top_bottom_padding",
+                        "default": "full",
+                        "display": "select",
+                        "label": "Top Bottom Padding",
+                        "name": "top_bottom_padding",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "name": "custom_padding",
+                        "type": "text",
+                        "label": "Custom Padding",
+                        "help_text": "Top, Right, Bottom, Left",
+                        "visibility": {
+                            "controlling_field": "top_bottom_padding",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL",
+                            "access": null
+                        },
+                        "default": "1rem 0rem 1rem 0rem"
+                    },
+                    {
+                        "choices": [
+                            [
+                                "image",
+                                "Image"
+                            ],
+                            [
+                                "color",
+                                "Color"
+                            ],
+                            [
+                                "custom",
+                                "Custom"
+                            ],
+                            [
+								"gradient", "Gradient"
+							]
+                        ],
+                        "id": "background_option",
+                        "default": "color",
+                        "display": "select",
+                        "label": "Background Option",
+                        "name": "background_option",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+						"default": {
+							"color": "#0c63ff"
+						},
+						"label": "Background Gradient From",
+						"name": "background_gradient_from",
+						"visibility": {
+							"controlling_field": "background_option",
+							"controlling_value_regex": "gradient",
+							"operator": "EQUAL"
+						},
+						"type": "color"
+					},
+					{
+						"default": {
+							"color": "#1897ff"
+						},
+						"label": "Background Gradient To",
+						"name": "background_gradient_to",
+						"visibility": {
+							"controlling_field": "background_option",
+							"controlling_value_regex": "gradient",
+							"operator": "EQUAL"
+						},
+						"type": "color"
+					},
+                    {
+                        "default": {
+                            "src": "",
+                            "alt": ""
+                        },
+                        "label": "Background Image",
+                        "name": "background_image",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL"
+                        },
+                        "type": "image"
+                    },
+                    {
+                        "default": {
+                            "color": "#343a40",
+                            "opacity": 30
+                        },
+                        "label": "Background Overlay Color",
+                        "name": "background_overlay_color",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL"
+                        },
+                        "help_text": "Recommended Width: 2880x1920px",
+                        "type": "color"
+                    },
+                    {
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "success",
+                                "Success"
+                            ],
+                            [
+                                "info",
+                                "Info"
+                            ],
+                            [
+                                "warning",
+                                "Warning"
+                            ],
+                            [
+                                "danger",
+                                "Danger"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "default": "white",
+                        "display": "select",
+                        "label": "Background Color",
+                        "name": "background_color",
+                        "type": "choice",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "color",
+                            "operator": "EQUAL"
+                        },
+                        "required": true
+                    },
+                    {
+                        "default": {
+                            "color": "#fff"
+                        },
+                        "label": "Background Custom",
+                        "name": "background_custom",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL"
+                        },
+                        "type": "color"
+                    },
+                    {
+                        "default": false,
+                        "label": "Border Top",
+                        "name": "border_top",
+                        "type": "boolean"
+                    },
+                    {
+                        "default": false,
+                        "label": "Border Bottom",
+                        "name": "border_bottom",
+                        "type": "boolean"
+                    }
+                ]
+            },
+			{
+				"id": 1,
+				"label": "Tabs",
+				"name": "tabs",
+				"type": "group",
+				"occurrence": {
+					"min": 2,
+					"default": 3
+				},
+				"children": [
+					{
+						"default": "Tab Title",
+						"label": "Tab Title",
+						"name": "tab_title",
+						"type": "text"
+					},
+					{
+						"id": "",
+						"default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam.</p>",
+						"label": "Tab Content",
+						"name": "tab_content",
+						"type": "richtext"
+					}
+				],
+				"default" : [
+					{
+						"tab_title": "First Tab Heading 01",
+						"tab_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam.</p>"
+					},
+					{
+						"tab_title": "First Tab Heading 02",
+						"tab_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam.</p>"
+					},
+					{
+						"tab_title": "First Tab Heading 03",
+						"tab_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit lorem vitae massa sollicitudin ullamcorper et et lectus. Praesent gravida erat ac tellus gravida laoreet. Integer sit amet libero eget nisl commodo ultricies non ut quam.</p>"
+					}
+				]
+			},
+			{
+				"choices": [
+					[
+						"auto", "Auto"
+					],
+					[
+						"primary", "Primary"
+					],
+					[
+						"secondary", "Secondary"
+					],
+					[
+						"tertiary", "Tertiary"
+					],
+					[
+						"white", "White"
+					],
+					[
+						"black", "Black"
+					],
+					[
+						"dark", "Dark"
+					],
+					[
+						"light", "Light"
+					],
+					[
+						"success", "Success"
+					],
+					[
+						"info", "Info"
+					],
+					[
+						"warning", "Warning"
+					],
+					[
+						"danger", "Danger"
+					]
+				],
+				"default": "auto",
+				"display": "select",
+				"label": "Text Color",
+				"name": "text_color",
+				"type": "choice",
+				"required": true
+			}
+		],
+		"source": ""
+	},
+	"custom_module_template": "sr-tabs-horizontal-02.html",
+	"category": 5,
+	"files": [
+		{
+			"file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/jquery.sticky-kit.js",
+			"folder_paths": "sr-assets/js"
+		}
+	]
+}

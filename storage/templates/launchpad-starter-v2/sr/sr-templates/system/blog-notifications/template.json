@@ -1,0 +1,22 @@
+{
+	"name": "Email Blog Notifications",
+	"templates": [
+		{
+			"category_id": "2",
+			"template_type": "2",
+			"folder": "sr/templates/email",
+			"path": "sr/templates/email/blog-notifications.html",
+			"source": "launchpad-starter-v2/sr/sr-templates/system/blog-notifications/blog-notifications.html",
+			"is_available_for_new_content": true
+		}
+	],
+	"custom_modules": [
+		"email-view-as-webpage.json",
+		"email-settings.json",
+		"email-header.json",
+		"email-hero.json",
+		"email-one-col-text.json",
+		"email-blog-listing.json",
+		"email-footer.json"
+	]
+}

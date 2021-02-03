@@ -1,0 +1,13 @@
+{
+	"name": "Pricing v1",
+	"custom_modules": [
+		"sr-nav-dropdown-01.json",
+		"sr-cards-pricing-01.json",
+		"sr-clients-01.json",
+		"sr-faq-01.json",
+		"sr-offer-bar-04.json",
+		"sr-footer-04.json"
+	],
+	"module_overrides": {},
+	"page_overrides": {}
+}

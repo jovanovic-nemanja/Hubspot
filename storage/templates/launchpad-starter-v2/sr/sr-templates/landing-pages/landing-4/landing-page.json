@@ -1,0 +1,12 @@
+{
+	"name": "Landing v4",
+	"custom_modules": [
+		"sr-nav-min-01.json",
+		"sr-hero-03.json",
+		"sr-one-col-01.json",
+		"sr-offer-one-col-01.json",
+		"sr-footer-min-01.json"
+	],
+	"module_overrides": {},
+	"page_overrides": {}
+}

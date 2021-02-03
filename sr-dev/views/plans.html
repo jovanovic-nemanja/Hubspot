@@ -1,0 +1,129 @@
+<div class="action-panel-content">
+    <div class="action-container">
+        <div class="action-heading">
+            <h2>Plans</h2>
+            <form class="form-inline action-panel-search">
+                <input id="plans-search" onkeyup="searchTable()" class="form-control" type="search" placeholder="Search" aria-label="Search" data-item="plans-search">
+            </form>
+        </div>
+        <table id="plan-table" class="table table-striped asc">
+            <thead>
+            <tr>
+                <th class="desc" scope="col">Plan Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Portals</th>
+                <th scope="col">Users</th>
+                <th class="action" scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="plan-name">Free</td>
+                    <td>Free</td>
+                    <td>∞</td>
+                    <td>∞</td>
+                    <td><a class="editor-link" href="#">Edit</a><a class="editor-link" href="#">Delete</a></td>
+                </tr>
+                    <tr>
+                        <td class="plan-name">SR Free</td>
+                        <td>Free</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td><a class="editor-link" href="#">Edit</a><a class="editor-link" href="#">Delete</a></td>
+                    </tr>
+                    <tr>
+                        <td class="plan-name">SR Business</td>
+                        <td>Paid</td>
+                        <td>1</td>
+                        <td>10</td>
+                        <td><a class="editor-link" href="#">Edit</a><a class="editor-link" href="#">Delete</a></td>
+                    </tr>
+                    <tr>
+                        <td class="plan-name">SR Agency</td>
+                        <td>Paid</td>
+                        <td>10</td>
+                        <td>∞</td>
+                        <td><a class="editor-link" href="#">Edit</a><a class="editor-link" href="#">Delete</a></td>
+                    </tr>
+                </tr>
+            </tbody>
+        </table>
+        <button id="add-plan" type="submit" class="btn btn-primary">Add Plan</button>
+        </div>
+    </div>
+</div>
+
+<!-- script needs to be loaded with this section if using AJAX-->
+<script type="text/javascript">
+
+
+
+
+    function searchTable() {
+    
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("plans-search");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("plan-table");
+      tr = table.getElementsByTagName("tr");
+      
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+
+    $("#add-plan").click(function(){
+        $('#action-panel-target').empty();
+
+        if($("body").hasClass("modal-open")) {
+            console.log("action panel is open already");
+        } else {
+            $('#action-panel').modal('show');
+        }
+        $('#action-panel-target').load('./views/add-plan.html', function(){
+            $(this).hide().fadeIn(200);
+        });
+    });
+
+    $('th').click(function(){
+
+    if($(this).hasClass("asc")) {
+        $('th.asc').removeClass("asc");
+        $('th.desc').removeClass("desc");
+        $(this).addClass("desc");
+    } else {
+        $('th.asc').removeClass("asc");
+        $('th.desc').removeClass("desc");
+        $(this).addClass("asc");
+    }
+
+    var tracker = true;
+
+    var table = $(this).parents('table').eq(0)
+    var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+
+    if(tracker) {
+    this.asc = !this.asc
+        tracker = false;
+    }
+    if (!this.asc){rows = rows.reverse()}
+    for (var i = 0; i < rows.length; i++){table.append(rows[i])}
+    })
+
+    function comparer(index) {
+    return function(a, b) {
+        var valA = getCellValue(a, index), valB = getCellValue(b, index)
+        return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.toString().localeCompare(valB)
+    }
+    }
+    function getCellValue(row, index){ return $(row).children('td').eq(index).text() }
+    
+</script>

@@ -1,0 +1,325 @@
+{
+    "custom_module": {
+        "author": "bradley@lean-labs.com",
+        "tags": ["ver-1.0.2"],
+        "name": "SR Stats 04",
+        "css_assets": [],
+        "editable_contexts": [],
+        "external_js": [],
+        "icon": "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": [
+            "PAGE",
+            "BLOG_POST",
+            "BLOG_LISTING"
+        ],
+        "js_assets": [],
+        "other_assets": [],
+        "fields": [
+            {
+                "default": true,
+                "label": "Enabled",
+                "name": "enabled",
+                "type": "boolean"
+            },
+            {
+                "type": "group",
+                "name": "design_settings",
+                "label": "Design Settings",
+                "children": [
+                    {
+                        "default": null,
+                        "label": "ID",
+                        "name": "sr_module_id",
+                        "type": "text"
+                    },
+                    {
+                        "default": null,
+                        "label": "Class",
+                        "name": "class",
+                        "type": "text"
+                    },
+                    {
+                        "choices": [
+                            [
+                                "auto",
+                                "Use default values"
+                            ],
+                            [
+                                "zero",
+                                "No Padding"
+                            ],
+                            [
+                                "half",
+                                "Small padding"
+                            ],
+                            [
+                                "full",
+                                "Large padding"
+                            ],
+                            [
+                                "custom",
+                                "Custom padding"
+                            ]
+                        ],
+                        "id": "top_bottom_padding",
+                        "default": "zero",
+                        "display": "select",
+                        "label": "Top Bottom Padding",
+                        "name": "top_bottom_padding",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "name": "custom_padding",
+                        "type": "text",
+                        "label": "Custom Padding",
+                        "help_text": "Top, Right, Bottom, Left",
+                        "visibility": {
+                            "controlling_field": "top_bottom_padding",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL",
+                            "access": null
+                        },
+                        "default": "1rem 0rem 1rem 0rem"
+                    },
+                    {
+                        "default": {
+                            "color": "#f2f2f2"
+                        },
+                        "label": "Background Color",
+                        "name": "background_color",
+                        "type": "color"
+                    },
+                    {
+                        "default": false,
+                        "label": "Border Top",
+                        "name": "border_top",
+                        "type": "boolean"
+                    },
+                    {
+                        "default": false,
+                        "label": "Border Bottom",
+                        "name": "border_bottom",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "id": 1,
+                "label": "Items",
+                "name": "items",
+                "type": "group",
+                "occurrence": {
+                    "min": 1,
+                    "default": 5
+                },
+                "children": [
+                    {
+                        "default": {
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-two-col-features-02-icon5.png",
+                            "alt": "Describe your image",
+                            "width": "60"
+                        },
+                        "label": "Image",
+                        "name": "image",
+                        "type": "image"
+                    },
+                    {
+                        "default": true,
+                        "label": "SR Default Image Size",
+                        "name": "sr_default_image_size",
+                        "type": "boolean"
+                    },
+                    {
+                        "default": "10,001",
+                        "label": "Number",
+                        "name": "number",
+                        "type": "text"
+                    },
+                    {
+                        "default": "Realm of the Galaxies",
+                        "label": "Description",
+                        "name": "description",
+                        "type": "text"
+                    }
+                ],
+                "default": [
+                    {
+                        "image": {
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-two-col-features-02-icon5.png",
+                            "alt": "Descended from Astronomers",
+                            "width": "60"
+                        },
+                        "number": "10,001",
+                        "description": "Descended from Astronomers",
+                        "sr_default_image_size": true
+                    },
+                    {
+                        "image": {
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-two-col-05-icon1.png",
+                            "alt": "Realm of the Galaxies",
+                            "width": "60"
+                        },
+                        "number": "3,600,000,000",
+                        "description": "Realm of the Galaxies",
+                        "sr_default_image_size": true
+                    },
+                    {
+                        "image": {
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-two-col-05-icon2.png",
+                            "alt": "Cosmic Fugue",
+                            "width": "60"
+                        },
+                        "number": "18,821",
+                        "description": "Cosmic Fugue",
+                        "sr_default_image_size": true
+                    },
+                    {
+                        "image": {
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-two-col-05-icon6.png",
+                            "alt": "Cosmic fugue paroxysm",
+                            "width": "60"
+                        },
+                        "number": "78,392,746",
+                        "description": "Cosmic fugue paroxysm",
+                        "sr_default_image_size": true
+                    },
+                    {
+                        "image": {
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-two-col-05-icon4.png",
+                            "alt": "Extraordinary claims",
+                            "width": "60"
+                        },
+                        "number": "388,291",
+                        "description": "Extraordinary claims",
+                        "sr_default_image_size": true
+                    }
+                ]
+            },
+            {
+                "default": true,
+                "label": "Animate Stats",
+                "name": "animate_stats",
+                "type": "boolean"
+            },
+            {
+                "default":1000,
+                "label":"Animation Speed",
+                "name":"animation_speed",
+                "type":"number",
+                "min" : 100,
+                "max" : 3000,
+                "step" : 100,
+                "help" : "Time to animate in milliseconds",
+                "visibility": {
+                    "controlling_field": "animate_stats",
+                    "controlling_value_regex": true,
+                    "operator": "EQUAL",
+                    "access": null
+                }
+            },
+            {
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "left",
+                        "Left"
+                    ],
+                    [
+                        "center",
+                        "Center"
+                    ],
+                    [
+                        "right",
+                        "Right"
+                    ]
+                ],
+                "default": "center",
+                "display": "select",
+                "label": "Text Align",
+                "name": "text_align",
+                "type": "choice",
+                "required": true
+            },
+            {
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "primary",
+                        "Primary"
+                    ],
+                    [
+                        "secondary",
+                        "Secondary"
+                    ],
+                    [
+                        "tertiary",
+                        "Tertiary"
+                    ],
+                    [
+                        "white",
+                        "White"
+                    ],
+                    [
+                        "black",
+                        "Black"
+                    ],
+                    [
+                        "dark",
+                        "Dark"
+                    ],
+                    [
+                        "light",
+                        "Light"
+                    ],
+                    [
+                        "success",
+                        "Success"
+                    ],
+                    [
+                        "info",
+                        "Info"
+                    ],
+                    [
+                        "warning",
+                        "Warning"
+                    ],
+                    [
+                        "danger",
+                        "Danger"
+                    ]
+                ],
+                "default": "auto",
+                "display": "select",
+                "label": "Text Color",
+                "name": "text_color",
+                "type": "choice",
+                "required": true
+            }
+        ],
+        "source": ""
+    },
+    "custom_module_template": "sr-stats-04.html",
+    "category": 9,
+    "files": [
+        {
+            "file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/jquery.counterup.min.js",
+            "folder_paths": "sr-assets/js"
+        },
+        {
+            "file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/waypoints.min.js",
+            "folder_paths": "sr-assets/js"
+        },
+        {
+            "file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/jquery.migrate.min.js",
+            "folder_paths": "sr-assets/js"
+        }
+    ]
+}

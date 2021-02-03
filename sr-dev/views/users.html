@@ -1,0 +1,164 @@
+<div class="action-panel-content">
+    <div class="action-container">
+        <div class="action-heading">
+            <h2>Users</h2>
+            <form class="form-inline action-panel-search">
+                <input id="users-search" onkeyup="searchTable()" class="form-control" type="search" placeholder="Search" aria-label="Search" data-item="plans-search">
+            </form>
+        </div>
+        <table id="user-table" class="table table-striped asc">
+            <thead>
+            <tr>
+                <th class="users-sort asc" scope="col">Name</th>
+                <th scope="col">Agency</th>
+                <th scope="col">Role</th>
+                <th class="action" scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="user-name">Bradley Haveman</td>
+                    <td>Lean Labs</td>
+                    <td>Admin</td>
+                    <td><a class="editor-link" href="#">Edit</a><a class="editor-link" href="#">Delete</a></td>
+                </tr>
+                    <tr>
+                        <td class="user-name">Chris DuBois</td>
+                        <td>Lean Labs</td>
+                        <td>Agency Admin</td>
+                        <td><a class="editor-link" href="#">Edit</a><a class="editor-link" href="#">Delete</a></td>
+                    </tr>
+                    <tr>
+                        <td class="user-name">Cristian Teichner</td>
+                        <td>Lean Labs</td>
+                        <td>Admin</td>
+                        <td><a class="editor-link" href="#">Edit</a><a class="editor-link" href="#">Delete</a></td>
+                    </tr>
+                    <tr>
+                        <td class="user-name">Eric McCarty</td>
+                        <td>Lean Labs</td>
+                        <td>Admin</td>
+                        <td><a class="editor-link" href="#">Edit</a><a class="editor-link" href="#">Delete</a></td>
+                    </tr>
+                    <tr>
+                        <td class="user-name">Giles Talbot</td>
+                        <td>Lean Labs</td>
+                        <td>Agency Admin</td>
+                        <td><a class="editor-link" href="#">Edit</a><a class="editor-link" href="#">Delete</a></td>
+                    </tr>
+                    <tr>
+                        <td class="user-name">Kevin Barber</td>
+                        <td>Lean Labs</td>
+                        <td>Admin</td>
+                        <td><a class="editor-link" href="#">Edit</a><a class="editor-link" href="#">Delete</a></td>
+                    </tr>
+                    <tr>
+                        <td class="user-name">Miles Ukaoma</td>
+                        <td>Lean Labs</td>
+                        <td>Agency User</td>
+                        <td><a class="editor-link" href="#">Edit</a><a class="editor-link" href="#">Delete</a></td>
+                    </tr>
+                    <tr>
+                        <td class="user-name">Nate Oertel</td>
+                        <td>Lean Labs</td>
+                        <td>User</td>
+                        <td><a class="editor-link" href="#">Edit</a><a class="editor-link" href="#">Delete</a></td>
+                    </tr>
+                    <tr>
+                        <td class="user-name">Ryan Scott</td>
+                        <td>Slack</td>
+                        <td>Agency Admin</td>
+                        <td><a class="editor-link" href="#">Edit</a><a class="editor-link" href="#">Delete</a></td>
+                    </tr>
+                    <tr>
+                        <td class="user-name">Slackbot</td>
+                        <td>Lean Labs</td>
+                        <td>User</td>
+                        <td><a class="editor-link" href="#">Edit</a><a class="editor-link" href="#">Delete</a></td>
+                    </tr>
+                    <tr>
+                        <td class="user-name">Stephen  Coursen</td>
+                        <td>Lean Labs</td>
+                        <td>Agency User</td>
+                        <td><a class="editor-link" href="#">Edit</a><a class="editor-link" href="#">Delete</a></td>
+                    </tr>
+                </tr>
+            </tbody>
+        </table>
+        <button id="add-user"type="submit" class="btn btn-primary">Add User</button>
+            
+        </div>
+    </div>
+</div>
+
+<!-- script needs to be loaded with this section if using AJAX-->
+<script type="text/javascript">
+
+function searchTable() {
+
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("users-search");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("user-table");
+    tr = table.getElementsByTagName("tr");
+    
+    for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+        } else {
+        tr[i].style.display = "none";
+        }
+    }
+    }
+}
+
+$("#add-user").click(function(){
+        $('#action-panel-target').empty();
+
+        if($("body").hasClass("modal-open")) {
+            console.log("action panel is open already");
+        } else {
+            $('#action-panel').modal('show');
+        }
+        $('#action-panel-target').load('./views/add-user.html', function(){
+            $(this).hide().fadeIn(200);
+        });
+    });
+
+$('th').click(function(){
+
+if($(this).hasClass("asc")) {
+    $('th.asc').removeClass("asc");
+    $('th.desc').removeClass("desc");
+    $(this).addClass("desc");
+} else {
+    $('th.asc').removeClass("asc");
+    $('th.desc').removeClass("desc");
+    $(this).addClass("asc");
+}
+
+var tracker = true;
+
+var table = $(this).parents('table').eq(0)
+var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+
+if(tracker) {
+this.asc = !this.asc
+    tracker = false;
+}
+if (!this.asc){rows = rows.reverse()}
+for (var i = 0; i < rows.length; i++){table.append(rows[i])}
+})
+
+function comparer(index) {
+return function(a, b) {
+    var valA = getCellValue(a, index), valB = getCellValue(b, index)
+    return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.toString().localeCompare(valB)
+}
+}
+function getCellValue(row, index){ return $(row).children('td').eq(index).text() }
+    
+</script>

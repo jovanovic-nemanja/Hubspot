@@ -1,0 +1,208 @@
+{% if module.enabled %}
+
+	{% require_css %}
+		<style>
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+			.{{ name }} {
+				padding: {{ module.design_settings.custom_padding }};
+			}
+			{% endif %}
+			.sr-offer-one-col-01 .field, .hs-form .hs-error-msgs {
+				text-align: left;
+			}
+			.sr-offer-one-col-01 .form-wrapper {
+				border: 1px solid;
+				border-bottom: 0;
+				padding: 3rem 5.5rem;
+			}
+			.sr-offer-one-col-01 .hs-form input:not(:disabled):not(.disabled)[type="submit"] {
+				margin: 0 auto;
+			}
+			.sr-offer-one-col-01 .hs-form .hs_submit {
+				margin: 0
+			}
+			.sr-offer-one-col-01 .form-columns-2 .field {
+				width: calc(50% - 5px) !important;
+				display: inline-block;
+				float: left;
+			}
+			.sr-offer-one-col-01 .form-columns-2 .field + .field {
+				margin-left: 10px !important;
+			}
+			.sr-offer-one-col-01 .form-title {
+				padding-bottom: 3.125rem;
+				font-size: 1.5rem;
+			}
+		
+		</style>
+	{% end_require_css %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-lg-6 offset-lg-3 col-md-10 offset-md-1' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% else %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-offer-one-col-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Offer One Col 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+	
+	<div class="sr-offer-one-col-01 {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.class %}{{ module.design_settings.class }}{% endif %} {% if module.design_settings.border_top %}sr-line-top{% endif %} {% if module.design_settings.border_bottom %}sr-line-bottom{% endif %} prototype-no-background {{ name }}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }}">
+			{% if module.design_settings.container_width != 'max' %}
+			<div class="row">
+				<div class="{{ width_class }}">
+			{% endif %}
+			
+					{% if module.heading ||  module.description %}
+						<div class="sr-spacer-bottom-50 {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %}">
+							{% if module.heading %}
+								<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} heading {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.heading}}</h{{module.heading_size}}>
+							{% endif %}
+							
+							{% if module.description %}
+								<div class="description">{{ module.description}}</div>
+							{% endif %}
+						</div>
+					{% endif %}
+
+					<div class="bg-white border-primary {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %} form-wrapper">
+						{% if hub_id == 123 || !module.form.form.form_id %}
+						<h3 class="hs_cos_wrapper form-title">Download a Free Trial Today</h3>
+							<div id="hs_form_target_module_3540739632">
+								<form class="hs-form stacked hs-custom-form" >
+									<fieldset class="form-columns-2">
+										<div class="hs_firstname field hs-form-field">
+											<label>
+												<span>First Name</span>
+											</label>
+											<div class="hs-field-desc" style="display:none;"></div>
+											<div class="input">
+												<input class="hs-input" name="firstname" placeholder="First Name" type="text">
+											</div>
+										</div>
+										<div class="hs_lastname field hs-form-field">
+											<label>
+												<span>Last Name</span>
+											</label>
+											<div class="hs-field-desc" style="display:none;"></div>
+											<div class="input">
+												<input class="hs-input" name="lastname" placeholder="Last Name" type="text">
+											</div>
+										</div>
+									</fieldset>
+									<fieldset class="form-columns-1" data-reactid=".0.1:$1">
+										<div class="hs_email field hs-form-field">
+											<label>
+												<span>Email</span>
+												<span class="hs-form-required">*</span>
+											</label>
+											<div class="hs-field-desc" style="display:none;"></div>
+											<div class="input">
+												<input class="hs-input" name="email" placeholder="hi@sprocketrocket.co" required="" type="email" value="">
+											</div>
+										</div>
+										<ul class="hs-error-msgs inputs-list" style="display: none;">
+											<li>
+												<label>Please complete this mandatory field.</label>
+											</li>
+										</ul>
+									</fieldset>
+									<div class="hs_submit">
+										<div class="hs-field-desc" style="display:none;"></div>
+										<div class="actions">
+											<input class="hs-button primary large" type="submit" value="Get Started">
+										</div>
+									</div>
+								</form>
+							</div>
+						{% else %}
+							{% if module.form.title is truthy %}
+								{% set no_title = False %}
+							{% else %}
+								{% set no_title = True %}
+							{% endif %}
+							{% if module.form.form.form_id %}
+								{% if module.form.title is truthy %}
+									{% set no_title = False %}
+								{% else %}
+									{% set no_title = True %}
+								{% endif %}
+								{% if module.form.form.form_id %}
+									{% form
+										form_key="{{name}}",
+										form_to_use="{{module.form.form.form_id}}"
+										title="{{module.form.title}}"
+										no_title="{{no_title}}"
+										follow_up_type_simple="{{module.form.follow_up_type_simple}}"
+										simple_email_for_live_id="{{module.form.simple_email_for_live_id}}"
+										follow_up_type_automation="{{module.form.follow_up_type_automation}}"
+										response_response_type="{{module.form.form.response_type}}"
+										response_redirect_id="{{module.form.form.redirect_id}}"
+										response_redirect_url="{{module.form.form.redirect_url}}"
+										response_message="{{module.form.form.message}}"
+										notifications_are_overridden="{{module.form.notifications_are_overridden}}"
+										notifications_override_email_addresses="{{module.form.notifications_override_email_addresses}}"
+										gotowebinar_webinar_key="{{module.form.form.gotowebinar_webinar_key}}"
+									%}
+								{% endif %}
+							{% endif %}
+						{% endif %}
+					</div>
+					{% if module.design_settings.container_width != 'max' %}
+				</div>
+			</div>
+		{% endif %}	
+		</div>
+	</div>
+
+{% endif %}

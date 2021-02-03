@@ -1,0 +1,311 @@
+{% if module.enabled %}
+
+	{% require_css %}
+		<style type="text/css">
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;    
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});	
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			.sr-three-col-features-01 .col-md-4 {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				justify-content: center;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+			}
+			.sr-three-col-features-01 .feature-list ul {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			.sr-three-col-features-01 .feature-list ul li {
+				border: 1px solid #ebebeb;
+				margin: 1rem 0;
+				padding: 3rem 1rem;
+				display: inline-block;
+				-webkit-transition: all 0.2s ease;
+				-o-transition: all 0.2s ease;
+				transition: all 0.2s ease;
+				-webkit-box-shadow: 15px 25px 60px 0 rgba(0, 0, 0, 0);
+				box-shadow: 15px 25px 60px 0 rgba(0, 0, 0, 0);
+				width: 100%;
+			}
+			.sr-three-col-features-01 .feature-list ul li.link:hover {
+				-webkit-box-shadow: 15px 25px 60px 0 rgba(0, 0, 0, 0.13);
+				box-shadow: 15px 25px 60px 0 rgba(0, 0, 0, 0.13);
+			}
+			{% if module.text_color == 'auto' %}
+			.sr-three-col-features-01 .feature-list ul li.link:hover p {
+				color: initial;
+			}
+			{% endif %}
+			.sr-three-col-features-01 .feature-list ul li:first-child {
+				margin-bottom: 1.5rem;
+			}
+			.sr-three-col-features-01 .feature-list ul li:last-child {
+				margin-top: 1.5rem;
+			}
+			.sr-three-col-features-01 .feature-device img {
+				max-width: 100%;
+				position: relative;
+				z-index: 2;
+			}
+			.sr-three-col-features-01 .btn-wrapper {
+				margin-top: 4rem;
+			}
+			.sr-three-col-features-01 .feature-list ul li p:last-child {
+				margin: 0;
+			}
+			.sr-three-col-features-01 .feature-device {
+				position: relative;
+			}
+			.sr-three-col-features-01 .float-image img {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				right: 50%;
+				transform: translate(-50%, -50%);
+				max-width: 85%;
+				z-index: 1;
+			}
+			@media only screen and (max-width : 768px) {
+				.sr-three-col-features-01 .feature-device {
+					display: none;
+				}
+				.sr-three-col-features-01 .feature-list ul li {
+					border: none;
+				}
+			}
+		
+		</style>
+	{% end_require_css %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-three-col-features-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Three Col Features 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+	
+	<div class="sr-three-col-features-01 {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.class %}{{ module.design_settings.class }}{% endif %} {% if module.design_settings.border_top %}sr-line-top{% endif %} {% if module.design_settings.border_bottom %}sr-line-bottom{% endif %} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %} {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %} prototype-no-background {{ name }}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }}">
+			{% if module.design_settings.container_width != 'max' %}
+				<div class="row features-row">
+					<div class="{{ width_class }}">
+			{% endif %}
+
+						{% if module.heading ||  module.description %}
+							<div class="sr-spacer-bottom-50">
+								{% if module.heading %}
+									<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} heading {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.heading}}</h{{module.heading_size}}>
+								{% endif %}
+
+								{% if module.description %}
+									<div class="description">{{ module.description}}</div>
+								{% endif %}
+							</div>
+						{% endif %}
+
+						<div class="row">
+							<div class="col-md-4">
+								<div class="feature-list">
+									<ul class="{% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %}">
+										{% for item in module.items %}
+											{% if module.items|length == 2 %}
+												{% if loop.index == 1 %}
+													<li id="feature0{{loop.index}}" {% if item.link %}class="link"{% endif %}>
+														{% if item.link %}<a class="text-dark" href="{{item.link}}">{% endif %}
+															<div class="sr-spacer-bottom-25">
+																{% if item.icon.src %}
+																	{{ var.image(item.icon.src, '80', item.icon.alt, 'data-hover="{{item.hover_image.src}}"') }}
+																{% endif %}
+															</div>
+															<h4 class="{% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{item.title}}</h4>
+															{% if item.description %}
+																<div class="{% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">
+																	{{item.description}}
+																</div>
+															{% endif %}
+														{% if item.link %}</a>{% endif %}
+													</li>
+												{% endif %}
+											{% else %}
+												{% if loop.index <= 2 %}
+													<li id="feature0{{loop.index}}" {% if item.link %}class="link"{% endif %}>
+														{% if item.link %}<a class="text-dark" href="{{item.link}}">{% endif %}
+															<div class="sr-spacer-bottom-25">
+																{% if item.icon.src %}
+																	{{ var.image(item.icon.src, '80', item.icon.alt, 'data-hover="{{item.hover_image.src}}"') }}
+																{% endif %}
+															</div>
+															<h4 class="{% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{item.title}}</h4>
+															{% if item.description %}
+																<div class="{% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">
+																	{{item.description}}
+																</div>
+															{% endif %}
+														{% if item.link %}</a>{% endif %}
+													</li>
+												
+												{% endif%}
+											{% endif %}
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+							<div class="col-md-4 text-center featured-device">
+								<div class="feature-device">
+									{{ var.image('https://www.lean-labs.com/hubfs/sr-assets/images/iphonex.png', '350', module.image.alt) }}
+
+									<div class="float-image">
+										{{ var.image(module.items[0].hover_image.src, '562', module.items[0].hover_image.alt) }}
+									</div>
+									
+					
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="feature-list">
+									<ul class="{% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %}">
+										{% for item in module.items %}
+											{% if module.items|length == 2 %}
+												{% if loop.index == 2 %}
+													<li id="feature0{{loop.index}}" {% if item.link %}class="link"{% endif %}>
+														{% if item.link %}<a class="text-dark" href="{{item.link}}">{% endif %}
+															<div class="sr-spacer-bottom-25">
+																{% if item.icon.src %}
+																	{{ var.image(item.icon.src, '80', item.icon.alt, 'data-hover="{{item.hover_image.src}}"') }}
+																{% endif %}
+															</div>
+															<h4 class="{% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{item.title}}</h4>
+															{% if item.description %}
+																<div class="{% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">
+																	{{item.description}}
+																</div>
+															{% endif %}
+														{% if item.link %}</a>{% endif %}
+													</li>
+												{% endif %}
+											{% else %}
+												{% if loop.index >= 3 %}
+													<li id="feature0{{loop.index}}" {% if item.link %}class="link"{% endif %}>
+														{% if item.link %}<a class="text-dark" href="{{item.link}}">{% endif %}
+															<div class="sr-spacer-bottom-25">
+																{% if item.icon.src %}
+																	{{ var.image(item.icon.src, '80', item.icon.alt, 'data-hover="{{item.hover_image.src}}"') }}
+																{% endif %}
+															</div>
+															<h4 class="{% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{item.title}}</h4>
+															{% if item.description %}
+																<div class="{% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">
+																	{{item.description}}
+																</div>
+															{% endif %}
+														{% if item.link %}</a>{% endif %}
+													</li>
+												{% endif%}
+											{% endif %}
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+						</div>
+
+			{% if module.design_settings.container_width != 'max' %}
+					</div>
+				</div>
+			{% endif %}
+
+			{% if module.cta.cta_type != 'none' %}
+				<div class="btn-wrapper btn-{{ module.cta.cta_style }}-wrapper">
+					{% if module.cta.cta_type == 'btn' %}
+						<a href="{{ module.cta.link }}" class="cta_button">{{ module.cta.button_text }}</a>
+					{% elif module.cta.cta_type == 'cta' %}
+						{% cta guid="{{ module.cta.cta }}" %}
+					{% endif %}
+				</div>
+			{% endif %}
+		</div>
+	</div>
+
+	{% require_js %}
+		<script>
+			(function($){
+				$(window).on('ready load resize', function(){
+					var max = 0, mobile = $(window).width();
+					$(".sr-three-col-features-01 .feature-list ul li").css('min-height', 'inherit');
+
+					if ( mobile > 767 ) {
+						$(".sr-three-col-features-01 .feature-list ul li").each(function(index, el) {
+							if( $(this).outerHeight() > max ){
+								max = $(this).outerHeight();
+							}
+						});
+						$(".sr-three-col-features-01 .feature-list ul li").css('min-height', max);
+					}
+				});
+			})(jQuery);
+
+			$(".sr-three-col-features-01 .feature-list ul li").hover(function(){
+				var img = $(this).find('img')
+				$('.float-image img').attr('src', img.data("hover") + "?width=562");
+				$('.float-image img').attr('srcset', img.data("hover") + "?width=562 1x," + img.data("hover") + "?width=1125 2x");
+			});
+		</script>
+	{% end_require_js %}
+{% endif %}

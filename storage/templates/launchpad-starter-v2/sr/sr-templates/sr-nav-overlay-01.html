@@ -1,0 +1,504 @@
+<div class="{{name}} sr-nav-overlay-01">
+	<div class="side-nav-overlay"></div>
+	<nav class="nav-overlay">
+		<div class="{{ module.design_settings.layout }}">
+			<a href="{{module.logo_link}}">
+				<div class="brand nav-contrast">
+					{{ var.image(module.logo.src, module.logo.width, module.logo.alt, 'class="logo d-none d-sm-inline-block"') }}
+					{{ var.image(module.logo_mobile.src, module.logo_mobile.width, module.logo_mobile.alt, 'class="logo-mobile d-sm-none"') }}
+				</div>
+			</a>
+			<button class="nav-toggle" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon">
+					<svg class="toggler" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+						<path stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path>
+					</svg>
+				</span>
+			</button>
+		</div>
+	</nav>
+	<div class="side-nav bg-{{ module.design_settings.nav_bg }}">
+		<div class="{{ module.design_settings.layout }}">
+			<div class="nav-overlay nav-close">
+				<div class="nav-toggle-close d-flex align-items-center justify-content-center">
+					<span class="bars barOne"></span>
+					<span class="bars barTwo"></span>
+				</div>
+			</div>
+		</div>
+		<div class="side-nav-inner text-center">
+			{% if hub_id == 123 || (!module.overlay.menu && !module.overlay.menu2) %}
+			<ul class="side-nav-main">
+				<li><a href="#">Pricing</a></li>
+				<li><a href="#">Features</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Support</a></li>
+			</ul>
+			{% else %}
+			{% if module.overlay.menu %}
+			<div class="menu_one">{% menu id='{{ module.overlay.menu }}' overrideable=False, no_wrapper=true %}</div>
+			{% endif %}
+			{% if module.overlay.menu2 %}
+			<div class="menu_two">{% menu id='{{ module.overlay.menu2 }}' overrideable=False, no_wrapper=true %}</div>
+			{% endif %}
+			{% endif %}
+			{% if module.overlay.social %}
+			<ul class="social">
+				{% for item in module.overlay.icons %}
+				<li><a target="_blank" class="text-primary no-decoration" href="{{item.link}}"><i class="fa {{item.icon}}" aria-hidden="true"></i></a></li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+			{% if module.overlay.show_posts %}
+			<div class="nav-blog-posts">
+				{% if hub_id == 123 || !module.overlay.blog %}
+				{% set posts = [
+					{
+						'name': 'How to Find High-Value Keywords You Can Rank For',
+						'featured_image': 'https://www.lean-labs.com/hubfs/sr-assets/images/nav-blog-post-1.jpg',
+						'absolute_url': 'https://www.lean-labs.com/blog/how-to-find-high-value-keywords'
+					},
+					{
+						'name': 'HubSpot Marketing Pricing: 4 Things You Need to Know',
+						'featured_image': 'https://www.lean-labs.com/hubfs/sr-assets/images/nav-blog-post-2.jpg',
+						'absolute_url': 'https://www.lean-labs.com/blog/hubspot-marketing-pricing'
+					},
+					{
+						'name': 'Why Your Brand Narrative Shouldnt Promise To Be Faster, Cheaper, or Easier',
+						'featured_image': 'https://www.lean-labs.com/hubfs/sr-assets/images/nav-blog-post-3.jpg',
+						'absolute_url': 'https://www.lean-labs.com/blog/brand-narrative-faster-cheaper-easier'
+					}
+				] %}
+				{% else %}
+				{% if module.overlay.blog_post_type == 'recent' %}
+				{% set posts = blog_recent_posts(module.overlay.blog, module.overlay.number_of_posts) %} 
+				{% elif module.overlay.blog_post_type == "popular" %}
+				{% set posts = blog_popular_posts(module.overlay.blog, module.overlay.number_of_posts) %} 
+				{% endif %}
+				{% endif %}
+				{% for post in posts %}
+				<a href="{{ post.absolute_url }}">
+					{% if post.featured_image %}
+					{{ var.image(post.featured_image, '400', post.name) }}
+					{% endif %}	
+					<p>{{ post.name }}</p>
+				</a> 
+				{% endfor %}
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+
+{% require_css %}
+<style>
+	{% if module.design_settings.nav_bg == 'custom' %}
+	.{{name}} .side-nav {
+		{{ module.design_settings.nav_bg_custom }}
+	}
+	{% endif %}
+	.sr-nav-overlay-01 nav .brand {
+		z-index: 1;
+		transition: all 0.15s ease-in-out;
+		animation-timing-function: ease-in-out;
+	}
+	.sr-nav-overlay-01 nav .brand img {
+		max-height: 3rem;
+	}
+	.sr-nav-overlay-01 .nav-toggle {
+		padding: .25rem 0;
+		font-size: 1.3375rem;
+		line-height: 1;
+		background-color: transparent;
+		border: .0625rem solid transparent;
+		border-radius: .25rem;
+	}
+	.sr-nav-overlay-01 nav .nav-toggle {
+		color: #2f3338;
+		border-color: transparent;
+		border: none;
+	}
+	.sr-nav-overlay-01 .navbar-toggler-icon {
+		display: inline-block;
+		width: 1.5em;
+		height: 1.5em;
+		vertical-align: middle;
+		content: "";
+		background-image: none !Important;
+	}
+	.sr-nav-overlay-01 .toggler path {
+		stroke: rgba({{ module.design_settings.open_button_style.color|convert_rgb }}, {% if module.design_settings.open_button_style.opacity != '100' %}0.{% endif %}{{ module.design_settings.open_button_style.opacity }});
+	}
+	.sr-nav-overlay-01 nav .nav-toggle.tingle {
+		width: 4rem;
+		height: 4rem;
+		margin-right: -0.5rem;
+		margin-top: -0.5rem;
+	}
+	{% if module.overlay.overlay_style == 'full' %}
+	.sr-nav-overlay-01 .side-nav {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 0px;
+		z-index: -1;
+		opacity: 0;
+		overflow-y: scroll;
+		box-sizing: content-box;
+		-ms-overflow-style: none;
+		padding: 1rem 0;
+	}
+	@media only screen and (max-width: 767px) {
+		.nav-overlay.nav-close {
+			padding: 0 1rem;
+		}
+	}
+	{% endif %}
+	{% if module.overlay.overlay_style == 'slide' %}
+	.nav-overlay.nav-close {
+		padding: 0 1rem;
+	}
+	@media only screen and (min-width: 768px) {
+		.sr-nav-overlay-01 .nav-overlay.nav-close {
+			padding: 1rem 1rem 0 0;
+		}
+		.sr-nav-overlay-01 .side-nav-overlay {
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			background: #fff;
+			opacity: 0.8;
+			top: 0;
+			right: -100%;
+			z-index: 11;
+		}
+		.sr-nav-overlay-01 .side-nav {
+			position: fixed;
+			width: 530px;
+			height: 100%;
+			top: 0;
+			right: -530px;
+			z-index: 20;
+			overflow-y: scroll;
+		}
+	}
+	{% endif %}
+	.sr-nav-overlay-01 .side-nav::-webkit-scrollbar {
+		display: none;
+	}
+	.sr-nav-overlay-01 .side-nav ul {
+		list-style: none;
+		padding: 0 0 .8rem 0;
+	}
+	.sr-nav-overlay-01 .side-nav ul li {
+		padding: 1.25rem 0;
+	}
+	.sr-nav-overlay-01 .side-nav-secodnary li {
+		padding: 0.5rem 0 !important;
+	}
+	.sr-nav-overlay-01 .side-nav ul a {
+		font-weight: bold;
+	}
+	.sr-nav-overlay-01 .side-nav ul a:not(:hover) {
+		color: white;
+	}
+	.sr-nav-overlay-01 .side-nav ul.side-nav-main {
+		font-size: 2rem;
+	}
+	.sr-nav-overlay-01 ul.social {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+	}
+	.sr-nav-overlay-01 .side-nav ul.social li {
+		display: inline-block;
+		margin: .75rem;
+	}
+	.sr-nav-overlay-01 .side-nav ul.social a {
+		background: #fff;
+		height: 2rem;
+		width: 2rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		font-size: 1.25rem;
+	}
+	.sr-nav-overlay-01 .side-nav ul .nav-offer a:hover {
+		border-bottom: 1px solid transparent !important;
+	}
+	.sr-nav-overlay-01 .side-nav ul .nav-offer img {
+		max-width: 100%;
+		height: auto;
+	}
+	.sr-nav-overlay-01 .side-nav .nav-toggle-close {
+		height: 2.8125rem;
+		cursor: pointer;
+		width: 100%;
+		position: relative;
+	}
+	.sr-nav-overlay-01 .side-nav .side-nav-inner {
+		padding: 4rem 6rem;
+		padding-top: 0;
+		width: 31.25rem;
+		margin: 0 auto;
+	}
+
+	.sr-nav-overlay-01 .nav-blog-posts img {
+		max-width: 100%;
+		padding-bottom: .75rem;
+		transition: all 0.3s ease;
+	}
+	.sr-nav-overlay-01 .nav-blog-posts a {
+		padding-bottom: 3rem;
+		color: white;
+		font-weight: bold;
+		text-decoration: none;
+		display: block;
+		border: none;
+	}
+	.sr-nav-overlay-01 .nav-blog-posts a:hover img {
+		opacity: .8;
+		transform: scale(1.1);
+		padding-bottom: 1.8rem;
+	}
+	.sr-nav-overlay-01 .nav-blog-posts img {
+		width: 100%;
+	}
+	.sr-nav-overlay-01 .side-nav.bg-light ul a, .sr-nav-overlay-01 .side-nav.bg-light p {
+		color: #333;
+		color: var(--dark);
+	}
+	.sr-nav-overlay-01 .side-nav.bg-light ul a:hover, .sr-nav-overlay-01 .side-nav.bg-light p:hover {
+		color: var(--primary);
+	}
+	.sr-nav-overlay-01 .menu_one li.hs-menu-depth-1 a {
+		font-size: 2rem;
+		line-height: 3rem;
+	}
+	.sr-nav-overlay-01 .menu_one li.hs-menu-depth-2 a {
+		font-size: 1.3rem;
+		line-height: 1.5rem;
+	}
+	.sr-nav-overlay-01 .menu_one ul.hs-menu-children-wrapper {
+		padding-top: 0.9375rem;
+	}
+	.sr-nav-overlay-01 .menu_two li.hs-menu-depth-1 a {
+		font-size: 1.2rem;
+		line-height: 1.5rem
+	}
+	.sr-nav-overlay-01 .menu_two li.hs-menu-depth-2 a {
+		font-size: 1rem;
+	}
+	.sr-nav-overlay-01 span.bars {
+		border-radius: 0px;
+		height: 0.125rem;
+		width: 2rem;
+		-webkit-transition: all 0.2s ease;
+		-o-transition: all 0.2s ease;
+		transition: all 0.2s ease;
+	}
+	.sr-nav-overlay-01 nav .nav-toggle:hover span.bars {
+		background: #000;
+	}
+	.sr-nav-overlay-01 span.bars.barOne {
+		top: 0;
+	}
+	.sr-nav-overlay-01 span.bars.barThree {
+		bottom: 0;
+	}
+	.sr-nav-overlay-01 .nav-toggle-close span.bars {
+		background: rgba({{ module.design_settings.close_button_color.color|convert_rgb }}, {% if module.design_settings.close_button_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.close_button_color.opacity }});
+		width: 2.125rem;
+		-webkit-transition: all 0.2s ease;
+		-o-transition: all 0.2s ease;
+		transition: all 0.2s ease;
+		position: absolute;
+		right: 0;
+	}
+	.sr-nav-overlay-01 .side-nav .nav-toggle-close:hover span.bars {
+		background: #000;
+	}
+	.sr-nav-overlay-01 .nav-toggle-close span.bars.barOne {
+		top: 50%;
+		transform: rotate(45deg);
+	}
+	.sr-nav-overlay-01 .nav-toggle-close span.bars.barTwo {
+		transform: rotate(-45deg);
+		top: 50%;
+	}
+	.sr-nav-overlay-01 .nav-blog-posts {
+		padding-top: 1rem;
+	}
+	.sr-nav-overlay-01 .nav-blog-posts a {
+		font-weight: 100;
+	}
+	.sr-nav-overlay-01 .nav-blog-posts a p {
+		margin: 0;
+		padding: 0 1rem;
+	}
+	@media only screen and (max-width: 767px) {
+		.sr-nav-overlay-01 .side-nav {
+			overflow-x: hidden;
+		}
+		.sr-nav-overlay-01 .side-nav {
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			top: 0px;
+			z-index: -1;
+			opacity: 0;
+			overflow-y: scroll;
+			box-sizing: content-box;
+			-ms-overflow-style: none;
+			padding: 1rem 0;
+		}
+	}
+	.sr-nav-overlay-01 nav.nav-overlay {
+		padding: 1rem;
+	}
+	{% if !module.design_settings.transparent %}
+	.sr-nav-overlay-01 nav.nav-overlay {
+		background: {{ module.design_settings.background_color.color }}
+	}
+	{% endif %}
+	{% if module.design_settings.transparent || module.design_settings.fixed %}
+	.sr-nav-overlay-01 nav.nav-overlay {
+		position: absolute;
+		width: 100%;
+		top: 0;
+		left: 0;
+		right: 0;
+	}
+	{% endif %}
+	{% if module.design_settings.fixed %}
+	.sr-nav-overlay-01 nav.nav-overlay {
+		position: fixed;
+	}
+	{% endif %}
+	.sr-nav-overlay-01 .nav-overlay > .container, 
+	.sr-nav-overlay-01 .nav-overlay > .container-fluid {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+	}
+</style>
+{% end_require_css %}
+
+{{ require_js(get_asset_url('/sr/js/gsap.js')) }}
+{% if module.overlay.overlay_style == 'full' %}
+{% require_js %}
+    <script>
+        $(window).bind("load", function() {
+            if (navigator.appVersion.indexOf("Mac")!=-1) 
+                $(".{{name}} .nav-toggle-close").addClass('os')
+                
+            var navStatus = 'closed';
+            var navPos;
+            $('.{{name}} .nav-toggle').click(function() {
+                navPos = $(window).width();
+                if (navStatus == 'closed') {
+                    gsap.set($('.{{name}} .side-nav'),{zIndex:20 });
+                    gsap.to($('.side-nav'),.5,{opacity:1},0.1);
+                    navStatus = 'open';
+                } else {
+                    gsap.set($('.{{name}} .side-nav'),{zIndex:20 });
+                    gsap.to($('.{{name}} .side-nav'),.5,{opacity:1},0.1);
+                    navStatus = 'closed';
+                }
+            });
+            $('.{{name}} .nav-toggle-close').click(function() {
+                if (navStatus == 'open') {
+                    gsap.set($('.{{name}} .nav-toggle'),{opacity:1 });
+                    gsap.set($('.{{name}} .side-nav'),{zIndex:-1 });
+                    gsap.to($('.{{name}} .side-nav'),.5,{opacity:0},0.1);
+                    navStatus = 'closed';
+                }
+            });
+        });
+    </script>
+{% end_require_js %}
+{% endif %}
+
+{% if module.overlay.overlay_style == 'slide' %}
+{% require_js %}
+    <script>
+        $(window).bind("load", function() {
+            if (navigator.appVersion.indexOf("Mac")!=-1) 
+                $(".{{name}} .nav-toggle-close").addClass('os')
+
+            var navStatus = 'closed';
+            var navPos;
+			
+            $('.{{name}} .nav-toggle').click(function() {
+                if ($(window).width() < 768) {
+                    navPos = $(window).width();
+					if (navStatus == 'closed') {
+						gsap.set($('.{{name}} .side-nav'),{zIndex:20 });
+						gsap.to($('.side-nav'),.5,{opacity:1},0.1);
+						navStatus = 'open';
+					} else {
+						gsap.set($('.{{name}} .side-nav'),{zIndex:20 });
+						gsap.to($('.{{name}} .side-nav'),.5,{opacity:1},0.1);
+						navStatus = 'closed';
+					}
+                } else {
+                    navPos = 515;
+					if (navStatus == 'closed') {
+						gsap.to($('.{{name}} .side-nav'), .9, {
+							x: '-' + navPos,
+							ease: Elastic.easeOut.config(1, 0.7)
+						});
+						gsap.to($('.{{name}} .side-nav-overlay'), .1, {
+							right: "0"
+						});
+						navStatus = 'open';
+					} else {
+						gsap.to($('.{{name}} .side-nav'), .7, {
+							x: navPos,
+							ease: Elastic.easeOut.config(1, 0.7)
+						});
+						gsap.to($('.{{name}} .side-nav-overlay'), .1, {
+							right: "-100%"
+						});
+						navStatus = 'closed';
+					}
+                }
+            })
+            $('.{{name}} .nav-toggle-close, .{{name}} .side-nav-overlay').click(function() {
+				if ($(window).width() > 768) {
+					if (navStatus == 'open') {
+						gsap.to($('.{{name}} .side-nav'), 1, {
+							x: navPos,
+							ease: Elastic.easeOut.config(1, 0.7)
+						});
+						gsap.to($('.{{name}} .side-nav-overlay'), .1, {
+							right: "-100%"
+						});
+						navStatus = 'closed';
+					}
+				} else {
+					$('.{{name}} .nav-toggle-close').click(function() {
+						if (navStatus == 'open') {
+							gsap.set($('.{{name}} .nav-toggle'),{opacity:1 });
+							gsap.set($('.{{name}} .side-nav'),{zIndex:-1 });
+							gsap.to($('.{{name}} .side-nav'),.5,{opacity:0},0.1);
+							gsap.to($('.{{name}} .side-nav-overlay'), .1, {
+								right: "-100%"
+							});
+							navStatus = 'closed';
+						}
+					});
+				}
+            });
+        });
+    </script>
+{% end_require_js %}
+{% endif %}

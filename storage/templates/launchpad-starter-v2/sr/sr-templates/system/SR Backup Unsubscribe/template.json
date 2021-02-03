@@ -1,0 +1,17 @@
+{
+	"name": "SR Backup Unsubscribe",
+	"templates": [
+		{
+			"category_id": "0",
+			"template_type": "14",
+			"folder": "sr/templates",
+			"path": "sr/templates/SR Backup Unsubscribe.html",
+			"source": "launchpad-starter-v2/sr/sr-templates/system/SR Backup Unsubscribe/SR Backup Unsubscribe.html",
+			"is_available_for_new_content": true
+		}
+	],
+	"custom_modules": [
+		"sr-nav-dropdown-01.json",
+		"sr-footer-04.json"
+	]
+}

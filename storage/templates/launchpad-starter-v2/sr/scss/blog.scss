@@ -1,0 +1,611 @@
+/*-----------------------------------------------------------------------------------*/
+/*
+/*  Lean Labs LaunchPad Base Theme
+/*
+/*  Author: @helloteichner
+/*  Version: 1.0.1
+/*
+/*-----------------------------------------------------------------------------------*/
+
+// Main Bootstrap less
+@import 'base.scss';
+
+// Shared components
+
+// Image path
+$images: "//cdn2.hubspot.net/hubfs/2660319/LLv2/images";
+
+/*-----------------------------------------------------------------------------------*/
+/*  Typography
+/*-----------------------------------------------------------------------------------*/
+
+h2 {
+	font-weight: 700;
+	line-height: 1.25em;
+	@extend .antialiased;
+	& + p {
+		margin-top: 2.2em;
+	} + p.lead {
+		margin-top: .5em;
+	}
+}
+
+article h2 {
+	margin-top: 1.8em;
+	margin-bottom: .5em;
+}
+
+h3 {
+	letter-spacing: .05em;
+	font-weight: 800;
+	text-transform: uppercase;
+	margin-top: 2em;
+	margin-bottom: 1.3em;
+}
+
+.article-panel h3 {
+	font-size: 1.12em;
+	letter-spacing: normal;
+	font-weight: 700;
+	line-height: 1.25em;
+	margin-top: 1em;
+	margin-bottom: 0;
+	text-transform: inherit;
+	@extend .antialiased;
+	@media only screen and (min-width : 768px) {
+		height: 4em;
+	}
+}
+
+p, article ul, article ol {
+	font-size: 1.12em;
+	line-height: 1.65em;
+	font-weight: 400;
+	@extend .antialiased;
+	&.lead {
+		font-size: 1.45em;
+		line-height: 1.36em;
+		&::after {
+			content: ' ';
+			display: block;
+			width: 150px;
+			margin-top: 1em;
+			margin-bottom: 1.5em;
+		}
+	}
+}
+
+a {
+	text-decoration: none;
+	&:hover {
+		text-decoration: none;
+	}
+	&.no-decoration:hover {
+		border-bottom: 1px transparent;
+	}
+}
+
+.heading-tag {
+	display: inline-block;
+	font-size: .65em;
+	font-weight: 400;
+	color: #fff;
+	letter-spacing: 3.75px;
+	text-transform: uppercase;
+	padding: 0 1em 1em 1em;
+	margin-bottom: 1.2em;
+	border-bottom: 1px solid;
+	@extend .antialiased;
+	&.no-decoration {
+		border-bottom: none;
+		margin-bottom: 0;
+	}
+}
+
+.highlight {
+	display: inline;
+	background: rgba(17, 182, 189, .1);
+	&:hover {
+		background: rgba(17, 182, 189, .2);
+	}
+}
+
+blockquote {
+	font-size: 1.5em;
+	margin-top: 2em;
+	padding-left: 2em;
+	font-style: italic;
+	.author {
+		font-size: .4em;
+		display: block;
+		font-style: normal;
+		margin-top: 2em;
+	}
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*  Page Specific Styles — Blog
+/*-----------------------------------------------------------------------------------*/
+
+.blog-masthead {
+	a {
+		color: #fff;
+		&:hover {
+			color: white;
+			border: none;
+		}
+	}
+	min-height: 100vh;
+	@media only screen and (min-width : 768px) {
+		display: flex;
+		flex-direction: column;
+		flex-direction: row;
+	}
+}
+
+.blog-offer {
+	background: url('http://www.sprocketrocket.co/hubfs/sprocket-rocket/images/blog-offer-bg.jpg');
+	border-bottom: 1px solid #f0f1ed;
+	.blog-inner {
+		padding: 3em 15px;
+		@media only screen and (min-width : 768px) {
+			background: url('http://www.sprocketrocket.co/hubfs/sprocket-rocket/images/hexagon.svg') no-repeat;
+			background-size: 100%;
+			margin-top: -5em;
+			padding: 6em 7em 2.5em 7em;
+		}
+	}
+	.blog-offer-logo {
+		padding-bottom: .5em;
+	}
+}
+
+.blog-single-masthead {
+	padding-top: 5.2em;
+	.blog-single-masthead-img {
+		height: 100vw;
+		@media only screen and (min-width : 768px) {
+			height: 40vw;
+		}
+		margin-top: 2.4em;
+		margin-bottom: 3.4em;
+		display: block;
+		width: 100%;
+	}
+	.heading-tag {
+		color: inherit;
+	}
+}
+
+.flex-wrapper01 {
+	@media only screen and (min-width : 768px) {
+		flex: 1;
+		display: flex;
+		width: 50%;
+	}
+}
+
+.flex-wrapper02 {
+	@media only screen and (min-width : 768px) {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		width: 50%;
+	}
+}
+
+article {
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+}
+
+.featured-article {
+	min-height: 300px;
+	text-align: center;
+	position: relative;
+	&:hover {
+		.bg-overlay {
+			background: rgba(0, 0, 0, .1);
+		}
+	}
+	@media only screen and (min-width : 768px) {
+		flex: 1;
+		display: flex;
+		width: 100%;
+		justify-content: center;
+		flex-direction: column;
+	}
+}
+
+.bg-overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, .6);
+	@extend .animated;
+}
+
+.featured-article-inner {
+	top: 50%;
+	transform: translateY(-50%);
+	left: 10%;
+	right: 10%;
+	position: absolute;
+	padding-bottom: 1em;
+	@media only screen and (min-width : 768px) {
+		left: 20%;
+		right: 20%;
+	}
+	h2 {
+		font-size: 1.5em;
+		font-weight: 500;
+		line-height: 1.25em;
+		margin: 0;
+		@extend .antialiased;
+		a {
+			color: #fff;
+		}
+	}
+}
+
+.blog-subscribe {
+	padding: 1.5em 0;
+	form {
+		@media (min-width: 768px) {
+			display: flex;
+			align-items: flex-start;
+			justify-content: center;
+		}
+	}
+	input[type=email] {
+		height: 44px;
+		min-width: 220px;
+	}
+	.btn-sm {
+		height: 44px;
+	}
+	p {
+		display: inline-block;
+		margin-bottom: 1em;
+		padding-top: 5px;
+		@media only screen and (min-width : 992px) {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.blog-category {
+	padding: 2.5em 0;
+	ul {
+		padding: 0;
+		list-style: none;
+	}
+	li {
+		display: inline-block;
+		padding: 0;
+		margin-left: -5px;
+		font-size: 0;
+		&.active {
+			a {
+				background: $primary;
+				color: white;
+				border-bottom: none;
+			}
+		}
+	}
+	a {
+		display: block;
+		background: $light;
+		font-size: 9px;
+		color: $body-color;
+		letter-spacing: 2.81px;
+		text-transform: uppercase;
+		padding: 10px 13px;
+		margin: 0 4px 3px 0;
+		text-decoration: none;
+		@extend .animated-fast;
+		@extend .antialiased;
+		&:hover {
+			background: $primary;
+			color: white;
+			border-bottom: none;
+		}
+	}
+}
+
+.author {
+	font-size: .6em;
+	letter-spacing: 0.31px;
+	text-transform: uppercase;
+	display: block;
+}
+
+.article-panel {
+	@media only screen and (min-width : 768px) {
+		min-height: 20em;
+	}
+	position: relative;
+	background: #FFFFFF;
+	border: 1px solid rgba(0,0,0,.1);;
+	border-radius: 4px;
+	margin-bottom: 2em;
+	overflow: hidden;
+	@extend .animated-fast;
+	&:hover {
+		border: 1px solid rgba(0,0,0,.1);
+		box-shadow: 15px 25px 60px 0 rgba(0,0,0,0.13);
+		.img-wrapper {
+			transform: scale(1.05);
+		}
+	}
+	h3 a {
+		color: $body-color;
+		&:hover {
+			color: $primary;
+			border: none;
+		}
+	}
+	.article-img {
+		position: relative;
+		min-height: 10em;
+		overflow: hidden;
+	}
+	.img-wrapper {
+		min-height: 10em;
+		@extend .animated;
+	}
+	.article-content {
+		padding: 1em 1.5em;
+	}
+	.author {
+		margin-top: 2em;
+	}
+	.tag {
+		position: absolute;
+		bottom: 1.5em;
+		left: 1.5em;
+		a {
+			background: $primary;
+			color: white;
+			font-size: 9px;
+			letter-spacing: 2.81px;
+			text-transform: uppercase;
+			padding: 10px 13px;
+			margin: 0 4px 3px 0;
+			text-decoration: none;
+			border-bottom: none;
+			@extend .animated-fast;
+			@extend .antialiased;
+			&:hover {
+				background: $secondary;
+				color: white;
+			}
+		}
+	}
+}
+
+.blog-cta-wrapper {
+	margin-top: 1em;
+	margin-bottom: 3em;
+	img {
+		max-width: 100%;
+	}
+}
+
+.author-section {
+	background: #F7F8F6;
+	padding-top: 2.5em;
+	padding-bottom: 2.5em;
+	margin-top: 3em;
+	p {
+		font-size: .75em;
+		font-weight: 400;
+		margin-bottom: 1em;
+	}
+	.avatar img {
+		width: 90px;
+		height: auto;
+		border-radius: 100%;
+		margin-right: 1.2em;
+	}
+	.btn {
+		border: 1px solid rgba(49, 53, 67, .15);
+		padding: 1em 2em;
+		font-size: .5em;
+		position: inherit;
+		&:hover {
+			background: $primary;
+		}
+	}
+	.social-profiles {
+		a {
+			margin-right: .5em;
+		}
+	}
+}
+
+.featured-articles-section {
+	a {
+		&:hover {
+			color: white;
+			border: none;
+		}
+	}
+	min-height: 10em;
+	@media only screen and (min-width : 768px) {
+		min-height: 25em;
+		display: flex;
+		flex-direction: column;
+		flex-direction: row;
+	}
+	.featured-article-inner {
+		left: 10%;
+		right: 10%;
+	}
+}
+
+.sr-social-share {
+	border: 1px solid #EBEBEB;
+	display: inline-block;
+	padding: 15px 8.8px;
+	border-radius: 100px;
+	.sr-social-share-heading {
+		padding-left: 10px;
+		font-size: 9px;
+		text-transform: uppercase;
+		color: #C0C0C0;
+		letter-spacing: 1px;
+		vertical-align: middle;
+	}
+	@media only screen and (min-width : 992px) {
+		opacity: 0;
+		position: fixed;
+		left: 35px;
+		top: 45%;
+		transform: translateY(-50%);
+		transition: all .15s ease-in-out;
+		animation-timing-function: ease-in-out;
+		&:hover {
+			top: 44.5%;
+			border-color: #f5f5f5;
+			box-shadow: 10px 15px 60px 0 rgba(0, 0, 0, 0.1);
+		}
+		&.active {
+			left: 45px;
+			opacity: 1;
+		}
+		span, span a {
+			display: block;
+			margin: 5px auto;
+		}
+		.sr-social-share-heading {
+			padding-left: 0;
+			margin-bottom: 10px;
+		}
+		.hs_cos_wrapper_type_social_sharing {
+			font-size: 0;
+		}
+	}
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*  Tweetable section
+/*-----------------------------------------------------------------------------------*/
+
+.tweetable {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	text-align: right;
+	p {
+		font-size: 2em;
+	}
+	a {
+		text-align: right;
+		float: right;
+		text-transform: uppercase;
+		background: url('#{$images}/icon-twitter_2x.png') no-repeat left center;
+		background-size: 24px;
+		padding: 0.5em 0 0.5em 2.2em;
+		color: $body-color;
+		font-weight: bold;
+		font-size: 0.9em;
+	}
+	a:hover {
+		text-decoration: none;
+	}
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*  HubSpot Blog Subscribe
+/*-----------------------------------------------------------------------------------*/
+
+#hs_form_target_subscribe-blog {
+	text-align: center;
+	@media only screen and (min-width : 992px) {
+		float: right;
+	}
+	.hs_email, .input, .hs_submit {
+		display: inline-block !important;
+	}
+	.hs_submit {
+		vertical-align: top;
+		input {
+			@extend .btn;
+			@extend .btn-sm;
+			@extend .btn-primary;
+			height: 44px;
+			// padding-top: 1.3em;
+			@media only screen and (min-width : 992px) {
+				// padding-top: .9em;
+			}
+		}
+	}
+	.hs_email input {
+		font-size: .8em;
+		padding: 1em;
+		height: 44px;
+		min-width: 200px;
+		margin-left: 4px;
+		margin-right: 4px;
+	}
+	.hs-error-msgs {
+		display: none !important;
+	}
+	label {
+		font-weight: normal;
+		font-size: .8em;
+	}
+}
+
+.blog-pagination {
+	text-align: center;
+	padding: 40px 0;
+
+	span, a {
+		text-transform: uppercase;
+		white-space: nowrap;
+		margin: 0 15px;
+		font-size: 12px;
+		text-decoration: none;
+	}
+
+	a:hover,
+	a:focus,
+	a:active {
+		color: $primary;
+	}
+
+	span {
+		color: $primary;
+	}
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*  Media Queries
+/*-----------------------------------------------------------------------------------*/
+
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+}

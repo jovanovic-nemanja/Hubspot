@@ -1,0 +1,408 @@
+{% if module.design_settings.container_width == 'min' %}
+	{% set width_class = 'col-sm-6 offset-sm-3' %}
+{% elif module.design_settings.container_width == 'narrow' %}
+	{% set width_class = 'col-sm-8 offset-sm-2' %}
+{% elif module.design_settings.container_width == 'wide' %}
+	{% set width_class = 'col-sm-10 offset-sm-1' %}
+{% else %}
+	{% set width_class = 'col-sm-12' %}
+{% endif %}
+
+{% if module.hero.enabled %}
+<div class="bg-light mb-5">
+	<div class="container-fluid">
+		<div class="row sr-spacer-50 ">
+			<div class="col-md-12 text-center sr-spacer-100">
+				{{ module.hero.hero }}
+			</div>
+		</div>
+	</div>
+</div>
+{% endif %}
+
+<div {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %} class="{{ name }} sr-style-guide {{ module.design_settings.class }} prototype-no-background {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} ">
+	<div class="{{module.design_settings.layout}}">
+		{% if module.design_settings.container_width != 'max' %}
+		<div class="row">
+			<div class="{{ width_class }}">
+				{% endif %}
+				<div class="row">
+					<div class="col-md-3">	
+						<div class="guide-nav">
+							<ul>
+								{% if module.logo.enabled %}
+								<li><a href="#logo">Logo</a></li>
+								{% endif %}
+								{% if module.colors.enabled %}
+								<li><a href="#colors">Colors</a></li>
+								{% endif %}
+								{% if module.typography.enabled %}
+								<li><a href="#typography">Typography</a></li>
+								{% endif %}
+								{% if module.buttons.enabled %}
+								<li><a href="#buttons">Buttons</a></li>
+								{% endif %}
+								{% if module.form.enabled %}
+								<li><a href="#forms">Forms</a></li>
+								{% endif %}
+								{% for item in module.custom_sections.custom_section %}
+								<li><a href="#{{ item.heading|replace(' ', '-')|lower }}">{{ item.heading }}</a></li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-8 offset-md-1">
+						{% if module.logo.enabled %}
+						<div id="logo" class="logo sr-spacer-bottom-100">
+							<div class="brand-logo">
+								<h3 class="display-4 section-title ">Logo</h3>
+								{% for item in module.logo.logo %}
+								{% if item.src %}
+								<div class="sr-spacer-bottom-25">
+									{% set sizeAttrs = 'width="{{ item.width }}" height="{{ item.height }}"' %}
+									{% if item.size_type == 'auto' %}
+									{% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+									{% elif item.size_type == 'auto_custom_max' %}
+									{% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ item.max_width }}px; max-height: {{ item.max_height }}px"' %}
+									{% endif %}
+									<img src="{{ item.src }}" alt="{{ item.alt }}" {{ sizeAttrs }}>
+									{% endif %}
+								</div>
+								{% endfor %}
+								{{ module.logo.richtext_field }}
+							</div>
+						</div>
+						{% endif %}
+						{% if module.colors.enabled %}
+						<div id="colors" class="colors sr-spacer-bottom-100">
+							<div class="brand-colors">
+								<h3 class="display-4 section-title ">Colors</h3>
+								{% if module.colors.show_default_color %}
+								<div class="color d-color">
+									<span class="bg-primary"></span>
+									<p class="bg-primary-title">Primary</p>
+									<label></label>
+								</div>
+								<div class="color d-color">
+									<span class="bg-secondary"></span>
+									<p class="bg-secondary-title">Secondary</p>
+									<label></label>
+								</div>
+								<div class="color d-color">
+									<span class="bg-tertiary"></span>
+									<p class="bg-primary-title">Tertiary</p>
+									<label></label>
+								</div>
+								{% endif %}
+								{% for item in module.colors.color %}
+								<div class="color">
+									<span style="background-color: {{ item.color.color }}"></span>
+									<p>{{ item.title }}</p>
+									<label>{{ item.color.color }}</label>
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+						{% endif %}
+						{% if module.typography.enabled %}
+						<div id="typography" class="typography sr-spacer-bottom-100">
+							<h3 class="display-4 section-title ">Typography</h3>							
+							<button type="button" class="btn btn-black mb-5" data-toggle="modal" data-target="#displayHeadings">
+								Show Display Headings
+							</button>
+							<div class="modal fade" id="displayHeadings" tabindex="-1" role="dialog" aria-labelledby="displayHeadingsTitle" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+										<h5 class="modal-title pl-5" id="displayHeadingsTitle">When you need a heading to stand out, consider using a display heading—a larger, slightly more opinionated heading style.</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											{{ module.typography.display_heading }}
+										</div>
+									</div>
+								</div>
+							</div>
+							{{ module.typography.typography }}
+						</div>
+						{% endif %}				
+						{% if module.buttons.enabled %}
+						<div id="buttons" class="buttons sr-spacer-bottom-100">
+							<h3 class="display-4 section-title ">Buttons</h3>
+							<div class="row d-flex align-items-center mb-4 py-2">
+								<div class="col-12 col-md-4">
+									<a href="#" class="btn btn-primary">Learn More</a>
+								</div>
+								<div class="col-12 col-md-8">
+									<label>Button Primary</label>
+								</div>
+							</div>
+							<div class="row d-flex align-items-center mb-4 py-2">
+								<div class="col-12 col-md-4">
+									<a href="#" class="btn btn-secondary">Learn More</a>
+								</div>
+								<div class="col-12 col-md-8">
+									<label>Button Secondary</label>
+								</div>
+							</div>
+							<div class="row d-flex align-items-center mb-4 py-2">
+								<div class="col-12 col-md-4">
+									<a href="#" class="btn btn-tertiary">Learn More</a>
+								</div>
+								<div class="col-12 col-md-8">
+									<label>Button Tertiary</label>
+								</div>
+							</div>
+							<div class="row d-flex align-items-center mb-4 py-2 bg-black">
+								<div class="col-12 col-md-4">
+									<a href="#" class="btn btn-white">Learn More</a>
+								</div>
+								<div class="col-12 col-md-8">
+									<label>Button White</label>
+								</div>
+							</div>
+							<div class="row d-flex align-items-center mb-4 py-2">
+								<div class="col-12 col-md-4">
+									<a href="#" class="btn btn-black">Learn More</a>
+								</div>
+								<div class="col-12 col-md-8">
+									<label>Button Black</label>
+								</div>
+							</div>
+							<div class="row d-flex align-items-center mb-4 py-2">
+								<div class="col-12 col-md-4">
+									<a href="#" class="btn btn-outline-primary">Learn More</a>
+								</div>
+								<div class="col-12 col-md-8">
+									<label>Button Outline Primary</label>
+								</div>
+							</div>
+							<div class="row d-flex align-items-center mb-4 py-2">
+								<div class="col-12 col-md-4">
+									<a href="#" class="btn btn-outline-secondary">Learn More</a>
+								</div>
+								<div class="col-12 col-md-8">
+									<label>Button Outline Secondary</label>
+								</div>
+							</div>
+							<div class="row d-flex align-items-center mb-4 py-2">
+								<div class="col-12 col-md-4">
+									<a href="#" class="btn btn-outline-tertiary">Learn More</a>
+								</div>
+								<div class="col-12 col-md-8">
+									<label>Button Outline Tertiary</label>
+								</div>
+							</div>
+							<div class="row d-flex align-items-center mb-4 py-2 bg-black">
+								<div class="col-12 col-md-4">
+									<a href="#" class="btn btn-outline-white">Learn More</a>
+								</div>
+								<div class="col-12 col-md-8">
+									<label>Button Outline White</label>
+								</div>
+							</div>
+							<div class="row d-flex align-items-center mb-4 py-2">
+								<div class="col-12 col-md-4">
+									<a href="#" class="btn btn-outline-black">Learn More</a>
+								</div>
+								<div class="col-12 col-md-8">
+									<label>Button Outline Black</label>
+								</div>
+							</div>
+						</div>
+						{% endif %}
+						{% if module.form.enabled %}
+						<div id="forms" class="forms sr-spacer-bottom-100">
+							<h3 class="display-4 section-title ">Form Styles</h3>
+
+							{% if module.form.form.form_id %}
+							{% form
+									form_to_use="{{ module.form.form.form_id }}"
+									response_response_type="{{ module.form.form.response_type }}"
+									response_message="{{ module.form.form.message }}"
+									response_redirect_id="{{ module.form.form.redirect_id }}"
+									response_redirect_url="{{module.form.form.redirect_url}}"
+									gotowebinar_webinar_key="{{ module.form.form.gotowebinar_webinar_key }}"
+								%}
+							{% else %}
+							<!--[if lte IE 8]>
+							<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+							<![endif]-->
+							<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+							<h3 class="form-title">Form Title</h3>
+							<script>
+								hbspt.forms.create({
+									portalId: "275827",
+									formId: "a675503d-8554-4164-84a2-bb55066f3c53"
+								});
+							</script>
+							{% endif %}
+						</div>
+						{% endif %}
+						{% for item in module.custom_sections.custom_section %}
+						<div id="{{ item.heading|replace(' ', '-')|lower }}" class="{{ item.heading|replace(' ', '-')|lower }} sr-spacer-bottom-100">
+							<h3 class="display-4 section-title ">{{ item.heading }}</h3>
+							{{ item.rich_text }}
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+				{% if module.design_settings.container_width != 'max' %}
+			</div>
+		</div>
+		{% endif %}
+	</div>
+</div>
+{% require_css %}
+<style type="text/css">
+	{% if module.design_settings.background_option == 'image' %}
+	.{{ name }} {
+		{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		position: relative;
+	}
+	@media (min-width: 768px) {
+		.{{ name }} {
+			{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+		}
+	}
+	.{{ name }}:before {
+		content: "";
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});
+	}
+	.{{ name }} .container, .{{ name }} .container-fluid {
+		position: relative;
+	}
+	{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+	.{{ name }} {
+		background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+	}
+	{% endif %}
+	{% if module.design_settings.top_bottom_padding == "custom" %}
+	.{{ name }} {
+		padding: {{ module.design_settings.custom_padding }};
+	}
+    {% endif %}
+    .sr-style-guide h3.display-4.section-title {
+        border-bottom: 2px solid;
+        padding-bottom: 1rem;
+        margin-bottom: 3rem;
+    }
+    .sr-style-guide .ui-colors {
+        padding-top: 1.75rem;
+    }
+    .sr-style-guide .color {
+        display: inline-block;
+        text-align: center;
+        padding: 0.5rem;
+    }
+    .sr-style-guide .color span {
+        width: 125px;
+        height: 125px;
+        display: inline-block;
+        border-radius: 50%;
+    }
+    .sr-style-guide .color label {
+        display: block;
+        text-transform: uppercase;
+    }
+    .sr-style-guide .form-inputs {
+        padding-top: 6.25rem;
+    }
+    .sr-style-guide .inline-links {
+        padding-top: 6.25rem;
+    }
+    .sr-style-guide .guide-nav {
+        -webkit-box-shadow: 2px 3px 7px 0px rgba(0,0,0,0.15);
+        box-shadow: 2px 3px 7px 0px rgba(0,0,0,0.15);
+        border-radius: 4px;
+        padding: 2rem;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 4rem;
+    }
+    .sr-style-guide .guide-nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .sr-style-guide .guide-nav ul a {
+        color: #262628;
+        cursor: pointer;
+        font-size: 1.15rem;
+        padding: 0.5rem 0;
+        display: block;
+        font-weight: 600;
+    }
+    .sr-style-guide .buttons label {
+        margin: 1.25rem 0;
+    }
+    @media (min-width: 768px) {
+        .sr-style-guide .buttons label {
+            margin: 0 1.25rem;
+        }
+    }
+    .sr-style-guide .buttons .button-hover label {
+        display: block;
+    }
+    .sr-style-guide .modal .modal-dialog {
+        max-width: 95%;
+    }
+    .sr-style-guide .modal-body {
+        padding: 4rem;
+    }
+    .sr-style-guide pre {
+        background-color: #eaf0f6;
+        border: 1px solid #cbd6e2;
+        border-radius: 4px;
+        padding: .5rem;
+        display: inline-block;
+    }
+    .sr-style-guide .close {
+        font-size: 1.85rem;
+    }
+    @media (min-width: 768px) {
+        .sr-style-guide .buttons .button-hover label {
+            float: right;
+            display: inline-block;
+        }
+    }
+</style>
+{% end_require_css %}
+
+{% require_js %}
+<script>
+    function rgb2hex(rgb) {
+        if (  rgb.search("rgb") == -1 ) {
+            return rgb;
+        } else {
+            rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
+            function hex(x) {
+                return ("0" + parseInt(x).toString(16)).slice(-2);
+            }
+            return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]); 
+        }
+    }
+    $('.d-color').each(function(){
+        var color = $(this).find('span').css('backgroundColor');
+        var hex = rgb2hex(color);
+        $(this).find('label').text(hex);
+        if (hex == "#ffffff") {
+            $(this).find('span').addClass('border');
+        }
+    });
+</script>
+{% end_require_js %}

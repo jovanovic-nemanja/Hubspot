@@ -1,0 +1,268 @@
+{% if module.enabled %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% else %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	{% require_css %}
+		<style type="text/css">
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;    
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});	
+				}
+				.{{ name }} .container, 
+				.{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}}{
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+				.{{name}} .sr-offer-parallax-01-content .sr-offer-parallax-01 .sr-offer-parallax-01-content {
+					background: linear-gradient(-225deg, {{module.design_settings.content_background_gradient_from.color}} 0%, {{module.design_settings.content_background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			{% if module.design_settings.content_background_option == 'image' %}
+				.{{ name }} .row-feature-wrap {
+					{{ var.bg_image(module.design_settings.content_background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} .sr-offer-parallax-01-content {
+						{{ var.bg_image(module.design_settings.content_background_image.src, '1440') }}
+					}
+				}
+				.{{ name }} .sr-offer-parallax-01-content:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					background: rgba({{ module.design_settings.content_background_overlay_color.color|convert_rgb }}, {% if module.design_settings.content_background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.content_background_overlay_color.opacity }});
+				}
+				.{{ name }} .container,
+				.{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.content_background_option == 'custom' %}
+				.{{ name }} .sr-offer-parallax-01-content {
+					background-color: {{ module.design_settings.content_background_custom.color }};
+				}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			.sr-offer-parallax-01 {
+				position: relative;
+			}
+			.sr-offer-parallax-01 .sr-offer-parallax-01-content {
+				padding: 2rem;
+				margin: 0 15px;
+				z-index: 2;
+				background-size: cover;
+			}
+			@media (min-width: 768px) {
+				.sr-offer-parallax-page-wrapper {
+					position: relative;
+					padding-top: 6.25rem;
+				}
+				.sr-offer-parallax-01 .sr-offer-parallax-01-content {
+					padding: 3rem;
+					margin: 0;
+					position: absolute;
+					top: 0;
+					max-height: 100%;
+					overflow: auto;
+				}
+			}
+			@media (min-width: 992px) {
+				.sr-offer-parallax-01 .sr-offer-parallax-01-content {
+					padding: 5rem;
+				}
+			}
+			.sr-offer-parallax-01 .sr-offer-parallax-01-image {
+				height: 25rem;
+				z-index: 1;
+				overflow: hidden;
+				position: relative;
+			}
+			.{{name}} .sr-offer-parallax-01-image::before {
+				content: '';
+				display: block;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background-color: rgba({{ module.parallax_image_overlay.color|convert_rgb }}, {% if module.parallax_image_overlay.opacity != '100' %}0.{% endif %}{{ module.parallax_image_overlay.opacity }});
+				z-index: 2;
+			}
+			.{{ name }} .cta-wrapper {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				{% if module.text_align == 'center' %} 
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				justify-content: center;
+				{% elif module.text_align == 'left' %} 
+				-webkit-box-pack: start;
+				-ms-flex-pack: start;
+				justify-content: flex-start;
+				{% elif module.text_align == 'right' %} 
+				-webkit-box-pack: end;
+				-ms-flex-pack: end;
+				justify-content: flex-end;
+				{% endif %}
+			}
+			.sr-offer-parallax-01 .sr-offer-parallax-01-image .parallax-background {
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center;
+				position: relative;
+				height: 125%;
+				top: -50%;
+				margin-left: -15px;
+				margin-right: -15px;
+				z-index: 1;
+			}
+			@media (max-width: 767px) {
+				.sr-offer-parallax-01 .sr-offer-parallax-01-image {
+					margin: 0 15px;
+				}
+			}
+			@media (min-width: 768px) and (max-width: 991px) {
+				.sr-offer-parallax-01 .sr-offer-parallax-01-image {
+					height: 28rem;
+				}
+			}
+			@media (min-width: 992px) {
+				.sr-offer-parallax-01 .sr-offer-parallax-01-image {
+					height: 37.5rem;
+				}
+			}
+		</style>
+	{% end_require_css %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-offer-parallax-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Offer Parallax 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+	
+	<div class="sr-offer-parallax-01 {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.class %}{{ module.design_settings.class }}{% endif %} {% if module.design_settings.border_top %}sr-line-top{% endif %} {% if module.design_settings.border_bottom %}sr-line-bottom{% endif %} prototype-no-background {{ name }}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }} sr-offer-parallax-page-wrapper">
+			{% if module.design_settings.container_width != 'max' %}
+				<div class="row">
+					<div class="{{ width_class }}">
+			{% endif %}
+
+						<div class="row">
+							<div class="col-lg-7 col-md-9 sr-offer-parallax-01-content {% if module.design_settings.content_background_option == 'color' %}bg-{{ module.design_settings.content_background_color }}{% endif %}{% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %}">
+
+								{% if module.heading %}
+									<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} heading {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{module.heading}}</h{{module.heading_size}}>
+								{% endif %}
+
+								{% if module.description %}
+									<div class="description sr-spacer-bottom-25 {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">
+										{{module.description}}
+									</div>
+								{% endif %}
+
+								{% if module.cta_one.cta_type != 'none' || module.cta_two.cta_type != 'none' %}
+									<div class="cta-wrapper">
+										{% if module.cta_one.cta_type != 'none' %}
+										<div class="btn-wrapper btn-{{ module.cta_one.cta_style }}-wrapper">
+											{% if module.cta_one.cta_type == 'btn' %}
+												<a href="{{ module.cta_one.link }}" class="cta_button">{{ module.cta_one.button_text }}</a>
+											{% elif module.cta_one.cta_type == 'cta' %}
+												{% cta guid="{{ module.cta_one.cta }}" %}
+											{% endif %}
+										</div>
+										{% endif %}
+										{% if module.cta_two.cta_type != 'none' %}
+										<div class="btn-wrapper btn-{{ module.cta_two.cta_style }}-wrapper {% if module.cta_one.cta_type != 'none' %}ml-3{% endif %}">
+											{% if module.cta_two.cta_type == 'btn' %}
+												<a href="{{ module.cta_two.link }}" class="cta_button">{{ module.cta_two.button_text }}</a>
+											{% elif module.cta_two.cta_type == 'cta' %}
+												{% cta guid="{{ module.cta_two.cta }}" %}
+											{% endif %}
+										</div>
+										{% endif %}
+									</div>
+								{% endif %}
+
+							</div>
+							<div class="col-md-11 offset-md-1 sr-offer-parallax-01-image">
+								<div class="parallax-background" style="background-image:url({{module.parallax_image.src}})"></div>
+							</div>
+						</div>
+
+			{% if module.design_settings.container_width != 'max' %}
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+
+	{{ require_js(var.sr_assetDir + '/js/TweenMax.min.js') }}
+	{{ require_js(var.sr_assetDir + '/js/ScrollMagic.min.js') }}
+	{{ require_js(var.sr_assetDir + '/js/animation.gsap.min.js') }}
+
+	{% require_js %}
+		<script type="text/javascript">
+
+			// init controller
+			var controller = new ScrollMagic.Controller({globalSceneOptions: {triggerHook: "onEnter", duration: "200%"}});
+
+			// build scenes
+			new ScrollMagic.Scene({triggerElement: ".{{name}} .sr-offer-parallax-01-image"})
+			.setTween(".{{name}} .parallax-background", {y: "80%", ease: Linear.easeNone})
+			.addTo(controller);
+		</script>
+	{% end_require_js %}
+{% endif %}

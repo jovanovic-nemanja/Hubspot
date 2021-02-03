@@ -1,0 +1,17 @@
+{
+	"name": "SR Password",
+	"templates": [
+		{
+			"category_id": "0",
+			"template_type": "19",
+			"folder": "sr/templates",
+			"path": "sr/templates/SR Password.html",
+			"source": "launchpad-starter-v2/sr/sr-templates/system/SR Password/SR Password.html",
+			"is_available_for_new_content": true
+		}
+	],
+	"custom_modules": [
+		"sr-nav-dropdown-01.json",
+		"sr-footer-04.json"
+	]
+}

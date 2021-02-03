@@ -1,0 +1,190 @@
+{
+	"template": [
+		{
+			"category_id": "4",
+			"template_type": "4",
+			"folder": "sr/templates",
+			"path": "sr/templates/header.html",
+			"source": "launchpad-starter-v2/sr/templates/header.html"
+		},
+		{
+			"category_id": "4",
+			"template_type": "4",
+			"folder": "sr/templates",
+			"path": "sr/templates/footer-includes.html",
+			"source": "launchpad-starter-v2/sr/templates/footer-includes.html"
+		},
+		{
+			"category_id": "4",
+			"template_type": "4",
+			"folder": "sr/templates",
+			"path": "sr/templates/variables.html",
+			"source": "launchpad-starter-v2/sr/templates/variables.html"
+		},
+		{
+			"category_id": "4",
+			"template_type": "4",
+			"folder": "sr/templates",
+			"path": "sr/templates/page.html",
+			"source": "launchpad-starter-v2/sr/templates/page.html",
+			"is_available_for_new_content": true
+		},
+		{
+			"category_id": "4",
+			"template_type": "4",
+			"folder": "sr/templates",
+			"path": "sr/templates/dnd_page.html",
+			"source": "launchpad-starter-v2/sr/templates/dnd_page.html",
+			"is_available_for_new_content": true
+		},
+		{
+			"category_id": "4",
+			"template_type": "4",
+			"folder": "sr/templates",
+			"path": "sr/templates/modules.html",
+			"source": "launchpad-starter-v2/sr/templates/modules.html",
+			"is_available_for_new_content": true
+		},
+		{
+			"category_id": "4",
+			"template_type": "4",
+			"folder": "sr/templates",
+			"path": "sr/templates/style-guide.html",
+			"source": "launchpad-starter-v2/sr/templates/style-guide.html",
+			"is_available_for_new_content": true
+		},
+		{
+			"category_id": "4",
+			"template_type": "4",
+			"folder": "sr/templates",
+			"path": "sr/templates/pillar.html",
+			"source": "launchpad-starter-v2/sr/templates/pillar.html",
+			"is_available_for_new_content": true
+		},
+		{
+			"category_id": "0",
+			"template_type": "4",
+			"folder": "sr/css",
+			"path": "sr/css/bootstrap.css",
+			"source": "launchpad-starter-v2/sr/css/bootstrap.css"
+		},
+		{
+			"category_id": "0",
+			"template_type": "4",
+			"folder": "sr/css",
+			"path": "sr/css/prototype.css",
+			"source": "launchpad-starter-v2/sr/css/prototype.css"
+		},
+		{
+			"category_id": "0",
+			"template_type": "4",
+			"folder": "sr/css",
+			"path": "sr/css/_layout.css",
+			"source": "launchpad-starter-v2/sr/css/_layout.css"
+		},
+		{
+			"category_id": "0",
+			"template_type": "4",
+			"folder": "sr/css",
+			"path": "sr/css/custom-styles.css",
+			"source": "launchpad-starter-v2/sr/css/custom-styles.css"
+		},
+		{
+			"category_id": "0",
+			"template_type": "4",
+			"folder": "sr/js",
+			"path": "sr/js/bootstrap.js",
+			"source": "launchpad-starter-v2/sr/js/bootstrap.js"
+		},
+		{
+			"category_id": "0",
+			"template_type": "4",
+			"folder": "sr/js",
+			"path": "sr/js/lazy.js",
+			"source": "launchpad-starter-v2/sr/js/lazy.js"
+		},
+		{
+			"category_id": "0",
+			"template_type": "4",
+			"folder": "sr/js",
+			"path": "sr/js/interaction.js",
+			"source": "launchpad-starter-v2/sr/js/interaction.js"
+		},
+		{
+			"category_id": "0",
+			"template_type": "4",
+			"folder": "sr/js",
+			"path": "sr/js/jquery.js",
+			"source": "launchpad-starter-v2/sr/js/jquery.js"
+		},
+		{
+			"category_id": "0",
+			"template_type": "4",
+			"folder": "sr/js",
+			"path": "sr/js/ScrollMagic.js",
+			"source": "launchpad-starter-v2/sr/js/ScrollMagic.js"
+		},
+		{
+			"category_id": "0",
+			"template_type": "4",
+			"folder": "sr/js",
+			"path": "sr/js/gsap.js",
+			"source": "launchpad-starter-v2/sr/js/gsap.js"
+		},
+		{
+			"category_id": "0",
+			"template_type": "4",
+			"folder": "sr/js",
+			"path": "sr/js/prototype.js",
+			"source": "launchpad-starter-v2/sr/js/prototype.js"
+		}
+	],
+	"custom_modules": [
+		{
+			"path": "/launchpad-starter-v2/sr/sr-templates/theme.json",
+			"parentPath": "/sr/",
+			"name": "theme.json"
+		},
+		{
+			"path": "/launchpad-starter-v2/sr/sr-templates/fields.json",
+			"parentPath": "/sr/",
+			"name": "fields.json"
+		},
+		{
+			"path": "/launchpad-starter-v2/sr/sr-templates/sr-pro.jpg",
+			"parentPath": "/sr/",
+			"name": "sr-pro.jpg"
+		},
+		{
+			"path": "/launchpad-starter-v2/sr/css/sr-base.css",
+			"parentPath": "/sr/css/",
+			"name": "sr-base.css"
+		},
+		{
+			"path": "launchpad-starter-v2/sr/sr-templates/SR Style Guide.module/module.html",
+			"parentPath": "/sr/custom-modules/SR Style Guide.module/",
+			"name": "module.html"
+		},
+		{
+			"path": "launchpad-starter-v2/sr/sr-templates/SR Style Guide.module/module.css",
+			"parentPath": "/sr/custom-modules/SR Style Guide.module/",
+			"name": "module.css"
+		},
+		{
+			"path": "launchpad-starter-v2/sr/sr-templates/SR Style Guide.module/module.js",
+			"parentPath": "/sr/custom-modules/SR Style Guide.module/",
+			"name": "module.js"
+		},
+		{
+			"path": "launchpad-starter-v2/sr/sr-templates/SR Style Guide.module/meta.json",
+			"parentPath": "/sr/custom-modules/SR Style Guide.module/",
+			"name": "meta.json"
+		},
+		{
+			"path": "launchpad-starter-v2/sr/sr-templates/SR Style Guide.module/fields.json",
+			"parentPath": "/sr/custom-modules/SR Style Guide.module/",
+			"name": "fields.json"
+		}
+	],
+	"files": []
+}

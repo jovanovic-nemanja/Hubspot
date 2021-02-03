@@ -1,0 +1,1131 @@
+{
+    "custom_module": {
+        "author": "bradley@lean-labs.com",
+        "tags": [
+            "ver-1.0.4"
+        ],
+        "name": "SR Cards Grid 02",
+        "css_assets": [],
+        "editable_contexts": [],
+        "external_js": [],
+        "icon": "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": [
+            "PAGE",
+            "BLOG_POST",
+            "BLOG_LISTING"
+        ],
+        "js_assets": [],
+        "other_assets": [],
+        "fields": [
+            {
+                "id": "enabled",
+                "name": "enabled",
+                "label": "Enabled",
+                "required": false,
+                "locked": false,
+                "display": "checkbox",
+                "type": "boolean",
+                "default": true
+            },
+            {
+                "id": "design_settings",
+                "name": "design_settings",
+                "label": "Design Settings",
+                "required": false,
+                "locked": false,
+                "children": [
+                    {
+                        "id": "design_settings.sr_module_id",
+                        "name": "sr_module_id",
+                        "label": "ID",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text"
+                    },
+                    {
+                        "id": "design_settings.class",
+                        "name": "class",
+                        "label": "Class",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text"
+                    },
+                    {
+                        "id": "design_settings.layout",
+                        "name": "layout",
+                        "label": "Layout",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "container",
+                                "Page"
+                            ],
+                            [
+                                "container-fluid",
+                                "Full Width"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "container"
+                    },
+                    {
+                        "id": "design_settings.container_width",
+                        "name": "container_width",
+                        "label": "Container Width",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "min",
+                                "Minimum"
+                            ],
+                            [
+                                "narrow",
+                                "Narrow"
+                            ],
+                            [
+                                "wide",
+                                "Wide"
+                            ],
+                            [
+                                "max",
+                                "Maximum"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "max"
+                    },
+                    {
+                        "id": "top_bottom_padding",
+                        "name": "top_bottom_padding",
+                        "label": "Top Bottom Padding",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "auto",
+                                "Use default values"
+                            ],
+                            [
+                                "zero",
+                                "No Padding"
+                            ],
+                            [
+                                "half",
+                                "Small padding"
+                            ],
+                            [
+                                "full",
+                                "Large padding"
+                            ],
+                            [
+                                "custom",
+                                "Custom padding"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "full"
+                    },
+                    {
+                        "id": "design_settings.custom_padding",
+                        "name": "custom_padding",
+                        "label": "Custom Padding",
+                        "help_text": "Top, Right, Bottom, Left",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "visibility": {
+                            "controlling_field": "top_bottom_padding",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "1rem 0rem 1rem 0rem"
+                    },
+                    {
+                        "id": "design_settings.border_top",
+                        "name": "border_top",
+                        "label": "Border Top",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    {
+                        "id": "design_settings.border_bottom",
+                        "name": "border_bottom",
+                        "label": "Border Bottom",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    {
+                        "id": "background_option",
+                        "name": "background_option",
+                        "label": "Background Option",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "image",
+                                "Image"
+                            ],
+                            [
+                                "color",
+                                "Color"
+                            ],
+                            [
+                                "custom",
+                                "Custom"
+                            ],
+                            [
+                                "gradient",
+                                "Gradient"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "color"
+                    },
+                    {
+                        "id": "design_settings.background_gradient_from",
+                        "name": "background_gradient_from",
+                        "label": "Background Gradient From",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "gradient",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#0c63ff"
+                        }
+                    },
+                    {
+                        "id": "design_settings.background_gradient_to",
+                        "name": "background_gradient_to",
+                        "label": "Background Gradient To",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "gradient",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#1897ff"
+                        }
+                    },
+                    {
+                        "id": "design_settings.background_image",
+                        "name": "background_image",
+                        "label": "Background Image",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "responsive": false,
+                        "resizable": true,
+                        "show_loading": false,
+                        "type": "image",
+                        "default": {
+                            "alt": null,
+                            "src": null
+                        }
+                    },
+                    {
+                        "id": "design_settings.background_overlay_color",
+                        "name": "background_overlay_color",
+                        "label": "Background Overlay Color",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#343a40",
+                            "opacity": 30
+                        }
+                    },
+                    {
+                        "id": "design_settings.background_color",
+                        "name": "background_color",
+                        "label": "Background Color",
+                        "required": true,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "color",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "select",
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "success",
+                                "Success"
+                            ],
+                            [
+                                "info",
+                                "Info"
+                            ],
+                            [
+                                "warning",
+                                "Warning"
+                            ],
+                            [
+                                "danger",
+                                "Danger"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "light"
+                    },
+                    {
+                        "id": "design_settings.background_custom",
+                        "name": "background_custom",
+                        "label": "Background Custom",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#fff"
+                        }
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "layout": "container",
+                    "container_width": "max",
+                    "top_bottom_padding": "full",
+                    "custom_padding": "1rem 0rem 1rem 0rem",
+                    "border_top": false,
+                    "border_bottom": false,
+                    "background_option": "color",
+                    "background_gradient_from": {
+                        "color": "#0c63ff"
+                    },
+                    "background_gradient_to": {
+                        "color": "#1897ff"
+                    },
+                    "background_image": {
+                        "alt": null,
+                        "src": null
+                    },
+                    "background_overlay_color": {
+                        "color": "#343a40",
+                        "opacity": 30
+                    },
+                    "background_color": "light",
+                    "background_custom": {
+                        "color": "#fff"
+                    }
+                }
+            },
+            {
+                "id": "heading",
+                "name": "heading",
+                "label": "Heading",
+                "required": false,
+                "locked": false,
+                "validation_regex": "",
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "default": "Meet all of your inbound<br> goals and objectives"
+            },
+            {
+                "id": "heading_size",
+                "name": "heading_size",
+                "label": "Heading Size",
+                "required": true,
+                "locked": false,
+                "visibility": {
+                    "controlling_field": "heading",
+                    "controlling_value_regex": null,
+                    "operator": null,
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "display": "select",
+                "choices": [
+                    [
+                        "1",
+                        "H1"
+                    ],
+                    [
+                        "2",
+                        "H2"
+                    ],
+                    [
+                        "3",
+                        "H3"
+                    ],
+                    [
+                        "4",
+                        "H4"
+                    ],
+                    [
+                        "5",
+                        "H5"
+                    ],
+                    [
+                        "6",
+                        "H6"
+                    ]
+                ],
+                "type": "choice",
+                "default": "2"
+            },
+            {
+                "id": "heading_display_size",
+                "name": "heading_display_size",
+                "label": "Heading Display Size",
+                "required": true,
+                "locked": false,
+                "visibility": {
+                    "controlling_field": "heading",
+                    "controlling_value_regex": null,
+                    "operator": null,
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "display": "select",
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "h1",
+                        "H1"
+                    ],
+                    [
+                        "h2",
+                        "H2"
+                    ],
+                    [
+                        "h3",
+                        "H3"
+                    ],
+                    [
+                        "h4",
+                        "H4"
+                    ],
+                    [
+                        "h5",
+                        "H5"
+                    ],
+                    [
+                        "h6",
+                        "H6"
+                    ],
+                    [
+                        "display-4",
+                        "L"
+                    ],
+                    [
+                        "display-3",
+                        "XL"
+                    ],
+                    [
+                        "display-2",
+                        "XXL"
+                    ],
+                    [
+                        "display-1",
+                        "XXXL"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            },
+            {
+                "id": "description",
+                "name": "description",
+                "label": "Description",
+                "required": false,
+                "locked": false,
+                "type": "richtext",
+                "default": "Quickly and efficiently build the materials you need to support your<br> inbound marketing strategy. Drag and drop building blocks including<br> testimonials, forms, calls-to-action, and more."
+            },
+            {
+                "id": "text_align",
+                "name": "text_align",
+                "label": "Text Align",
+                "required": true,
+                "locked": false,
+                "display": "select",
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "left",
+                        "Left"
+                    ],
+                    [
+                        "center",
+                        "Center"
+                    ],
+                    [
+                        "right",
+                        "Right"
+                    ]
+                ],
+                "type": "choice",
+                "default": "center"
+            },
+            {
+                "id": "text_color",
+                "name": "text_color",
+                "label": "Text Color",
+                "required": true,
+                "locked": false,
+                "display": "select",
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "primary",
+                        "Primary"
+                    ],
+                    [
+                        "secondary",
+                        "Secondary"
+                    ],
+                    [
+                        "tertiary",
+                        "Tertiary"
+                    ],
+                    [
+                        "white",
+                        "White"
+                    ],
+                    [
+                        "black",
+                        "Black"
+                    ],
+                    [
+                        "dark",
+                        "Dark"
+                    ],
+                    [
+                        "light",
+                        "Light"
+                    ],
+                    [
+                        "success",
+                        "Success"
+                    ],
+                    [
+                        "info",
+                        "Info"
+                    ],
+                    [
+                        "warning",
+                        "Warning"
+                    ],
+                    [
+                        "danger",
+                        "Danger"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            },
+            {
+                "id": "221",
+                "label": "Cards",
+                "name": "cards",
+                "type": "group",
+                "occurrence": {
+                    "min": 1,
+                    "default": 6
+                },
+                "children": [
+                    {
+                        "default": "Professional Design",
+                        "label": "Card Title",
+                        "name": "card_title",
+                        "type": "text"
+                    },
+                    {
+                        "default": "Easy and fast adjustments of elements is possible with Core template.",
+                        "label": "Text",
+                        "name": "text",
+                        "type": "richtext"
+                    },
+                    {
+                        "default": {
+                            "src": "https://cdn2.hubspot.net/hubfs/4910474/sr-assets/images/bulb.png",
+                            "alt": "Professional Design",
+                            "width": "75",
+                            "height": "75"
+                        },
+                        "label": "Image",
+                        "name": "image",
+                        "help_text": "Recommended size: 150x150px",
+                        "type": "image"
+                    },
+                    {
+                        "default": true,
+                        "label": "SR Default Image Size",
+                        "name": "sr_default_image_size",
+                        "type": "boolean"
+                    },
+                    {
+                        "id": "cta",
+                        "name": "cta",
+                        "label": "CTA",
+                        "children": [
+                            {
+                                "id": "cta_type",
+                                "name": "cta_type",
+                                "label": "CTA Type",
+                                "required": true,
+                                "display": "select",
+                                "choices": [
+                                    [
+                                        "cta",
+                                        "HubSpot CTA"
+                                    ],
+                                    [
+                                        "btn",
+                                        "Button"
+                                    ],
+                                    [
+                                        "none",
+                                        "None"
+                                    ]
+                                ],
+                                "type": "choice",
+                                "default": "none"
+                            },
+                            {
+                                "name": "cta_style",
+                                "label": "CTA Style",
+                                "visibility": {
+                                    "controlling_field": "cta_type",
+                                    "controlling_value_regex": "none",
+                                    "operator": "NOT_EQUAL",
+                                    "access": null
+                                },
+                                "display": "select",
+                                "choices": [
+                                    [
+                                        "primary",
+                                        "Primary"
+                                    ],
+                                    [
+                                        "secondary",
+                                        "Secondary"
+                                    ],
+                                    [
+                                        "tertiary",
+                                        "Tertiary"
+                                    ],
+                                    [
+                                        "white",
+                                        "White"
+                                    ],
+                                    [
+                                        "black",
+                                        "Black"
+                                    ],
+                                    [
+                                        "outline-primary",
+                                        "Outline Primary"
+                                    ],
+                                    [
+                                        "outline-secondary",
+                                        "Outline Secondary"
+                                    ],
+                                    [
+                                        "outline-tertiary",
+                                        "Outline Tertiary"
+                                    ],
+                                    [
+                                        "outline-white",
+                                        "Outline White"
+                                    ],
+                                    [
+                                        "outline-black",
+                                        "Outline Black"
+                                    ],
+                                    [
+                                        "none",
+                                        "None"
+                                    ]
+                                ],
+                                "type": "choice",
+                                "default": "primary"
+                            },
+                            {
+                                "name": "cta",
+                                "label": "CTA",
+                                "visibility": {
+                                    "controlling_field": "cta_type",
+                                    "controlling_value_regex": "cta",
+                                    "operator": "EQUAL",
+                                    "access": null
+                                },
+                                "type": "cta",
+                                "default": ""
+                            },
+                            {
+                                "name": "button_text",
+                                "label": "Button Text",
+                                "visibility": {
+                                    "controlling_field": "cta_type",
+                                    "controlling_value_regex": "btn",
+                                    "operator": "EQUAL",
+                                    "access": null
+                                },
+                                "type": "text",
+                                "default": "Learn More"
+                            },
+                            {
+                                "name": "link",
+                                "label": "Link",
+                                "visibility": {
+                                    "controlling_field": "cta_type",
+                                    "controlling_value_regex": "btn",
+                                    "operator": "EQUAL",
+                                    "access": null
+                                },
+                                "type": "text",
+                                "default": "#"
+                            }
+                        ],
+                        "type": "group",
+                        "default": {
+                            "cta_type": "none",
+                            "cta_style": "primary",
+                            "cta": "",
+                            "button_text": "Learn More",
+                            "link": "#"
+                        }
+                    },
+                    {
+                        "choices": [
+                            [
+                                "auto",
+                                "Auto"
+                            ],
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "success",
+                                "Success"
+                            ],
+                            [
+                                "info",
+                                "Info"
+                            ],
+                            [
+                                "warning",
+                                "Warning"
+                            ],
+                            [
+                                "danger",
+                                "Danger"
+                            ]
+                        ],
+                        "default": "auto",
+                        "display": "select",
+                        "label": "Text Color",
+                        "name": "text_color",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "choices": [
+                            [
+                                "color",
+                                "Color"
+                            ],
+                            [
+                                "custom",
+                                "Custom"
+                            ]
+                        ],
+                        "id": "card_background_option",
+                        "default": "color",
+                        "display": "select",
+                        "label": "Background Option",
+                        "name": "background_option",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "success",
+                                "Success"
+                            ],
+                            [
+                                "info",
+                                "Info"
+                            ],
+                            [
+                                "warning",
+                                "Warning"
+                            ],
+                            [
+                                "danger",
+                                "Danger"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "default": "white",
+                        "display": "select",
+                        "label": "Background Color",
+                        "name": "background_color",
+                        "type": "choice",
+                        "visibility": {
+                            "controlling_field": "card_background_option",
+                            "controlling_value_regex": "color",
+                            "operator": "EQUAL"
+                        },
+                        "required": true
+                    },
+                    {
+                        "default": {
+                            "color": "#fff"
+                        },
+                        "label": "Background Custom",
+                        "name": "background_custom",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL"
+                        },
+                        "type": "color"
+                    }
+                ],
+                "default": [
+					{
+						"image": {
+							"src": "https://f.hubspotusercontent20.net/hubfs/275827/sr-assets/images/bulb.png",
+							"alt": "Professional Design",
+							"width": "75",
+							"height": "75"
+						},
+						"sr_default_image_size": true,
+						"card_title": "Professional Design",
+						"text": "Easy and fast adjustments of elements is possible with Core template.",
+						"cta": {
+							"cta_type": "none",
+							"cta_style": "outline-primary",
+							"cta": null,
+							"button_text": "Learn More",
+							"link": "#"
+						},
+						"text_color": "auto",
+						"background_option": "color",
+						"background_color": "white",
+						"background_custom": {
+							"color": "#ffffff",
+							"opacity": 100
+						}
+					},
+					{
+						"image": {
+							"src": "https://f.hubspotusercontent20.net/hubfs/275827/sr-assets/images/sprout.png",
+							"alt": "Superior Inbound Material",
+							"width": "75",
+							"height": "75"
+						},
+						"sr_default_image_size": true,
+						"card_title": "Superior Inbound Material",
+						"text": "Quickly and efficiently build the materials you need to support your inbound marketing strategy.",
+						"cta": {
+							"cta_type": "none",
+							"cta_style": "outline-primary",
+							"cta": null,
+							"button_text": "Learn More",
+							"link": "#"
+						},
+						"text_color": "auto",
+						"background_option": "color",
+						"background_color": "white",
+						"background_custom": {
+							"color": "#ffffff",
+							"opacity": 100
+						}
+					},
+					{
+						"image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/head.png",
+							"alt": "Light Years Ahead",
+							"width": "75",
+							"height": "75"
+						},
+						"sr_default_image_size": true,
+						"card_title": "Light Years Ahead",
+						"text": "Sprocket Rocket lets you transform your rapid prototype into a beautiful design by adjusting every aspect to fit brand standards.",
+						"cta": {
+							"cta_type": "none",
+							"cta_style": "outline-primary",
+							"cta": null,
+							"button_text": "Learn More",
+							"link": "#"
+						},
+						"text_color": "auto",
+						"background_option": "color",
+						"background_color": "white",
+						"background_custom": {
+							"color": "#ffffff",
+							"opacity": 100
+						}
+					},
+					{
+						"image": {
+							"src": "https://f.hubspotusercontent20.net/hubfs/275827/sr-assets/images/presentation-1.png",
+							"alt": "Enhanced User Experience",
+							"width": "75",
+							"height": "75"
+						},
+						"sr_default_image_size": true,
+						"card_title": "Enhanced User Experience",
+						"text": "Collaborate seamlessly across devices from wherever you may be – whether you’re in the office, on the go, or making last-minute changes before your next meeting.",
+						"cta": {
+							"cta_type": "none",
+							"cta_style": "outline-primary",
+							"cta": null,
+							"button_text": "Learn More",
+							"link": "#"
+						},
+						"text_color": "auto",
+						"background_option": "color",
+						"background_color": "white",
+						"background_custom": {
+							"color": "#ffffff",
+							"opacity": 100
+						}
+					},
+					{
+						"image": {
+							"src": "https://f.hubspotusercontent20.net/hubfs/275827/sr-assets/images/plant.png",
+							"alt": "Exceptional Customer Support",
+							"width": "75",
+							"height": "75"
+						},
+						"sr_default_image_size": true,
+						"card_title": "Exceptional Customer Support",
+						"text": "From start-to-finish, the design and strategy team provide all of the guidance and expertise necessary to build a high-conversion website.",
+						"cta": {
+							"cta_type": "none",
+							"cta_style": "outline-primary",
+							"cta": null,
+							"button_text": "Learn More",
+							"link": "#"
+						},
+						"text_color": "auto",
+						"background_option": "color",
+						"background_color": "white",
+						"background_custom": {
+							"color": "#ffffff",
+							"opacity": 100
+						}
+					},
+					{
+						"image": {
+							"src": "https://f.hubspotusercontent20.net/hubfs/275827/sr-assets/images/cloud.png",
+							"alt": "Prototype With Robust Modules",
+							"width": "75",
+							"height": "75"
+						},
+						"sr_default_image_size": true,
+						"card_title": "Prototype With Robust Modules",
+						"text": "Select from a collection of modules and quickly populate and draft website and landing pages right to HubSpot.",
+						"cta": {
+							"cta_type": "none",
+							"cta_style": "outline-primary",
+							"cta": null,
+							"button_text": "Learn More",
+							"link": "#"
+						},
+						"text_color": "auto",
+						"background_option": "color",
+						"background_color": "white",
+						"background_custom": {
+							"color": "#ffffff",
+							"opacity": 100
+						}
+					}
+				]
+            },
+            {
+                "id": "cards_per_row",
+                "name": "cards_per_row",
+                "label": "Cards Per Row",
+                "required": true,
+                "locked": false,
+                "display": "select",
+                "choices": [
+                    [
+                        "12",
+                        "1"
+                    ],
+                    [
+                        "6",
+                        "2"
+                    ],
+                    [
+                        "4",
+                        "3"
+                    ],
+                    [
+                        "3",
+                        "4"
+                    ]
+                ],
+                "type": "choice",
+                "default": "4"
+            }
+        ],
+        "source": ""
+    },
+    "custom_module_template": "sr-cards-grid-02.html",
+    "available_builder": true,
+    "category": 7,
+    "files": []
+}

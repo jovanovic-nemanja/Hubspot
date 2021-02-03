@@ -1,0 +1,481 @@
+{
+    "custom_module": {
+        "author": "bradley@lean-labs.com",
+        "tags": [
+            "ver-1.1.1"
+        ],
+        "name": "SR Footer Min 02",
+        "css_assets": [],
+        "global": false,
+        "editable_contexts": [],
+        "external_js": [],
+        "icon": "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": [
+            "PAGE",
+            "BLOG_POST",
+            "BLOG_LISTING"
+        ],
+        "js_assets": [],
+        "other_assets": [],
+        "fields": [
+            {
+                "id": "enabled",
+                "name": "enabled",
+                "label": "Enabled",
+                "required": false,
+                "locked": false,
+                "display": "checkbox",
+                "type": "boolean",
+                "default": true
+            },
+            {
+                "id": "design_settings",
+                "name": "design_settings",
+                "label": "Design Settings",
+                "required": false,
+                "locked": false,
+                "children": [
+                    {
+                        "id": "design_settings.sr_module_id",
+                        "name": "sr_module_id",
+                        "label": "ID",
+                        "required": false,
+                        "locked": false,
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text"
+                    },
+                    {
+                        "id": "design_settings.class",
+                        "name": "class",
+                        "label": "Class",
+                        "required": false,
+                        "locked": false,
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text"
+                    },
+                    {
+                        "id": "top_bottom_padding",
+                        "name": "top_bottom_padding",
+                        "label": "Top Bottom Padding",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "auto",
+                                "Use default values"
+                            ],
+                            [
+                                "zero",
+                                "No Padding"
+                            ],
+                            [
+                                "half",
+                                "Small padding"
+                            ],
+                            [
+                                "full",
+                                "Large padding"
+                            ],
+                            [
+                                "custom",
+                                "Custom Padding"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "custom"
+                    },
+                    {
+                        "id": "design_settings.custom_padding",
+                        "name": "custom_padding",
+                        "label": "Custom Padding",
+                        "help_text": "Top, Right, Bottom, Left",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "top_bottom_padding",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "1rem 0rem 1rem 0rem"
+                    },
+                    {
+                        "id": "background_option",
+                        "name": "background_option",
+                        "label": "Background Option",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "image",
+                                "Image"
+                            ],
+                            [
+                                "color",
+                                "Color"
+                            ],
+                            [
+                                "custom",
+                                "Custom"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "color"
+                    },
+                    {
+                        "id": "design_settings.background_image",
+                        "name": "background_image",
+                        "label": "Background Image",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "responsive": false,
+                        "resizable": true,
+                        "show_loading": false,
+                        "type": "image",
+                        "default": {
+                            "alt": null,
+                            "src": null
+                        }
+                    },
+                    {
+                        "id": "design_settings.background_overlay_color",
+                        "name": "background_overlay_color",
+                        "label": "Background Overlay Color",
+                        "help_text": "Recommended Width: 2880x1920px",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#343a40",
+                            "opacity": 30
+                        }
+                    },
+                    {
+                        "id": "design_settings.background_color",
+                        "name": "background_color",
+                        "label": "Background Color",
+                        "required": true,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "color",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "select",
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "success",
+                                "Success"
+                            ],
+                            [
+                                "info",
+                                "Info"
+                            ],
+                            [
+                                "warning",
+                                "Warning"
+                            ],
+                            [
+                                "danger",
+                                "Danger"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "light"
+                    },
+                    {
+                        "id": "design_settings.background_custom",
+                        "name": "background_custom",
+                        "label": "Background Custom",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#fff",
+                            "opacity": 100
+                        }
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "custom_padding": "1rem 0rem 1rem 0rem",
+                    "background_color": "light",
+                    "background_image": {
+                        "alt": null,
+                        "src": null
+                    },
+                    "background_custom": {
+                        "color": "#fff",
+                        "opacity": 100
+                    },
+                    "background_option": "color",
+                    "top_bottom_padding": "custom",
+                    "background_overlay_color": {
+                        "color": "#343a40",
+                        "opacity": 30
+                    }
+                }
+            },
+            {
+                "id": "2a11e540-80f9-b4b5-8e76-4b4f36dcbb27",
+                "name": "logo",
+                "label": "Logo",
+                "required": false,
+                "locked": false,
+                "responsive": true,
+                "resizable": true,
+                "show_loading": false,
+                "type": "image",
+                "default": {
+                    "alt": "sr-logo@2x",
+                    "src": "https://www.sprocketrocket.co/hubfs/sr-assets/images/sr-logo@2x.png",
+                    "width": 150
+                }
+            },
+            {
+                "id": "a22a2471-5f14-454e-2094-fbc596ad16cf",
+                "name": "logo_link",
+                "label": "Logo Link",
+                "required": false,
+                "locked": false,
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "default": "/"
+            },
+            {
+                "id": "show_menu",
+                "name": "show_menu",
+                "label": "Menu",
+                "required": false,
+                "locked": false,
+                "type": "boolean",
+                "inline_help_text": "",
+                "help_text": "",
+                "default": true
+            },
+            {
+                "id": "674f47b5-0985-a18e-6cb8-2b952eb8a3c9",
+                "name": "menu",
+                "label": "Menu",
+                "required": false,
+                "visibility": {
+                    "controlling_field": "show_menu",
+                    "controlling_value_regex": "true",
+                    "operator": "EQUAL",
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "locked": false,
+                "type": "menu"
+            },
+            {
+                "id": "content",
+                "name": "content",
+                "label": "Content",
+                "required": false,
+                "locked": false,
+                "type": "richtext",
+                "default": "<p class=\"small\">©{{ year }} Acme Co, Inc. All rights reserved. <a href=\"/privacy-policy\">Privacy Policy</a></p>"
+            },
+            {
+                "id": "1",
+                "name": "icons",
+                "label": "Social Icons",
+                "required": false,
+                "locked": false,
+                "occurrence": {
+                    "min": null,
+                    "max": null,
+                    "sorting_label_field": null,
+                    "default": 0
+                },
+                "children": [
+                    {
+                        "id": "icons.icon",
+                        "name": "icon",
+                        "label": "Icon Code",
+                        "help_text": "Icon codes can be found here: https://fontawesome.com/v4.7.0/icons/",
+                        "required": false,
+                        "locked": false,
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "fa-facebook-square"
+                    },
+                    {
+                        "id": "icons.link",
+                        "name": "link",
+                        "label": "Link",
+                        "required": false,
+                        "locked": false,
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "#"
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group"
+            },
+            {
+                "id": "text_align",
+                "name": "text_align",
+                "label": "Text Align",
+                "required": true,
+                "locked": false,
+                "display": "select",
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "left",
+                        "Left"
+                    ],
+                    [
+                        "center",
+                        "Center"
+                    ],
+                    [
+                        "right",
+                        "Right"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            },
+            {
+                "id": "text_color",
+                "name": "text_color",
+                "label": "Text Color",
+                "required": true,
+                "locked": false,
+                "display": "select",
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "primary",
+                        "Primary"
+                    ],
+                    [
+                        "secondary",
+                        "Secondary"
+                    ],
+                    [
+                        "tertiary",
+                        "Tertiary"
+                    ],
+                    [
+                        "white",
+                        "White"
+                    ],
+                    [
+                        "black",
+                        "Black"
+                    ],
+                    [
+                        "dark",
+                        "Dark"
+                    ],
+                    [
+                        "light",
+                        "Light"
+                    ],
+                    [
+                        "success",
+                        "Success"
+                    ],
+                    [
+                        "info",
+                        "Info"
+                    ],
+                    [
+                        "warning",
+                        "Warning"
+                    ],
+                    [
+                        "danger",
+                        "Danger"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            }
+        ],
+        "source": ""
+    },
+    "custom_module_template": "sr-footer-min-02.html",
+    "available_builder": true,
+    "category": 2,
+    "files": []
+}

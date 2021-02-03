@@ -1,0 +1,484 @@
+{
+	"custom_module": {
+		"author": "bradley@lean-labs.com",
+		"tags": ["ver-1.0.0"],
+		"name": "SR Offer Sticky Form 01",
+		"css_assets": [],
+		"editable_contexts": [],
+		"external_js": [],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+		"js_assets": [],
+		"other_assets": [],
+		"fields": [
+			{
+				"default": true,
+				"label": "Enabled",
+				"name": "enabled",
+				"type": "boolean"
+			},
+			{
+				"type": "group",
+				"name": "design_settings",
+				"label": "Design Settings",
+				"children": [
+					
+							{
+								"default": null,
+								"label": "ID",
+								"name": "sr_module_id",
+								"type": "text"
+							},
+							{
+								"default": null,
+								"label": "Class",
+								"name": "class",
+								"type": "text"
+							},
+							{
+								"choices": [
+									[
+										"image", "Image"
+									],
+									[
+										"color", "Color"
+									],
+									[
+										"custom", "Custom"
+									],
+									[
+										"gradient", "Gradient"
+									]
+								],
+								"id": "background_option",
+								"default": "color",
+								"display": "select",
+								"label": "Background Option",
+								"name": "background_option",
+								"type": "choice",
+								"required": true
+							},
+							{
+								"default": {
+									"color": "#0c63ff"
+								},
+								"label": "Background Gradient From",
+								"name": "background_gradient_from",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "gradient",
+									"operator": "EQUAL"
+								},
+								"type": "color"
+							},
+							{
+								"default": {
+									"color": "#1897ff"
+								},
+								"label": "Background Gradient To",
+								"name": "background_gradient_to",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "gradient",
+									"operator": "EQUAL"
+								},
+								"type": "color"
+							},
+							{
+								"default": {
+									"src": "",
+									"alt": ""
+								},
+								"label": "Background Image",
+								"name": "background_image",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "image",
+									"operator": "EQUAL"
+								},
+								"type": "image"
+							},
+							{
+								"default": {
+									"color": "#343a40",
+									"opacity": 30
+								},
+								"label": "Background Overlay Color",
+								"name": "background_overlay_color",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "image",
+									"operator": "EQUAL"
+								},
+								"help_text": "Recommended Width: 2880x1920px",
+								"type": "color"
+							},
+							{
+								"choices": [
+									[
+										"primary",
+										"Primary"
+									],
+									[
+										"secondary",
+										"Secondary"
+									],
+									[
+										"tertiary",
+										"Tertiary"
+									],
+									[
+										"white",
+										"White"
+									],
+									[
+										"black",
+										"Black"
+									],
+									[
+										"dark",
+										"Dark"
+									],
+									[
+										"light",
+										"Light"
+									],
+									[
+										"success",
+										"Success"
+									],
+									[
+										"info",
+										"Info"
+									],
+									[
+										"warning",
+										"Warning"
+									],
+									[
+										"danger",
+										"Danger"
+									],
+									[
+										"none",
+										"None"
+									]
+								],
+								"default": "primary",
+								"display": "select",
+								"label": "Background Color",
+								"name": "background_color",
+								"type": "choice",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "color",
+									"operator": "EQUAL"
+								},
+								"required": true
+							},
+							{
+								"default": {
+									"color": "#fff"
+								},
+								"label": "Background Custom",
+								"name": "background_custom",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "custom",
+									"operator": "EQUAL"
+								},
+								"type": "color"
+							}
+			]},
+			{
+				"default": "<p><img src='https://www.lean-labs.com/hubfs/sr-assets/images/sr-icon-white.svg' alt='SprocketRocketIcon' width='50' style='width: 50px;'></p> <h1>Strategy Kit:<br>Put Together a<br>Winning Strategy</h1> <p><img src='https://www.sprocketrocket.co/hubfs/sprocket-rocket/images/sr%20offer%20covers/strategy-kit-cover.png' alt='book-cover' width='270' style='width: 270px;'></p>",
+				"label": "Form Content",
+				"name": "form_content",
+				"type": "richtext"
+			},
+			{
+				"choices": [
+					[
+						"auto", "Auto"
+					],
+					[
+						"primary", "Primary"
+					],
+					[
+						"secondary", "Secondary"
+					],
+					[
+						"tertiary", "Tertiary"
+					],
+					[
+						"white", "White"
+					],
+					[
+						"black", "Black"
+					],
+					[
+						"dark", "Dark"
+					],
+					[
+						"light", "Light"
+					],
+					[
+						"success", "Success"
+					],
+					[
+						"info", "Info"
+					],
+					[
+						"warning", "Warning"
+					],
+					[
+						"danger", "Danger"
+					]
+				],
+				"default": "white",
+				"display": "select",
+				"label": "Form Content Text Color",
+				"name": "form_content_text_color",
+				"type": "choice",
+				"required": true
+			},
+			{
+				"choices": [
+					[
+						"auto", "Auto"
+					],
+					[
+						"left", "Left"
+					],
+					[
+						"center", "Center"
+					],
+					[
+						"right", "Right"
+					]
+				],
+				"default": "auto",
+				"display": "select",
+				"label": "Form Content Text Align",
+				"name": "form_content_text_align",
+				"type": "choice",
+				"required": true
+			},
+			{
+				"id": "1",
+				"name": "form",
+				"children": [{
+						"name": "form_title",
+						"label": "Form Title",
+						"type": "text",
+						"default": "Download Playbook"
+					},
+					{
+						"id": "step",
+						"name": "step",
+						"type": "text",
+						"label": "Step",
+						"occurrence": {
+							"min": 0,
+							"max": 99,
+							"sorting_label_field": null,
+							"default": 3
+						},
+						"default": ["01. Email", "02. Company", "03. Domain"]
+					},
+					{
+						"name": "form",
+						"label": "Form",
+						"type": "form",
+						"default": {
+							"response_type": "redirect",
+							"message": "Thanks for submitting the form."
+						}
+					},
+					{
+						"id": "notifications_are_overridden",
+						"name": "notifications_are_overridden",
+						"label": "Send form notifications to specified email addresses instead of the form defaults",
+						"type": "boolean",
+						"default": false
+					},
+					{
+						"name": "notifications_override_email_addresses",
+						"label": "Email Addresses",
+						"visibility": {
+							"controlling_field": "notifications_are_overridden",
+							"controlling_value_regex": "true",
+							"operator": "EQUAL"
+						},
+						"type": "email",
+						"default": null
+					},
+					{
+						"id": "follow_up_type_simple",
+						"name": "follow_up_type_simple",
+						"label": "Send a follow-up email",
+						"type": "boolean",
+						"default": false
+					},
+					{
+						"name": "simple_email_for_live_id",
+						"label": "Email",
+						"visibility": {
+							"controlling_field": "follow_up_type_simple",
+							"controlling_value_regex": "true",
+							"operator": "EQUAL"
+						},
+						"type": "followupemail",
+						"default": null
+					},
+					{
+						"default": {
+							"color": "#0C63FF"
+						},
+						"label": "Step Color",
+						"name": "step_color",
+						"type": "color"
+					},
+					{
+						"name": "button_style",
+						"label": "Button Style",
+						"display": "select",
+						"choices": [
+							[
+								"primary",
+								"Primary"
+							],
+							[
+								"secondary",
+								"Secondary"
+							],
+							[
+								"outline-primary",
+								"Outline Primary"
+							],
+							[
+								"outline-secondary",
+								"Outline Secondary "
+							],
+							[
+								"none",
+								"None"
+							]
+						],
+						"type": "choice",
+						"default": "primary"
+					}
+				],
+				"label": "Form",
+				"type": "group",
+				"default": {
+					"form_title": "Download Playbook",
+					"step": ["01. Email", "02. Company", "03. Domain"],
+					"form": {
+						"response_type": "redirect",
+						"message": "Thanks for submitting the form."
+					},
+					"notifications_are_overridden": false,
+					"follow_up_type_automation": false,
+					"follow_up_type_simple": false,
+					"button_style": "primary",
+					"step_color": {
+						"color": "#0C63FF"
+					}
+				}
+			},
+			{
+				"default": "<h3>Put Together a Winning Strategy</h3> <p>Agencies: please visit our Agency Project Playbook page.</p> <p>At Lean Labs, we don't do cookie cutter. We want our clients websites, marketing, and branding to win. Period. When our clients are successful, we're successful.</p> <p>To that end, we've designed a project playbook that will assist you in determining how we can help you and at what price you can expect to pay for it.</p> <p>Download our Project Playbook and start building your winning strategy.</p> <p>By reading this playbook you'll learn:</p> <p>The unique services we offer our clients from early stage startups to large enterprises.</p> <p>How we tailor our services to your needs to achieve or exceed your goals.</p> <p>How we price our services so you can get a good idea of what Lean Labs' awesomesauce costs.</p> <p>How to get a mastermind session to strategize your project for free, even if you decide not to employ Lean Labs.</p>",
+				"label": "Offer Content",
+				"name": "offer_content",
+				"type": "richtext"
+			},
+			{
+				"choices": [
+					[
+						"auto", "Auto"
+					],
+					[
+						"primary", "Primary"
+					],
+					[
+						"secondary", "Secondary"
+					],
+					[
+						"tertiary", "Tertiary"
+					],
+					[
+						"white", "White"
+					],
+					[
+						"black", "Black"
+					],
+					[
+						"dark", "Dark"
+					],
+					[
+						"light", "Light"
+					],
+					[
+						"success", "Success"
+					],
+					[
+						"info", "Info"
+					],
+					[
+						"warning", "Warning"
+					],
+					[
+						"danger", "Danger"
+					]
+				],
+				"default": "auto",
+				"display": "select",
+				"label": "Offer Content Text Color",
+				"name": "offer_content_text_color",
+				"type": "choice",
+				"required": true
+			},
+			{
+				"choices": [
+					[
+						"auto", "Auto"
+					],
+					[
+						"left", "Left"
+					],
+					[
+						"center", "Center"
+					],
+					[
+						"right", "Right"
+					]
+				],
+				"default": "auto",
+				"display": "select",
+				"label": "Offer Content Text Align",
+				"name": "offer_content_text_align",
+				"type": "choice",
+				"required": true
+			},
+			{
+				"default": {
+					"color": "#f9f9f9"
+				},
+				"label": "Offer Background Color",
+				"name": "offer_background_color",
+				"type": "color"
+			}
+		],
+		"source": ""
+	},
+	"custom_module_template": "sr-offer-sticky-form-01.html",
+	"available_builder": true,
+	"category": 6,
+	"files": [{
+			"file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/ScrollMagic.min.js",
+			"folder_paths": "sr-assets/js"
+		}
+	]
+}

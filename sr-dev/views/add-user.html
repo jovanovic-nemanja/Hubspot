@@ -1,0 +1,48 @@
+<div class="action-panel-content">
+    <div class="action-container">
+        <div class="action-heading">
+            <h2>Add User</h2>
+        </div>
+        <form id="add-user">
+            <div class="row sr-forms">
+                <div class="col">
+                    <label for="email">Email</label> 
+                    <input id="email" type="email" class="form-control">
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row sr-forms">
+                <div class="col">
+                    <label for="email">Role</label> 
+                    <select name="role" id="role" class="form-control">
+                        <option value="">--- Please Select ---</option>
+                        <option value="role-1">Role 1</option>
+                        <option value="role-2">Role 2</option>
+                        <option value="role-3">Role 3</option>
+                        <option value="role-4">Role 4</option>
+                        <option value="role-5">Role 5</option>
+                    </select>
+                </div>
+                <div class="col"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Invite</button>
+            <button class="btn btn-secondary" id="cancel-btn">Cancel</button>
+        </form>
+    </div>
+</div>
+
+<!-- script needs to be loaded with this section if using AJAX-->
+<script type="text/javascript">
+$("#cancel-btn").click(function(){
+    $('#action-panel-target').empty();
+
+    if($("body").hasClass("modal-open")) {
+        console.log("action panel is open already");
+    } else {
+        $('#action-panel').modal('show');
+    }
+    $('#action-panel-target').load('./views/users.html', function(){
+        $(this).hide().fadeIn(200);
+    });
+});
+</script>

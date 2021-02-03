@@ -1,0 +1,14 @@
+{
+	"name": "Clients v1",
+	"custom_modules": [
+		"sr-nav-dropdown-01.json",
+		"sr-cards-filter-01.json",
+		"sr-two-col-01.json",
+		"sr-cards-testimonial-slider-01.json",
+		"sr-three-col-02.json",
+		"sr-offer-bar-03.json",
+		"sr-footer-04.json"
+	],
+	"module_overrides": {},
+	"page_overrides": {}
+}

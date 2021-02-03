@@ -1,0 +1,16 @@
+{
+	"name": "Landing v6",
+	"custom_modules": [
+		"sr-nav-min-01.json",
+		"sr-hero-01.json",
+		"sr-cards-grid-02.json",
+		"sr-tabs-testimonials-01.json",
+		"sr-clients-01.json",
+		"sr-two-col-03.json",
+		"sr-two-col-04.json",
+		"sr-offer-one-col-01.json",
+		"sr-footer-min-01.json"
+	],
+	"module_overrides": {},
+	"page_overrides": {}
+}

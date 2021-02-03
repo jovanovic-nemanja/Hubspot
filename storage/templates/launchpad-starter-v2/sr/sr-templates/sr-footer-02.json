@@ -1,0 +1,649 @@
+{
+    "custom_module": {
+        "author": "bradley@lean-labs.com",
+        "tags": ["ver-2.0.4"],
+        "name": "SR Footer 02",
+        "css_assets": [],
+        "global": true,
+        "override_global": true,
+        "editable_contexts": [],
+        "external_js": [],
+        "icon": "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": [
+            "PAGE",
+            "BLOG_POST",
+            "BLOG_LISTING"
+        ],
+        "js_assets": [],
+        "other_assets": [],
+        "fields": [
+            {
+                "id": "enabled",
+                "name": "enabled",
+                "label": "Enabled",
+                "required": false,
+                "locked": false,
+                "display": "checkbox",
+                "type": "boolean",
+                "default": true
+            },
+            {
+                "id": "design_settings",
+                "name": "design_settings",
+                "label": "Design Settings",
+                "required": false,
+                "locked": false,
+                "children": [
+                    {
+                        "id": "design_settings.sr_module_id",
+                        "name": "sr_module_id",
+                        "label": "ID",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": null
+                    },
+                    {
+                        "id": "design_settings.class",
+                        "name": "class",
+                        "label": "Class",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": null
+                    },
+                    {
+                        "id": "background_option",
+                        "name": "background_option",
+                        "label": "Background Option",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "image",
+                                "Image"
+                            ],
+                            [
+                                "color",
+                                "Color"
+                            ],
+                            [
+                                "custom",
+                                "Custom"
+                            ],
+                            [
+								"gradient", "Gradient"
+							]
+                        ],
+                        "type": "choice",
+                        "default": "color"
+                    },
+                    {
+						"default": {
+							"color": "#0c63ff"
+						},
+						"label": "Background Gradient From",
+						"name": "background_gradient_from",
+						"visibility": {
+							"controlling_field": "background_option",
+							"controlling_value_regex": "gradient",
+							"operator": "EQUAL"
+						},
+						"type": "color"
+					},
+					{
+						"default": {
+							"color": "#1897ff"
+						},
+						"label": "Background Gradient To",
+						"name": "background_gradient_to",
+						"visibility": {
+							"controlling_field": "background_option",
+							"controlling_value_regex": "gradient",
+							"operator": "EQUAL"
+						},
+						"type": "color"
+					},
+                    {
+                        "id": "design_settings.background_image",
+                        "name": "background_image",
+                        "label": "Background Image",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "responsive": false,
+                        "resizable": true,
+                        "type": "image",
+                        "default": {
+                            "src": "",
+                            "alt": ""
+                        }
+                    },
+                    {
+                        "id": "design_settings.background_overlay_color",
+                        "name": "background_overlay_color",
+                        "label": "Background Overlay Color",
+                        "help_text": "Recommended Width: 2880x1920px",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#343a40",
+                            "opacity": 30
+                        }
+                    },
+                    {
+                        "id": "design_settings.background_color",
+                        "name": "background_color",
+                        "label": "Background Color",
+                        "required": true,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "color",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "select",
+                        "choices": [
+							[
+								"primary", "Primary"
+							],
+							[
+								"secondary", "Secondary"
+							],
+							[
+								"tertiary", "Tertiary"
+							],
+							[
+								"white", "White"
+							],
+							[
+								"black", "Black"
+							],
+							[
+								"dark", "Dark"
+							],
+							[
+								"light", "Light"
+							],
+							[
+								"success", "Success"
+							],
+							[
+								"info", "Info"
+							],
+							[
+								"warning", "Warning"
+							],
+							[
+								"danger", "Danger"
+							],
+							[
+								"none", "None"
+							]
+                        ],
+                        "type": "choice",
+                        "default": "white"
+                    },
+                    {
+                        "id": "design_settings.background_custom",
+                        "name": "background_custom",
+                        "label": "Background Custom",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#fff",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "14629443-eef5-3986-7379-c78c9f9ea21b",
+                        "name": "footer_heading_color",
+                        "label": "Footer Heading Color",
+                        "required": false,
+                        "locked": false,
+                        "type": "color",
+                        "default": {
+                            "color": "#30343b",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "aca13926-a623-de27-6036-ecc20aae81bb",
+                        "name": "footer_menu_color",
+                        "label": "Footer Menu Color",
+                        "required": false,
+                        "locked": false,
+                        "type": "color",
+                        "default": {
+                            "color": "#87909e",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "80fe5c88-3f1f-97af-2edd-b327a2695cc7",
+                        "name": "hover_footer_menu_color",
+                        "label": "Hover Footer Menu Color",
+                        "required": false,
+                        "locked": false,
+                        "type": "color",
+                        "default": {
+                            "color": "#0c63ff",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "1bce7940-4ecc-ca09-905c-fda293e51168",
+                        "name": "footer_border_color",
+                        "label": "Footer Border Color",
+                        "required": false,
+                        "locked": false,
+                        "type": "color",
+                        "default": {
+                            "color": "#e5e7ea",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "645ff45c-bcd4-3efd-1df0-5ed2a0b36fa9",
+                        "name": "small_menu_padding",
+                        "label": "Small Menu Padding",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": false
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "background_option": "color",
+                    "background_image": {
+                        "src": "",
+                        "alt": ""
+                    },
+                    "background_overlay_color": {
+                        "color": "#343a40",
+                        "opacity": 30
+                    },
+                    "background_color": "white",
+                    "background_custom": {
+                        "color": "#fff",
+                        "opacity": 100
+                    },
+                    "footer_heading_color": {
+                        "color": "#30343b",
+                        "opacity": 100
+                    },
+                    "footer_menu_color": {
+                        "color": "#87909e",
+                        "opacity": 100
+                    },
+                    "hover_footer_menu_color": {
+                        "color": "#0c63ff",
+                        "opacity": 100
+                    },
+                    "footer_border_color": {
+                        "color": "#e5e7ea",
+                        "opacity": 100
+                    },
+                    "small_menu_padding": false
+                }
+            },
+            {
+                "id": "logo",
+                "name": "logo",
+                "label": "Logo",
+                "help_text": "Recommended size: 440x100px",
+                "required": false,
+                "locked": false,
+                "responsive": false,
+                "resizable": true,
+                "type": "image",
+                "default": {
+                    "src": "https://cdn2.hubspot.net/hubfs/275827/sr-assets/images/sr-logo@2x.png",
+                    "alt": "SR Logo",
+                    "width": "220",
+                    "height": "50"
+                }
+            },
+            {
+                "id": "sr_default_image_size",
+                "name": "sr_default_image_size",
+                "label": "SR Default Image Size",
+                "required": false,
+                "locked": false,
+                "display": "checkbox",
+                "type": "boolean",
+                "default": true
+            },
+            {
+                "id": "content",
+                "name": "content",
+                "label": "Content",
+                "required": false,
+                "locked": false,
+                "type": "richtext",
+                "default": "<p class='lead'>The easiest and fastest way<br>to build on HubSpot</p>"
+            },
+            {
+                "id": "cta",
+                "name": "cta",
+                "label": "CTA",
+                "required": false,
+                "locked": false,
+                "children": [
+                    {
+                        "id": "cta_type",
+                        "name": "cta_type",
+                        "label": "CTA Type",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "cta",
+                                "HubSpot CTA"
+                            ],
+                            [
+                                "btn",
+                                "Button"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "btn"
+                    },
+                    {
+                        "id": "cta.cta_style",
+                        "name": "cta_style",
+                        "label": "CTA Style",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "cta_type",
+                            "controlling_value_regex": "none",
+                            "operator": "NOT_EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "select",
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "outline-primary",
+                                "Outline Primary"
+                            ],
+                            [
+                                "outline-secondary",
+                                "Outline Secondary"
+                            ],
+                            [
+                                "outline-white",
+                                "Outline White"
+                            ],
+                            [
+                                "outline-black",
+                                "Outline Black"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "secondary"
+                    },
+                    {
+                        "id": "cta.cta",
+                        "name": "cta",
+                        "label": "CTA",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "cta_type",
+                            "controlling_value_regex": "cta",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "cta",
+                        "default": ""
+                    },
+                    {
+                        "id": "cta.button_text",
+                        "name": "button_text",
+                        "label": "Button Text",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "visibility": {
+                            "controlling_field": "cta_type",
+                            "controlling_value_regex": "btn",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Get Started"
+                    },
+                    {
+                        "id": "cta.link",
+                        "name": "link",
+                        "label": "Link",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "visibility": {
+                            "controlling_field": "cta_type",
+                            "controlling_value_regex": "btn",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "#"
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "cta_type": "btn",
+                    "cta_style": "secondary",
+                    "cta": "",
+                    "button_text": "Get Started",
+                    "link": "#"
+                }
+            },
+            {
+                "id": "menu",
+                "name": "menu",
+                "label": "Menu",
+                "required": false,
+                "locked": false,
+                "type": "menu",
+                "default": null
+            },
+            {
+                "id": "copyright",
+                "name": "copyright",
+                "label": "Copyright",
+                "required": false,
+                "locked": false,
+                "type": "richtext",
+                "default": "<p class='small'>&copy;{{ year }} Acme Co, Inc. All rights reserved. <a href='/privacy-policy'>Privacy Policy</a></p>"
+            },
+            {
+                "id": "2",
+                "name": "icons",
+                "label": "Social Icons",
+                "required": false,
+                "locked": false,
+                "occurrence": {
+                    "min": 1,
+                    "max": null,
+                    "sorting_label_field": null,
+                    "default": 5
+                },
+                "children": [
+                    {
+                        "id": "icons.icon",
+                        "name": "icon",
+                        "label": "Icon Code",
+                        "help_text": "Icon codes can be found here: https://fontawesome.com/v4.7.0/icons/",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "fa-facebook"
+                    },
+                    {
+                        "id": "icons.link",
+                        "name": "link",
+                        "label": "Link",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "#"
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": [
+                    {
+                        "icon": "fa-facebook",
+                        "link": "#"
+                    },
+                    {
+                        "icon": "fa-twitter",
+                        "link": "#"
+                    },
+                    {
+                        "icon": "fa-instagram",
+                        "link": "#"
+                    },
+                    {
+                        "icon": "fa-linkedin",
+                        "link": "#"
+                    },
+                    {
+                        "icon": "fa-youtube-play",
+                        "link": "#"
+                    }
+                ]
+            },
+            {
+                "id": "text_color",
+                "name": "text_color",
+                "label": "Text Color",
+                "required": true,
+                "locked": false,
+                "display": "select",
+                "choices": [
+					[
+						"auto", "Auto"
+					],
+					[
+						"primary", "Primary"
+					],
+					[
+						"secondary", "Secondary"
+					],
+					[
+						"tertiary", "Tertiary"
+					],
+					[
+						"white", "White"
+					],
+					[
+						"black", "Black"
+					],
+					[
+						"dark", "Dark"
+					],
+					[
+						"light", "Light"
+					],
+					[
+						"success", "Success"
+					],
+					[
+						"info", "Info"
+					],
+					[
+						"warning", "Warning"
+					],
+					[
+						"danger", "Danger"
+					]
+                ],
+                "type": "choice",
+                "default": "auto"
+            }
+        ],
+        "source": ""
+    },
+    "custom_module_template": "sr-footer-02.html",
+    "available_builder": true,
+    "category": 2,
+    "files": []
+}

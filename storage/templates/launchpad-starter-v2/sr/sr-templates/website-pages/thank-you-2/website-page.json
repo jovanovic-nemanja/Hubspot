@@ -1,0 +1,10 @@
+{
+	"name": "Thank You v2",
+	"custom_modules": [
+		"sr-nav-dropdown-01.json",
+		"sr-offer-bar-05.json",
+		"sr-footer-04.json"
+	],
+	"module_overrides": {},
+	"page_overrides": {}
+}

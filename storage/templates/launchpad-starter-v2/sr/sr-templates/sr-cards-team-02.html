@@ -1,0 +1,244 @@
+{% if module.enabled %}
+
+	{% require_css %}
+		<style type="text/css">
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});	
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			.sr-cards-team-02 .team-meta {
+				margin-top: 1.85rem;
+			}
+			.sr-cards-team-02 .team-member-name {
+				font-weight: 600;
+				margin-bottom: 0.25rem;
+			}
+			.sr-cards-team-02 .team-member.team-member-link a {
+				color: inherit;
+			}
+			.sr-cards-team-02 .team-member-link {
+				-webkit-transition: all ease-in-out .2s;
+				-o-transition: all ease-in-out .2s;
+				transition: all ease-in-out .2s;
+				box-shadow: 15px 10px 20px 0 rgba(0, 0, 0, 0.0);
+			}
+			.sr-cards-team-02 .team-member-link:hover {
+				box-shadow: 15px 10px 20px 0 rgba(0, 0, 0, 0.05);
+			}
+			.sr-cards-team-02 .team-member {
+				text-align: center;
+				width: 100%;
+				background: #fff;
+				border: 1px solid rgb(229, 231, 234);
+				margin: 8% 0;
+			}
+			.sr-cards-team-02 .team-member .team-member-inner {
+				padding: 3.33rem
+			}
+			.sr-cards-team-02 .team-member img {
+				border-radius: 50%;
+				max-height: 96px;
+			}
+      
+      .sr-cards-team-02 .team-member-additional p a{
+        text-decoration:none;
+        border:none;
+      }
+			@media only screen and (min-width : 767px) {
+				.sr-cards-team-02 .team-member:nth-child(1), .sr-cards-team-02 .team-member:nth-child(2) {
+					margin-top: 0;
+				}
+				{% if module.team_members|length % 2 == 0 %} 
+					.sr-cards-team-02 .team-member:last-child {
+						margin-bottom: 0;
+					}
+					.sr-cards-team-02 .team-member:nth-last-child(2) {
+						margin-bottom: 0;
+					}
+				{% else %}
+					.sr-cards-team-02 .team-member:last-child {
+						margin-bottom: 0;
+					}
+				{% endif %}
+				.sr-cards-team-02 .team-member-wrapper {
+					display: -webkit-box;
+					display: -ms-flexbox;
+					display: flex;
+					-ms-flex-wrap: wrap;
+					flex-wrap: wrap;
+					-webkit-box-pack: justify;
+					-ms-flex-pack: justify;
+					justify-content: space-between;
+				}
+				.sr-cards-team-02 .team-member {
+					width: 48%;
+					margin: 2% 0;
+				}
+			}
+			@media only screen and (max-width : 991px) {
+				.sr-cards-team-02 .team-member-wrapper {
+					margin-top: 4rem;
+				}
+			}
+      
+			.sr-cards-team-02 ul.social {
+				margin:0;
+				padding:0;
+			}
+			.sr-cards-team-02 ul.social li {
+				display: inline-block;
+				font-size: 1.2rem;
+			}
+			.sr-cards-team-02 ul.social li i {
+				border-radius: 50%;
+				padding: .2rem;
+				margin: .25rem .35rem;
+				background: #87909E;
+				background: var(--secondary);
+				color: #fff;
+				width: 2.3rem;
+				height: 2.3rem;
+				line-height: 2rem;
+				-webkit-transition: all ease-in-out .1s;
+				-o-transition: all ease-in-out .1s;
+				transition: all ease-in-out .1s;
+			}
+			.sr-cards-team-02 ul.social li:hover i {
+				background: #0C63FF;
+				background: var(--primary);
+			} 
+			.sr-cards-team-02 ul.social li a {
+				padding: 0 0.1rem;
+			}
+      
+		
+		</style>
+	{% end_require_css %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-cards-team-02" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Cards Team 02</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+
+	<div class="sr-cards-team-02 {% if module.team_members|length > 2 %} sr-cards-team-022 {% endif %}{% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.class %}{{ module.design_settings.class }}{% endif %} {% if module.design_settings.border_top %}sr-line-top{% endif %} {% if module.design_settings.border_bottom %}sr-line-bottom{% endif %} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %} prototype-no-background {{ name }}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }}">
+			{% if module.design_settings.container_width != 'max' %}
+				<div class="row">
+					<div class="{{ width_class }}">
+			{% endif %}
+						<div class="{% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %}">
+							<div class="row">
+								<div class="col-lg-4">
+									<div class="team-content">
+										
+										{% if module.heading ||  module.description %}
+											<div class="sr-spacer-bottom-25">
+												{% if module.heading %}
+													<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} heading {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.heading}}</h{{module.heading_size}}>
+												{% endif %}
+												
+												{% if module.description %}
+													<div class="description {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.description}}</div>
+												{% endif %}
+											</div>
+										{% endif %}
+
+										{% if module.cta.cta_type != 'none' %}
+											<div class="btn-wrapper btn-{{ module.cta.cta_style }}-wrapper">
+												{% if module.cta.cta_type == 'btn' %}
+													<a href="{{ module.cta.link }}" class="cta_button">{{ module.cta.button_text }}</a>
+												{% elif module.cta.cta_type == 'cta' %}
+													{% cta guid="{{ module.cta.cta }}" %}
+												{% endif %}
+											</div>
+										{% endif %}
+									</div>
+								</div>
+								<div class="col-lg-8">
+								<div class="team-member-wrapper">
+									{% for item in module.team_members %}
+											<div class="team-member">
+													<div class="team-member-inner">
+														{% if item.sr_default_image_size %}
+															{{ var.image(item.image.src, '96', item.image.alt, 'class="img-fluid"') }}
+														{% else %}
+															{{ var.image(item.image.src, item.image.width, item.image.alt, 'class="img-fluid"') }}
+														{% endif %}
+														<div class="team-meta">
+															<h5 class="team-member-name">{{item.team_name}}</h5>
+																<div class="team-member-additional">{{item.additional_information}}</div>
+																<div class="social-links">
+																	<ul class="social">
+																	{% for item2 in item.social_icons %}
+																	<li><a class="no-decoration" href="{{item2.link}}"><i class="fa {{item2.icon_code}}" aria-hidden="true"></i></a></li>
+																	{% endfor %}
+																	</ul>
+																</div>
+														</div>
+													</div>	
+												</div>
+									{% endfor %}
+								</div>
+								</div>
+							</div>
+						</div>
+			{% if module.design_settings.container_width != 'max' %}
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+{% endif %}

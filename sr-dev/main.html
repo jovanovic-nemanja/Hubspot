@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Sprocket Rocket - V3 | Main</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+  <!-- custom styles CSS -->
+  <link href="./assets/css/styles.css" rel="stylesheet">
+</head>
+
+<body class="action-panel">
+  <!-- Main Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light justify-content-between main-navigation">
+    <a class="navbar-brand" href="/main.html"><img src='./assets/images/icon-sr-white.svg' alt="Sprocket Rocket" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item upgrade">
+          <a id="modules" class="nav-link" href="#">Modules</a>
+        </li>
+        <li class="nav-item">
+          <a id="website" class="nav-link" href="#">Website Pages</a>
+        </li>
+        <li class="nav-item">
+          <a id="landing" class="nav-link" href="#">Landing Pages</a>
+        </li>
+        <li class="nav-item">
+          <a id="blog" class="nav-link" href="#">Blogs</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            sr-four-dev-6817742.com
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/main.html">
+              <span class="client-name">Integrate</span>
+              <span class="portal-id">419314 integrate.com</span>
+            </a>
+            <a class="dropdown-item" href="/main.html">
+              <span class="client-name">ITA</span>
+              <span class="portal-id">419314 www.internationalteflacademy.com</span>
+            </a>
+            <a class="dropdown-item" href="#">
+              <span class="client-name">Lean Labs</span>
+              <span class="portal-id">419314 www.lean-labs.com</span>
+            </a>
+            <a class="dropdown-item" href="#">
+              <span class="client-name">Pica9</span>
+              <span class="portal-id">419314 campaigndrive.com</span>
+            </a>
+            <button onclick="location.href='/portals-main.html'" class="btn btn-primary menu-btn">Add Portal</button>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <img src='./assets/images/icon-user.svg' alt="" />
+          </a>
+          <div class="dropdown-menu user-menu" aria-labelledby="navbarDropdown">
+            <a id="account" class="dropdown-item client-name" href="#">Account Details</a>
+            <a id="agencies" class="dropdown-item client-name" href="#">Agencies</a>
+            <a id="billing" class="dropdown-item client-name" href="#">Billing Information</a>
+            <a id="plans" class="dropdown-item client-name" href="#">Plans</a>
+            <a id="users" class="dropdown-item client-name" href="#">Users</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row flex-nowrap">
+      <!-- Left Sidebar -->
+      <nav class="left-panel d-none d-md-block sidebar activated">
+        <div class="sidebar-sticky">
+          <form class="form-inline sidebar-search">
+            <input id="sidebar-search" class="form-control" type="search" placeholder="Search" aria-label="Search"
+              data-item="search-results">
+          </form>
+          <ul class="nav flex-column">
+            <li class="nav-item" data-item="navigation">
+              <a class="nav-link" href="#">Navigation</a>
+            </li>
+            <li class="nav-item" data-item="hero">
+              <a class="nav-link" href="#">Hero</a>
+            </li>
+            <li class="nav-item" data-item="footer">
+              <a class="nav-link" href="#">Footer</a>
+            </li>
+            <li class="nav-item" data-item="columns">
+              <a class="nav-link" href="#">Columns</a>
+            </li>
+            <li class="nav-item" data-item="tabs">
+              <a class="nav-link" href="#">Tabs</a>
+            </li>
+            <li class="nav-item" data-item="offers">
+              <a class="nav-link" href="#">Offers</a>
+            </li>
+            <li class="nav-item" data-item="cards">
+              <a class="nav-link" href="#">Cards</a>
+            </li>
+            <li class="nav-item" data-item="social">
+              <a class="nav-link" href="#">Social</a>
+            </li>
+            <li class="nav-item" data-item="bling">
+              <a class="nav-link" href="#">Bling</a>
+            </li>
+          </ul>
+        </div>
+        <div class="sidebar-sub-menu">
+          <ul id="search-results">
+            <span style="text-align:center;">Search Results:</span>
+          </ul>
+          <ul id="navigation" class="">
+            <li title="Click and drag module into page builder" data-moduleName="SR Navigation 1">
+              <img src='./assets/images/sr-hero-1.png' />
+              SR Navigation 1
+            </li>
+            <li title="Click and drag module into page builder" data-moduleName="SR Navigation 2">
+              <img src='./assets/images/sr-hero-1.png' />
+              SR Navigation 2
+            </li>
+            <li title="Click and drag module into page builder" data-moduleName="SR Navigation 3">
+              <img src='./assets/images/sr-hero-1.png' />
+              SR Navigation 3
+            </li>
+          </ul>
+          <ul id="hero" class="">
+            <li title="Click and drag module into page builder" data-moduleName="SR Hero 1">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Hero 1
+            </li>
+            <li title="Click and drag module into page builder" data-moduleName="SR Hero 2">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Hero 2
+            </li>
+            <li title="Click and drag module into page builder" data-moduleName="SR Hero 3">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Hero 3
+            </li>
+          </ul>
+          <ul id="footer" class="">
+            <li title="Click and drag module into page builder" data-moduleName="SR Footer 1">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Footer 1
+            </li>
+            <li title="Click and drag module into page builder" data-moduleName="SR Footer 2">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Footer 2
+            </li>
+            <li title="Click and drag module into page builder" data-moduleName="SR Footer 3">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Footer 3
+            </li>
+          </ul>
+          <ul id="columns" class="">
+            <li title="Click and drag module into page builder" data-moduleName="SR Columns 1">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Columns 1
+            </li>
+            <li title="Click and drag module into page builder" data-moduleName="SR Columns 2">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Columns 2
+            </li>
+            <li title="Click and drag module into page builder" data-moduleName="SR Columns 3">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Columns 3
+            </li>
+          </ul>
+          <ul id="tabs" class="">
+            <li title="Click and drag module into page builder" data-moduleName="SR Tabs 1">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Tabs 1
+            </li>
+            <li title="Click and drag module into page builder" data-moduleName="SR Tabs 2">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Tabs 2
+            </li>
+            <li title="Click and drag module into page builder" data-moduleName="SR Tabs 3">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Tabs 3
+            </li>
+          </ul>
+          <ul id="offers" class="">
+            <li title="Click and drag module into page builder" data-moduleName="SR Offers 1">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Offers 1
+            </li>
+            <li title="Click and drag module into page builder" data-moduleName="SR Offers 2">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Offers 2
+            </li>
+            <li title="Click and drag module into page builder" data-moduleName="SR Offers 3">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Offers 3
+            </li>
+          </ul>
+          <ul id="cards" class="">
+            <li title="Click and drag module into page builder" data-moduleName="SR Cards 1">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Cards 1
+            </li>
+            <li title="Click and drag module into page builder" data-moduleName="SR Cards 2">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Cards 2
+            </li>
+            <li title="Click and drag module into page builder" data-moduleName="SR Cards 3">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Cards 3
+            </li>
+          </ul>
+          <ul id="social" class="">
+            <li title="Click and drag module into page builder" data-moduleName="SR Social 1">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Social 1
+            </li>
+            <li title="Click and drag module into page builder" data-moduleName="SR Social 2">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Social 2
+            </li>
+            <li title="Click and drag module into page builder" data-moduleName="SR Social 3">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Social 3
+            </li>
+          </ul>
+          <ul id="bling" class="">
+            <li title="Click and drag module into page builder" data-moduleName="SR Bling 1">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Bling 1
+            </li>
+            <li title="Click and drag module into page builder" data-moduleName="SR Bling 2">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Bling 2
+            </li>
+            <li title="Click and drag module into page builder" data-moduleName="SR Bling 3">
+              <img src='./assets/images/sr-testimonial-1.png' />
+              SR Bling 3
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Portals -->
+      <div class="right-panel">
+        <div class="inner-container">
+          <div class="row">
+            <div class="col-md-8">
+              <input type="text" class="form-control page-name" placeholder="Page Name" aria-label="Page Name"
+                aria-describedby="basic-addon2">
+            </div>
+            <div class="col-md-4 action"><button class="btn btn-primary">Add Page</button></div>
+          </div>
+          <div class="main-container">
+            <div class="col-md-6">
+              <div class="setup-message">
+                <img src='./assets/images/icon-drag-drop.svg' alt="Drag icon" />
+                <p>Drag a module here to get started</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Welcome Modal -->
+  <div class="modal fade welcome-modal" id="welcomeModal" tabindex="-1" role="dialog" aria-labelledby="welcomeModal"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <div class="embed-responsive embed-responsive-16by9">
+            <script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
+            <img style="width: 100%; margin: auto; display: block;" class="vidyard-player-embed"
+              src="https://play.vidyard.com/9tXYDcfh2H4HhWWu5bydS5.jpg" data-uuid="FR3EfyCgVycRCaEbNm42s4" data-v="4"
+              data-type="inline" />
+          </div>
+        </div>
+        <div class="modal-body welcome-modal-body">
+          <h2>Hey Spencer!<img class="wave-emoji" src='./assets/images/waving-emoji.png' /></h2>
+          <p>Welcome to Sprocket Rocket!</p>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Let's Do This</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action Panel Modal -->
+  <div class="modal fade action-panel" id="action-panel" tabindex="-1" role="dialog" aria-labelledby="action-panel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-slideout modal-xl" role="document">
+      <div class="close-panel-btn"></div>
+      <div id="action-panel-target" class="modal-content action">
+        <div class="action-panel-content account-details">
+          <div class="action-container">
+              <div class="action-heading">
+                  <h2>Account Details</h2>
+              </div>
+              <form id="account-details">
+                  <div class="row sr-forms">
+                      <div class="col">
+                          <label for="name">Name</label> 
+                          <input id="name" type="text" class="form-control">
+                      </div>
+                      <div class="col">
+                          <label for="agencyName">Agency Name</label> 
+                          <input id="agencyName" type="text" class="form-control">
+                      </div>
+                  </div>
+                  <div class="row sr-forms">
+                      <div class="col">
+                          <label for="email">Email</label> 
+                          <input id="email" type="email" class="form-control">
+                      </div>
+                      <div class="col">
+                          <label for="files">Agency Logo</label>
+                          <input id="files" type="file" class="add-file" class="hidden" onchange="pressed()" style="color:transparent;"><label id="fileLabel">No file chosen</label>
+                      </div>
+                  </div>
+                  <div class="row sr-forms">
+                      <div class="col">
+                          <label for="password">Password</label>
+                          <a id="edit-password" class="edit-password">Edit</a>
+                          <input id="password" type="password" class="form-control" value="password" readonly>
+                      </div>
+                      <div class="col"></div>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Save</button>
+              </form>
+              
+
+          </div>
+          <div class="delete-account-option">
+              <div class="close-icon"><img src='./assets/images/icon-close.svg' /></div>
+              <div class="delete-message">
+                  Delete account
+                  <div class="delete-warning">
+                      Deleting your account will remove all the data associated with your account. If you are on an Agency Plan, deleting your agency account will remove all Users under your account and disconnect all Portals from Sprocket Rocket.
+                  </div>
+                  <a class="btn btn-warning" href="#">Delete Agency Account</a>&nbsp;&nbsp;
+                  <a class="btn btn-warning" href="#">Delete My User Account</a>
+              </div>
+              <a class="delete-toggle">Delete Account</a>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="unable-to-use">Please use a larger browser window to use Sprocket Rocket.</div>
+  <!-- Bootstrap core JavaScript -->
+  <script src="./assets/plugins/jquery/jquery.min.js"></script>
+  <script src="./assets/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/js/main.js"></script>
+
+</body>
+</html>

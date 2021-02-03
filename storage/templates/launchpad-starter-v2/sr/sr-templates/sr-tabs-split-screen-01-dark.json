@@ -1,0 +1,487 @@
+{
+	"custom_module": {
+		"author": "bradley@lean-labs.com",
+		"tags": ["ver-1.2.1"],
+		"name": "SR Tabs Split Screen 01 Dark",
+		"css_assets": [],
+		"editable_contexts": [],
+		"external_js": [],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+		"js_assets": [],
+		"other_assets": [],
+		"fields": [{
+				"name": "enabled",
+				"label": "Enabled",
+				"type": "boolean",
+				"default": true
+			},
+			{
+				"name": "sr_module_id",
+				"label": "ID",
+				"type": "text",
+				"default": null
+			},
+			{
+				"name": "class",
+				"label": "Class",
+				"type": "text",
+				"default": null
+			},
+			{
+				"name": "main_title",
+				"label": "Main Title",
+				"type": "richtext",
+				"default": "<h2>Prototype With Robust<br>Modules</h2>"
+			},
+			{
+				"name": "image_right",
+				"label": "Slide Panel on Right",
+				"type": "boolean",
+				"default": false
+			},
+			{
+				"id": "1",
+				"name": "section",
+				"label": "Section",
+				"occurrence": {
+					"min": 2,
+					"max": null,
+					"sorting_label_field": null,
+					"default": 3
+				},
+				"children": [{
+						"name": "title",
+						"label": "Title",
+						"type": "text",
+						"default": "Easy-To-Use Tools"
+					},
+					{
+						"name": "content",
+						"label": "Content",
+						"type": "richtext",
+						"default": "<p>Without rigid templates, you can build the exact type of website necessary to hit your website performnace goals.</p><p>We built our old site using a template, and it left a lot to be desired. With SprocketRocket, we can go page by page and get the exact flow of content we need.</p><p>Download the eBook to learn why building websites without the use of templates is the way to go.</p>"
+					},
+					{
+						"id": "2",
+						"name": "cta",
+						"label": "CTA",
+						"children": [{
+								"id": "cta_type",
+								"name": "cta_type",
+								"label": "CTA Type",
+								"required": true,
+								"display": "select",
+								"choices": [
+									[
+										"cta",
+										"HubSpot CTA"
+									],
+									[
+										"btn",
+										"Button"
+									],
+									[
+										"none",
+										"None"
+									]
+								],
+								"type": "choice",
+								"default": "none"
+							},
+							{
+								"name": "cta_style",
+								"label": "CTA Style",
+								"visibility": {
+									"controlling_field": "cta_type",
+									"controlling_value_regex": "none",
+									"operator": "NOT_EQUAL",
+									"access": null
+								},
+								"display": "select",
+								"choices": [
+									[
+								"primary",
+								"Primary"
+							],
+							[
+								"secondary",
+								"Secondary"
+							],
+							[
+								"tertiary",
+								"Tertiary"
+							],
+							[
+								"white",
+								"White"
+							],
+							[
+								"black",
+								"Black"
+							],
+							[
+								"outline-primary",
+								"Outline Primary"
+							],
+							[
+								"outline-secondary",
+								"Outline Secondary"
+							],
+							[
+								"outline-tertiary",
+								"Outline Tertiary"
+							],
+							[
+								"outline-white",
+								"Outline White"
+							],
+							[
+								"outline-black",
+								"Outline Black"
+							],
+							[
+								"none",
+								"None"
+							]
+								],
+								"type": "choice",
+								"default": "primary"
+							},
+							{
+								"name": "cta",
+								"label": "CTA",
+								"visibility": {
+									"controlling_field": "cta_type",
+									"controlling_value_regex": "cta",
+									"operator": "EQUAL",
+									"access": null
+								},
+								"type": "cta",
+								"default": ""
+							},
+							{
+								"name": "button_text",
+								"label": "Button Text",
+								"visibility": {
+									"controlling_field": "cta_type",
+									"controlling_value_regex": "btn",
+									"operator": "EQUAL",
+									"access": null
+								},
+								"type": "text",
+								"default": "Learn More"
+							},
+							{
+								"name": "link",
+								"label": "Link",
+								"visibility": {
+									"controlling_field": "cta_type",
+									"controlling_value_regex": "btn",
+									"operator": "EQUAL",
+									"access": null
+								},
+								"type": "text",
+								"default": "#"
+							}
+						],
+						"type": "group",
+						"default": {
+							"cta_type": "none",
+							"cta_style": "primary",
+							"cta": "",
+							"button_text": "Learn More",
+							"link": "#"
+						}
+					},
+					{
+						"default": "image",
+						"display": "select",
+						"name": "background_option",
+						"id": "cf4fc644-fc6d-a20e-1104-0a5f43864c67",
+						"label": "Background Option",
+						"locked": false,
+						"choices": [
+							[
+								"image",
+								"Image"
+							],
+							[
+								"color",
+								"Color"
+							]
+						],
+						"type": "choice",
+						"required": false
+					},
+					{
+						"default": {
+							"max_width": 2880,
+							"size_type": "auto",
+							"src": "https://www.sprocketrocket.co/hubfs/sr-assets/images/sr-tabs-split-screen-01-1.jpg",
+							"alt": "sr-tabs-split-screen-01-1",
+							"width": 2880,
+							"max_height": 1921,
+							"height": 1921
+						},
+						"visibility": {
+							"controlling_field": "cf4fc644-fc6d-a20e-1104-0a5f43864c67",
+							"access": null,
+							"controlling_value_regex": "image",
+							"hidden_subfields": null,
+							"operator": "EQUAL"
+						},
+						"resizable": true,
+						"responsive": true,
+						"name": "background_image",
+						"id": "0efbe255-128d-936f-6614-ffe1a32c554a",
+						"label": "Background Image",
+						"locked": false,
+						"type": "image",
+						"required": false
+					},
+					{
+						"default": {
+							"color": "#ffffff",
+							"opacity": 90
+						},
+						"visibility": {
+							"controlling_field": "cf4fc644-fc6d-a20e-1104-0a5f43864c67",
+							"access": null,
+							"controlling_value_regex": "image",
+							"hidden_subfields": null,
+							"operator": "EQUAL"
+						},
+						"name": "overlay_color",
+						"id": "db788d9f-418c-e009-d9c3-34a63f461264",
+						"label": "Overlay Color",
+						"locked": false,
+						"type": "color",
+						"required": false
+					},
+					{
+						"default": {
+							"color": "#ffffff",
+							"opacity": 100
+						},
+						"visibility": {
+							"controlling_field": "cf4fc644-fc6d-a20e-1104-0a5f43864c67",
+							"access": null,
+							"controlling_value_regex": "background_option",
+							"hidden_subfields": null,
+							"operator": "EQUAL"
+						},
+						"name": "background_color",
+						"id": "9f88cabf-9a6e-35e2-6700-2864a973add3",
+						"label": "Slide Background Color",
+						"locked": false,
+						"type": "color",
+						"required": false
+					},
+					{
+						"default": {
+							"color": "#ffffff",
+							"opacity": 100
+						},
+						"name": "copy_background_color",
+						"id": "4dfa7039-a6a6-4909-704d-eddac6569a38",
+						"label": "Content Background Color",
+						"locked": false,
+						"type": "color",
+						"required": false
+					},
+					{
+						"name": "slide_color",
+						"label": "Slide Text Color",
+						"required": true,
+						"display": "select",
+						"choices": [
+							[
+								"auto",
+								"Auto"
+							],
+									[
+										"primary",
+										"Primary"
+									],
+									[
+										"secondary",
+										"Secondary"
+									],
+									[
+										"tertiary",
+										"Tertiary"
+									],
+									[
+										"white",
+										"White"
+									],
+									[
+										"black",
+										"Black"
+									],
+									[
+										"dark",
+										"Dark"
+									],
+									[
+										"light",
+										"Light"
+									],
+									[
+										"success",
+										"Success"
+									],
+									[
+										"info",
+										"Info"
+									],
+									[
+										"warning",
+										"Warning"
+									],
+									[
+										"danger",
+										"Danger"
+									],
+									[
+										"none",
+										"None"
+									]
+						],
+						"type": "choice",
+						"default": "white"
+					},
+					{
+						"name": "text_color",
+						"label": "Text Color",
+						"required": true,
+						"display": "select",
+						"choices": [
+							[
+								"auto", "Auto"
+							],
+							[
+								"primary", "Primary"
+							],
+							[
+								"secondary", "Secondary"
+							],
+							[
+								"tertiary", "Tertiary"
+							],
+							[
+								"white", "White"
+							],
+							[
+								"black", "Black"
+							],
+							[
+								"dark", "Dark"
+							],
+							[
+								"light", "Light"
+							],
+							[
+								"success", "Success"
+							],
+							[
+								"info", "Info"
+							],
+							[
+								"warning", "Warning"
+							],
+							[
+								"danger", "Danger"
+							]
+						],
+						"type": "choice",
+						"default": "auto"
+					}
+				],
+				"type": "group",
+				"default": [{
+						"title": "Easy-To-Use Tools",
+						"content": "<p>Without rigid templates, you can build the exact type of website necessary to hit your website performnace goals.</p><p>We built our old site using a template, and it left a lot to be desired. With SprocketRocket, we can go page by page and get the exact flow of content we need.</p><p>Download the eBook to learn why building websites without the use of templates is the way to go.</p>",
+						"cta": {
+							"cta_type": "none",
+							"cta_style": "primary",
+							"cta": "",
+							"button_text": "Learn More",
+							"link": "#"
+						},
+						"background_option": "image",
+						"background_image": {
+							"src": "https://www.sprocketrocket.co/hubfs/sr-assets/images/sr-tabs-split-screen-01-1.jpg",
+							"alt": "sr-tabs-split-screen-01-1",
+							"width": 2880,
+							"height": 1921
+						},
+						"overlay_color": {
+							"color": "#0c63ff",
+							"opacity": 90
+						},
+						"slide_color": "white",
+						"text_color": "auto"
+					},
+					{
+						"title": "No Template",
+						"content": "<p><span data-sheets-value=\"{&quot;1&quot;:2,&quot;2&quot;:&quot;Get started on website and landing pages right away with little to no learning curve.&quot;}\" data-sheets-userformat=\"{&quot;2&quot;:15297,&quot;3&quot;:{&quot;1&quot;:0},&quot;9&quot;:0,&quot;10&quot;:0,&quot;11&quot;:4,&quot;12&quot;:0,&quot;14&quot;:[null,2,0],&quot;15&quot;:&quot;Roboto&quot;,&quot;16&quot;:10}\">Get started on website and landing pages right away with little to no learning curve.</span></p>\n<p><span data-sheets-value=\"{&quot;1&quot;:2,&quot;2&quot;:&quot;You can use modular design to get the exact building blocks you need to build beautiful website and landing pages.&quot;}\" data-sheets-userformat=\"{&quot;2&quot;:13185,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;11&quot;:4,&quot;12&quot;:0,&quot;15&quot;:&quot;Roboto&quot;,&quot;16&quot;:10}\">You can use modular design to get the exact building blocks you need to build beautiful website and landing pages.&nbsp;<span data-sheets-value=\"{&quot;1&quot;:2,&quot;2&quot;:&quot;This CMS design tool helps you get the most from the HubSpot COS. &quot;}\" data-sheets-userformat=\"{&quot;2&quot;:13185,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;11&quot;:4,&quot;12&quot;:0,&quot;15&quot;:&quot;Roboto&quot;,&quot;16&quot;:10}\">This CMS design tool helps you get the most from the HubSpot COS.</span></span></p>",
+						"cta": {
+							"cta_type": "none",
+							"cta_style": "primary",
+							"cta": "",
+							"button_text": "Learn More",
+							"link": "#"
+						},
+						"background_option": "image",
+						"background_image": {
+							"src": "https://www.sprocketrocket.co/hubfs/sr-assets/images/sr-tabs-split-screen-01-2.jpg",
+							"alt": "sr-tabs-split-screen-01-2",
+							"width": 2880,
+							"height": 1920
+						},
+						"overlay_color": {
+							"color": "#0c63ff",
+							"opacity": 90
+						},
+						"slide_color": "white",
+						"text_color": "auto"
+					},
+					{
+						"title": "Modular Design Tool",
+						"content": "<p><span>Sprocket Rocket lets you transform your rapid prototype into a beautiful design by adjusting every aspect to fit brand standards.</span></p>\n<p><span>From start-to-finish, the design and strategy team provide all of the guidance and expertise necessary to build a high-conversion website.</span></p>",
+						"cta": {
+							"cta_type": "none",
+							"cta_style": "primary",
+							"cta": "",
+							"button_text": "Learn More",
+							"link": "#"
+						},
+						"background_option": "image",
+						"background_image": {
+							"src": "https://www.sprocketrocket.co/hubfs/sr-assets/images/sr-tabs-split-screen-01-3.jpg",
+							"alt": "sr-tabs-split-screen-01-3",
+							"width": 2880,
+							"height": 1920
+						},
+						"overlay_color": {
+							"color": "#0c63ff",
+							"opacity": 90
+						},
+						"slide_color": "white",
+						"text_color": "auto"
+					}
+				]
+			}
+		],
+		"source": ""
+	},
+	"custom_module_template": "sr-tabs-split-screen-01-dark.html",
+	"available_builder": false,
+	"files": [{
+		"file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/ScrollMagic.min.js",
+		"folder_paths": "sr-assets/js"
+	}]
+}

@@ -1,0 +1,84 @@
+<div class="action-panel-content account-details">
+    <div class="action-container">
+        <div class="action-heading">
+            <h2>Account Details</h2>
+        </div>
+        <form id="account-details">
+            <div class="row sr-forms">
+                <div class="col">
+                    <label for="name">Name</label> 
+                    <input id="name" type="text" class="form-control">
+                </div>
+                <div class="col">
+                    <label for="agencyName">Agency Name</label> 
+                    <input id="agencyName" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="row sr-forms">
+                <div class="col">
+                    <label for="email">Email</label> 
+                    <input id="email" type="email" class="form-control">
+                </div>
+                <div class="col">
+                    <label for="files">Agency Logo</label>
+                    <input id="files" type="file" class="add-file" class="hidden" onchange="pressed()" style="color:transparent;"><label id="fileLabel">No file chosen</label>
+                </div>
+            </div>
+            <div class="row sr-forms">
+                <div class="col">
+                    <label for="password">Password</label>
+                    <a id="edit-password" class="edit-password">Edit</a>
+                    <input id="password" type="password" class="form-control" value="password" readonly>
+                </div>
+                <div class="col"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+        
+
+    </div>
+    <div class="delete-account-option">
+        <div class="close-icon"><img src='./assets/images/icon-close.svg' /></div>
+        <div class="delete-message">
+            Delete account
+            <div class="delete-warning">
+                Deleting your account will remove all the data associated with your account. If you are on an Agency Plan, deleting your agency account will remove all Users under your account and disconnect all Portals from Sprocket Rocket.
+            </div>
+            <a class="btn btn-warning" href="#">Delete Agency Account</a>&nbsp;&nbsp;
+            <a class="btn btn-warning" href="#">Delete My User Account</a>
+        </div>
+        <a class="delete-toggle">Delete Account</a>
+    </div>
+</div>
+<!-- script needs to be loaded with this section if using AJAX-->
+<script type="text/javascript">
+    $(".col a.edit-password").click(function(){
+       $('#account-details #password').removeAttr('readonly')
+    });
+
+    $(".delete-toggle").click(function(){
+        $('.delete-message').fadeIn(300);
+        $('.delete-toggle').fadeOut(300);
+        $('.delete-account-option .close-icon').fadeIn(300);
+    });
+
+    $(".delete-account-option .close-icon").click(function(){
+        $('.delete-message').fadeOut(300);
+        $('.delete-toggle').fadeIn(300);
+        $('.delete-account-option .close-icon').fadeOut(300);
+    });
+
+    window.pressed = function(){
+    var a = document.getElementById('files');
+        if(a.value == "")
+        {
+            fileLabel.innerHTML = "No file choosen";
+        }
+        else
+        {
+            var theSplit = a.value.split('\\');
+            fileLabel.innerHTML = theSplit[theSplit.length-1];
+        }
+    };
+
+</script>

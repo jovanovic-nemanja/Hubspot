@@ -1,0 +1,430 @@
+{
+	"custom_module": {
+		"author": "bradley@lean-labs.com",
+		"tags": ["ver-2.0.0"],
+		"name": "SR Animations",
+		"css_assets": [],
+		"editable_contexts": [],
+		"external_js": [],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+		"js_assets": [],
+		"other_assets": [],
+		"fields": [{
+				"default": true,
+				"label": "Enabled",
+				"name": "enabled",
+				"type": "boolean"
+			},
+			{
+			"name": "hover_animation",
+			"label": "Hover Animation",
+			"occurrence": {
+				"min": null,
+				"max": null,
+				"sorting_label_field": "element",
+				"default": 1
+			},
+			"children": [{
+				"id": "hover_element",
+				"name": "hover_element",
+				"label": "Hover Element Selector",
+				"help_text": "Use any Valid jQuery selector",
+				"validation_regex": "",
+				"placeholder": "#id or .class",
+				"allow_new_line": false,
+				"type": "text",
+				"default": null
+			},{
+				"id":"animation_type",
+				"name": "animation_type",
+				"label": "Animation Type",
+				"display": "select",
+				"placeholder": "Choose Animation Type",
+				"choices": [
+					["scale", "Scale"],
+					["bounce", "Bounce"],
+					["flash", "Flash"],
+					["pulse", "Pulse"],
+					["rubberBand", "Rubber Band"],
+					["shake", "Shake"],
+					["swing", "Swing"],
+					["tada", "Tada"],
+					["jello", "Jello"],
+					["heartBeat", "Heart Beat"],
+					["hinge", "Hinge"],
+					["JackInTheBox", "Jack in The Box"],
+					["custom","Custom Animation"]
+				],
+				"type": "choice",
+				"default": null
+			},
+			{
+				"id" : "css_html",
+				"name" : "css_html",
+				"label" : "CSS on Element",
+				"type" : "html",
+				"default" : null,
+				"visibility" : {
+					"controlling_field" : "animation_type",
+					"controlling_value_regex" : "custom",
+					"operator" : "EQUAL"
+				}
+			},
+			{
+				"id" : "css_html_hover",
+				"name" : "css_html_hover",
+				"label" : "CSS on Element Hover",
+				"type" : "html",
+				"default" : null,
+				"visibility" : {
+					"controlling_field" : "animation_type",
+					"controlling_value_regex" : "custom",
+					"operator" : "EQUAL"
+				}
+			},
+			{
+				"id" : "scale_amount",
+				"name" : "scale_amount",
+				"label" : "Scale Size",
+				"min" : 1,
+				"max" : 9,
+				"step" : 1,
+				"type" : "number",
+				"display": "slider",
+				"default" : 1,
+				"visibility" : {
+					"controlling_field" : "animation_type",
+					"controlling_value_regex" : "scale",
+					"operator" : "EQUAL"
+				}
+			},
+			{
+				"name": "animation_speed",
+				"label": "Animation Speed",
+				"help_text": "*Duration of animation (ms)",
+				"display": "slider",
+				"min": 50,
+				"max": 3000,
+				"step": 50,
+				"type": "number",
+				"default": 1000,
+				"visibility" : {
+					"controlling_field" : "animation_type",
+					"controlling_value_regex" : "custom",
+					"operator" : "NOT_EQUAL"
+				}
+			},
+			{
+				"name": "hover_easing_functions",
+				"label": "Easing Functions",
+				"help_text": "You can choose one of these timing function to animate elements nicely",
+				"display": "select",
+				"placeholder": "Select an Easing Function",
+				"choices": [
+					["linear", "linear"],
+					["ease", "ease"],
+					["ease-in", "ease-in"],
+					["ease-out", "ease-out"],
+					["ease-in-out", "ease-in-out"]
+				],
+				"type": "choice",
+				"default": "ease-in-out",
+				"visibility" : {
+					"controlling_field" : "animation_type",
+					"controlling_value_regex" : "custom",
+					"operator" : "NOT_EQUAL"
+				}
+			}
+			],
+			"type": "group"
+			},
+			{
+			"id": "7821a3d5-ef52-04bf-bdc9-b71ad3b519a8",
+			"name": "animation",
+			"label": "Scroll Animation",
+			"occurrence": {
+				"min": null,
+				"max": null,
+				"sorting_label_field": "element",
+				"default": 1
+			},
+			"children": [{
+				"id": "element",
+				"name": "element_selector",
+				"label": "Element Selector",
+				"help_text": "Use any Valid jQuery selector",
+				"validation_regex": "",
+				"placeholder": "#id or .class",
+				"allow_new_line": false,
+				"type": "text",
+				"default": null
+			}, {
+				"id": "3ac9036b-2eaa-0dbc-11ac-1cda711b3932",
+				"name": "ani_cat",
+				"label": "Animation Catagory",
+				"display": "select",
+				"placeholder": "Choose Animation Catagory",
+				"choices": [
+					["fade", "Fade"],
+					["flip", "Flip"],
+					["slide", "Slide"],
+					["zoom", "Zoom"]
+				],
+				"type": "choice",
+				"default": null
+			}, {
+				"id": "dbe94e81-6441-4014-0867-3ff3e27ea3d7",
+				"name": "fade_options",
+				"label": "Fade Options",
+				"help_text": "Select a Fade Animation Option",
+				"required": true,
+				"visibility": {
+					"controlling_field": "3ac9036b-2eaa-0dbc-11ac-1cda711b3932",
+					"controlling_value_regex": "fade",
+					"operator": "EQUAL"
+				},
+				"display": "select",
+				"placeholder": "Select a Fade Option",
+				"choices": [
+					["fade", "Fade"],
+					["fade-up", "Fade-Up"],
+					["fade-down", "Fade-Down"],
+					["fade-left", "Fade-Left"],
+					["fade-right", "Fade-Right"],
+					["fade-up-right", "Fade-Up-Right"],
+					["fade-up-left", "Fade-Up-Left"],
+					["fade-down-right", "Fade-Down-Right"],
+					["fade-down-left", "Fade-Down-Left"]
+				],
+				"type": "choice",
+				"default": null
+			}, {
+				"id": "52dc03db-1939-ee79-2e9d-b65abbf1b93a",
+				"name": "flip_options",
+				"label": "Flip Options",
+				"help_text": "Select a Flip Animation Option",
+				"visibility": {
+					"controlling_field": "3ac9036b-2eaa-0dbc-11ac-1cda711b3932",
+					"controlling_value_regex": "flip",
+					"operator": "EQUAL"
+				},
+				"display": "select",
+				"placeholder": "Select a Flip Option",
+				"choices": [
+					["flip-up", "Flip-Up"],
+					["flip-down", "Flip-Down"],
+					["flip-left", "Flip-Left"],
+					["flip-right", "Flip-Right"]
+				],
+				"type": "choice",
+				"default": null
+			}, {
+				"id": "be089f93-32df-e1bd-ca93-442b22e5d244",
+				"name": "slide_options",
+				"label": "Slide Options",
+				"help_text": "Select a Flip Animation Option",
+				"visibility": {
+					"controlling_field": "3ac9036b-2eaa-0dbc-11ac-1cda711b3932",
+					"controlling_value_regex": "slide",
+					"operator": "EQUAL"
+				},
+				"display": "select",
+				"placeholder": "Select a Slide Option",
+				"choices": [
+					["slide-up", "Slie-Up"],
+					["slide-down", "Slide-Down"],
+					["slide-left", "Slide-Left"],
+					["slide-right", "Slide-Right"]
+				],
+				"type": "choice",
+				"default": null
+			}, {
+				"id": "4691874a-a868-b49a-e69a-29c870d5dfa7",
+				"name": "zoom_options",
+				"label": "Zoom Options",
+				"help_text": "Select a Zoom Animation Option",
+				"visibility": {
+					"controlling_field": "3ac9036b-2eaa-0dbc-11ac-1cda711b3932",
+					"controlling_value_regex": "zoom",
+					"operator": "EQUAL"
+				},
+				"display": "select",
+				"placeholder": "Select a Zoom Option",
+				"choices": [
+					["zoom-in", "zoom-in"],
+					["zoom-in-up", "zoom-in-up"],
+					["zoom-in-down", "zoom-in-down"],
+					["zoom-in-left", "zoom-in-left"],
+					["zoom-in-right", "zoom-in-right"],
+					["zoom-out", "zoom-out"],
+					["zoom-out-up", "zoom-out-up"],
+					["zoom-out-down", "zoom-out-down"],
+					["zoom-out-left", "zoom-out-left"],
+					["zoom-out-right", "zoom-out-right"]
+				],
+				"type": "choice",
+				"default": null
+			}, {
+				"id": "e868a59b-03b8-71c6-f118-0d16112e23eb",
+				"name": "show_advanced_options",
+				"label": "Show Advanced Options",
+				"type": "boolean",
+				"default": false
+			}, {
+				"id": "07bfacf0-f6f8-0ee8-9b2e-8b57b8ff7b69",
+				"name": "advanced_options",
+				"label": "Advanced Options",
+				"visibility": {
+					"controlling_field": "e868a59b-03b8-71c6-f118-0d16112e23eb",
+					"controlling_value_regex": "true",
+					"operator": "EQUAL"
+				},
+				"children": [{
+					"id": "333b4757-e069-814f-8b54-27ac6b7eea25",
+					"name": "animate_once",
+					"label": "Animate Once",
+					"help_text": "Choose whether animation should fire once, or every time you scroll up/down to element",
+					"type": "boolean",
+					"default": false
+				}, {
+					"id": "eb7c09b9-4241-1df7-db6c-168baed75b22",
+					"name": "animation_delay",
+					"label": "Animation Delay",
+					"help_text": "Delay animation (ms)",
+					"display": "slider",
+					"min": 0,
+					"max": 10000,
+					"step": 1,
+					"type": "number",
+					"default": 0
+				}, {
+					"id": "4d7c7a6e-b60b-492e-31eb-237e4f169566",
+					"name": "animation_duration",
+					"label": "Animation Duration",
+					"help_text": "*Duration of animation (ms)",
+					"display": "slider",
+					"min": 50,
+					"max": 3000,
+					"step": 50,
+					"type": "number",
+					"default": 400
+				}, {
+					"id": "8035aaa6-d6fd-b50b-2da1-8d73952d6133",
+					"name": "trigger_offset",
+					"label": "Trigger Offset",
+					"help_text": "Change offset to trigger animations sooner or later (px)",
+					"display": "slider",
+					"min": 0,
+					"max": 1000,
+					"step": 1,
+					"type": "number",
+					"default": 400
+				}, {
+					"id": "844aafea-bf23-59fa-8d56-29e46daaeca6",
+					"name": "easing_functions",
+					"label": "Easing Functions",
+					"help_text": "You can choose one of these timing function to animate elements nicely",
+					"display": "select",
+					"placeholder": "Select an Easing Function",
+					"choices": [
+						["linear", "linear"],
+						["ease", "ease"],
+						["ease-in", "ease-in"],
+						["ease-out", "ease-out"],
+						["ease-in-out", "ease-in-out"],
+						["ease-in-back", "ease-in-back"],
+						["ease-out-back", "ease-out-back"],
+						["ease-in-out-back", "ease-in-out-back"],
+						["ease-in-sine", "ease-in-sine"],
+						["ease-out-sine", "ease-out-sine"],
+						["ease-in-out-sine", "ease-in-out-sine"],
+						["ease-in-quad", "ease-in-quad"],
+						["ease-out-quad", "ease-out-quad"],
+						["ease-in-out-quad", "ease-in-out-quad"],
+						["ease-in-cubic", "ease-in-cubic"],
+						["ease-out-cubic", "ease-out-cubic"],
+						["ease-in-out-cubic", "ease-in-out-cubic"],
+						["ease-in-quart", "ease-in-quart"],
+						["ease-out-quart", "ease-out-quart"],
+						["ease-in-out-quart", "ease-in-out-quart"]
+					],
+					"type": "choice",
+					"default": "ease"
+				}, {
+					"id": "ccb66285-674f-f842-0fde-998efa298397",
+					"name": "anchor_placement",
+					"label": "Anchor Placement",
+					"help_text": "You can set different placement option on each element, the principle is pretty simple, each anchor-placement option contains two words i.e. top-center. This means that animation will be triggered when top of element will reach center of the window. bottom-top means that animation will be triggered when bottom of an element reach top of the window, and so on.",
+					"display": "select",
+					"placeholder": "Select An Anchor Placement",
+					"choices": [
+						["top-bottom", "top-bottom"],
+						["top-center", "top-center"],
+						["top-top", "top-top"],
+						["center-bottom", "center-bottom"],
+						["center-center", "center-center"],
+						["center-top", "center-top"],
+						["bottom-bottom", "bottom-bottom"],
+						["bottom-center", "bottom-center"],
+						["bottom-top", "bottom-top"]
+					],
+					"type": "choice",
+					"default": null
+				}, {
+					"id": "2c7e2413-73f5-137d-700f-586b75a8156b",
+					"name": "anchor_selector",
+					"label": "Anchor Selector",
+					"help_text": "Anchor element, whose offset will be counted to trigger animation instead of actual elements offset",
+					"placeholder": "#id or .class",
+					"allow_new_line": false,
+					"type": "text",
+					"default": null
+				}],
+				"type": "group",
+				"default": {
+					"animate_once": false,
+					"animation_delay": 0,
+					"animation_duration": 400,
+					"trigger_offset": 400,
+					"easing_functions": "ease"
+				}
+			}],
+			"type": "group",
+			"default": [{
+				"show_advanced_options": false,
+				"advanced_options": {
+					"animate_once": false,
+					"animation_delay": 0,
+					"animation_duration": 400,
+					"trigger_offset": 400,
+					"easing_functions": "ease"
+				}
+			}]
+		}, {
+			"id": "ebd1194e-ca1f-504b-d0fa-3367c4ec5fdf",
+			"name": "disable_animations_on_mobile",
+			"label": "Disable Animations On Mobile",
+			"help_text": "This option will prevent all elements from animating on mobile",
+			"type": "boolean",
+			"default": false
+		}],
+		"source": ""
+	},
+	"custom_module_template": "sr-animations.html",
+	"available_builder": false,
+	"category": 9,
+	"files": [{
+		"file": "launchpad-starter-v2/sr/sr-templates/sr-assets/css/aos.css",
+		"folder_paths": "sr-assets/css"
+	},
+	{
+		"file": "launchpad-starter-v2/sr/sr-templates/sr-assets/css/animate.css",
+		"folder_paths": "sr-assets/css"
+	},
+	{
+		"file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/aos.js",
+		"folder_paths": "sr-assets/js"
+	}]
+}

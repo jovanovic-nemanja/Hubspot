@@ -1,0 +1,18 @@
+{
+	"name": "Homepage v2",
+	"custom_modules": [
+		"sr-nav-dropdown-01.json",
+		"sr-offer-video-cta-01.json",
+		"sr-three-col-02.json",
+		"sr-two-col-04.json",
+		"sr-stats-02.json",
+		"sr-cards-testimonial-slider-01.json",
+		"sr-stats-02.json",
+		"sr-clients-01.json",
+		"sr-two-col-03.json",
+		"sr-cards-steps-01.json",
+		"sr-footer-04.json"
+	],
+	"module_overrides": {},
+	"page_overrides": {}
+}

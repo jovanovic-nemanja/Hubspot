@@ -1,0 +1,307 @@
+{% if module.enabled %}
+
+	{# Set an array to use to break out of the loop #}
+	{% set foo = [] %}
+    
+	{% if !vars.foo %}
+		{% for item in module.offer|sort(False, False, 'category') %}
+			{% for category in content.topic_list|sort(False, False, 'slug') %}
+				{% if item.category == category.slug %}
+					{% if foo|length == 0 %} {# Check if array length is 0#}
+						{% if foo.append(1) %} {% endif %} {# append 1 to array, (an offer was loaded) #}
+						<div class="dynamic-blog-offer wow fadeInUp animated">
+							<div class="container-custom">
+								<div class="row {{ item.category }}">
+									<div class="col-md-5 col-md-offset-1">
+										<div class="offer-content">
+											{{ item.content }}
+										</div>
+									</div>
+									<div class="col-md-5">
+										<div class="ll-form">
+											{% if item.form.title is truthy %}
+												{% set no_title = False %}
+											{% else %}
+												{% set no_title = True %}
+											{% endif %}
+											{% if item.form.form.form_id %}
+												{% form
+													form_key="{{name}}",
+													form_to_use="{{item.form.form.form_id}}"
+													title="{{item.form.title}}"
+													no_title="{{no_title}}"
+													follow_up_type_simple="{{item.form.follow_up_type_simple}}"
+													simple_email_for_live_id="{{item.form.simple_email_for_live_id}}"
+													follow_up_type_automation="{{item.form.follow_up_type_automation}}"
+													response_response_type="{{item.form.form.response_type}}"
+													response_redirect_id="{{item.form.form.redirect_id}}"
+													response_redirect_url="{{item.form.form.redirect_url}}"
+													response_message="{{item.form.form.message}}"
+													notifications_are_overridden="{{item.form.notifications_are_overridden}}"
+													notifications_override_email_addresses="{{item.form.notifications_override_email_addresses}}"
+													gotowebinar_webinar_key="{{item.form.form.gotowebinar_webinar_key}}"
+												%}
+											{% endif %}
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endif %}
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+	{% endif %}
+
+	{# Fallback offer is to category was matched #}
+	{% if module.backup_offer %}
+		{% if foo|length == 0 %}
+			<div class="dynamic-blog-offer wow fadeInUp animated">
+				<div class="container-custom">
+					<div class="row {{ module.offer[0].category }}">
+						<div class="col-md-5 col-md-offset-1">
+							<div class="offer-content">
+								{{ module.offer[0].content }}
+							</div>
+						</div>
+						<div class="col-md-5">
+							<div class="ll-form">
+								<h3>{{module.offer[0].form.title}}</h3>
+								{% if module.offer[0].form.form.form_id %}
+									{% form
+										form_key="{{name}}",
+										form_to_use="{{module.offer[0].form.form.form_id}}"
+										title="{{module.offer[0].form.title}}"
+										no_title="true"
+										follow_up_type_simple="{{module.offer[0].form.follow_up_type_simple}}"
+										simple_email_for_live_id="{{module.offer[0].form.simple_email_for_live_id}}"
+										follow_up_type_automation="{{module.offer[0].form.follow_up_type_automation}}"
+										response_response_type="{{module.offer[0].form.form.response_type}}"
+										response_redirect_id="{{module.offer[0].form.form.redirect_id}}"
+										response_redirect_url="{{module.offer[0].form.form.redirect_url}}"
+										response_message="{{module.offer[0].form.form.message}}"
+										notifications_are_overridden="{{module.offer[0].form.notifications_are_overridden}}"
+										notifications_override_email_addresses="{{module.offer[0].form.notifications_override_email_addresses}}"
+										gotowebinar_webinar_key="{{module.offer[0].form.form.gotowebinar_webinar_key}}"
+									%}
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	{% endif %}			
+{% endif %}
+
+{% require_css %}
+<style>
+.dynamic-blog-offer .container-custom {
+    max-width: 1920px;
+}
+.dynamic-blog-offer .container-custom {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.dynamic-blog-offer .offer-content img {
+    max-width: 100%;
+    height: auto;
+}
+.dynamic-blog-offer .offer-content, .dynamic-blog-offer .ll-form {
+    padding: 0 6rem;
+}
+.dynamic-blog-offer .ll-form h3 {
+    font-size: 1.3em;
+    text-transform: capitalize;
+    text-align: center;
+}
+.dynamic-blog-offer .hs-form .hs-form-field ul.inputs-list li input {
+    margin-right: 10px;
+}
+.dynamic-blog-offer fieldset, .dynamic-blog-offer fieldset.form-columns-1 .hs-input {
+    width: 100% !important;
+    max-width: none !important;
+}
+.dynamic-blog-offer {
+    border-top: 10px solid;
+    padding: 8rem 0;
+    margin-top: 8rem;
+	overflow: hidden;
+}
+
+.dynamic-blog-offer .hs-form input[type="text"], 
+.dynamic-blog-offer .hs-form input[type="password"], 
+.dynamic-blog-offer .hs-form input[type="datetime"], 
+.dynamic-blog-offer .hs-form input[type="datetime-local"], 
+.dynamic-blog-offer .hs-form input[type="date"], 
+.dynamic-blog-offer .hs-form input[type="month"], 
+.dynamic-blog-offer .hs-form input[type="time"], 
+.dynamic-blog-offer .hs-form input[type="week"], 
+.dynamic-blog-offer .hs-form input[type="number"], 
+.dynamic-blog-offer .hs-form input[type="email"], 
+.dynamic-blog-offer .hs-form input[type="url"], 
+.dynamic-blog-offer .hs-form input[type="search"], 
+.dynamic-blog-offer .hs-form input[type="tel"], 
+.dynamic-blog-offer .hs-form input[type="color"], 
+.dynamic-blog-offer .hs-form input[type="file"], 
+.dynamic-blog-offer .hs-form textarea, 
+.dynamic-blog-offer .hs-form select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: none;
+    padding: 0.8em;
+    width: 100%;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin: 4px 0;
+    color: #fff;
+    box-shadow: none;
+    border-radius: 0;
+}
+.dynamic-blog-offer .hs-form input[type="text"], 
+.dynamic-blog-offer .hs-form input[type="password"], 
+.dynamic-blog-offer .hs-form input[type="datetime"], 
+.dynamic-blog-offer .hs-form input[type="datetime-local"], 
+.dynamic-blog-offer .hs-form input[type="date"], 
+.dynamic-blog-offer .hs-form input[type="month"], 
+.dynamic-blog-offer .hs-form input[type="time"], 
+.dynamic-blog-offer .hs-form input[type="week"], 
+.dynamic-blog-offer .hs-form input[type="number"],
+.dynamic-blog-offer .hs-form input[type="email"],
+.dynamic-blog-offer .hs-form input[type="url"],
+.dynamic-blog-offer .hs-form input[type="search"],
+.dynamic-blog-offer .hs-form input[type="tel"],
+.dynamic-blog-offer .hs-form input[type="color"],
+.dynamic-blog-offer .hs-form input[type="file"],
+.dynamic-blog-offer .hs-form textarea, 
+.dynamic-blog-offer .hs-form select {
+    background: #fff;
+    border: 1px solid #94979E;
+    color: #000;
+}
+.dynamic-blog-offer .hs-form input[type="text"]:focus, 
+.dynamic-blog-offer .hs-form input[type="password"]:focus, 
+.dynamic-blog-offer .hs-form input[type="datetime"]:focus, 
+.dynamic-blog-offer .hs-form input[type="datetime-local"]:focus, 
+.dynamic-blog-offer .hs-form input[type="date"]:focus, 
+.dynamic-blog-offer .hs-form input[type="month"]:focus, 
+.dynamic-blog-offer .hs-form input[type="time"]:focus, 
+.dynamic-blog-offer .hs-form input[type="week"]:focus, 
+.dynamic-blog-offer .hs-form input[type="number"]:focus, 
+.dynamic-blog-offer .hs-form input[type="email"]:focus, 
+.dynamic-blog-offer .hs-form input[type="url"]:focus, 
+.dynamic-blog-offer .hs-form input[type="search"]:focus, 
+.dynamic-blog-offer .hs-form input[type="tel"]:focus, 
+.dynamic-blog-offer .hs-form input[type="color"]:focus, 
+.dynamic-blog-offer .hs-form input[type="file"]:focus, 
+.dynamic-blog-offer .hs-form textarea:focus, 
+.dynamic-blog-offer .hs-form select:focus {
+    background: #fff;
+    color: #000;
+    outline: none;
+    box-shadow: inset 0 1px 3px 1px rgba(0, 0, 0, 0.5);
+}
+.dynamic-blog-offer .hs-form select {
+    height: 50px;
+    background-image: url(https://www.lean-labs.com/hubfs/LLv2/images/icon-select-arrow.png) !important;
+    background-repeat: no-repeat !important;
+    background-position: calc(100% - 15px) center !important;
+}
+.dynamic-blog-offer .form-wrap .hs-button {
+    text-align: center;
+    display: block !important;
+    margin: 1em auto;
+}
+.dynamic-blog-offer .hs-button.primary, .dynamic-blog-offer input[type="submit"], .dynamic-blog-offer input[type="button"] {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: 5px 10px;
+    font-size: 0.85em;
+    line-height: 1.5;
+    border-radius: 3px;
+    padding: 1em 1.6em;
+    font-size: .6em;
+    background: #D13B4C;
+    border: 3px solid transparent;
+    font-family: 'Lato', sans-serif;
+    border-radius: 100px;
+    text-transform: uppercase;
+    color: white;
+    transition: all 0.15s ease-in-out;
+    animation-timing-function: ease-in-out;
+    font-size: .7em;
+    letter-spacing: 0.1em;
+    padding: 1em 2em;
+    font-weight: 700;
+    background: #D1493B;
+}
+.dynamic-blog-offer .hs-form .hs-form-field ul.inputs-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.dynamic-blog-offer .hs-form li.hs-form-checkbox, .dynamic-blog-offer .hs-form li.hs-form-radio {
+    padding: 0.5em;
+    border: 1px solid #94979E;
+    margin-bottom: 8px;
+}
+.dynamic-blog-offer .hs-form li.hs-form-checkbox label, .dynamic-blog-offer .hs-form li.hs-form-radio label {
+    width: 100%;
+}
+.dynamic-blog-offer .hs-form input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 22px!important;
+    height: 22px;
+    border: 1px solid #ccc;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+}
+.dynamic-blog-offer .hs-form li.hs-form-checkbox input, .dynamic-blog-offer .hs-form li.hs-form-radio input {
+    float: right;
+    cursor: pointer;
+}
+.dynamic-blog-offer .hs-form label {
+    color: #fff;
+    font-weight: normal;
+    font-size: 0.7em;
+    margin-bottom: 4px;
+}
+.dynamic-blog-offer .hs-form .field > label {
+    font-style: italic;
+}
+.dynamic-blog-offer .hs-form label {
+    color: #000;
+}
+.dynamic-blog-offer .hs-form .hs-form-field {
+    margin: 3px 0;
+}
+.dynamic-blog-offer .actions {
+    text-align: center;
+    margin-top: 3rem;
+}
+</style>
+{% end_require_css %}

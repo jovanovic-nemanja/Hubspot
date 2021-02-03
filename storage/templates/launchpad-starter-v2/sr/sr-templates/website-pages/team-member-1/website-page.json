@@ -1,0 +1,10 @@
+{
+	"name": "Team Member v1",
+	"custom_modules": [
+		"sr-nav-dropdown-01.json",
+		"sr-two-col-gallery-02.json",
+		"sr-footer-04.json"
+	],
+	"module_overrides": {},
+	"page_overrides": {}
+}

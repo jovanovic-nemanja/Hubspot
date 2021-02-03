@@ -1,0 +1,520 @@
+{% if hub_id == 123 %}
+    {% set project = request.path|split('/', 2) %}
+    {% set projectDir = project|first %}
+    {% set variables = projectDir + "/custom/page/templates/variables.html" %}
+    {% import variables as var %}
+
+  {% set contents = [
+    {
+      name: "How To Build A Killer Social Media Strategy",
+      absolute_url: "blog-single.html",
+      featured_image: "http://www.dtelepathy.com/blog/wp-content/uploads/2016/07/DT_Blog-Services-Header-1280x720.jpg",
+      topic_list: [
+        {
+          name: "Design",
+          slug: "design",
+        }
+      ],
+      blog_post_author: {
+        full_name: "Cristian Teichner",
+        slug: "cristian-teichner"
+      }
+    },
+    {
+      name: "Social Media Management Quickstart Guide For Total Newbies",
+      absolute_url: "blog-single.html",
+      featured_image: "http://www.dtelepathy.com/blog/wp-content/uploads/2016/12/Spectrums-Hero-Image-1280x539.jpg",
+      topic_list: [
+        {
+          name: "Social Media",
+          slug: "social-media",
+        }
+      ],
+      blog_post_author: {
+        full_name: "Cristian Teichner",
+        slug: "cristian-teichner"
+      }
+    },
+    {
+      name: "The Best Ways To Build A Facebook Audience For Inbound Marketing",
+      absolute_url: "blog-single.html",
+      featured_image: "http://www.dtelepathy.com/blog/wp-content/uploads/2016/04/Interviews-1280x550.jpg",
+      topic_list: [
+        {
+          name: "Productivity",
+          slug: "productivity",
+        }
+      ],
+      blog_post_author: {
+        full_name: "Cristian Teichner",
+        slug: "cristian-teichner"
+      }
+    },
+    {
+      name: "How To Get More Customers From Facebook Ads Without Increasing Your Budget",
+      absolute_url: "blog-single.html",
+      featured_image: "http://lean-labs.com/hubfs/blog_post_imgs/Lean-Labs_more-customers-from-Facebook-ads.png",
+      topic_list: [
+        {
+          name: "Inbound Marketing",
+          slug: "inbound-marketing",
+        }
+      ],
+      blog_post_author: {
+        full_name: "Cristian Teichner",
+        slug: "cristian-teichner"
+      }
+    },
+    {
+      name: "How To Get More Customers From Facebook Ads Without Increasing Your Budget",
+      absolute_url: "blog-single.html",
+      featured_image: "http://lean-labs.com/hubfs/blog_post_imgs/Lean-Labs_more-customers-from-Facebook-ads.png",
+      topic_list: [
+        {
+          name: "Inbound Marketing",
+          slug: "inbound-marketing",
+        }
+      ],
+      blog_post_author: {
+        full_name: "Cristian Teichner",
+        slug: "cristian-teichner"
+      }
+    },
+    {
+      name: "How To Get More Customers From Facebook Ads Without Increasing Your Budget",
+      absolute_url: "blog-single.html",
+      featured_image: "http://lean-labs.com/hubfs/blog_post_imgs/Lean-Labs_more-customers-from-Facebook-ads.png",
+      topic_list: [
+        {
+          name: "Inbound Marketing",
+          slug: "inbound-marketing",
+        }
+      ],
+      blog_post_author: {
+        full_name: "Cristian Teichner",
+        slug: "cristian-teichner"
+      }
+    },
+    {
+      name: "How To Get More Customers From Facebook Ads Without Increasing Your Budget",
+      absolute_url: "blog-single.html",
+      featured_image: "http://lean-labs.com/hubfs/blog_post_imgs/Lean-Labs_more-customers-from-Facebook-ads.png",
+      topic_list: [
+        {
+          name: "Inbound Marketing",
+          slug: "inbound-marketing",
+        }
+      ],
+      blog_post_author: {
+        full_name: "Cristian Teichner",
+        slug: "cristian-teichner"
+      }
+    },
+    {
+      name: "How To Get More Customers From Facebook Ads Without Increasing Your Budget",
+      absolute_url: "blog-single.html",
+      featured_image: "http://lean-labs.com/hubfs/blog_post_imgs/Lean-Labs_more-customers-from-Facebook-ads.png",
+      topic_list: [
+        {
+          name: "Inbound Marketing",
+          slug: "inbound-marketing",
+        }
+      ],
+      blog_post_author: {
+        full_name: "Cristian Teichner",
+        slug: "cristian-teichner"
+      }
+    },
+    {
+      name: "How To Get More Customers From Facebook Ads Without Increasing Your Budget",
+      absolute_url: "blog-single.html",
+      featured_image: "http://lean-labs.com/hubfs/blog_post_imgs/Lean-Labs_more-customers-from-Facebook-ads.png",
+      topic_list: [
+        {
+          name: "Inbound Marketing",
+          slug: "inbound-marketing",
+        }
+      ],
+      blog_post_author: {
+        full_name: "Cristian Teichner",
+        slug: "cristian-teichner"
+      }
+    },
+    {
+      name: "How To Get More Customers From Facebook Ads Without Increasing Your Budget",
+      absolute_url: "blog-single.html",
+      featured_image: "http://lean-labs.com/hubfs/blog_post_imgs/Lean-Labs_more-customers-from-Facebook-ads.png",
+      topic_list: [
+        {
+          name: "Inbound Marketing",
+          slug: "inbound-marketing",
+        }
+      ],
+      blog_post_author: {
+        full_name: "Cristian Teichner",
+        slug: "cristian-teichner"
+      }
+    },
+    {
+      name: "How To Get More Customers From Facebook Ads Without Increasing Your Budget",
+      absolute_url: "blog-single.html",
+      featured_image: "http://lean-labs.com/hubfs/blog_post_imgs/Lean-Labs_more-customers-from-Facebook-ads.png",
+      topic_list: [
+        {
+          name: "Inbound Marketing",
+          slug: "inbound-marketing",
+        }
+      ],
+      blog_post_author: {
+        full_name: "Cristian Teichner",
+        slug: "cristian-teichner"
+      }
+    },
+    {
+      name: "How To Get More Customers From Facebook Ads Without Increasing Your Budget",
+      absolute_url: "blog-single.html",
+      featured_image: "http://lean-labs.com/hubfs/blog_post_imgs/Lean-Labs_more-customers-from-Facebook-ads.png",
+      topic_list: [
+        {
+          name: "Inbound Marketing",
+          slug: "inbound-marketing",
+        }
+      ],
+      blog_post_author: {
+        full_name: "Cristian Teichner",
+        slug: "cristian-teichner"
+      }
+    },
+    {
+      name: "How To Get More Customers From Facebook Ads Without Increasing Your Budget",
+      absolute_url: "blog-single.html",
+      featured_image: "http://lean-labs.com/hubfs/blog_post_imgs/Lean-Labs_more-customers-from-Facebook-ads.png",
+      topic_list: [
+        {
+          name: "Inbound Marketing",
+          slug: "inbound-marketing",
+        }
+      ],
+      blog_post_author: {
+        full_name: "Cristian Teichner",
+        slug: "cristian-teichner"
+      }
+    }
+    ]
+  %}
+
+  {% set topics= [
+    {
+      name: "Inbound Marketing",
+      slug: "inbound-marketing",
+    },
+    {
+      name: "Winning Strategies",
+      slug: "winning-strategies",
+    },
+    {
+      name: "Content Marketing",
+      slug: "content-marketing",
+    },
+    {
+      name: "Growth Driven Design",
+      slug: "growth-driven-design",
+    },
+    {
+      name: "Email Marketing",
+      slug: "email-marketing",
+    },
+    {
+      name: "HubSpot",
+      slug: "hubspot",
+    },
+    {
+      name: "Get Better",
+      slug: "get-better",
+    },
+    {
+      name: "Lean Methodology",
+      slug: "lean-methodology",
+    },
+    {
+      name: "Client Success Stories",
+      slug: "client-success-stories",
+    },
+    {
+      name: "Branding",
+      slug: "branding",
+    },
+    {
+      name: "SEO",
+      slug: "seo",
+    },
+    {
+      name: "Infographics",
+      slug: "infographics",
+    },
+    {
+      name: "Writing Tips",
+      slug: "writing tips",
+    },
+    {
+      name: "Inspiration",
+      slug: "inspiration",
+    },
+    {
+      name: "Site Tools",
+      slug: "site-tools",
+    }
+  ]
+  %}
+
+  {% set content = {
+    analytics_page_type: "blog-post"
+  }
+  %}
+
+{% else %}
+    {% import "custom/page/templates/variables.html" as var %}
+{% endif %}
+
+{% set show_cta = true %}
+{{ var.template('blog-header.html') }}
+{{ require_css(var.assetDir + '/css/blog.css') }}
+
+<body class="blog">
+
+	<div class="blog-masthead bg-dark">
+		<div class="flex-wrapper01">
+			{% for content in contents %}
+				{% if loop.first %}
+					<div class="featured-article" style="background: url('{{ content.featured_image }}') 50% 50% / cover;">
+						<div class="bg-overlay"></div>
+						<div class="featured-article-inner">
+							{% for topic in content.topic_list %}
+								{% if loop.first %}
+									<span class="heading-tag">{{ topic.name }}</span>
+								{% endif %}
+							{% endfor %}
+							<h2><a href="{{ content.absolute_url }}">{{ content.name }}</a></h2>
+						</div>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+
+		<div class="flex-wrapper02">
+			{% for content in contents %}
+					{% if loop.index == 2 %}
+					<div class="featured-article" style="background: url('{{ content.featured_image }}') 50% 50% / cover;">
+						<div class="bg-overlay"></div>
+							<div class="featured-article-inner">
+								{% for topic in content.topic_list %}
+									{% if loop.first %}
+										<span class="heading-tag">{{ topic.name }}</span>
+									{% endif %}
+								{% endfor %}
+							<h2><a href="{{ content.absolute_url }}">{{ content.name }}</a></h2>
+						</div>
+					</div>
+					{% endif %}
+
+					{% if loop.index == 3 %}
+						<div class="featured-article" style="background: url('{{ content.featured_image }}') 50% 50% / cover;">
+							<div class="bg-overlay"></div>
+							<div class="featured-article-inner">
+								{% for topic in content.topic_list %}
+									{% if loop.first %}
+										<span class="heading-tag">{{ topic.name }}</span>
+									{% endif %}
+								{% endfor %}
+								<h2><a href="{{ content.absolute_url }}">{{ content.name }}</a></h2>
+							</div>
+						</div>
+					{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+
+  <div class="blog-subscribe bg-light">
+    <div class="container">
+        <div class="row d-sm-flex justify-content-center justify-content-lg-between">
+          <div class="col-12 col-sm-auto text-center-mobile">
+              <p class="text-center-mobile">
+              Internet Marketing tips, tricks &amp; talk delivered straight to your inbox.
+              </p>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div id="hs_form_target_subscribe-blog">
+              {% if hub_id == 123 %}
+                <form>
+                  <div class="input hs_email">
+                    <input type="email" class="" placeholder="jane.doe@example.com">
+                  </div>
+                  <div class="hs_submit">
+                    <input type="submit" placeholder="Submit">
+                  </div>
+                </form>
+              {% else %}
+                {% blog_subscribe "subscribe-blog" select_blog='default',  no_title=1, response_message='Thanks for Subscribing!', placeholder='email', label='Blog Email Subscription', overrideable=False %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="blog-category">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          {% if hub_id != 123 %}
+            {% set topics = blog_topics('default', 10) %}
+          {% endif %}
+          <ul>
+            {% for item in topics %}
+              <li><a href="{{ group.absolute_url }}/topic/{{item.slug}}">{{ item.name }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="articles-list">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-10 offset-md-1">
+          <div class="row">
+            {% for content in contents %}
+              {% if loop.index > 3 and loop.index < 10 %}
+                <div class="col-md-6">
+                  <div class="article-panel wow fadeInUp">
+                    <div class="article-img">
+                      <a href="{{ content.absolute_url }}">
+                        <div class="img-wrapper" style="background: url('{{ content.featured_image }}') 50% 50% / cover"></div>
+                      </a>
+                      {% for topic in content.topic_list %}
+                        {% if loop.first %}
+                          <div class="tag">
+                            <a href="{{ group.absolute_url }}/topic/{{ topic.slug }}">{{ topic.name }}</a>
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                    <div class="article-content">
+                      <h3><a href="{{ content.absolute_url }}">{{ content.name }}</a></h3>
+                      <div class="author">
+                        <strong>Written by <a href="{{ group.absolute_url }}/author/{{ content.blog_post_author.slug }}">{{ content.blog_post_author.full_name }}</a></strong>  /  {{ content.publish_date_local_time|datetimeformat('%B %e, %Y') }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if show_cta == true %}
+    <div class="blog-cta-wrapper section-dark bg-dark py-5 text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-10 offset-md-1">
+            <span class="hs-cta-wrapper" id="hs-cta-wrapper-b66daf69-9561-431b-b1cc-3ca4f055d564"> <span class="hs-cta-node hs-cta-b66daf69-9561-431b-b1cc-3ca4f055d564" id="hs-cta-b66daf69-9561-431b-b1cc-3ca4f055d564" data-hs-drop="true" style="visibility: visible;"><a id="cta_button_275827_4e1fa49c-b860-4878-8261-aa9ed3aab0f6" class="cta_button" href="https://cta-service-cms2.hubspot.com/ctas/v2/public/cs/c/?cta_guid=4e1fa49c-b860-4878-8261-aa9ed3aab0f6&amp;placement_guid=b66daf69-9561-431b-b1cc-3ca4f055d564&amp;portal_id=275827&amp;redirect_url=APefjpGU9rFTtEsVpy33N-0bk6CtTMKmJ5dyuTWIcfzKWnuD4DllPFdx7qN0v2MPfEs24_K1VdJMznxgRpsrXVwQt3zFQ8rLa3pY1MRE1wzcvSFUA6L6K9nrqtOAR1KzPUOZaTQI2Y_T6Etela5HGmGWjg4o5W9fF2NLRzHdOew1JlldgBekuUV3NrzMBxGPZHeCgspOEIZ5kL9TezC1zKqMZ-ELqs808A9p5sSALLwGKt5Z6R-6yGju7XAPgH9LBHvk59ioq3D6k5R33Mn7wyEXXCrgNA8MPc4Y3kmsYxHR8emEQ8Th354&amp;hsutk=074a8a45a059cc3d7e4362aba5065b4e&amp;canon=https%3A%2F%2Fwww.lean-labs.com%2Fblog%2F5-lead-generation-tactics-anyone-can-do-and-on-a-small-budget&amp;utm_referrer=https%3A%2F%2Fwww.lean-labs.com%2Fblog&amp;pageId=4877363910&amp;__hstc=200632625.074a8a45a059cc3d7e4362aba5065b4e.1458131921148.1490105697087.1490110067089.55&amp;__hssc=200632625.7.1490110067089&amp;__hsfp=2221053814" cta_dest_link="https://www.lean-labs.com/brand-character-and-voice-workbook"> <img id="hs-cta-img-b66daf69-9561-431b-b1cc-3ca4f055d564" class="hs-cta-img " style="border-width: 0px; " mce_noresize="1" alt="How_to_make_brand_character_and_voice_workbook" src="https://www.lean-labs.com/hubfs/hub_generated/resized/a0dec453-6229-4384-b348-de0313956ce2.png"> </a> </span> <script charset="utf-8" src="https://js.hscta.net/cta/current.js"></script> <script type="text/javascript">
+                hbspt.cta.load(275827, 'b66daf69-9561-431b-b1cc-3ca4f055d564', {});
+            </script> </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-10 offset-md-1">
+        <div class="row">
+          {% for content in contents %}
+            {% if loop.index > 9 %}
+              <div class="col-md-6">
+                <div class="article-panel wow fadeInUp">
+                  <div class="article-img">
+                    <a href="{{ content.absolute_url }}">
+                      <div class="img-wrapper" style="background: url('{{ content.featured_image }}') 50% 50% / cover"></div>
+                    </a>
+                    {% for topic in content.topic_list %}
+                      {% if loop.first %}
+                        <div class="tag">
+                          <a href="{{ group.absolute_url }}/topic/{{ topic.slug }}">{{ topic.name }}</a>
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="article-content">
+                    <h3><a href="{{ content.absolute_url }}">{{ content.name }}</a></h3>
+                    <div class="author">
+                      <strong>Written by <a href="{{ group.absolute_url }}/author/{{ content.blog_post_author.slug }}">{{ content.blog_post_author.full_name }}</a></strong>  /  {{ content.publish_date_local_time|datetimeformat('%B %e, %Y') }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if not simple_list_page %}
+  <div class="blog-pagination">
+    <div class="container">
+      {% if hub_id == 123 %}
+        <a class="previous-posts-link" href="{{ blog_page_link(last_page_num) }}">Prev</a>
+        <a class="all-posts-link" href="{{ group.absolute_url }}/all">All posts</a>
+        <a class="next-posts-link" href="{{ blog_page_link(next_page_num) }}">Next</a>
+      {% else %}
+        {% if last_page_num %}
+          <a class="previous-posts-link" href="{{ blog_page_link(last_page_num) }}">Prev</a>
+        {% endif %}
+          <a class="all-posts-link" href="{{ group.absolute_url }}/all">All posts</a>
+        {% if next_page_num %}
+          <a class="next-posts-link" href="{{ blog_page_link(next_page_num) }}">Next</a>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="blog-subscribe bg-light">
+    <div class="container">
+        <div class="row d-sm-flex justify-content-center justify-content-lg-between">
+          <div class="col-12 col-sm-auto text-center-mobile">
+              <p class="text-center-mobile">
+              Internet Marketing tips, tricks &amp; talk delivered straight to your inbox.
+              </p>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div id="hs_form_target_subscribe-blog">
+              {% if hub_id == 123 %}
+                <form>
+                  <div class="input hs_email">
+                    <input type="email" class="" placeholder="jane.doe@example.com">
+                  </div>
+                  <div class="hs_submit">
+                    <input type="submit" placeholder="Submit">
+                  </div>
+                </form>
+              {% else %}
+                {% blog_subscribe "subscribe-blog" select_blog='default',  no_title=1, response_message='Thanks for Subscribing!', placeholder='email', label='Blog Email Subscription', overrideable=False %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  {{ var.template('footer.html') }}
+  {{ var.template('footer-includes.html') }}
+
+</body>
+</html>

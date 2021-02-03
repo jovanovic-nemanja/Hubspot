@@ -1,0 +1,222 @@
+{% if module.enabled %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% else %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-cards-slider-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Cards Slider 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+    {% endif %}
+	{% endif %}
+	
+	<div class="sr-cards-slider-01 {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} sr-padding-{{ module.design_settings.top_bottom_padding }}{% if module.design_settings.class %} {{ module.design_settings.class }}{% endif %}{% if module.use_image_as_background %} sr-bg-image{% endif %}{% if module.text_align != 'auto' %} text-{{module.text_align}}{% endif %}{% if module.design_settings.border_top %} sr-line-top{% endif %}{% if module.design_settings.border_bottom %} sr-line-bottom{% endif %} prototype-no-background {{ name }} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}"{% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }} content-wrapper">
+			{% if module.design_settings.container_width != 'max' %}
+			<div class="row">
+				<div class="{{ width_class }}">
+			{% endif %}
+
+					<div class="row align-items-end">
+
+						<div class="col-lg-5">
+							<div class="bg-secondary">
+								<h{{module.heading_size}}{% if module.heading_display_size != 'auto' %} class="{{ module.heading_display_size }}"{% endif %}>{{ module.heading }}</h{{module.heading_size}}>
+
+								{{ module.description }}
+								
+								<div class="paginator-center text-color text-center">
+									<ul>
+										<li class="prevC{{ name }}"><?xml version="1.0" encoding="utf-8"?> <svg class="prevV arrow" width="27px" height="48px" viewBox="0 0 27 48" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"> <desc>Created with Lunacy</desc> <g id="down-chevron-(4)-copy" transform="matrix(4.371139E-08 -1 -1 -4.371139E-08 27 48)"> <path d="M45.4421 0L23.9668 21.4053L2.49165 0L0 2.49976L23.9668 26.3886L47.9338 2.49976L45.4421 0Z" transform="translate(0 0.06670588)" class="Path" fill="#555" stroke="none" /> </g> </svg></li>
+										<li class="nextC{{ name }}"><?xml version="1.0" encoding="utf-8"?> <svg class="nextV arrow" width="27px" height="48px" viewBox="0 0 27 48" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"> <desc>Created with Lunacy</desc> <g id="down-chevron-(4)" transform="matrix(-4.371139E-08 -1 1 -4.371139E-08 0 47.93378)"> <path d="M45.4421 0L23.9668 21.4053L2.49165 0L0 2.49976L23.9668 26.3886L47.9338 2.49976L45.4421 0Z" class="Path" fill="#555" stroke="none" /> </g> </svg></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-7">
+							<div class="feat-slider">
+							{% for item in module.slides %}
+								<div class="border-secondary">
+									<div>
+										{{ var.image(item.image.src, item.image.width, item.image.alt) }}
+									</div>
+									<div>
+										<h6>{{ item.header }}</h6>
+									</div>
+									<div>
+										{{ item.content }}
+									</div>
+								</div>
+							{% endfor %}
+							</div>
+						</div>
+
+                    </div>
+                    
+			{% if module.design_settings.container_width != 'max' %}
+				</div>
+			</div>
+			{% endif %}
+
+		</div>
+	</div>
+	
+	{% require_css %}
+		<style type="text/css">
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			.sr-cards-slider-01 .col-lg-5 > div {
+				padding: 3rem 3rem 0 3rem;
+				margin-right: 2rem;
+			}
+			.sr-cards-slider-01 .feat-slider {
+				margin-top: 3rem;
+			}
+			.sr-cards-slider-01 .slick-track {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: end;
+				-ms-flex-align: end;
+				align-items: flex-end;
+			}
+			.sr-cards-slider-01 .feat-slider .slick-slide img {
+				margin-bottom: .5rem;
+			}
+			.sr-cards-slider-01 .feat-slider .slick-slide {
+				border: 2px solid;
+				background: #ffffff;
+				margin-right: 2rem;
+				padding: 1.5rem;
+			}
+			.sr-cards-slider-01 .feat-slider .slick-slide p {
+				font-size: .875rem;
+				line-height: 1.35rem;
+			}
+			.sr-cards-slider-01 .paginator-center ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				width: 100%;
+				-webkit-box-pack: end;
+				-ms-flex-pack: end;
+				justify-content: flex-end;
+				padding: 2rem 0 2rem 0;
+			}
+			.sr-cards-slider-01 .paginator-center ul li {
+				-webkit-transition: all 0.2s ease;
+				-o-transition: all 0.2s ease;
+				transition: all 0.2s ease;
+				opacity: .3;
+			}
+			.sr-cards-slider-01 svg.prevV.arrow {
+				margin-right: 2rem;
+			}
+			.sr-cards-slider-01 .paginator-center ul li:hover {
+				opacity: .8;
+				cursor: pointer;
+			}
+			.sr-cards-slider-01 path.Path {
+				fill: #555;
+				fill: var(--primary);
+			}
+			.sr-cards-slider-01 .feat-slider {
+				overflow: hidden;
+			}
+			.sr-cards-slider-01 .feat-slider > div:nth-child(n+1) {
+				display: none;
+			}
+			.slick-initialized,
+			.sr-cards-slider-01 .feat-slider > div:first-child { 
+				display: block;
+			}
+			{{ require_css(var.sr_assetDir + '/css/slick.css') }}
+		
+		</style>
+	{% end_require_css %}
+	
+	{{ require_js(var.sr_assetDir + '/js/slick.min.js') }}
+	{% require_js %}
+		<script>
+			$('.{{ name }} .feat-slider').slick({
+				dots: false,
+				infinite: true,
+				speed: 300,
+				slidesToShow: 2,
+				slidesToScroll: 1,
+                focusOnSelect:true,
+				prevArrow: $('.prevC{{ name }}'),
+				nextArrow: $('.nextC{{ name }}'),
+				responsive: [
+					{
+						breakpoint: 1024,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1,
+						}
+					}
+				]
+			});
+		</script>
+	{% end_require_js %}
+
+{% endif %}

@@ -1,0 +1,299 @@
+{
+	"custom_module": {
+		"author": "bradley@lean-labs.com",
+		"tags": ["ver-1.0.1"],
+		"name": "Email Three Col Media",
+		"css_assets": [],
+		"editable_contexts": [],
+		"external_js": [],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": ["EMAIL"],
+		"js_assets": [],
+		"other_assets": [],
+		"fields": [{
+			"default": true,
+			"label": "Enabled",
+			"name": "enabled",
+			"type": "boolean"
+		},
+		{
+			"name": "headline",
+			"label": "Headline",
+			"type": "text",
+			"default": "BRINGING THE CULTURE OF SHARING TO EVERYONE"
+		},
+		{
+			"name": "headline_size",
+			"label": "Headline Size",
+			"display": "select",
+			"choices": [
+				["1", "H1"],
+				["2", "H2"],
+				["3", "H3"],
+				["4", "H4"],
+				["5", "H5"],
+				["6", "H6"]
+			],
+			"type": "choice",
+			"default": "3"
+		},
+		{
+			"name": "text",
+			"label": "Text",
+			"type": "richtext",
+			"default": "At Sprocket Rocket, our mission has always been focused on bringing openness and transparency to the design process. We've always believed that by providing a space where designers can share ongoing work not only empowers them to make better products, it also helps them grow. We're proud to be a part of creating a more open culture and to continue building a product that supports this vision."
+		},
+		{
+			"id": 1,
+			"name": "image_row",
+			"label": "Image Row",
+			"occurrence": {
+				"min": null,
+				"max": null,
+				"sorting_label_field": null,
+				"default": 3
+			},
+			"children": [{
+				"name": "image_one",
+				"label": "Image One",
+				"children": [{
+					"name": "image",
+					"label": "Image",
+					"type": "image",
+					"default": {
+						"src": "https://www.lean-labs.com/hubfs/sr-assets/images/newsletter-media-three-col.jpg",
+						"alt": "Email Three Col Meida",
+						"width": 160,
+						"height": 123
+					}
+				},
+				{
+					"name": "caption",
+					"label": "Caption",
+					"type": "text",
+					"default": "bringing openness and transparency to the design process"
+				},
+				{
+					"name": "caption_link",
+					"label": "Caption Link",
+					"type": "text",
+					"default": "#"
+				}],
+				"type": "group",
+				"default": {
+					"image": {
+						"src": "https://www.lean-labs.com/hubfs/sr-assets/images/newsletter-media-three-col.jpg",
+						"alt": "Email Three Col Meida",
+						"width": 160,
+						"height": 123
+					},
+					"caption": "bringing openness and transparency to the design process",
+					"caption_link": "#"
+				}
+			},
+			{
+				"name": "image_two",
+				"label": "Image Two",
+				"children": [{
+					"name": "image",
+					"label": "Image",
+					"type": "image",
+					"default": {
+						"src": "https://www.lean-labs.com/hubfs/sr-assets/images/newsletter-media-three-col.jpg",
+						"alt": "Email Three Col Meida",
+						"width": 160,
+						"height": 123
+					}
+				},
+				{
+					"name": "caption",
+					"label": "Caption",
+					"type": "text",
+					"default": "bringing openness and transparency to the design process"
+				},
+				{
+					"name": "caption_link",
+					"label": "Caption Link",
+					"type": "text",
+					"default": ""
+				}],
+				"type": "group",
+				"default": {
+					"image": {
+						"src": "https://www.lean-labs.com/hubfs/sr-assets/images/newsletter-media-three-col.jpg",
+						"alt": "Email Three Col Meida",
+						"width": 160,
+						"height": 123
+					},
+					"caption": "bringing openness and transparency to the design process",
+					"caption_link": ""
+				}
+			},
+			{
+				"name": "image_three",
+				"label": "Image Three",
+				"children": [{
+					"id": "9a75bd57-bc34-27bc-69fe-63a7826c2297",
+					"name": "image",
+					"label": "Image",
+					"type": "image",
+					"default": {
+						"src": "https://www.lean-labs.com/hubfs/sr-assets/images/newsletter-media-three-col.jpg",
+						"alt": "Email Three Col Meida",
+						"width": 160,
+						"height": 123
+					}
+				},
+				{
+					"name": "caption",
+					"label": "Caption",
+					"type": "text",
+					"default": "bringing openness and transparency to the design process"
+				},
+				{
+					"name": "caption_link",
+					"label": "Caption Link",
+					"type": "text",
+					"default": "#"
+				}],
+				"type": "group",
+				"default": {
+					"image": {
+						"src": "https://www.lean-labs.com/hubfs/sr-assets/images/newsletter-media-three-col.jpg",
+						"alt": "Email Three Col Meida",
+						"width": 160,
+						"height": 123
+					},
+					"caption": "bringing openness and transparency to the design process",
+					"caption_link": "#"
+				}
+			}],
+			"type": "group",
+			"default": [{
+				"image_one": {
+					"image": {
+						"src": "https://www.lean-labs.com/hubfs/sr-assets/images/newsletter-media-three-col.jpg",
+						"alt": "Email Three Col Meida",
+						"width": 160,
+						"height": 123
+					},
+					"caption": "bringing openness and transparency to the design process",
+					"caption_link": "#"
+				},
+				"image_two": {
+					"image": {
+						"src": "https://www.lean-labs.com/hubfs/sr-assets/images/newsletter-media-three-col.jpg",
+						"alt": "Email Three Col Meida",
+						"width": 160,
+						"height": 123
+					},
+					"caption": "bringing openness and transparency to the design process",
+					"caption_link": ""
+				},
+				"image_three": {
+					"image": {
+						"src": "https://www.lean-labs.com/hubfs/sr-assets/images/newsletter-media-three-col.jpg",
+						"alt": "Email Three Col Meida",
+						"width": 160,
+						"height": 123
+					},
+					"caption": "bringing openness and transparency to the design process",
+					"caption_link": "#"
+				}
+			}, {
+				"image_one": {
+					"image": {
+						"src": "https://www.lean-labs.com/hubfs/sr-assets/images/newsletter-media-three-col.jpg",
+						"alt": "Email Three Col Meida",
+						"width": 160,
+						"height": 123
+					},
+					"caption": "bringing openness and transparency to the design process",
+					"caption_link": "#"
+				},
+				"image_two": {
+					"image": {
+						"src": "https://www.lean-labs.com/hubfs/sr-assets/images/newsletter-media-three-col.jpg",
+						"alt": "Email Three Col Meida",
+						"width": 160,
+						"height": 123
+					},
+					"caption": "bringing openness and transparency to the design process",
+					"caption_link": ""
+				},
+				"image_three": {
+					"image": {
+						"src": "https://www.lean-labs.com/hubfs/sr-assets/images/newsletter-media-three-col.jpg",
+						"alt": "Email Three Col Meida",
+						"width": 160,
+						"height": 123
+					},
+					"caption": "bringing openness and transparency to the design process",
+					"caption_link": "#"
+				}
+			}, {
+				"image_one": {
+					"image": {
+						"src": "https://www.lean-labs.com/hubfs/sr-assets/images/newsletter-media-three-col.jpg",
+						"alt": "Email Three Col Meida",
+						"width": 160,
+						"height": 123
+					},
+					"caption": "bringing openness and transparency to the design process",
+					"caption_link": "#"
+				},
+				"image_two": {
+					"image": {
+						"src": "https://www.lean-labs.com/hubfs/sr-assets/images/newsletter-media-three-col.jpg",
+						"alt": "Email Three Col Meida",
+						"width": 160,
+						"height": 123
+					},
+					"caption": "bringing openness and transparency to the design process",
+					"caption_link": ""
+				},
+				"image_three": {
+					"image": {
+						"src": "https://www.lean-labs.com/hubfs/sr-assets/images/newsletter-media-three-col.jpg",
+						"alt": "Email Three Col Meida",
+						"width": 160,
+						"height": 123
+					},
+					"caption": "bringing openness and transparency to the design process",
+					"caption_link": "#"
+				}
+			}]
+		},
+		{
+			"name": "text_2",
+			"label": "Text",
+			"type": "richtext",
+			"default": "As we've grown, we've seen how Sprocket Rocket has helped companies such as Spotify, Microsoft, Airbnb, Facebook, and Intercom bring their designers closer together to create amazing things. We've also learned that when the culture of sharing is brought in earlier, the better teams adapt and communicate with one another."
+		},
+		{
+			"name": "padding",
+			"label": "Padding",
+			"type": "text",
+			"default": "25px"
+		},
+		{
+			"name": "border_bottom",
+			"label": "Border Bottom",
+			"type": "boolean",
+			"default": true
+		},
+		{
+			"name": "text_color",
+			"label": "Text Color",
+			"type": "color",
+			"default": {
+				"color": "#0a0a0a",
+				"opacity": 100
+			}
+		}],
+		"source": ""
+	},
+	"custom_module_template": "email-three-col-media.html",
+	"files": []
+}

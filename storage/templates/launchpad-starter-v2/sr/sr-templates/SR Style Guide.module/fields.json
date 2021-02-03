@@ -1,0 +1,537 @@
+[ {
+  "id" : "design_settings",
+  "name" : "design_settings",
+  "label" : "Design Settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "design_settings.sr_module_id",
+    "name" : "sr_module_id",
+    "label" : "ID",
+    "help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : ""
+  }, {
+    "id" : "design_settings.class",
+    "name" : "class",
+    "label" : "Class",
+    "help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : ""
+  }, {
+    "id" : "design_settings.layout",
+    "name" : "layout",
+    "label" : "Layout",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "container", "Page" ], [ "container-fluid", "Full Width" ] ],
+    "type" : "choice",
+    "default" : "container"
+  }, {
+    "id" : "design_settings.container_width",
+    "name" : "container_width",
+    "label" : "Container Width",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "min", "Minimum" ], [ "narrow", "Narrow" ], [ "wide", "Wide" ], [ "max", "Maximum" ] ],
+    "type" : "choice",
+    "default" : "max"
+  }, {
+    "id" : "background_option",
+    "name" : "background_option",
+    "label" : "Background Option",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "image", "Image" ], [ "color", "Color" ], [ "custom", "Custom" ] ],
+    "type" : "choice",
+    "default" : "color"
+  }, {
+    "id" : "design_settings.background_image",
+    "name" : "background_image",
+    "label" : "Background Image",
+    "help_text" : "Recommended size: 2880x1920px | Also fallback while the video is loading",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "background_option",
+      "controlling_value_regex" : "(image|video)",
+      "operator" : "MATCHES_REGEX",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "src" : ""
+    }
+  }, {
+    "id" : "design_settings.background_overlay_color",
+    "name" : "background_overlay_color",
+    "label" : "Background Overlay Color",
+    "help_text" : "Recommended Width: 2880x1920px",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "background_option",
+      "controlling_value_regex" : "(image|video)",
+      "operator" : "MATCHES_REGEX",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 90
+    }
+  }, {
+    "id" : "design_settings.background_color",
+    "name" : "background_color",
+    "label" : "Background Color",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "background_option",
+      "controlling_value_regex" : "color",
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "tertiary", "Tertiary" ], [ "white", "White" ], [ "black", "Black" ], [ "dark", "Dark" ], [ "light", "Light" ], [ "success", "Success" ], [ "info", "Info" ], [ "warning", "Warning" ], [ "danger", "Danger" ], [ "none", "None" ] ],
+    "type" : "choice",
+    "default" : "white"
+  }, {
+    "id" : "design_settings.background_custom",
+    "name" : "background_custom",
+    "label" : "Background Custom",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "background_option",
+      "controlling_value_regex" : "custom",
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#fff"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "type" : "group",
+  "default" : {
+    "sr_module_id" : "",
+    "class" : "",
+    "layout" : "container",
+    "container_width" : "max",
+    "background_option" : "color",
+    "background_image" : {
+      "src" : ""
+    },
+    "background_overlay_color" : {
+      "color" : "#000000",
+      "opacity" : 90
+    },
+    "background_color" : "white",
+    "background_custom" : {
+      "color" : "#fff"
+    }
+  }
+}, {
+  "id" : "bba49a25-351e-d0bc-f642-d505faf28be3",
+  "name" : "hero",
+  "label" : "Hero",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "95dd27fa-501b-ac59-bc9a-4c30fe1358be",
+    "name" : "enabled",
+    "label" : "Enabled",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "3d1227c9-32d7-481e-b1e9-9b71725e90ce",
+    "name" : "hero",
+    "label" : "Hero ",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "95dd27fa-501b-ac59-bc9a-4c30fe1358be",
+      "controlling_value_regex" : "true",
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "type" : "richtext",
+    "default" : "<h1 class=\"display-3\">Style Guide</h1>\n<p class=\"lead\">Use this template a reference to your brand styles</p>"
+  } ],
+  "tab" : "CONTENT",
+  "type" : "group",
+  "default" : {
+    "enabled" : true,
+    "hero" : "<h1 class=\"display-3\">Style Guide</h1>\n<p class=\"lead\">Use this template a reference to your brand styles</p>"
+  }
+}, {
+  "id" : "dbf66418-1b1c-6fee-081e-2ca73d6b5066",
+  "name" : "logo",
+  "label" : "Logo",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "ede12a7f-fd09-cfc4-3fc5-c3ea689e4102",
+    "name" : "enabled",
+    "label" : "Enabled",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "cdc76b95-5994-6ec2-0f7a-b2264b626bbf",
+    "name" : "logo",
+    "label" : "Logo",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : null,
+      "default" : 1
+    },
+    "visibility" : {
+      "controlling_field" : "ede12a7f-fd09-cfc4-3fc5-c3ea689e4102",
+      "controlling_value_regex" : "true",
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : [ {
+      "size_type" : "auto",
+      "src" : "https://www.lean-labs.com/hubfs/brandvious/images/sprocket-rocket-black.svg",
+      "alt" : "sprocket-rocket-black",
+      "width" : 400,
+      "height" : 400,
+      "max_width" : 400,
+      "max_height" : 400
+    } ]
+  }, {
+    "id" : "9eb19f17-d2dc-e25f-4b79-533d4e5a42e6",
+    "name" : "richtext_field",
+    "label" : "Rich text",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ede12a7f-fd09-cfc4-3fc5-c3ea689e4102",
+      "controlling_value_regex" : "true",
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "type" : "richtext",
+    "default" : "<p><a href=\"#\">Download Logo Files</a></p>"
+  } ],
+  "tab" : "CONTENT",
+  "type" : "group",
+  "default" : {
+    "enabled" : true,
+    "logo" : [ {
+      "size_type" : "auto",
+      "src" : "https://www.lean-labs.com/hubfs/brandvious/images/sprocket-rocket-black.svg",
+      "alt" : "sprocket-rocket-black",
+      "width" : 400,
+      "height" : 400,
+      "max_width" : 400,
+      "max_height" : 400
+    } ],
+    "richtext_field" : "<p><a href=\"#\">Download Logo Files</a></p>"
+  }
+}, {
+  "id" : "e26113f3-c44d-b24d-5ee8-9c1b4599470c",
+  "name" : "colors",
+  "label" : "Colors",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "d180c5dc-24e9-5eb4-ec9c-eeb07133acef",
+    "name" : "enabled",
+    "label" : "Enabled",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "a1e6ad10-9b8f-5a62-1afc-a82d2b666ac7",
+    "name" : "show_default_color",
+    "label" : "Show Default Color",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "d180c5dc-24e9-5eb4-ec9c-eeb07133acef",
+      "controlling_value_regex" : "true",
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "b38513aa-3ae6-121d-98cd-9c038d9e8bd2",
+    "name" : "color",
+    "label" : "Color",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : "843f33df-1f19-b103-a6e2-38891c005e86",
+      "default" : 1
+    },
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_value_regex" : null,
+      "operator" : "NOT_EMPTY",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "children" : [ {
+      "id" : "843f33df-1f19-b103-a6e2-38891c005e86",
+      "name" : "title",
+      "label" : "Title",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Custom Color"
+    }, {
+      "id" : "115f77eb-5d7d-1c35-6a03-91112823a5b5",
+      "name" : "color",
+      "label" : "Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#9FC5E8",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "CONTENT",
+    "type" : "group",
+    "default" : [ {
+      "title" : "Custom Color",
+      "color" : {
+        "color" : "#9FC5E8",
+        "opacity" : 100
+      }
+    } ]
+  } ],
+  "tab" : "CONTENT",
+  "type" : "group",
+  "default" : {
+    "enabled" : true,
+    "show_default_color" : true,
+    "color" : [ {
+      "title" : "Custom Color",
+      "color" : {
+        "color" : "#9FC5E8",
+        "opacity" : 100
+      }
+    } ]
+  }
+}, {
+  "id" : "10615cd7-aaf9-465d-5e55-eb791da8e7f2",
+  "name" : "typography",
+  "label" : "Typography",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "c39cabc3-79e5-f7f3-1b6b-136ae4fc2f55",
+    "name" : "enabled",
+    "label" : "Enabled",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "da28b045-469a-d416-1364-a831a233b62e",
+    "name" : "typography",
+    "label" : "Typography",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "c39cabc3-79e5-f7f3-1b6b-136ae4fc2f55",
+      "controlling_value_regex" : "true",
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "type" : "richtext",
+    "default" : "<div class=\"typography-element\">\n<h1>H1 - Prefacing Title - Lorem ipsum dolor sit amet</h1>\n</div>\n<div class=\"typography-element\">\n<h2>H2 - Title - Header - Lorem ipsum dolor sit amet, consectetur adipisicing elit</h2>\n</div>\n<div class=\"typography-element\">\n<h3>H3 - Subtitle - Secondary Text - Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>\n</div>\n<div class=\"typography-element\">\n<h4>H4 - Lorem ipsum dolor sit amet, consectetur adipisicing elit</h4>\n</div>\n<div class=\"typography-element\">\n<h5>H5 - Lorem ipsum dolor sit amet, consectetur adipisicing elit</h5>\n</div>\n<div class=\"typography-element\">\n<h6>H6 - Lorem ipsum dolor sit amet, consectetur adipisicing elit</h6>\n</div>\n<div class=\"typography-element\">body - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque a nisl a ipsum convallis consequat. Integer id felis a libero finibus convallis. Aenean consequat quam blandit luctus rhoncus. Curabitur in lobortis turpis.</div>\n<div class=\"typography-element\">\n<p>p - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque a nisl a ipsum convallis consequat. Integer id felis a libero finibus convallis. Aenean consequat quam blandit luctus rhoncus. Curabitur in lobortis turpis.</p>\n</div>\n<div class=\"typography-element\">\n<ul>\n<li>li - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>\n<li>li - Pellentesque a nisl a ipsum convallis consequat. Integer id felis a libero finibus convallis.</li>\n<li>li - Aenean consequat quam blandit luctus rhoncus. Curabitur in lobortis turpis.</li>\n</ul>\n</div>\n<div class=\"typography-element\">\n<p class=\"small\">p.small - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque a nisl a ipsum convallis consequat. Integer id felis a libero finibus convallis. Aenean consequat quam blandit luctus rhoncus. Curabitur in lobortis turpis.</p>\n</div>\n<div class=\"typography-element\">\n<p class=\"large\">p.large - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque a nisl a ipsum convallis consequat. Integer id felis a libero finibus convallis. Aenean consequat quam blandit luctus rhoncus. Curabitur in lobortis turpis.</p>\n</div>\n<div class=\"typography-element\">\n<p class=\"blog\">p.blog - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque a nisl a ipsum convallis consequat. Integer id felis a libero finibus convallis. Aenean consequat quam blandit luctus rhoncus. Curabitur in lobortis turpis.</p>\n</div>\n<div class=\"typography-element\">\n<blockquote>“Blockquote - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque a nisl a ipsum convallis consequat. Integer id felis a libero finibus convallis. Aenean consequat quam blandit luctus rhoncus. Curabitur in lobortis turpis.”</blockquote>\n</div>\n<div class=\"typography-element\">\n<p><a href=\"#\">This is a link</a> lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed sapien magna. Morbi ac arcu eu tortor condimentum pellentesque.</p>\n</div>"
+  }, {
+    "id" : "4cd2bb63-c770-71ea-ca69-d98e0259ddc7",
+    "name" : "display_heading",
+    "label" : "Display Heading",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "c39cabc3-79e5-f7f3-1b6b-136ae4fc2f55",
+      "controlling_value_regex" : "true",
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "type" : "richtext",
+    "default" : "<div>\n<pre><code data-lang=\"html\"><span>&lt;h1</span> <span>class=</span><span>\"display-1\"</span><span>&gt;</span>Display 1<span>&lt;/h1&gt;</span><br><span>&lt;h1</span> <span>class=</span><span>\"display-2\"</span><span>&gt;</span>Display 2<span>&lt;/h1&gt;</span><br><span>&lt;h1</span> <span>class=</span><span>\"display-3\"</span><span>&gt;</span>Display 3<span>&lt;/h1&gt;</span><br><span>&lt;h1</span> <span>class=</span><span>\"display-4\"</span><span>&gt;</span>Display 4<span>&lt;/h1&gt;</span></code></pre>\n</div>\n<div>\n<p>&nbsp;</p>\n<h1 class=\"display-1\">Display-1 - Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>\n<p>&nbsp;</p>\n</div>\n<div>\n<h1 class=\"display-2\">Display-2 - Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>\n<p>&nbsp;</p>\n</div>\n<div>\n<h1 class=\"display-3\">Display-3 - Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>\n<p>&nbsp;</p>\n</div>\n<div>\n<h1 class=\"display-4\">Display-4 - Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>\n</div>"
+  } ],
+  "tab" : "CONTENT",
+  "type" : "group",
+  "default" : {
+    "enabled" : true,
+    "typography" : "<div class=\"typography-element\">\n<h1>H1 - Prefacing Title - Lorem ipsum dolor sit amet</h1>\n</div>\n<div class=\"typography-element\">\n<h2>H2 - Title - Header - Lorem ipsum dolor sit amet, consectetur adipisicing elit</h2>\n</div>\n<div class=\"typography-element\">\n<h3>H3 - Subtitle - Secondary Text - Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>\n</div>\n<div class=\"typography-element\">\n<h4>H4 - Lorem ipsum dolor sit amet, consectetur adipisicing elit</h4>\n</div>\n<div class=\"typography-element\">\n<h5>H5 - Lorem ipsum dolor sit amet, consectetur adipisicing elit</h5>\n</div>\n<div class=\"typography-element\">\n<h6>H6 - Lorem ipsum dolor sit amet, consectetur adipisicing elit</h6>\n</div>\n<div class=\"typography-element\">body - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque a nisl a ipsum convallis consequat. Integer id felis a libero finibus convallis. Aenean consequat quam blandit luctus rhoncus. Curabitur in lobortis turpis.</div>\n<div class=\"typography-element\">\n<p>p - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque a nisl a ipsum convallis consequat. Integer id felis a libero finibus convallis. Aenean consequat quam blandit luctus rhoncus. Curabitur in lobortis turpis.</p>\n</div>\n<div class=\"typography-element\">\n<ul>\n<li>li - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>\n<li>li - Pellentesque a nisl a ipsum convallis consequat. Integer id felis a libero finibus convallis.</li>\n<li>li - Aenean consequat quam blandit luctus rhoncus. Curabitur in lobortis turpis.</li>\n</ul>\n</div>\n<div class=\"typography-element\">\n<p class=\"small\">p.small - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque a nisl a ipsum convallis consequat. Integer id felis a libero finibus convallis. Aenean consequat quam blandit luctus rhoncus. Curabitur in lobortis turpis.</p>\n</div>\n<div class=\"typography-element\">\n<p class=\"large\">p.large - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque a nisl a ipsum convallis consequat. Integer id felis a libero finibus convallis. Aenean consequat quam blandit luctus rhoncus. Curabitur in lobortis turpis.</p>\n</div>\n<div class=\"typography-element\">\n<p class=\"blog\">p.blog - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque a nisl a ipsum convallis consequat. Integer id felis a libero finibus convallis. Aenean consequat quam blandit luctus rhoncus. Curabitur in lobortis turpis.</p>\n</div>\n<div class=\"typography-element\">\n<blockquote>“Blockquote - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque a nisl a ipsum convallis consequat. Integer id felis a libero finibus convallis. Aenean consequat quam blandit luctus rhoncus. Curabitur in lobortis turpis.”</blockquote>\n</div>\n<div class=\"typography-element\">\n<p><a href=\"#\">This is a link</a> lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed sapien magna. Morbi ac arcu eu tortor condimentum pellentesque.</p>\n</div>",
+    "display_heading" : "<div>\n<pre><code data-lang=\"html\"><span>&lt;h1</span> <span>class=</span><span>\"display-1\"</span><span>&gt;</span>Display 1<span>&lt;/h1&gt;</span><br><span>&lt;h1</span> <span>class=</span><span>\"display-2\"</span><span>&gt;</span>Display 2<span>&lt;/h1&gt;</span><br><span>&lt;h1</span> <span>class=</span><span>\"display-3\"</span><span>&gt;</span>Display 3<span>&lt;/h1&gt;</span><br><span>&lt;h1</span> <span>class=</span><span>\"display-4\"</span><span>&gt;</span>Display 4<span>&lt;/h1&gt;</span></code></pre>\n</div>\n<div>\n<p>&nbsp;</p>\n<h1 class=\"display-1\">Display-1 - Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>\n<p>&nbsp;</p>\n</div>\n<div>\n<h1 class=\"display-2\">Display-2 - Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>\n<p>&nbsp;</p>\n</div>\n<div>\n<h1 class=\"display-3\">Display-3 - Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>\n<p>&nbsp;</p>\n</div>\n<div>\n<h1 class=\"display-4\">Display-4 - Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>\n</div>"
+  }
+}, {
+  "id" : "1dedb022-3f43-5945-4c4d-36a004362e32",
+  "name" : "buttons",
+  "label" : "Buttons",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "18d40be2-30c5-f2b7-85b7-362f281dd36f",
+    "name" : "enabled",
+    "label" : "Enabled",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  } ],
+  "tab" : "CONTENT",
+  "type" : "group",
+  "default" : {
+    "enabled" : true
+  }
+}, {
+  "id" : "75a3a469-8b54-2d0c-5515-1532dd9ce3b0",
+  "name" : "form",
+  "label" : "Form",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "58979620-d776-19b2-cf0c-80e2788c1462",
+    "name" : "enabled",
+    "label" : "Enabled",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "35fd0cc6-508e-1d1a-6b9d-ddf5994ad8b6",
+    "name" : "form",
+    "label" : "Overwrite Default Form",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "58979620-d776-19b2-cf0c-80e2788c1462",
+      "controlling_value_regex" : "true",
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "type" : "form",
+    "default" : {
+      "response_type" : "inline",
+      "message" : "Thanks for submitting the form."
+    }
+  } ],
+  "tab" : "CONTENT",
+  "type" : "group",
+  "default" : {
+    "enabled" : true,
+    "form" : {
+      "response_type" : "inline",
+      "message" : "Thanks for submitting the form."
+    }
+  }
+}, {
+  "id" : "8804ce67-a7a1-12c1-bb4e-77da34cf588f",
+  "name" : "custom_sections",
+  "label" : "Custom Sections",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "5a9b48e5-dc88-db7a-d0cf-7c9c27783bb3",
+    "name" : "custom_section",
+    "label" : "Custom Section",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : "dd7a4c1e-444a-5eda-25c5-df2be8b05489",
+      "default" : 1
+    },
+    "children" : [ {
+      "id" : "dd7a4c1e-444a-5eda-25c5-df2be8b05489",
+      "name" : "heading",
+      "label" : "Heading",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Custom Section"
+    }, {
+      "id" : "eca70709-d2ac-10d6-3eca-3197b6376c7e",
+      "name" : "rich_text",
+      "label" : "Rich Text",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "default" : "<p>Add in your own sections</p>"
+    } ],
+    "tab" : "CONTENT",
+    "type" : "group",
+    "default" : [ {
+      "heading" : "Custom Section",
+      "rich_text" : "<p>Add in your own sections</p>"
+    } ]
+  } ],
+  "tab" : "CONTENT",
+  "type" : "group",
+  "default" : {
+    "custom_section" : [ {
+      "heading" : "Custom Section",
+      "rich_text" : "<p>Add in your own sections</p>"
+    } ]
+  }
+} ]

@@ -1,0 +1,16 @@
+{
+	"name": "Homepage v3",
+	"custom_modules": [
+		"sr-nav-dropdown-01.json",
+		"sr-hero-02.json",
+		"sr-clients-01.json",
+		"sr-one-col-media-01.json",
+		"sr-tabs-split-screen-01-dark.json",
+		"sr-faq-01.json",
+		"sr-cards-categories-01.json",
+		"sr-offer-bar-05.json",
+		"sr-footer-04.json"
+	],
+	"module_overrides": {},
+	"page_overrides": {}
+}

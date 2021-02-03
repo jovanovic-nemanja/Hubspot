@@ -1,0 +1,737 @@
+{
+	"custom_module": {
+		"author": "bradley@lean-labs.com",
+		"tags": ["ver-1.0.0"],
+		"name": "SR Calculator 01",
+		"css_assets": [],
+		"editable_contexts": [],
+		"external_js": [],
+		"icon": "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+		"purchased": true,
+		"hostTemplateTypes": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+		"js_assets": [],
+		"other_assets": [],
+		"fields": [{
+			"id": "enabled",
+			"name": "enabled",
+			"label": "Enabled",
+			"required": false,
+			"locked": false,
+			"type": "boolean",
+			"default": true
+		}, {
+			"id": "design_settings",
+			"name": "design_settings",
+			"label": "Design Settings",
+			"required": false,
+			"locked": false,
+			"children": [{
+				"id": "design_settings.sr_module_id",
+				"name": "sr_module_id",
+				"label": "ID",
+				"required": false,
+				"locked": false,
+				"validation_regex": "",
+				"allow_new_line": false,
+				"show_emoji_picker": false,
+				"type": "text",
+				"default": null
+			}, {
+				"id": "design_settings.class",
+				"name": "class",
+				"label": "Class",
+				"required": false,
+				"locked": false,
+				"validation_regex": "",
+				"allow_new_line": false,
+				"show_emoji_picker": false,
+				"type": "text",
+				"default": null
+			}, {
+				"id": "design_settings.layout",
+				"name": "layout",
+				"label": "Layout",
+				"required": true,
+				"locked": false,
+				"display": "select",
+				"choices": [
+					["container", "Page"],
+					["container-fluid", "Full Width"]
+				],
+				"type": "choice",
+				"default": "container"
+			}, {
+				"id": "design_settings.container_width",
+				"name": "container_width",
+				"label": "Container Width",
+				"required": true,
+				"locked": false,
+				"display": "select",
+				"choices": [
+					["min", "Minimum"],
+					["narrow", "Narrow"],
+					["wide", "Wide"],
+					["max", "Maximum"]
+				],
+				"type": "choice",
+				"default": "max"
+			}, {
+				"id": "design_settings.top_bottom_padding",
+				"name": "top_bottom_padding",
+				"label": "Top Bottom Padding",
+				"required": true,
+				"locked": false,
+				"display": "select",
+				"choices": [
+					["auto", "Use default values"],
+					["zero", "No Padding"],
+					["half", "Small padding"],
+					["full", "Large padding"]
+				],
+				"type": "choice",
+				"default": "full"
+			}, {
+				"id": "design_settings.border_top",
+				"name": "border_top",
+				"label": "Border Top",
+				"required": false,
+				"locked": false,
+				"type": "boolean",
+				"default": false
+			}, {
+				"id": "design_settings.border_bottom",
+				"name": "border_bottom",
+				"label": "Border Bottom",
+				"required": false,
+				"locked": false,
+				"type": "boolean",
+				"default": false
+			}, {
+				"id": "background_option",
+				"name": "background_option",
+				"label": "Background Option",
+				"required": true,
+				"locked": false,
+				"display": "select",
+				"choices": [
+					["image", "Image"],
+					["color", "Color"],
+					["custom", "Custom"]
+				],
+				"type": "choice",
+				"default": "color"
+			}, {
+				"id": "design_settings.background_image",
+				"name": "background_image",
+				"label": "Background Image",
+				"required": false,
+				"locked": false,
+				"visibility": {
+					"controlling_field": "background_option",
+					"controlling_value_regex": "image",
+					"operator": "EQUAL",
+					"access": null,
+					"hidden_subfields": null
+				},
+				"responsive": false,
+				"resizable": true,
+				"type": "image",
+				"default": {
+					"src": "",
+					"alt": ""
+				}
+			}, {
+				"id": "design_settings.background_overlay_color",
+				"name": "background_overlay_color",
+				"label": "Background Overlay Color",
+				"required": false,
+				"locked": false,
+				"visibility": {
+					"controlling_field": "background_option",
+					"controlling_value_regex": "image",
+					"operator": "EQUAL",
+					"access": null,
+					"hidden_subfields": null
+				},
+				"type": "color",
+				"default": {
+					"color": "#343a40",
+					"opacity": 30
+				}
+			}, {
+				"id": "design_settings.background_color",
+				"name": "background_color",
+				"label": "Background Color",
+				"required": true,
+				"locked": false,
+				"visibility": {
+					"controlling_field": "background_option",
+					"controlling_value_regex": "color",
+					"operator": "EQUAL",
+					"access": null,
+					"hidden_subfields": null
+				},
+				"display": "select",
+				"choices": [
+					[
+						"primary", "Primary"
+					],
+					[
+						"secondary", "Secondary"
+					],
+					[
+						"tertiary", "Tertiary"
+					],
+					[
+						"white", "White"
+					],
+					[
+						"black", "Black"
+					],
+					[
+						"dark", "Dark"
+					],
+					[
+						"light", "Light"
+					],
+					[
+						"success", "Success"
+					],
+					[
+						"info", "Info"
+					],
+					[
+						"warning", "Warning"
+					],
+					[
+						"danger", "Danger"
+					],
+					[
+						"none", "None"
+					]
+				],
+				"type": "choice",
+				"default": "white"
+			},
+			{
+				"default": {
+					"color": "#0c63ff"
+				},
+				"label": "Background Gradient From",
+				"name": "background_gradient_from",
+				"visibility": {
+					"controlling_field": "background_option",
+					"controlling_value_regex": "gradient",
+					"operator": "EQUAL"
+				},
+				"type": "color"
+			},
+			{
+				"default": {
+					"color": "#1897ff"
+				},
+				"label": "Background Gradient To",
+				"name": "background_gradient_to",
+				"visibility": {
+					"controlling_field": "background_option",
+					"controlling_value_regex": "gradient",
+					"operator": "EQUAL"
+				},
+				"type": "color"
+			},	
+			{
+				"id": "design_settings.background_custom",
+				"name": "background_custom",
+				"label": "Background Custom",
+				"required": false,
+				"locked": false,
+				"visibility": {
+					"controlling_field": "background_option",
+					"controlling_value_regex": "custom",
+					"operator": "EQUAL",
+					"access": null,
+					"hidden_subfields": null
+				},
+				"type": "color",
+				"default": {
+					"color": "#F5F7F9"
+				}
+			}],
+			"tab": "CONTENT",
+			"type": "group",
+			"default": {
+				"layout": "container",
+				"container_width": "max",
+				"top_bottom_padding": "full",
+				"border_top": false,
+				"border_bottom": false,
+				"background_option": "color",
+				"background_image": {
+					"src": "",
+					"alt": ""
+				},
+				"background_overlay_color": {
+					"color": "#343a40",
+					"opacity": 30
+				},
+				"background_color": "white",
+				"background_custom": {
+					"color": "#F5F7F9"
+				}
+			}
+		}, {
+			"id": "heading",
+			"name": "heading",
+			"label": "Heading",
+			"required": false,
+			"locked": false,
+			"validation_regex": "",
+			"allow_new_line": false,
+			"show_emoji_picker": false,
+			"type": "text",
+			"default": "Sprocket Rocket Calculator"
+		}, {
+			"id": "heading_size",
+			"name": "heading_size",
+			"label": "Heading Size",
+			"required": true,
+			"locked": false,
+			"visibility": {
+				"controlling_field": "heading",
+				"controlling_value_regex": null,
+				"operator": null,
+				"access": null,
+				"hidden_subfields": null
+			},
+			"display": "select",
+			"choices": [
+				["1", "H1"],
+				["2", "H2"],
+				["3", "H3"],
+				["4", "H4"],
+				["5", "H5"],
+				["6", "H6"]
+			],
+			"type": "choice",
+			"default": "2"
+		}, {
+			"id": "description",
+			"name": "description",
+			"label": "Description",
+			"required": false,
+			"locked": false,
+			"type": "richtext",
+			"default": "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</span></p>"
+		}, {
+			"id": "d6169664-532e-f170-2333-2d3ff89ae121",
+			"name": "calculator",
+			"label": "Calculator",
+			"required": false,
+			"locked": false,
+			"children": [{
+				"id": "1e1ed2f4-985c-edbb-7a96-36bffd89437e",
+				"name": "title",
+				"label": "Title",
+				"required": false,
+				"locked": false,
+				"validation_regex": "",
+				"allow_new_line": false,
+				"show_emoji_picker": false,
+				"type": "text",
+				"default": "Get Results "
+			}, {
+				"id": "db2d848a-6e6e-e50e-2c18-25e14dc0fc06",
+				"name": "inputs",
+				"label": "Inputs",
+				"required": false,
+				"locked": false,
+				"occurrence": {
+					"min": null,
+					"max": null,
+					"sorting_label_field": null,
+					"default": 2
+				},
+				"children": [{
+					"id": "d0872397-1888-2c24-bb48-03a116ac7af0",
+					"name": "field_id",
+					"label": "Field ID",
+					"help_text": "",
+					"required": false,
+					"locked": false,
+					"validation_regex": "",
+					"allow_new_line": false,
+					"show_emoji_picker": false,
+					"type": "text",
+					"default": "field_id"
+				}, {
+					"id": "cd08cb3f-b4e3-34b5-2290-03bfdb3fd2ce",
+					"name": "field_label",
+					"label": "Field Label",
+					"required": false,
+					"locked": false,
+					"validation_regex": "",
+					"allow_new_line": false,
+					"show_emoji_picker": false,
+					"type": "text",
+					"default": "Field Label"
+				}, {
+					"id": "f718c727-4b5e-bce2-bd03-2ec4eb9db59b",
+					"name": "default_value",
+					"label": "Default Value",
+					"required": false,
+					"locked": false,
+					"validation_regex": "",
+					"allow_new_line": false,
+					"show_emoji_picker": false,
+					"type": "text",
+					"default": ""
+				}, {
+					"id": "6c78057b-d15d-de41-004c-da9304a4865f",
+					"name": "hidden",
+					"label": "Hidden",
+					"required": false,
+					"locked": false,
+					"type": "boolean",
+					"default": false
+				}, {
+					"id": "f6b72846-2577-30ad-1f90-8a7de3645a9f",
+					"name": "width",
+					"label": "Width",
+					"required": false,
+					"locked": false,
+					"display": "select",
+					"choices": [
+						["full", "Full"],
+						["half", "Half"]
+					],
+					"type": "choice",
+					"default": "full"
+				}],
+				"tab": "CONTENT",
+				"type": "group",
+				"default": [{
+					"field_id": "field_id",
+					"field_label": "Field Label",
+					"default_value": "",
+					"hidden": false,
+					"width": "full"
+				}, {
+					"field_id": "field_id",
+					"field_label": "Field Label",
+					"default_value": "",
+					"hidden": false,
+					"width": "full"
+				}]
+			}, {
+				"id": "5162d5d8-2e2d-6c85-42e5-93865ccfd600",
+				"name": "outputs",
+				"label": "Outputs",
+				"required": false,
+				"locked": false,
+				"occurrence": {
+					"min": null,
+					"max": null,
+					"sorting_label_field": null,
+					"default": 1
+				},
+				"children": [{
+					"id": "cd7c5030-0e0f-ecf3-dc40-fe665c670553",
+					"name": "output_id",
+					"label": "Output ID",
+					"required": false,
+					"locked": false,
+					"validation_regex": "",
+					"allow_new_line": false,
+					"show_emoji_picker": false,
+					"type": "text",
+					"default": "output_id"
+				}, {
+					"id": "92a42176-5a1d-526b-8302-fe67b317fd9e",
+					"name": "output_label",
+					"label": "Output Label",
+					"required": false,
+					"locked": false,
+					"validation_regex": "",
+					"allow_new_line": false,
+					"show_emoji_picker": false,
+					"type": "text",
+					"default": null
+				}, {
+					"id": "3d0943a7-3d3b-75a0-8693-13d74efb8cc8",
+					"name": "output_calculation",
+					"label": "Output Calculation",
+					"help_text": "",
+					"required": false,
+					"locked": false,
+					"validation_regex": "",
+					"allow_new_line": false,
+					"show_emoji_picker": false,
+					"type": "text",
+					"default": null
+				}, {
+					"id": "7096af2a-d126-2dea-4c08-3297ef9904bb",
+					"name": "percent",
+					"label": "Percent",
+					"required": false,
+					"locked": false,
+					"type": "boolean",
+					"default": false
+				}, {
+					"id": "92101977-bd9f-c9d6-cef9-60f78806b132",
+					"name": "hidden",
+					"label": "Hidden",
+					"required": false,
+					"locked": false,
+					"type": "boolean",
+					"default": false
+				}],
+				"tab": "CONTENT",
+				"type": "group",
+				"default": [{
+					"output_id": "output_id",
+					"percent": false,
+					"boolean_field": false
+				}]
+			}, {
+				"id": "e4bbad14-892d-8664-f70e-6d3b3853c28a",
+				"name": "overlay",
+				"label": "Overlay",
+				"required": false,
+				"locked": false,
+				"children": [{
+					"id": "b3ef6e21-396f-2b46-4d91-a20f24aa8d45",
+					"name": "overlay_content",
+					"label": "Content",
+					"required": false,
+					"locked": false,
+					"type": "richtext",
+					"default": "<p><img src=\"https://www.lean-labs.com/hubfs/sr-assets/pattern-library/sr-logo-white.png\" alt=\"sr-logo-white\" width=\"200\" style=\"width: 200px;\"></p>\n<h3>High-Conversion Websites<br>Without The Hassle</h3>\n<div>Sprocket Rocket is a Premium HubSpot Template that lets startups, marketers and entrepreneurs redesign their website &amp; optimize for conversion without developers, designers or expensive agencies.</div>"
+				}, {
+					"id": "3359cb94-7f5c-d3af-426c-68b44c27a809",
+					"name": "background",
+					"label": "Background",
+					"required": false,
+					"locked": false,
+					"type": "color",
+					"default": {
+						"color": "#0c63ff",
+						"opacity": 100
+					}
+				}, {
+					"id": "e423c502-1c07-8e77-9c94-3ef42f812fa1",
+					"name": "text_color",
+					"label": "Text Color",
+					"required": false,
+					"locked": false,
+					"display": "select",
+					"choices": [
+						[
+							"auto", "Auto"
+						],
+						[
+							"primary", "Primary"
+						],
+						[
+							"secondary", "Secondary"
+						],
+						[
+							"tertiary", "Tertiary"
+						],
+						[
+							"white", "White"
+						],
+						[
+							"black", "Black"
+						],
+						[
+							"dark", "Dark"
+						],
+						[
+							"light", "Light"
+						],
+						[
+							"success", "Success"
+						],
+						[
+							"info", "Info"
+						],
+						[
+							"warning", "Warning"
+						],
+						[
+							"danger", "Danger"
+						]
+					],
+					"type": "choice",
+					"default": "white"
+				}, {
+					"id": "95b6471c-f97a-9f65-a9af-0c0216df4eeb",
+					"name": "text_align",
+					"label": "Text Align",
+					"required": false,
+					"locked": false,
+					"display": "select",
+					"choices": [
+						["auto", "Auto"],
+						["center", "Center"],
+						["left", "Left"],
+						["right", "Right"]
+					],
+					"type": "choice",
+					"default": "auto"
+				}],
+				"tab": "CONTENT",
+				"type": "group",
+				"default": {
+					"overlay_content": "<p><img src=\"https://www.lean-labs.com/hubfs/sr-assets/pattern-library/sr-logo-white.png\" alt=\"sr-logo-white\" width=\"200\" style=\"width: 200px;\"></p>\n<h3>High-Conversion Websites<br>Without The Hassle</h3>\n<div>Sprocket Rocket is a Premium HubSpot Template that lets startups, marketers and entrepreneurs redesign their website &amp; optimize for conversion without developers, designers or expensive agencies.</div>",
+					"background": {
+						"color": "#0c63ff",
+						"opacity": 100
+					},
+					"text_color": "white",
+					"text_align": "auto"
+				}
+			}, {
+				"id": "7310b9f5-5ca9-7bf7-ed52-639280362034",
+				"name": "button_text",
+				"label": "Button Text",
+				"required": false,
+				"locked": false,
+				"validation_regex": "",
+				"allow_new_line": false,
+				"show_emoji_picker": false,
+				"type": "text",
+				"default": "Calculate"
+			}, {
+				"id": "707fab64-a25b-449e-cd10-d34781443ca9",
+				"name": "inputs_background_color",
+				"label": "Inputs Background Color",
+				"required": false,
+				"locked": false,
+				"type": "color",
+				"default": {
+					"color": "#f5f7f9",
+					"opacity": 100
+				}
+			}, {
+				"id": "02852653-c96a-84e5-c3cf-43b2e681e339",
+				"name": "outputs_background_color",
+				"label": "Outputs Background Color",
+				"required": false,
+				"locked": false,
+				"type": "color",
+				"default": {
+					"color": "#eaeaea",
+					"opacity": 100
+				}
+			}],
+			"tab": "CONTENT",
+			"type": "group",
+			"default": {
+				"title": "Get Results ",
+				"inputs": [{
+					"field_id": "field_id",
+					"field_label": "Field Label",
+					"default_value": "",
+					"hidden": false,
+					"width": "full"
+				}, {
+					"field_id": "field_id",
+					"field_label": "Field Label",
+					"default_value": "",
+					"hidden": false,
+					"width": "full"
+				}],
+				"outputs": [{
+					"output_id": "output_id",
+					"percent": false,
+					"boolean_field": false
+				}],
+				"overlay": {
+					"overlay_content": "<p><img src=\"https://www.lean-labs.com/hubfs/sr-assets/pattern-library/sr-logo-white.png\" alt=\"sr-logo-white\" width=\"200\" style=\"width: 200px;\"></p>\n<h3>High-Conversion Websites<br>Without The Hassle</h3>\n<div>Sprocket Rocket is a Premium HubSpot Template that lets startups, marketers and entrepreneurs redesign their website &amp; optimize for conversion without developers, designers or expensive agencies.</div>",
+					"background": {
+						"color": "#0c63ff",
+						"opacity": 100
+					},
+					"text_color": "white",
+					"text_align": "auto"
+				},
+				"button_text": "Calculate",
+				"inputs_background_color": {
+					"color": "#f5f7f9",
+					"opacity": 100
+				},
+				"outputs_background_color": {
+					"color": "#eaeaea",
+					"opacity": 100
+				}
+			}
+		}, {
+			"id": "text_align",
+			"name": "text_align",
+			"label": "Text Align",
+			"required": true,
+			"locked": false,
+			"display": "select",
+			"choices": [
+				["auto", "Auto"],
+				["left", "Left"],
+				["center", "Center"],
+				["right", "Right"]
+			],
+			"type": "choice",
+			"default": "auto"
+		}, {
+			"id": "text_color",
+			"name": "text_color",
+			"label": "Text Color",
+			"required": true,
+			"locked": false,
+			"display": "select",
+			"choices": [
+				[
+					"auto", "Auto"
+				],
+				[
+					"primary", "Primary"
+				],
+				[
+					"secondary", "Secondary"
+				],
+				[
+					"tertiary", "Tertiary"
+				],
+				[
+					"white", "White"
+				],
+				[
+					"black", "Black"
+				],
+				[
+					"dark", "Dark"
+				],
+				[
+					"light", "Light"
+				],
+				[
+					"success", "Success"
+				],
+				[
+					"info", "Info"
+				],
+				[
+					"warning", "Warning"
+				],
+				[
+					"danger", "Danger"
+				]
+			],
+			"type": "choice",
+			"default": "auto"
+		}],
+		"source": ""
+	},
+	"custom_module_template": "sr-calculator.html",
+	"available_builder": true,
+	"files": []
+}

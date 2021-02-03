@@ -1,0 +1,148 @@
+{% if module.enabled %}
+	{% require_css %}
+		<style>
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;    
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			.sr-social-tweet-01 .section-heading {
+				margin: 0 0 1.25rem;
+			}
+			.sr-social-tweet-01 .twitter-icon {
+				font-weight: bold;
+				border-bottom: none;
+			}
+			.sr-social-tweet-01 .text-light .twitter-icon .fa-inverse,
+			.sr-social-tweet-01 .text-white .twitter-icon .fa-inverse {
+				color: #0c63ff;
+			}
+			.sr-social-tweet-01 .twitter-icon .fa-stack {
+				font-size: 0.8rem;
+			}
+			.sr-social-tweet-01 .tweet {
+				font-size: 1.016rem;
+				line-height:1.563rem;
+				font-style: italic;
+				font-weight: normal;
+				color:#87909e;
+				margin-bottom:0.625rem;
+			}
+			.sr-social-tweet-01-content {
+				border: 1px solid #e5e7ea;
+				background-color:#fff;
+				padding:2.688rem 1.563rem;
+			}
+			.sr-social-tweet-01 .tweet-btn {
+				margin-bottom:0;
+				color:#0c63ff;
+			}
+			@media screen and (min-width:768px) {
+				.sr-social-tweet-01-content {
+					padding:3.125rem 5.938rem;
+				}
+				.sr-social-tweet-01 .tweet {
+					font-size: 1.25rem;
+					line-height:1.65rem;
+					margin-bottom:1.25rem;
+				}
+			}
+			@media screen and (max-width:767px) {
+				h3.heading {
+					font-size:1.422rem;
+					line-height:1.75rem;
+				} 
+				.sr-social-tweet-01 .tweet-btn {
+				font-size:0.75rem;
+			}
+			}
+		
+		</style>
+	{% end_require_css %}
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% else %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-social-tweet-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Social Tweet 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+
+	<div class="sr-social-tweet-01 {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.class %}{{ module.design_settings.class }}{% endif %} {% if module.design_settings.border_top %}sr-line-top{% endif %} {% if module.design_settings.border_bottom %}sr-line-bottom{% endif %} {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %} prototype-no-background {{ name }}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }}">
+			{% if module.design_settings.container_width != 'max' %}
+				<div class="row">
+					<div class="{{ width_class }}">
+			{% endif %}
+						<div class="{% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %} col-md-12 col-lg-12 sr-col sr-social-tweet-01-content">
+							{% if module.heading %}
+							<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} heading {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.heading}}</h{{module.heading_size}}>
+							{% endif %}
+							{% if module.tweet %}
+								<p class="tweet {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.tweet }}</p>
+							{% endif %}
+							<p class="tweet-btn"><a href="http://twitter.com/intent/tweet?text={{ module.tweet | urlencode}}" class="twitter-icon" target="_blank">
+								<span class="fa-stack fa-lg">
+								  <i class="fa fa-circle fa-stack-2x"></i>
+								  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+								</span>
+								Tweet this
+							</a></p>
+						</div>
+				{% if module.design_settings.container_width != 'max' %}
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+{% endif %}

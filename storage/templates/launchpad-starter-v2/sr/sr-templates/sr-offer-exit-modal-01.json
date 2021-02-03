@@ -1,0 +1,346 @@
+{
+	"custom_module": {
+		"author": "bradley@lean-labs.com",
+		"tags": ["ver-1.0.4"],
+		"name": "SR Offer Exit Modal 01",
+		"css_assets": [],
+		"editable_contexts": [],
+		"external_js": [],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+		"js_assets": [],
+		"other_assets": [],
+		"fields": [{
+				"default": true,
+				"label": "Enabled",
+				"name": "enabled",
+				"type": "boolean"
+			},
+			{
+				"default": null,
+				"label": "ID",
+				"name": "sr_module_id",
+				"type": "text"
+			},
+			{
+				"default": null,
+				"label": "Class",
+				"name": "class",
+				"type": "text"
+			},
+			{
+				"default": {
+					"src": "https://www.lean-labs.com/hubfs/sr-assets/images/rocket-1.png",
+					"alt": "Rocket"
+				},
+				"label": "Modal Image",
+				"name": "modal_image",
+				"type": "image",
+				"help_text": "Recommended size: 228x288px"
+			},
+			{
+				"default": true,
+				"label": "SR Default Image Size",
+				"name": "sr_default_image_size",
+				"type": "boolean"
+			},
+			{
+				"default": "<h3>The New Website <br>Launch Checklist</h3><p>Every step you need to take when launching a <br>high-conversion website </p>",
+				"label": "Modal Content",
+				"name": "modal_content",
+				"type": "richtext"
+			},
+			{
+				"id": "cta_type",
+				"name": "offer_type",
+				"label": "Offer Type",
+				"required": true,
+				"display": "select",
+				"choices": [
+					[
+						"none",
+						"None"
+					],
+					[
+						"btn",
+						"Button"
+					],
+					[
+						"cta",
+						"HubSpot CTA"
+					],
+					[
+						"form",
+						"Form"
+					]
+				],
+				"type": "choice",
+				"default": "btn"
+			},
+			{
+				"id": "cta",
+				"name": "cta",
+				"label": "CTA",
+				"children": [{
+						"name": "cta_style",
+						"label": "CTA Style",
+						"visibility" : {
+							"controlling_field" : "cta_type",
+							"controlling_value_regex" : "btn|cta",
+							"operator" : "MATCHES_REGEX",
+							"access" : null
+						},
+						"display": "select",
+						"choices": [
+							[
+								"primary",
+								"Primary"
+							],
+							[
+								"secondary",
+								"Secondary"
+							],
+							[
+								"tertiary",
+								"Tertiary"
+							],
+							[
+								"white",
+								"White"
+							],
+							[
+								"black",
+								"Black"
+							],
+							[
+								"outline-primary",
+								"Outline Primary"
+							],
+							[
+								"outline-secondary",
+								"Outline Secondary"
+							],
+							[
+								"outline-tertiary",
+								"Outline Tertiary"
+							],
+							[
+								"outline-white",
+								"Outline White"
+							],
+							[
+								"outline-black",
+								"Outline Black"
+							],
+							[
+								"none",
+								"None"
+							]
+						],
+						"type": "choice",
+						"default": "primary"
+					},
+					{
+						"name": "cta",
+						"label": "CTA",
+						"visibility": {
+							"controlling_field": "cta_type",
+							"controlling_value_regex": "cta",
+							"operator": "EQUAL",
+							"access": null
+						},
+						"type": "cta",
+						"default": ""
+					},
+					{
+						"name": "button_text",
+						"label": "Button Text",
+						"visibility": {
+							"controlling_field": "cta_type",
+							"controlling_value_regex": "btn",
+							"operator": "EQUAL",
+							"access": null
+						},
+						"type": "text",
+						"default": "Download Now"
+					},
+					{
+						"name": "link",
+						"label": "Link",
+						"visibility": {
+							"controlling_field": "cta_type",
+							"controlling_value_regex": "btn",
+							"operator": "EQUAL",
+							"access": null
+						},
+						"type": "text",
+						"default": "#"
+					}
+				],
+				"type": "group",
+				"default": {
+					"cta_style": "primary",
+					"cta": "",
+					"button_text": "Download Now",
+					"link": "#"
+				}
+			},
+			{
+				"id": "1",
+				"name": "form",
+				"label": "Form",
+				"sortable": false,
+				"required": false,
+				"locked": false,
+				"visibility": {
+					"controlling_field": "cta_type",
+					"controlling_value_regex": "form",
+					"operator": "EQUAL",
+					"access": null
+				},
+				"children": [{
+					"id": "08884c52-a18c-a8d7-3b7f-bdd335e3e0fc",
+					"name": "title",
+					"label": "Form Title",
+					"sortable": false,
+					"required": false,
+					"locked": false,
+					"validation_regex": "",
+					"allow_new_line": false,
+					"show_emoji_picker": false,
+					"type": "text",
+					"default": null
+				},
+				{
+					"id": "80b91775-4504-7a66-60fc-8bc368eb7f7f",
+					"name": "form",
+					"label": "Form",
+					"sortable": false,
+					"required": false,
+					"locked": false,
+					"type": "form",
+					"default": {
+						"response_type": "redirect",
+						"message": "Thanks for submitting the form."
+					}
+				},
+				{
+					"id": "notifications_are_overridden",
+					"name": "notifications_are_overridden",
+					"label": "Send form notifications to specified email addresses instead of the form defaults",
+					"sortable": false,
+					"required": false,
+					"locked": false,
+					"type": "boolean",
+					"default": false
+				},
+				{
+					"id": "1d1b6c7a-e8ab-ce06-1977-0ce91c16daf8",
+					"name": "notifications_override_email_addresses",
+					"label": "Email Addresses",
+					"sortable": false,
+					"required": false,
+					"locked": false,
+					"visibility": {
+						"controlling_field": "notifications_are_overridden",
+						"controlling_value_regex": "true",
+						"operator": "EQUAL",
+						"access": null
+					},
+					"type": "email",
+					"default": null
+				},
+				{
+					"id": "follow_up_type_simple",
+					"name": "follow_up_type_simple",
+					"label": "Send a follow-up email",
+					"sortable": false,
+					"required": false,
+					"locked": false,
+					"type": "boolean",
+					"default": false
+				},
+				{
+					"id": "abe62a41-9036-0d45-5d9c-6cd48e252159",
+					"name": "simple_email_for_live_id",
+					"label": "Email",
+					"sortable": false,
+					"required": false,
+					"locked": false,
+					"visibility": {
+						"controlling_field": "follow_up_type_simple",
+						"controlling_value_regex": "true",
+						"operator": "EQUAL",
+						"access": null
+					},
+					"type": "followupemail",
+					"default": null
+				}],
+				"type": "group",
+				"default": {
+					"form": {
+						"response_type": "redirect",
+						"message": "Thanks for submitting the form."
+					},
+					"notifications_are_overridden": false,
+					"follow_up_type_automation": false,
+					"follow_up_type_simple": false
+				}
+			},
+			{
+				"id": "gradient",
+				"default": true,
+				"label": "Gradient",
+				"name": "gradient",
+				"type": "boolean"
+			},
+			{
+				"id": "f1965cb3-9f39-f1c2-7705-9edd73279750",
+				"name": "background_overlay_color",
+				"label": "Background Overlay Color From",
+				"sortable": false,
+				"required": false,
+				"locked": false,
+				"type": "color",
+				"default": {
+					"color": "#0c63ff",
+					"opacity": 90
+				}
+			},
+			{
+				"name": "background_overlay_color_2",
+				"label": "Background Overlay Color To",
+				"sortable": false,
+				"required": false,
+				"locked": false,
+				"type": "color",
+				"visibility": {
+					"controlling_field": "gradient",
+					"controlling_value_regex": "true",
+					"operator": "EQUAL",
+					"access": null
+				},
+				"default": {
+					"color": "#1897ff",
+					"opacity": 90
+				}
+			},
+			{
+				"id": "6b740b92-aeeb-a883-eb57-29cdcb99361f",
+				"name": "open_once",
+				"label": "Open Once",
+				"sortable": false,
+				"required": false,
+				"locked": false,
+				"type": "boolean",
+				"default": true
+			}
+		],
+		"source": ""
+	},
+	"custom_module_template": "sr-offer-exit-modal-01.html",
+	"available_builder": true,
+	"category": 6,
+	"files": []
+}

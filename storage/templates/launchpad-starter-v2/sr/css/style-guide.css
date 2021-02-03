@@ -1,0 +1,57 @@
+.logo {
+  text-align: center;
+  padding: 3rem 0; }
+
+.section-title {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-align: center;
+  color: #797979; }
+
+.brand-colors {
+  text-align: center; }
+
+.ui-colors {
+  text-align: center;
+  padding-top: 1.75rem; }
+
+.color {
+  display: inline-block;
+  text-align: center;
+  padding: 0.5rem; }
+  .color span {
+    width: 125px;
+    height: 125px;
+    display: inline-block;
+    border-radius: 50%; }
+  .color label {
+    display: block;
+    text-transform: uppercase; }
+
+.typography {
+  padding-top: 6.25rem; }
+
+.typography-element + .typography-element {
+  padding-top: 6.68rem; }
+
+.form-inputs {
+  padding-top: 6.25rem; }
+
+.inline-links {
+  padding-top: 6.25rem; }
+
+.buttons {
+  padding-top: 6.25rem; }
+  .buttons .row {
+    padding-bottom: 1.43rem; }
+  .buttons label {
+    margin: 1.25rem 0; }
+    @media (min-width: 768px) {
+      .buttons label {
+        margin: 0 1.25rem; } }
+  .buttons .button-hover label {
+    display: block; }
+    @media (min-width: 768px) {
+      .buttons .button-hover label {
+        float: right;
+        display: inline-block; } }

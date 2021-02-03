@@ -1,0 +1,44 @@
+{% if module.enabled %}
+	<table class="row footer" style="background: {% if module.background.background.background_color.color %}{{ module.background.background.background_color.color }}{% else %} #33323D {% endif %} {% if  module.background.background.background_image.src %}url({{  module.background.background.background_image.src }}); background-size: {{ module.background.background.background_size }}; background-position: {{ module.background.background.background_position }}; {% endif %}; border-collapse: collapse; border-spacing: 0; display: table; padding: 0; position: relative; text-align: left; vertical-align: top; width: 100%;">
+		<tbody>
+			<tr style="padding: 0; text-align: left; vertical-align: top;">
+				<th class="small-12 large-12 columns first last" style="Margin: 0 auto; color: #0a0a0a; font-family: Arial, sans-serif; font-size: 16px; font-weight: normal; line-height: 1.3; margin: 0 auto; padding: {{ module.padding }} 0 !important; padding-left: 16px; padding-right: 16px; text-align: left; width: 564px;">
+					<table style="border-collapse: collapse; border-spacing: 0; padding: 0; text-align: left; vertical-align: top; width: 100%;">
+						<tbody>
+							<tr style="padding: 0; text-align: left; vertical-align: top;">
+								<th style="Margin: 0; color: #0a0a0a; font-family: Arial, sans-serif; font-size: 16px; font-weight: normal; line-height: 1.3; margin: 0; padding: 0; text-align: left;">
+									<div class="para nomargin text-center footer-text" style="Margin: 0; Margin-bottom: 10px; color: #fff !important; font-family: Arial, sans-serif; font-size: 12px !important; font-weight: normal; line-height: 20px !important; margin: 0 !important; margin-bottom: 10px; padding: 0 {{ module.padding }} !important; padding-left: 25px !Important; padding-right: 25px !Important; text-align: center;">{{ module.footer_text }}</div>
+								</th>
+								<th class="expander" style="Margin: 0; color: #0a0a0a; font-family: Arial, sans-serif; font-size: 16px; font-weight: normal; line-height: 1.3; margin: 0; padding: 0 !important; text-align: left; visibility: hidden; width: 0;"></th>
+							</tr>
+						</tbody>
+					</table>
+				</th>
+			</tr>
+		</tbody>
+	</table>
+	<table class="row bg-trans" style="background: {% if content.widgets.email_settings.body.outer_background.outer_background.outer_background_color.color %}{{ content.widgets.email_settings.body.outer_background.outer_background.outer_background_color.color }}{% else %} #f3f3f3; {% endif %} {% if content.widgets.email_settings.body.outer_background.outer_background.outer_background_image.src %}url({{ content.widgets.email_settings.body.outer_background.outer_background.outer_background_image.src }}); background-size: {{content.widgets.email_settings.body.outer_background.outer_background.outer_background_size }}; background-position: {{content.widgets.email_settings.body.outer_background.outer_background.outer_background_posotion }}; {% endif %}; border-collapse: collapse; border-spacing: 0; display: table; padding: 0; position: relative; text-align: left; vertical-align: top; max-width: 100%;">
+		<tbody>
+			<tr style="padding: 0; text-align: left; vertical-align: top;">
+				<th class="small-12 large-12 columns first last" style="Margin: 0 auto; color: #0a0a0a; font-family: Arial, sans-serif; font-size: 16px; font-weight: normal; line-height: 1.3; margin: 0 auto; padding: 0; padding-bottom: 16px; padding-top: 16px; padding-left: 16px; padding-right: 16px; text-align: left; width: 564px;">
+					<table style="border-collapse: collapse; border-spacing: 0; padding: 0; text-align: left; vertical-align: top; width: 100%;">
+						<tbody>
+							<tr style="padding: 0; text-align: left; vertical-align: top;">
+								<th style="Margin: 0; color: #0a0a0a; font-family: Arial, sans-serif; font-size: 16px; font-weight: normal; line-height: 1.3; margin: 0; padding: 0; text-align: left;">
+									<p class="para nomargin text-center copy" style="Margin: 0; Margin-bottom: 10px; color: #0a0a0a; font-family: Arial, sans-serif; font-size: 14px !important; font-weight: normal; line-height: 20px !important; margin: 0 !important; margin-bottom: 10px; padding: 10px 26px 10px 26px !important; text-align: center;">
+										{{ site_settings.company_name }}&nbsp; {{ site_settings.company_street_address_1 }}&nbsp; {{ site_settings.company_street_address_2 }}&nbsp; {{ site_settings.company_city }}&nbsp; {{ site_settings.company_state }}&nbsp; {{ site_settings.company_zip }}&nbsp;
+										{{ site_settings.company_country }}&nbsp;
+										<br> You received this email because you are subscribed to {{ subscription_name }} from {{ site_settings.company_name }}.
+										<br> Update your <a class="hubspot-mergetag" data-unsubscribe="true" href="{{ unsubscribe_link }}" style="Margin: 0; color: {{ content.widgets.email_settings.body.link_color.color }}; font-family: Arial, sans-serif; font-weight: normal; line-height: 1.3; margin: 0; padding: 0; text-align: left; text-decoration: none;">email preferences</a> to choose the types of emails you receive.
+										<br>
+										<a class="hubspot-mergetag" data-unsubscribe="true" href="{{ unsubscribe_link_all }}" style="Margin: 0; color: {{ content.widgets.email_settings.body.link_color.color }}; font-family: Arial, sans-serif; font-weight: normal; line-height: 1.3; margin: 0; padding: 0; text-align: left; text-decoration: none;">Unsubscribe from all future emails</a>
+									</p>
+								</th>
+							</tr>
+						</tbody>
+					</table>
+				</th>
+			</tr>
+		</tbody>
+	</table>
+{% endif %}

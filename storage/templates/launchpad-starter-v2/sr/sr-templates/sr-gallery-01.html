@@ -1,0 +1,292 @@
+{% if module.enabled %}
+
+	{% require_css %}
+		<style type="text/css">
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;    
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});	
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			.sr-gallery-01 .row.image-row a {
+				border-radius: 4px;
+				background-size: cover;
+				background-position: 50% 50%;
+				position: relative;
+			}
+			.sr-gallery-01 .image-col a {
+				background: #333; 
+				display: inline-block; 
+				width: 100%;
+				height: 300px;
+				margin: 5px 0;
+				max-width: 100%
+			}
+			.sr-gallery-01 .row.image-row a:before {
+				content: "";
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			.sr-gallery-01 .row .col1 a {
+				{% if hub_id == 123 %}
+					background-image: url({{module.image_one.image.image.src}})
+				{% else %}
+					{{ var.bg_image(module.image_one.image.image.src, '260') }}
+				{% endif %}
+			}
+			.sr-gallery-01 .row .col2 a {
+				{% if hub_id == 123 %}
+					background-image: url({{module.image_two.image.image.src}})
+				{% else %}
+					{{ var.bg_image(module.image_two.image.image.src, '433') }}
+				{% endif %}
+			}
+			.sr-gallery-01 .row .col3 a {
+				{% if hub_id == 123 %}
+					background-image: url({{module.image_three.image.image.src}})
+				{% else %}
+					{{ var.bg_image(module.image_three.image.image.src, '260') }}
+				{% endif %}
+			}
+			.sr-gallery-01 .row .col4 a {
+				{% if hub_id == 123 %}
+					background-image: url({{module.image_four.image.image.src}})
+				{% else %}
+					{{ var.bg_image(module.image_four.image.image.src, '160') }}
+				{% endif %}
+			}
+			.sr-gallery-01 .row .col1 a:before {
+				background: rgba({{ module.image_one.image.overlay.color|convert_rgb }}, {% if module.image_one.image.overlay.opacity != '100' %}0.{% endif %}{{ module.image_one.image.overlay.opacity }});
+			}
+			.sr-gallery-01 .row .col2 a:before {
+				background: rgba({{ module.image_two.image.overlay.color|convert_rgb }}, {% if module.image_two.image.overlay.opacity != '100' %}0.{% endif %}{{ module.image_two.image.overlay.opacity }});
+			}
+			.sr-gallery-01 .row .col3 a:before {
+				background: rgba({{ module.image_three.image.overlay.color|convert_rgb }}, {% if module.image_three.image.overlay.opacity != '100' %}0.{% endif %}{{ module.image_three.image.overlay.opacity }});
+			}
+			.sr-gallery-01 .row .col4 a:before {
+				background: rgba({{ module.image_four.image.overlay.color|convert_rgb }}, {% if module.image_four.image.overlay.opacity != '100' %}0.{% endif %}{{ module.image_four.image.overlay.opacity }});
+			}
+			.sr-gallery-01 .plus {
+				text-align: center;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				height: 100%;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				justify-content: center;
+			}
+			.sr-gallery-01 .row.image-row a i {
+				opacity: 0;
+				color: #fff;
+				background: #FF4400;
+				font-size: 1.4rem;
+				border-radius: 50%;
+				height: 50px;
+				width: 50px;
+				line-height: 52px;
+				-webkit-transition: all 0.2s ease;
+				-o-transition: all 0.2s ease;
+				transition: all 0.2s ease;
+			}
+			.sr-gallery-01 .row.image-row a:hover i, .sr-gallery-01 .row.image-row a:active i, .sr-gallery-01 .row.image-row a:focus i {
+				opacity: 1;
+			}
+			.sr-gallery-01 .row.image-row {
+				padding: 13px 0;
+			}
+			.sr-gallery-01 .col1 {
+				-ms-flex-item-align: end;
+				align-self: flex-end;
+			}
+			.sr-gallery-01 .col1 a {
+				height: 216px; 
+				width: 260px; 
+			}
+			.sr-gallery-01 .col2 a {
+				height: 280px; 
+				width: 433px; 
+			}
+			.sr-gallery-01 .col3 a {
+				height: 216px; 
+				width: 260px; 
+			}
+			.sr-gallery-01 .col4 a {
+				height: 160px; 
+				width: 160px; 
+			}
+			.sr-gallery-01 .col3 {
+				padding-right: 0 !important;
+			}
+			.sr-gallery-01 .col4 {
+				padding-left: 30px !important;
+			}
+			@media (max-width: 768px) { 
+				.sr-gallery-01 .image-col {
+					padding-left: 8px;
+					padding-right: 8px;
+				}
+				.sr-gallery-01 .row.image-row {
+					padding: 2px 0;
+				}
+				.sr-gallery-01 .col4 {
+					padding-left: 16px !important;
+				}
+				.sr-gallery-01 .col1 a {
+					height: 140px;
+				}
+				.sr-gallery-01 .col2 a {
+					height: 180px;
+				}
+				.sr-gallery-01 .col3 a {
+					height: 140px;
+				}
+				.sr-gallery-01 .col4 a {
+					height: 100px;
+				}
+			}
+			@media (max-width: 567px) { 
+				.sr-gallery-01 .col1 a {
+					height: 100px;
+				}
+				.sr-gallery-01 .col2 a {
+					height: 120px;
+				}
+				.sr-gallery-01 .col3 a {
+					height: 100px;
+				}
+				.sr-gallery-01 .col4 a {
+					height: 70px;
+				}
+			}
+
+		</style>
+	{% end_require_css %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" />
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-gallery-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Gallery 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+    {% endif %}
+	{% endif %}
+	
+	<div class="sr-gallery-01 {{ name }} {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }} {% endif %}sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.class %}{{ module.design_settings.class }} {% endif %}{% if module.design_settings.border_top %}sr-line-top {% endif %}{% if module.design_settings.border_bottom %}sr-line-bottom {% endif %}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }}">
+            {% if module.design_settings.container_width != 'max' %}
+            <div class="row">
+                <div class="{{ width_class }}">
+            {% endif %}
+			
+					{% if module.heading || module.description %}
+						<div class="row">
+							<div class="col-md-12 mb-6 {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">
+								{% if module.heading %}
+									<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} heading {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.heading}}</h{{module.heading_size}}>
+								{% endif %}
+								{% if module.description %}
+									<div class="description">{{ module.description }}</div>
+								{% endif %}
+							</div>
+						</div>
+					{% endif %}
+
+					<div class="row image-row image-row1">
+						<div class="col-4 offset-1 text-right image-col col1">
+							<a href="{{module.image_one.image.image.src}}" data-toggle="lightbox" data-gallery="img-gallery">
+								<div class="plus"><i class="bg-primary fa fa-plus" aria-hidden="true"></i></div>
+							</a>
+						</div>
+						<div class="col-6 image-col col2">
+							<a href="{{module.image_two.image.image.src}}" data-toggle="lightbox" data-gallery="img-gallery">
+								<div class="plus"><i class="bg-primary fa fa-plus" aria-hidden="true"></i></div>
+							</a>
+						</div>
+					</div>
+
+					<div class="row image-row image-row2">
+						<div class="col-4 offset-2 text-right image-col col3">
+							<a href="{{module.image_three.image.image.src}}" data-toggle="lightbox" data-gallery="img-gallery">
+								<div class="plus"><i class="bg-primary fa fa-plus" aria-hidden="true"></i></div>
+							</a>
+						</div>
+						<div class="col-3 image-col col4">
+							<a href="{{module.image_four.image.image.src}}" data-toggle="lightbox" data-gallery="img-gallery">
+								<div class="plus"><i class="bg-primary fa fa-plus" aria-hidden="true"></i></div>
+							</a>
+						</div>
+					</div>
+			{% if module.design_settings.container_width != 'max' %}
+				</div>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+
+	{% require_js %}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+	<script type="text/javascript">
+		$(document).on('click', '[data-toggle="lightbox"]', function(event){
+			event.preventDefault();
+			$(this).ekkoLightbox();
+		});
+	</script>
+	{% end_require_js %}
+	
+{% endif %}

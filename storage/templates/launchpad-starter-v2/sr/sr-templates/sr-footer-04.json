@@ -1,0 +1,587 @@
+{
+    "custom_module": {
+        "author": "bradley@lean-labs.com",
+        "tags": ["ver-2.0.4"],
+        "name": "SR Footer 04",
+        "css_assets": [],
+        "global": true,
+        "override_global": true,
+        "editable_contexts": [],
+        "external_js": [],
+        "icon": "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": [
+            "PAGE",
+            "BLOG_POST",
+            "BLOG_LISTING"
+        ],
+        "js_assets": [],
+        "other_assets": [],
+        "fields": [
+            {
+                "default": true,
+                "name": "enabled",
+                "id": "enabled",
+                "label": "Enabled",
+                "type": "boolean",
+                "required": false
+            },
+            {
+                "default": {
+                    "layout": "container",
+                    "background_image": {
+                        "src": "",
+                        "alt": ""
+                    },
+                    "background_overlay_color": {
+                        "color": "#343a40",
+                        "opacity": 30
+                    },
+                    "custom_padding": "1rem 0rem 1rem 0rem",
+                    "background_color": "white",
+                    "top_bottom_padding": "half",
+                    "background_option": "color",
+                    "background_custom": {
+                        "color": "#fff"
+                    },
+                    "container_width": "max"
+                },
+                "tab": "CONTENT",
+                "children": [
+                    {
+                        "allow_new_line": false,
+                        "default": null,
+                        "validation_regex": "",
+                        "name": "sr_module_id",
+                        "show_emoji_picker": false,
+                        "id": "design_settings.sr_module_id",
+                        "label": "ID",
+                        "locked": false,
+                        "type": "text",
+                        "required": false
+                    },
+                    {
+                        "allow_new_line": false,
+                        "default": null,
+                        "validation_regex": "",
+                        "name": "class",
+                        "show_emoji_picker": false,
+                        "id": "design_settings.class",
+                        "label": "Class",
+                        "locked": false,
+                        "type": "text",
+                        "required": false
+                    },
+                    {
+                        "default": "container",
+                        "display": "select",
+                        "name": "layout",
+                        "id": "design_settings.layout",
+                        "label": "Layout",
+                        "locked": false,
+                        "choices": [
+                            [
+                                "container",
+                                "Page"
+                            ],
+                            [
+                                "container-fluid",
+                                "Full Width"
+                            ]
+                        ],
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "default": "max",
+                        "display": "select",
+                        "name": "container_width",
+                        "id": "design_settings.container_width",
+                        "label": "Container Width",
+                        "locked": false,
+                        "choices": [
+                            [
+                                "min",
+                                "Minimum"
+                            ],
+                            [
+                                "narrow",
+                                "Narrow"
+                            ],
+                            [
+                                "wide",
+                                "Wide"
+                            ],
+                            [
+                                "max",
+                                "Maximum"
+                            ]
+                        ],
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "default": "half",
+                        "display": "select",
+                        "name": "top_bottom_padding",
+                        "id": "top_bottom_padding",
+                        "label": "Top Bottom Padding",
+                        "locked": false,
+                        "choices": [
+                            [
+                                "auto",
+                                "Use default values"
+                            ],
+                            [
+                                "zero",
+                                "No Padding"
+                            ],
+                            [
+                                "half",
+                                "Small padding"
+                            ],
+                            [
+                                "full",
+                                "Large padding"
+                            ],
+                            [
+                                "custom",
+                                "Custom Padding"
+                            ]
+                        ],
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "allow_new_line": false,
+                        "default": "1rem 0rem 1rem 0rem",
+                        "validation_regex": "",
+                        "visibility": {
+                            "controlling_field": "top_bottom_padding",
+                            "access": null,
+                            "controlling_value_regex": "custom",
+                            "hidden_subfields": null,
+                            "operator": "EQUAL"
+                        },
+                        "name": "custom_padding",
+                        "show_emoji_picker": false,
+                        "id": "design_settings.custom_padding",
+                        "label": "Custom Padding",
+                        "locked": false,
+                        "type": "text",
+                        "required": false,
+                        "help_text": "Top, Right, Bottom, Left"
+                    },
+                    {
+                        "default": "color",
+                        "display": "select",
+                        "name": "background_option",
+                        "id": "background_option",
+                        "label": "Background Option",
+                        "locked": false,
+                        "choices": [
+                            [
+                                "image",
+                                "Image"
+                            ],
+                            [
+                                "color",
+                                "Color"
+                            ],
+                            [
+                                "custom",
+                                "Custom"
+                            ],
+                            [
+								"gradient", "Gradient"
+							]
+                        ],
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+						"default": {
+							"color": "#0c63ff"
+						},
+						"label": "Background Gradient From",
+						"name": "background_gradient_from",
+						"visibility": {
+							"controlling_field": "background_option",
+							"controlling_value_regex": "gradient",
+							"operator": "EQUAL"
+						},
+						"type": "color"
+					},
+					{
+						"default": {
+							"color": "#1897ff"
+						},
+						"label": "Background Gradient To",
+						"name": "background_gradient_to",
+						"visibility": {
+							"controlling_field": "background_option",
+							"controlling_value_regex": "gradient",
+							"operator": "EQUAL"
+						},
+						"type": "color"
+					},
+                    {
+                        "default": {
+                            "src": "",
+                            "alt": ""
+                        },
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "access": null,
+                            "controlling_value_regex": "image",
+                            "hidden_subfields": null,
+                            "operator": "EQUAL"
+                        },
+                        "resizable": true,
+                        "responsive": false,
+                        "name": "background_image",
+                        "id": "design_settings.background_image",
+                        "label": "Background Image",
+                        "locked": false,
+                        "type": "image",
+                        "required": false
+                    },
+                    {
+                        "default": {
+                            "color": "#343a40",
+                            "opacity": 30
+                        },
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "access": null,
+                            "controlling_value_regex": "image",
+                            "hidden_subfields": null,
+                            "operator": "EQUAL"
+                        },
+                        "name": "background_overlay_color",
+                        "id": "design_settings.background_overlay_color",
+                        "label": "Background Overlay Color",
+                        "locked": false,
+                        "type": "color",
+                        "required": false,
+                        "help_text": "Recommended Width: 2880x1920px"
+                    },
+                    {
+                        "default": "white",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "access": null,
+                            "controlling_value_regex": "color",
+                            "hidden_subfields": null,
+                            "operator": "EQUAL"
+                        },
+                        "display": "select",
+                        "name": "background_color",
+                        "id": "design_settings.background_color",
+                        "label": "Background Color",
+                        "locked": false,
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "success",
+                                "Success"
+                            ],
+                            [
+                                "info",
+                                "Info"
+                            ],
+                            [
+                                "warning",
+                                "Warning"
+                            ],
+                            [
+                                "danger",
+                                "Danger"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "default": {
+                            "color": "#fff"
+                        },
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "access": null,
+                            "controlling_value_regex": "custom",
+                            "hidden_subfields": null,
+                            "operator": "EQUAL"
+                        },
+                        "name": "background_custom",
+                        "id": "design_settings.background_custom",
+                        "label": "Background Custom",
+                        "locked": false,
+                        "type": "color",
+                        "required": false
+                    }
+                ],
+                "name": "design_settings",
+                "id": "design_settings",
+                "label": "Design Settings",
+                "type": "group",
+                "required": false
+            },
+            {
+                "default": true,
+                "name": "show_menu",
+                "id": "show_menu",
+                "label": "Show Menu",
+                "type": "boolean",
+                "required": false
+            },
+            {
+                "default": "",
+                "visibility": {
+                    "controlling_field": "show_menu",
+                    "access": null,
+                    "controlling_value_regex": "true",
+                    "hidden_subfields": null,
+                    "operator": "EQUAL"
+                },
+                "name": "menu",
+                "id": "menu",
+                "label": "Menu",
+                "type": "menu",
+                "required": false,
+                "help_text": ""
+            },
+            {
+                "default": {
+                    "src": "https://www.sprocketrocket.co/hubfs/sr-assets/images/sr-logo@2x.png",
+                    "alt": "Logo",
+                    "width": "220"
+                },
+                "resizable": true,
+                "responsive": false,
+                "name": "logo",
+                "id": "logo",
+                "label": "Logo",
+                "type": "image",
+                "required": false,
+                "help_text": "Recommended Minimum Size: 440x102px"
+            },
+            {
+                "default": true,
+                "name": "sr_default_image_size",
+                "id": "sr_default_image_size",
+                "label": "SR Default Image Size",
+                "type": "boolean",
+                "required": false,
+                "help_text": "440x102px"
+            },
+            {
+                "default": "auto",
+                "display": "select",
+                "name": "logo_align",
+                "id": "logo_align",
+                "label": "Logo Align",
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "left",
+                        "Left"
+                    ],
+                    [
+                        "center",
+                        "Center"
+                    ],
+                    [
+                        "right",
+                        "Right"
+                    ]
+                ],
+                "type": "choice",
+                "required": true
+            },
+            {
+                "default": "<p class='small'>&copy;{{ year }} Acme Co, Inc. All rights reserved. <a href='/privacy-policy'>Privacy Policy</a></p>",
+                "name": "copyright",
+                "id": "copyright",
+                "label": "Copyright",
+                "type": "richtext",
+                "required": false
+            },
+            {
+                "default": [
+                    {
+                        "icon": "fa-facebook",
+                        "link": "#"
+                    },
+                    {
+                        "icon": "fa-twitter",
+                        "link": "#"
+                    },
+                    {
+                        "icon": "fa-instagram",
+                        "link": "#"
+                    },
+                    {
+                        "icon": "fa-linkedin",
+                        "link": "#"
+                    },
+                    {
+                        "icon": "fa-youtube-play",
+                        "link": "#"
+                    }
+                ],
+                "tab": "CONTENT",
+                "children": [
+                    {
+                        "allow_new_line": false,
+                        "default": "fa-facebook",
+                        "validation_regex": "",
+                        "name": "icon",
+                        "show_emoji_picker": false,
+                        "id": "icons.icon",
+                        "label": "Icon Code",
+                        "locked": false,
+                        "type": "text",
+                        "required": false,
+                        "help_text": "Icon codes can be found here: https://fontawesome.com/v4.7.0/icons/"
+                    },
+                    {
+                        "allow_new_line": false,
+                        "default": "#",
+                        "validation_regex": "",
+                        "name": "link",
+                        "show_emoji_picker": false,
+                        "id": "icons.link",
+                        "label": "Link",
+                        "locked": false,
+                        "type": "text",
+                        "required": false
+                    }
+                ],
+                "name": "icons",
+                "id": "1",
+                "label": "Social Icons",
+                "occurrence": {
+                    "default": 5,
+                    "min": 0,
+                    "max": null,
+                    "sorting_label_field": null
+                },
+                "type": "group",
+                "required": false
+            },
+            {
+                "id": "",
+                "name": "social_color",
+                "label": "Social Icon Color",
+                "sortable": false,
+                "required": false,
+                "locked": false,
+                "type": "color",
+                "default": {
+                    "color": "#87909F",
+                    "opacity": 100
+                }
+            },
+            {
+                "default": "auto",
+                "display": "select",
+                "name": "text_color",
+                "id": "text_color",
+                "label": "Text Color",
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "primary",
+                        "Primary"
+                    ],
+                    [
+                        "secondary",
+                        "Secondary"
+                    ],
+                    [
+                        "tertiary",
+                        "Tertiary"
+                    ],
+                    [
+                        "white",
+                        "White"
+                    ],
+                    [
+                        "black",
+                        "Black"
+                    ],
+                    [
+                        "dark",
+                        "Dark"
+                    ],
+                    [
+                        "light",
+                        "Light"
+                    ],
+                    [
+                        "success",
+                        "Success"
+                    ],
+                    [
+                        "info",
+                        "Info"
+                    ],
+                    [
+                        "warning",
+                        "Warning"
+                    ],
+                    [
+                        "danger",
+                        "Danger"
+                    ]
+                ],
+                "type": "choice",
+                "required": true
+            }
+        ],
+        "source": ""
+    },
+    "custom_module_template": "sr-footer-04.html",
+    "available_builder": true,
+    "category": 2,
+    "is_free": true,
+    "files": []
+}

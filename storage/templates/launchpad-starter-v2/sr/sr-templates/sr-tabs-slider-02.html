@@ -1,0 +1,352 @@
+{% if module.enabled %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-tabs-slider-02" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Tabs Slider 02</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+	
+	<div class="{{name}} sr-padding-{{ module.design_settings.top_bottom_padding }} sr-tabs-slider-02 {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		
+		{% if module.heading ||  module.description || module.cta.cta_type != 'none' %}
+			<div class="text-center sr-spacer-bottom-25">
+				{% if module.heading %}
+					<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} heading {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.heading}}</h{{module.heading_size}}>
+				{% endif %}
+				
+				{% if module.description %}
+					<div class="description">{{ module.description}}</div>
+				{% endif %}
+
+				{% if module.cta.cta_type != 'none' %}
+					<div class="btn-wrapper btn-{{ module.cta.cta_style }}-wrapper">
+						{% if module.cta.cta_type == 'btn' %}
+							<a href="{{ module.cta.link }}" class="cta_button">{{ module.cta.button_text }}</a>
+						{% elif module.cta.cta_type == 'cta' %}
+							{% cta guid="{{ module.cta.cta }}" %}
+						{% endif %}
+					</div>
+				{% endif %}
+			</div>
+		{% endif %}
+		
+		<section id="slickSlider-{{name}}" class="center slider">
+			{% for slide in module.slides %}
+				<div class="slickSliderItem">
+					<div class="d-md-flex">
+						<div class="sr-tabs-slider-02-image" style="background-image: url({{slide.image.src}})">
+							{% if slide.sr_default_image_size %}
+								{{ var.image(slide.image.src, '300', slide.image.alt, 'style="display: none" class="img-fluid"') }}
+							{% else %}
+								{{ var.image(slide.mage.src, slide.image.width, slide.image.alt, 'style="display: none" class="img-fluid"') }}
+							{% endif %}
+						</div>
+						<div class="sr-tabs-slider-02-content">
+
+							<div class="sr-spacer-bottom-25">
+								{{slide.content}}
+								<span class="slider-name">{{slide.slider_name}}</span>
+								<span class="slider-title">{{slide.slider_title}}</span>
+							</div>
+
+							{% if slide.cta.cta_type != 'none' %}
+								<div class="sr-spacer-top-25 btn-wrapper text-right btn-{{ slide.cta.cta_style }}-wrapper">
+									{% if slide.cta.cta_type == 'btn' %}
+										<a href="{{ slide.cta.link }}" class="cta_button">{{ slide.cta.button_text }}</a>
+									{% elif slide.cta.cta_type == 'cta' %}
+										{% cta guid="{{ slide.cta.cta }}" %}
+									{% endif %}
+								</div>
+							{% endif %}
+
+						</div>
+					</div>
+				</div>
+		  {% endfor %}
+		</section>
+	</div>
+
+	{{ require_css(var.sr_assetDir + '/css/slick.css') }}
+	
+	{% require_css %}
+		<style>
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;    
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			.sr-tabs-slider-02 .slickSliderItem {
+				background-color: #fff;
+				box-shadow: 15px 10px 20px 0 rgba(0, 0, 0, 0.0);
+				border: 1px solid rgb(229, 231, 234);
+				-webkit-transition: all 0.2s ease;
+				-o-transition: all 0.2s ease;
+				transition: all 0.2s ease;
+				float: none;
+				height: auto;
+			}
+			.sr-tabs-slider-02 .slickSliderItem.slick-active {
+				border: 1px solid rgba(229, 231, 234, 0.05);
+				box-shadow: 15px 10px 20px 0 rgba(0, 0, 0, 0.05);
+			}
+			.sr-tabs-slider-02 .slick-track {
+				padding: 1.75rem 0;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+			}
+			.sr-tabs-slider-02 .slider-name {
+				display: block;
+				font-weight: bold;
+			}
+			.sr-tabs-slider-02 .slider-title {
+				display: block;
+			}
+			.sr-tabs-slider-02 .sr-tabs-slider-02-content {
+				padding: 3rem 3rem;
+				width: 70%;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-wrap: wrap;
+				flex-wrap: wrap;
+			}
+			.sr-tabs-slider-02 .sr-tabs-slider-02-content .author-name-group span {
+				display: block;
+				padding: 1px 20px;
+			}
+			.sr-tabs-slider-02 .sr-tabs-slider-02-content .author-name-group {
+				padding: 8px 0;
+			}
+			.sr-tabs-slider-02 .sr-tabs-slider-02-image {
+				width: 30%;
+				background-position: center;
+				background-size: cover;
+				background-repeat: no-repeat;
+			}
+			.sr-tabs-slider-02 .sr-tabs-slider-02-author {
+				padding-top: 40px;
+			}
+			.sr-tabs-slider-02 .sr-tabs-slider-02-content h3 {
+				padding-bottom: 20px;
+			}
+			.sr-tabs-slider-02 .slick-slide {
+				margin: 0px 15px;
+			}
+			.sr-tabs-slider-02 .center.slider {
+				opacity: 0;
+				-webkit-transition: all ease-in-out .3s;
+				-o-transition: all ease-in-out .3s;
+				transition: all ease-in-out .3s;
+			}
+			.sr-tabs-slider-02 .slickSliderItem {
+				width: 730px;
+			}
+			.sr-tabs-slider-02 .slickSliderItem > div {
+				 height: 100%
+			}
+			.sr-tabs-slider-02 i.fa.fa-chevron-left.slick-arrow,
+			.sr-tabs-slider-02 i.fa.fa-chevron-right.slick-arrow {
+				position: absolute;
+				top: 50%;
+				-webkit-transform: translateY(-50%);
+				-ms-transform: translateY(-50%);
+				transform: translateY(-50%);
+				font-size: 30px;
+				z-index: 1;
+			}
+			.sr-tabs-slider-02 i.fa.fa-chevron-right.slick-arrow {
+				right: 50px;
+			}
+
+			.sr-tabs-slider-02 i.fa.fa-chevron-left.slick-arrow {
+				left: 50px;
+			}
+			.sr-tabs-slider-02 .slick-dots {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				justify-content: center;
+				margin: 0;
+				padding-left: 0;
+				padding-right: 0;
+				list-style-type: none;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				position: relative;
+				bottom: 0;
+			}
+			.sr-tabs-slider-02 .slick-dots li {
+				margin: 0 0.1rem
+			}
+			.{{ name }} .slick-dots button {
+				display: block;
+				width: 8px;
+				height: 8px;
+				padding: 0; 
+				border: none;
+				border-radius: 100%;
+				text-indent: -9999px;
+				-webkit-transition: all ease-in-out .2s;
+				-o-transition: all ease-in-out .2s;
+				transition: all ease-in-out .2s;
+				margin: 4px;
+				box-shadow: 0 0 0 2px transparent;
+				background: var(--primary);
+			}
+			.{{ name }} .slick-dots li.slick-active button {
+				background-color: transparent !important;
+				box-shadow: 0 0 0 2px var(--primary);
+			}
+			.sr-tabs-slider-02 button:focus {
+				outline: 0;
+				outline: 0; 
+			}
+			.sr-tabs-slider-02 ul.slick-dots {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				justify-content: center;
+				list-style: none;
+			}
+			.sr-tabs-slider-02 .slickSliderItem .btn-wrapper {
+				opacity: 0;
+				width: 100%;
+    			margin-top: auto;
+				-webkit-transition: all 0.2s ease;
+				-o-transition: all 0.2s ease;
+				transition: all 0.2s ease;
+			}
+			.sr-tabs-slider-02 .slickSliderItem.slick-active .btn-wrapper {
+				opacity: 1;
+			}
+			@media only screen and (max-width: 1175px) {
+				.sr-tabs-slider-02 .slickSliderItem {
+					width: 970px;
+				}
+			}
+			@media only screen and (max-width: 975px) {
+				.sr-tabs-slider-02 .slickSliderItem {
+					width: 90vw;
+				}
+			}
+			@media only screen and (max-width: 768px) {
+				.sr-tabs-slider-02 .sr-tabs-slider-02-image {
+					height: 200px;
+					overflow: hidden;
+				}
+				.sr-tabs-slider-02 .slickSliderItem .btn-wrapper {
+					text-align: center !important
+				}
+
+				.{{name}} .slick-dots button {
+					width: 10px;
+					height: 10px;
+				}
+				.sr-tabs-slider-02 .slickSliderItem {
+					width: 350px;
+				}
+				.sr-tabs-slider-02 .sr-tabs-slider-02-image,
+				.sr-tabs-slider-02 .sr-tabs-slider-02-content {
+					width: 100%;
+					background: none !important;
+				}
+				.sr-tabs-slider-02 .sr-tabs-slider-02-image .img-fluid {
+					display: block !important;
+					margin: 0 auto;
+					width: 100%;
+				}
+				.sr-tabs-slider-02 .sr-tabs-slider-02-content {
+					padding: 3rem;
+				}
+				.sr-tabs-slider-02 .sr-spacer-top-100.btn-wrapper {
+					padding-top: 3.125rem;
+				}
+				.sr-tabs-slider-02 .sr-tabs-slider-02-content h3 {
+					padding-bottom: 1rem;
+					padding-top: 2rem;
+				}
+				.sr-tabs-slider-02 .sr-tabs-slider-02-author {
+					padding-top: 2rem;
+				}
+				.sr-tabs-slider-02 .sr-tabs-slider-02-content .author-name-group span {
+					padding: 3px 0;
+				}
+				.sr-tabs-slider-02 .sr-tabs-slider-02-content .author-name-group {
+					padding: 14px 0;
+				}
+				.sr-tabs-slider-02 i.fa.fa-chevron-left.slick-arrow,
+				.sr-tabs-slider-02 i.fa.fa-chevron-right.slick-arrow {
+					top: 30%
+				}
+			}
+		
+		</style>
+	{% end_require_css %}
+	{{ require_js(var.sr_assetDir + '/js/slick.min.js') }}
+	{% require_js %}
+		<script type="text/javascript">
+			document.getElementById("slickSlider-{{name}}").style.opacity = "1";
+			$("#slickSlider-{{name}}").slick({
+				dots: true,
+				arrows: false,
+				infinite: true,
+				centerMode: true,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				variableWidth: true,
+				centerPadding: '80px',
+				nextArrow: '<i class="fa fa-chevron-right"></i>',
+				prevArrow: '<i class="fa fa-chevron-left"></i>'
+			}); 
+		</script>
+	{% end_require_js %}
+{% endif %}

@@ -1,0 +1,102 @@
+<div class="action-panel-content">
+    <div class="action-container">
+        <div class="action-heading">
+            <h2>Add Agency</h2>
+        </div>
+        <form id="add-agency">
+            <div class="row sr-forms">
+                <div class="col">
+                    <label for="name">Agency Name</label> 
+                    <input id="name" type="text" class="form-control">
+                </div>
+                <div class="col">
+                    <label for="files">Logo</label>
+                    <input id="files" onchange="pressed()" type="file" class="add-file" class="hidden" style="color:transparent;"><label id="fileLabel">Choose file</label>
+                </div>
+            </div>
+            <div class="row sr-forms">
+                <div class="col">
+                    <label for="email">Admin Email</label>
+                    <input id="email" type="email" class="form-control">
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row sr-forms">
+                <div class="col plan">
+                    <label class="billing-plan" for="billing-plan">Plan</label>
+                </div>
+            </div>
+            <div class="row sr-forms custom-box-radio">
+                <input id="sr-free" type="radio" name="billing-plan" checked></input>
+                <label class="box-plan" for="sr-free">
+                    <span class="plan-headline">Free</span>
+                    <span class="plan-active">Current Plan</span>
+                    <span class="plan-includes">
+                        <strong>SR Free</strong><br>1 Portal<br>1 User<br>10 Modules
+                    </span>
+                </label>
+
+                <input id="sr-business" type="radio" name="billing-plan"></input>
+                <label class="box-plan" for="sr-business">
+                    <span class="plan-headline">$65 /mo</span>
+                    <span class="plan-active">&nbsp;</span>
+                    <span class="plan-includes">
+                        <strong>SR Business</strong><br>1 Portal<br>10 Users<br>Unlimited Modules
+                    </span>
+                </label>
+
+                <input id="sr-agency" type="radio" name="billing-plan"></input>
+                <label class="box-plan sr-agency" for="sr-agency">
+                    <span class="plan-headline">$465 /mo</span>
+                    <span class="plan-active">&nbsp;</span>
+                    <span class="plan-includes">
+                        <strong>SR Agency</strong><br>Custom Branding<br>10 Portal<br>Unlimited Users<br>Unlimited Modules
+                    </span>
+                </label>
+
+                <input id="sr-unlimited" type="radio" name="billing-plan"></input>
+                <label class="box-plan unlimited" for="sr-unlimited">
+                    <span class="plan-headline">Free</span>
+                    <span class="plan-active">&nbsp;</span>
+                    <span class="plan-includes">
+                        <strong>SR Unlimited</strong><br>Custom Branding<br>Unlimited Portals<br>Unlimited Users<br>Unlimited Modules
+                    </span>
+                </label>
+            </div>
+           
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button class="btn btn-secondary" id="cancel-btn">Cancel</button>
+        </form>
+    </div>
+</div>
+
+<!-- script needs to be loaded with this section if using AJAX-->
+<script type="text/javascript">
+    $("#cancel-btn").click(function(){
+        $('#action-panel-target').empty();
+    
+        if($("body").hasClass("modal-open")) {
+            console.log("action panel is open already");
+        } else {
+            $('#action-panel').modal('show');
+        }
+        $('#action-panel-target').load('./views/agencies.html', function(){
+            $(this).hide().fadeIn(200);
+        });
+    });
+
+
+    window.pressed = function(){
+    var a = document.getElementById('files');
+        if(a.value == "")
+        {
+            fileLabel.innerHTML = "No file choosen";
+        }
+        else
+        {
+            var theSplit = a.value.split('\\');
+            fileLabel.innerHTML = theSplit[theSplit.length-1];
+        }
+    };
+
+    </script>

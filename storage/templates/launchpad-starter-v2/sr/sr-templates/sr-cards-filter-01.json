@@ -1,0 +1,756 @@
+{
+	"custom_module": {
+		"author": "sam@samtonline.co.uk",
+		"tags": ["ver-2.0.0"],
+		"name": "SR Cards Filter 01",
+		"css_assets": [],
+		"editable_contexts": [],
+		"external_js": [],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+		"js_assets": [],
+		"other_assets": [],
+		"fields": [{
+				"default": true,
+				"label": "Enabled",
+				"name": "enabled",
+				"type": "boolean"
+			},
+			{
+				"type": "group",
+				"name": "design_settings",
+				"label": "Design Settings",
+				"children": [
+					
+							{
+								"default": null,
+								"label": "ID",
+								"name": "sr_module_id",
+								"type": "text"
+							},
+							{
+								"default": null,
+								"label": "Class",
+								"name": "class",
+								"type": "text"
+							},
+							{
+								"choices": [
+									[
+										"container", "Page"
+									],
+									[
+										"container-fluid", "Full Width"
+									]
+								],
+								"default": "container",
+								"display": "select",
+								"label": "Layout",
+								"name": "layout",
+								"type": "choice",
+								"required": true
+							},
+							{
+								"choices": [
+									[
+										"min", "Minimum"
+									],
+									[
+										"narrow", "Narrow"
+									],
+									[
+										"wide", "Wide"
+									],
+									[
+										"max", "Maximum"
+									]
+								],
+								"default": "wide",
+								"display": "select",
+								"label": "Container Width",
+								"name": "container_width",
+								"type": "choice",
+								"required": true
+							},
+							{
+								"choices": [
+								  [
+									"auto", "Use default values"
+								  ],
+								  [
+									"zero", "No Padding"
+								  ],
+								  [
+									"half", "Small padding"
+								  ],
+								  [
+									"full", "Large padding"
+								  ],
+								  [
+									"custom", "Custom padding"
+								  ]
+								],
+								"id": "top_bottom_padding",
+								"default": "full",
+								"display": "select",
+								"label": "Top Bottom Padding",
+								"name": "top_bottom_padding",
+								"type": "choice",
+								"required": true
+							},
+							{
+								"name" : "custom_padding",
+								"type" : "text",
+								"label" : "Custom Padding",
+								"help_text" : "Top, Right, Bottom, Left",
+								"visibility" : {
+								  "controlling_field" : "top_bottom_padding",
+								  "controlling_value_regex" : "custom",
+								  "operator" : "EQUAL",
+								  "access" : null
+								},
+								"default" : "1rem 0rem 1rem 0rem"
+							},
+							{
+								"default": false,
+								"label": "Border Top",
+								"name": "border_top",
+								"type": "boolean"
+							},
+							{
+								"default": false,
+								"label": "Border Bottom",
+								"name": "border_bottom",
+								"type": "boolean"
+							},
+							{
+								"choices": [
+									[
+										"image", "Image"
+									],
+									[
+										"color", "Color"
+									],
+									[
+										"custom", "Custom"
+									],
+									[
+										"gradient", "Gradient"
+									]
+								],
+								"id": "background_option",
+								"default": "color",
+								"display": "select",
+								"label": "Background Option",
+								"name": "background_option",
+								"type": "choice",
+								"required": true
+							},
+							{
+								"default": {
+									"color": "#0c63ff"
+								},
+								"label": "Background Gradient From",
+								"name": "background_gradient_from",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "gradient",
+									"operator": "EQUAL"
+								},
+								"type": "color"
+							},
+							{
+								"default": {
+									"color": "#1897ff"
+								},
+								"label": "Background Gradient To",
+								"name": "background_gradient_to",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "gradient",
+									"operator": "EQUAL"
+								},
+								"type": "color"
+							},
+							{
+								"default": {
+									"src": "",
+									"alt": ""
+								},
+								"label": "Background Image",
+								"name": "background_image",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "image",
+									"operator": "EQUAL"
+								},
+								"type": "image"
+							},
+							{
+								"default": {
+									"color": "#343a40",
+									"opacity": 30
+								},
+								"label": "Background Overlay Color",
+								"name": "background_overlay_color",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "image",
+									"operator": "EQUAL"
+								},
+								"help_text": "Recommended Width: 2880x1920px",
+								"type": "color"
+							},
+							{
+								"choices": [
+									[
+										"primary",
+										"Primary"
+									],
+									[
+										"secondary",
+										"Secondary"
+									],
+									[
+										"tertiary",
+										"Tertiary"
+									],
+									[
+										"white",
+										"White"
+									],
+									[
+										"black",
+										"Black"
+									],
+									[
+										"dark",
+										"Dark"
+									],
+									[
+										"light",
+										"Light"
+									],
+									[
+										"success",
+										"Success"
+									],
+									[
+										"info",
+										"Info"
+									],
+									[
+										"warning",
+										"Warning"
+									],
+									[
+										"danger",
+										"Danger"
+									],
+									[
+										"none",
+										"None"
+									]
+								],
+								"default": "light",
+								"display": "select",
+								"label": "Background Color",
+								"name": "background_color",
+								"type": "choice",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "color",
+									"operator": "EQUAL"
+								},
+								"required": true
+							},
+							{
+								"default": {
+									"color": "#fff"
+								},
+								"label": "Background Custom",
+								"name": "background_custom",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "custom",
+									"operator": "EQUAL"
+								},
+								"type": "color"
+							}
+			]},
+			{
+				"id": "heading",
+				"default": "Detailed Case Studies",
+				"label": "Heading",
+				"name": "heading",
+				"type": "text"
+			},
+			{
+				"choices": [
+					[
+						"1", "H1"
+					],
+					[
+						"2", "H2"
+					],
+					[
+						"3", "H3"
+					],
+					[
+						"4", "H4"
+					],
+					[
+						"5", "H5"
+					],
+					[
+						"6", "H6"
+					]
+				],
+				"default": "2",
+				"display": "select",
+				"label": "Heading Size",
+				"name": "heading_size",
+				"visibility" : {
+					"controlling_field" : "heading",
+					"controlling_value_regex" : null,
+					"operator" : null,
+					"access" : null
+				},
+				"type": "choice",
+				"required": true
+			},
+			{
+                "name": "heading_display_size",
+                "label": "Heading Display Size",
+                "required": true,
+                "locked": false,
+				"display": "select",
+				"visibility": {
+                    "controlling_field": "heading",
+                    "controlling_value_regex": null,
+                    "operator": null,
+                    "access": null
+                },
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "h1",
+                        "H1"
+                    ],
+                    [
+                        "h2",
+                        "H2"
+                    ],
+                    [
+                        "h3",
+                        "H3"
+                    ],
+                    [
+                        "h4",
+                        "H4"
+                    ],
+                    [
+                        "h5",
+                        "H5"
+                    ],
+                    [
+                        "h6",
+                        "H6"
+                    ],
+                    [
+                        "display-4",
+                        "L"
+                    ],
+                    [
+                        "display-3",
+                        "XL"
+                    ],
+                    [
+                        "display-2",
+                        "XXL"
+                    ],
+                    [
+                        "display-1",
+                        "XXXL"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            },
+			{
+				"default": "See how we got sky-high conversion rates after redesigning and <br>restructuring our website",
+				"label": "Description",
+				"name": "description",
+				"type": "richtext"
+			},
+	
+			{
+				"default": "Year",
+				"label": "Filter Option 1 Title",
+				"name": "filter_option_1_title",
+				"type": "text"
+			},
+			{
+				"id": 1,
+				"label": "Filter Options 1",
+				"name": "filter_option_1",
+				"type": "group",
+				"occurrence": {
+					"min": 1,
+					"default": 3
+				},
+				"children": [{
+						"default": "2019",
+						"label": "Option",
+						"name": "option",
+						"type": "text"
+					},
+					{
+						"default": "2019",
+						"label": "Option Tag",
+						"name": "option_tag",
+						"type": "text"
+					}
+				],
+				"default": [{
+						"option": "2019",
+						"option_tag": "2019"
+					},
+					{
+						"option": "2018",
+						"option_tag": "2018"
+					},
+					{
+						"option": "2017",
+						"option_tag": "2017"
+					}
+				]
+			},
+			{
+				"default": "Project Type",
+				"label": "Filter Option 2 Title",
+				"name": "filter_option_2_title",
+				"type": "text"
+			},
+			{
+				"id": 2,
+				"label": "Filter Options 2",
+				"name": "filter_option_2",
+				"type": "group",
+				"occurrence": {
+					"min": 1,
+					"default": 3
+				},
+				"children": [{
+						"default": "GDD",
+						"label": "Option",
+						"name": "option",
+						"type": "text"
+					},
+					{
+						"default": "gdd",
+						"label": "Option Tag",
+						"name": "option_tag",
+						"type": "text"
+					}
+				],
+				"default": [{
+						"option": "GDD",
+						"option_tag": "gdd"
+					},
+					{
+						"option": "Inbound",
+						"option_tag": "inbound"
+					}
+				]
+			},
+			{
+				"id": 3,
+				"label": "Cards",
+				"name": "column",
+				"type": "group",
+				"occurrence": {
+					"min": 1,
+					"default": 8
+				},
+				"children": [{
+						"default": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-filter-01-rs-d.png",
+							"width": "150",
+							"alt": ""
+						},
+						"label": "Logo",
+						"name": "logo",
+						"type": "image",
+						"help_text": "Recommended Size: 300px wide"
+					},
+					{
+						"default": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-filter-01-rs-w.png",
+							"width": "150",
+							"alt": ""
+						},
+						"label": "Logo on Hover",
+						"name": "logo_hover",
+						"type": "image",
+						"help_text": "Recommended Size: 300px wide"
+					},
+					{
+						"default": true,
+						"label": "SR Default Image Size",
+						"name": "sr_default_image_size",
+						"type": "boolean"
+					},
+					{
+						"default": "The New Website Launch Checklist",
+						"label": "Text",
+						"name": "text",
+						"type": "text"
+					},
+					{
+						"default": "2019 gdd",
+						"label": "Tags",
+						"name": "tags",
+						"type": "text"
+					},
+					{
+						"default": "#",
+						"label": "URL",
+						"name": "url",
+						"type": "text"
+					},
+					{
+						"default": {
+							"color": "#0086CB"
+						},
+						"help_text": "Background color of card when hovered",
+						"label": "Brand Color",
+						"name": "brand_color",
+						"type": "color"
+					}
+				],
+				"default": [{
+						"logo": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-filter-01-rs-d.png"
+						},
+						"logo_hover": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-filter-01-rs-w.png"
+						},
+						"sr_default_image_size": true,
+						"text": "The New Website Launch Checklist",
+						"tags": "2019 gdd",
+						"url": "#",
+						"brand_color": {
+							"color": "#0086CB"
+						}
+					},
+					{
+						"logo": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-filter-01-hf-d.png"
+						},
+						"logo_hover": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-filter-01-hf-w.png"
+						},
+						"sr_default_image_size": true,
+						"text": "How We Got A 1000% Conversion Rate In 7 Days",
+						"tags": "2019 gdd inbound",
+						"url": "#",
+						"brand_color": {
+							"color": "#FF42A8"
+						}
+					},
+					{
+						"logo": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-filter-01-hv-d.png"
+						},
+						"logo_hover": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-filter-01-hv-w.png"
+						},
+						"sr_default_image_size": true,
+						"text": "Free Prototyping Demo",
+						"tags": "2019 gdd",
+						"url": "#",
+						"brand_color": {
+							"color": "#3FC380"
+						}
+					},
+					{
+						"logo": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-filter-01-cd-d.png"
+						},
+						"logo_hover": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-filter-01-cd-w.png"
+						},
+						"sr_default_image_size": true,
+						"text": "Modular Design Tool Free Trial",
+						"tags": "2019 gdd inbound",
+						"url": "#",
+						"brand_color": {
+							"color": "#307fe2"
+						}
+					},
+					{
+						"logo": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-filter-01-ll-d.png"
+						},
+						"logo_hover": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-filter-01-ll-w.png"
+						},
+						"sr_default_image_size": true,
+						"text": "HubSpot CMS Design Blueprint",
+						"tags": "2018 gdd inbound",
+						"url": "#",
+						"brand_color": {
+							"color": "#11B6BD"
+						}
+					},
+					{
+						"logo": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-filter-01-bv-d.png"
+						},
+						"logo_hover": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-filter-01-bv-w.png"
+						},
+						"sr_default_image_size": true,
+						"text": "The Ultimate HubSpot Website Design EBook",
+						"tags": "2017",
+						"url": "#",
+						"brand_color": {
+							"color": "#562582"
+						}
+					},
+					{
+						"logo": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-filter-01-gdd-d.png"
+						},
+						"logo_hover": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-filter-01-gdd-w.png"
+						},
+						"sr_default_image_size": true,
+						"text": "The Marketing Team Productivity Guide",
+						"tags": "2017 gdd",
+						"url": "#",
+						"brand_color": {
+							"color": "#F66C1D"
+						}
+					},
+					{
+						"logo": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-filter-01-qq-d.png"
+						},
+						"logo_hover": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-filter-01-qq-w.png"
+						},
+						"sr_default_image_size": true,
+						"text": "The Inbound Marketing Tip Sheet",
+						"tags": "2019 gdd inbound",
+						"url": "#",
+						"brand_color": {
+							"color": "#006cd8"
+						}
+					}
+				]
+			},
+			{
+				"choices": [
+					[
+						"two-col", "Two Column"
+					],
+					[
+						"three-col", "Three Column"
+					],
+					[
+						"four-col", "Four Column"
+					]
+				],
+				"default": "four-col",
+				"display": "select",
+				"label": "Grid",
+				"name": "grid",
+				"type": "choice",
+				"required": true
+			},
+			{
+				"choices": [
+					[
+						"auto", "Auto"
+					],
+					[
+						"left", "Left"
+					],
+					[
+						"center", "Center"
+					],
+					[
+						"right", "Right"
+					]
+				],
+				"default": "center",
+				"display": "select",
+				"label": "Text Align",
+				"name": "text_align",
+				"type": "choice",
+				"required": true
+			},
+			{
+				"choices": [
+					[
+						"auto", "Auto"
+					],
+					[
+						"primary", "Primary"
+					],
+					[
+						"secondary", "Secondary"
+					],
+					[
+						"tertiary", "Tertiary"
+					],
+					[
+						"white", "White"
+					],
+					[
+						"black", "Black"
+					],
+					[
+						"dark", "Dark"
+					],
+					[
+						"light", "Light"
+					],
+					[
+						"success", "Success"
+					],
+					[
+						"info", "Info"
+					],
+					[
+						"warning", "Warning"
+					],
+					[
+						"danger", "Danger"
+					]
+				],
+				"default": "auto",
+				"display": "select",
+				"label": "Text Color",
+				"name": "text_color",
+				"type": "choice",
+				"required": true
+			}
+		],
+		"source": ""
+	},
+	"custom_module_template": "sr-cards-filter-01.html",
+	"available_builder": true,
+	"category": 7,
+	"files": [{
+			"file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/isotope.pkgd.min.js",
+			"folder_paths": "sr-assets/js"
+		}
+	]
+}

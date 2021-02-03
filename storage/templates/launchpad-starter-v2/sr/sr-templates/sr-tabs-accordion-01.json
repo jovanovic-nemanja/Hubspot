@@ -1,0 +1,922 @@
+{
+    "custom_module": {
+        "author": "ernesto@lean-labs.com",
+        "tags": ["ver-2.1.2"],
+        "name": "SR Tabs Accordion 01",
+        "css_assets": [],
+        "editable_contexts": [],
+        "external_js": [],
+        "icon": "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": [
+            "PAGE",
+            "BLOG_POST",
+            "BLOG_LISTING"
+        ],
+        "js_assets": [],
+        "other_assets": [],
+        "fields": [
+            {
+                "id": "enabled",
+                "name": "enabled",
+                "label": "Enabled",
+                "required": false,
+                "locked": false,
+                "display": "checkbox",
+                "type": "boolean",
+                "default": true
+            },
+            {
+                "id": "design_settings",
+                "name": "design_settings",
+                "label": "Design Settings",
+                "required": false,
+                "locked": false,
+                "children": [
+                    {
+                        "id": "design_settings.sr_module_id",
+                        "name": "sr_module_id",
+                        "label": "ID",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": null
+                    },
+                    {
+                        "id": "design_settings.class",
+                        "name": "class",
+                        "label": "Class",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": null
+                    },
+                    {
+                        "id": "design_settings.layout",
+                        "name": "layout",
+                        "label": "Layout",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "container",
+                                "Page"
+                            ],
+                            [
+                                "container-fluid",
+                                "Full Width"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "container"
+                    },
+                    {
+                        "id": "design_settings.container_width",
+                        "name": "container_width",
+                        "label": "Container Width",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "min",
+                                "Minimum"
+                            ],
+                            [
+                                "narrow",
+                                "Narrow"
+                            ],
+                            [
+                                "wide",
+                                "Wide"
+                            ],
+                            [
+                                "max",
+                                "Maximum"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "wide"
+                    },
+                    {
+                        "id": "top_bottom_padding",
+                        "name": "top_bottom_padding",
+                        "label": "Top Bottom Padding",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "auto",
+                                "Use default values"
+                            ],
+                            [
+                                "zero",
+                                "No Padding"
+                            ],
+                            [
+                                "half",
+                                "Small padding"
+                            ],
+                            [
+                                "full",
+                                "Large padding"
+                            ],
+                            [
+                                "custom",
+                                "Custom Padding"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "full"
+                    },
+                    {
+                        "id": "design_settings.custom_padding",
+                        "name": "custom_padding",
+                        "label": "Custom Padding",
+                        "help_text": "Top, Right, Bottom, Left",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "visibility": {
+                            "controlling_field": "top_bottom_padding",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "1rem 0rem 1rem 0rem"
+                    },
+                    {
+                        "id": "design_settings.border_top",
+                        "name": "border_top",
+                        "label": "Border Top",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    {
+                        "id": "design_settings.border_bottom",
+                        "name": "border_bottom",
+                        "label": "Border Bottom",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    {
+                        "id": "background_option",
+                        "name": "background_option",
+                        "label": "Background Option",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "image",
+                                "Image"
+                            ],
+                            [
+                                "color",
+                                "Color"
+                            ],
+                            [
+                                "custom",
+                                "Custom"
+                            ],
+                            [
+                                "gradient",
+                                "Gradient"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "color"
+                    },
+                    {
+                        "id": "design_settings.background_gradient_from",
+                        "name": "background_gradient_from",
+                        "label": "Background Gradient From",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "gradient",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#0c63ff"
+                        }
+                    },
+                    {
+                        "id": "design_settings.background_gradient_to",
+                        "name": "background_gradient_to",
+                        "label": "Background Gradient To",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "gradient",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#1897ff"
+                        }
+                    },
+                    {
+                        "id": "design_settings.background_image",
+                        "name": "background_image",
+                        "label": "Background Image",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "responsive": false,
+                        "resizable": true,
+                        "show_loading": false,
+                        "type": "image",
+                        "default": {
+                            "alt": null,
+                            "src": null
+                        }
+                    },
+                    {
+                        "id": "design_settings.background_overlay_color",
+                        "name": "background_overlay_color",
+                        "label": "Background Overlay Color",
+                        "help_text": "Recommended Width: 2880x1920px",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#343a40",
+                            "opacity": 30
+                        }
+                    },
+                    {
+                        "id": "design_settings.background_color",
+                        "name": "background_color",
+                        "label": "Background Color",
+                        "required": true,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "color",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "select",
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "success",
+                                "Success"
+                            ],
+                            [
+                                "info",
+                                "Info"
+                            ],
+                            [
+                                "warning",
+                                "Warning"
+                            ],
+                            [
+                                "danger",
+                                "Danger"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "light"
+                    },
+                    {
+                        "id": "design_settings.background_custom",
+                        "name": "background_custom",
+                        "label": "Background Custom",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#fff"
+                        }
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "layout": "container",
+                    "container_width": "wide",
+                    "top_bottom_padding": "full",
+                    "custom_padding": "1rem 0rem 1rem 0rem",
+                    "border_top": false,
+                    "border_bottom": false,
+                    "background_option": "color",
+                    "background_gradient_from": {
+                        "color": "#0c63ff"
+                    },
+                    "background_gradient_to": {
+                        "color": "#1897ff"
+                    },
+                    "background_image": {
+                        "alt": null,
+                        "src": null
+                    },
+                    "background_overlay_color": {
+                        "color": "#343a40",
+                        "opacity": 30
+                    },
+                    "background_color": "light",
+                    "background_custom": {
+                        "color": "#fff"
+                    }
+                }
+            },
+            {
+                "id": "heading",
+                "name": "heading",
+                "label": "Heading",
+                "required": false,
+                "locked": false,
+                "validation_regex": "",
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "default": "Why Sprocket Rocket?"
+            },
+            {
+                "id": "heading_size",
+                "name": "heading_size",
+                "label": "Heading Size",
+                "required": true,
+                "locked": false,
+                "visibility": {
+                    "controlling_field": "heading",
+                    "controlling_value_regex": null,
+                    "operator": null,
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "display": "select",
+                "choices": [
+                    [
+                        "1",
+                        "H1"
+                    ],
+                    [
+                        "2",
+                        "H2"
+                    ],
+                    [
+                        "3",
+                        "H3"
+                    ],
+                    [
+                        "4",
+                        "H4"
+                    ],
+                    [
+                        "5",
+                        "H5"
+                    ],
+                    [
+                        "6",
+                        "H6"
+                    ]
+                ],
+                "type": "choice",
+                "default": "2"
+            },
+            {
+                "id": "heading_display_size",
+                "name": "heading_display_size",
+                "label": "Heading Display Size",
+                "required": true,
+                "locked": false,
+                "visibility": {
+                    "controlling_field": "heading",
+                    "controlling_value_regex": null,
+                    "operator": null,
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "display": "select",
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "h1",
+                        "H1"
+                    ],
+                    [
+                        "h2",
+                        "H2"
+                    ],
+                    [
+                        "h3",
+                        "H3"
+                    ],
+                    [
+                        "h4",
+                        "H4"
+                    ],
+                    [
+                        "h5",
+                        "H5"
+                    ],
+                    [
+                        "h6",
+                        "H6"
+                    ],
+                    [
+                        "display-4",
+                        "L"
+                    ],
+                    [
+                        "display-3",
+                        "XL"
+                    ],
+                    [
+                        "display-2",
+                        "XXL"
+                    ],
+                    [
+                        "display-1",
+                        "XXXL"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            },
+            {
+                "id": "description",
+                "name": "description",
+                "label": "Description",
+                "required": false,
+                "locked": false,
+                "type": "richtext",
+                "default": "<p class='lead'>Select from a collection of modules and quickly populate and darft website and landing pages right to HubSpot</p>"
+            },
+            {
+                "id": "one_column",
+                "name": "one_column",
+                "label": "One Column",
+                "required": false,
+                "locked": false,
+                "display": "checkbox",
+                "type": "boolean",
+                "default": false
+            },
+            {
+                "id": "sticky",
+                "name": "sticky",
+                "label": "Sticky",
+                "required": false,
+                "locked": false,
+                "visibility": {
+                    "controlling_field": "one_column",
+                    "controlling_value_regex": "false",
+                    "operator": "EQUAL",
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "display": "checkbox",
+                "type": "boolean",
+                "default": true
+            },
+            {
+                "id": "sticky_offset",
+                "name": "sticky_offset",
+                "label": "Sticky Offset",
+                "required": true,
+                "locked": false,
+                "visibility": {
+                    "controlling_field": "one_column",
+                    "controlling_value_regex": "false",
+                    "operator": "EQUAL",
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "display": "select",
+                "choices": [
+                    [
+                        "0",
+                        "None"
+                    ],
+                    [
+                        "15",
+                        "Small"
+                    ],
+                    [
+                        "25",
+                        "Medium"
+                    ],
+                    [
+                        "35",
+                        "Large"
+                    ]
+                ],
+                "type": "choice",
+                "default": "25"
+            },
+            {
+                "id": "1",
+                "name": "tab_item",
+                "label": "Accordion Item",
+                "required": false,
+                "locked": false,
+                "occurrence": {
+                    "min": 1,
+                    "max": null,
+                    "sorting_label_field": null,
+                    "default": 6
+                },
+                "children": [
+                    {
+                        "id": "tab_item.tab_label",
+                        "name": "tab_label",
+                        "label": "Accordion Label",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Superior Inbound Material"
+                    },
+                    {
+                        "id": "tab_item.tab_content",
+                        "name": "tab_content",
+                        "label": "Accordion Content",
+                        "required": false,
+                        "locked": false,
+                        "type": "richtext",
+                        "default": "<p>Quickly and efficiently build the materials you need to support your inbound marketing strategy. Drag and drop building blocks including testimonials, forms, calls-to-action, and more.</p>"
+                    },
+                    {
+                        "id": "tab_item.expanded",
+                        "name": "expanded",
+                        "label": "Expanded",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": false
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": [
+                    {
+                        "expanded": true,
+                        "tab_label": "Superior Inbound Material",
+                        "tab_content": "<p>Quickly and efficiently build the materials you need to support your inbound marketing strategy. Drag and drop building blocks including testimonials, forms, calls-to-action, and more.</p>"
+                    },
+                    {
+                        "tab_label": "Light Years Ahead",
+                        "tab_content": "<p>Sprocket Rocket lets you transform your rapid prototype into a beautiful design by adjusting every aspect to fit brand standards.</p>"
+                    },
+                    {
+                        "tab_label": "Enhanced User Experience",
+                        "tab_content": "<p>Collaborate seamlessly across devices from wherever you may be – whether you’re in the office, on the go, or making last-minute changes before your next meeting.</p><p>From start-to-finish, the design and strategy team provide all of the guidance and expertise necessary to build a high-conversion website.</p>"
+                    },
+                    {
+                        "tab_label": "Prototype With Robust Modules",
+                        "tab_content": "<p>Select from a collection of modules and quickly populate and draft website and landing pages right to HubSpot.</p>"
+                    },
+                    {
+                        "tab_label": "Easy-To-Use Tools",
+                        "tab_content": "<p>Get started on website and landing pages right away with little to no learning curve.</p><p>Without rigid templates, you can build the exact type of website necessary to hit your website performnace goals.</p>"
+                    },
+                    {
+                        "tab_label": "Modular Design Tool",
+                        "tab_content": "<p>You can use modular design to get the exact building blocks you need to build beautiful website and landing pages.</p>"
+                    }
+                ]
+            },
+            {
+                "id": "accordion_text_color",
+                "name": "accordion_text_color",
+                "label": "Accordion Text Color",
+                "required": true,
+                "locked": false,
+                "display": "select",
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "primary",
+                        "Primary"
+                    ],
+                    [
+                        "secondary",
+                        "Secondary"
+                    ],
+                    [
+                        "tertiary",
+                        "Tertiary"
+                    ],
+                    [
+                        "white",
+                        "White"
+                    ],
+                    [
+                        "black",
+                        "Black"
+                    ],
+                    [
+                        "dark",
+                        "Dark"
+                    ],
+                    [
+                        "light",
+                        "Light"
+                    ],
+                    [
+                        "success",
+                        "Success"
+                    ],
+                    [
+                        "info",
+                        "Info"
+                    ],
+                    [
+                        "warning",
+                        "Warning"
+                    ],
+                    [
+                        "danger",
+                        "Danger"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            },
+            {
+                "id": "show_one_at_a_time",
+                "name": "show_one_at_a_time",
+                "label": "Close Inactive Accordions",
+                "help_text": "Only shows the active Accordion",
+                "required": false,
+                "locked": false,
+                "display": "checkbox",
+                "type": "boolean",
+                "default": true
+            },
+            {
+                "id": "items_to_show",
+                "name": "items_to_show",
+                "label": "Accordions to show",
+                "help_text": "Number of Accordions to show on load",
+                "required": false,
+                "locked": false,
+                "display": "text",
+                "min": 1,
+                "step": 1,
+                "type": "number",
+                "default": 3
+            },
+            {
+                "id": "cta_style",
+                "name": "cta_style",
+                "label": "Load More Button Style",
+                "required": true,
+                "locked": false,
+                "display": "select",
+                "choices": [
+                    [
+                        "primary",
+                        "Primary"
+                    ],
+                    [
+                        "secondary",
+                        "Secondary"
+                    ],
+                    [
+                        "tertiary",
+                        "Tertiary"
+                    ],
+                    [
+                        "white",
+                        "White"
+                    ],
+                    [
+                        "black",
+                        "Black"
+                    ],
+                    [
+                        "outline-primary",
+                        "Outline Primary"
+                    ],
+                    [
+                        "outline-secondary",
+                        "Outline Secondary"
+                    ],
+                    [
+                        "outline-tertiary",
+                        "Outline Tertiary"
+                    ],
+                    [
+                        "outline-white",
+                        "Outline White"
+                    ],
+                    [
+                        "outline-black",
+                        "Outline Black"
+                    ],
+                    [
+                        "none",
+                        "None"
+                    ]
+                ],
+                "type": "choice",
+                "default": "outline-primary"
+            },
+            {
+                "id": "826460d2-4318-5b6f-5c47-54fd68a9564e",
+                "name": "load_more_button_text",
+                "label": "Load More Button Text",
+                "required": false,
+                "locked": false,
+                "validation_regex": "",
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "default": "View All"
+            },
+            {
+                "id": "text_color",
+                "name": "text_color",
+                "label": "Text Color",
+                "required": true,
+                "locked": false,
+                "display": "select",
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "primary",
+                        "Primary"
+                    ],
+                    [
+                        "secondary",
+                        "Secondary"
+                    ],
+                    [
+                        "tertiary",
+                        "Tertiary"
+                    ],
+                    [
+                        "white",
+                        "White"
+                    ],
+                    [
+                        "black",
+                        "Black"
+                    ],
+                    [
+                        "dark",
+                        "Dark"
+                    ],
+                    [
+                        "light",
+                        "Light"
+                    ],
+                    [
+                        "success",
+                        "Success"
+                    ],
+                    [
+                        "info",
+                        "Info"
+                    ],
+                    [
+                        "warning",
+                        "Warning"
+                    ],
+                    [
+                        "danger",
+                        "Danger"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            },
+            {
+                "id": "text_align",
+                "name": "text_align",
+                "label": "Text Align",
+                "required": true,
+                "locked": false,
+                "display": "select",
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "left",
+                        "Left"
+                    ],
+                    [
+                        "center",
+                        "Center"
+                    ],
+                    [
+                        "right",
+                        "Right"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            }
+        ],
+        "source": ""
+    },
+    "custom_module_template": "sr-tabs-accordion-01.html",
+    "available_builder": true,
+    "category": 5,
+    "files": [
+        {
+            "file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/ScrollMagic.min.js",
+            "folder_paths": "sr-assets/js"
+        },
+        {
+            "file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/animation.gsap.min.js",
+            "folder_paths": "sr-assets/js"
+        }
+    ]
+}

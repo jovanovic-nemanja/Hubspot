@@ -1,0 +1,317 @@
+{
+	"custom_module": {
+		"author": "adrian@lean-labs.com",
+		"tags": ["ver-1.1.1"],
+		"name": "SR Footer Min 01",
+		"css_assets": [],
+		"global" : false,
+		"editable_contexts": [],
+		"external_js": [],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+		"js_assets": [],
+		"other_assets": [],
+		"fields": [
+			{
+				"default": true,
+				"label": "Enabled",
+				"name": "enabled",
+				"type": "boolean"
+			},
+			{
+				"type": "group",
+				"name": "design_settings",
+				"label": "Design Settings",
+				"children": [
+					
+							{
+								"default": "",
+								"label": "ID",
+								"name": "sr_module_id",
+								"type": "text"
+							},
+							{
+								"default": "",
+								"label": "Class",
+								"name": "class",
+								"type": "text"
+							},
+							{
+								"choices": [
+								  [
+									"auto", "Use default values"
+								  ],
+								  [
+									"zero", "No Padding"
+								  ],
+								  [
+									"half", "Small padding"
+								  ],
+								  [
+									"full", "Large padding"
+								  ],
+								  [
+									"custom", "Custom Padding"
+								  ]
+								],
+								"id": "top_bottom_padding",
+								"default": "custom",
+								"display": "select",
+								"label": "Top Bottom Padding",
+								"name": "top_bottom_padding",
+								"type": "choice",
+								"required": true
+							},
+							{
+								"name" : "custom_padding",
+								"type" : "text",
+								"label" : "Custom Padding",
+								"help_text" : "Top, Right, Bottom, Left",
+								"visibility" : {
+								  "controlling_field" : "top_bottom_padding",
+								  "controlling_value_regex" : "custom",
+								  "operator" : "EQUAL",
+								  "access" : null
+								},
+								"default" : "2rem 0rem 2rem 0rem"
+							},
+							{
+								"choices": [
+									[
+										"image", "Image"
+									],
+									[
+										"color", "Color"
+									],
+									[
+										"custom", "Custom"
+									],
+									[
+										"gradient", "Gradient"
+									]
+								],
+								"id": "background_option",
+								"default": "color",
+								"display": "select",
+								"label": "Background Option",
+								"name": "background_option",
+								"type": "choice",
+								"required": true
+							},
+							{
+								"default": {
+									"color": "#0c63ff"
+								},
+								"label": "Background Gradient From",
+								"name": "background_gradient_from",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "gradient",
+									"operator": "EQUAL"
+								},
+								"type": "color"
+							},
+							{
+								"default": {
+									"color": "#1897ff"
+								},
+								"label": "Background Gradient To",
+								"name": "background_gradient_to",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "gradient",
+									"operator": "EQUAL"
+								},
+								"type": "color"
+							},
+							{
+								"default": {
+									"src": "",
+									"alt": ""
+								},
+								"label": "Background Image",
+								"name": "background_image",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "image",
+									"operator": "EQUAL"
+								},
+								"type": "image"
+							},
+							{
+								"default": {
+									"color": "#343a40",
+									"opacity": 30
+								},
+								"label": "Background Overlay Color",
+								"name": "background_overlay_color",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "image",
+									"operator": "EQUAL"
+								},
+								"help_text": "Recommended Width: 2880x1920px",
+								"type": "color"
+							},
+							{
+								"choices": [
+									[
+										"primary",
+										"Primary"
+									],
+									[
+										"secondary",
+										"Secondary"
+									],
+									[
+										"tertiary",
+										"Tertiary"
+									],
+									[
+										"white",
+										"White"
+									],
+									[
+										"black",
+										"Black"
+									],
+									[
+										"dark",
+										"Dark"
+									],
+									[
+										"light",
+										"Light"
+									],
+									[
+										"success",
+										"Success"
+									],
+									[
+										"info",
+										"Info"
+									],
+									[
+										"warning",
+										"Warning"
+									],
+									[
+										"danger",
+										"Danger"
+									],
+									[
+										"none",
+										"None"
+									]
+								],
+								"default": "light",
+								"display": "select",
+								"label": "Background Color",
+								"name": "background_color",
+								"type": "choice",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "color",
+									"operator": "EQUAL"
+								},
+								"required": true
+							},
+							{
+								"default": {
+									"color": "#fff",
+									"opacity": 100
+								},
+								"label": "Background Custom",
+								"name": "background_custom",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "custom",
+									"operator": "EQUAL"
+								},
+								"type": "color"
+							}
+			]},
+			{
+				"default": "<p class='small'>&copy;{{ year }} Acme Co, Inc. All rights reserved. <a href='/privacy-policy'>Privacy Policy</a></p>",
+				"label": "Content",
+				"name": "content",
+				"type": "richtext"
+			},
+			{
+				"choices": [
+					[
+						"auto", "Auto"
+					],
+					[
+						"left", "Left"
+					],
+					[
+						"center", "Center"
+					],
+					[
+						"right", "Right"
+					]
+				],
+				"default": "center",
+				"display": "select",
+				"label": "Text Align",
+				"name": "text_align",
+				"type": "choice",
+				"required": true
+			},
+			{
+				"choices": [
+					[
+						"auto", "Auto"
+					],
+					[
+						"primary", "Primary"
+					],
+					[
+						"secondary", "Secondary"
+					],
+					[
+						"tertiary", "Tertiary"
+					],
+					[
+						"white", "White"
+					],
+					[
+						"black", "Black"
+					],
+					[
+						"dark", "Dark"
+					],
+					[
+						"light", "Light"
+					],
+					[
+						"success", "Success"
+					],
+					[
+						"info", "Info"
+					],
+					[
+						"warning", "Warning"
+					],
+					[
+						"danger", "Danger"
+					]
+				],
+				"default": "auto",
+				"display": "select",
+				"label": "Text Color",
+				"name": "text_color",
+				"type": "choice",
+				"required": true
+			}
+		],
+		"source": ""
+	},
+	"custom_module_template": "sr-footer-min-01.html",
+	"available_builder": true,
+	"category": 2,
+	"is_free": true,
+	"files": []
+}

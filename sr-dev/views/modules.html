@@ -1,0 +1,196 @@
+<div class="action-panel-content">
+    <!-- alerts -->
+    <!-- Module Already exisits alert -->
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    SR Cards Filter 01 could not be updated. Module already exists.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <img src="./assets/images/icon-close-white.svg" />
+    </button>
+    </div>
+    <!-- Warning alert -->
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    Show a warning when it's not a clear error.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <img src="./assets/images/icon-close-white.svg" />
+    </button>
+    </div>
+    <!-- Success alert -->
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    SR Cards Articles 01 has been installed.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <img src="./assets/images/icon-close-white.svg" />
+    </button>
+    </div>
+
+    <div class="action-container">
+    <div class="action-heading">
+        <h2>Modules</h2>
+        <form class="form-inline action-panel-search">
+        <input onkeyup="searchTable()" id="module-search" class="form-control" type="search" placeholder="Search" aria-label="Search" data-item="module-search">
+        </form>
+    </div>
+    <table id="module-table" class="table table-striped">
+        <thead>
+        <tr>
+            <th class="desc" scope="col">Module Name</th>
+            <th class="" scope="col">Current Version</th>
+            <th class="" scope="col">HubSpot Version</th>
+            <th class="action" scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="module-name-table" scope="row">SR Animations</td>
+            <td>1.0.1</td>
+            <td>1.0.1</td>
+            <td><label class="global"><input type="checkbox" name="Global"> Global</label><button class="btn-sm btn-primary " href="">Install Module</button></td>
+        </tr>
+        <tr>
+            <td class="module-name-table" scope="row">SR Base</td>
+            <td>1.0.1</td>
+            <td>1.0.1</td>
+            <td><label class="global"><input type="checkbox" name="Global"> Global</label><button class="btn-sm btn-primary " href="">Install Module</button></td>
+        </tr>
+        <tr>
+            <td class="module-name-table" scope="row">SR Bling Graphic 01</td>
+            <td>1.0.1</td>
+            <td>1.0.1</td>
+            <td><label class="global"><input type="checkbox" name="Global"> Global</label><button class="btn-sm btn-primary " href="">Install Module</button></td>
+        </tr>
+        <tr>
+            <td class="module-name-table" scope="row">SR Bling Graphic 02</td>
+            <td>1.0.1</td>
+            <td>1.0.1</td>
+            <td><label class="global"><input type="checkbox" name="Global"> Global</label><button class="btn-sm btn-primary " href="">Install Module</button></td>
+        </tr>
+        <tr>
+            <td class="module-name-table" scope="row">SR Articles 01</td>
+            <td>1.0.1</td>
+            <td>1.0.1</td>
+            <!-- upgrade module button option -->
+            <td><label class="global"><input type="hidden" name="Global"></label><button class="btn-sm btn-success upgrade " href="">Upgrade Module</button></td>
+        </tr>
+        <tr>
+            <td class="module-name-table" scope="row">SR Categories 01</td>
+            <td>1.0.1</td>
+            <td>1.0.1</td>
+            <td><label class="global"><input type="checkbox" name="Global"> Global</label><button class="btn-sm btn-primary " href="">Install Module</button></td>
+        </tr>
+        <tr>
+            <td class="module-name-table" scope="row">SR Filter 01</td>
+            <td>1.0.1</td>
+            <td>1.0.1</td>
+            <td><label class="global"><input type="checkbox" name="Global"> Global</label><button class="btn-sm btn-primary " href="">Install Module</button></td>
+        </tr>
+        <tr>
+            <td class="module-name-table" scope="row">SR Filter 02</td>
+            <td>1.0.1</td>
+            <td>1.0.1</td>
+            <td><label class="global"><input type="checkbox" name="Global"> Global</label><button class="btn-sm btn-primary " href="">Install Module</button></td>
+        </tr>
+        <tr>
+            <td class="module-name-table" scope="row">SR Cards Grid 01</td>
+            <td>1.0.1</td>
+            <td>1.0.1</td>
+            <td><label class="global"><input type="checkbox" name="Global"> Global</label><button class="btn-sm btn-primary " href="">Install Module</button></td>
+        </tr>
+        <tr>
+            <td class="module-name-table" scope="row">SR Cards Grid 02</td>
+            <td>1.0.1</td>
+            <td>1.0.1</td>
+            <td><label class="global"><input type="checkbox" name="Global"> Global</label><button class="btn-sm btn-primary " href="">Install Module</button></td>
+        </tr>
+        <tr>
+            <td class="module-name-table" scope="row">SR Cards Image 01</td>
+            <td>1.0.1</td>
+            <td>1.0.1</td>
+            <td><label class="global"><input type="checkbox" name="Global"> Global</label><button class="btn-sm btn-primary " href="">Install Module</button></td>
+        </tr>
+        <tr>
+            <td class="module-name-table" scope="row">SR Cards Logos 01</td>
+            <td>1.0.2</td>
+            <td>1.0.2</td>
+            <td><label class="global"><input type="checkbox" name="Global"> Global</label><button class="btn-sm btn-primary " href="">Install Module</button></td>
+        </tr>
+        <tr>
+            <td class="module-name-table" scope="row">SR Cards Pricing 01</td>
+            <td>1.0.3</td>
+            <td>1.0.3</td>
+            <td><label class="global"><input type="checkbox" name="Global"> Global</label><button class="btn-sm btn-primary " href="">Install Module</button></td>
+        </tr>
+        <tr>
+            <td class="module-name-table" scope="row">SR Cards Steps 01</td>
+            <td>1.0.1</td>
+            <td>1.0.1</td>
+            <td><label class="global"><input type="checkbox" name="Global"> Global</label><button class="btn-sm btn-primary " href="">Install Module</button></td>
+        </tr>
+        <tr>
+            <td class="module-name-table" scope="row">SR Cards Steps 02</td>
+            <td>1.0.1</td>
+            <td>1.0.1</td>
+            <td><label class="global"><input type="checkbox" name="Global"> Global</label><button class="btn-sm btn-primary " href="">Install Module</button></td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
+
+<!-- script needs to be loaded with this section if using AJAX-->
+<script type="text/javascript">
+
+function searchTable() {
+
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("module-search");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("module-table");
+    tr = table.getElementsByTagName("tr");
+    
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+  $('th').click(function(){
+
+    if($(this).hasClass("asc")) {
+        $('th.asc').removeClass("asc");
+        $('th.desc').removeClass("desc");
+        $(this).addClass("desc");
+    } else {
+        $('th.asc').removeClass("asc");
+        $('th.desc').removeClass("desc");
+        $(this).addClass("asc");
+    }
+
+    var tracker = true;
+
+    var table = $(this).parents('table').eq(0)
+    var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+
+    if(tracker) {
+    this.asc = !this.asc
+        tracker = false;
+    }
+    if (!this.asc){rows = rows.reverse()}
+    for (var i = 0; i < rows.length; i++){table.append(rows[i])}
+})
+
+function comparer(index) {
+    return function(a, b) {
+        var valA = getCellValue(a, index), valB = getCellValue(b, index)
+        return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.toString().localeCompare(valB)
+    }
+}
+function getCellValue(row, index){ return $(row).children('td').eq(index).text() }
+
+
+</script>

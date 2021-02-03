@@ -1,0 +1,118 @@
+{
+	"custom_module": {
+		"author": "bradley@lean-labs.com",
+		"tags": ["ver-1.0.0"],
+		"name": "Email Blog Listing",
+		"css_assets": [],
+		"editable_contexts": [],
+		"external_js": [],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": ["EMAIL"],
+		"js_assets": [],
+		"other_assets": [],
+		"fields": [{
+				"name": "blog",
+				"label": "Blog",
+				"type": "blog",
+				"default": null
+			},
+			{
+				"name": "number_of_post_to_show",
+				"label": "Number of Post to Show",
+				"display": "text",
+				"step": 1,
+				"type": "number",
+				"default": 4
+			},
+			{
+				"name": "heading_color",
+				"label": "Heading Color",
+				"type": "color",
+				"default": {
+					"color": "#333",
+					"opacity": 100
+				}
+			},
+			{
+				"id": "button",
+				"name": "button",
+				"label": "Button",
+				"type": "boolean",
+				"default": true
+			},
+			{
+				"name": "button_text",
+				"label": "Button Text",
+				"visibility": {
+					"controlling_field": "button",
+					"controlling_value_regex": "true",
+					"operator": "EQUAL",
+					"access": null
+				},
+				"type": "text",
+				"default": "Read More"
+			},
+			{
+				"name": "button_padding",
+				"label": "Button Padding",
+				"visibility": {
+					"controlling_field": "button",
+					"controlling_value_regex": "true",
+					"operator": "EQUAL",
+					"access": null
+				},
+				"type": "text",
+				"default": "12px 24px"
+			},
+			{
+				"name": "button_text_color",
+				"label": "Button Text Color",
+				"visibility": {
+					"controlling_field": "button",
+					"controlling_value_regex": "true",
+					"operator": "EQUAL",
+					"access": null
+				},
+				"type": "color",
+				"default": {
+					"color": "#fff",
+					"opacity": 100
+				}
+			},
+			{
+				"name": "button_background_color",
+				"label": "Button Background Color",
+				"visibility": {
+					"controlling_field": "button",
+					"controlling_value_regex": "true",
+					"operator": "EQUAL",
+					"access": null
+				},
+				"type": "color",
+				"default": {
+					"color": "#0c63ff",
+					"opacity": 100
+				}
+			},
+			{
+				"name": "text_color",
+				"label": "Text Color",
+				"type": "color",
+				"default": {
+					"color": "#0a0a0a",
+					"opacity": 100
+				}
+			},
+			{
+				"name": "border_bottom",
+				"label": "Border Bottom",
+				"type": "boolean",
+				"default": true
+			}
+		],
+		"source": ""
+	},
+	"custom_module_template": "email-blog-listing.html",
+	"files": []
+}

@@ -1,0 +1,90 @@
+{
+	"custom_module": {
+		"author": "bradley@lean-labs.com",
+		"tags": ["ver-1.0.1"],
+		"name": "Email One Col Meida",
+		"css_assets": [],
+		"editable_contexts": [],
+		"external_js": [],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": ["EMAIL"],
+		"js_assets": [],
+		"other_assets": [],
+		"fields": [{
+			"default": true,
+			"label": "Enabled",
+			"name": "enabled",
+			"type": "boolean"
+		},
+		{
+			"name": "headline",
+			"label": "Headline",
+			"type": "text",
+			"default": "BRINGING THE CULTURE OF SHARING TO EVERYONE"
+		},
+		{
+			"name": "headline_size",
+			"label": "Headline Size",
+			"display": "select",
+			"choices": [
+				["1", "H1"],
+				["2", "H2"],
+				["3", "H3"],
+				["4", "H4"],
+				["5", "H5"],
+				["6", "H6"]
+			],
+			"type": "choice",
+			"default": "3"
+		},
+		{
+			"name": "text",
+			"label": "Text",
+			"type": "richtext",
+			"default": "At Sprocket Rocket, our mission has always been focused on bringing openness and transparency to the design process. We've always believed that by providing a space where designers can share ongoing work not only empowers them to make better products, it also helps them grow. We're proud to be a part of creating a more open culture and to continue building a product that supports this vision."
+		},
+		{
+			"name": "image",
+			"label": "Image",
+			"type": "image",
+			"default": {
+				"src": "https://www.lean-labs.com/hubfs/sr-assets/images/newsletter-media-one-col.jpg",
+				"alt": "Email One Col Meida",
+				"width": 520,
+				"height": 400
+			}
+		},
+		{
+			"name": "text_2",
+			"label": "Text",
+			"type": "richtext",
+			"default": "As we've grown, we've seen how Sprocket Rocket has helped companies such as Spotify, Microsoft, Airbnb, Facebook, and Intercom bring their designers closer together to create amazing things. We've also learned that when the culture of sharing is brought in earlier, the better teams adapt and communicate with one another."
+		},
+		{
+			"name": "padding",
+			"label": "Padding",
+			"type": "text",
+			"default": "25px 25px"
+		},
+		{
+			"name": "border_bottom",
+			"label": "Border Bottom",
+			"type": "boolean",
+			"default": true
+		},
+		{
+			"name": "text_color",
+			"label": "Text Color",
+			"max_depth": 0,
+			"type": "color",
+			"default": {
+				"color": "#0a0a0a",
+				"opacity": 100
+			}
+		}],
+		"source": ""
+	},
+	"custom_module_template": "email-one-col-media.html",
+	"files": []
+}

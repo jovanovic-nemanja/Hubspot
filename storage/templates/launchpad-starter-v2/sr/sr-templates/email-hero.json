@@ -1,0 +1,137 @@
+{
+	"custom_module": {
+		"author": "bradley@lean-labs.com",
+		"tags": ["ver-1.0.1"],
+		"name": "Email Hero",
+		"css_assets": [],
+		"editable_contexts": [],
+		"external_js": [],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": ["EMAIL"],
+		"js_assets": [],
+		"other_assets": [],
+		"fields": [{
+			"default": true,
+			"label": "Enabled",
+			"name": "enabled",
+			"type": "boolean"
+		},
+		{
+				"name": "hero_image",
+				"label": "Hero Image",
+				"type": "image",
+				"default": {
+					"src": "https://www.lean-labs.com/hubfs/sr-assets/images/newsletter-header-bg.jpg",
+					"alt": "Email Hero",
+					"width": 600,
+					"height": 600
+				},
+				"resizable" : false
+			},
+			{
+				"name": "headline",
+				"label": "Headline",
+				"type": "richtext",
+				"default": "It's Never Been Easier to Do Things."
+			},
+			{
+				"name": "headline_size",
+				"label": "Headline Size",
+				"display": "select",
+				"choices": [
+					["1", "H1"],
+					["2", "H2"],
+					["3", "H3"],
+					["4", "H4"],
+					["5", "H5"],
+					["6", "H6"]
+				],
+				"type": "choice",
+				"default": "2"
+			},
+			{
+				"name": "text",
+				"label": "Text",
+				"type": "text",
+				"default": "From start-to-finish, the design and strategy team provide all the guidance and expertise necessary to build a high-conversion website."
+			},
+			{
+				"id": "button",
+				"name": "button",
+				"label": "Button",
+				"type": "boolean",
+				"default": false
+			},
+			{
+				"name": "button_text",
+				"label": "Button Text",
+				"visibility": {
+					"controlling_field": "button",
+					"controlling_value_regex": "true",
+					"operator": "EQUAL",
+					"access": null
+				},
+				"type": "text",
+				"default": "Get Started"
+			},
+			{
+				"name": "button_link",
+				"label": "Button Link",
+				"visibility": {
+					"controlling_field": "button",
+					"controlling_value_regex": "true",
+					"operator": "EQUAL",
+					"access": null
+				},
+				"type": "text",
+				"default": "#"
+			},
+			{
+				"name": "button_padding",
+				"label": "Button Padding",
+				"visibility": {
+					"controlling_field": "button",
+					"controlling_value_regex": "true",
+					"operator": "EQUAL",
+					"access": null
+				},
+				"type": "text",
+				"default": "12px 24px"
+			},
+			{
+				"name": "button_text_color",
+				"label": "Button Text Color",
+				"visibility": {
+					"controlling_field": "button",
+					"controlling_value_regex": "true",
+					"operator": "EQUAL",
+					"access": null
+				},
+				"type": "color",
+				"default": {
+					"color": "#fff",
+					"opacity": 100
+				}
+			},
+			{
+				"name": "button_background_color",
+				"label": "Button Background Color",
+				"visibility": {
+					"controlling_field": "button",
+					"controlling_value_regex": "true",
+					"operator": "EQUAL",
+					"access": null
+				},
+				"type": "color",
+				"default": {
+					"color": "#0c63ff",
+					"opacity": 100
+				}
+			}
+		],
+		"source": ""
+	},
+	"custom_module_template": "email-hero.html",
+	"files": []
+}

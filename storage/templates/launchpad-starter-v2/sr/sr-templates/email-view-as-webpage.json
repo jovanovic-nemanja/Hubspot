@@ -1,0 +1,32 @@
+{
+	"custom_module": {
+		"author": "bradley@lean-labs.com",
+		"tags": ["ver-1.0.0"],
+		"name": "Email View as Web Page",
+		"css_assets": [],
+		"editable_contexts": [],
+		"external_js": [],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": ["EMAIL"],
+		"js_assets": [],
+		"other_assets": [],
+		"fields": [
+		{
+			"name": "text",
+			"label": "Text",
+			"type": "text",
+			"default": "Not rendering correctly? View this email as a web page",
+			"help_text": "To enabled go to: Settings > Advanced settings > Web version"
+		},
+		{
+			"name": "link_text",
+			"label": "Link Text",
+			"type": "text",
+			"default": "here"
+		}],
+		"source": ""
+	},
+	"custom_module_template": "email-view-as-webpage.html",
+	"files": []
+}

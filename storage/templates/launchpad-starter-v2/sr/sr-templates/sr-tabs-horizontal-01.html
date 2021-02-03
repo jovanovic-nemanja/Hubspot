@@ -1,0 +1,423 @@
+{% if module.enabled %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-tabs-horizontal-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Tabs Horizontal 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+
+	<div class="sr-tabs-horizontal{% if module.class %} {{ module.class }}{% endif %} {{ name }}"{% if module.sr_module_id %}id="{{ module.sr_module_id }}"{% endif %}>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-4 tab-nav">
+					<ul class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+						{% for item in module.tab_item %}
+							<li>
+								<a class="{% if loop.first %} active show {% endif %} anchor" href="#{{ name }}_tab{{loop.index}}" id="{{ name }}_pill{{loop.index}}" data-url="#{{ name }}_tab{{loop.index}}" data-toggle="pill" role="tab" ariacontrols="{{ name }}_tab{{loop.index}}">
+									<div class="tab-nav-image">
+
+										<img src="{{ item.tab_image.src }}" alt="{{ item.tab_image.alt }}" class="default">
+										{% if item.tab_hover_image.src %}
+											<img src="{{ item.tab_hover_image.src }}" alt="{{ item.tab_hover_image.alt }}" class="onhover" width="128">
+										{% else %}
+											<img src="{{ item.tab_image.src }}" alt="{{ item.tab_image.alt }}" class="onhover" width="128">
+										{% endif %}
+									</div>
+									<div class="tab-nav-title">
+										{% if item.tab_title %}
+											<h3>{{ item.tab_title }}</h3>
+										{% endif %}
+										{% if item.tab_subtitle %}
+											<p>{{ item.tab_subtitle }}</p>
+										{% endif %}
+									</div>
+								</a>
+								<div class="tab-pane">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="tab-pane-content mobile">
+												<div>
+													{{ item.tab_content }}
+												</div>
+											</div>
+										</div>
+										<div class="tab-pane-image col-md-6 text-center" style="background-image:url('{{ item.tab_side_image.src }}');">
+										</div>
+									</div>
+								</div>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div class="col-md-8">
+					<div class="tab-content" id="v-pills-tabContent">
+
+						{% for item in module.tab_item %}
+
+							<div class="tab-pane fade{% if loop.first %} show active{% endif %}" id="{{ name }}_tab{{loop.index}}" role="tabpanel" aria-labelledby="{{ name }}_pill{{loop.index}}">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="tab-pane-content">
+											<div>
+												{{ item.tab_content }}
+											</div>
+										</div>
+									</div>
+									<div class="tab-pane-image col-md-6 text-center" style="background-image:url('{{ item.tab_side_image.src }}');">
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% require_js %}
+		<script type="text/javascript">
+			$(function(){
+
+				if ($(window).width() < 768) {
+							$('a.anchor').removeAttr('href');
+						}
+				$(window).resize(function(){
+					if ($(window).width() >= 768) {
+						$('.{{ name }} .mobiletab').removeClass('active show');
+						$('.lasttab').click();
+						$('a.anchor').each(function() {
+							$(this).attr('href',$(this).attr('data-url'));
+						});
+					}
+					if ($(window).width() < 768) {
+							$('a.anchor').removeAttr('href');
+						}
+				})
+				$('a[data-toggle="pill"]').on('click', function(e) {
+
+					if ($(window).width() < 768) {
+						e.preventDefault();
+						$('li.activated').removeClass('activated');
+						$(this).parent().addClass("activated");
+						$('.active.show').removeClass("active show");
+						$(this).addClass('active show mobiletab');
+						$('.lasttab').removeClass('lasttab');
+						$(this).addClass('lasttab');
+						$([document.documentElement, document.body]).animate({
+							scrollTop: $(".activated .tab-pane-content.mobile").offset().top
+						}, 500);
+					
+					}
+				});
+			});
+		</script>
+	{% end_require_js %}
+
+	{% require_css %}
+		<style type="text/css">
+			.sr-tabs-horizontal {
+				background: #fff;
+				overflow-x: hidden;
+			}
+			.sr-tabs-horizontal:before {
+				display: none;
+			}
+			.sr-tabs-horizontal .tab-nav {
+				padding: 0;
+			}
+			@media (min-width: 768px) {
+				.sr-tabs-horizontal .tab-nav {
+					background: var(--primary);
+				}
+			}
+			.sr-tabs-horizontal .tab-nav .tab-pane {
+				display: none;
+			}
+			@media (min-width: 768px) {
+				.sr-tabs-horizontal .tab-nav .tab-pane {
+					display: none;
+				}
+			}
+			@media (max-width: 767px) {
+				.sr-tabs-horizontal .tab-nav a.active + .tab-pane {
+					display: block;
+				}
+			}
+			.sr-tabs-horizontal .nav li {
+				width: 100%;
+				margin: 0;
+			}
+			.sr-tabs-horizontal .nav li a {
+				background: var(--primary);
+				padding: 1.563rem 4.938rem 1.563rem 0;
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-align: center;
+				align-items: center;
+				-ms-flex-pack: justify;
+				justify-content: space-between;
+				color: #fff;
+				position:relative;
+			}
+			.sr-tabs-horizontal  a.anchor:hover {
+				cursor:pointer;
+			}
+			.sr-tabs-horizontal a:not([href]):not([tabindex]):hover {
+				color:#fff;
+			}
+			@media (min-width: 768px) {
+				.sr-tabs-horizontal .nav li a:after {
+					display: flex;
+					justify-content:center;
+					align-items:center;
+					content: "\f105";
+					font-family: FontAwesome;
+					font-size: 20px;
+					width:32px;
+					height:32px;
+					background-color:var(--primary);
+					border-radius:50%;
+					position:absolute;
+					right:22px;
+					top:calc(50% - 16px);
+				}
+			}
+			@media (min-width: 1366px) {
+				.sr-tabs-horizontal .nav li a {
+					padding: 1.438rem 4.938rem 1.375rem 0;
+				}
+			}
+			.sr-tabs-horizontal .nav li a .tab-nav-image {
+				text-align: center;
+				width: 64px;
+				padding-right: 10px;
+			}
+			@media (min-width: 768px) and (max-width: 991px) {
+				.sr-tabs-horizontal .nav li a {
+					padding-left:1.563rem
+				}
+
+				.sr-tabs-horizontal .nav li a .tab-nav-image {
+					display: none;
+				}
+			}
+			@media (min-width: 992px) {
+				.sr-tabs-horizontal .nav li a .tab-nav-image {
+					display: block;
+					-ms-flex-preferred-size: 25%;
+					flex-basis: 25%;
+				}
+			}
+			.sr-tabs-horizontal .nav li a .tab-nav-image img {
+				max-width: 64px;
+				height: auto;
+			}
+			.sr-tabs-horizontal .nav li a .tab-nav-title {
+				-ms-flex-preferred-size: 75%;
+				flex-basis: 75%;
+			}
+			.sr-tabs-horizontal .nav li a .tab-nav-title h3 {
+				margin: 0;
+				color:#fff;
+			}
+			.sr-tabs-horizontal .nav li a .tab-nav-title p {
+				margin: 0;
+				padding-top: 0.425rem;
+				font-size: 0.875rem;
+    			line-height: 1.25rem;
+			}
+			.sr-tabs-horizontal .nav li a .onhover {
+				display: none;
+			}
+			.sr-tabs-horizontal .nav li a.active {
+				background: #fff;
+			}
+			.sr-tabs-horizontal .nav li a.active:after {
+				color: #fff;
+			}
+			.sr-tabs-horizontal .nav li a.active .tab-nav-image img.default {
+				display: none;
+			}
+			.sr-tabs-horizontal .nav li a.active .tab-nav-image img.onhover {
+				display: inline;
+			}
+			.sr-tabs-horizontal .nav li a.active h3 {
+				color: #30343b;
+			}
+			.sr-tabs-horizontal .nav li a.active p {
+				color: #87909e;
+			}
+			.sr-tabs-horizontal .nav li:nth-child(n+2) a {
+				border-top: 1px solid rgba(0, 0, 0, 0.2);
+			}
+			.sr-tabs-horizontal .nav h3 {
+				font-size: 1rem;
+				font-weight: 500;
+				line-height: 1.25rem;
+			}
+			.sr-tabs-horizontal .nav p {
+				font-size: 0.875rem;
+				line-height: 1rem;
+				color: #fff;
+			}
+			.sr-tabs-horizontal > .row {
+				margin-top: 0;
+			}
+			.sr-tabs-horizontal .tab-content {
+				display: none;
+			}
+
+			.sr-tabs-horizontal .tab-pane {
+				height: 100%;
+				padding: 0;
+				color: #313543;
+			}
+			.sr-tabs-horizontal .tab-pane h3 {
+				font-size: 1.75rem;
+				font-weight: bold;
+				line-height: 2.188rem;
+			}
+			.sr-tabs-horizontal .tab-pane h4 {
+				font-size: 1rem;
+				font-weight: bold;
+				line-height: 1.25rem;
+				text-transform: uppercase;
+			}
+			.sr-tabs-horizontal .tab-pane > .row {
+				height: 100%;
+			}
+			@media (min-width: 768px) {
+				.sr-tabs-horizontal > .row {
+					display: -ms-flexbox;
+					display: flex;
+				}
+				.sr-tabs-horizontal .tab-content {
+					height: 100%;
+					display: -ms-flexbox;
+					display: flex;
+					-ms-flex-align: center;
+					align-items: center;
+				}
+				.sr-tabs-horizontal .tab-pane > .row {
+					display: -ms-flexbox;
+					display: flex;
+				}
+				.sr-tabs-horizontal .tab-pane > .row .tab-pane-image {
+					padding: 0;
+					margin-top: 0;
+					height: 100%;
+				}
+			}
+			.sr-tabs-horizontal .tab-pane > .row .tab-pane-image {
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			.sr-tabs-horizontal .tab-pane .tab-pane-content {
+				display: -ms-flexbox;
+				display: flex;
+				padding:6rem 2.188rem;
+				height: 100%;
+				color:#87909e;
+			}
+			@media (min-width: 768px) and (max-width: 991px) {
+				.sr-tabs-horizontal .tab-pane .tab-pane-content {
+					padding: 0 0.938rem
+					display:flex;
+					align-items:center;
+				}
+			}
+			.tab-pane.mobile {
+					display:none;
+				}
+			@media (max-width: 767px) {
+				.sr-tabs-horizontal .nav li a:after {
+					display: flex;
+					justify-content:center;
+					align-items:center;
+					content: "\f107";
+					font-family: FontAwesome;
+					font-size: 16px;
+					width:25px;
+					height:25px;
+					background-color:var(--primary);
+					border-radius:50%;
+					position:absolute;
+					right:15px;
+					top:calc(50% - 12.5px);
+				}
+				.sr-tabs-horizontal .nav li a.active:after {
+					display: flex;
+					justify-content:center;
+					align-items:center;
+					content: "\f107";
+					font-family: FontAwesome;
+					font-size: 16px;
+					width:25px;
+					height:25px;
+					background-color:var(--primary);
+					border-radius:50%;
+					position:absolute;
+					right:15px;
+					top:calc(50% - 12.5px);
+				}
+				.sr-tabs-horizontal .nav li a.active {
+					border-bottom:1px solid #e5e7ea;
+				}
+
+				.sr-tabs-horizontal .nav li a .tab-nav-title p {
+					color:#fff;
+				}
+				.sr-tabs-horizontal .nav li a .tab-nav-title p {
+					font-size:0.778rem;
+					line-height:normal;
+				}
+
+				.sr-tabs-horizontal .nav p,
+				.sr-tabs-horizontal .nav li a.active .tab-nav-title p {
+					color:#87909e;
+				}
+				.sr-tabs-horizontal .nav li .tab-pane-content p {
+					font-size:1.128rem;
+					line-height:1.736rem;
+				}
+				.sr-tabs-horizontal .tab-pane .tab-pane-content {
+					padding: 5.7rem 1.042rem;
+				}
+				.sr-tabs-horizontal .tab-pane h3 {
+					font-size:1.58rem;
+					line-height:1.944rem;
+				}
+				.sr-tabs-horizontal .nav li a {
+					padding:1.3rem 3.819rem 1rem 1.181rem;
+				}
+
+				.sr-tabs-horizontal .tab-pane > .row .tab-pane-image {
+					height:445px;
+					margin-top:10px;
+				}
+
+				.sr-tabs-horizontal .nav li a .tab-nav-title h3 {
+					font-size:0.903rem;
+					line-height:1.111rem;
+				}
+
+				.tab-pane.mobile {
+					display:block;
+				}
+			}
+		
+		</style>
+	{% end_require_css %}
+
+{% endif %}

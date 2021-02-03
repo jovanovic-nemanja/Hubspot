@@ -1,0 +1,26 @@
+image: ubuntu:19.10
+
+before_script:
+  - apt-get update -qq
+  - apt-get install -y -qq ssh
+  - apt-get install -y -qq rsync
+  - apt-get install -y -qq sshpass
+  
+  - mkdir ~/.ssh
+  - echo "StrictHostKeyChecking no" >> ~/.ssh/config
+
+  - export SSHPASS=$USER_PASS
+  
+stages:
+  - deploy
+
+deploy_to_remote_server:
+  stage: deploy
+  only:
+    - master
+  script:
+# NOTE: This is instruction an example:
+# Regex: sshpass -e rsync -avz (--exclude='')* gitlab_folder $REMOTE_USER@$REMOTE_HOST:$REMOTE_HOST_DIR
+    - sshpass -e rsync -avh --delete --filter=":- .gitignore" . $REMOTE_USER@$REMOTE_HOST:$REMOTE_HOST_DIR
+    # Run composer install, npm install, npm run rev
+    - sshpass -e ssh $REMOTE_USER@$REMOTE_HOST './gitlab.sh'

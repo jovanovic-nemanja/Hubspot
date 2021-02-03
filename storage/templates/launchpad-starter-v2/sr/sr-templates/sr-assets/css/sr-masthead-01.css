@@ -1,0 +1,21 @@
+.sr-masthead-wrapper {
+	position: relative;
+}
+.sr-masthead {
+	width: 100%;
+	display: table;
+	vertical-align: middle;
+	h1, p {
+		color: white;
+	}
+}
+.sr-masthead-inner {
+	display: table-cell;
+  vertical-align: middle;
+  padding-top: 50px;
+}
+.sr-masthead-image {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}

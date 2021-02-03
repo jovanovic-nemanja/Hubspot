@@ -1,0 +1,111 @@
+{% if module.enabled %}
+
+	{% require_css %}
+		<style type="text/css">
+			.{{ name }} {
+				background-color: #fff;
+			}
+			.{{ name }} .counter-item {
+				background-color: {{ module.design_settings.background_color.color }};
+			}
+			.{{ name }} .counter-item:nth-child(odd) {
+				background: rgba({{ module.design_settings.background_color.color|convert_rgb }}, 0.5);	
+			}
+			{% if module.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			.sr-stats-04 .counter-item {
+				padding: 4rem 1rem;
+				-webkit-box-flex: 1;
+				-ms-flex: 1 0 20%;
+				flex: 1 0 20%;
+			}
+			.sr-stats-04 .counter-wrapper {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: space-between;
+				-ms-flex-wrap: wrap;
+				flex-wrap: wrap;
+			}
+			.sr-stats-04 h3.counter {
+				margin: 0;
+				padding-bottom: 1rem;
+				padding-top: 2rem;
+				font-size: 2rem;
+				word-break: break-all;
+			}
+			@media only screen and (max-width : 1080px) {
+				.sr-stats-04 h3.counter {
+					font-size: 1.5rem;
+				}
+			}
+			@media only screen and (max-width : 768px) {
+				.sr-stats-04 .counter-wrapper {
+					display: block;
+				}
+				.sr-stats-04 h3.counter {
+					font-size: 2rem;
+				}
+			}
+		
+		</style>
+	{% end_require_css %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-stats-04" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Stats 04</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+
+	<div class="sr-stats-04 sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.class %}{{ module.class }}{% endif %} {% if module.design_settings.border_top %}sr-line-top{% endif %} {% if module.design_settings.border_bottom %}sr-line-bottom{% endif %} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %} prototype-no-background {{ name }}" {% if module.design_settings.sr_module_id %}id="{{ module.sr_module_id }}"{% endif %}>
+		<div class="counter-wrapper">
+			{% for item in module.items %}
+				<div class="counter-item {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %}">
+					{% if hub_id == 123%}
+						<img src="{{ item.image.src }}" width="{{ item.image.width }}">
+					{% else %}
+						{% if item.sr_default_image_size %}
+							{{ var.image(item.image.src, '60', item.image.alt) }}
+						{% else %}
+							{{ var.image(item.image.src, item.image.width, item.image.alt) }}
+						{% endif %}
+					{% endif %}
+					<h3 class="counter">{{item.number}}</h3>
+					<div>{{item.description}}</div>
+				</div>	
+			{% endfor %}
+		</div>
+	</div>
+
+	{% if module.animate_stats %}
+	{{ require_js(var.sr_assetDir + '/js/waypoints.min.js', "footer") }}
+	{{ require_js(var.sr_assetDir + '/js/jquery.counterup.min.js', "footer") }}
+  	{{ require_js(var.sr_assetDir + '/js/jquery.migrate.min.js', "footer") }}
+
+	{% require_js position="footer" %}
+		<script>
+			$(document).ready(function($) {
+				$('.{{name}} .counter').counterUp({
+					delay: 10,
+					time: {{module.animation_speed}}
+				});
+			});
+		</script>
+	{% end_require_js %}
+	{% endif %}
+
+{% endif %}

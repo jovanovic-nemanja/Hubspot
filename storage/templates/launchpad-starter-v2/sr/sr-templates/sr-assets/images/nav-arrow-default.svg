@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="8px" viewBox="0 0 12 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Path</title>
+    <desc>Created with Sketch.</desc>
+    <g id="SR-Navigation" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop:-SR-Nav-Dropdown-01" transform="translate(-1041.000000, -39.000000)" fill="#87909E">
+            <g id="SR-Nav-Dropdown-01">
+                <g id="navbar">
+                    <g id="primary">
+                        <g id="Rectangle-2">
+                            <g id="Stacked-Group" transform="translate(819.000000, 33.000000)">
+                                <g id="nav-item-copy-2" transform="translate(156.000000, 0.000000)">
+                                    <g id="down-chevron-(1)" transform="translate(66.000000, 6.000000)">
+                                        <polygon id="Path" points="10.5849844 0.042515625 6 4.6275 1.41501563 0.042515625 0 1.45748438 6 7.45748437 12 1.45748438"></polygon>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

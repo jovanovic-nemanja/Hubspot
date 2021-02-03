@@ -1,0 +1,206 @@
+{% if module.enabled %}
+
+	{# ======== module CSS ======== #}
+	{% require_css %}
+		<style>
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;    
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});	
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			.sr-cards-filter-02 .container {
+				position: relative;
+			}
+			.sr-cards-filter-02-filter {
+				margin-bottom: 1.25rem;
+			}
+			.sr-cards-filter-02-filter button {
+				-webkit-appearance: none;
+				background: none;
+				border: none;
+				color: inherit;
+				cursor: pointer;
+				box-shadow: none;
+				padding: 0 1.5rem;
+			}
+			.sr-cards-filter-02-filter button:focus {
+				outline: none;
+			}
+			.sr-cards-filter-02-item img {
+				margin-bottom: 1.5rem;
+				max-width: 100%;
+				height: auto;
+			}
+			
+			.sr-cards-filter-02-item a,
+			.sr-cards-filter-02-item h4 {
+				color: inherit;
+				margin: 0;
+			}
+			.sr-cards-filter-02-item .item-card {
+				padding: 1rem;
+				background: transparent;
+				-webkit-transition: all 0.2s ease;
+				-o-transition: all 0.2s ease;
+				transition: all 0.2s ease;
+			}
+			.sr-cards-filter-02-item a:hover .item-card {
+				background: #fff;
+				box-shadow: 15px 25px 60px 0px rgba(0, 0, 0, 0.1);
+			}
+		
+		</style>
+	{% end_require_css %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-12' %}
+	{% else %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	{% if module.grid == 'two-col' %}
+		{% set grid = 'col-md-6' %}
+	{% elif module.grid == 'three-col' %}
+		{% set grid = 'col-md-4' %}
+	{% elif module.grid == 'four-col' %}
+		{% set grid = 'col-md-3' %}
+	{% endif %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-cards-filter-02" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Cards Filter 02</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+	
+	<div class="sr-cards-filter-02 {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.class %}{{ module.design_settings.class }}{% endif %} {% if module.design_settings.border_top %}sr-line-top{% endif %} {% if module.design_settings.border_bottom %}sr-line-bottom{% endif %} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %} {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %} prototype-no-background {{ name }}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }}">
+			{% if module.design_settings.container_width != 'max' %}
+				<div class="row">
+					<div class="{{ width_class }}">
+			{% endif %}
+
+						{% if module.heading ||  module.description %}
+							<div class="sr-spacer-bottom-50">
+								{% if module.heading %}
+									<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} heading {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.heading}}</h{{module.heading_size}}>
+								{% endif %}
+								
+								{% if module.description %}
+									<div class="description">{{ module.description}}</div>
+								{% endif %}
+							</div>
+						{% endif %}
+
+						<div class="sr-cards-filter-02-filter filter-button-group row justify-content-center sr-spacer-bottom-25 {% if module.text_align  == 'center' %}justify-content-md-center{% elif module.text_align == 'right' %}justify-content-md-end{% endif %} flex-nowrap flex-md-wrap">
+							<button data-filter="*" class="col-auto active text-primary">{{ module.filter_default_option_text }}</button>
+							{% for filter_option in module.filter_option %}
+								{% if filter_option.option_tag && filter_option.option %}
+									<button data-filter=".{{ filter_option.option_tag }}" class="col-auto">{{ filter_option.option }}</button>
+								{% endif %}
+							{% endfor %}
+						</div>
+
+						<div class="sr-cards-filter-02-items row">
+							{% for item in module.column %}
+								{% if item.col_image.src %}
+									<div class="sr-cards-filter-02-item col-6 {{ grid }} {{ item.col_tags }}">
+										
+										{% if item.col_url %}
+											<a href="{{ item.col_url }}">
+										{% endif %}
+										<div class="item-card">
+											{% if item.col_image.src %}
+												{% if item.sr_default_image_size %}
+													{{ var.image(item.col_image.src, '100',item.col_image.alt) }}
+												{% else %}
+													{{ var.image(item.col_image.src, item.col_image.width, item.col_image.alt) }}
+												{% endif %}
+											{% endif %}
+											{% if item.col_text %}
+												<p>{{ item.col_text }}</p>
+											{% endif %}
+										</div>
+										{% if item.col_url %}
+											</a>
+										{% endif %}
+										
+									</div>
+								{% endif %}
+							{% endfor %}
+						</div>
+				{% if module.design_settings.container_width != 'max' %}
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+
+	{{ require_js(var.sr_assetDir + '/js/isotope.js') }}
+	{% require_js %}
+		<script>
+			window.addEventListener('load', function () {
+				// init Isotope
+				var ${{ name }}_grid = $('.{{ name }} .sr-cards-filter-02-items').isotope({
+					// options
+					itemSelector: '.sr-cards-filter-02-item',
+					layoutMode: 'fitRows'
+				});
+
+				// filter items on button click
+				$('.{{ name }} .filter-button-group').on( 'click', 'button', function() {
+					$(this).addClass('active text-primary');
+					$(this).siblings().removeClass('active text-primary');
+					var filterValue = $(this).attr('data-filter');
+					${{ name }}_grid.isotope({ filter: filterValue });
+				});
+			});
+		</script>
+	{% end_require_js %}
+{% endif %}

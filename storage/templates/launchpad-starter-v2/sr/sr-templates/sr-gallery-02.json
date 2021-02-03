@@ -1,0 +1,418 @@
+{
+	"custom_module": {
+		"author": "reg@lean-labs.com",
+		"tags": ["ver-1.0.0"],
+		"name": "SR Gallery 02",
+		"css_assets": [],
+		"editable_contexts": [],
+		"external_js": [],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+		"purchased": true,
+		"hostTemplateTypes": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+		"js_assets": [],
+		"other_assets": [],
+		"fields": [ {
+			"id" : "enabled",
+			"name" : "enabled",
+			"label" : "Enabled",
+			"required" : false,
+			"locked" : false,
+			"display" : "checkbox",
+			"type" : "boolean",
+			"default" : true
+		  }, {
+			"id" : "design_settings",
+			"name" : "design_settings",
+			"label" : "Design Settings",
+			"required" : false,
+			"locked" : false,
+			"children" : [ {
+			  "id" : "design_settings.sr_module_id",
+			  "name" : "sr_module_id",
+			  "label" : "ID",
+			  "required" : false,
+			  "locked" : false,
+			  "validation_regex" : "",
+			  "allow_new_line" : false,
+			  "show_emoji_picker" : false,
+			  "type" : "text",
+			  "default" : null
+			}, {
+			  "id" : "design_settings.class",
+			  "name" : "class",
+			  "label" : "Class",
+			  "required" : false,
+			  "locked" : false,
+			  "validation_regex" : "",
+			  "allow_new_line" : false,
+			  "show_emoji_picker" : false,
+			  "type" : "text",
+			  "default" : null
+			}, {
+			  "id" : "design_settings.layout",
+			  "name" : "layout",
+			  "label" : "Layout",
+			  "required" : true,
+			  "locked" : false,
+			  "display" : "select",
+			  "choices" : [ [ "container", "Page" ], [ "container-fluid", "Full Width" ] ],
+			  "type" : "choice",
+			  "default" : "container"
+			}, {
+			  "id" : "design_settings.container_width",
+			  "name" : "container_width",
+			  "label" : "Container Width",
+			  "required" : true,
+			  "locked" : false,
+			  "display" : "select",
+			  "choices" : [ [ "min", "Minimum" ], [ "narrow", "Narrow" ], [ "wide", "Wide" ], [ "max", "Maximum" ] ],
+			  "type" : "choice",
+			  "default" : "max"
+			}, {
+			  "id" : "top_bottom_padding",
+			  "name" : "top_bottom_padding",
+			  "label" : "Top Bottom Padding",
+			  "required" : true,
+			  "locked" : false,
+			  "display" : "select",
+			  "choices" : [ [ "auto", "Use default values" ], [ "zero", "No Padding" ], [ "half", "Small padding" ], [ "full", "Large padding" ], [ "custom", "Custom padding" ] ],
+			  "type" : "choice",
+			  "default" : "full"
+			}, {
+			  "id" : "design_settings.custom_padding",
+			  "name" : "custom_padding",
+			  "label" : "Custom Padding",
+			  "help_text" : "Top, Right, Bottom, Left",
+			  "required" : false,
+			  "locked" : false,
+			  "validation_regex" : "",
+			  "visibility" : {
+				"controlling_field" : "top_bottom_padding",
+				"controlling_value_regex" : "custom",
+				"operator" : "EQUAL",
+				"access" : null,
+				"hidden_subfields" : null
+			  },
+			  "allow_new_line" : false,
+			  "show_emoji_picker" : false,
+			  "type" : "text",
+			  "default" : "1rem 0rem 1rem 0rem"
+			}, {
+			  "id" : "design_settings.border_top",
+			  "name" : "border_top",
+			  "label" : "Border Top",
+			  "required" : false,
+			  "locked" : false,
+			  "display" : "checkbox",
+			  "type" : "boolean",
+			  "default" : false
+			}, {
+			  "id" : "design_settings.border_bottom",
+			  "name" : "border_bottom",
+			  "label" : "Border Bottom",
+			  "required" : false,
+			  "locked" : false,
+			  "display" : "checkbox",
+			  "type" : "boolean",
+			  "default" : false
+			}, {
+			  "id" : "background_option",
+			  "name" : "background_option",
+			  "label" : "Background Option",
+			  "required" : true,
+			  "locked" : false,
+			  "display" : "select",
+			  "choices" : [ [ "image", "Image" ], [ "color", "Color" ], [ "custom", "Custom" ], [ "gradient", "Gradient" ]  ],
+			  "type" : "choice",
+			  "default" : "color"
+			},
+			{
+				"default": {
+					"color": "#0c63ff"
+				},
+				"label": "Background Gradient From",
+				"name": "background_gradient_from",
+				"visibility": {
+					"controlling_field": "background_option",
+					"controlling_value_regex": "gradient",
+					"operator": "EQUAL"
+				},
+				"type": "color"
+			},
+			{
+				"default": {
+					"color": "#1897ff"
+				},
+				"label": "Background Gradient To",
+				"name": "background_gradient_to",
+				"visibility": {
+					"controlling_field": "background_option",
+					"controlling_value_regex": "gradient",
+					"operator": "EQUAL"
+				},
+				"type": "color"
+			},
+			{
+			  "id" : "design_settings.background_image",
+			  "name" : "background_image",
+			  "label" : "Background Image",
+			  "required" : false,
+			  "locked" : false,
+			  "visibility" : {
+				"controlling_field" : "background_option",
+				"controlling_value_regex" : "image",
+				"operator" : "EQUAL",
+				"access" : null,
+				"hidden_subfields" : null
+			  },
+			  "responsive" : false,
+			  "resizable" : true,
+			  "type" : "image",
+			  "default" : {
+				"alt" : null,
+				"src" : null
+			  }
+			}, {
+			  "id" : "design_settings.background_overlay_color",
+			  "name" : "background_overlay_color",
+			  "label" : "Background Overlay Color",
+			  "required" : false,
+			  "locked" : false,
+			  "visibility" : {
+				"controlling_field" : "background_option",
+				"controlling_value_regex" : "image",
+				"operator" : "EQUAL",
+				"access" : null,
+				"hidden_subfields" : null
+			  },
+			  "type" : "color",
+			  "default" : {
+				"color" : "#343a40",
+				"opacity" : 30
+			  }
+			}, {
+			  "id" : "design_settings.background_color",
+			  "name" : "background_color",
+			  "label" : "Background Color",
+			  "required" : true,
+			  "locked" : false,
+			  "visibility" : {
+				"controlling_field" : "background_option",
+				"controlling_value_regex" : "color",
+				"operator" : "EQUAL",
+				"access" : null,
+				"hidden_subfields" : null
+			  },
+			  "display" : "select",
+			  "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "success", "Success" ], [ "info", "Info" ], [ "warning", "Warning" ], [ "danger", "Danger" ], [ "light", "Light" ], [ "dark", "Dark" ], [ "white", "White" ] ],
+			  "type" : "choice",
+			  "default" : "white"
+			}, {
+			  "id" : "design_settings.background_custom",
+			  "name" : "background_custom",
+			  "label" : "Background Custom",
+			  "required" : false,
+			  "locked" : false,
+			  "visibility" : {
+				"controlling_field" : "background_option",
+				"controlling_value_regex" : "custom",
+				"operator" : "EQUAL",
+				"access" : null,
+				"hidden_subfields" : null
+			  },
+			  "type" : "color",
+			  "default" : {
+				"color" : "#fff"
+			  }
+			} ],
+			"tab" : "CONTENT",
+			"type" : "group",
+			"default" : {
+			  "layout" : "container",
+			  "container_width" : "max",
+			  "top_bottom_padding" : "full",
+			  "custom_padding" : "1rem 0rem 1rem 0rem",
+			  "border_top" : false,
+			  "border_bottom" : false,
+			  "background_option" : "color",
+			  "background_image" : {
+				"alt" : null,
+				"src" : null
+			  },
+			  "background_overlay_color" : {
+				"color" : "#343a40",
+				"opacity" : 30
+			  },
+			  "background_color" : "white",
+			  "background_custom" : {
+				"color" : "#fff"
+			  }
+			}
+		  }, {
+			"id" : "heading",
+			"name" : "heading",
+			"label" : "Heading",
+			"required" : false,
+			"locked" : false,
+			"validation_regex" : "",
+			"allow_new_line" : false,
+			"show_emoji_picker" : false,
+			"type" : "text",
+			"default" : "Easy-To-Use-Tools"
+		  }, {
+			"id" : "heading_size",
+			"name" : "heading_size",
+			"label" : "Heading Size",
+			"required" : true,
+			"locked" : false,
+			"visibility" : {
+			  "controlling_field" : "heading",
+			  "controlling_value_regex" : null,
+			  "operator" : null,
+			  "access" : null,
+			  "hidden_subfields" : null
+			},
+			"display" : "select",
+			"choices" : [ [ "1", "H1" ], [ "2", "H2" ], [ "3", "H3" ], [ "4", "H4" ], [ "5", "H5" ], [ "6", "H6" ] ],
+			"type" : "choice",
+			"default" : "2"
+		  }, {
+			"id" : "description",
+			"name" : "description",
+			"label" : "Description",
+			"required" : false,
+			"locked" : false,
+			"type" : "richtext",
+			"default" : "Quickly and efficiently build the materials you need to support your inbound marketing strategy. Drag and drop building blocks including galleries,testimonials, forms, calls-to-action, and more."
+		  }, {
+			"id" : "text_align",
+			"name" : "text_align",
+			"label" : "Text Align",
+			"required" : true,
+			"locked" : false,
+			"display" : "select",
+			"choices" : [ [ "auto", "Auto" ], [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+			"type" : "choice",
+			"default" : "auto"
+		  }, {
+			"id" : "text_color",
+			"name" : "text_color",
+			"label" : "Text Color",
+			"required" : true,
+			"locked" : false,
+			"display" : "select",
+			"choices" : [ [ "auto", "Auto" ], [ "white", "White" ], [ "light", "Light" ], [ "dark", "Dark" ], [ "primary", "Primary" ], [ "secondary", "Secondary" ] ],
+			"type" : "choice",
+			"default" : "auto"
+		  }, {
+			"id" : "9a9ad2c8-90a4-077c-c5bb-2beb6edfba38",
+			"name" : "gallery_images",
+			"label" : "Gallery Images",
+			"required" : false,
+			"locked" : false,
+			"occurrence" : {
+			  "min" : 1,
+			  "max" : 100,
+			  "sorting_label_field" : "fc447d43-190a-026d-9313-d0fc0d789b71",
+			  "default" : 6
+			},
+			"children" : [ {
+			  "id" : "fc447d43-190a-026d-9313-d0fc0d789b71",
+			  "name" : "gallery_image",
+			  "label" : "Image",
+			  "required" : false,
+			  "locked" : false,
+			  "responsive" : true,
+			  "resizable" : true,
+			  "type" : "image",
+			  "default" : {
+				"size_type" : "auto",
+				"src" : "https://www.lean-labs.com/hubfs/sr-assets/images/sr-bling-graphic-02-01.png",
+				"alt" : "sr-bling-graphic-02",
+				"width" : 1068,
+				"height" : 600,
+				"max_width" : 1068,
+				"max_height" : 600
+			  }
+			} ],
+			"tab" : "CONTENT",
+			"type" : "group",
+			"default" : [ {
+			  "gallery_image" : {
+				"size_type" : "auto",
+				"src" : "https://www.lean-labs.com/hubfs/sr-assets/images/sr-bling-graphic-02-02.png",
+				"alt" : "sr-gallery-graphic-01",
+				"width" : 1068,
+				"height" : 600,
+				"max_width" : 1068,
+				"max_height" : 600
+			  }
+			}, {
+			  "gallery_image" : {
+				"size_type" : "auto",
+				"src" : "https://www.lean-labs.com/hubfs/sr-assets/images/sr-bling-graphic-02-01.png",
+				"alt" : "sr-gallery-graphic-02",
+				"width" : 1068,
+				"height" : 600,
+				"max_width" : 1068,
+				"max_height" : 600
+			  }
+			}, {
+			  "gallery_image" : {
+				"size_type" : "auto",
+				"src" : "https://www.lean-labs.com/hubfs/sr-assets/images/sr-bling-graphic-02-03.png",
+				"alt" : "sr-gallery-graphic-03",
+				"width" : 1068,
+				"height" : 600,
+				"max_width" : 1068,
+				"max_height" : 600
+			  }
+			},
+			  {
+				"gallery_image" : {
+				  "size_type" : "auto",
+				  "src" : "https://www.sprocketrocket.co/hs-fs/hubfs/sr-assets/images/sr-hero-01-v2.jpg",
+				  "alt" : "sr-gallery-graphic-04",
+				  "width" : 1068,
+				  "height" : 600,
+				  "max_width" : 1068,
+				  "max_height" : 600
+				}
+			  }, {
+				"gallery_image" : {
+				  "size_type" : "auto",
+				  "src" : "https://www.sprocketrocket.co/hubfs/sr-assets/images/sr-tabs-split-screen-01-3.jpg",
+				  "alt" : "sr-gallery-graphic-05",
+				  "width" : 1068,
+				  "height" : 600,
+				  "max_width" : 1068,
+				  "max_height" : 600
+				}
+			  }, {
+				"gallery_image" : {
+				  "size_type" : "auto",
+				  "src" : "https://www.sprocketrocket.co/hs-fs/hubfs/sr-assets/images/sr-offer-bar-04-bg-1.jpg",
+				  "alt" : "sr-gallery-graphic-06",
+				  "width" : 1068,
+				  "height" : 600,
+				  "max_width" : 1068,
+				  "max_height" : 600
+				}
+			} ]
+		  } ],
+		"source": ""
+	},
+	"custom_module_template": "sr-gallery-02.html",
+	"available_builder": true,
+	"category": 9,
+	"is_free": true,
+	"files": [{
+			"file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/baguetteBox.min.js",
+			"folder_paths": "sr-assets/js"
+		},
+		{
+			"file": "launchpad-starter-v2/sr/sr-templates/sr-assets/css/baguetteBox.min.css",
+			"folder_paths": "sr-assets/css"
+		}
+	]
+}

@@ -1,0 +1,10 @@
+{
+	"name": "Landing v1",
+	"custom_modules": [
+		"sr-nav-min-01.json",
+		"sr-meeting-01.json",
+		"sr-footer-min-01.json"
+	],
+	"module_overrides": {},
+	"page_overrides": {}
+}

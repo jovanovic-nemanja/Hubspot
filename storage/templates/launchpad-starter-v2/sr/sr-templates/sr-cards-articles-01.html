@@ -1,0 +1,459 @@
+{% if module.enabled %}
+
+{% if hub_id == 123 %}
+{% set posts = placeholder.posts %}
+{% else %}
+{% set posts = blog_recent_posts(module.blog, module.num_of_posts) %}
+{% endif %}
+
+{% if hub_id == 123 || posts|length == 0 %} 
+	{% set placeholder = {
+		'posts': [
+			{
+				'name': '4 Signs You Need to Create More Long From Content (And How To Do It)',
+				'blog_post_author': {
+					'avatar': 'https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-articles-01-author-01.jpg',
+					'display_name': 'Harmen Porter',
+					'slug': '#'
+				},
+				'post_summary': 'Many marketers improve the performance of their website pages using a method called content optimization. With content optimization, you can identify and adjust messaging over a period.',
+				'absolute_url': '#',
+				'featured_image': 'https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-articles-01-1.jpg'
+			},
+			{
+				'name': '4 Signs You Need to Create More Long From Content (And How To Do It)',
+				'blog_post_author': {
+					'avatar': 'https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-articles-01-author-02.jpg',
+					'display_name': 'Chris Baker',
+					'slug': '#'
+				},
+				'post_summary': 'Many marketers improve the performance of their website pages using a method called content optimization. With content optimization, you can identify and adjust messaging over a period.',
+				'absolute_url': '#',
+				'featured_image': '',
+			},
+			{
+				'name': 'Using HubSpot With WordPress Websites: HubSpot vs. WordPress vs. Both',
+				'blog_post_author': {
+					'avatar': 'https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-articles-01-author-03.jpg',
+					'display_name': 'Shirline Dungey',
+					'slug': '#'
+				},
+				'post_summary': 'Many marketers improve the performance of their website pages using a method called content optimization. With content optimization, you can identify and adjust messaging over a period.',
+				'absolute_url': '#',
+				'featured_image': 'https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-articles-01-2.jpg',
+			},
+			{
+				'name': '4 Signs You Need to Create More Long From Content (And How To Do It)',
+				'blog_post_author': {
+					'avatar': 'https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-articles-01-author-01.jpg',
+					'display_name': 'Harmen Porter',
+					'slug': '#'
+				},
+				'post_summary': 'Many marketers improve the performance of their website pages using a method called content optimization. With content optimization, you can identify and adjust messaging over a period.',
+				'absolute_url': '#',
+				'featured_image': 'https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-articles-01-1.jpg'
+			},
+			{
+				'name': '4 Signs You Need to Create More Long From Content (And How To Do It)',
+				'blog_post_author': {
+					'avatar': 'https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-articles-01-author-02.jpg',
+					'display_name': 'Chris Baker',
+					'slug': '#'
+				},
+				'post_summary': 'Many marketers improve the performance of their website pages using a method called content optimization. With content optimization, you can identify and adjust messaging over a period.',
+				'absolute_url': '#',
+				'featured_image': 'https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-articles-01-2.jpg',
+			},
+			{
+				'name': 'Using HubSpot With WordPress Websites: HubSpot vs. WordPress vs. Both',
+				'blog_post_author': {
+					'avatar': 'https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-articles-01-author-03.jpg',
+					'display_name': 'Shirline Dungey',
+					'slug': '#'
+				},
+				'post_summary': 'Many marketers improve the performance of their website pages using a method called content optimization. With content optimization, you can identify and adjust messaging over a period.',
+				'absolute_url': '#',
+				'featured_image': 'https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-articles-01-2.jpg',
+			},
+			{
+				'name': '4 Signs You Need to Create More Long From Content (And How To Do It)',
+				'blog_post_author': {
+					'avatar': 'https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-articles-01-author-01.jpg',
+					'display_name': 'Harmen Porter',
+					'slug': '#'
+				},
+				'post_summary': 'Many marketers improve the performance of their website pages using a method called content optimization. With content optimization, you can identify and adjust messaging over a period.',
+				'absolute_url': '#',
+				'featured_image': 'https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-articles-01-1.jpg'
+			},
+			{
+				'name': '4 Signs You Need to Create More Long From Content (And How To Do It)',
+				'blog_post_author': {
+					'avatar': 'https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-articles-01-author-02.jpg',
+					'display_name': 'Chris Baker',
+					'slug': '#'
+				},
+				'post_summary': 'Many marketers improve the performance of their website pages using a method called content optimization. With content optimization, you can identify and adjust messaging over a period.',
+				'absolute_url': '#',
+				'featured_image': '',
+			},
+			{
+				'name': 'Using HubSpot With WordPress Websites: HubSpot vs. WordPress vs. Both',
+				'blog_post_author': {
+					'avatar': 'https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-articles-01-author-03.jpg',
+					'display_name': 'Shirline Dungey',
+					'slug': '#'
+				},
+				'post_summary': 'Many marketers improve the performance of their website pages using a method called content optimization. With content optimization, you can identify and adjust messaging over a period.',
+				'absolute_url': '#',
+				'featured_image': 'https://www.lean-labs.com/hubfs/sr-assets/images/sr-cards-articles-01-2.jpg',
+			}
+		]
+	} %}
+	{% set posts = placeholder.posts %}
+	{% endif %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-articles-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Articles 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+	
+	<div class="sr-cards-articles-01 {{ name }} {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }} {% endif %}sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.class %}{{ module.design_settings.class }} {% endif %}{% if module.design_settings.border_top %}sr-line-top {% endif %}{% if module.design_settings.border_bottom %}sr-line-bottom {% endif %} {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }}">
+            {% if module.design_settings.container_width != 'max' %}
+            <div class="row">
+                <div class="{{ width_class }}">
+            {% endif %}
+			{% if module.heading %}
+				<h2 class="heading {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %} ">{{ module.heading }}</h2>
+			{% endif %}
+			{% if module.description %}
+				<div class="description {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %} ">
+					{{ module.description }}
+				</div>
+			{% endif %}
+			{% if module.cta.cta_type != 'none' %}
+				<div class="btn-wrapper btn-{{ module.cta.cta_style }}-wrapper sr-spacer-bottom-25">
+					{% if module.cta.cta_type == 'btn' %}
+						<a href="{{ module.cta.link }}" class="cta_button">{{ module.cta.button_text }}</a>
+					{% elif module.cta.cta_type == 'cta' %}
+						{% cta guid="{{ module.cta.cta }}" %}
+					{% elif module.cta.cta_type == 'modal' %}
+						<a class="cta_button modal-btn" data-toggle="modal" data-target="{{module.cta.modal_link}}">{{module.cta.modal_button_text}}</a>
+					{% endif %}
+				</div>
+			{% endif %}
+				<div class="">
+					<div class="cards-wrapper">
+						<div class="cards-slider">
+							{% for post in posts %}
+								<div class="article-item equal-height {{ loop.cycle('odd', 'even') }} {% if loop.cycle('odd', 'even') == 'even' %} bg-white {% else %} text-white {% endif %}" {% if loop.cycle('odd', 'even') == 'odd' %} style="background-image: url('{{post.featured_image}}')" {% endif %}>
+									<div class="article-inner">
+										{% if loop.cycle('odd', 'even') == 'odd' %}
+											<a class="post-name" href="{{ post.absolute_url }}"><p class="lead">{{post.name}}</p></a>
+										{% else %}
+											<div class="summary">{{post.post_summary|truncate(180)}}</div>
+										{% endif %}
+										<div class="author-meta">
+											<a href="{{ blog_all_posts_url(module.blog)|replace('all', '') }}author/{{post.blog_post_author.slug}}">
+												{% if module.show_tag %}
+													{% for topic in post.topic_list %}
+														{% if loop.first %}
+															<div class="author-details">
+																<a class="author-name" href="{{ group.absolute_url }}/topic/{{ topic.slug }}">{{ topic.name }}</a>
+															</div>
+														{% endif %}
+													{% endfor %}
+												{% endif %}
+												
+												{% if module.show_author %}
+													<div class="author-details">
+														<span class="author-name">{{post.blog_post_author.display_name}}</span>
+													</div>
+													{% if post.blog_post_author.avatar %}
+														{% if hub_id == 123 || posts|length < 2 %}
+															<img src="{{post.blog_post_author.avatar}}">
+														{% else %}
+															{{ var.image(post.blog_post_author.avatar, '50', post.blog_post_author.display_name) }}
+														{% endif %}
+													{% endif %}
+												{% endif %}
+											</a>
+										</div>
+										{% if loop.cycle('odd', 'even') == 'even' %}
+											<div class="btn-wrapper btn-{{ module.button_style }}-wrapper sr-spacer-bottom-25">
+												<a class="article-readmore cta_button" href="{{ post.absolute_url }}">Read More</a>
+											</div>
+										{% endif %}
+									</div>	
+								</div>
+							{% endfor%}
+						</div>
+					</div>
+				</div>		
+			{% if module.design_settings.container_width != 'max' %}
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+
+	{% require_css %}
+		<link rel="stylesheet" type="text/css" href="{{var.sr_assetDir}}/css/slick.css"/>
+		<style type="text/css">
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;    
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});	
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			.sr-cards-articles-01 .slick-dots {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				justify-content: center;
+				margin: 0;
+				padding-top: 2rem;
+				padding-left: 0;
+				padding-right: 0;
+				list-style-type: none;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+			}
+			.sr-cards-articles-01 .slick-dots li {
+				margin: 0 0.01rem;
+			}
+			.{{ name }} .slick-dots button {
+				display: block;
+				width: 8px;
+				height: 8px;
+				padding: 0;
+				border: none;
+				border-radius: 100%;
+				text-indent: -9999px;
+				-webkit-transition: all ease-in-out .2s;
+				-o-transition: all ease-in-out .2s;
+				transition: all ease-in-out .2s;
+				margin: 4px;
+				box-shadow: 0 0 0 4px transparent;
+				background: #0C63FF;
+				background: var(--primary);
+			}
+			.{{ name }} .slick-dots li.slick-active button {
+				background-color: transparent !important;
+				box-shadow: 0 0 0 2px #0C63FF;
+				box-shadow: 0 0 0 2px var(--primary);
+			}
+			.sr-cards-articles-01 button:focus {
+				outline: 0;
+				outline: 0; 
+			}
+			{% if module.negative_margin %}
+				.{{ name }} .cards-wrapper {
+					margin-bottom: {% if module.design_settings.top_bottom_padding == 'full' %} -11rem; {% elif module.design_settings.top_bottom_padding == 'half' %} -7rem; {% else %}-4rem;{% endif %}
+				}
+				.{{ name }} {
+					margin-bottom: {% if module.design_settings.top_bottom_padding == 'full' %} 11rem; {% elif module.design_settings.top_bottom_padding == 'half' %} 7rem; {% else %}4rem; {% endif %}
+				}
+				{% if module.design_settings.top_bottom_padding == 'zero' %}
+					.{{ name }}.sr-padding-zero {
+						padding-top: .1px !important;
+						padding-bottom: .1px !important;
+					}
+				{% endif %}
+			{% endif %}
+			.sr-cards-articles-01 .author-meta img {
+				border-radius: 50%;
+				display: inline-block;
+				max-width: 50px;
+			}
+			.sr-cards-articles-01 .author-name {
+				font-weight: bold;
+				text-transform: uppercase;
+				padding-bottom: 1rem;
+			}
+			.sr-cards-articles-01 .author-name, .author-title {
+				width: 100%;
+				display: block;
+			}
+			.sr-cards-articles-01 .author-meta {
+				padding-top: 2rem;
+			}
+			.sr-cards-articles-01 .odd .author-meta a {
+				color: #fff;
+			}
+			.sr-cards-articles-01 .even .author-meta a {
+				color: inherit;
+			}
+			.sr-cards-articles-01 .summary {
+				padding-bottom: 2.7rem;
+				padding-top: 3.7rem;
+			}
+			.sr-cards-articles-01 .summary p {
+				margin: 0;
+			}
+			.sr-cards-articles-01 .article-inner > a.post-name p.lead {
+				font-size: 1.3rem;
+				line-height: 1.29;
+				font-weight: bold;
+			}
+			.article-item.odd .author-name {
+				opacity: 0.7;	
+			}
+			.sr-cards-articles-01 .article-item {
+				background-size: cover;
+				background-position: center;
+				display: -webkit-box !important;
+				display: -ms-flexbox !important;
+				display: flex !important;
+				-webkit-box-align: end;
+				-ms-flex-align: end;
+				align-items: flex-end;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				justify-content: center;
+				height: auto;
+				padding: 2.5rem;
+				margin: 1rem;
+				-webkit-box-shadow: 0 3px 20px 0 rgba(0,0,0,0.1);
+				box-shadow: 0 3px 20px 0 rgba(0,0,0,0.1);
+				position: relative;
+				min-height: 450px;
+			}
+			.sr-cards-articles-01 .article-item.odd:before {
+				content: "";
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: -webkit-linear-gradient(310deg, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, .3) 42%, rgba(0, 0, 0, .5) 59%, rgba(0, 0, 0, .7) 100%);
+				background: -o-linear-gradient(310deg, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, .3) 42%, rgba(0, 0, 0, .5) 59%, rgba(0, 0, 0, .7) 100%);
+				background: linear-gradient(140deg, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, .3) 42%, rgba(0, 0, 0, .5) 59%, rgba(0, 0, 0, .7) 100%);
+			}
+			.sr-cards-articles-01 .slick-track {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+			}
+			.sr-cards-articles-01 .article-inner {
+				position: relative;
+				z-index: 1;
+			}
+			.sr-cards-articles-01 .article-inner > a.post-name {
+				color: inherit;
+			}
+			.sr-cards-articles-01 a.article-readmore {
+				margin-top: 1.5rem;
+			}
+			{% if posts|length <= 3 %}
+			@media (min-width: 767px) { 
+				.sr-cards-articles-01 .slick-dots {
+					display: none;
+				}
+			}
+			{% endif %}
+			@media (max-width: 768px) { 
+				.{{ name }} .slick-dots button {
+					width: .7rem;
+					height: .7rem;
+				}
+				.sr-cards-articles-01 .slick-list {
+					overflow: visible;
+				}
+				.sr-cards-articles-01 {
+					overflow: hidden;
+				}
+				.sr-cards-articles-01 .article-item {
+					margin: .5rem;
+				}
+			}
+			
+		</style>
+	{% end_require_css %}
+	
+	{{ require_js(var.sr_assetDir + '/js/slick.min.js') }}
+	{% require_js %}
+		<script type="text/javascript">
+			$('.{{ name }} .cards-slider').slick({
+				dots: true,
+				arrows: false,
+				autoplay: true,
+				autoplaySpeed: 4000,
+				slidesToShow: 3,
+				slidesToScroll: 3,
+				responsive: [
+				{
+					breakpoint: 992,
+					settings: {
+						slidesToShow: 2,
+						slidesToScroll: 2
+					}
+				},
+				{
+					breakpoint: 767,
+					settings: {
+						slidesToShow: 1,
+						slidesToScroll: 1,
+						centerMode: true
+					}
+				}
+				]
+			});
+		</script>
+	{% end_require_js %}
+{% endif %}

@@ -1,0 +1,200 @@
+{% if module.enabled %}
+	{% require_css %}
+		<style>
+			{% if module.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;    
+					background: rgba({{ module.background_overlay_color.color|convert_rgb }}, {% if module.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.background_overlay_color.opacity }});
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.background_custom.color|convert_rgb }}, {% if module.background_custom.opacity != '100' %}0.{% endif %}{{ module.background_custom.opacity }});
+				}
+			{% endif %}
+			{% if module.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.custom_padding }};
+				}
+			{% endif %}
+			.sr-two-col-05 img {
+				max-width: 100%;
+				height: auto;
+			}
+			.sr-two-col-05 .sr-two-col-05-features .col-md-2.text-center {
+				padding: 0;
+			}
+			.sr-two-col-05 .col-feature .row {
+				padding: 1.5rem 1rem;
+			}
+			.sr-two-col-05-features {
+				padding: 2.5rem 0 0;
+			}
+			.sr-two-col-05 .col-feature p {
+				margin: 0;
+			}
+			.sr-two-col-05 .sr-two-col-05-features .row {
+				margin: 0;
+			}
+			.sr-two-col-05 .col-md-6.col-feature {
+				padding: 0;
+			}
+			.sr-two-col-05 .col-md-6.col-feature a:hover {
+				color: initial;
+			}
+			.sr-two-col-05 .sr-two-col-05-features.has-link .col-feature .row {
+				-webkit-transition: all ease-in-out .2s;
+				-o-transition: all ease-in-out .2s;
+				transition: all ease-in-out .2s;
+				border: 1px solid rgba(0, 0, 0, 0.0);
+			}
+			.sr-two-col-05 .sr-two-col-05-features.has-link .col-feature .row:hover {
+				-webkit-box-shadow: 15px 25px 60px 0 rgba(0, 0, 0, 0.13);
+				box-shadow: 15px 25px 60px 0 rgba(0, 0, 0, 0.13);
+				border: 1px solid rgba(0, 0, 0, 0.04);
+				background-color: #fff;
+			}
+			.sr-two-col-05 .row.secondary-wrapper {
+				-ms-flex-wrap: wrap-reverse;
+				flex-wrap: wrap-reverse;
+			}
+			
+			.row.secondary-wrapper {
+				display:none;
+			}
+
+			.sr-two-col-05 .bleed-image img {
+				max-width:120%;
+			}						
+
+			@media only screen and (min-width : 768px) {
+				.sr-two-col-05 .row.secondary-wrapper {
+					-ms-flex-wrap: wrap;
+					flex-wrap: wrap;
+				}
+				.sr-two-col-05 .bleed-image {
+				
+				}
+				.sr-two-col-05 .bleed-image img {
+					position:absolute;
+					bottom:0;
+					right:15px;
+				}
+				.image-column {
+					position:relative;
+				}
+			}
+
+			@media (max-width:1280px) {
+				.sr-two-col-05 .bleed-image img {
+					max-width:100%;
+				}
+			}
+
+			@media (max-width:767px) {
+				.sr-two-col-05 .description p {
+					font-size: 0.903rem;
+					line-height:19px;
+				}
+				.row.secondary-wrapper {
+				display:block;
+				}
+
+				.sr-two-col-05 .bleed-image img {
+					position:relative;
+					bottom:0;
+				}
+			}
+		
+		</style>
+	{% end_require_css %}
+
+	{% require_js %}
+	<script>
+		$(document).ready(function () {
+			var element = $('.sr-two-col-05');
+			var imageElement = $('.sr-two-col-05 .bleed-image img');
+			var headingHeight = $('.sr-two-col-05 .heading');
+
+			var elementPadding = parseInt(element.css('padding-bottom'));
+			var imageHeight = parseInt(imageElement.css('height'));
+			var headingHeight = parseInt(headingHeight.css('height'));
+			var leftColumnHeight = imageHeight + headingHeight;
+
+			$('.sr-two-col-05 .bleed-image img').css("bottom", "-" +elementPadding + "px");
+
+			if($( window ).width() > 767) {
+			$('.image-column').css('min-height', leftColumnHeight);
+			} else {
+				$('.image-column').css('min-height', "auto");
+			}
+
+		});
+
+		$( window ).resize(function() {
+			var element = $('.sr-two-col-05');
+			var imageElement = $('.sr-two-col-05 .bleed-image img');
+			var headingHeight = $('.sr-two-col-05 .heading');
+
+			var elementPadding = parseInt(element.css('padding-bottom'));
+			var imageHeight = parseInt(imageElement.css('height'));
+			var headingHeight = parseInt(headingHeight.css('height'));
+			var leftColumnHeight = imageHeight + headingHeight;
+
+			$('.sr-two-col-05 .bleed-image img').css("bottom", "-" +elementPadding + "px");
+
+			if($( window ).width() > 767) {
+			$('.image-column').css('min-height', leftColumnHeight);
+			} else {
+				$('.image-column').css('min-height', "auto");
+			}
+		});
+	</script>
+	{% end_require_js %}
+
+	<div class="sr-two-col-05 {% if module.background_option == 'color' %}bg-{{ module.background_color }} {% endif %} sr-padding-{{ module.top_bottom_padding }} {% if module.class %}{{ module.class }}{% endif %} {% if module.border_top %}sr-line-top{% endif %} {% if module.border_bottom %}sr-line-bottom{% endif %} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %} prototype-no-background {{ name }}" {% if module.sr_module_id %}id="{{ module.sr_module_id }}"{% endif %}>
+		<div class="{{ module.layout }}">
+			<div class="row">
+				<div class="col-md-3 image-column">
+				{% if module.heading %}
+					<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} heading {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.heading}}</h{{module.heading_size}}>
+				{% endif %}
+				{% if module.bleed_image.src %}
+						<div class="bleed-image d-none d-md-block "><img src="{{module.bleed_image.src}}" alt="{{module.bleed_image.alt}}" width="{{module.bleed_image.width}}" height="{{module.bleed_image.height}}"></div>
+				{% endif %}
+				</div>
+				<div class="col-md-9 description {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">
+					{% if module.description %}
+						{{module.description}}
+					{% endif %}
+				</div>
+			</div>
+			<div class="row secondary-wrapper">	
+				<div class="col-md-3">
+					{% if module.bleed_image.src %}
+						<div class="bleed-image"><img src="{{module.bleed_image.src}}" alt="{{module.bleed_image.alt}}" width="{{module.bleed_image.width}}" height="{{module.bleed_image.height}}"></div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endif %}

@@ -1,0 +1,78 @@
+{% if module.enabled %}
+	{{ require_css(var.sr_assetDir + '/css/aos.css') }}
+	{{ require_css(var.sr_assetDir + '/css/animate.css') }}
+	{{ require_js(var.sr_assetDir + '/js/aos.js') }}
+
+	{% require_css %}
+	<style>
+		.hs_cos_wrapper_type_module {
+			overflow: hidden;
+		}
+		/** Add this class to an element to make it hidden to start. **/
+		.start-hidden {
+			opacity: 0;
+		}
+		{% for item in module.hover_animation %}
+			{% if item.animation_type == 'scale' %}
+				{{item.hover_element}}:hover {
+					transform: scale(1.{{item.scale_amount}}); 
+				}
+			{% endif %}
+			{{item.hover_element}} {
+				-webkit-animation-duration: {{item.animation_speed}}ms;
+				animation-duration: {{item.animation_speed}}ms;
+				transition: all .{{item.animation_speed}}s {{item.hover_easing_functions}};
+			}
+			{% if item.animation_type == 'custom' %}
+				{{item.hover_element}} {
+					{{item.css_html}}
+				}
+				{{item.hover_element}}:hover {
+					{{item.css_html_hover}}
+				}
+			{% endif %}
+		{% endfor %}
+	
+		</style>
+	{% end_require_css %}
+
+	{% require_js position="footer" %}
+		<script>
+			$( document ).ready(function(){
+
+				{% for item in module.hover_animation %}
+				
+					$('{{item.hover_element}}').mouseenter(function(event) {$(this).addClass("{{item.animation_type}}");});
+					{% if item.animation_type != 'scale' %}
+					$('{{item.hover_element}}').on("webkitAnimationEnd mozAnimationEnd oAnimationEnd animationEnd", function(event) {$(this).removeClass("{{item.animation_type}}");});
+					{% endif %}
+
+				{% endfor %}
+
+				{% if module.disable_animations_on_mobile %}
+					if ($(window).width() < 992) {}
+					else {
+				{% endif %}
+					AOS.init();
+				{% for item in module.animation %}
+					$('{{ item.element_selector }}').each(function(){
+						$(this).attr('data-aos', '{% if item.ani_cat == "fade" %}{{ item.fade_options }}{% elif item.ani_cat == "flip" %}{{ item.flip_options }}{% elif item.ani_cat == "slide" %}{{ item.slide_options }}{% elif item.ani_cat == "zoom" %}{{ item.zoom_options }}{% endif %}');
+						$(this).attr('data-aos-once', '{{ item.advanced_options.animate_once }}');
+						$(this).attr('data-aos-delay', '{{ item.advanced_options.animation_delay }}');
+						$(this).attr('data-aos-duration', '{{ item.advanced_options.animation_duration }}');
+						$(this).attr('data-aos-offset', '{{ item.advanced_options.trigger_offset }}');
+						{% if item.advanced_options.easing_functions %}$(this).attr('data-aos-easing', '{{ item.advanced_options.easing_functions }}');{% endif %}
+						{% if item.advanced_options.anchor_placement %}$(this).attr('data-aos-anchor-placement', '{{ item.advanced_options.anchor_placement }}');{% endif %}
+						{% if item.advanced_options.anchor_selector %}$(this).attr('data-aos-anchor', '{{ item.advanced_options.anchor_selector }}');{% endif %}
+					});   
+				{% endfor %} 
+				{% if module.disable_animations_on_mobile %}
+					}
+				{% endif %}
+			});
+			$(window).on('load', function() {
+				AOS.refreshHard();
+			});
+		</script>
+	{% end_require_js %}
+{% endif %}

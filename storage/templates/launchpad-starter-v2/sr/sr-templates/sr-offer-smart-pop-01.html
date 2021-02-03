@@ -1,0 +1,360 @@
+{% if module.enabled %}
+	
+	{% if module.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% elif module.container_width == 'max' %}
+		{% set width_class = 'col-md-12' %}	
+	{% endif %}
+	
+	{% require_css %}
+	<style>
+		{% if module.background_option == 'image' %}
+			.{{ name }} {
+				{{ var.bg_image(module.background_image.src, '600') }}
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center;
+				position: relative;
+			}
+			@media (min-width: 768px) {
+				.{{ name }} {
+					{{ var.bg_image(module.background_image.src, '1440') }}
+				}
+			}
+			.{{ name }}:before {
+				content: "";
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;    
+				background: rgba({{ module.background_overlay_color.color|convert_rgb }}, {% if module.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.background_overlay_color.opacity }});
+			}
+			.{{ name }} .container, .{{ name }} .container-fluid {
+				position: relative;
+			}
+		{% elif module.background_option == 'custom' %}
+			.{{ name }} {
+				background-color: rgba({{ module.background_custom.color|convert_rgb }}, {% if module.background_custom.opacity != '100' %}0.{% endif %}{{ module.background_custom.opacity }});
+			}
+		{% endif %}
+		.sr-offer-smart-pop-01 .row {
+			margin: 0;
+		}
+		.sr-offer-smart-pop-01 .smart-pop-open:hover, .smart-pop-close:hover {
+			cursor: pointer;
+		}
+		.sr-offer-smart-pop-01 {
+			width: 100%;
+			position: fixed;
+			opacity: 0;
+			-webkit-transition: all ease-in-out .3s;
+			-o-transition: all ease-in-out .3s;
+			transition: all ease-in-out .3s;
+			z-index: 9999;
+		}
+		.sr-offer-smart-pop-01 .smart-pop-content {
+			padding-bottom: 1.313rem;
+		}
+		.sr-offer-smart-pop-01 .smart-pop-close {
+			opacity: 0;
+			display:none;
+		}
+		.sr-offer-smart-pop-01.up .smart-pop-close {
+			opacity: 1;
+			display:block;
+		}
+		.sr-offer-smart-pop-01 .smart-pop-open {
+			-webkit-transition: all ease-in-out .2s;
+			-o-transition: all ease-in-out .2s;
+			transition: all ease-in-out .2s;
+			position: relative;
+			z-index: 1;
+			padding:1rem 0;
+		}
+		.sr-offer-smart-pop-01.up .smart-pop-open {
+			opacity:0;
+		}
+		.sr-offer-smart-pop-01.up {
+			bottom: 0 !important;
+		}
+		.sr-offer-smart-pop-01 .hs-form .hs_submit {
+			margin-top: 2.05em;
+			margin-left: 1rem;
+		}
+		.sr-offer-smart-pop-01 .smart-pop-img {
+      		width:10rem;
+			padding-right: 1rem;
+		}
+		.sr-offer-smart-pop-01 .smart-pop-close {
+			border: 2px solid;
+			border-radius: 50%;
+			height: 2rem;
+			width: 2rem;
+			line-height: 1.6rem;
+			text-align: center;
+			padding: 0 !important;
+			font-size: 0.9rem;
+			font-weight: 600;
+			-webkit-transition: all ease-in-out .2s;
+			-o-transition: all ease-in-out .2s;
+			transition: all ease-in-out .2s;
+			position: absolute;
+			top: 1rem;
+			z-index: 1;
+			right: 1rem;
+		}
+		.sr-offer-smart-pop-01 .smart-pop-close:hover {
+			background: #333;
+			background: #fff;
+			border-color: #333;
+			border-color: #fff;
+			color: var(--primary);
+		}
+		.sr-offer-smart-pop-01 .hs-form fieldset {
+			padding: 0.25rem 0
+		}
+		.sr-offer-smart-pop-01 .smart-pop-img img {
+			width:100%;
+			height: auto;
+		}
+		.text-white .field > label, .form-group label {
+			color:#fff;
+		}
+		.sr-offer-smart-pop-01 .smart-pop-form, fieldset.form-columns-1, .sr-offer-smart-pop-01 .hs-form-field  {
+			width: 100%;
+		}
+		.sr-offer-smart-pop-01 input.hs-input {
+			border-radius:3px;
+		}
+		.sr-offer-smart-pop-01 .smart-pop-form {
+      max-width:33.75rem;
+			padding-left:1rem;
+			padding-right:0;
+			padding-bottom:0.5rem;
+		}
+		{% if module.tease_image %}
+
+			.sr-offer-smart-pop-01 .smart-pop-img img {
+				margin-top: -10.5rem;
+				-webkit-transition: margin-top 0.5s ease;
+				-o-transition: margin-top 0.5s ease;
+				transition: margin-top 0.5s ease;
+			}
+			.sr-offer-smart-pop-01.up .smart-pop-img img {
+				margin-top: -6.5rem;
+			}
+			@media only screen and (max-width: 767px) {
+				.sr-offer-smart-pop-01 .smart-pop-img img {
+					margin-top:-8.5rem;
+				}
+			}
+		{% endif %}
+		@media only screen and (min-width: 992px) {
+			.sr-offer-smart-pop-01 form.hs-form.stacked.hs-custom-form {
+				display: -ms-flexbox !important;
+				display: flex !important;
+			}
+		}
+		@media only screen and (max-width:1200px) {
+			.sr-offer-smart-pop-01 .smart-pop-img img {
+				opacity:0
+			}
+			.sr-offer-smart-pop-01.up .smart-pop-img img {
+				opacity:1;
+			}
+		}
+		@media only screen and (max-width:992px) {
+			.sr-offer-smart-pop-01 .hs-form .hs_submit {
+				margin-top: 0;
+				margin-left: 0;
+			}
+		}
+		@media only screen and (min-width:768px) {
+			.sr-offer-smart-pop-01.up .smart-pop-open {
+				padding:0;
+			}
+		}
+		@media only screen and (max-width: 767px) {
+			.sr-offer-smart-pop-01 .btn-wrapper.btn-outline-white-wrapper .hs-form input[type="submit"] {
+				width:100%;
+				display:block;
+				text-align:center;
+			}
+			.sr-offer-smart-pop-01 .hs-form fieldset .field {
+				margin-bottom:0;
+			}
+			.sr-offer-smart-pop-01 .smart-pop-form {
+				padding-left:0;
+			}
+			.sr-offer-smart-pop-01.up .smart-pop-img img {
+				margin-top:-10.5rem;
+				padding-bottom:1.389rem;
+			}
+			.sr-offer-smart-pop-01 .smart-pop-img img {
+				max-width:8.889rem;
+				margin-top:-10.5rem;
+				padding-bottom:1.389rem;
+			}
+			.sr-offer-smart-pop-01 form.hs-form.stacked.hs-custom-form {
+				padding-top: .5rem;
+			}
+			.sr-offer-smart-pop-01 input.hs-input {
+				margin: 6px 0 10px 0;
+				text-align:left;
+			}
+		}
+	
+		</style>
+	{% end_require_css %}
+
+	<div class="sr-offer-smart-pop-01 {{ name }} {% if module.background_option == 'color' %} bg-{{ module.background_color }}{% endif %} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %} {{module.class}}" {% if module.sr_module_id %}id="{{ module.sr_module_id }}"{% endif %}>
+		
+		<div class="row">
+			<div class="col-md-12 text-center smart-pop-open-wrapper" onclick="clickWrapperSmartPopOne()">
+				<div class="smart-pop-open font-weight-bold">{{module.popup_teaser}}</div>
+				<div class="smart-pop-close">x</div>
+			</div>
+		</div>
+		<div class="{{module.layout}}">
+			{% if module.container_width != 'max' %}
+			<div class="row">
+				<div class="{{ width_class }}">			
+			{% endif %}
+					<div class="smart-pop-content d-md-flex text-md-left align-items-center">
+						{% if module.popup_image.src %}
+							<div class="smart-pop-img">
+								{% if module.sr_default_image_size %}
+									{{ var.image(module.popup_image.src, '160', module.popup_image.alt) }}
+								{% else %}
+									{{ var.image(module.popup_image.src, module.popup_image.width, module.popup_image.alt) }}
+								{% endif %}
+							</div>
+						{% endif %}	
+						<div class="smart-pop-form{% if module.text_color != 'auto' %} text-{{ module.text_color }}{%endif%} btn-wrapper btn-outline-white-wrapper">
+							<h4>{{module.popup_form_title}}</h4>
+							{% if !module.form.form.form_id || hub_id == 123 %}
+								<div id="hs_form_target_module_3540739632">
+									<form class="hs-form stacked hs-custom-form">
+										<fieldset class="form-columns-1" data-reactid=".0.1:$1">
+											<div class="hs_email field hs-form-field">
+												<label>
+													<span>Email address</span>
+													<span class="hs-form-required">*</span>
+												</label>
+												<div class="hs-field-desc" style="display:none;"></div>
+												<div class="input">
+													<input class="hs-input" name="email" placeholder="" required="" type="email" value="Email">
+												</div>
+											</div>
+										</fieldset>
+										<div class="hs_submit">
+											<div class="actions">
+												<input class="hs-button large" type="submit" value="Download Now">
+											</div>
+										</div>
+									</form>
+								</div>
+							{% else %}
+								{% if module.form.form.form_id %}
+									{% if module.form.title is truthy %}
+										{% set no_title = False %}
+									{% else %}
+										{% set no_title = True %}
+									{% endif %}
+									{% if module.form.form.form_id %}
+										{% form
+											form_key="{{name}}",
+											form_to_use="{{module.form.form.form_id}}"
+											title="{{module.form.title}}"
+											no_title="{{no_title}}"
+											follow_up_type_simple="{{module.form.follow_up_type_simple}}"
+											simple_email_for_live_id="{{module.form.simple_email_for_live_id}}"
+											follow_up_type_automation="{{module.form.follow_up_type_automation}}"
+											response_response_type="{{module.form.form.response_type}}"
+											response_redirect_id="{{module.form.form.redirect_id}}"
+											response_redirect_url="{{module.form.form.redirect_url}}"
+											response_message="{{module.form.form.message}}"
+											notifications_are_overridden="{{module.form.notifications_are_overridden}}"
+											notifications_override_email_addresses="{{module.form.notifications_override_email_addresses}}"
+											gotowebinar_webinar_key="{{module.form.form.gotowebinar_webinar_key}}"
+										%}
+									{% endif %}
+								{% endif %}
+							{% endif %}
+						</div>
+					</div>
+			{% if module.container_width != 'max' %}		
+				</div>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+
+
+
+	{% require_js %}
+		<script>
+			$(document).ready(function() {
+				$('body').css('padding-bottom', $('.smart-pop-open-wrapper').outerHeight());
+				var smartPopShowH = $('.smart-pop-content').outerHeight();
+				//Move the popup down
+				$('.sr-offer-smart-pop-01').css('bottom', -smartPopShowH);
+				//show after set time
+				function showPopup() {
+					$('.sr-offer-smart-pop-01').css('opacity', '1');
+					if (!sessionStorage.alreadyClickedSmartPop && !userClosed) {
+						$('.sr-offer-smart-pop-01').toggleClass('up');
+					}
+					{% if module.open_once %}sessionStorage.alreadyClickedSmartPop = 1; {% endif %}
+				}
+				setTimeout(showPopup, {{module.auto_show_timer}}000);
+			});
+
+			$( window ).resize(function() {
+				smartPopShowH = $('.smart-pop-content').outerHeight();
+				$('.sr-offer-smart-pop-01').css('bottom', -smartPopShowH);
+			});
+			var userClosed = false;
+			//show after set time
+			function clickWrapperSmartPopOne() {
+				smartPopShowH = $('.smart-pop-content').outerHeight();
+				if($(window).width() < 767) {
+					smartPopShowH = $('.smart-pop-content').outerHeight();
+				}
+				$('.sr-offer-smart-pop-01').css('bottom', -smartPopShowH);
+				$('.sr-offer-smart-pop-01').toggleClass('up');
+				userClosed = true;
+			}
+			$(document).scroll(function(e) {
+				var winheight = $(window).height()
+				var docheight = $(document).height();
+				var scrollTop = $(window).scrollTop();
+				var trackLength = docheight - winheight;
+				var scrollPercent = Math.floor(scrollTop/trackLength * 100);
+
+				//hide popup if the user is scrolling above 50%
+				if ((scrollPercent < 50) && ($('.sr-offer-smart-pop-01').hasClass('up'))) {
+					smartPopShowH = $('.smart-pop-content').outerHeight();
+					$('.sr-offer-smart-pop-01').css('bottom', -smartPopShowH);
+					$('.sr-offer-smart-pop-01').toggleClass('up');
+				}
+
+				//show popup after the users scroll 50% down the page
+				if (scrollPercent > 50 && !($('.sr-offer-smart-pop-01').hasClass('up')) && !userClosed) {
+					smartPopShowH = $('.smart-pop-content').outerHeight();
+					$('.sr-offer-smart-pop-01').css('bottom', -smartPopShowH);
+					$('.sr-offer-smart-pop-01').css('opacity', '1');
+					if (!sessionStorage.alreadyClickedSmartPop) {
+						$('.sr-offer-smart-pop-01').toggleClass('up');
+					}
+					{% if module.open_once %}sessionStorage.alreadyClickedSmartPop = 1; {% endif %}
+				}
+			});
+		</script>
+	{% end_require_js %}
+{% endif %}

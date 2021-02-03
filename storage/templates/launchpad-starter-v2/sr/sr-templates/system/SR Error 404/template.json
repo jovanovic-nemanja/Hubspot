@@ -1,0 +1,18 @@
+{
+	"name": "SR Error 404",
+	"templates": [
+		{
+			"category_id": "0",
+			"template_type": "11",
+			"folder": "sr/templates",
+			"path": "sr/templates/SR Error 404.html",
+			"source": "launchpad-starter-v2/sr/sr-templates/system/SR Error 404/SR Error 404.html",
+			"is_available_for_new_content": true
+		}
+	],
+	"custom_modules": [
+		"sr-nav-dropdown-01.json",
+		"sr-hero-404.json",
+		"sr-footer-04.json"
+	]
+}

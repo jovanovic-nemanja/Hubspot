@@ -1,0 +1,417 @@
+// -----------------------------------------------------------------------------------
+//
+//  Lean Labs LaunchPad Base Theme
+//
+//  Author: @helloteichner
+//  Version: 2.0.0
+//
+// -----------------------------------------------------------------------------------
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i');
+
+// -----------------------------------------------------------------------------------
+//  Colors
+// -----------------------------------------------------------------------------------
+
+$theme-colors: (
+	"primary":                  #343434,
+	"secondary":                #6c757d,
+	"success":                  #28a745,
+	"info":                     #17a2b8,
+	"warning":                  #ffc107,
+	"danger":                   #dc3545,
+	"light":                    #f8f9fa,
+	"dark":                     #343a40
+);
+
+$body-bg:                     #fff;
+$body-color:                  #33323D;
+
+$link-color:                  map_get($theme-colors, 'info');
+$link-decoration:             underline;
+$link-hover-color:            map_get($theme-colors, 'primary');
+$link-hover-decoration:       underline;
+
+//-----------------------------------------------------------------------------------
+//  Typography
+//-----------------------------------------------------------------------------------
+
+$font-family-sans-serif:      "Source Sans Pro", sans-serif;
+$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-base:            $font-family-sans-serif;
+
+$font-size-base:              1rem;
+$font-size-lg:                $font-size-base * 1.25;
+$font-size-sm:                $font-size-base * .875;
+
+$h1-font-size:                $font-size-base * 2.25;
+$h2-font-size:                $font-size-base * 2;
+$h3-font-size:                $font-size-base * 1.625;
+$h4-font-size:                $font-size-base * 1.375;
+$h5-font-size:                $font-size-base * 1.375;
+$h6-font-size:                $font-size-base;
+
+$headings-font-family:        inherit;
+$headings-font-weight:        500;
+$headings-line-height:        1.2;
+$headings-color:              inherit;
+
+$lead-font-size:              ($font-size-base * 1.25) !default;
+$lead-font-weight:            300 !default;
+
+// Bootstrap 4
+@import "sr/scss/bootstrap/bootstrap";
+
+body {
+	line-height: 1.25;
+	opacity: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+h1 {
+	line-height: 1.25;
+	text-transform: uppercase;
+}
+h2 {
+	line-height: 1.25;
+}
+h3 {
+	line-height: 1.27;
+}
+h4 {
+	line-height: 1.27;
+	text-transform: uppercase;
+}
+h5 {
+	line-height: 1.27;
+}
+h6 {
+	line-height: 1.25;
+}
+
+p {
+	&.lead,
+	&.large {
+		font-size: 1.5rem;
+		line-height: 1.29;
+		font-weight: normal;
+	}
+	&.small {
+		font-size: 0.75rem;
+	}
+}
+
+blockquote {
+	font-size: 1.375rem;
+	font-style: italic;
+	font-weight: 300;
+	line-height: 1.27;
+}
+
+a:not(.btn) {
+	color: $link-color;
+	text-decoration: $link-decoration;
+
+	&:hover {
+		color: $link-hover-color;
+		text-decoration: $link-hover-decoration;
+	}
+}
+
+p a:not(.btn) {
+	border-bottom: 1px solid $link-hover-color;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: none;
+		color: $link-hover-color;
+	}
+}
+
+// Buttons
+.btn {
+	border-radius: 0;
+	text-transform: uppercase;
+	font-size: 1rem;
+	font-weight: bold;
+	line-height: 1.25rem;
+	text-align: center;
+	padding: 0.625rem 2.31rem;
+	border-width: 2px;
+	text-decoration: none;
+
+	// Colors
+	&.btn-primary {
+		&:hover {
+			opacity: .8;
+		}
+	}
+	&.btn-secondary {
+		&:hover {
+			opacity: .8;
+		}
+	}
+	&.btn-outline-primary {
+		&:hover {
+			opacity: .8;
+		}
+	}
+	&.btn-outline-secondary {
+		&:hover {
+			opacity: .8;
+		}
+	}
+
+	// Sizes
+	&.btn-sm {
+		padding: 0.312rem 2.31rem;
+	}
+	&.btn-lg {
+		padding: 1.25rem 2.31rem;
+	}
+}
+
+.btn-wrapper {
+	.cta_button {
+		@extend .btn;
+	}
+	&.btn-primary-wrapper .cta_button {
+		@extend .btn-primary;
+	}
+	&.btn-secondary-wrapper .cta_button {
+		@extend .btn-secondary;
+	}
+	&.btn-outline-primary-wrapper .cta_button {
+		@extend .btn-outline-primary;
+	}
+	&.btn-outline-secondary-wrapper .cta_button {
+		@extend .btn-outline-secondary;
+	}
+}
+
+// Responsive Typography
+@include media-breakpoint-up(xs) { html { font-size: .7rem; }}
+@include media-breakpoint-up(md) { html { font-size: .85rem; }}
+@include media-breakpoint-up(lg) { html { font-size: 1rem; }}
+
+// @include media-breakpoint-up(xs) { html { font-size: 1rem; }}
+// @include media-breakpoint-up(md) { html { font-size: 1rem; }}
+// @include media-breakpoint-up(lg) { html { font-size: 1rem; }}
+
+//-----------------------------------------------------------------------------------
+//  Shared (needs cleanup)
+//-----------------------------------------------------------------------------------
+
+.block { display: table; }
+.circle { border-radius: 100%; }
+.divider {
+	display: block;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	padding: 0 0 13px 0;
+	margin: 0 0 40px;
+}
+.text-center-mobile { text-align: center; }
+.max-responsive { max-width: 100%; height: auto !important; }
+.antialiased { -webkit-font-smoothing: antialiased; }
+
+.animated {
+	transition: all .3s ease-in-out;
+	animation-timing-function: ease-in-out;
+}
+
+.animated-fast {
+	transition: all .15s ease-in-out;
+	animation-timing-function: ease-in-out;
+}
+
+.sr-line-top { border-top: 1px solid #DADADA; }
+.sr-line-bottom { border-bottom: 1px solid #DADADA; }
+
+.sr-padding-zero {
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}
+.sr-padding-half {
+	padding-top: 3.125rem !important;
+	padding-bottom: 3.125rem !important;
+}
+.sr-padding-full {
+	padding-top: 6.25rem !important;
+	padding-bottom: 6.25rem !important;
+}
+
+.text-white {
+	color: $body-color!important;
+}
+.prototype-no-background {
+	background: none!important;
+	border-bottom: 1px solid map_get($theme-colors, 'dark');
+	.sr-cover-image,
+	.sr-cover-bg-wrapper {
+		display: none;
+	}
+}
+.prototype-no-background:before {
+	display: none;
+}
+.prototype-background {
+	background-image: url('https://www.sprocketrocket.co/hubfs/sprocket-rocket/images/bg_prototype.jpg')!important;
+	color: map_get($theme-colors, 'dark') !important;
+}
+
+// == standard spacers ==
+.sr-spacer-25 {
+	padding-top: 1.5625rem;
+	padding-bottom: 1.5625rem; }
+  
+  .sr-spacer-top-25 {
+	padding-top: 1.5625rem; }
+  
+  .sr-spacer-bottom-25 {
+	padding-bottom: 1.5625rem; }
+  
+  .sr-spacer-50 {
+	padding-top: 3.125rem;
+	padding-bottom: 3.125rem; }
+  
+  .sr-spacer-top-50 {
+	padding-top: 3.125rem; }
+  
+  .sr-spacer-bottom-50 {
+	padding-bottom: 3.125rem; }
+  
+  .sr-spacer-75 {
+	padding-top: 4.6875rem;
+	padding-bottom: 4.6875rem; }
+  
+  .sr-spacer-top-75 {
+	padding-top: 4.6875rem; }
+  
+  .sr-spacer-bottom-75 {
+	padding-bottom: 4.6875rem; }
+  
+  .sr-spacer-100 {
+	padding-top: 6.25rem;
+	padding-bottom: 6.25rem; }
+  
+  .sr-spacer-top-100 {
+	padding-top: 6.25rem; }
+  
+  .sr-spacer-bottom-100 {
+	padding-bottom: 6.25rem; }
+
+/* All HubSpot Forms
+	 ========================================================================== */
+
+.hs-form {
+
+	// Multi-col
+	fieldset {
+		&.form-columns-1 {}
+		&.form-columns-2 {
+			.field {
+				@media only screen and (min-width: 992px) {
+					width: calc(50% - 5.5px);
+					display: inline-block;
+					float: left;
+
+					& + .field {
+						margin-left: 11px;
+					}
+
+				}
+			}
+		}
+		&.form-columns-3 {
+			.field {
+				@media only screen and (min-width: 992px) {
+					width: calc(33.33% - 7.33px);
+					display: inline-block;
+					float: left;
+
+					& + .field {
+						margin-left: 11px;
+					}
+
+				}
+			}
+		}
+		.field {
+			margin: 0 0 0.625rem;
+		}
+	}
+
+	// Labels
+	.field > label {
+		font-weight: bold;
+		font-size: 0.750rem;
+		margin: 0 0 0.188rem;
+	}
+
+	.hs-field-desc {
+		font-size: .8em;
+		margin: 0 0 .5em;
+	}
+
+	// Field Types
+	input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]),
+	textarea,
+	select,
+	input[readonly]:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]) {
+		-webkit-appearance: none;
+		@extend .form-control;
+		background: #F9F8F7;
+		padding: 0.531em 0.781em;
+		border-color: #B4B5B4;
+		&:focus {
+			border-color: #B4B5B4;
+			box-shadow: 0px 2px map_get($theme-colors, 'primary');
+		}
+	}
+	input[type="radio"], input[type="checkbox"] {
+		margin-right: 2px;
+	}
+	select {
+		background: url('https://www.sprocketrocket.co/hubfs/sprocket-rocket/images/icon-select.png') #F9F8F7;
+		background-position: calc(100% - 12px) center;
+		background-repeat: no-repeat;
+		line-height: 1;
+	}
+
+	input[type="submit"],
+	input[type="button"] {
+		@extend .btn;
+		@extend .btn-primary;
+		display: block;
+		width: 100%;
+		border-radius: 0;
+	}
+
+	// List
+	.inputs-list {
+		margin: 0;
+		padding: 0;
+		li {
+			list-style: none;
+		}
+	}
+
+	// Error
+	.hs-error-msgs {
+		font-size: .8rem;
+		color: map_get($theme-colors, 'danger');
+		margin: .5rem 0 0;
+	}
+
+	// Submit
+	.hs_submit {
+		margin-top: 1.5em;
+	}
+
+}
+
+//-----------------------------------------------------------------------------------
+//  TEMP CODE - To be moved into modules
+//-----------------------------------------------------------------------------------

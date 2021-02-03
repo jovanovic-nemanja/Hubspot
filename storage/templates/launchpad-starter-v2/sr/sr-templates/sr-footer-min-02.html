@@ -1,0 +1,178 @@
+{% if module.enabled %}
+	
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-footer-min-02" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Footer Min 02</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+    {% endif %}
+	{% endif %}
+
+	<div {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %} class="{{ name }} sr-footer-min-02 {{ module.design_settings.class }} sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} prototype-no-background">
+		<div class="container text-{{ module.text_align }} text-{{ module.text_color }} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">
+			<div class="row align-items-center">
+				<div class="{% if module.icons && module.show_menu %}col-md-6{% elif !module.show_menu && !module.icons %}col-md-12{% else %}col-md-7{% endif %} col-12">
+					{% if module.show_menu %}
+					<div class="footer-min-02-nav">
+						{% if module.menu %}
+							{% set node = menu(module.menu) %}
+						{% endif %}
+						{% if hub_id == 123 || !module.menu %}
+						<ul class="">
+							<li class="nav-item menui menu-logo">
+								{% if module.logo.src %}
+								{% if module.sr_default_image_size %}
+									{{ var.image(module.logo.src, '220', module.logo.alt) }}
+								{% else %}
+									{{ var.image(module.logo.src, module.logo.width, module.logo.alt) }}
+								{% endif %}
+								{% endif %}
+							</li>
+							<li class="nav-item menui">
+								<a href="">Home</a>
+							</li>
+							<li class="nav-item menui">
+								<a href="">About</a>
+							</li>
+							<li class="nav-item menui">
+								<a href="">Services</a>
+							</li>
+							<li class="nav-item menui">
+								<a href="">Work</a>
+							</li>
+							<li class="nav-item menui">
+								<a href="">Blog</a>
+							</li>
+						</ul>
+						{% else %}
+						<ul class="footer-min-02-nav">
+							{% if module.logo.src %}
+							<li class="menui nav-item menu-logo">
+								<a class="pl-0" href="{{ module.logo_link }}">
+									{% if module.logo.src %}
+									{{ var.image(module.logo.src, module.logo.width, module.logo.alt) }}
+									{% endif %}
+								</a>
+							</li>
+							{% endif %}
+							{% for item in node.children %}
+							<li class="menui nav-item {% if item.activeBranch %}active{% endif %}">
+								<a href="{{item.url}}">{{item.label}}</a>
+							</li>
+							{% endfor %}
+						</ul>
+						{% endif %}
+					</div>
+					{% else %}
+					{% if module.content %}
+					<div>{{ module.content }}</div>
+					{% endif %}
+					{% endif %}
+				</div>
+
+				{% if (module.show_menu && module.content) || (module.icons) %}
+				<div class="{% if module.icons && module.show_menu %}col-md-6{% else %}col-md-5{% endif %} col-12">
+					<div class="mt-md-0 mt-4 {% if module.icons %}d-flex align-items-center justify-content-md-end justify-content-center{% else %}text-md-right text-center{% endif %}">
+						{% if module.show_menu %}<div {% if module.icons %}class="mr-4"{% endif %}>{{ module.content }}</div>{% endif %}
+
+						{% if module.icons %}
+							<ul class="social sr-spacer-top-25">
+								{% for item in module.icons %}
+									<li><a class="no-decoration {% if !loop.last %}mr-1{% endif %}" href="{{item.link}}"><i class="fa {{item.icon}}" aria-hidden="true"></i></a></li>
+								{% endfor %}
+							</ul>
+						{% endif %}
+					</div>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+	{% require_css %}
+		<style>
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;    
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			.sr-footer-min-02 {
+				border: 1px solid #e5e7ea;
+			}
+			.footer-min-02-nav ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				display: flex;
+				align-items: center;
+			}
+			.footer-min-02-nav .menu-logo {
+				padding-right: 1rem;
+			}
+			.footer-min-02-nav ul li a {
+				color: inherit;
+				padding-right: 1rem;
+				font-size: 0.8rem;
+			}
+			.sr-footer-min-02 p.small,
+			.sr-footer-min-02 p {
+				margin: 0;
+			}
+			.sr-footer-min-02 .social {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+			.sr-footer-min-02 .social li {
+				display: inline-block;
+				text-align: center;
+			}
+			.sr-footer-min-02 .social li a {
+				color: inherit;
+				border-bottom: none;
+				font-size: 1.5rem;
+			}
+		</style>
+	{% end_require_css %}
+{% endif %}

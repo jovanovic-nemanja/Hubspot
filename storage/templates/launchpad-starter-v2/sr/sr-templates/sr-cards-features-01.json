@@ -1,0 +1,910 @@
+{
+    "custom_module": {
+        "author": "bradley@lean-labs.com",
+        "tags": ["ver-1.0.0"],
+        "name": "SR Cards Features 01",
+        "css_assets": [],
+        "editable_contexts": [],
+        "external_js": [],
+        "icon": "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": [
+            "PAGE",
+            "BLOG_POST",
+            "BLOG_LISTING"
+        ],
+        "js_assets": [],
+        "other_assets": [],
+        "fields": [
+            {
+                "id": "enabled",
+                "name": "enabled",
+                "label": "Enabled",
+                "required": false,
+                "locked": false,
+                "type": "boolean",
+                "default": true
+            },
+            {
+                "id": "design_settings",
+                "name": "design_settings",
+                "label": "Design Settings",
+                "required": false,
+                "locked": false,
+                "children": [
+                    {
+                        "id": "design_settings.sr_module_id",
+                        "name": "sr_module_id",
+                        "label": "ID",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": null
+                    },
+                    {
+                        "id": "design_settings.class",
+                        "name": "class",
+                        "label": "Class",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": null
+                    },
+                    {
+                        "id": "design_settings.layout",
+                        "name": "layout",
+                        "label": "Layout",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "container",
+                                "Page"
+                            ],
+                            [
+                                "container-fluid",
+                                "Full Width"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "container"
+                    },
+                    {
+                        "id": "design_settings.container_width",
+                        "name": "container_width",
+                        "label": "Container Width",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "min",
+                                "Minimum"
+                            ],
+                            [
+                                "narrow",
+                                "Narrow"
+                            ],
+                            [
+                                "wide",
+                                "Wide"
+                            ],
+                            [
+                                "max",
+                                "Maximum"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "max"
+                    },
+                    {
+                        "id": "top_bottom_padding",
+                        "name": "top_bottom_padding",
+                        "label": "Top Bottom Padding",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "auto",
+                                "Use default values"
+                            ],
+                            [
+                                "zero",
+                                "No Padding"
+                            ],
+                            [
+                                "half",
+                                "Small padding"
+                            ],
+                            [
+                                "full",
+                                "Large padding"
+                            ],
+                            [
+                                "custom",
+                                "Custom Padding"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "full"
+                    },
+                    {
+                        "id": "design_settings.custom_padding",
+                        "name": "custom_padding",
+                        "label": "Custom Padding",
+                        "help_text": "Top, Right, Bottom, Left",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "visibility": {
+                            "controlling_field": "top_bottom_padding",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "1rem 0rem 1rem 0rem"
+                    },
+                    {
+                        "id": "design_settings.border_top",
+                        "name": "border_top",
+                        "label": "Border Top",
+                        "required": false,
+                        "locked": false,
+                        "type": "boolean",
+                        "default": false
+                    },
+                    {
+                        "id": "design_settings.border_bottom",
+                        "name": "border_bottom",
+                        "label": "Border Bottom",
+                        "required": false,
+                        "locked": false,
+                        "type": "boolean",
+                        "default": false
+                    },
+                    {
+                        "id": "background_option",
+                        "name": "background_option",
+                        "label": "Background Option",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "image",
+                                "Image"
+                            ],
+                            [
+                                "color",
+                                "Color"
+                            ],
+                            [
+                                "custom",
+                                "Custom"
+                            ],
+                            [
+								"gradient", "Gradient"
+							]
+                        ],
+                        "type": "choice",
+                        "default": "color"
+                    },
+                    {
+                        "id": "design_settings.background_image",
+                        "name": "background_image",
+                        "label": "Background Image",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "responsive": false,
+                        "resizable": true,
+                        "type": "image",
+                        "default": {
+                            "src": "",
+                            "alt": ""
+                        }
+                    },
+                    {
+						"default": {
+							"color": "#0c63ff"
+						},
+						"label": "Background Gradient From",
+						"name": "background_gradient_from",
+						"visibility": {
+							"controlling_field": "background_option",
+							"controlling_value_regex": "gradient",
+							"operator": "EQUAL"
+						},
+						"type": "color"
+					},
+					{
+						"default": {
+							"color": "#1897ff"
+						},
+						"label": "Background Gradient To",
+						"name": "background_gradient_to",
+						"visibility": {
+							"controlling_field": "background_option",
+							"controlling_value_regex": "gradient",
+							"operator": "EQUAL"
+						},
+						"type": "color"
+					},
+                    {
+                        "id": "design_settings.background_overlay_color",
+                        "name": "background_overlay_color",
+                        "label": "Background Overlay Color",
+                        "help_text": "Recommended Width: 2880x1920px",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#343a40",
+                            "opacity": 30
+                        }
+                    },
+                    {
+                        "id": "design_settings.background_color",
+                        "name": "background_color",
+                        "label": "Background Color",
+                        "required": true,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "color",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "select",
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "success",
+                                "Success"
+                            ],
+                            [
+                                "info",
+                                "Info"
+                            ],
+                            [
+                                "warning",
+                                "Warning"
+                            ],
+                            [
+                                "danger",
+                                "Danger"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "white"
+                    },
+                    {
+                        "id": "design_settings.background_custom",
+                        "name": "background_custom",
+                        "label": "Background Custom",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#fff"
+                        }
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "layout": "container",
+                    "container_width": "max",
+                    "top_bottom_padding": "full",
+                    "custom_padding": "1rem 0rem 1rem 0rem",
+                    "border_top": false,
+                    "border_bottom": false,
+                    "background_option": "color",
+                    "background_image": {
+                        "src": "",
+                        "alt": ""
+                    },
+                    "background_overlay_color": {
+                        "color": "#343a40",
+                        "opacity": 30
+                    },
+                    "background_color": "white",
+                    "background_custom": {
+                        "color": "#fff"
+                    }
+                }
+            },
+            {
+                "id": "heading",
+                "name": "heading",
+                "label": "Heading",
+                "required": false,
+                "locked": false,
+                "validation_regex": "",
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "default": "The Sprocket Rocket Toolkit"
+            },
+            {
+                "id": "heading_size",
+                "name": "heading_size",
+                "label": "Heading Size",
+                "required": true,
+                "locked": false,
+                "visibility": {
+                    "controlling_field": "heading",
+                    "controlling_value_regex": null,
+                    "operator": "NOT_EMPTY",
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "display": "select",
+                "choices": [
+                    [
+                        "1",
+                        "H1"
+                    ],
+                    [
+                        "2",
+                        "H2"
+                    ],
+                    [
+                        "3",
+                        "H3"
+                    ],
+                    [
+                        "4",
+                        "H4"
+                    ],
+                    [
+                        "5",
+                        "H5"
+                    ],
+                    [
+                        "6",
+                        "H6"
+                    ]
+                ],
+                "type": "choice",
+                "default": "2"
+            },
+			{
+                "name": "heading_display_size",
+                "label": "Heading Display Size",
+                "required": true,
+                "locked": false,
+				"display": "select",
+				"visibility": {
+                    "controlling_field": "heading",
+                    "controlling_value_regex": null,
+                    "operator": null,
+                    "access": null
+                },
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "h1",
+                        "H1"
+                    ],
+                    [
+                        "h2",
+                        "H2"
+                    ],
+                    [
+                        "h3",
+                        "H3"
+                    ],
+                    [
+                        "h4",
+                        "H4"
+                    ],
+                    [
+                        "h5",
+                        "H5"
+                    ],
+                    [
+                        "h6",
+                        "H6"
+                    ],
+                    [
+                        "display-4",
+                        "L"
+                    ],
+                    [
+                        "display-3",
+                        "XL"
+                    ],
+                    [
+                        "display-2",
+                        "XXL"
+                    ],
+                    [
+                        "display-1",
+                        "XXXL"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            },
+            {
+                "id": "description",
+                "name": "description",
+                "label": "Description",
+                "required": false,
+                "locked": false,
+                "type": "richtext",
+                "default": "<p>Our toolkit has all of the resources and guidance needed to create a high-conversion website.</p>"
+            },
+            {
+                "id": "cffc2d5f-e7a4-735a-93aa-0c3bc0cff68d",
+                "name": "slides",
+                "label": "Features",
+                "required": false,
+                "locked": false,
+                "occurrence": {
+                    "min": null,
+                    "max": null,
+                    "sorting_label_field": "b2de3e84-242b-f495-b88b-ee8d6a697860",
+                    "default": 12
+                },
+                "children": [
+                    {
+                        "id": "ad020385-5780-dd9b-1a87-83472c432f0a",
+                        "name": "image",
+                        "label": "Image",
+                        "required": false,
+                        "locked": false,
+                        "responsive": true,
+                        "resizable": true,
+                        "type": "image",
+                        "default": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/bulb.png",
+                            "alt": "bulb",
+                            "width": 64,
+                            "height": 64,
+                            "max_width": 512,
+                            "max_height": 512
+                        }
+                    },
+                    {
+                        "id": "b2de3e84-242b-f495-b88b-ee8d6a697860",
+                        "name": "header",
+                        "label": "Header",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Professional Design"
+                    },
+                    {
+                        "id": "9cec681b-9cd1-fdb9-cb55-40cdcf3be016",
+                        "name": "content",
+                        "label": "Content",
+                        "required": false,
+                        "locked": false,
+                        "type": "richtext",
+                        "default": "<p>Easy and fast adjustments of elements is possible with Core template. Find our more about our all-in-one programmatic template.</p>"
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": [
+                    {
+                        "image": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/bulb.png",
+                            "alt": "bulb",
+                            "width": 64,
+                            "height": 64,
+                            "max_width": 512,
+                            "max_height": 512
+                        },
+                        "header": "Inbound Strategy",
+                        "content": "<p>Quickly and efficiently build the materials you need to support your inbound marketing strategy. Drag and drop building blocks including testimonials, forms, calls-to-action, and more.</p>"
+                    },
+                    {
+                        "image": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/sprout.png",
+                            "alt": "bulb",
+                            "width": 64,
+                            "height": 64,
+                            "max_width": 512,
+                            "max_height": 512
+                        },
+                        "header": "Unlimited Power",
+                        "content": "<p>Sprocket Rocket lets you transform your rapid prototype into a beautiful design by adjusting every aspect to fit brand standards.</p>"
+                    },
+                    {
+                        "image": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/head.png",
+                            "alt": "bulb",
+                            "width": 64,
+                            "height": 64,
+                            "max_width": 512,
+                            "max_height": 512
+                        },
+                        "header": "Enhanced User Experience",
+                        "content": "<p>Collaborate seamlessly across devices from wherever you may be – whether you’re in the office, on the go, or making last-minute changes before your next meeting.</p>"
+                    },
+                    {
+                        "image": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/presentation.png",
+                            "alt": "bulb",
+                            "width": 64,
+                            "height": 64,
+                            "max_width": 512,
+                            "max_height": 512
+                        },
+                        "header": "Exceptional Customer Support",
+                        "content": "<p>From start-to-finish, the design and strategy team provide all of the guidance and expertise necessary to build a high-conversion website.</p>"
+                    },
+                    {
+                        "image": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/plant.png",
+                            "alt": "bulb",
+                            "width": 64,
+                            "height": 64,
+                            "max_width": 512,
+                            "max_height": 512
+                        },
+                        "header": "Prototype With Robust Modules",
+                        "content": "<p>Select from a collection of modules and quickly populate and draft website and landing pages right to HubSpot.</p>"
+                    },
+                    {
+                        "image": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/cloud.png",
+                            "alt": "bulb",
+                            "width": 64,
+                            "height": 64,
+                            "max_width": 512,
+                            "max_height": 512
+                        },
+                        "header": "Easy-To-Use Tools",
+                        "content": "<p>Get started on website and landing pages right away with little to no learning curve.</p>"
+                    },
+                    {
+                        "image": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/target.png",
+                            "alt": "bulb",
+                            "width": 64,
+                            "height": 64,
+                            "max_width": 512,
+                            "max_height": 512
+                        },
+                        "header": "No Templates",
+                        "content": "<p>Without rigid templates, you can build the exact type of website necessary to hit your website performnace goals.</p>"
+                    },
+                    {
+                        "image": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/badge.png",
+                            "alt": "bulb",
+                            "width": 64,
+                            "height": 64,
+                            "max_width": 512,
+                            "max_height": 512
+                        },
+                        "header": "Modular Design Tool",
+                        "content": "<p>You can use modular design to get the exact building blocks you need to build beautiful website and landing pages.</p>"
+                    },
+                    {
+                        "image": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/deadline.png",
+                            "alt": "bulb",
+                            "width": 64,
+                            "height": 64,
+                            "max_width": 512,
+                            "max_height": 512
+                        },
+                        "header": "HubSpot CMS Design Tool",
+                        "content": "<p>This CMS design tool helps you get the most from the HubSpot COS. </p>"
+                    },
+                    {
+                        "image": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/mountain.png",
+                            "alt": "bulb",
+                            "width": 64,
+                            "height": 64,
+                            "max_width": 512,
+                            "max_height": 512
+                        },
+                        "header": "Template Free",
+                        "content": "<p>We built our old site using a template, and it left a lot to be desired. With SprocketRocket, we can go page by page and get the exact flow of content we need. </p>"
+                    },
+                    {
+                        "image": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/team.png",
+                            "alt": "bulb",
+                            "width": 64,
+                            "height": 64,
+                            "max_width": 512,
+                            "max_height": 512
+                        },
+                        "header": "Flexible Tools",
+                        "content": "<p>The tool was intuitive and the entire team learned how to use it quickly. We drafted all of the key pages and templates we need for our new site.</p>"
+                    },
+                    {
+                        "image": {
+                            "size_type": "exact",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/strategy.png",
+                            "alt": "bulb",
+                            "width": 64,
+                            "height": 64,
+                            "max_width": 512,
+                            "max_height": 512
+                        },
+                        "header": "Quick Prototyping",
+                        "content": "<p>It was easy to put together pages and when I was done, I could just click and have the page automatically created in HubSpot.</p>"
+                    }
+                ]
+            },
+            {
+                "id": "24ce4b8e-0132-a882-3657-1cf22d31aa29",
+                "name": "button",
+                "label": "Button",
+                "required": false,
+                "locked": false,
+                "children": [
+                    {
+                        "id": "ae56d737-79a9-ae72-74d6-56127ea413b5",
+                        "name": "button_text",
+                        "label": "Button Text",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "View All"
+                    },
+                    {
+                        "id": "8a2e1e29-e6f6-73ef-a67d-6f526189af52",
+                        "name": "button_style",
+                        "label": "Button Style",
+                        "required": true,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "color",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "select",
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "outline-primary",
+                                "Outline Primary"
+                            ],
+                            [
+                                "outline-secondary",
+                                "Outline Secondary"
+                            ],
+                            [
+                                "outline-white",
+                                "Outline White"
+                            ],
+                            [
+                                "outline-black",
+                                "Outline Black"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "outline-primary"
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "button_text": "View All",
+                    "button_style": "outline-primary"
+                }
+            },
+            {
+                "id": "text_align",
+                "name": "text_align",
+                "label": "Text Align",
+                "required": true,
+                "locked": false,
+                "display": "select",
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "left",
+                        "Left"
+                    ],
+                    [
+                        "center",
+                        "Center"
+                    ],
+                    [
+                        "right",
+                        "Right"
+                    ]
+                ],
+                "type": "choice",
+                "default": "center"
+            },
+            {
+                "id": "text_color",
+                "name": "text_color",
+                "label": "Text Color",
+                "required": true,
+                "locked": false,
+                "display": "select",
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "primary",
+                        "Primary"
+                    ],
+                    [
+                        "secondary",
+                        "Secondary"
+                    ],
+                    [
+                        "tertiary",
+                        "Tertiary"
+                    ],
+                    [
+                        "white",
+                        "White"
+                    ],
+                    [
+                        "black",
+                        "Black"
+                    ],
+                    [
+                        "dark",
+                        "Dark"
+                    ],
+                    [
+                        "light",
+                        "Light"
+                    ],
+                    [
+                        "success",
+                        "Success"
+                    ],
+                    [
+                        "info",
+                        "Info"
+                    ],
+                    [
+                        "warning",
+                        "Warning"
+                    ],
+                    [
+                        "danger",
+                        "Danger"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            },
+            {
+                "id": "hidden_name",
+                "name": "hidden_name",
+                "label": "hidden_name",
+                "required": false,
+                "locked": true,
+                "validation_regex": "",
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "default": ""
+            }
+        ],
+        "source": ""
+    },
+    "custom_module_template": "sr-cards-features-01.html",
+    "available_builder": true,
+    "category": 7,
+    "files": []
+}

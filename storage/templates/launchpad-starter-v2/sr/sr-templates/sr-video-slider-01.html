@@ -1,0 +1,583 @@
+
+{% if module.enabled %}
+
+<!-- Label For Modules Data Page -->
+{% if widget_data.show_labels.value %}
+{% if module.hidden_name %}
+<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+    <h5>{{module.hidden_name}}</h5>
+    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+</div>
+{% else %}
+<div id="label-sr-video-slider-01" class="sr-module-label bg-secondary border-primary text-center ">
+    <h5>SR Video Slider 01</h5>
+    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+</div>
+{% endif %}
+{% endif %}
+
+<div class="sr-video-slider-01 {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.class %}{{ module.design_settings.class }}{% endif %} {% if module.design_settings.border_top %}sr-line-top{% endif %} {% if module.design_settings.border_bottom %}sr-line-bottom{% endif %} {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %} prototype-no-background {{ name }} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+    
+    <div class="container silder-container slides-{{module.slides|length}}">
+        <div class="row">
+            <div class="col-md-12">
+
+                {% if module.heading ||  module.description %}
+                <div class="sr-spacer-bottom-25">
+                    {% if module.heading %}
+                        <h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} heading {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.heading}}</h{{module.heading_size}}>
+                    {% endif %}
+                    
+                    {% if module.description %}
+                        <div class="description">{{ module.description}}</div>
+                    {% endif %}
+                </div>
+                {% endif %}
+            
+                {% if module.filters|length %}
+                <div class="filter sr-spacer-bottom-25">
+                
+                    <button class="all btn btn-outline-primary" value=".all">All</button>
+                    
+                    {% for item in module.filters %}
+                        <button	class="btn btn-outline-primary" value=".{{item.filters_title|lower|replace(' ', '-')|replace('&', 'and')}}">{{item.filters_title}}</button>
+                        
+                        {% if loop.index == 3 %}
+                        <button id="view-all" class="btn btn-outline-primary">View All</button>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <section class="sr-video-slider-01-vertical-center slider sr-spacer-top-25"> 
+                    {% for item2 in module.slides %} 
+                    <div class="all {{ item2.filters }}"> 
+                        
+                        <div class="slide-image">
+                            <a href="#" class="playBtn" data-toggle="modal" data-target="#videoModal" data-theVideo="{{ item2.video }}"><i class="fa fa-play bg-primary" aria-hidden="true"></i></a> 
+                            
+                            <video class="slider-video" muted>
+                                <source src="{{ item2.video }}" type="video/mp4">
+                                Your browser does not support HTML video.
+                            </video>
+                            
+                            {% if item2.image.src %}
+                                {% set sizeAttrs = 'width="{{ item2.image.width }}" height="{{ item2.image.height }}"' %}
+                                {% if item2.image.size_type == 'auto' %}
+                                    {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                                {% elif item2.image.size_type == 'auto_custom_max' %}
+                                    {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ item2.image.max_width }}px; max-height: {{ item2.image.max_height }}px"' %}
+                                {% endif %}
+                                <img src="{{ item2.image.src }}" alt="{{ item2.image.alt }}" {{ sizeAttrs }}>
+                            {% endif %}
+                        </div>
+
+                        <div class="text-center sr-spacer-top-25 hide-caption"> 
+                            <div>
+                                {{ item2.description }}
+                            </div>
+                            {% if item2.cta.cta_type != 'none' %}
+                            <div class="btn-wrapper btn-{{ item2.cta.cta_style }}-wrapper">
+                                {% if item2.cta.cta_type == 'btn' %}
+                                <a href="{{ item2.cta.link }}" class="cta_button">{{ item2.cta.button_text }}</a>
+                                {% elif item2.cta.cta_type == 'cta' %}
+                                {% cta guid="{{ item2.cta.cta }}" %}
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                    </div>
+                    {% endfor %}
+                </section>
+                
+            </div>
+        </div>
+    </div>
+        
+    <div class="container nav-container slides-{{module.slides|length}}">
+        <div class="row">
+            <div class="col-md-12">
+                <section class="sr-video-slider-01-navigator sr-video-slider-01-asnavForClass"> 
+                    {% for item2 in module.slides %} 
+                    <div class="text-center sr-spacer-top-25"> 
+                        <div class="caption">
+                            {{ item2.description }}
+                        </div>
+                        {% if item2.cta.cta_type != 'none' %}
+                            <div class="btn-wrapper btn-{{ item2.cta.cta_style }}-wrapper">
+                                {% if item2.cta.cta_type == 'btn' %}
+                                    <a href="{{ item2.cta.link }}" class="cta_button">{{ item2.cta.button_text }}</a>
+                                {% elif item2.cta.cta_type == 'cta' %}
+                                    {% cta guid="{{ item2.cta.cta }}" %}
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    </div> 
+                    {% endfor %} 
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close bg-primary" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <div>
+                        <video class="modal-video" controls autoplay>
+                            <source src="{{ item2.video }}" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% require_css %}
+	<style>
+        {% if module.design_settings.background_option == 'image' %}
+            .{{ name }} {
+                {{ var.bg_image(module.design_settings.background_image.src, '600') }}
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                position: relative;
+            }
+            @media (min-width: 768px) {
+                .{{ name }} {
+                    {{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+                }
+            }
+            .{{ name }}:before {
+                content: "";
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});
+            }
+            .{{ name }} .container, .{{ name }} .container-fluid {
+                position: relative;
+            }
+        {% elif module.design_settings.background_option == 'gradient' %}
+            .{{name}} {
+                background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+            }
+        {% elif module.design_settings.background_option == 'custom' %}
+            .{{ name }} {
+                background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+            }
+        {% endif %}    
+        .sr-video-slider-01 {
+            overflow: hidden;
+        }
+        .sr-video-slider-01 .slide-image {
+            position: relative;
+        }
+        .sr-video-slider-01 .hide-caption {
+            display: none;
+        }
+        .sr-video-slider-01 .filter button {
+            margin: .25rem;
+        }
+        .sr-video-slider-01 .filter button:hover,
+        .sr-video-slider-01 .filter button:focus,
+        .sr-video-slider-01 .filter button.checked  {
+            -webkit-box-shadow: 15px 25px 60px rgba(0,0,0,0.1);
+                    box-shadow: 15px 25px 60px rgba(0,0,0,0.1);
+        }
+        .sr-video-slider-01 .slider .slick-slide {
+            opacity: 1;
+            -webkit-transform-origin: bottom;
+            -ms-transform-origin: bottom;
+            transform-origin: bottom;
+            outline: 0 !important;
+            background: #fff;
+            position: relative;
+            -webkit-transition: all .4s ease;
+            -o-transition: all .4s ease;
+            transition: all .4s ease;
+            overflow: hidden;
+        }
+        .sr-video-slider-01 .filter button:nth-child(n+6) {
+            display: none;
+        }
+        .sr-video-slider-01 .slider .slick-slide *:focus {
+            outline: 0 !important;
+        }
+        .sr-video-slider-01 .modal-dialog {
+            max-width: 720px;
+        }
+        .sr-video-slider-01 .video_content {
+            padding-top: 8rem;
+        }
+        .sr-video-slider-01 .slider .slick-slide:focus,
+        .sr-video-slider-01 .slider .slick-slide:active,
+        .sr-video-slider-01 .slider .slick-slide:hover {
+            outline: 0 !important;
+        }
+        .sr-video-slider-01 .slider .arrow {
+            position: absolute;
+            top: 50%;
+            z-index: 9;
+            font-size: 5rem;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            -webkit-transition: all 0.2s ease;
+            -o-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+        }
+        .sr-video-slider-01 .slider .arrow:hover {
+            opacity: .7;
+            cursor: pointer;
+        }
+        .sr-video-slider-01 .slider .arrow:hover {
+            opacity: .7;
+            cursor: pointer;
+        }
+        .sr-video-slider-01 .slider .arrow.nextV {
+            right: 0
+        }
+
+        .sr-video-slider-01 .slider .arrow.prevV {
+            left: 0
+        }
+        .sr-video-slider-01 .slider .slick-slide, 
+        .sr-video-slider-01 .slider .slick-slide video, 
+        .sr-video-slider-01 .slider .slick-slide img {
+            border-radius: 5px;
+        }
+        .sr-video-slider-01 section.sr-video-slider-01-vertical-center.slider,  .sr-video-slider-01-navigator {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: end;
+            -ms-flex-align: end;
+            align-items: flex-end;
+            opacity: 0;
+            -webkit-transition: all 0.2s ease;
+            -o-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+        }
+        .sr-video-slider-01 section.sr-video-slider-01-vertical-center.slider.slick-initialized.slick-slider, 
+        .sr-video-slider-01 .sr-video-slider-01-navigator.slick-initialized.slick-slider  {
+            opacity: 1;
+            -webkit-transition: all 0.2s ease;
+            -o-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+        }
+        .sr-video-slider-01 .slider .slick-track {
+            position: relative;
+            top: 0;
+            left: 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: end;
+            -ms-flex-align: end;
+            align-items: flex-end;
+            margin: 0;
+            
+        }
+        .sr-video-slider-01 .slider .slick-active {
+            opacity: 1;
+        }
+        .sr-video-slider-01 .slider .slick-slide img {
+            display: block;
+            width: 100% !important;
+            opacity: .25;
+            -webkit-transition: all .3s ease;
+            -o-transition: all .3s ease;
+            transition: all .3s ease;
+        }
+        .sr-video-slider-01 .slider ul.slick-dots {
+            display: none !important;
+        }
+        .sr-video-slider-01 .slider .slick-current .caption {
+            display: block;
+            position: absolute;
+            text-align: center;
+            width: 100%;
+        }
+        .sr-video-slider-01 .slick-list {
+            width: 100%;
+            margin: 0 auto;
+        }
+		 .sr-video-slider-01 video.modal-video {
+			max-width: 100%;
+			height: auto;
+		}
+        .sr-video-slider-01 video.slider-video {
+            position: absolute;
+            left: 50%;
+            -webkit-transform: translate(-50%);
+                -ms-transform: translate(-50%);
+                    transform: translate(-50%);
+            height: 100%;
+            opacity: 0;
+            -webkit-transition: all 0.2s ease;
+            -o-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+            z-index: 1;
+        }
+        .sr-video-slider-01 .slider .slick-slide:hover video {
+            opacity: 1;
+        }
+		.sr-video-slider-01 button.close {
+			font-size: 2rem;
+			position: absolute;
+			color: #fff;
+			border-radius: 50%;
+			width: 40px;
+			height: 40px;
+			font-weight: 100;
+			opacity: 1;
+			right: -20px;
+			top: -20px;
+		}
+		.sr-video-slider-01 .modal-body {
+			padding-bottom: .5rem;
+		}
+        @media (min-width: 768px) {
+            .sr-video-slider-01 .container.silder-container {
+                max-width: 1600px;
+            }
+            .sr-video-slider-01 .slider .slick-slide {
+                -webkit-transform: scale(.75);
+                    -ms-transform: scale(.75);
+                        transform: scale(.75);
+                
+            }
+            .sr-video-slider-01 .slider .slick-current.slick-active {
+                -webkit-transform: scale(1);
+                    -ms-transform: scale(1);
+                        transform: scale(1);
+                z-index: 1;
+                left: 0;
+            }
+            .sr-video-slider-01 .slider .slick-current.slick-active + .slick-active {
+                left: auto;
+            }
+            .sr-video-slider-01 .slider .slick-slide img {
+                opacity: .5 !important;
+            }
+            .sr-video-slider-01 .slider .slick-current.slick-active img {
+                opacity: 1 !important;
+            }
+            .sr-video-slider-01 .slides-1 .slider .slick-slide {
+                -webkit-transform: scale(1);
+                    -ms-transform: scale(1);
+                        transform: scale(1);
+                margin: 0 1rem;
+            }
+            .sr-video-slider-01 .slides-2 .slider .slick-slide {
+                -webkit-transform: scale(1);
+                    -ms-transform: scale(1);
+                        transform: scale(1);
+                margin: 0 1rem;
+            }
+            .sr-video-slider-01 .slides-3 .slider .slick-slide {
+                -webkit-transform: scale(1);
+                    -ms-transform: scale(1);
+                        transform: scale(1);
+                margin: 0 1rem;
+            }
+            .sr-video-slider-01 .slides-1 .slick-arrow,
+            .sr-video-slider-01 .slides-2 .slick-arrow,
+            .sr-video-slider-01 .slides-3 .slick-arrow,
+            .sr-video-slider-01 .nav-container.slides-1,
+            .sr-video-slider-01 .nav-container.slides-2,
+            .sr-video-slider-01 .nav-container.slides-3  {
+                display: none
+            }
+            .sr-video-slider-01 .slides-1 .hide-caption,
+            .sr-video-slider-01 .slides-2 .hide-caption,
+            .sr-video-slider-01 .slides-3 .hide-caption  {
+                display: block
+            }
+            .sr-video-slider-01 .slides-1 .slick-slide img,
+            .sr-video-slider-01 .slides-2 .slick-slide img,
+            .sr-video-slider-01 .slides-3 .slick-slide img {
+                opacity: 1 !important;
+            }
+            
+            .sr-video-slider-01 .slides-1 .slick-slide img,
+            .sr-video-slider-01 .slides-2 .slick-slide img,
+            .sr-video-slider-01 .slides-3 .slick-slide img {
+                opacity: 1 !important;
+            }
+
+        }
+        .sr-video-slider-01 .slider a.playBtn {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-transition: all 0.2s ease;
+            -o-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+            z-index: 2;
+        }
+
+        .sr-video-slider-01 .slider a.playBtn i {
+            color: #fff;
+            padding-left: .1rem;
+            width: 50px;
+            height: 50px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        .sr-video-slider-01 path#Path {
+            fill: #555;
+            fill: var(--primary);
+        }
+        @media (max-width: 992px) {
+            .sr-video-slider-01 .slider .slick-slide {
+                margin: 0 0.25rem;
+            }
+            .sr-video-slider-01 .slider .slick-track {
+                min-height: 0;
+            }
+            .sr-video-slider-01 .slider .video_content {
+                padding: 1rem;
+            }
+            .sr-video-slider-01 .slider i.slick-arrow {
+                top: 50%;
+            }
+        }
+	</style>
+{% end_require_css %}
+{{ require_css(var.sr_assetDir + '/css/slick.css') }}
+{{ require_js(var.sr_assetDir + '/js/slick.min.js') }}
+{% require_js %}
+	<script>
+		$(".sr-video-slider-01-vertical-center").slick({
+            slidesToShow: 3,
+            draggable: false,
+            dots: false,
+            prevArrow: `<?xml version="1.0" encoding="utf-8"?> <svg class="prevV arrow" width="27px" height="48px" viewBox="0 0 27 48" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"> <desc>Created with Lunacy</desc> <g id="down-chevron-(4)-copy" transform="matrix(4.371139E-08 -1 -1 -4.371139E-08 27 48)"> <path d="M45.4421 0L23.9668 21.4053L2.49165 0L0 2.49976L23.9668 26.3886L47.9338 2.49976L45.4421 0Z" transform="translate(0 0.06670588)" id="Path" fill="#555" stroke="none" /> </g> </svg>`,
+            nextArrow: `<?xml version="1.0" encoding="utf-8"?> <svg class="nextV arrow" width="27px" height="48px" viewBox="0 0 27 48" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"> <desc>Created with Lunacy</desc> <g id="down-chevron-(4)" transform="matrix(-4.371139E-08 -1 1 -4.371139E-08 0 47.93378)"> <path d="M45.4421 0L23.9668 21.4053L2.49165 0L0 2.49976L23.9668 26.3886L47.9338 2.49976L45.4421 0Z" id="Path" fill="#555" stroke="none" /> </g> </svg>`,
+            infinite: true,
+            centerMode: true,
+            focusOnSelect:true,
+            asNavFor: ".sr-video-slider-01-asnavForClass",
+            autoplay: true,
+            responsive: [
+                {
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: false,
+                    },
+                }
+            ]
+        });
+
+        var slickNavVideo = {
+            draggable: false,
+            dots: false,
+            arrows: false,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            fade: true,
+            speed: 500,
+        };
+        $(".sr-video-slider-01-navigator").slick(slickNavVideo);
+
+        autoPlayModal();
+
+        function autoPlayModal() {
+            var trigger = $("body").find('[data-target="#videoModal"]');
+            trigger.click(function () {
+                var theModal = $(this).data("target"),
+                    videoSRC = $(this).attr("data-theVideo")
+				console.log(videoSRC)
+				
+				$(theModal + " video").get(0).pause();
+				$(theModal + " video source").attr('src', videoSRC);
+				$(theModal + " video").get(0).load();
+				$(theModal + " video").get(0).play();
+				
+
+                $(theModal + " button.close").click(function () {
+                    $(theModal + " video source").attr("src", '');
+					$(theModal + " video").get(0).pause();
+                });
+
+                $(theModal).on("hidden.bs.modal", function () {
+                    $(theModal + " video source").attr("src", '');
+					$(theModal + " video").get(0).pause();
+                });
+            });
+        }
+
+        {% if module.filters|length %}
+        $("div.filter button").not('#view-all').on("click", function (e) {
+
+            e.preventDefault();
+
+            var filterClass = $(this).val();
+
+            $(this).toggleClass('checked').siblings().removeClass('checked');
+
+            $(".sr-video-slider-01-vertical-center").slick("slickUnfilter");
+            $(".sr-video-slider-01-vertical-center").slick("slickFilter", filterClass);
+
+            $('.silder-container').attr("class","container silder-container slides-"+$(".sr-video-slider-01-vertical-center").slick("getSlick").slideCount);
+            $('.nav-container').attr("class","container nav-container slides-"+$(".sr-video-slider-01-vertical-center").slick("getSlick").slideCount);
+
+            setTimeout(function(){ 
+                $(".sr-video-slider-01-vertical-center").slick('reinit');
+            }, 400);
+
+        });
+		{% endif %}
+
+        $('#view-all').click(function() {
+            $('.filter button:hidden').slice(0, 99).show();
+            $(this).remove();
+        });
+
+        var figure = $(".sr-video-slider-01-vertical-center .slick-slide").hover( hoverVideo, hideVideo );
+
+        function hoverVideo(e) {  
+            $('video', this).get(0).play(); 
+        }
+
+        function hideVideo(e) {
+            $('video', this).get(0).pause(); 
+        }
+	</script>
+{% end_require_js %}
+
+{% endif %}

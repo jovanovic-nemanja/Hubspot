@@ -1,0 +1,234 @@
+{% if module.enabled %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-offer-smart-pop-02" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Offer Smart Pop 02</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+		
+	<div class="{{name}} sr-offer-smart-pop-02 {% if module.background_option == 'color' %} bg-{{ module.background_color }}{% endif %} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %} {{module.class}}" {% if module.sr_module_id %}id="{{ module.sr_module_id }}"{% endif %}>
+		<div class="smart-pop-inner d-flex">
+			<div class="smart-pop-icon">
+				{{ var.image(module.image.src, '80', module.image.alt, 'class="close-image" width="40"' ) }}
+				{{ var.image(module.opened_image.src, '160', module.opened_image.alt, 'class="open-image" width="1"') }}
+			</div>
+			
+			<div class="smart-pop-teaser text-{{module.text_color}} d-flex align-items-end flex-wrap">
+				<div class="smart-pop-teaser-wrapper d-flex align-items-center">
+					<p class="teaser">{{ module.teaser}}</p>
+				</div>
+				
+				<div class="smart-pop-form text-{{module.text_color}}">
+					<a class="pop-close text-{{module.text_color}}" href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
+
+					{% if module.heading %}
+						<h5 class="heading text-{{ module.text_color }}">{{ module.heading}}</h5>
+					{% endif %}
+					
+					{% if module.description %}
+						<p>{{ module.description}}</p>
+					{% endif %}
+
+					<div class="sr-form btn-wrapper btn-primary-wrapper">
+						{% if hub_id == 123 || !module.form.form.form_id %}
+						<div id="hs_form_target_module_3540739632">
+							<form class="hs-form stacked hs-custom-form">
+								<fieldset class="form-columns-2" data-reactid=".0.1:$1">
+									<div class="hs_email field hs-form-field">
+											<label>First Name *</label>
+										<div class="input">
+											<input class="hs-input" name="first-name" placeholder="" required="" type="text" value="">
+										</div>
+									</div>
+									<div class="hs_email field hs-form-field">
+											<label>Last Name *</label>
+										<div class="input">
+											<input class="hs-input" name="Last Name" placeholder="" required="" type="text" value="">
+										</div>
+									</div>
+								</fieldset>
+								<fieldset class="form-columns-1" data-reactid=".0.1:$1">
+									<div class="hs_email field hs-form-field">
+										<label>Email *</label>
+										<div class="input">
+											<input class="hs-input" name="email" placeholder="" required="" type="email" value="">
+										</div>
+									</div>
+								</fieldset>
+								<div class="hs_submit">
+									<div class="hs-field-desc" style="display:none;"></div>
+									<div class="actions">
+										<input class="hs-button primary large" type="submit" value="Free Download">
+									</div>
+								</div>
+							</form>
+						</div>
+						{% else %}
+							{% if module.form.title is truthy %}
+								{% set no_title = False %}
+							{% else %}
+								{% set no_title = True %}
+							{% endif %}
+							{% if module.form.form.form_id %}
+								{% form
+									form_key="{{name}}",
+									form_to_use="{{module.form.form.form_id}}"
+									title="{{module.form.title}}"
+									no_title="{{no_title}}"
+									follow_up_type_simple="{{module.form.follow_up_type_simple}}"
+									simple_email_for_live_id="{{module.form.simple_email_for_live_id}}"
+									follow_up_type_automation="{{module.form.follow_up_type_automation}}"
+									response_response_type="{{module.form.form.response_type}}"
+									response_redirect_id="{{module.form.form.redirect_id}}"
+									response_redirect_url="{{module.form.form.redirect_url}}"
+									response_message="{{module.form.form.message}}"
+									notifications_are_overridden="{{module.form.notifications_are_overridden}}"
+									notifications_override_email_addresses="{{module.form.notifications_override_email_addresses}}"
+									gotowebinar_webinar_key="{{module.form.form.gotowebinar_webinar_key}}"
+								%}
+							{% endif %}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% require_css %}
+		<style>
+			.{{name}} {
+				bottom: -100%;
+				left: 15px;
+				position: fixed;
+				z-index: 1;
+				max-width: 450px;
+			}
+			@media (max-width: 768px) { 
+				.{{name}} {
+					max-width: 100% !important;
+					right: 15px;
+				}
+			}
+			.{{name}} .smart-pop-icon {
+				background-color: {{ module.background_color.color }};
+				padding: 1rem;
+				overflow: hidden;
+				border-right: 1px solid rgba(255,255,255, .4);
+				border-left: 3px solid {{ module.border_color.color }};
+				border-top-left-radius: 3px;
+				border-bottom-left-radius: 3px;
+				-webkit-transition: all 0.3s ease;
+				-o-transition: all 0.3s ease;
+				transition: all 0.3s ease;
+			}
+			.{{name}} .smart-pop-icon img {
+				display: block;
+			}
+			.{{name}} .open-image {
+				opacity: 0;
+				width: 1px;
+				height: 1px;
+				-webkit-transition: all 0.2s ease;
+				-o-transition: all 0.2s ease;
+				transition: all 0.2s ease;
+			}
+			.{{name}} .smart-pop-teaser {
+				background: rgba({{ module.background_color.color|convert_rgb }}, 0.9);
+				-webkit-box-flex: 1;
+				-ms-flex: 1;
+				flex: 1;
+			}
+			.{{name}} .smart-pop-teaser-wrapper {
+				height: 100%;
+				-webkit-box-flex: 1;
+				-ms-flex: 1;
+				flex: 1;
+				padding: 0 1rem;
+			}
+			.{{name}} .smart-pop-teaser-wrapper:hover {
+				cursor: pointer;
+				background: rgba({{ module.background_color.color|convert_rgb }}, 1);
+			}
+			.{{name}} .smart-pop-form p {
+				font-size: .85rem;
+				line-height: 1.25rem;
+			}
+			.{{name}} .smart-pop-teaser .teaser {
+				font-size: .9rem;
+				margin: 0;
+				font-weight: 500;
+			}
+			.{{name}} .smart-pop-form {
+				width: 100%;
+				height: 0;
+				opacity: 0;
+				overflow: hidden;
+			}
+			.{{name}} .smart-pop-form fieldset {
+				padding: 0;
+			}
+			.{{name}} .smart-pop-form .hs_submit {
+				margin-top: 0;
+			}
+			.{{name}} a.pop-close {
+				position: absolute;
+				right: .75rem;
+				top: .5rem;
+				font-size: 1.25rem;
+			}
+			{% if module.text_color != 'auto' %}
+				.{{name}} .field > label, .{{name}} .form-group label {
+					color: inherit;
+				}
+			{% endif %}
+			
+		</style>
+	{% end_require_css %}
+
+	{{ require_js(var.sr_assetDir + '/js/gsap.js') }}
+	{{ require_js(var.sr_assetDir + '/js/ScrollMagic.min.js') }}
+	{{ require_js(var.sr_assetDir + '/js/animation.gsap.min.js') }}
+
+	{% require_js %}
+		<script>
+			var tl = gsap.timeline();
+			tl.to(".{{name}}", {duration: .5, delay: 2, bottom: 0});
+
+			$('.{{name}} .smart-pop-teaser-wrapper').click( function(e) {
+				e.preventDefault();
+				tl.to(".{{name}}", {'max-width': '500px', duration: .5})
+				.to(".close-image", {y: -100, duration: .5}, "-=.5")
+				.to(".open-image", {duration: 1, width: 80, y: -40}, "-=1.25")
+				.to(".smart-pop-teaser .smart-pop-teaser-wrapper", {duration: 1, opacity: 0, right: -50, height: 0}, "-=1.5")
+				.to(".smart-pop-form", {duration: 0, padding: '2rem'})
+				.to(".smart-pop-form", {duration: .5, opacity: 1, height: "auto", display: 'block'})
+				.to(".open-image", {duration: .5, height: 'auto'}, "-=.85")
+				.to(".open-image", {duration: .5, opacity: 1}, "-=.25")
+				.to("a.pop-close", {duration: .5, opacity: 1}, "-=.25")
+				.to(".{{name}}", {duration: .5, delay: 0, bottom: 15}, "-=1");
+			})
+
+			$('.{{name}} .pop-close').click( function(e) {
+				e.preventDefault();
+				tl.to(".smart-pop-form", {duration: .5, opacity: 0, height: 0})
+				.to(".smart-pop-form", {duration: 0, padding: '0'})
+				.to(".{{name}}", {duration: 0, delay: 0, bottom: 0}, "-=.5")
+				.to(".{{name}}", {duration: .5, 'max-width': '450px'}, "-=.5")
+				.to(".smart-pop-teaser .smart-pop-teaser-wrapper", {duration: .5, opacity: 1, right: 0, height: '100%'})
+				.to(".open-image", {duration: .5, opacity: 0}, "-=1.5")
+				.to(".open-image", {duration: .5, height: 1}, "-=1.5")
+				.to(".open-image", {duration: 1, width: 1}, "-=1.5")
+				.to(".close-image", {y: 0, duration: .5}, "-=.5");
+			})
+		</script>
+	{% end_require_js %}
+{% endif %}

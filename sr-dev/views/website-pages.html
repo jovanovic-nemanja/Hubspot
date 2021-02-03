@@ -1,0 +1,73 @@
+<div class="action-panel-content">
+    <div class="action-container">
+        <div class="action-heading">
+            <h2>Website Pages</h2>
+            <form class="form-inline action-panel-search">
+            <input id="website-search" class="form-control" type="search" placeholder="Search" aria-label="Search" data-item="module-search">
+            </form>
+        </div>
+        <div class="sr-cards-view">
+          <div class="sr-card">
+            <img src="./assets/images/SR-Homepage-01-Thumb.png" />
+            <div class="sr-card-info">
+              <span class="module-name">SR Homepage 01</span>
+              <button type="button" class="btn-sm btn-primary">Add Page</button>
+            </div>
+          </div>
+          <div class="sr-card">
+            <img src="./assets/images/SR-Homepage-02-Thumb.png" />
+            <div class="sr-card-info">
+              <span class="module-name">SR Homepage 02</span>
+              <button type="button" class="btn-sm btn-primary">Add Page</button>
+            </div>
+          </div>
+          <div class="sr-card">
+            <img src="./assets/images/SR-Homepage-03-Thumb.png" />
+            <div class="sr-card-info">
+              <span class="module-name">SR Homepage 03</span>
+              <button type="button" class="btn-sm btn-primary">Add Page</button>
+            </div>
+          </div>
+          <div class="sr-card">
+            <img src="./assets/images/SR-Team-01-Thumb.png" />
+            <div class="sr-card-info">
+              <span class="module-name">SR Team 01</span>
+              <button type="button" class="btn-sm btn-primary">Add Page</button>
+            </div>
+          </div>
+          <div class="sr-card">
+            <img src="./assets/images/SR-CaseStudy-01-Thumb.png" />
+            <div class="sr-card-info">
+              <span class="module-name">SR Case Study 01</span>
+              <button type="button" class="btn-sm btn-primary">Add Page</button>
+            </div>
+          </div>
+        </div>
+        <div class="website-search-results"></div>
+      </div>
+</div>
+
+<!-- script needs to be loaded with this section if using AJAX-->
+<script type="text/javascript">
+
+     $("#website-search").keyup(function () {
+
+        $('.website-search-results').empty();
+        var filter = $.trim(($(this).val()));
+        if ($(this).val().length > 0) {
+        $(".sr-cards-view .sr-card").each(function () {
+            if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+               $('.sr-cards-view').hide();
+            } else {
+              $('.sr-cards-view').hide();
+              $('.website-search-results').fadeIn(250);
+               $(this).clone().appendTo('.website-search-results').hide().fadeIn(250);
+            }
+        });
+    } else {
+      $('.website-search-results').hide();
+      $('.sr-cards-view').fadeIn(250);
+    }
+    });
+
+</script>

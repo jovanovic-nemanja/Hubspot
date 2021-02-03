@@ -1,0 +1,874 @@
+{
+    "custom_module": {
+        "author": "bradley@lean-labs.com",
+        "tags": ["ver-1.0.0"],
+        "name": "SR Cards Pricing 02",
+        "css_assets": [],
+        "editable_contexts": [],
+        "external_js": [],
+        "icon": "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": [
+            "PAGE",
+            "BLOG_POST",
+            "BLOG_LISTING"
+        ],
+        "js_assets": [],
+        "other_assets": [],
+        "fields": [
+            {
+                "id": "enabled",
+                "name": "enabled",
+                "label": "Enabled",
+                "required": false,
+                "locked": false,
+                "type": "boolean",
+                "default": true
+            },
+            {
+                "id": "design_settings",
+                "name": "design_settings",
+                "label": "Design Settings",
+                "required": false,
+                "locked": false,
+                "children": [
+                    {
+                        "id": "design_settings.sr_module_id",
+                        "name": "sr_module_id",
+                        "label": "ID",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": null
+                    },
+                    {
+                        "id": "design_settings.class",
+                        "name": "class",
+                        "label": "Class",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": null
+                    },
+                    {
+                        "id": "design_settings.layout",
+                        "name": "layout",
+                        "label": "Layout",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "container",
+                                "Page"
+                            ],
+                            [
+                                "container-fluid",
+                                "Full Width"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "container"
+                    },
+                    {
+                        "id": "design_settings.container_width",
+                        "name": "container_width",
+                        "label": "Container Width",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "min",
+                                "Minimum"
+                            ],
+                            [
+                                "narrow",
+                                "Narrow"
+                            ],
+                            [
+                                "wide",
+                                "Wide"
+                            ],
+                            [
+                                "max",
+                                "Maximum"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "max"
+                    },
+                    {
+                        "id": "top_bottom_padding",
+                        "name": "top_bottom_padding",
+                        "label": "Top Bottom Padding",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "auto",
+                                "Use default values"
+                            ],
+                            [
+                                "zero",
+                                "No Padding"
+                            ],
+                            [
+                                "half",
+                                "Small padding"
+                            ],
+                            [
+                                "full",
+                                "Large padding"
+                            ],
+                            [
+                                "custom",
+                                "Custom Padding"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "full"
+                    },
+                    {
+                        "id": "design_settings.custom_padding",
+                        "name": "custom_padding",
+                        "label": "Custom Padding",
+                        "help_text": "Top, Right, Bottom, Left",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "visibility": {
+                            "controlling_field": "top_bottom_padding",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "0rem 0rem 8rem 0rem"
+                    },
+                    {
+                        "id": "design_settings.border_top",
+                        "name": "border_top",
+                        "label": "Border Top",
+                        "required": false,
+                        "locked": false,
+                        "type": "boolean",
+                        "default": false
+                    },
+                    {
+                        "id": "design_settings.border_bottom",
+                        "name": "border_bottom",
+                        "label": "Border Bottom",
+                        "required": false,
+                        "locked": false,
+                        "type": "boolean",
+                        "default": false
+                    },
+                    {
+                        "id": "background_option",
+                        "name": "background_option",
+                        "label": "Background Option",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "image",
+                                "Image"
+                            ],
+                            [
+                                "color",
+                                "Color"
+                            ],
+                            [
+                                "custom",
+                                "Custom"
+                            ],
+                            [
+								"gradient", "Gradient"
+							]
+                        ],
+                        "type": "choice",
+                        "default": "color"
+                    },
+                    {
+						"default": {
+							"color": "#0c63ff"
+						},
+						"label": "Background Gradient From",
+						"name": "background_gradient_from",
+						"visibility": {
+							"controlling_field": "background_option",
+							"controlling_value_regex": "gradient",
+							"operator": "EQUAL"
+						},
+						"type": "color"
+					},
+					{
+						"default": {
+							"color": "#1897ff"
+						},
+						"label": "Background Gradient To",
+						"name": "background_gradient_to",
+						"visibility": {
+							"controlling_field": "background_option",
+							"controlling_value_regex": "gradient",
+							"operator": "EQUAL"
+						},
+						"type": "color"
+					},
+                    {
+                        "id": "design_settings.background_image",
+                        "name": "background_image",
+                        "label": "Background Image",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "responsive": false,
+                        "resizable": true,
+                        "type": "image",
+                        "default": {
+                            "src": "",
+                            "alt": ""
+                        }
+                    },
+                    {
+                        "id": "design_settings.background_overlay_color",
+                        "name": "background_overlay_color",
+                        "label": "Background Overlay Color",
+                        "help_text": "Recommended Width: 2880x1920px",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#343a40",
+                            "opacity": 30
+                        }
+                    },
+                    {
+                        "id": "design_settings.background_color",
+                        "name": "background_color",
+                        "label": "Background Color",
+                        "required": true,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "color",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "select",
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "success",
+                                "Success"
+                            ],
+                            [
+                                "info",
+                                "Info"
+                            ],
+                            [
+                                "warning",
+                                "Warning"
+                            ],
+                            [
+                                "danger",
+                                "Danger"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "white"
+                    },
+                    {
+                        "id": "design_settings.background_custom",
+                        "name": "background_custom",
+                        "label": "Background Custom",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#fff"
+                        }
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "layout": "container",
+                    "container_width": "max",
+                    "top_bottom_padding": "full",
+                    "custom_padding": "0rem 0rem 8rem 0rem",
+                    "border_top": false,
+                    "border_bottom": false,
+                    "background_option": "color",
+                    "background_image": {
+                        "src": "",
+                        "alt": ""
+                    },
+                    "background_overlay_color": {
+                        "color": "#343a40",
+                        "opacity": 30
+                    },
+                    "background_color": "white",
+                    "background_custom": {
+                        "color": "#fff"
+                    }
+                }
+            },
+            {
+                "id": "04b05faf-2bea-98b0-f986-c9f958022a36",
+                "name": "heading",
+                "label": "Heading",
+                "required": false,
+                "locked": false,
+                "validation_regex": "",
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "default": "Select a plan"
+            },
+            {
+                "id": "fc18474b-7e54-9a33-b8f6-f032137b5a9b",
+                "name": "heading_size",
+                "label": "Heading Size",
+                "required": false,
+                "locked": false,
+                "visibility": {
+                    "controlling_field": "04b05faf-2bea-98b0-f986-c9f958022a36",
+                    "controlling_value_regex": null,
+                    "operator": null,
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "display": "select",
+                "choices": [
+                    [
+                        "1",
+                        "H1"
+                    ],
+                    [
+                        "2",
+                        "H2"
+                    ],
+                    [
+                        "3",
+                        "H3"
+                    ],
+                    [
+                        "4",
+                        "H4"
+                    ],
+                    [
+                        "5",
+                        "H5"
+                    ],
+                    [
+                        "6",
+                        "H6"
+                    ]
+                ],
+                "type": "choice",
+                "default": "2"
+            },
+			{
+                "name": "heading_display_size",
+                "label": "Heading Display Size",
+                "required": true,
+                "locked": false,
+				"display": "select",
+				"visibility": {
+                    "controlling_field": "04b05faf-2bea-98b0-f986-c9f958022a36",
+                    "controlling_value_regex": null,
+                    "operator": null,
+                    "access": null
+                },
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "h1",
+                        "H1"
+                    ],
+                    [
+                        "h2",
+                        "H2"
+                    ],
+                    [
+                        "h3",
+                        "H3"
+                    ],
+                    [
+                        "h4",
+                        "H4"
+                    ],
+                    [
+                        "h5",
+                        "H5"
+                    ],
+                    [
+                        "h6",
+                        "H6"
+                    ],
+                    [
+                        "display-4",
+                        "L"
+                    ],
+                    [
+                        "display-3",
+                        "XL"
+                    ],
+                    [
+                        "display-2",
+                        "XXL"
+                    ],
+                    [
+                        "display-1",
+                        "XXXL"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            },
+            {
+                "id": "80b36d27-bfa6-a9ad-0f50-5590132ab360",
+                "name": "description",
+                "label": "Description",
+                "required": false,
+                "locked": false,
+                "type": "richtext",
+                "default": "<span>Sprocket Rocket App is the last tool you'll need to build high-converting website pages on HubSpot.&nbsp;</span>"
+            },
+            {
+                "id": "31ac768a-3e66-8c09-5e3c-508945119c9b",
+                "name": "plan_1",
+                "label": "Plan 1",
+                "required": false,
+                "locked": false,
+                "children": [
+                    {
+                        "id": "51da7a42-a6a0-5e70-bc5b-108306d77f6b",
+                        "name": "title",
+                        "label": "Title",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "SR Free"
+                    },
+                    {
+                        "id": "22d6b675-cb8c-445c-3427-80a2a6d49604",
+                        "name": "price",
+                        "label": "Price",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "FREE"
+                    },
+                    {
+                        "id": "e3a345ad-2165-a8ec-9c5f-ee3f17a39c6d",
+                        "name": "suffix",
+                        "label": "Suffix",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "/ forever"
+                    },
+                    {
+                        "id": "054c7a2b-5fea-c9f7-4412-3ebd65d61512",
+                        "name": "features",
+                        "label": "Features",
+                        "required": false,
+                        "locked": false,
+                        "type": "richtext",
+                        "default": "<ul>\n<li>1 Portal</li>\n<li>1 User</li>\n<li>10 Modules</li>\n<li>Publish Unlimited Pages</li>\n<li>2 Free Templates</li>\n</ul>"
+                    },
+                    {
+                        "id": "c23d3cf2-5800-a1f5-8488-22588b0819aa",
+                        "name": "link",
+                        "label": "Link",
+                        "required": false,
+                        "locked": false,
+                        "supported_types": [
+                            "EXTERNAL",
+                            "CONTENT",
+                            "FILE",
+                            "EMAIL_ADDRESS",
+                            "BLOG"
+                        ],
+                        "type": "link",
+                        "default": {
+                            "url": {
+                                "type": "EXTERNAL",
+                                "href": "https://www.sprocketrocket.co/app-pricing#get-started-modal",
+                                "content_id": null
+                            },
+                            "open_in_new_tab": false,
+                            "no_follow": false
+                        }
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "title": "SR Free",
+                    "price": "FREE",
+                    "suffix": "/ forever",
+                    "features": "<ul>\n<li>1 Portal</li>\n<li>1 User</li>\n<li>10 Modules</li>\n<li>Publish Unlimited Pages</li>\n<li>2 Free Templates</li>\n</ul>",
+                    "link": {
+                        "url": {
+                            "type": "EXTERNAL",
+                            "href": "https://www.sprocketrocket.co/app-pricing#get-started-modal",
+                            "content_id": null
+                        },
+                        "open_in_new_tab": false,
+                        "no_follow": false
+                    }
+                }
+            },
+            {
+                "id": "727764d6-557f-1991-ac2d-a3d3105c7977",
+                "name": "plan_2",
+                "label": "Plan 2",
+                "required": false,
+                "locked": false,
+                "children": [
+                    {
+                        "id": "27ed9fca-caf2-6af2-0dba-18848ac0265f",
+                        "name": "title",
+                        "label": "Title",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "SR Theme"
+                    },
+                    {
+                        "id": "38d4c10d-ee3c-088f-3e4b-1b499684ce15",
+                        "name": "price",
+                        "label": "Price",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "$497"
+                    },
+                    {
+                        "id": "e09c608c-b09d-818f-abb1-13463c2b777c",
+                        "name": "suffix",
+                        "label": "Suffix",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "/ one-time"
+                    },
+                    {
+                        "id": "b854033a-7487-37e7-5ff5-66bcbf1991b7",
+                        "name": "features",
+                        "label": "Features",
+                        "required": false,
+                        "locked": false,
+                        "type": "richtext",
+                        "default": "<ul>\n<li>1 Portal</li>\n<li>Customizable Modules</li>\n<li>22 Page templates</li>\n<li>1 Blog layout</li>\n<li>System pages</li>\n</ul>"
+                    },
+                    {
+                        "id": "0de6e3ad-20a1-6545-7c47-02f00125cf95",
+                        "name": "link",
+                        "label": "Link",
+                        "required": false,
+                        "locked": false,
+                        "supported_types": [
+                            "EXTERNAL",
+                            "CONTENT",
+                            "FILE",
+                            "EMAIL_ADDRESS",
+                            "BLOG"
+                        ],
+                        "type": "link",
+                        "default": {
+                            "url": {
+                                "type": "EXTERNAL",
+                                "href": "https://marketplace.hubspot.com/products/lean-labs/sprocket-rocket-premium-theme",
+                                "content_id": null
+                            },
+                            "open_in_new_tab": false,
+                            "no_follow": false
+                        }
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "title": "SR Theme",
+                    "price": "$497",
+                    "suffix": "/ one-time",
+                    "features": "<ul>\n<li>1 Portal</li>\n<li>Customizable Modules</li>\n<li>22 Page templates</li>\n<li>1 Blog layout</li>\n<li>System pages</li>\n</ul>",
+                    "link": {
+                        "url": {
+                            "type": "EXTERNAL",
+                            "href": "https://marketplace.hubspot.com/products/lean-labs/sprocket-rocket-premium-theme",
+                            "content_id": null
+                        },
+                        "open_in_new_tab": false,
+                        "no_follow": false
+                    }
+                }
+            },
+            {
+                "id": "ea39db1e-1d2f-e283-fead-c1ec05abc5ee",
+                "name": "plan_3",
+                "label": "Plan 3",
+                "required": false,
+                "locked": false,
+                "children": [
+                    {
+                        "id": "e504fe44-d0ac-163f-2994-6653ab159d21",
+                        "name": "title",
+                        "label": "Title",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "SR Pro"
+                    },
+                    {
+                        "id": "13cf3a27-f720-add2-caff-10e550e6083b",
+                        "name": "price",
+                        "label": "Price",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "$2,997"
+                    },
+                    {
+                        "id": "42d25284-607f-d583-5ee5-7884ca3a6cce",
+                        "name": "suffix",
+                        "label": "Suffix",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "/ one-time"
+                    },
+                    {
+                        "id": "b4a0b5cc-8f39-b4f2-6969-26cf65686919",
+                        "name": "features",
+                        "label": "Features",
+                        "required": false,
+                        "locked": false,
+                        "type": "richtext",
+                        "default": "<ul>\n<li>1 Portal</li>\n<li>10 Users</li>\n<li>100+ Modules</li>\n<li>30+ Templates</li>\n<li>2 Blogs Layouts</li>\n<li>Rapid Drag &amp; Drop Builder</li>\n<li>System Pages</li>\n</ul>"
+                    },
+                    {
+                        "id": "46dd7f83-722c-d6e4-3d2c-3d3a17190efe",
+                        "name": "link",
+                        "label": "Link",
+                        "required": false,
+                        "locked": false,
+                        "supported_types": [
+                            "EXTERNAL",
+                            "CONTENT",
+                            "FILE",
+                            "EMAIL_ADDRESS",
+                            "BLOG"
+                        ],
+                        "type": "link",
+                        "default": {
+                            "url": {
+                                "type": "EXTERNAL",
+                                "href": "https://www.sprocketrocket.co/app-pricing#get-started-modal-pro",
+                                "content_id": null
+                            },
+                            "open_in_new_tab": false,
+                            "no_follow": false
+                        }
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "title": "SR Pro",
+                    "price": "$2,997",
+                    "suffix": "/ one-time",
+                    "features": "<ul>\n<li>1 Portal</li>\n<li>10 Users</li>\n<li>100+ Modules</li>\n<li>30+ Templates</li>\n<li>2 Blogs Layouts</li>\n<li>Rapid Drag &amp; Drop Builder</li>\n<li>System Pages</li>\n</ul>",
+                    "link": {
+                        "url": {
+                            "type": "EXTERNAL",
+                            "href": "https://www.sprocketrocket.co/app-pricing#get-started-modal-pro",
+                            "content_id": null
+                        },
+                        "open_in_new_tab": false,
+                        "no_follow": false
+                    }
+                }
+            },
+            {
+                "id": "6a6d603b-b749-2cc5-ff3b-ddda678369ff",
+                "name": "text_align",
+                "label": "Text Align",
+                "required": true,
+                "locked": false,
+                "display": "select",
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "center",
+                        "Center"
+                    ],
+                    [
+                        "left",
+                        "Left"
+                    ],
+                    [
+                        "right",
+                        "Right"
+                    ]
+                ],
+                "type": "choice",
+                "default": "center"
+            },
+            {
+                "id": "text_color",
+                "name": "text_color",
+                "label": "Text Color",
+                "required": true,
+                "locked": false,
+                "display": "select",
+                "choices": [
+					[
+						"auto", "Auto"
+					],
+					[
+						"primary", "Primary"
+					],
+					[
+						"secondary", "Secondary"
+					],
+					[
+						"tertiary", "Tertiary"
+					],
+					[
+						"white", "White"
+					],
+					[
+						"black", "Black"
+					],
+					[
+						"dark", "Dark"
+					],
+					[
+						"light", "Light"
+					],
+					[
+						"success", "Success"
+					],
+					[
+						"info", "Info"
+					],
+					[
+						"warning", "Warning"
+					],
+					[
+						"danger", "Danger"
+					]
+                ],
+                "type": "choice",
+                "default": "auto"
+            }
+        ],
+        "source": ""
+    },
+    "custom_module_template": "sr-cards-pricing-02.html",
+    "available_builder": true,
+    "category": 7,
+    "files": []
+}

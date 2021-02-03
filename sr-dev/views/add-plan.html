@@ -1,0 +1,110 @@
+<div class="action-panel-content">
+    <div class="action-container">
+        <div class="action-heading">
+            <h2>Add Plan</h2>
+        </div>
+        <form id="add-plan">
+            <div class="row sr-forms">
+                <div class="col">
+                    <label for="name">Name</label> 
+                    <input id="name" type="text" class="form-control">
+                </div>
+                <div class="col">
+                    <label for="type">Type</label> 
+                    <select name="type" id="type" class="form-control">
+                        <option value="">--- Please Select ---</option>
+                        <option value="type-1">Type 1</option>
+                        <option value="type-2">Type 2</option>
+                        <option value="type-3">Type 3</option>
+                        <option value="type-4">Type 4</option>
+                        <option value="type-5">Type 5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row sr-forms">
+                <div class="col">
+                    <label for="portal-limit">Portal Limit</label> 
+                    <input id="portal-limit" type="number" class="form-control">
+                </div>
+                <div class="col">
+                    <label for="user-limit">User Limit</label> 
+                    <input id="user-limit" type="number" class="form-control">
+                </div>
+            </div>
+            <div class="row sr-forms">
+                <div class="col">
+                    <label for="module-limit">Module Limit</label> 
+                    <input id="module-limit" type="number" class="form-control">
+                </div>
+                <div class="col">
+                    <label for="limit-free">Allow Only Free Modules</label> 
+                    <select name="limit-free" id="limit-free" class="form-control">
+                        <option value="">--- Please Select ---</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row sr-forms">
+                <div class="col">
+                    <label for="hidden-plan">Hidden Plan</label> 
+                    <select name="hidden-plan" id="hidden-plan" class="form-control">
+                        <option value="">--- Please Select ---</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row sr-forms">
+                <div class="col">
+                    <label for="currency">Currency</label> 
+                    <select name="currency" id="currency" class="form-control">
+                        <option value="usd">USD</option>
+                        <option value="aud">AUD</option>
+                        <option value="cad">CAD</option>
+                        <option value="euro">EURO</option>
+                        <option value="gbp">GBP</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="interval">Interval</label> 
+                    <select name="interval" id="interval" class="form-control">
+                        <option value="monthly">Monthly</option>
+                        <option value="bi-annually">Bi-annually</option>
+                        <option value="annually">Annually</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row sr-forms">
+                <div class="col">
+                    <label for="trial-period">Trial Period</label> 
+                    <select name="trial-period" id="trial-period" class="form-control">
+                        <option value="">--- Please Select ---</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="col"></div>
+            </div>   
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button class="btn btn-secondary" id="cancel-btn">Cancel</button>
+        </form>
+    </div>
+</div>
+
+<!-- script needs to be loaded with this section if using AJAX-->
+<script type="text/javascript">
+    $("#cancel-btn").click(function(){
+        $('#action-panel-target').empty();
+    
+        if($("body").hasClass("modal-open")) {
+            console.log("action panel is open already");
+        } else {
+            $('#action-panel').modal('show');
+        }
+        $('#action-panel-target').load('./views/plans.html', function(){
+            $(this).hide().fadeIn(200);
+        });
+    });
+</script>

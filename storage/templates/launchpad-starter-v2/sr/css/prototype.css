@@ -1,0 +1,132 @@
+:root {
+  --primary: #999 !important;
+  --secondary: #999 !important;
+  --success: #999 !important;
+  --info: #999 !important;
+  --warning: #999 !important;
+  --danger: #999 !important;
+  --light: #999 !important;
+  --dark: #999 !important;
+  --white: #999 !important;
+  --black: #999 !important;
+  --borders: #999 !important;
+  --body_bg: #fff !important;
+  --body_color: #000 !important;
+  --link_color: #999 !important;
+  --link_hover_color: #999 !important;
+}
+
+.btn-wrapper.btn-primary-wrapper a.cta_button,
+.btn-wrapper.btn-secondary-wrapper a.cta_button,
+.btn-wrapper.btn-success-wrapper a.cta_button,
+.btn-wrapper.btn-info-wrapper a.cta_button,
+.btn-wrapper.btn-warning-wrapper a.cta_button,
+.btn-wrapper.btn-light-wrapper a.cta_button,
+.btn-wrapper.btn-dark-wrapper a.cta_button,
+.btn-wrapper.btn-white-wrapper a.cta_button,
+.btn-wrapper.btn-black-wrapper a.cta_button,
+.btn-primary,
+.btn-secondary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-light,
+.btn-dark,
+.btn-white,
+.btn-black,
+input[type=submit].hs-button.primary {
+  background: #999 !important;
+  border-color: #999 !important;
+color: #fff !important;
+}
+
+.btn-wrapper.btn-outline-primary-wrapper a.cta_button,
+.btn-wrapper.btn-outline-secondary-wrapper a.cta_button,
+.btn-wrapper.btn-outline-success-wrapper a.cta_button,
+.btn-wrapper.btn-outline-info-wrapper a.cta_button,
+.btn-wrapper.btn-outline-warning-wrapper a.cta_button,
+.btn-wrapper.btn-outline-light-wrapper a.cta_button,
+.btn-wrapper.btn-outline-dark-wrapper a.cta_button,
+.btn-wrapper.btn-outline-white-wrapper a.cta_button,
+.btn-wrapper.btn-outline-black-wrapper a.cta_button,
+.btn-outline-primary,
+.btn-outline-secondary,
+.btn-outline-success,
+.btn-outline-info,
+.btn-outline-warning,
+.btn-outline-light,
+.btn-outline-dark,
+.btn-outline-white,
+.btn-outline-black
+
+{
+  border-color: #999 !important;
+color: #999 !important; 
+}
+
+.bg-primary, 
+.bg-secondary, 
+.bg-success, 
+.bg-info, 
+.bg-warning, 
+.bg-dark,  
+.bg-black { 
+background-color: #999 !important;
+}
+
+.border-primary, 
+.border-secondary, 
+.border-success, 
+.border-info, 
+.border-warning, 
+.border-dark,  
+.border-black { 
+border-color: #999 !important;
+}
+
+.text-primary, 
+.text-secondary, 
+.text-success, 
+.text-info, 
+.text-warning, 
+.text-dark,  
+.text-black { 
+color: #000 !important;
+}
+
+a {
+  color: #000;
+}
+
+a:hover, a:hover:not(.btn) {
+  color: #999;
+}
+
+/* modules override */
+.sr-social-tweet-01 .tweet-btn {
+  color: #000;
+}
+
+.pin-ov {
+  background: rgba(255, 255, 255, 0.90) !important;
+}
+
+.sr-nav-progress-bar-01::-webkit-progress-value {
+background-color: #000;
+}
+
+.sr-nav-progress-bar-01::-moz-progress-bar {
+background-color: #000;
+}
+
+.sr-offer-sticky-form-01 .sticky-form-list ul li.active {
+  color: #000;
+}
+
+.sr-offer-sticky-form-01 .sticky-form-list ul li.active:before {
+  background: #000;
+}
+
+.sr-offer-bar-05:after {
+  background: linear-gradient(-225deg, #000 0%, #999 100%);
+}

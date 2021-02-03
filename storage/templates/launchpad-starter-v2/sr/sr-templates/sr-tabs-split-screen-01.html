@@ -1,0 +1,372 @@
+{% if module.enabled %}
+
+	{{ require_js(var.sr_assetDir + '/js/ScrollMagic.min.js', "head") }}
+
+	<!-- Global init -->
+	{% require_js position="footer" %}
+		<script>
+			$(document).ready(function() {
+				var {{ name }}_scene;
+				var sticky = false;
+				// Prep
+				$('body').attr('data-spy', 'scroll').attr('data-target', '.pin-nav').attr('data-offset', $('.pin').height() / 2);
+
+				// Scroll to hash
+				$('.{{ name }} a.scroll').click(function() {
+					if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+						var target = $(this.hash);
+						target = target.length ? target : $('[id=' + this.hash.slice(1) +']');
+						if (target.length) {
+							$('html, body').animate({
+								scrollTop: target.offset().top
+							}, 500);
+							return false;
+						}
+					}
+				});
+
+				function makeSticky() {
+					$('.sticky-panel.{{ name }}').each(function () {
+						// Init
+						if ($(this).find('.pin-nav').length) {
+							$(window).on('activate.bs.scrollspy', function (e) {
+								var activeSection = $('.{{ name }} .pin-nav').find('a.active').attr('href');
+								if ($(activeSection).attr('data-pin-bg')) {
+									var activeSectionBg = $(activeSection).attr('data-pin-bg');
+									$('.{{ name }} .pin-nav').siblings('.pin-bg').css('background', activeSectionBg);
+								}
+								if ($(activeSection).attr('data-pin-overlay')) {
+									var activeSectionOv = $(activeSection).attr('data-pin-overlay');
+									var activeText= $(activeSection).attr('data-pin-text');
+									var activeTextSlide= $(activeSection).attr('data-pin-text');
+									var pre = activeText;
+									$('.{{ name }} .pin-ov').css('background', activeSectionOv);
+									$('.{{ name }} .pin-inner *').attr('class', 'text-'+ activeText);
+									$('.{{ name }} .pin .pin-nav .nav > li').attr('class', 'text-'+ activeText + ' border-'+ activeText );
+								} else {
+									activeSection = $('.{{ name }} .pin-nav').find('a.nav-link:first-child').attr('href');
+									{% if module.section[0].background_option == 'image' %}
+										var activeSectionOv = $(activeSection).attr('data-pin-overlay');
+									{% else %}
+										var activeSectionOv = 'rgb(255, 255, 255, 0)';
+									{% endif %}
+									var activeText = $(activeSection).attr('data-pin-text');
+									var activeTextSlide= $(activeSection).attr('data-pin-text');
+									var pre = activeText;
+									$('.{{ name }} .pin-ov').css('background', activeSectionOv);
+									$('.{{ name }} .pin-inner *').attr('class', 'text-'+ activeText);
+									$('.{{ name }} .pin .pin-nav .nav > li').attr('class', 'text-'+ activeText + ' border-'+ activeText );
+								}
+							})
+						}
+					});
+
+					// Scrollmagic init
+					var {{ name }}_controller = new ScrollMagic.Controller();
+					{{ name }}_scene = new ScrollMagic.Scene({triggerElement: ".{{ name }}", duration: $('.{{ name }} .sticky-content').outerHeight() - $(window).height(), triggerHook: 'onLeave'})
+						.setPin(".{{ name }} .pin")
+						.addTo({{ name }}_controller)
+						.setClassToggle(".{{ name }} .pin", "active")
+				}
+
+				// Sticky panel
+				$(window).on("load resize",function(e){
+					if (window.innerWidth >= 992) {
+						if(!sticky) {
+							sticky = true;
+							makeSticky();
+						}
+						$('.{{ name }} .pin').addClass('loaded');
+					} else {
+						if({{ name }}_scene && sticky) {
+							{{ name }}_scene.removePin(true);
+							sticky = false;
+							console.log('has')
+						}	
+					}
+					$('.{{ name }} .pin-inner *').attr('class', 'text-{{module.section[0].slide_color}}');
+				});
+				
+			});
+
+		</script>
+	{% end_require_js %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-tabs-split-screen-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Tabs Split Screen 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+	
+	<div class="sr-tabs-split-screen sticky-panel {{ name }}{% if module.class %} {{ module.class }}{% endif %}"{% if module.sr_module_id %}id="{{ module.sr_module_id }}"{% endif %}>
+		<div class="container-fluid">
+			<div class="row {% if module.image_right %}flex-row-reverse{% endif %}">
+				<div class="pin" id="pin-{{ name }}">
+					<div class="pin-bg prototype-background">
+						<div class="pin-ov" {% if module.section[0].background_option == 'image' %}style="background: rgba({{ module.section[0].overlay_color.color|convert_rgb }}, {% if module.section[0].overlay_color.opacity != '100' %}0.{% endif %}{{ module.section[0].overlay_color.opacity }});"{% endif %}></div>
+					</div>
+					<div class="pin-inner text-{{module.section[0].slide_color}}">
+						{{ module.main_title }}
+					</div>
+					<ul class="pin-nav nav nav-pills">
+						<ul class="nav">
+							{% for item in module.section %}
+								{% if item.background_option == 'image' %}
+									<li><a data-pin-text="{{ item.slide_color }}" data-pin-overlay="rgba({{ item.overlay_color.color|convert_rgb }}, {% if item.overlay_color.opacity != '100' %}0.{% endif %}{{ item.overlay_color.opacity }})" data-pin-bg="url('{{ item.background_image.src }}') 50% 50% / cover" class="nav-link text-{{module.section[0].slide_color}} scroll {% if item.slide_color == 'auto' %}notinherit{% endif %} {% if loop.index == 1 %} active{% endif %}" href="#{{ name }}_section{{ loop.index }}">{{ item.title }}</a></li>
+								{% else %}
+									<li><a data-pin-text="{{ item.slide_color }}" data-pin-bg="{{item.background_color.color }}" class="nav-link text-{{module.section[0].slide_color}} scroll {% if item.slide_color == 'auto' %}notinherit{% endif %} {% if loop.index == 1 %} active{% endif %} s" href="#{{ name }}_section{{ loop.index }}">{{ item.title }}</a></li>
+								{% endif %}
+							{% endfor %}
+						</ul>
+					</ul>
+				</div>
+				<div id="{{name}}_myScrollspy" class="sticky-content" data-spy="scroll" data-target="#pin-{{ name }}" data-offset="0">
+					{% for item in module.section %}
+						{% if item.background_option == 'image' %}
+							<div id="{{ name }}_section{{ loop.index }}" data-pin-text="{{ item.slide_color }}" data-pin-overlay="rgba({{ item.overlay_color.color|convert_rgb }}, {% if item.overlay_color.opacity != '100' %}0.{% endif %}{{ item.overlay_color.opacity }})" data-pin-bg="url('{{ item.background_image.src }}') 50% 50% / cover" class="section text-{{ item.text_color }}" style="background-color: {{ item.copy_background_color.color }}">
+						{% else %}
+							<div id="{{ name }}_section{{ loop.index }}"  data-pin-text="{{ item.slide_color }}" data-pin-bg="{{item.background_color.color}}" class="section text-{{ item.text_color }}" style="background-color: {{ item.copy_background_color.color }}">
+						{% endif %}
+								<div class="content col-xl-8">
+									<h3 class="heading text-{{ item.text_color }}">
+										{{ item.title }}
+									</h3>
+									<div class="section-content">
+										{{ item.content }}
+									</div>
+									{% if item.cta.cta_type != 'none' %}
+										<div class="btn-wrapper btn-{{ item.cta.cta_style }}-wrapper">
+											{% if item.cta.cta_type == 'btn' %}
+												<a href="{{ item.cta.link }}" class="cta_button">{{ item.cta.button_text }}</a>
+											{% elif item.cta.cta_type == 'cta' %}
+												{% cta guid="{{ item.cta.cta }}" %}
+											{% endif %}
+										</div>
+									{% endif %}
+								</div>
+							</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% require_css %}
+		<style>
+			body[data-spy="scroll"] {
+				position: relative;
+			}
+			.sr-tabs-split-screen {
+				background: #fff;
+				overflow: hidden;
+			}
+			.sr-tabs-split-screen .sticky-content {
+				float: right;
+				overflow: hidden;
+			}
+			@media only screen and (min-width: 992px) {
+				.sr-tabs-split-screen .sticky-content {
+					width: 50%;
+				}
+			}
+			.sr-tabs-split-screen .sticky-content .section {
+				background-color: #fff;
+				padding: 3rem 0;
+				box-sizing: border-box;
+				position: relative;
+			}
+			@media (min-width: 768px) {
+				.sr-tabs-split-screen .sticky-content .section {
+					padding: 3rem 6.25rem;
+				}
+				.sr-tabs-split-screen .sticky-content .section:last-child {
+					padding-bottom: 3rem;
+				}
+			}
+			@media (min-width: 992px) {
+				.sr-tabs-split-screen .sticky-content .section {
+					min-height: 100vh;
+					height: 99vh;
+					display: -webkit-box;
+					display: -ms-flexbox;
+					display: flex;
+					-webkit-box-align: center;
+					-ms-flex-align: center;
+					align-items: center;
+				}
+			}
+			.sr-tabs-split-screen .sticky-content .btn, .sr-tabs-split-screen .sticky-content .btn-wrapper .cta_button, .btn-wrapper .sr-tabs-split-screen .sticky-content .cta_button, .sr-tabs-split-screen .sticky-content .hs-form input[type="submit"], .hs-form .sr-tabs-split-screen .sticky-content input[type="submit"], .sr-tabs-split-screen .sticky-content .hs-form input[type="button"], .hs-form .sr-tabs-split-screen .sticky-content input[type="button"] {
+				margin-top: 1.5rem;
+			}
+			.sr-tabs-split-screen .sticky-content a:not(.btn):not(.btn-wrapper .cta_button):not(.hs-form input[type="submit"]):not( .hs-form input[type="button"]) {
+				color: #fff;
+				border-bottom: 1px solid #fff;
+			}
+			.sr-tabs-split-screen .sticky-content a:not(.btn):not(.btn-wrapper .cta_button):not(.hs-form input[type="submit"]):not( .hs-form input[type="button"]):hover {
+				color: #0C63FF;
+				border-color: #0C63FF;
+				color: var(--primary);
+				border-color: var(--primary);
+			}
+			.sr-tabs-split-screen .content {
+				width: 100%;
+			}
+			@media only screen and (max-width: 768px) {
+				.sr-tabs-split-screen .scrollmagic-pin-spacer {
+					display: none !important;
+				}
+			}
+			.sr-tabs-split-screen .pin {
+				position: relative;
+				will-transform: translate;
+				-webkit-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+				width: 100%;
+			}
+			@media (min-width: 992px) {
+				.sr-tabs-split-screen .pin {
+					min-height: 600px;
+					height: 100vh;
+					width: 50% !important;
+				}
+				.sr-tabs-split-screen .pin.loaded {
+					width: 100% !important;
+				}
+				.sr-tabs-split-screen .pin.loaded.active {
+					width: 50.75% !important;
+				}
+				.sr-tabs-split-screen .scrollmagic-pin-spacer {
+					width: 50% !important;
+				}
+			}
+			.{{name}}.sr-tabs-split-screen .pin .pin-bg {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				opacity: 1;
+				will-transform: translate;
+				-webkit-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+				-webkit-transition: all ease-in-out .2s;
+				-o-transition: all ease-in-out .2s;
+				transition: all ease-in-out .2s;
+				{% if module.section[0].background_option == 'image' %}
+					background: url({{module.section[0].background_image.src}}) 50% 50% / cover	
+				{% else %}
+					background: {{module.section[0].background_color.color}}
+				{% endif %}
+				
+			}
+			.pin-ov {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+			}
+			.sr-tabs-split-screen .pin .pin-inner {
+				position: relative;
+				padding: 5rem 15px;
+			}
+			
+			@media (min-width: 768px) {
+				.sr-tabs-split-screen .pin .pin-inner {
+					padding: 6rem 7.25rem
+				}
+			}
+			@media (min-width: 992px) {
+				.sr-tabs-split-screen .pin .pin-inner {
+					will-transform: translate;
+					-webkit-transform: translate3d(0, 0, 0);
+					transform: translate3d(0, 0, 0);
+				}
+			}
+			@media (min-width: 1200px) {
+				.sr-tabs-split-screen .pin .pin-inner {
+					padding: 12rem 6rem 12rem 12rem
+				}
+			}
+			.sr-tabs-split-screen .pin .pin-nav {
+				text-align: right;
+				position: absolute;
+				bottom: 200px;
+				right: 110px;
+				display: none;
+			}
+			@media (min-width: 992px) {
+				.sr-tabs-split-screen .pin .pin-nav {
+					display: block;
+				}
+			}
+			.sr-tabs-split-screen .pin .pin-nav .nav > li > a {
+				padding: 0;
+				border: none;
+				color: inherit;
+				border-color: inherit;
+				-webkit-transition: all 0.2s ease; 
+				-o-transition: all 0.2s ease; 
+				transition: all 0.2s ease;
+			}
+			.sr-tabs-split-screen .pin .pin-nav .nav > li > a:hover, .sr-tabs-split-screen .pin .pin-nav .nav > li > a:focus {
+				background: none;
+				border: none;
+				opacity: .5;
+				color: inherit;
+			}
+			.sr-tabs-split-screen .pin .pin-nav ul {
+				list-style: none;
+				display: block;
+			}
+			.sr-tabs-split-screen .section-content *:last-child {
+				margin: 0;
+			}
+			.sr-tabs-split-screen .pin .pin-nav li {
+				font-size: 1rem;
+				line-height: 3em;
+			}
+			.sr-tabs-split-screen .pin .pin-nav li:hover {
+				opacity: 1;
+			}
+			.sr-tabs-split-screen .pin .pin-nav li:hover a {
+				color: #0C63FF;
+				color: var(--primary);
+				text-decoration: none;
+			}
+			.sr-tabs-split-screen .pin .pin-nav .nav > li > a.active {
+				position: relative;
+				background: none;
+			}
+			.sr-tabs-split-screen .pin .pin-nav .nav > li > a.active::before {
+				content: '';
+				display: block;
+				width: 100px;
+				height: 2px;
+				border: 1px solid;
+				border-color: inherit;
+				background: #0C63FF;
+				background: var(--primary);
+				position: absolute;
+				right: -110px;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+			}
+			.sr-tabs-split-screen .pin .pin-nav  a.active {
+				color: #0C63FF;
+				color: var(--primary);
+			}
+			.sr-tabs-split-screen .pin .pin-nav  a.notinherit.active {
+				color: #0C63FF !important;
+				color: var(--primary) !important;
+			}
+		
+		</style>
+	{% end_require_css %}
+{% endif %}

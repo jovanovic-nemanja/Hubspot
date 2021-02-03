@@ -1,0 +1,51 @@
+{
+	"custom_module": {
+		"author": "bradley@lean-labs.com",
+		"tags": ["ver-1.0.0"],
+		"name": "Email One Col Text",
+		"css_assets": [],
+		"editable_contexts": [],
+		"external_js": [],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": ["EMAIL"],
+		"js_assets": [],
+		"other_assets": [],
+		"fields": [{
+			"default": true,
+			"label": "Enabled",
+			"name": "enabled",
+			"type": "boolean"
+		},
+		{
+			"name": "text",
+			"label": "Text",
+			"type": "richtext",
+			"default": "Small teams and individual designers need a space where they can watch the design process unfold, both for themselves and for the people they work with – no matter if it's a fellow designer, product manager, developer or client. Front allows you to invite more people into the process, creating a central place for conversation around design. As those teams grow, transparency and collaboration becomes integrated in how they communicate and work together."
+		},
+		{
+			"name": "padding",
+			"label": "Padding",
+			"type": "text",
+			"default": "25px 25px"
+		},
+		{
+			"name": "border_bottom",
+			"label": "Border Bottom",
+			"type": "boolean",
+			"default": true
+		},
+		{
+			"name": "text_color",
+			"label": "Text Color",
+			"type": "color",
+			"default": {
+				"color": "#0a0a0a",
+				"opacity": 100
+			}
+		}],
+		"source": ""
+	},
+	"custom_module_template": "email-one-col-text.html",
+	"files": []
+}

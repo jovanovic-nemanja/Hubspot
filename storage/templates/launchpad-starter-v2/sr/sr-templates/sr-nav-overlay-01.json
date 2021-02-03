@@ -1,0 +1,495 @@
+{
+    "custom_module": {
+        "author": "bradley@lean-labs.com",
+        "tags": ["ver-3.0.0"],
+        "name": "SR Nav Overlay 01",
+        "css_assets": [],
+        "editable_contexts": [],
+        "global": true,
+        "override_global": true,
+        "external_js": [],
+        "icon": "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": [
+            "PAGE",
+            "BLOG_POST",
+            "BLOG_LISTING"
+        ],
+        "js_assets": [],
+        "other_assets": [],
+        "fields": [
+            {
+                "id": "19c7aff8-8ca8-f528-0af5-7f6671dbe9a3",
+                "name": "design_settings",
+                "label": "Design Settings",
+                "required": false,
+                "locked": false,
+                "children": [
+                    {
+                        "id": "50114bc6-6cb5-363a-d2dc-9fab5723b985",
+                        "name": "layout",
+                        "label": "Layout",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "container-fluid",
+                                "Full Width"
+                            ],
+                            [
+                                "container",
+                                "Container"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "container"
+                    },
+                    {
+                        "id": "d7e3f964-eaac-d83f-f769-aa4be4e36e27",
+                        "name": "background_color",
+                        "label": "Navbar Background Color",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "5849e366-10fe-b2f4-71a9-d1e2e5259232",
+                            "controlling_value_regex": "false",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#ffffff",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "nav_bg",
+                        "name": "nav_bg",
+                        "label": "Overlay Background Color",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "success",
+                                "Success"
+                            ],
+                            [
+                                "info",
+                                "Info"
+                            ],
+                            [
+                                "warning",
+                                "Warning"
+                            ],
+                            [
+                                "danger",
+                                "Danger"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ],
+                            [
+                                "custom",
+                                "Custom"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "custom"
+                    },
+                    {
+                        "id": "nav_bg_custom",
+                        "name": "nav_bg_custom",
+                        "label": "Overlay Background Custom",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "visibility": {
+                            "controlling_field": "nav_bg",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "background: linear-gradient(-225deg, rgb(12, 99, 255) 0%, rgb(24, 151, 255) 100%);"
+                    },
+                    {
+                        "id": "open_button_style",
+                        "name": "open_button_style",
+                        "label": "Open Button Color",
+                        "required": false,
+                        "locked": false,
+                        "type": "color",
+                        "default": {
+                            "color": "#23262a",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "fb3a31e3-4dbd-c3ec-1944-976a047581df",
+                        "name": "close_button_color",
+                        "label": "Close Button Color",
+                        "required": false,
+                        "locked": false,
+                        "type": "color",
+                        "default": {
+                            "color": "#fff",
+                            "opacity": 100
+                        }
+                    },
+                    {
+                        "id": "5849e366-10fe-b2f4-71a9-d1e2e5259232",
+                        "name": "transparent",
+                        "label": "Transparent ",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    {
+                        "id": "fixed",
+                        "name": "fixed",
+                        "label": "Fixed",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": true
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "layout": "container",
+                    "background_color": {
+                        "color": "#ffffff",
+                        "opacity": 100
+                    },
+                    "nav_bg": "custom",
+                    "nav_bg_custom": "background: linear-gradient(-225deg, rgb(12, 99, 255) 0%, rgb(24, 151, 255) 100%);",
+                    "open_button_style": {
+                        "color": "#23262a",
+                        "opacity": 100
+                    },
+                    "close_button_color": {
+                        "color": "#fff",
+                        "opacity": 100
+                    },
+                    "transparent": false,
+                    "fixed": true
+                }
+            },
+            {
+                "id": "logo",
+                "name": "logo",
+                "label": "Logo",
+                "required": false,
+                "locked": false,
+                "responsive": false,
+                "resizable": true,
+                "type": "image",
+                "default": {
+                    "src": "https://www.sprocketrocket.co/hubfs/sr-assets/images/sr-logo@2x.png",
+                    "width": "175"
+                }
+            },
+            {
+                "id": "logo_mobile",
+                "name": "logo_mobile",
+                "label": "Logo on Mobile",
+                "required": false,
+                "locked": false,
+                "responsive": false,
+                "resizable": true,
+                "type": "image",
+                "default": {
+                    "src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-logo-icon.png",
+                    "width": "45"
+                }
+            },
+            {
+                "id": "logo_link",
+                "name": "logo_link",
+                "label": "Logo Link",
+                "required": false,
+                "locked": false,
+                "validation_regex": "",
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "default": "#"
+            },
+            {
+                "id": "5fd765f5-c8c0-8c41-9330-ca67909af353",
+                "name": "overlay",
+                "label": "Overlay",
+                "required": false,
+                "locked": false,
+                "children": [
+                    {
+                        "id": "bf403e39-12b3-2a53-310c-c1a931acddf7",
+                        "name": "overlay_style",
+                        "label": "Overlay Style",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "full",
+                                "Full Screen"
+                            ],
+                            [
+                                "slide",
+                                "Slide In"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "full"
+                    },
+                    {
+                        "id": "menu",
+                        "name": "menu",
+                        "label": "Menu Primary",
+                        "required": false,
+                        "locked": false,
+                        "type": "menu",
+                        "default": null
+                    },
+                    {
+                        "id": "menu2",
+                        "name": "menu2",
+                        "label": "Menu Secondary",
+                        "required": false,
+                        "locked": false,
+                        "type": "menu",
+                        "default": null
+                    },
+                    {
+                        "id": "social",
+                        "name": "social",
+                        "label": "Social",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    {
+                        "id": "1",
+                        "name": "icons",
+                        "label": "Social Icons",
+                        "required": false,
+                        "locked": false,
+                        "occurrence": {
+                            "min": 0,
+                            "max": null,
+                            "sorting_label_field": null,
+                            "default": 5
+                        },
+                        "visibility": {
+                            "controlling_field": "social",
+                            "controlling_value_regex": "true",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "children": [
+                            {
+                                "id": "icons.icon",
+                                "name": "icon",
+                                "label": "Icon",
+                                "help_text": "Please look at <a href='https://fontawesome.com/v4.7.0/cheatsheet/' target='_blank'>FontAwesome 4</a> for usable icons",
+                                "required": false,
+                                "locked": false,
+                                "validation_regex": "",
+                                "allow_new_line": false,
+                                "show_emoji_picker": false,
+                                "type": "text",
+                                "default": "fa-facebook"
+                            },
+                            {
+                                "id": "icons.link",
+                                "name": "link",
+                                "label": "Link",
+                                "required": false,
+                                "locked": false,
+                                "validation_regex": "",
+                                "allow_new_line": false,
+                                "show_emoji_picker": false,
+                                "type": "text",
+                                "default": "Link"
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": [
+                            {
+                                "icon": "fa-facebook",
+                                "link": "Link"
+                            },
+                            {
+                                "icon": "fa-twitter",
+                                "link": "Link"
+                            },
+                            {
+                                "icon": "fa-youtube",
+                                "link": "Link"
+                            },
+                            {
+                                "icon": "fa-linkedin",
+                                "link": "Link"
+                            },
+                            {
+                                "icon": "fa-slack",
+                                "link": "Link"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "show_posts",
+                        "name": "show_posts",
+                        "label": "Show Blog Posts",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    {
+                        "id": "blog",
+                        "name": "blog",
+                        "label": "Blog",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "show_posts",
+                            "controlling_value_regex": "true",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "select",
+                        "type": "blog",
+                        "default": null
+                    },
+                    {
+                        "id": "blog_post_type",
+                        "name": "blog_post_type",
+                        "label": "Blog Post Type",
+                        "required": true,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "show_posts",
+                            "controlling_value_regex": "true",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "select",
+                        "choices": [
+                            [
+                                "recent",
+                                "Recent Posts"
+                            ],
+                            [
+                                "popular",
+                                "Popular Posts"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "recent"
+                    },
+                    {
+                        "id": "number_of_posts",
+                        "name": "number_of_posts",
+                        "label": "Number of Posts",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "show_posts",
+                            "controlling_value_regex": "true",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "text",
+                        "step": 1,
+                        "type": "number",
+                        "default": 5
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "overlay_style": "full",
+                    "social": true,
+                    "icons": [
+                        {
+                            "icon": "fa-facebook",
+                            "link": "Link"
+                        },
+                        {
+                            "icon": "fa-twitter",
+                            "link": "Link"
+                        },
+                        {
+                            "icon": "fa-youtube",
+                            "link": "Link"
+                        },
+                        {
+                            "icon": "fa-linkedin",
+                            "link": "Link"
+                        },
+                        {
+                            "icon": "fa-slack",
+                            "link": "Link"
+                        }
+                    ],
+                    "show_posts": true,
+                    "blog_post_type": "recent",
+                    "number_of_posts": 5
+                }
+            }
+        ],
+        "source": ""
+    },
+    "custom_module_template": "sr-nav-overlay-01.html",
+    "available_builder": true,
+    "category": 1,
+    "files": []
+}

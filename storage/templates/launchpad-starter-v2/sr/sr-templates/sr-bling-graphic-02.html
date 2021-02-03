@@ -1,0 +1,157 @@
+{% if module.enabled %}
+ 
+	{% require_css %}
+		<style>
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;    
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});	
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			.sr-bling-graphic-02 .container-fluid {
+				padding: 0;
+			}
+			.sr-bling-graphic-02 .slick-slide img {
+				margin: -1px;
+			}
+			.sr-bling-graphic-02 i.fa.fa-chevron-left.slick-arrow,
+			.sr-bling-graphic-02 i.fa.fa-chevron-right.slick-arrow {
+				position: absolute;
+				top: 50%;
+				-webkit-transform: translateY(-50%);
+				-ms-transform: translateY(-50%);
+				transform: translateY(-50%);
+				font-size: 30px;
+				z-index: 1;
+			}
+			.sr-bling-graphic-02 i.fa.fa-chevron-right.slick-arrow {
+				right: 50px;
+			}
+			.sr-bling-graphic-02 i.fa.fa-chevron-left.slick-arrow {
+				left: 50px;
+			}
+			.sr-bling-graphic-02-slick {
+				overflow: hidden;
+			}
+			.sr-bling-graphic-02-slick > div:nth-child(n+1) {
+				display: none;
+			}
+			.slick-initialized,
+			.sr-bling-graphic-02-slick > div:first-child { 
+				display: block;
+			}
+		</style>
+		{{ require_css(var.sr_assetDir + '/css/slick.css') }}
+	{% end_require_css %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-bling-graphic-02" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Bling Graphic 02</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+	
+	<div class="sr-bling-graphic-02  {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %} {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }} {% endif %}sr-padding-{{ module.design_settings.top_bottom_padding }} text-{{module.image_align}} {% if module.design_settings.module.class %}{{ module.design_settings.module.class }} {% endif %}{% if module.design_settings.border_top %}sr-line-top {% endif %}{% if module.design_settings.border_bottom %}sr-line-bottom {% endif %} {{ name }}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }}">
+			{% if module.design_settings.container_width != 'max' %}
+				<div class="row">
+					<div class="{{ width_class }}">
+			{% endif %}
+						{% if module.heading || module.description %}
+							<div class="sr-spacer-bottom-50">
+								{% if module.heading %}
+									<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} heading {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.heading}}</h{{module.heading_size}}>
+								{% endif %}
+
+								{% if module.description %}
+									<div class="description">{{ module.description}}</div>
+								{% endif %}
+							</div>
+						{% endif %}
+						<div id="slickSlider-{{name}}" class="sr-bling-graphic-02-slick">
+						{% for item in module.slides %}
+							<div class="sr-bling-graphic-02-img">
+								{% if item.sr_default_image_size %}
+									{{ var.image(item.slide_image.src, '530', item.slide_image.alt) }}
+								{% else %}
+									{{ var.image(item.slide_image.src, item.slide_image.width, item.slide_image.alt) }}
+								{% endif %}
+							</div>
+						{% endfor %}
+						</div>
+			{% if module.design_settings.container_width != 'max' %}
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+
+	{{ require_js(var.sr_assetDir + '/js/slick.min.js') }}
+	{% require_js %}
+		<script>
+		$('#slickSlider-{{name}}').slick({
+			dots: false,
+			arrows: {% if module.arrows %}true{%else%}false{%endif%},
+			infinite: true,
+			autoplay: true,
+			autoplaySpeed: 2000,
+			slidesToShow: 1,
+			centerMode: true,
+			variableWidth: true,
+			variableHeight: true,
+			nextArrow: '<i class="fa fa-chevron-right"></i>',
+			prevArrow: '<i class="fa fa-chevron-left"></i>'
+		});
+		</script>
+	{% end_require_js%}
+
+{% endif %}

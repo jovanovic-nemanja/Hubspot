@@ -1,0 +1,24 @@
+{
+	"name": "Email General",
+	"templates": [
+		{
+			"category_id": "2",
+			"template_type": "2",
+			"folder": "sr/templates/email",
+			"path": "sr/templates/email/email-general.html",
+			"source": "launchpad-starter-v2/sr/sr-templates/system/email-general/email-general.html",
+			"is_available_for_new_content": true
+		}
+	],
+	"custom_modules": [
+		"email-view-as-webpage.json",
+		"email-settings.json",
+		"email-header.json",
+		"email-hero.json",
+		"email-one-col-text.json",
+		"email-one-col-media.json",
+		"email-two-col-media.json",
+		"email-three-col-media.json",
+		"email-footer.json"
+	]
+}

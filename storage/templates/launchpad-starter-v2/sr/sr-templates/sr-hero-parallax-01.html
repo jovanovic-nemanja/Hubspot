@@ -1,0 +1,68 @@
+{% if widget.enabled %}
+
+	{% if widget.parallax %}
+		{{ require_js(var.sr_assetDir + '/pattern-library/sr-cover-parallax/TweenMax.min.js') }}
+		{{ require_js(var.sr_assetDir + '/pattern-library/sr-cover-parallax/ScrollMagic.min.js') }}
+		{{ require_js(var.sr_assetDir + '/pattern-library/sr-cover-parallax/animation.gsap.min.js') }}
+
+		{% require_js %}
+			<script type="text/javascript">
+				$(function() {
+					var controller = new ScrollMagic.Controller();
+
+					// build scene
+					var scene = new ScrollMagic.Scene({triggerElement: '.{{ name }}.sr-cover-parallax', triggerHook: 'onLeave', duration: "70%"})
+						.setTween(".{{ name }} .sr-cover-inner", {y: 90})
+						// .addIndicators() // add indicators (requires plugin)
+						.addTo(controller);
+
+					var scene1 = new ScrollMagic.Scene({triggerElement: '.{{ name }}.sr-cover-parallax', triggerHook: 'onLeave', duration: "70%"})
+						.setTween(".{{ name }} .sr-cover-image", {opacity: .0})
+						// .addIndicators() // add indicators (requires plugin)
+						.addTo(controller);
+				});
+			</script>
+		{% end_require_js %}
+	{% endif %}
+
+	<div {% if widget.id %}id="{{ widget.id }}"{% endif %} class="{{ name }} sr-cover-parallax {{ widget.class }} prototype-no-background">
+		<div class="sr-cover-image overlay-{{ widget.overlay }}" style="background: url('{{ widget.image.src }}') 50% 50% / cover;"></div>
+		<div class="container">
+			<div class="col-12 col-md-10 offset-md-1">
+				<div class="sr-cover d-flex align-items-center text-center height-{{ widget.height }}">
+					<div class="sr-cover-inner pt-3 {% if widget.text_color == 'white' %}text-white{% endif %}">
+						{{ widget.content }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% require_css %}
+		<style type="text/css">
+			.{{ name }}.sr-cover-parallax {
+				position: relative;
+				background: {{ widget.overlay_color }};
+			}
+
+			.{{ name }} .sr-cover-image{
+				position: absolute;
+				width: 100%;
+				height: 100%;
+			}
+			.sr-cover-inner {
+				margin: 0 auto;
+			}
+
+			.sr-cover-parallax                      { background-color: #000; }
+			.sr-cover-parallax .overlay-none        { opacity: 1; }
+			.sr-cover-parallax .overlay-light       { opacity: .75; }
+			.sr-cover-parallax .overlay-medium      { opacity: .5; }
+			.sr-cover-parallax .overlay-dark        { opacity: .25; }
+			.sr-cover-parallax .height-small        { min-height: 50vh; }
+			.sr-cover-parallax .height-medium       { min-height: 75vh; }
+			.sr-cover-parallax .height-large        { min-height: 100vh; }
+		
+		</style>
+	{% end_require_css %}
+{% endif %}

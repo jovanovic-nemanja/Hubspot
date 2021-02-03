@@ -1,0 +1,11 @@
+	{% import "/sr/templates/variables.html" as var %}
+
+	{{ var.template('header.html') }}
+
+	<body class="{% block body_class %}{% text 'body_class' label="Body Class" no_wrapper=True %}{% endblock %}">
+		{% custom_widget "SR Nav Dropdown 01" widget_name='SR Nav Dropdown 01' %}
+		{% custom_widget "SR Hero 404" widget_name='SR Hero 404' %}
+		{% custom_widget "SR Footer 04" widget_name='SR Footer 04' %}
+		{{ var.template('footer-includes.html') }}
+	</body>
+</html>

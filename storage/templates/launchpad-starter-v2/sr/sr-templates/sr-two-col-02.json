@@ -1,0 +1,1053 @@
+{
+	"custom_module": {
+		"author": "adrian@lean-labs.com",
+		"tags": ["ver-4.0.0"],
+		"name": "SR Two Col 02",
+		"css_assets": [],
+		"editable_contexts": [],
+		"external_js": [],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+		"js_assets": [],
+		"other_assets": [],
+		"fields": [{
+				"default": true,
+				"label": "Enabled",
+				"name": "enabled",
+				"type": "boolean"
+			},
+			{
+				"type": "group",
+				"name": "design_settings",
+				"label": "Design Settings",
+				"children": [
+					
+							{
+								"default": null,
+								"label": "ID",
+								"name": "sr_module_id",
+								"type": "text"
+							},
+							{
+								"default": null,
+								"label": "Class",
+								"name": "class",
+								"type": "text"
+							},
+							{
+								"choices": [
+									[
+										"container", "Page"
+									],
+									[
+										"container-fluid", "Full Width"
+									]
+								],
+								"default": "container-fluid",
+								"display": "select",
+								"label": "Layout",
+								"name": "layout",
+								"type": "choice",
+								"required": true
+							},
+							{
+								"choices": [
+									[
+										"min", "Minimum"
+									],
+									[
+										"narrow", "Narrow"
+									],
+									[
+										"wide", "Wide"
+									],
+									[
+										"max", "Maximum"
+									]
+								],
+								"default": "max",
+								"display": "select",
+								"label": "Container Width",
+								"name": "container_width",
+								"type": "choice",
+								"required": true
+							},
+							{
+								"choices": [
+								  [
+									"auto", "Use default values"
+								  ],
+								  [
+									"zero", "No Padding"
+								  ],
+								  [
+									"half", "Small padding"
+								  ],
+								  [
+									"full", "Large padding"
+								  ],
+								  [
+									"custom", "Custom Padding"
+								  ]
+								],
+								"id": "top_bottom_padding",
+								"default": "zero",
+								"display": "select",
+								"label": "Top Bottom Padding",
+								"name": "top_bottom_padding",
+								"type": "choice",
+								"required": true
+							},
+							{
+								"name" : "custom_padding",
+								"type" : "text",
+								"label" : "Custom Padding",
+								"help_text" : "Top, Right, Bottom, Left",
+								"visibility" : {
+								  "controlling_field" : "top_bottom_padding",
+								  "controlling_value_regex" : "custom",
+								  "operator" : "EQUAL",
+								  "access" : null
+								},
+								"default" : "1rem 0rem 1rem 0rem"
+							},
+							{
+								"default": false,
+								"label": "Border Top",
+								"name": "border_top",
+								"type": "boolean"
+							},
+							{
+								"default": false,
+								"label": "Border Bottom",
+								"name": "border_bottom",
+								"type": "boolean"
+							},
+							{
+								"choices": [
+									[
+										"image", "Image"
+									],
+									[
+										"color", "Color"
+									],
+									[
+										"custom", "Custom"
+									],
+									[
+										"gradient", "Gradient"
+									]
+								],
+								"id": "background_option",
+								"default": "color",
+								"display": "select",
+								"label": "Background Option",
+								"name": "background_option",
+								"type": "choice",
+								"required": true
+							},
+							{
+								"default": {
+									"color": "#0c63ff"
+								},
+								"label": "Background Gradient From",
+								"name": "background_gradient_from",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "gradient",
+									"operator": "EQUAL"
+								},
+								"type": "color"
+							},
+							{
+								"default": {
+									"color": "#1897ff"
+								},
+								"label": "Background Gradient To",
+								"name": "background_gradient_to",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "gradient",
+									"operator": "EQUAL"
+								},
+								"type": "color"
+							},
+							{
+								"default": {
+									"src": "",
+									"alt": ""
+								},
+								"label": "Background Image",
+								"name": "background_image",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "image",
+									"operator": "EQUAL"
+								},
+								"type": "image"
+							},
+							{
+								"default": {
+									"color": "#343a40",
+									"opacity": 30
+								},
+								"label": "Background Overlay Color",
+								"name": "background_overlay_color",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "image",
+									"operator": "EQUAL"
+								},
+								"help_text": "Recommended Width: 2880x1920px",
+								"type": "color"
+							},
+							{
+								"choices": [
+									[
+										"primary",
+										"Primary"
+									],
+									[
+										"secondary",
+										"Secondary"
+									],
+									[
+										"tertiary",
+										"Tertiary"
+									],
+									[
+										"white",
+										"White"
+									],
+									[
+										"black",
+										"Black"
+									],
+									[
+										"dark",
+										"Dark"
+									],
+									[
+										"light",
+										"Light"
+									],
+									[
+										"success",
+										"Success"
+									],
+									[
+										"info",
+										"Info"
+									],
+									[
+										"warning",
+										"Warning"
+									],
+									[
+										"danger",
+										"Danger"
+									],
+									[
+										"none",
+										"None"
+									]
+								],
+								"default": "white",
+								"display": "select",
+								"label": "Background Color",
+								"name": "background_color",
+								"type": "choice",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "color",
+									"operator": "EQUAL"
+								},
+								"required": true
+							},
+							{
+								"default": {
+									"color": "#fff"
+								},
+								"label": "Background Custom",
+								"name": "background_custom",
+								"visibility": {
+									"controlling_field": "background_option",
+									"controlling_value_regex": "custom",
+									"operator": "EQUAL"
+								},
+								"type": "color"
+							}
+			]},
+			{
+				"id": "heading",
+				"default": "",
+				"label": "Heading",
+				"name": "heading",
+				"type": "text"
+			},
+			{
+				"choices": [
+					[
+						"1", "H1"
+					],
+					[
+						"2", "H2"
+					],
+					[
+						"3", "H3"
+					],
+					[
+						"4", "H4"
+					],
+					[
+						"5", "H5"
+					],
+					[
+						"6", "H6"
+					]
+				],
+				"default": "2",
+				"display": "select",
+				"label": "Heading Size",
+				"name": "heading_size",
+				"visibility" : {
+					"controlling_field" : "heading",
+					"controlling_value_regex" : null,
+					"operator" : null,
+					"access" : null
+				},
+				"type": "choice",
+				"required": true
+			},
+			{
+                "name": "heading_display_size",
+                "label": "Heading Display Size",
+                "required": true,
+                "locked": false,
+				"display": "select",
+				"visibility": {
+                    "controlling_field": "heading",
+                    "controlling_value_regex": null,
+                    "operator": null,
+                    "access": null
+                },
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "h1",
+                        "H1"
+                    ],
+                    [
+                        "h2",
+                        "H2"
+                    ],
+                    [
+                        "h3",
+                        "H3"
+                    ],
+                    [
+                        "h4",
+                        "H4"
+                    ],
+                    [
+                        "h5",
+                        "H5"
+                    ],
+                    [
+                        "h6",
+                        "H6"
+                    ],
+                    [
+                        "display-4",
+                        "L"
+                    ],
+                    [
+                        "display-3",
+                        "XL"
+                    ],
+                    [
+                        "display-2",
+                        "XXL"
+                    ],
+                    [
+                        "display-1",
+                        "XXXL"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            },
+			{
+				"default": null,
+				"label": "Description",
+				"name": "description",
+				"type": "richtext"
+			},
+			
+			{
+				"id": "use_image_as_background",
+				"default": true,
+				"label": "Use Image as Background",
+				"name": "use_image_as_background",
+				"type": "boolean"
+			},
+			{
+				"id": 1,
+				"label": "Column",
+				"name": "column",
+				"type": "group",
+				"occurrence": {
+					"max": 4,
+					"min": 1,
+					"sorting_label_field" : "col_heading",
+					"default": 2
+				},
+				"children": [{
+					"id" : "custom_column_size",
+					"name" : "custom_column_size",
+					"label" : "Custom Column Size",
+					"type" : "boolean",
+					"default" : false
+				  },
+				  {
+					"name" : "col_size",
+					"label" : "Col Size",
+					"visibility" : {
+					  "controlling_field" : "custom_column_size",
+					  "controlling_value_regex" : "true",
+					  "operator" : "EQUAL",
+					  "access" : null
+					},
+					"type" : "text",
+					"default" : null
+				  },
+				  {
+						"choices": [
+							[
+								"auto", "Auto"
+							],
+							[
+								"left", "Left"
+							],
+							[
+								"center", "Center"
+							],
+							[
+								"right", "Right"
+							]
+						],
+						"default": "auto",
+						"display": "select",
+						"label": "Col Text Align",
+						"name": "col_text_align",
+						"type": "choice",
+						"required": true
+					},
+					{
+						"id": "col_media_type",
+						"choices": [
+							[
+								"image", "Image"
+							],
+							[
+								"video", "Video"
+							],
+							[
+								"youtube", "YouTube"
+							],
+							[
+								"wistia", "Wistia"
+							],
+							[
+								"none", "No Media"
+							]
+						],
+						"default": "image",
+						"display": "select",
+						"label": "Col Media Type",
+						"name": "col_media_type",
+						"type": "choice",
+						"required": true
+					},
+					{
+						"default": false,
+						"name": "add_to_lightbox",
+						"label": "Add to Lightbox",
+						"locked": false,
+						"type": "boolean",
+						"help": "Enable this toggle to add this image to a lightbox pop-up",
+						"required": false,
+						"visibility": {
+							"controlling_field": "col_media_type",
+							"controlling_value_regex": "image",
+							"operator": "MATCHES_REGEX",
+							"access": null
+						}
+					},
+					{
+						"default": {
+							"color": "#ffffff",
+							"opacity": 100
+						},
+						"label": "Col Overlay Color",
+						"name": "col_overlay_color",
+						"visibility" : {
+							"controlling_field" : "use_image_as_background",
+							"controlling_value_regex" : "true",
+							"operator" : "EQUAL",
+							"access" : null
+						},
+						"type": "color"
+					},
+					{
+						"default": {
+							"src": "",
+							"alt": null
+						},
+						"help_text": "Recommended size: 2880x1840px",
+						"label": "Col Image",
+						"name": "col_image",
+						"type": "image",
+						"visibility" : {
+							"controlling_field" : "col_media_type",
+							"controlling_value_regex" : "image",
+							"operator" : "EQUAL",
+							"access" : null
+						}
+					},
+					{
+						"default": true,
+						"label": "SR Default Image Size",
+						"name": "sr_default_image_size",
+						"type": "boolean",
+						"visibility" : {
+							"controlling_field" : "col_media_type",
+							"controlling_value_regex" : "image",
+							"operator" : "EQUAL",
+							"access" : null
+						}
+					},
+					{
+						"default": null,
+						"label": "Col Video ID",
+						"name": "col_video_id",
+						"type": "text",
+						"visibility" : {
+							"controlling_field" : "col_media_type",
+							"controlling_value_regex" : "wistia|youtube",
+							"operator" : "MATCHES_REGEX",
+							"access" : null
+						}
+					},
+					{
+						"default": {
+							"video_poster": {
+								"size_type": "auto",
+								"src": "",
+								"alt": null
+							},
+							"show_controls": false,
+							"loop": false,
+							"video": [
+								"https://cdn2.hubspot.net/hubfs/7460417/shared-channels-inline3.mp4",
+								"https://cdn2.hubspot.net/hubfs/7460417/shared-channels-inline3.webm"
+							],
+							"muted": false,
+							"autoplay": false
+						},
+						"visibility": {
+							"controlling_field": "col_media_type",
+							"access": null,
+							"controlling_value_regex": "video",
+							"hidden_subfields": null,
+							"operator": "EQUAL"
+						},
+						"tab": "CONTENT",
+						"children": [{
+								"default": {
+									"size_type": "auto",
+									"src": "https://www.lean-labs.com/hubfs/sr-assets/videos/sr-demo-poster.jpg",
+									"alt": "Sprocket Rocket Demo"
+								},
+								"resizable": true,
+								"responsive": true,
+								"name": "video_poster",
+								"label": "Video Poster",
+								"locked": false,
+								"type": "image",
+								"required": false
+							},
+							{
+								"default": [
+									"https://www.lean-labs.com/hubfs/sr-assets/videos/sr-demo.mp4",
+									"https://www.lean-labs.com/hubfs/sr-assets/videos/sr-demo.webm"
+								],
+								"name": "video",
+								"picker": "file",
+								"label": "Video",
+								"occurrence": {
+									"default": 2,
+									"min": null,
+									"max": null,
+									"sorting_label_field": null
+								},
+								"locked": false,
+								"type": "file",
+								"required": false
+							},
+							{
+								"default": false,
+								"name": "show_controls",
+								"label": "Show Controls",
+								"locked": false,
+								"type": "boolean",
+								"required": false
+							},
+							{
+								"default": false,
+								"name": "autoplay",
+								"label": "Autoplay",
+								"locked": false,
+								"type": "boolean",
+								"required": false
+							},
+							{
+								"default": false,
+								"name": "loop",
+								"label": "Loop",
+								"locked": false,
+								"type": "boolean",
+								"required": false
+							},
+							{
+								"default": false,
+								"name": "muted",
+								"label": "Muted",
+								"locked": false,
+								"type": "boolean",
+								"required": false
+							}
+						],
+						"name": "video",
+						"label": "Video",
+						"locked": false,
+						"type": "group",
+                        "id": "video",
+						"required": false
+					},
+					{
+						"default": "subheading",
+						"label": "Col Subheading",
+						"name": "col_subheading",
+						"type": "text"
+					},
+					{
+						"id": "col_heading",
+						"default": "Column Heading",
+						"label": "Col Heading",
+						"name": "col_heading",
+						"type": "text"
+					},
+					{
+						"choices": [
+							[
+								"1", "H1"
+							],
+							[
+								"2", "H2"
+							],
+							[
+								"3", "H3"
+							],
+							[
+								"4", "H4"
+							],
+							[
+								"5", "H5"
+							],
+							[
+								"6", "H6"
+							]
+						],
+						"default": "3",
+						"display": "select",
+						"label": "Col Heading Size",
+						"name": "col_heading_size",
+						"visibility" : {
+							"controlling_field" : "col_heading",
+							"controlling_value_regex" : null,
+							"operator" : null,
+							"access" : null
+						},
+						"type": "choice",
+						"required": true
+					},	
+					{
+						"name": "col_heading_display_size",
+						"label": "Col Heading Display Size",
+						"required": true,
+						"locked": false,
+						"display": "select",
+						"visibility": {
+							"controlling_field": "col_heading",
+							"controlling_value_regex": null,
+							"operator": null,
+							"access": null
+						},
+						"choices": [
+							[
+								"auto",
+								"Auto"
+							],
+							[
+								"h1",
+								"H1"
+							],
+							[
+								"h2",
+								"H2"
+							],
+							[
+								"h3",
+								"H3"
+							],
+							[
+								"h4",
+								"H4"
+							],
+							[
+								"h5",
+								"H5"
+							],
+							[
+								"h6",
+								"H6"
+							],
+							[
+								"display-4",
+								"L"
+							],
+							[
+								"display-3",
+								"XL"
+							],
+							[
+								"display-2",
+								"XXL"
+							],
+							[
+								"display-1",
+								"XXXL"
+							]
+						],
+						"type": "choice",
+						"default": "auto"
+					},
+					{
+						"id": "",
+						"default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lobortis eleifend convallis. Quisque ex arcu, laoreet in ante quis, convallis laoreet odio. Cras quis neque non purus efficitur feugiat non at dui. Ut velit libero, ultricies eu nulla dictum, porta egestas orci.",
+						"label": "Col Content",
+						"name": "col_content",
+						"type": "richtext"
+					},
+					{
+						"id": "cta",
+						"name": "cta",
+						"label": "CTA",
+						"children": [
+							{
+								"id": "cta_type",
+								"name": "cta_type",
+								"label": "CTA Type",
+								"required": true,
+								"display": "select",
+								"choices": [
+									[
+										"cta",
+										"HubSpot CTA"
+									],
+									[
+										"btn",
+										"Button"
+									],
+									[
+										"none",
+										"None"
+									]
+								],
+								"type": "choice",
+								"default": "btn"
+							},
+							{
+								"name": "cta_style",
+								"label": "CTA Style",
+								"visibility": {
+									"controlling_field": "cta_type",
+									"controlling_value_regex": "none",
+									"operator": "NOT_EQUAL",
+									"access": null
+								},
+								"display": "select",
+								"required": true,
+								"choices": [
+									[
+								"primary",
+								"Primary"
+							],
+							[
+								"secondary",
+								"Secondary"
+							],
+							[
+								"tertiary",
+								"Tertiary"
+							],
+							[
+								"white",
+								"White"
+							],
+							[
+								"black",
+								"Black"
+							],
+							[
+								"outline-primary",
+								"Outline Primary"
+							],
+							[
+								"outline-secondary",
+								"Outline Secondary"
+							],
+							[
+								"outline-tertiary",
+								"Outline Tertiary"
+							],
+							[
+								"outline-white",
+								"Outline White"
+							],
+							[
+								"outline-black",
+								"Outline Black"
+							],
+							[
+								"none",
+								"None"
+							]
+								],
+								"type": "choice",
+								"default": "outline-primary"
+							},
+							{
+								"name": "cta",
+								"label": "CTA",
+								"visibility": {
+									"controlling_field": "cta_type",
+									"controlling_value_regex": "cta",
+									"operator": "EQUAL",
+									"access": null
+								},
+								"type": "cta",
+								"default": ""
+							},
+							{
+								"name": "button_text",
+								"label": "Button Text",
+								"visibility": {
+									"controlling_field": "cta_type",
+									"controlling_value_regex": "btn",
+									"operator": "EQUAL",
+									"access": null
+								},
+								"type": "text",
+								"default": "Let's Do This"
+							},
+							{
+								"name": "link",
+								"label": "Link",
+								"visibility": {
+									"controlling_field": "cta_type",
+									"controlling_value_regex": "btn",
+									"operator": "EQUAL",
+									"access": null
+								},
+								"type": "text",
+								"default": "#"
+							}
+						],
+						"type": "group",
+						"default": {
+							"cta_type": "btn",
+							"cta_style": "outline-primary",
+							"cta": "",
+							"button_text": "Let's Do This",
+							"link": "#"
+						}
+					}
+				],
+				"default": [{
+						"custom_column_size" : false,
+						"col_text_align": "center",
+						"col_media_type": "image",
+						"col_overlay_color": {
+							"color": "#ffffff",
+							"opacity": 100
+						},
+						"col_image": {
+							"src": ""
+						},
+						"sr_default_image_size": true,
+						"col_video_id": "",
+						"col_subheading": "Built for Everyone",
+						"col_heading": "Enhanced User Experience",
+						"col_heading_size": "3",
+						"col_content": "Easy-of-use ensures new users learn to<br>use prototyping tools.",
+						"cta": {
+							"cta_type": "btn",
+							"cta_style": "outline-primary",
+							"button_text": "Let's Do This",
+							"link": "#"
+						}
+					},
+					{
+						"custom_column_size" : false,
+						"col_text_align": "center",
+						"col_media_type": "image",
+						"col_overlay_color": {
+							"color": "#ffffff",
+							"opacity": 100
+						},
+						"col_image": {
+							"src": ""
+						},
+						"sr_default_image_size": true,
+						"col_video_id": "",
+						"col_subheading": "Flexible Tools",
+						"col_heading": "Easy-To-Use Tools",
+						"col_heading_size": "3",
+						"col_content": "Optimize landing and website pages or<br>start from scratch.",
+						"cta": {
+							"cta_type": "btn",
+							"cta_style": "outline-primary",
+							"button_text": "Let's Do This",
+							"link": "#"
+						}
+					}
+				]
+			},
+			{
+				"choices": [
+					[
+						"top", "Top"
+					],
+					[
+						"center", "Center"
+					],
+					[
+						"bottom", "Bottom"
+					],
+					[
+						"stretch", "Stretch"
+					]
+				],
+				"default": "stretch",
+				"display": "select",
+				"label": "Column Vertical Align",
+				"name": "column_vertical_align",
+				"type": "choice",
+				"required": true
+			},
+			{
+				"choices": [
+					[
+						"auto", "Auto"
+					],
+					[
+						"left", "Left"
+					],
+					[
+						"center", "Center"
+					],
+					[
+						"right", "Right"
+					]
+				],
+				"default": "auto",
+				"display": "select",
+				"label": "Text Align",
+				"name": "text_align",
+				"type": "choice",
+				"required": true
+			},
+			{
+				"choices": [
+					[
+						"auto", "Auto"
+					],
+					[
+						"primary", "Primary"
+					],
+					[
+						"secondary", "Secondary"
+					],
+					[
+						"tertiary", "Tertiary"
+					],
+					[
+						"white", "White"
+					],
+					[
+						"black", "Black"
+					],
+					[
+						"dark", "Dark"
+					],
+					[
+						"light", "Light"
+					],
+					[
+						"success", "Success"
+					],
+					[
+						"info", "Info"
+					],
+					[
+						"warning", "Warning"
+					],
+					[
+						"danger", "Danger"
+					]
+				],
+				"default": "auto",
+				"display": "select",
+				"label": "Text Color",
+				"name": "text_color",
+				"type": "choice",
+				"required": true
+			},
+			{
+				"default": "SR Two Col 02",
+				"label": "hidden_name",
+				"name": "hidden_name",
+				"type": "text",
+				"locked": true
+			}
+		],
+		"source": ""
+	},
+	"custom_module_template": "sr-multicol-media-01.html",
+    "available_builder": true,
+    "category": 4,
+	"files": [{
+		"file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/baguetteBox.min.js",
+		"folder_paths": "sr-assets/js"
+	},
+	{
+		"file": "launchpad-starter-v2/sr/sr-templates/sr-assets/css/baguetteBox.min.css",
+		"folder_paths": "sr-assets/css"
+	}]
+}

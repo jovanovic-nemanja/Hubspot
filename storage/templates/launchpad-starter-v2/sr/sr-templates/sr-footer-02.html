@@ -1,0 +1,376 @@
+{% if module.enabled %}
+
+	{% if hub_id == 123 || !module.menu %}
+	{% set node = {
+		'children': [
+			{
+				'label': 'Second Card',
+				'url': '#',
+				'children': [
+					{
+						'label': 'Sample About Page',
+						'url': '#'
+					},
+					{
+						'label': 'Sample Work Page',
+						'link': '#'
+					},
+					{
+						'label': 'Sample Team Page',
+						'link': '#'
+					},
+					{
+						'label': 'Sample Careers Page',
+						'link': '#'
+					},
+					{
+						'label': 'Sample Contact Page',
+						'link': '#'
+					}
+				],
+			},
+			{
+				'label': 'Third Card',
+				'url': '#',
+				'children': [
+					{
+						'label': 'Sample About Page',
+						'url': '#'
+					},
+					{
+						'label': 'Sample Work Page',
+						'link': '#'
+					},
+					{
+						'label': 'Sample Team Page',
+						'link': '#'
+					},
+					{
+						'label': 'Sample Careers Page',
+						'link': '#'
+					},
+					{
+						'label': 'Sample Contact Page',
+						'link': '#'
+					}
+				],
+			},
+			{
+				'label': 'Fifth Card',
+				'url': '#',
+				'children': [
+					{
+						'label': 'Sample About Page',
+						'url': '#'
+					},
+					{
+						'label': 'Sample Work Page',
+						'link': '#'
+					},
+					{
+						'label': 'Sample Team Page',
+						'link': '#'
+					},
+					{
+						'label': 'Sample Careers Page',
+						'link': '#'
+					},
+					{
+						'label': 'Sample Contact Page',
+						'link': '#'
+					}
+				],
+			},
+			{
+				'label': 'Sixth Card',
+				'url': '#',
+				'children': [
+					{
+						'label': 'Sample About Page',
+						'url': '#'
+					},
+					{
+						'label': 'Sample Work Page',
+						'link': '#'
+					},
+					{
+						'label': 'Sample Team Page',
+						'link': '#'
+					},
+					{
+						'label': 'Sample Careers Page',
+						'link': '#'
+					},
+					{
+						'label': 'Sample Contact Page',
+						'link': '#'
+					}
+				],
+			}
+		],
+		} %}
+	{% else %}
+		{% set node = menu(module.menu) %}
+	{% endif %}
+	
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-footer-02" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Footer 02</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+	
+	<footer class="sr-footer-02 {{name}} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %} {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} {% if module.design_settings.class %}{{ module.design_settings.class }}{% endif %}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="container-fluid">
+			<div class="row">
+				
+				<div class="col-md-4 col-6 footer-item logo sr-padding-custom">
+					
+					{% if module.logo.src %}
+					{% if module.sr_default_image_size %}
+						{{ var.image(module.logo.src, '220', module.logo.alt) }}
+					{% else %}
+						{{ var.image(module.logo.src, module.logo.width, module.logo.alt) }}
+					{% endif %}
+					{% endif %}
+
+					{% if module.content %}<div class="description sr-spacer-25">{{ module.content }}</div>{% endif%}
+
+					{% if module.cta.cta_type != 'none' %}
+						<div class="btn-wrapper btn-{{ module.cta.cta_style }}-wrapper">
+							{% if module.cta.cta_type == 'btn' %}
+								<a href="{{ module.cta.link }}" class="cta_button">{{ module.cta.button_text }}</a>
+							{% elif module.cta.cta_type == 'cta' %}
+								{% cta guid="{{ module.cta.cta }}" %}
+							{% endif %}
+						</div>
+					{% endif %}
+
+				</div>
+
+				{% for item in node.children %}
+					{% if loop.index <= 2 %}
+						<div class="col-md-4 col-6 footer-item sr-padding-custom">
+							
+							{% if item.url %}
+								<h5 {% if module.text_color != 'auto' %}class="text-{{ module.text_color }}"{% endif %} ><a href="{{ item.url }}">{{ item.label }}</a></h5>
+							{% else %}
+								<h5 {% if module.text_color != 'auto' %}class="text-{{ module.text_color }}"{% endif %} >{{ item.label }}</h5>
+							{% endif %}
+
+							<div class="menu-node">
+								<ul class="node-list">
+									{% for child in item.children %}
+										<li class="node-item"><a class="{% if module.text_color != 'auto' && !child.activeBranch %}text-{{ module.text_color }}{% endif %} {% if child.activeBranch %}text-primary{% endif %}" href="{{child.url}}">{{child.label}}</a></li>
+									{% endfor %}
+								</ul>
+							</div>
+
+						</div>
+					{% endif %}
+				{% endfor %}
+				
+				<div class="col-md-4 col-6 footer-item social-col sr-padding-custom">
+					{% if module.icons|length %}
+						<ul class="social">
+							{% for item in module.icons %}
+								<li{% if !loop.last %} class="mr-2"{% endif %}><a class="no-decoration" href="{{item.link}}"><i class="fa {{item.icon}}" aria-hidden="true"></i></a></li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+					<div class="small">{{module.copyright}}</div>
+				</div>
+
+			{% for item in node.children %}
+				{% if loop.index > 2 %}
+					<div class="col-md-4 col-6 footer-item sr-padding-custom">
+						
+						{% if item.url %}
+							<h5 {% if module.text_color != 'auto' %}class="text-{{ module.text_color }}"{% endif %} ><a href="{{ item.url }}">{{ item.label }}</a></h5>
+						{% else %}
+							<h5 {% if module.text_color != 'auto' %}class="text-{{ module.text_color }}"{% endif %} >{{ item.label }}</h5>
+						{% endif %}
+
+						<div class="menu-node">
+							<ul class="node-list">
+								{% for child in item.children %}
+									<li class="node-item"><a class="{% if module.text_color != 'auto' && !child.activeBranch %}text-{{ module.text_color }}{% endif %} {% if child.activeBranch %}text-primary{% endif %}" href="{{child.url}}">{{child.label}}</a></li>
+								{% endfor %}
+							</ul>
+						</div>
+
+					</div>
+				{% endif %}
+			{% endfor %}
+			</div>
+		</div>
+	</footer>
+
+	{% require_css %}
+	<style>
+		{% if module.design_settings.background_option == 'image' %}
+			.{{ name }} {
+				{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center;
+				position: relative;
+			}
+			@media (min-width: 768px) {
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+				}
+			}
+			.{{ name }}:before {
+				content: "";
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;    
+				background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});	
+			}
+			.{{ name }} .container, .{{ name }} .container-fluid {
+				position: relative;
+			}
+		{% elif module.design_settings.background_option == 'gradient' %}
+			.{{name}} {
+				background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+			}
+		{% elif module.design_settings.background_option == 'custom' %}
+			.{{ name }} {
+				background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+			}
+		{% endif %}	
+		.{{ name }} .sr-padding-custom {
+			padding: 6.125rem 6vw 6.125rem 6vw !important
+		}
+		.sr-footer-02  {
+			border-top: 1px solid #e5e7ea;
+		}
+		.sr-footer-02 a {
+			-webkit-transition: all ease-in-out .1s;
+			-o-transition: all ease-in-out .1s;
+			transition: all ease-in-out .1s;
+		}
+		.sr-footer-02 .footer-item h5 a {
+			color: inherit;
+		}
+		.sr-footer-02 ul li a, .sr-footer-02  .footer-link {
+			display: block;
+		}
+		.sr-footer-02  .social {
+			list-style: none;
+			padding: 0;
+		}
+		.sr-footer-02 .social li {
+			display: inline-block;
+			text-align: center;
+		}
+		.sr-footer-02 .social li a {
+			border-bottom: none;
+			font-size: 1.4rem;
+		}
+		.sr-footer-02 .description p {
+			margin: 0;
+		}
+		.sr-footer-02 .footer-item {
+			border-right: 1px solid #e5e7ea;
+			border-bottom: 1px solid #e5e7ea;
+		}
+		.sr-footer-02 .footer-item ul {
+			padding: 0;
+			list-style: none;
+			margin: 0;
+			margin-bottom: 1rem;
+		}
+		{% if module.design_settings.small_menu_padding %}
+		.sr-footer-02 li.node-item {
+			padding: .025rem 0;
+		}
+		{% else %}
+		.sr-footer-02 li.node-item {
+			padding: .5rem 0;
+		}
+		{% endif %}
+		.sr-footer-02 li.node-item:last-child {
+			padding-bottom: 0;
+		}
+		.sr-footer-02 ul.social li {
+			display: inline-block;
+			font-size: 1.2rem;
+		}
+		.sr-footer-02 ul.social li i {
+			border-radius: 50%;
+			padding: .2rem;
+			background: #87909E;
+			color: #fff;
+			width: 2.3rem;
+			height: 2.3rem;
+			line-height: 2rem;
+			-webkit-transition: all ease-in-out .1s;
+			-o-transition: all ease-in-out .1s;
+			transition: all ease-in-out .1s;
+		}
+		.sr-footer-02 ul.social li:hover i {
+			background: #0C63FF;
+			background: var(--primary)
+		} 
+		.sr-footer-02 ul.social li:hover, .sr-footer-02 ul.social li a:hover  {
+			opacity: 1;
+			color: #000;
+		}
+		.sr-footer-02 span.copyright a {
+			text-decoration: underline !important;
+			padding-right: 1rem;
+		}
+		.sr-footer-02 .col-xs-6 {
+			position: relative;
+			min-height: 1px;
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+		.sr-footer-02 .col-xs-6 {
+			float: left;
+		}
+		.sr-footer-02 .footer-item.logo img {
+			max-width: 100%;
+			height: auto;
+		}
+		@media only screen and (min-width: 768px) {
+			.sr-footer-02 .social li a {
+				font-size: 1.1rem;
+			}
+		}
+		@media (max-width: 768px) {
+			.sr-footer-02 .social-col {
+				-webkit-box-ordinal-group: 2;
+				-ms-flex-order: 1;
+				order: 1;
+			}
+		}
+		.sr-footer-02 .footer-item h5 {
+			color:{{ module.design_settings.footer_heading_color.color }};
+			margin-bottom:1.25rem;
+		}
+		.sr-footer-02 .footer-item {
+			border-right: 1px solid {{ module.design_settings.footer_border_color.color }};
+			border-bottom: 1px solid {{ module.design_settings.footer_border_color.color }};
+		}
+		.sr-footer-02 ul li a  {
+			color:{{ module.design_settings.footer_menu_color.color }}
+		}
+		.sr-footer-02 ul li a:hover {
+			color:{{ module.design_settings.hover_footer_menu_color.color }}
+		}
+	</style>
+	{% end_require_css %}
+{% endif %}

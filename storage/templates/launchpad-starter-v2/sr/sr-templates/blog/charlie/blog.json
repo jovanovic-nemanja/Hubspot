@@ -1,0 +1,44 @@
+{
+	"name": "Charlie",
+	"template": [
+		{
+			"category_id": "3",
+			"folder": "sr/templates",
+			"template_type": "6",
+			"path": "sr/templates/blog-charlie-header.html",
+			"source": "launchpad-starter-v2/sr/sr-templates/blog/charlie/blog-charlie-header.html"
+		},
+		{
+			"category_id": "3",
+			"folder": "sr/templates",
+			"template_type": "6",
+			"path": "sr/templates/blog-charlie-footer-includes.html",
+			"source": "launchpad-starter-v2/sr/sr-templates/blog/charlie/blog-charlie-footer-includes.html"
+		},
+		{
+			"category_id": "3",
+			"folder": "sr/templates",
+			"template_type": "6",
+			"path": "sr/templates/blog-charlie-listing.html",
+			"source": "launchpad-starter-v2/sr/sr-templates/blog/charlie/blog-charlie-listing.html",
+			"is_available_for_new_content": true
+		},
+		{
+			"category_id": "3",
+			"folder": "sr/templates",
+			"template_type": "6",
+			"path": "sr/templates/blog-charlie-single.html",
+			"source": "launchpad-starter-v2/sr/sr-templates/blog/charlie/blog-charlie-single.html",
+			"is_available_for_new_content": true
+		},
+		{
+			"category_id": "0",
+			"css_or_js_template": true,
+			"template_type": "24",
+			"folder": "sr/css",
+			"path": "sr/css/blog-charlie.css",
+			"source": "launchpad-starter-v2/sr/sr-templates/blog/charlie/css/blog-charlie.css"
+		}
+	],
+	"files": []
+}

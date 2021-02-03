@@ -1,0 +1,430 @@
+{% if module.enabled %}
+	{% require_css %}
+		<style>
+			{% if module.design_settings.background_option == 'image' %}
+			.{{ name }} {
+				{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center;
+				position: relative;
+			}
+			@media (min-width: 768px) {
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+				}
+			}
+			.{{ name }}:before {
+				content: "";
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;    
+				background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});
+			}
+			.{{ name }} .container, .{{ name }} .container-fluid {
+				position: relative;
+			}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+			.{{ name }} {
+				background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+			}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+			.{{ name }} {
+				padding: {{ module.design_settings.custom_padding }};
+			}
+			{% endif %}
+			.sr-offer-video-cta-01 .container {
+				position: relative;
+			}
+			@media only screen and (min-width: 768px) {
+				.sr-offer-video-cta-01-inner {
+					position: relative;
+				}
+			}
+
+			iframe {
+				z-index: 1;
+			}
+
+			/* Video */
+			.sr-offer-video-cta-01 .embed-responsive .vidyard_player {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+
+			.sr-offer-video-cta-01 .embed-responsive .vidyard_player > span {
+				width: 100%!important;
+				height: 100%!important;
+			}
+			@media only screen and (min-width: 768px) {
+				.sr-offer-video-cta-01-cta {
+					position: relative;
+					width: 100%;
+					padding-right: 30px;
+					padding-left: 15px;
+					-ms-flex: 0 0 50%;
+					flex: 0 0 50%;
+					max-width: 50%;
+					padding-bottom: 7.9rem;
+				}
+
+				.sr-offer-video-cta-01 .sr-offer-video-cta-01-video {
+					position: absolute;
+					top: 0;
+					right: 0;
+					margin: auto;
+					width: 50%;
+					display: block;
+					transition: all ease-in-out 1s;
+					margin-right: 15px;
+				}
+
+				.sr-offer-video-cta-01 .sr-offer-video-cta-01-video.active {
+					width: 100%;
+					padding: 0;
+					margin-right: 0;
+				}
+
+				.sr-offer-video-cta-01 .embed-responsive:after {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					background: transparent;
+				}
+
+			}
+
+			/* Video Controls */
+			.sr-offer-video-cta-01 .js-play:before {
+				content: "\f04b";
+				font-family: fontawesome;
+			}
+			.sr-offer-video-cta-01 .js-play.active:before {
+				content: "\f04c";
+			}
+			.sr-offer-video-cta-01 .js-resize:before {
+				content: "\f065";
+				font-family: fontawesome;
+			}
+			@media (min-width: 768px) {
+				.sr-offer-video-cta-01 .embed-responsive-controls {
+					position: absolute;
+					bottom: 0;
+					color: #fff;
+					width: 100%;
+					padding: 1em;
+					opacity: .3;
+					transition: all ease-in-out 200ms;
+				}
+				.sr-offer-video-cta-01:hover .embed-responsive-controls {
+					opacity: .8;
+				}
+				.sr-offer-video-cta-01 .embed-responsive-controls a {
+					cursor: pointer;
+					line-height: 1;
+				}
+			}
+			@media (max-width: 768px) {
+				.sr-offer-video-cta-01-video {
+					padding-top: 3.125rem;
+				}
+			}
+		
+		</style>
+	{% end_require_css %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% else %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-offer-video-cta-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Offer Video CTA 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+	
+	<div class="sr-offer-video-cta-01 {{ name }} {{ module.design_settings.class }} sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %}">
+		<div class="{{ module.design_settings.layout }}">
+			
+			{% if module.design_settings.container_width != 'max' %}
+				<div class="row">
+					<div class="{{ width_class }}">
+			{% endif %}
+
+						<div class="sr-offer-video-cta-01-inner">
+							
+							<div class="sr-offer-video-cta-01-cta sr-spacer-bottom-25">
+								{% if module.label_heading %}
+								    <div class="label">{{ module.label_heading}}</div>
+								{% endif %}
+
+								{% if module.heading %}
+								    <h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} heading {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.heading}}</h{{module.heading_size}}>
+								{% endif %}
+
+								{% if module.description %}
+								    <div class="description">{{ module.description}}</div>
+								{% endif %}
+
+								{% if module.cta.cta_type != 'none' %}
+									<div class="btn-wrapper btn-{{ module.cta.cta_style }}-wrapper sr-spacer-top-25">
+										{% if module.cta.cta_type == 'btn' %}
+										    <a href="{{ module.cta.link }}" class="cta_button">{{ module.cta.button_text }}</a>
+										{% elif module.cta.cta_type == 'cta' %}
+										    {% cta guid="{{ module.cta.cta }}" %}
+										{% endif %}
+									</div>
+								{% endif %}								
+							</div>
+
+							<div class="sr-offer-video-cta-01-video active">
+								{% if module.video_type == 'youtube' %}
+									<div class="embed-responsive embed-responsive-16by9">
+										<div id="{{ name }}-player"></div>
+									</div>
+								{% elif module.video_type == 'wistia' %}
+									<div class="embed-responsive embed-responsive-16by9">
+										<iframe src="//fast.wistia.net/embed/iframe/{{ module.video_id }}?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" controlsVisibleOnLoad="false" fullscreenButton="false" playbackRateControl="false"></iframe>
+										<script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
+									</div>
+								{% elif module.video_type == 'vidyard' %}
+									<div class="embed-responsive embed-responsive-16by9">
+										<script type="text/javascript" id="vidyard_embed_code_{{ module.video_id }}" src="//play.vidyard.com/{{ module.video_id }}.js?v=3.1.1&type=inline&autoplay=0&hidden_controls=1&viral_sharing=0&embed_button=0"></script>
+										<script src="//play.vidyard.com/v0/api.js"></script>
+									</div>
+								{% elif module.video_type == 'vimeo' %}
+									<div class="embed-responsive embed-responsive-16by9">
+										<iframe src="https://player.vimeo.com/video/{{ module.video_id }}" id="vimeo" frameborder="0"></iframe>
+									</div>
+								{% else %}
+									<div class="embed-responsive embed-responsive-16by9">
+										<video id="{{ name }}-video" controls>
+											<source src="{{ module.video_url }}" type="video/mp4">
+										</video>
+									</div>
+								{% endif %}
+							</div>
+
+						</div>
+
+			{% if module.design_settings.container_width != 'max' %}
+					</div>
+				</div>
+			{% endif %}
+
+		</div>
+	</div>
+	
+	{{ require_js(var.sr_assetDir + '/js/ScrollMagic.min.js') }}
+	{{ require_js(var.sr_assetDir + '/js/TweenMax.min.js') }}
+
+	{% if module.video_type == 'vidyard' %}
+		{{ require_js('//play.vidyard.com/v0/api.js') }}
+	{% elif module.video_type == 'vimeo' %}
+		{{ require_js('https://player.vimeo.com/api/player.js') }}
+	{% endif %}
+
+	{% require_js %}
+		<script>
+
+			var ww = $(window).width();
+
+				// ---------------- Video Init ----------------
+				
+				{% if module.video_type == 'youtube' %}
+					
+					// Youtube
+					var tag = document.createElement('script');
+					tag.src = "https://www.youtube.com/iframe_api";
+					var firstScriptTag = document.getElementsByTagName('script')[0];
+					firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+					var player_{{ name }};
+
+					function onYouTubeIframeAPIReady() {
+						if (ww >= 768) {
+							player_{{ name }} = new YT.Player('{{ name }}-player', {
+								videoId: '{{ module.video_id }}',
+								playerVars: { 
+									'autoplay': 0,
+									'showinfo' : 0,
+									'controls': 0,
+									'rel': 0
+								}
+							});
+						} else {
+							player_{{ name }} = new YT.Player('{{ name }}-player', {
+								videoId: '{{ module.video_id }}',
+								playerVars: { 
+									'autoplay': 0,
+									'showinfo' : 1,
+									'controls': 1,
+									'rel': 0
+								}
+							});
+						}
+					}
+
+					function playVideo_{{ name }}() {
+						player_{{ name }}.playVideo();
+					}
+					function pauseVideo_{{ name }}() {
+						player_{{ name }}.pauseVideo();
+					}
+						
+				{% elif module.video_type == 'wistia' %}
+
+					// Wistia
+					function playVideo_{{ name }}() {
+						window._wq = window._wq || [];
+						_wq.push({ id: "{{ module.video_id }}", onReady: function(video) {
+							video.play();
+							video.volume(100);
+						}});
+					}
+					function pauseVideo_{{ name }}() {
+						window._wq = window._wq || [];
+						_wq.push({ id: "{{ module.video_id }}", onReady: function(video) {
+							video.pause();
+						}});
+					}
+
+				{% elif module.video_type == 'vidyard' %}
+					
+					// Vidyard
+					var players = new Vidyard.players(); 
+					function playVideo_{{ name }}() {
+						players["{{ module.video_id }}"].play();
+					}
+					function pauseVideo_{{ name }}() {
+						players["{{ module.video_id }}"].pause();
+					}
+						
+				{% elif module.video_type == 'vimeo' %}
+						
+					// Vimeo
+					var iframe_{{ name }} = $('.{{ name }} #vimeo');
+					var player_{{ name }} = new Vimeo.Player(iframe_{{ name }});
+
+					function playVideo_{{ name }}() {
+						player_{{ name }}.play();
+					}
+					function pauseVideo() {
+						player_{{ name }}.pause();
+					}
+
+				{% else %}
+
+					function playVideo_{{ name }}() {
+						$('#{{ name }}-video')[0].play()
+					}
+					function pauseVideo_{{ name }}() {
+						$('#{{ name }}-video')[0].pause()
+					}
+
+				{% endif %}
+
+				// ---------------- Video Controls ----------------     
+
+					if (ww >= 768) {
+
+						// JS Play/Pause Vide
+						sessionStorage.setItem("played_{{ name }}", "false");
+						$('.{{ name }} .js-play').click(function() {
+							// NOTE: true = played
+							var session_{{ name }} = sessionStorage.getItem("played_{{ name }}");
+							if (session_{{ name }} == "true") {
+								pauseVideo_{{ name }}();
+								sessionStorage.setItem("played_{{ name }}", "false");
+							} else {
+								playVideo_{{ name }}();
+								sessionStorage.setItem("played_{{ name }}", "true");
+							}
+							$(this).toggleClass('active');
+							sessionStorage.setItem("clicked_{{ name }}", "true");
+						});
+						
+						// JS Resize
+						$('.{{ name }} .js-resize').click(function(){
+							$('.{{ name }} .sr-offer-video-cta-01-video').toggleClass('active');
+						});
+
+					}
+
+				// ------------- Scrollmagic scenes --------------
+				
+				$(function(){
+					
+					function initScrollMagic_{{ name }}(){
+
+						var ctrl_{{ name }}    = new ScrollMagic.Controller();
+						var height_{{ name }}  = $('.{{ name }}').outerHeight();
+
+						var scene_{{ name }} = new ScrollMagic.Scene({
+							triggerElement: ".{{ name }}",
+							reverse: true,
+							duration: height_{{ name }}
+						})
+						.on('enter', function () {
+							// Remove video active on scroll
+							$('.{{ name }} .sr-offer-video-cta-01-video').removeClass('active');
+
+							// Play video
+							var session_{{ name }} = sessionStorage.getItem("played_{{ name }}");
+							var clicked_{{ name }} = sessionStorage.getItem("clicked_{{ name }}");
+							if ((session_{{ name }} == "false") && (clicked_{{ name }} != "true")) {
+								$('.{{ name }} .js-play').addClass('active');
+								playVideo_{{ name }}();
+								sessionStorage.setItem("played_{{ name }}", "true");
+							}
+						})
+						.on('leave', function () {
+							// Pause video
+							$('.{{ name }} .js-play').removeClass('active');
+							pauseVideo_{{ name }}();
+							sessionStorage.setItem("played_{{ name }}", "false");
+						})
+						// .addIndicators()
+						.addTo(ctrl_{{ name }});
+
+					}
+
+					if( ww > 767) {
+						initScrollMagic_{{ name }}()
+					}
+
+				});
+
+
+		</script>
+	{% end_require_js %}
+
+{% endif %}

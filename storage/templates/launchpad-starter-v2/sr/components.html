@@ -1,0 +1,144 @@
+{% set project = request.path|split('/', 2) %}
+{% set projectDir = project|first %}
+{% set variables = projectDir + "/sr/templates/variables.html" %}
+{% import variables as var %}
+{% set template = var.baseDir + "/page.html" %}
+{% extends template %}
+
+{% block body_class %}home{% endblock %}
+
+{% block page_nav %}
+{% endblock %}
+
+{% block page_content %}
+	<br><br>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<span class="badge badge-warning">h1.display-1</span>
+				<h1 class="display-1">Display 1</h1>
+				<span class="badge badge-warning">h1.display-2</span>
+				<h1 class="display-2">Display 2</h1>
+				<span class="badge badge-warning">h1.display-3</span>
+				<h1 class="display-3">Display 3</h1>
+				<span class="badge badge-warning">h1.display-4</span>
+				<h1 class="display-4">Display 4</h1>
+			</div>
+			<div class="col-sm-6">
+				<span class="badge badge-warning">h1</span>
+				<h1>Hello World</h1>
+				<hr>
+				<span class="badge badge-warning">h2</span>
+				<h2>Hello World</h2>
+				<hr>
+				<span class="badge badge-warning">h3</span>
+				<h3>Hello World</h3>
+				<hr>
+				<span class="badge badge-warning">h4</span>
+				<h4>Hello World</h4>
+				<hr>
+				<span class="badge badge-warning">h5</span>
+				<h5>Hello World</h5>
+				<hr>
+				<span class="badge badge-warning">h6</span>
+				<h6>Hello World</h6>
+			</div>
+		</div>
+		<br><br><br>
+		<div class="row">
+			<div class="col-sm-6">
+				<span class="badge badge-warning">p.lead</span>
+				<p class="lead">For 50 years, WWF has been protecting the future of nature. The world's leading conservation organization, WWF works in 100 countries and is supported by 1.2 million members in the United States and close to 5 million globally.</p>
+				<hr>
+				<span class="badge badge-warning">p</span>
+				<p>For 50 years, WWF has been protecting the future of nature. The world's leading conservation organization, WWF works in 100 countries and is supported by 1.2 million members in the United States and close to 5 million globally.</p>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Email address</label>
+					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+					<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+				</div>
+				<div class="form-group">
+					<label for="exampleSelect1">Example select</label>
+					<select class="form-control" id="exampleSelect1">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="exampleSelect2">Example multiple select</label>
+					<select multiple class="form-control" id="exampleSelect2">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select>
+				</div>
+				<form class="form-inline">
+					<label class="sr-only" for="inlineFormInput">Name</label>
+					<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Jane Doe">
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+		</div>
+
+		<br><br><hr><br>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<h4>Input Sizes <small>.form-control-lg / .form-control-md (default) / .form-control-sm</small></h4>
+				<br>
+				<form class="form-group">
+					<input class="form-control form-control-lg" type="text" placeholder=".form-control-lg">
+				</form>
+				<form class="form-group">
+					<input class="form-control form-control-md" type="text" placeholder=".form-control-md">
+				</form>
+				<form class="form-group">
+					<input class="form-control form-control-sm" type="text" placeholder=".form-control-sm">
+				</form>
+			</div>
+		</div>
+
+		<br><br><hr><br>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<h4>Button Sizes <small>.btn-lg / .btn-md / .btn-sm</small></h4>
+				<br>
+				<a href="#" class="btn btn-primary btn-lg">Get Started</a>
+				<a href="#" class="btn btn-primary">Get Started</a>
+				<a href="#" class="btn btn-primary btn-sm">Get Started</a>
+			</div>
+		</div>
+
+		<br><br><hr><br>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<h4>Button Colors</h4>
+				<br>
+				<a href="#" class="btn btn-primary">Primary</a>
+				<a href="#" class="btn btn-secondary">Secondary</a>
+				<a href="#" class="btn btn-success">Success</a>
+				<a href="#" class="btn btn-danger">Danger</a>
+				<a href="#" class="btn btn-warning">Warning</a>
+				<a href="#" class="btn btn-info">Info</a>
+				<a href="#" class="btn btn-light">Light</a>
+				<a href="#" class="btn btn-dark">Dark</a>
+				<a href="#" class="btn btn-link">Link</a>
+			</div>
+		</div>
+	</div>
+	<br><br><br>	
+			
+
+{% endblock %}
+
+{% block page_footer %}
+{% endblock %}

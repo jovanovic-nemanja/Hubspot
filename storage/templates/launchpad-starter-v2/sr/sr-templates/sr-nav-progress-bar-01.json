@@ -1,0 +1,71 @@
+{
+	"custom_module": {
+		"author": "bradley@lean-labs.com",
+		"tags": ["ver-1.0.2"],
+		"name": "SR Nav Progress Bar 01",
+		"css_assets": [],
+		"editable_contexts": [],
+		"external_js": [],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+		"js_assets": [],
+		"other_assets": [],
+		"fields": [{
+				"default": true,
+				"label": "Enabled",
+				"name": "enabled",
+				"type": "boolean"
+			},
+			{
+				"default": null,
+				"label": "ID",
+				"name": "sr_module_id",
+				"type": "text"
+			},
+			{
+				"default": null,
+				"label": "Class",
+				"name": "class",
+				"type": "text"
+			},
+			{
+				"choices": [
+					[
+						"above-nav", "Above Nav"
+					],
+					[
+						"below-nav", "Below Nav"
+					]
+				],
+				"default": "above-nav",
+				"help_text": "Requires: Pillar Nav TOC 01",
+				"display": "select",
+				"label": "Position",
+				"name": "position",
+				"type": "choice",
+				"required": true
+			},
+			{
+				"default": {
+					"color": "#0c63ff"
+				},
+				"label": "Bar Color",
+				"name": "bar_color",
+				"type": "color"
+			},
+			{
+				"default": 4,
+				"help_text": "In pixels",
+				"label": "Bar Height",
+				"name": "bar_height",
+				"type": "number"
+			}
+		],
+		"source": ""
+	},
+	"custom_module_template": "sr-nav-progress-bar-01.html",
+	"available_builder": true,
+	"category": 9,
+	"files": []
+}

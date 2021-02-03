@@ -1,0 +1,489 @@
+{% if module.enabled %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-conversational-form-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Cards Conversational Form 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+
+	<div class="sr-conversational-form-01 {% if module.design_settings.class %}{{ module.design_settings.class }}{% endif %} {% if module.design_settings.border_top %}sr-line-top{% endif %} {% if module.design_settings.border_bottom %}sr-line-bottom{% endif %} prototype-no-background {{ name }}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }}">
+
+			<div class="sr-conversational-form-01-row">
+
+				<div class="sr-conversational-form-01-content sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.content_box_bg_option == 'color' %}bg-{{ module.design_settings.content_box_bg_color }}{% endif %} {% if module.text_align != 'auto' %}text-{{module.text_align}}{% endif %} {% if module.text_color != 'auto' %}text-{{module.text_color}}{% endif %}">
+					{% if module.heading %}
+						<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} content-header {% if module.text_color != 'auto' %}text-{{module.text_color}}{% endif %}">{{ module.heading }}</h{{module.heading_size}}>
+					{% endif %}
+					{% if module.description %}
+						<div class="content-message">
+							{{ module.description }}
+						</div>
+					{% endif %}
+				</div>
+
+				<div class="sr-conversational-form-01-form sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.form_box_bg_option == 'color' %}bg-{{ module.design_settings.form_box_bg_color }}{% endif %}">
+					<div class="sr-conversational-form-01-form-inner">
+						{% if hub_id == 123 || !module.form.form.form_id %}
+							<h5 class="form-title sr-spacer-bottom-25">Step</h5>
+							<!--[if lte IE 8]>
+								<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+								<![endif]-->
+								<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+								<script>
+									hbspt.forms.create({
+										portalId: "275827",
+										formId: "8b7b8f7d-790c-4a88-ad63-1ff0a4d28dc4"
+									});
+					</script>
+						{% else %}
+						<div class="sr-form">
+							{% if module.form.title is truthy %}
+								{% set no_title = False %}
+							{% else %}
+								{% set no_title = True %}
+							{% endif %}
+							{% if module.form.form.form_id %}
+								{% form
+									form_key="{{name}}",
+									form_to_use="{{module.form.form.form_id}}"
+									title="{{module.form.title}}"
+									no_title="{{no_title}}"
+									follow_up_type_simple="{{module.form.follow_up_type_simple}}"
+									simple_email_for_live_id="{{module.form.simple_email_for_live_id}}"
+									follow_up_type_automation="{{module.form.follow_up_type_automation}}"
+									response_response_type="{{module.form.form.response_type}}"
+									response_redirect_id="{{module.form.form.redirect_id}}"
+									response_redirect_url="{{module.form.form.redirect_url}}"
+									response_message="{{module.form.form.message}}"
+									notifications_are_overridden="{{module.form.notifications_are_overridden}}"
+									notifications_override_email_addresses="{{module.form.notifications_override_email_addresses}}"
+									gotowebinar_webinar_key="{{module.form.form.gotowebinar_webinar_key}}"
+								%}
+							{% endif %}
+							</div>
+						{% endif %}
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	{% require_css %}
+		<style>
+			{% if module.design_settings.content_box_bg_option == 'image' %}
+				.{{ name }} .sr-conversational-form-01-content {
+					{{ var.bg_image(module.design_settings.content_box_bg_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} .sr-conversational-form-01-content {
+						{{ var.bg_image(module.design_settings.content_box_bg_image.src, '1440') }}
+					}
+				}
+				.{{ name }} .sr-conversational-form-01-content:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					background-color: rgba({{ module.design_settings.content_box_bg_overlay_color.color|convert_rgb }}, {% if module.design_settings.content_box_bg_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.content_box_bg_overlay_color.opacity }});
+				}
+			{% elif module.design_settings.content_box_bg_option == 'custom' %}
+				.{{ name }} .sr-conversational-form-01-content {
+					background-color: rgba({{ module.design_settings.content_box_bg_custom.color|convert_rgb }}, {% if module.design_settings.content_box_bg_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.content_box_bg_custom.opacity }});
+				}
+			{% endif %}
+
+			{% if module.design_settings.form_box_bg_option == 'image' %}
+				.{{ name }} .sr-conversational-form-01-form {
+					{{ var.bg_image(module.design_settings.form_box_bg_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} .sr-conversational-form-01-form {
+						{{ var.bg_image(module.design_settings.form_box_bg_image.src, '1440') }}
+					}
+				}
+				.{{ name }} .sr-conversational-form-01-form:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					background-color: rgba({{ module.design_settings.form_box_bg_overlay_color.color|convert_rgb }}, {% if module.design_settings.form_box_bg_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.form_box_bg_overlay_color.opacity }});
+				}
+			{% elif module.design_settings.form_box_bg_option == 'custom' %}
+				.{{ name }} .sr-conversational-form-01-form {
+					background-color: rgba({{ module.design_settings.form_box_bg_custom.color|convert_rgb }}, {% if module.design_settings.form_box_bg_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.form_box_bg_custom.opacity }});
+				}
+			{% endif %}
+
+			{% if module.design_settings.layout == 'container-fluid' %}
+				.{{ name }} .sr-conversational-form-01-row {
+					margin-left: -15px;
+					margin-right: -15px;
+				}
+			{% endif %}
+
+		.sr-conversational-form-01 {
+			position: relative;
+		}
+
+		@media (min-width: 768px) {
+			.sr-conversational-form-01-row {
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-direction: row-reverse;
+						flex-direction: row-reverse;
+				margin-left: -15px;
+				margin-right: -15px;
+			}
+		}
+
+		.sr-conversational-form-01-content, .sr-conversational-form-01-form {
+			padding-right: 15px;
+			padding-left: 15px;
+			margin: 0 -15px;
+			position: relative;
+		}
+
+		.sr-conversational-form-01-form-inner {
+			background: #fff;
+			padding: 3.125rem 0;
+		}
+
+		@media (min-width: 768px) {
+			.sr-conversational-form-01 {
+				overflow-x: hidden;
+			}
+			.sr-conversational-form-01-content {
+				margin-right: 0;
+				margin-left: 0;
+			}
+			.sr-conversational-form-01-content::before {
+				content: '';
+				display: block;
+				height: 100%;
+				width: 50vw;
+				position: absolute;
+				top: 0;
+				left: 100%;
+				background-color: inherit;
+			}
+
+			.sr-conversational-form-01 .sr-conversational-form-01-form {
+				-ms-flex-preferred-size: 58%;
+											flex-basis: 58%;
+				padding-right: 3.125rem;
+				padding-bottom: 0 !important;
+				padding-left: 0;
+				position: relative;
+			}
+			.sr-conversational-form-01-form::before {
+				content: '';
+				display: block;
+				height: 100%;
+				width: 50vw;
+				position: absolute;
+				top: 0;
+				left: auto;
+				right: 100%;
+				background-color: inherit;
+			}
+
+			.sr-conversational-form-01-form-inner {
+				padding: 3.125rem;
+				min-height: 100%;
+			}
+
+			.sr-conversational-form-01-content {
+				-ms-flex-preferred-size: 42%;
+											flex-basis: 42%;
+				padding-right: 0;
+				padding-left: 3.125rem;
+			}
+			.sr-conversational-form-01-content .content-header,
+			.sr-conversational-form-01-content .content-message {
+				padding-top: 3.125rem;
+			}
+			.sr-conversational-form-01-content .content-header + .content-message {
+				padding-top: 0;
+			}
+		}
+
+		@media (min-width: 992px) {
+			.sr-conversational-form-01 .sr-conversational-form-01-form {
+				-ms-flex-preferred-size: 64%;
+											flex-basis: 64%;
+				padding-top: 4.6875rem;
+				padding-right: 4.6875rem;
+				padding-bottom: 0;
+				padding-left: 0;
+				position: relative;
+			}
+			.sr-conversational-form-01-content {
+				-ms-flex-preferred-size: 36%;
+											flex-basis: 36%;
+				padding-top: 7.8125rem;
+				padding-right: 0;
+				padding-left: 4.6875rem;
+				padding-bottom: 4.6875rem;
+			}
+		}
+
+		/* Form */
+		.sr-conversational-form-01 form {
+			line-height: 3rem;
+			display: none;
+		}
+		.sr-conversational-form-01 form p {
+			margin: 0;
+		}
+		.sr-conversational-form-01 form .steps > div {
+			display: inline;
+		}
+		.sr-conversational-form-01 form .steps > div > div {
+			display: inline-block;
+		}
+		.sr-conversational-form-01 form .steps > div > div.hs-richtext {
+			padding-right: 0.5rem;
+		}
+		.sr-conversational-form-01 form .steps > div > div.hs-form-field {
+			position: relative;
+			padding-right: 0.5rem;
+		}
+		.sr-conversational-form-01 form .steps > div > div.hs-form-field label,
+		.sr-conversational-form-01 form .steps > div > div.hs-form-field .hs-error-msgs {
+			display: none;
+			margin: 0;
+		}
+		.sr-conversational-form-01 form .steps > div > div.hs-form-field select,
+		.sr-conversational-form-01 form .steps > div > div.hs-form-field input {
+			margin-right: 0.5rem;
+		}
+		.sr-conversational-form-01 form .steps > div > div.hs-form-field legend {
+			display: none !important;
+		}
+		.sr-conversational-form-01 form .steps > div > div.hs-fieldtype-textarea {
+			display: block;
+			padding-right: 0;
+		}
+		.sr-conversational-form-01 form .steps > div > div.hs-fieldtype-textarea textarea {
+			min-height: 8rem;
+		}
+		.sr-conversational-form-01 form .hs_error_rollup.hs_error_rollup {
+			display: block;
+		}
+		.sr-conversational-form-01.sr-conversational-form-01.sr-conversational-form-01 form.hs-form input.error {
+			border-color: #dc3545;
+			border-color: var(--danger);
+		}
+		.sr-conversational-form-01 form .steps > div.actions {
+			display: block;
+			margin-top: 0.5rem;
+		}
+		.sr-conversational-form-01 form .hs_submit.hs_submit,
+		.sr-conversational-form-01 form .hs-submit.hs-submit {
+			display: block;
+			margin-top: 0.5rem;
+		}
+		.sr-conversational-form-01 form .hs_submit.hs_submit .actions,
+		.sr-conversational-form-01 form .hs-submit.hs-submit .actions {
+			text-align: right;
+		}
+		.sr-conversational-form-01 form .hs_submit.hs_submit .actions .hs-button,
+		.sr-conversational-form-01 form .hs-submit.hs-submit .actions .hs-button {
+			width: auto;
+		}
+
+		.sr-conversational-form-01 form .steps > div > div.hs-form-field .hs-error-msgs {
+			position: absolute;
+			top: -27px;
+		}
+		.sr-conversational-form-01 form .steps > div > div.hs-form-field .hs-error-msgs label {
+			display: block;
+			position: relative;
+			line-height: 1;
+			white-space: nowrap;
+			padding: 5px;
+			background-color: #dc3545;
+			background-color: var(--danger);
+			color: #fff;
+		}
+		.sr-conversational-form-01 form .steps > div > div.hs-form-field .hs-error-msgs label::before {
+			content: '';
+			width: 0;
+			height: 0;
+			overflow: hidden;
+			border-top: solid 5px #dc3545;
+			border-top: solid 5px var(--danger);
+			border-right: solid 5px transparent;
+			border-bottom: solid 0 transparent;
+			border-left: solid 5px transparent;
+			position: absolute;
+			top: 100%;
+			left: 5px;
+		}
+
+		@media (max-width: 991px) {
+			.sr-conversational-form-01-form-inner {
+				padding: 3.125rem ;
+			}
+			.sr-conversational-form-01 form .steps > div > div.hs-form-field {
+				max-width: 100%;
+				display: block;
+				padding-right: 0;
+				margin-bottom: 0;
+			}
+			.sr-conversational-form-01 .hs-form textarea {
+				max-width: 100%;
+			}
+			.sr-conversational-form-01 .form-control,
+			.sr-conversational-form-01 .hs-form input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]),
+			.sr-conversational-form-01 .hs-form textarea,
+			.sr-conversational-form-01 .hs-form select,
+			.sr-conversational-form-01 .hs-form input[readonly]:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]) {
+				max-width: 100%;
+			}
+			.sr-conversational-form-01 .hs-form textarea {
+				max-width: 100%;
+			}
+			.sr-conversational-form-01 form .steps > div > div.hs-form-field .hs-error-msgs label {
+				position: static;
+				top: 0;
+				left: 0;
+				padding-top: 5px;
+			}
+		}
+		@media (min-width: 992px) and (max-width: 1199px) {
+			.sr-conversational-form-01 .form-control,
+			.sr-conversational-form-01 .hs-form input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]),
+			.sr-conversational-form-01 .hs-form textarea,
+			.sr-conversational-form-01 .hs-form select,
+			.sr-conversational-form-01 .hs-form input[readonly]:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]) {
+				max-width: 8rem;
+			}
+			.sr-conversational-form-01 .hs-form textarea {
+				max-width: 100%;
+			}
+		}
+		@media (min-width: 1200px) {
+			.sr-conversational-form-01 .hs-form .step2 input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]) {
+				max-width: none;
+			}
+			.sr-conversational-form-01 .hs-form textarea {
+				max-width: 100%;
+			}
+		}
+		@media (max-width: 767px) {
+			.container {
+				max-width: 100% !important;
+			}
+		}
+		
+		</style>
+	{% end_require_css %}
+
+	{% require_js %}
+		<script>
+		
+			window.addEventListener('message', event => {
+				if(event.data.type === 'hsFormCallback' && event.data.eventName === 'onFormReady') {
+				
+				$('.sr-conversational-form-01 form').fadeIn();
+
+				if ($('.{{ name }} legend:contains("step2")').length > 0) {
+
+					var steps;
+					var currentStep = 1;
+
+					// Get steps and wrap them in divs
+					for (var index = 0; index < $('.{{ name }} legend').length + 50; index++) {
+
+						var stepNumber = "step" + index;
+						$('.{{ name }} legend:contains(' + stepNumber + ')').hide().parent('.hs-form-field').parent().wrapAll("<div class='steps step" + index + "' />");
+
+					}
+
+					steps = $('.{{ name }} [class*="step"]').length;
+
+					$('.{{ name }} .sticky-form-list ul li.list' + currentStep).addClass('active');
+
+					// Add next buttons
+					$('.{{ name }} .steps').each(function (index) {
+						if (index < (steps - 1)) {
+							$('.{{ name }} [class*="step"]:eq(' + index + ')').append("<div class='actions btn-wrapper btn-primary-wrapper'><a href='#' class='cta_button nextbtn' data-step='" + index + "';>Next Step</a></div>");
+						}
+					})
+
+					$(".{{ name }} .steps:not(:first)").hide();
+					$('.{{ name }} .steps').parent().parent().find(".hs_submit").hide();
+
+					// On click function
+					$(".{{ name }} .nextbtn").click(function (e) {
+						e.preventDefault();
+						var stepTarget = $(this).data("step");
+						var nextStepTarget = stepTarget + 1;
+
+						function checkError() {
+
+							if ($(".{{ name }} .hs-error-msgs").length == 0) {
+								$('.{{ name }} [class*="step"]:eq(' + stepTarget + ')').fadeOut(function () {
+									$('.{{ name }} [class*="step"]:eq(' + nextStepTarget + ')').fadeIn();
+									currentStep++;
+									$('.{{ name }} .sticky-form-list ul li.active').addClass('done');
+									$('.{{ name }} .sticky-form-list ul li.list' + currentStep).addClass('active');
+
+									if (steps == currentStep) {
+										$('.{{ name }} .nextbtn').hide(); // Hide the last next button
+										$('.{{ name }} .steps').parent().parent().find(".hs_submit").show();
+									}
+								});
+							}
+						}
+
+						$('.{{ name }} [class*="step"]:eq(' + stepTarget + ')').each(function (index) {
+							// Trigger form validation
+							$(this).find("input").change();
+							$(this).find("select").change();
+						});
+						setTimeout(checkError, 500); // Add timeout because .hs-error-msgs don't appear instantly
+
+					});
+
+					} else {
+						$('.{{ name }} .hs-field-desc').hide();
+					}
+				}
+			});
+		</script>
+	{% end_require_js %}
+
+{% endif %}

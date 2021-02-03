@@ -1,0 +1,359 @@
+{% if module.enabled %}
+{# Set an array to use to break out of the loop #}
+{% set foo = [] %}
+  {% for item in module.column %}
+    {% if item.add_to_lightbox == true %}
+      {% if foo.append(1) %}
+      {% endif %} {# append 1 to array, (an offer was loaded) #}
+    {% endif %}
+  {% endfor %}	
+
+  	{% if foo|length != 0 %}
+  		{{ require_css(var.sr_assetDir + '/css/baguetteBox.min.css') }}
+	{% endif %}
+
+	{% require_css %}
+		<style type="text/css">
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			{% if foo|length != 0 %}
+			/** Lightbox CSS */
+			.lightbox:before {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-top: -13px;
+				margin-left: -13px;
+				opacity: 0;
+				color: #fff;
+				font-size: 1.625rem;
+				font-family: 'fontAwesome';
+				content: '\f002';
+				pointer-events: none;
+				z-index: 9000;
+				transition: 0.4s;
+			}
+			.responsive-image {
+				position:relative;
+			}
+			.lightbox:hover:before {
+				opacity: 1;
+			}
+			.baguetteBox-button {
+				background-color: transparent !important;
+			}
+			button#previous-button,
+			button#next-button,
+			button#close-button{
+				outline:none;
+			}
+			.baguetteBox-button:hover svg polyline,
+			.baguetteBox-button:hover svg g{
+				stroke:var(--primary); 
+			}
+			{% endif %}
+			''
+			.{{name}} video,
+			.{{name}} .sr-multicol-media .responsive-video{
+				position:relative;
+				z-index:10;
+			}
+			{% for item in module.column %}
+
+				{% if item.background_video_design == 'design-1' %}
+				.{{name}} .sr-repeater-{{loop.index}} .design-1 iframe,
+				.{{name}} .sr-repeater-{{loop.index}} .design-1 video {
+					box-shadow: 10px 10px 50px rgba(0,0,0,0.5);
+				}
+				{% elif item.background_video_design == 'design-2' %}
+				.{{name}} .sr-repeater-{{loop.index}} .design-2 {
+					padding: 10px;
+					background-color: var(--{{item.video_accent_color}});
+					{% if item.video_accent_color == 'custom' %}
+						background-color: rgba({{ item.custom_accent_color.color|convert_rgb }}, {% if item.custom_accent_color.opacity != '100' %}0.{% endif %}{{ item.custom_accent_color.opacity }});
+					{% endif %}
+				}
+				.{{name}} .sr-repeater-{{loop.index}} .design-2:before {
+					content: "";
+					width: 100%;
+					display: block;
+					height: calc(100% + 30px);
+					position: absolute;
+					top: -15px;
+					right: 0;
+					left: 0;
+					border: 1px solid;
+					border-color:var(--{{item.video_accent_color}});
+				{% if item.video_accent_color == 'custom' %}
+					border-color: rgba({{ item.custom_accent_color.color|convert_rgb }}, {% if item.custom_accent_color.opacity != '100' %}0.{% endif %}{{ item.custom_accent_color.opacity }});
+				{% endif %}
+					z-index: 3;
+				}
+				.{{name}} .sr-repeater-{{loop.index}} .design-2:after {
+					content: "";
+					background-color: transparent;
+					width: 108%;
+					display: block;
+					height: 85%;
+					position: absolute;
+					top: 7.5%;
+					right: 0;
+					left: -4%;
+					border: 1px solid;
+					border-color:var(--{{item.video_accent_color}});
+						{% if item.video_accent_color == 'custom' %}
+							border-color: rgba({{ item.custom_accent_color.color|convert_rgb }}, {% if item.custom_accent_color.opacity != '100' %}0.{% endif %}{{ item.custom_accent_color.opacity }});
+						{% endif %}
+					z-index: 2;
+				}
+				.{{name}} .sr-repeater-{{loop.index}} .whiteout {
+					background-color: transparent!important;
+					position: absolute;
+					z-index: 5;
+					display: block;
+					width: 108%;
+					top: 30%;
+					height: 40%;
+					left: -4%;
+				}
+				.{{name}} .sr-repeater-{{loop.index}} .whiteout:before {
+					position:absolute;
+					top:0;
+					content:"";
+					display:block;
+					left:0;
+					width:4%;
+					height:100%;
+					background-color: var(--{{module.design_settings.background_color}});
+					{% if module.design_settings.background_option == 'custom' %}
+						background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+					{% endif %}
+				}
+				.{{name}} .sr-repeater-{{loop.index}} .whiteout:after {
+					position:absolute;
+					top:0;
+					content:"";
+					display:block;
+					right:0;
+					width:4%;
+					height:100%;
+					background-color: var(--{{module.design_settings.background_color}});
+						{% if module.design_settings.background_option == 'custom' %}
+							background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+						{% endif %}
+				}  
+				.{{name}} .sr-multicol-media .responsive-video {
+					z-index:10;
+				}
+
+				{% elif item.background_video_design == 'design-3'  %}
+					.{{name}} .sr-repeater-{{loop.index}} .design-3 {
+					position:relative;
+					}
+					.{{name}} .sr-repeater-{{loop.index}} .design-3:before {
+					content: " ";
+					width:100%;
+					height:100%;
+					display:block;
+					background-color: var(--{{item.video_accent_color}});
+						{% if item.video_accent_color == 'custom' %}
+						background-color: rgba({{ item.custom_accent_color.color|convert_rgb }}, {% if item.custom_accent_color.opacity != '100' %}0.{{ item.custom_accent_color.opacity }}{% else %}1{% endif %});
+						{% endif %}
+					position:absolute;
+					top:0;
+					left:0;
+					transform: rotate(-2deg);
+					}
+				{% endif %}
+			{% endfor %}
+		</style>
+	{% end_require_css %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-multicol-media-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Multicol Media 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+    {% endif %}
+	{% endif %}
+	<div class="sr-multicol-media {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} sr-padding-{{ module.design_settings.top_bottom_padding }}{% if module.design_settings.class %} {{ module.design_settings.class }}{% endif %}{% if module.use_image_as_background %} sr-bg-image{% endif %}{% if module.text_align != 'auto' %} text-{{module.text_align}}{% endif %}{% if module.design_settings.border_top %} sr-line-top{% endif %}{% if module.design_settings.border_bottom %} sr-line-bottom{% endif %} prototype-no-background {{ name }} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}"{% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }} content-wrapper">
+			{% if module.design_settings.container_width != 'max' %}
+			<div class="row">
+				<div class="{{ width_class }}">
+			{% endif %}
+					{% if module.heading %}
+						<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} section-heading">{{ module.heading }}</h{{module.heading_size}}>
+					{% endif %}
+					{% if module.description %}
+						<div class="section-description">{{ module.description }}</div>
+					{% endif %}
+					<div class="row {% if module.heading || module.description %}{{module.sr_spacer}}{% endif %} sr-valign-{{module.column_vertical_align}}">
+						{% for item in module.column %}
+							{% set colsize = 12 / loop.length %}
+							<div class="{% if item.custom_column_size && item.col_size%}{{item.col_size}}{% else %}col-md-{{ colsize|int }}{% endif %} sr-col{% if item.col_text_align != 'auto' %} text-{{item.col_text_align}}{% endif %} {% if module.use_image_as_background %}prototype-background{% endif %} sr-repeater-{{loop.index}}" >
+								{% require_css %}
+									<style>
+										.sr-multicol-media.{{name}} .sr-repeater-{{loop.index}}  {
+											{% if item.col_media_type == "image" and item.col_image.src and module.use_image_as_background %}
+												{{ var.bg_image(item.col_image.src, '600') }}
+											{% endif %}
+											background-size: cover;
+											background-repeat: no-repeat;
+											background-position: center;
+											position: relative;
+										}
+										.sr-multicol-media.{{name}} .sr-repeater-{{loop.index}}::before {
+											background-color: rgba({{ item.col_overlay_color.color|convert_rgb }}, {{item.col_overlay_color.opacity}}%);
+										}
+										@media (min-width: 768px) {
+											.sr-multicol-media.{{name}} .sr-repeater-{{loop.index}} {
+												{% if item.col_media_type == "image" and item.col_image.src and module.use_image_as_background %}
+													{{ var.bg_image(item.col_image.src, '1440') }}
+												{% endif %}
+											}
+										}
+									</style>
+								{% end_require_css %}
+								<div class="content-wrapper">
+									{% if item.col_media_type == "image" %}
+										{% if item.col_image.src and !module.use_image_as_background %}
+											<div class="responsive-image {% if item.col_subheading || item.col_heading || item.col_content || item.cta.cta_type != 'none'%}mb-4{% endif %}">
+												{% if item.add_to_lightbox %}<a class="lightbox" href="{{ item.col_image.src }}">{% endif %}
+													{% if item.sr_default_image_size %}
+														{{ var.image(item.col_image.src, '350', item.col_image.alt) }}
+													{% else %}
+														{{ var.image (item.col_image.src, item.col_image.width, item.col_image.alt) }}
+													{% endif %}
+												{% if item.add_to_lightbox %}</a>{% endif %}
+											</div>
+										{% endif %}
+									{% elif item.col_media_type == "video" %}
+                                    <div class="{% if item.background_video_design == 'design-1' %} design-1 {% elif item.background_video_design == 'design-2' %} design-2 {% elif item.background_video_design == 'design-3' %} design-3 {% endif %}">
+                                        {% if item.background_video_design == 'design-2' %}<div class="whiteout bg-{{module.design_settings.background_color}}"></div>{% endif %}
+                                        <video class="responsive-video-file" aria-describedby="{{item.video.video_poster.alt}}" {% if item.video.show_controls %}controls{% endif %} {% if item.video.autoplay %}autoplay{% endif %} {% if item.video.loop %}loop{% endif %} {% if item.video.muted %}muted{% endif %} playsinline poster="{{ item.video.video_poster.src }}">
+                                            {% for item2 in item.video.video %}
+                                            {% set file = item2|split('.')|last %}
+                                            <source src="{{ item2 }}" type="video/{{file}}">
+                                            {% endfor %}
+                                        </video>
+                                    </div>
+									{% elif item.col_media_type == "youtube" %}
+                                    <div class="{% if item.background_video_design == 'design-1' %} design-1 {% elif item.background_video_design == 'design-2' %} design-2 {% elif item.background_video_design == 'design-3' %} design-3 {% endif %} ">
+                                        {% if item.background_video_design == 'design-2' %}<div class="whiteout bg-{{module.design_settings.background_color}}"></div>{% endif %}
+                                        <div id="responsive-video" class="responsive-video">
+                                            <iframe src="https://www.youtube.com/embed/{{ item.col_video_id }}" frameborder="0" allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+									{% elif item.col_media_type == "wistia" %}
+                                    <div class="{% if item.background_video_design == 'design-1' %} design-1 {% elif item.background_video_design == 'design-2' %} design-2 {% elif item.background_video_design == 'design-3' %} design-3 {% endif %}">
+                                        {% if item.background_video_design == 'design-2' %}<div class="whiteout bg-{{module.design_settings.background_color}}"></div>{% endif %}
+                                        <div class="responsive-video">
+                                            <script src="//fast.wistia.com/embed/medias/{{ item.col_video_id }}.jsonp" async></script>
+                                            <script src="//fast.wistia.com/assets/external/E-v1.js" async></script>
+                                            <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                                                <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                                                    <div class="wistia_embed wistia_async_{{ item.col_video_id }} seo=false videoFoam=true" style="height:100%;width:100%">&nbsp;</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+									{% endif %}
+									{% if item.col_subheading %}
+                                        <h5 class="col-subheading sr-spacer-bottom-25">
+                                            {{ item.col_subheading }}
+                                        </h5>
+									{% endif %}
+									{% if item.col_heading %}
+										<h{{item.col_heading_size}} class="col-heading {% if item.col_heading_display_size != 'auto' %}{{ item.col_heading_display_size }}{% endif %}">
+											{{ item.col_heading }}
+										</h{{item.col_heading_size}}>
+									{% endif %}
+									{% if item.col_content %}
+                                        <div class="col-content">
+                                            {{ item.col_content }}
+                                        </div>
+									{% endif %}
+									{% if item.cta.cta_type && item.cta.cta_type != 'none' %}
+										<div class="btn-wrapper btn-{{ item.cta.cta_style }}-wrapper sr-spacer-top-25">
+											{% if item.cta.cta_type == 'btn' %}
+												<a href="{{ item.cta.link }}" class="cta_button">{{ item.cta.button_text }}</a>
+											{% elif item.cta.cta_type == 'cta' %}
+												{% cta guid="{{ item.cta.cta }}" %}
+											{% endif %}
+										</div>
+									{% endif %}
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+			{% if module.design_settings.container_width != 'max' %}
+				</div>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+
+	{% if foo|length != 0 %}
+	{% require_js position="footer" %}
+	<script>
+	  $(document).ready(function(){
+		baguetteBox.run('.{{name}}');
+	  });
+	</script>
+	{% end_require_js %}
+	{{ require_js(var.sr_assetDir + '/js/baguetteBox.min.js', "footer") }}
+	{% endif %}
+{% endif %}

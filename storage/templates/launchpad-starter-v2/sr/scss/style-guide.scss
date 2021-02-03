@@ -1,0 +1,95 @@
+// -----------------------------------------------------------------------------------
+//
+//  Lean Labs LaunchPad Base Theme
+//
+//  Author: @helloteichner
+//  Version: 2.0.0
+//
+// -----------------------------------------------------------------------------------
+
+.logo {
+	text-align: center;
+	padding: 3rem 0;
+}
+
+.section-title {
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	text-align: center;
+	color: #797979;
+}
+
+// Brand Colors
+.brand-colors {
+	text-align: center;
+}
+
+.ui-colors {
+	text-align: center;
+	padding-top: 1.75rem;
+}
+
+.color {
+	display: inline-block;
+	text-align: center;
+	padding: 0.5rem;
+	span {
+		width: 125px;
+		height: 125px;
+		display: inline-block;
+		border-radius: 50%;
+	}
+	label {
+		display: block;
+		text-transform: uppercase;
+	}
+}
+
+// Typography
+.typography {
+	padding-top: 6.25rem;
+}
+
+.typography-element + .typography-element {
+	padding-top: 6.68rem;
+}
+
+// Form inputs
+.form-inputs {
+	padding-top: 6.25rem;
+}
+
+// Inline Links
+.inline-links {
+	padding-top: 6.25rem;
+}
+
+.hover {
+}
+
+// Buttons
+.buttons {
+	padding-top: 6.25rem;
+
+	.row {
+		padding-bottom: 1.43rem;
+	}
+
+	label {
+		margin: 1.25rem 0;
+		@media (min-width: 768px) {
+			margin: 0 1.25rem;
+		}
+	}
+
+	.button-hover {
+		
+		label {
+			display: block;
+			@media (min-width: 768px) {
+				float: right;
+				display: inline-block;
+			}
+		}
+	}
+}

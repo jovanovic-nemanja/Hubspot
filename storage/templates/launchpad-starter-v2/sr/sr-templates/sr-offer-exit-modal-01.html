@@ -1,0 +1,180 @@
+{% if module.enabled %}
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-offer-exit-modal-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Offer Exit Modal 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+    {% endif %}
+	{% endif %}
+	
+	<div class="{{name}} modal fade {{module.class}}" id="{{module.sr_module_id}}" tabindex="-1" role="dialog" aria-labelledby="{{name}}" aria-hidden="true">
+		<div id="exit-popup" class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="modal-header text-primary">
+						<a class="close border-primary" data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></a>
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="popup">
+									<div class="modal_content text-center">
+										{% if module.sr_default_image_size %}
+											{{ var.image(module.modal_image.src, '114', module.modal_image.alt) }}
+										{% else %}
+											{{ var.image(module.modal_image.src, module.modal_image.width, module.modal_image.alt) }}
+										{% endif %}
+
+										<div class="sr-spacer-25">
+											{{module.modal_content}}
+										</div>
+										
+
+										{% if module.offer_type != 'none' %}
+											<div class="btn-wrapper btn-{{ module.cta.cta_style }}-wrapper">
+												{% if module.offer_type == 'btn' %}
+													<a href="{{ module.cta.link }}" class="cta_button">{{ module.cta.button_text }}</a>
+												{% elif module.offer_type == 'cta' %}
+													{% cta guid="{{ module.cta.cta }}" %}
+												{% endif %}
+											</div>
+
+											{% if module.offer_type == 'form' %}
+											<div class="sr-form">
+												{% if module.form.title is truthy %}
+													{% set no_title = False %}
+												{% else %}
+													{% set no_title = True %}
+												{% endif %}
+												{% if module.form.form.form_id %}
+													{% form
+														form_key="{{name}}",
+														form_to_use="{{module.form.form.form_id}}"
+														title="{{module.form.title}}"
+														no_title="{{no_title}}"
+														follow_up_type_simple="{{module.form.follow_up_type_simple}}"
+														simple_email_for_live_id="{{module.form.simple_email_for_live_id}}"
+														follow_up_type_automation="{{module.form.follow_up_type_automation}}"
+														response_response_type="{{module.form.form.response_type}}"
+														response_redirect_id="{{module.form.form.redirect_id}}"
+														response_redirect_url="{{module.form.form.redirect_url}}"
+														response_message="{{module.form.form.message}}"
+														notifications_are_overridden="{{module.form.notifications_are_overridden}}"
+														notifications_override_email_addresses="{{module.form.notifications_override_email_addresses}}"
+														gotowebinar_webinar_key="{{module.form.form.gotowebinar_webinar_key}}"
+													%}
+												{% endif %}
+											</div>
+											{% endif %}
+										{% endif %}	
+									</div>
+									
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% require_css %}
+		<style>
+			.{{ name }} {
+				{% if module.gradient %}
+					background: linear-gradient(-225deg, rgba({{ module.background_overlay_color.color|convert_rgb }}, {% if module.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.background_overlay_color.opacity }}) 0%, rgba({{ module.background_overlay_color_2.color|convert_rgb }}, {% if module.background_overlay_color_2.opacity != '100' %}0.{% endif %}{{ module.background_overlay_color_2.opacity }}) 100%)
+				{% else %}
+					background: rgba({{ module.background_overlay_color.color|convert_rgb }}, {% if module.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.background_overlay_color.opacity }});
+				{% endif %}
+			}
+			.{{ name }} #exit-popup {
+				max-width: 540px;
+			}
+			.{{ name }} #exit-popup .modal-header {
+				border: none;
+				padding: 0;
+			}
+			.{{ name }} #exit-popup .modal-body {
+				padding: 1rem 2rem 3rem 2rem;
+			}
+			.{{ name }} #exit-popup .col-md-6 {
+				padding: 0;
+			}
+			.{{ name }} #exit-popup .popup-left small {
+				color: #94979E;
+				font-size: 10px;
+				display: block;
+				line-height: 15px;
+				padding-top: 10px;
+			}
+			.{{ name }} #exit-popup .popup-left img {
+				max-width: 380px;
+			}
+			.{{ name }} #exit-popup .popup-right p {
+				margin: 20px 0;
+			}
+			.{{ name }} #exit-popup .hs-form .hs_submit {
+				margin: 10px 0;
+			}
+			.{{ name }} #exit-popup a.close {
+				border: 2px solid;
+				border-radius: 50%;
+				height: 33px;
+				width: 32px;
+				line-height: 29px;
+				text-align: center;
+				padding: 0 !important;
+				font-size: 13px;
+				font-weight: 400;
+				opacity: 1;
+				margin: 0px -10px 0px auto;
+				-webkit-transition: all 0.2s ease;
+				-o-transition: all 0.2s ease;
+				transition: all 0.2s ease;
+			}
+			.{{ name }} #exit-popup a.close:hover {
+				background: var(--primary);
+				color: #fff;
+				cursor: pointer;
+			}
+			.{{ name }} .actions {
+				padding: 0.25rem 0.5rem;
+			}
+			.{{ name }} .modal-content {
+				border-radius: 0;
+			}
+			@media only screen and (max-width : 992px) {
+				.{{ name }} #exit-popup .popup-left img {
+					max-width: 90%;
+				}
+			}
+			@media only screen and (max-width : 767px) {
+				.{{ name }} #exit-popup .popup-right {
+					padding-top: 30px;
+				}
+			}
+		
+		</style>
+	{% end_require_css %}
+	{% require_js %}
+		<script>
+			$(document).mousemove(function(e) {
+				if($('.{{ name }}.modal').length) {
+					var mousePos = (e.pageY - $(document).scrollTop());  
+						if((mousePos <= 7) && (!sessionStorage.alreadyClickedExitModal)) {
+							$('.{{ name }}.modal').modal('show')
+							{% if module.open_once %}sessionStorage.alreadyClickedExitModal = 1; {% endif %}
+						}
+				}
+			}); 
+		</script>
+	{% end_require_js %}
+{% endif %}

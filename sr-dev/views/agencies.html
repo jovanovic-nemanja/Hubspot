@@ -1,0 +1,129 @@
+<div class="action-panel-content">
+    <div class="action-container">
+        <div class="action-heading">
+            <h2>Agencies</h2>
+            <form class="form-inline action-panel-search">
+                <input id="agency-search" onkeyup="searchTable()" class="form-control" type="search" placeholder="Search" aria-label="Search" data-item="module-search">
+            </form>
+        </div>
+        <table id="agency-table" class="table table-striped dec">
+            <thead>
+            <tr>
+                <th class="desc" scope="col">Agency Name</th>
+                <th scope="col">Plan</th>
+                <th scope="col">Users</th>
+                <th scope="col">Portals</th>
+                <th class="action" scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="agency-name">Lean Labs</td>
+                    <td>Unlimited</td>
+                    <td>13</td>
+                    <td>6</td>
+                    <td><a class="editor-link" href="#">Edit</a><a class="editor-link" href="#">Delete</a></td>
+                </tr>
+                    <tr>
+                        <td class="agency-name">Mediajunction</td>
+                        <td>Paid</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td><a class="editor-link" href="#">Edit</a><a class="editor-link" href="#">Delete</a></td>
+                    </tr>
+                    <tr>
+                        <td class="agency-name">2Advanced</td>
+                        <td>Paid</td>
+                        <td>7</td>
+                        <td>10</td>
+                        <td><a class="editor-link" href="#">Edit</a><a class="editor-link" href="#">Delete</a></td>
+                    </tr>
+                </tr>
+            </tbody>
+        </table>
+        <button id="add-agency" type="submit" class="btn btn-primary">Add Agency</button>
+    </div>
+</div>
+
+<!-- script needs to be loaded with this section if using AJAX-->
+<script type="text/javascript">
+
+function searchTable() {
+
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("agency-search");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("agency-table");
+  tr = table.getElementsByTagName("tr");
+  
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+$("#add-agency").click(function(){
+    $('#action-panel-target').empty();
+
+    if($("body").hasClass("modal-open")) {
+        console.log("action panel is open already");
+    } else {
+        $('#action-panel').modal('show');
+    }
+    $('#action-panel-target').load('./views/add-agency.html', function(){
+        $(this).hide().fadeIn(200);
+    });
+});
+
+$('th').click(function(){
+
+    if($(this).hasClass("asc")) {
+        $('th.asc').removeClass("asc");
+        $('th.desc').removeClass("desc");
+        $(this).addClass("desc");
+    } else {
+        $('th.asc').removeClass("asc");
+        $('th.desc').removeClass("desc");
+        $(this).addClass("asc");
+    }
+
+    var tracker = true;
+
+    var table = $(this).parents('table').eq(0)
+    var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+
+    if(tracker) {
+        this.asc = !this.asc
+        tracker = false;
+    }
+    if (!this.asc){rows = rows.reverse()}
+        for (var i = 0; i < rows.length; i++){table.append(rows[i])}
+    })
+
+    function comparer(index) {
+        return function(a, b) {
+        var valA = getCellValue(a, index), valB = getCellValue(b, index)
+        return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.toString().localeCompare(valB)
+    }
+}
+    function getCellValue(row, index){ return $(row).children('td').eq(index).text() }
+
+window.pressed = function(){
+var a = document.getElementById('files');
+    if(a.value == "") {
+        fileLabel.innerHTML = "No file choosen";
+    }
+    else {
+        var theSplit = a.value.split('\\');
+        fileLabel.innerHTML = theSplit[theSplit.length-1];
+    }
+};
+
+</script>

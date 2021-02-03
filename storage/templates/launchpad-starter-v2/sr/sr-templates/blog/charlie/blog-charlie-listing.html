@@ -1,0 +1,252 @@
+<!--
+templateType: "blog"
+isAvailableForNewContent: true
+-->
+{% import "/sr/templates/variables.html" as var %}
+
+{{ var.template('blog-charlie-header.html') }}
+
+{% set show_hero = true %}
+
+<body class="blog blog-listing">
+
+	{# ===================================================================================== }
+		Load navigation
+	{ ===================================================================================== #}
+
+	{# Breadcrumbs #}
+	<div class="sr-sticky-breadcrumb">
+		<div class="sr-sticky-breadcrumb-heading">
+			<div class="blog-container">
+				<div class="row d-flex justify-content-between">
+					<div class="col-auto">
+						{% set current_section = ' &raquo; Latest Articles' %}
+						{% if blog_author %}
+						{% set current_section = ' &raquo; {{ blog_author.display_name }}' %}
+						{% endif %}
+						{% if topic %}
+						{% set current_section = ' &raquo; {{ topic|capitalize }}' %}
+						{% endif %}
+						<a href="{{ group.absolute_url }}">{{ group.public_title }}</a>{{ current_section }}
+					</div>
+					<div class="col-auto">
+						<a href="#" class="sr-sticky-breadcrumb-trigger">
+							Categories
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="sr-sticky-breadcrumb-categories">
+			<div class="container">
+				<strong>Browse All Categories</strong>
+				<ul>
+					{% for item in topics %}
+					<li><a href="{{ group.absolute_url }}/topic/{{ item.slug }}">{{ item.name }}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	{# If Author Page #}
+	{% if blog_author %}
+	<div class="author-profile">
+		<div class="blog-container">
+			<div class="row">
+				<div class="col-12 col-md-10 offset-md-1 author-content">
+
+					<div class="row align-items-center">
+						<div class="col-md-2">
+							<div class="author-profile-info">
+								{% if blog_author.avatar %}
+								<img src="{{ blog_author.avatar }}" alt="{{ blog_author.display_name }}" class="avatar" />
+								{% endif %}
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="author-profile-bio">
+								<h2 class="author-name">{{ blog_author.display_name }}</h2>
+								{{ blog_author.bio }}
+							</div>
+						</div>
+						<div class="col-md-2">
+							{% if blog_author.has_social_profiles %}
+							<div class="author-profile-socials text-md-right">
+								<div class="social-profiles">
+									{% if blog_author.twitter %}
+									<a href="{{ blog_author.twitter }}" target="_blank" class="no-decoration"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+									{% endif %}
+									{% if blog_author.facebook %}
+									<a href="{{ blog_author.facebook }}" target="_blank" class="no-decoration"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+									{% endif %}
+									{% if blog_author.linkedin %}
+									<a href="{{ blog_author.linkedin }}" target="_blank" class="no-decoration"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+									{% endif %}
+								</div>
+							</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endif %}
+
+	{# Blog Hero Post #}
+	{% if is_listing_view && !blog_author && current_page_num == 1 && show_hero %}
+	{% for content in contents %}
+	{% if loop.index == 1 %}
+	<div class="blog-hero d-flex align-items-end" style="background-image:url('{{ content.featured_image }}');">
+		<div class="blog-container">
+			<div class="row">
+				<div class="col-12 col-md-6">
+					<div class="blog-hero-content text-white">
+						{% for topic in content.topic_list %}
+						<div class="tag">
+							<a class="text-white" href="{{ group.absolute_url }}/topic/{{ topic.slug }}">{{ topic.name }}</a>{% if !loop.last %},{% endif %}
+						</div>
+						{% endfor %}
+						<h2><a href="{{ content.absolute_url }}" class="text-white">{{ content.name }}</a></h2>
+					</div>
+				</div>
+				<div class="col-12 col-md-6">
+					<div class="blog-hero-content text-white">
+						<div class="data mb-3">
+							{% if content.blog_post_author.avatar %}
+							<div class="avatar">
+								<img src="{{ content.blog_post_author.avatar }}" alt="{{ content.blog_post_author.full_name }}" />
+							</div>
+							{% endif %}
+
+							<div class="meta">
+								{% if content.blog_post_author %}
+								By <a class="author-link text-white" href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">{{ content.blog_post_author.full_name }}</a>
+								<br>on
+								{% endif %}
+								{{ content.publish_date_local_time|datetimeformat('%B %d, %Y') }} 
+							</div>
+
+						</div>
+						<div class="content">
+							{{ content.post_list_content }}
+							<div class="btn-wrapper btn-primary-wrapper">
+								<a href="{{ content.absolute_url }}" class="cta_button">Read More</a>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endif %}
+	{% endfor %}
+	{% endif %}
+
+	{# Blog Listing #}
+	<div class="articles-list">
+		<div class="container">
+
+			{% if blog_author %}
+			<div class="text-center">
+				<h4 class="more-author">
+					More from {{ blog_author.display_name }}
+				</h4>
+			</div>
+			{% endif %}
+
+			<div class="row latest-posts">
+				{% for content in contents %}
+				{% If current_page_num == 1 && !blog_author && show_hero %}
+				{% set loopIndex = 1 %}
+				{% else %}
+				{% set loopIndex = 0 %}
+				{% endif %}
+				{% if loop.index > loopIndex %}
+				<div class="col-md-10 offset-md-1">
+					<div class="article-panel">
+						<div class="article-img">
+							<a href="{{ content.absolute_url }}">
+								<img src="{{ content.featured_image }}" alt="{{ content.featured_image.alt }}" class="img-fluid">
+							</a>
+						</div>
+						<div class="article-content">
+							<div class="row">
+								<div class="col-md-7">
+									{% for topic in content.topic_list %}
+									<div class="tag">
+										<a  href="{{ group.absolute_url }}/topic/{{ topic.slug }}">{{ topic.name }}</a>{% if !loop.last %},{% endif %}
+									</div>
+									{% endfor %}
+									<h3><a href="{{ content.absolute_url }}">{{ content.name }}</a></h3>
+								</div>
+								<div class="col-md-5">
+									<div class="data mb-3">
+										{% if content.blog_post_author.avatar %}
+										<div class="avatar">
+											<img src="{{ content.blog_post_author.avatar }}" alt="{{ content.blog_post_author.full_name }}" />
+										</div>
+										{% endif %}
+
+										<div class="meta">
+											{% if content.blog_post_author %}
+											By <a class="author-link" href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">{{ content.blog_post_author.full_name }}</a>
+											<br>on
+											{% endif %}
+											{{ content.publish_date_local_time|datetimeformat('%B %d, %Y') }} 
+										</div>
+
+									</div>
+									{{ content.post_list_content }}
+									<div class="btn-wrapper btn-primary-wrapper">
+										<a href="{{ content.absolute_url }}" class="cta_button">Read More</a>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				{% endif %}
+				{% endfor %}
+			</div>
+
+			{% if not simple_list_page %}
+			<div class="blog-pagination">
+				<div class="container">
+					{% if last_page_num %}
+					<a class="previous-posts-link" href="{{ blog_page_link(last_page_num) }}">Prev</a>
+					{% endif %}
+					<a class="all-posts-link" href="{{ group.absolute_url }}/all">All posts</a>
+					{% if next_page_num %}
+					<a class="next-posts-link" href="{{ blog_page_link(next_page_num) }}">Next</a>
+					{% endif %}
+				</div>
+			</div>
+			{% endif %}
+
+		</div>
+	</div>
+
+	{# ===================================================================================== }
+		Load Footer
+	{ ===================================================================================== #}
+
+	{% require_js %}
+	<script>	
+		// Slide on click
+		if($('.sr-sticky-breadcrumb-trigger').length) {
+			$('.sr-sticky-breadcrumb-trigger').click(function(e){
+				$('.sr-sticky-breadcrumb-categories').slideToggle();
+				e.preventDefault();
+			});
+		}
+	</script>
+	{% end_require_js %}
+
+	{{ var.template('blog-charlie-footer-includes.html') }}
+</body>
+</html>

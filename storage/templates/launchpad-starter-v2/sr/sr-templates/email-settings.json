@@ -1,0 +1,219 @@
+{
+	"custom_module": {
+		"author": "bradley@lean-labs.com",
+		"tags": ["ver-1.0.0"],
+		"name": "email_settings",
+		"css_assets": [],
+		"editable_contexts": [],
+		"external_js": [],
+		"icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": ["EMAIL"],
+		"js_assets": [],
+		"other_assets": [],
+		"fields": [{
+				"id": 1,
+				"name": "email_width",
+				"label": "Email Width",
+				"display": "text",
+				"step": 1,
+				"type": "number",
+				"default": 580
+			},
+			{
+				"id": 3,
+				"name": "link_color",
+				"label": "Link Color",
+				"type": "color",
+				"default": {
+					"color": "#0C5394",
+					"opacity": 100
+				}
+			},
+			{
+				"id": 4,
+				"name": "inner_background",
+				"label": "Inner Background",
+				"children": [{
+					"id": 5,
+					"name": "inner_background",
+					"label": "Inner Background",
+					"children": [{
+						"id": 6,
+						"name": "inner_background_color",
+						"label": "Inner Background Color",
+						"type": "color",
+						"default": {
+							"color": "#ffffff",
+							"opacity": 100
+						}
+					},
+					{
+						"id": 7,
+						"name": "inner_background_image",
+						"label": "Inner Background Image",
+						"resizable": false,
+						"type": "image",
+						"default": {
+							"src": "",
+							"alt": null
+						}
+					},
+					{
+						"id": 8,
+						"name": "inner_background_size",
+						"label": "Inner Background Size",
+						"display": "select",
+						"choices": [
+							["cover", "Cover"],
+							["contain", "Contain"]
+						],
+						"type": "choice",
+						"default": "cover"
+					},
+					{
+						"id": 9,
+						"name": "inner_background_position",
+						"label": "Inner Background Position",
+						"display": "select",
+						"choices": [
+							["left top", "left top"],
+							["left center", "left center"],
+							["left bottom", "left bottom"],
+							["right top", "right top"],
+							["right center", "right center"],
+							["right bottom", "right bottom"],
+							["center top", "center top"],
+							["center center", "center center"],
+							["center bottom_", "center bottom\t"]
+						],
+						"type": "choice",
+						"default": "center center"
+					}],
+					"type": "group",
+					"default": {
+						"inner_background_color": {
+							"color": "#ffffff",
+							"opacity": 100
+						},
+						"inner_background_image": {
+							"src": "",
+							"alt": null
+						},
+						"inner_background_size": "cover",
+						"inner_background_position": "center center"
+					}
+				}],
+				"type": "group",
+				"default": {
+					"inner_background": {
+						"inner_background_color": {
+							"color": "#ffffff",
+							"opacity": 100
+						},
+						"inner_background_image": {
+							"src": "",
+							"alt": null
+						},
+						"inner_background_size": "cover",
+						"inner_background_position": "center center"
+					}
+				}
+			},
+			{
+				"id": 10,
+				"name": "outer_background",
+				"label": "Outer Background",
+				"children": [{
+					"id": 11,
+					"name": "outer_background",
+					"label": "Outer Background",
+					"children": [{
+						"id": 12,
+						"name": "outer_background_color",
+						"label": "Outer Background Color",
+						"type": "color",
+						"default": {
+							"color": "#f3f3f3",
+							"opacity": 100
+						}
+					},
+					{
+						"id": 13,
+						"name": "outer_background_image",
+						"label": "Outer Background Image",
+						"resizable": false,
+						"type": "image",
+						"default": {
+							"src": "",
+							"alt": null
+						}
+					},
+					{
+						"id": 14,
+						"name": "outer_background_size",
+						"label": "Outer Background Size",
+						"display": "select",
+						"choices": [
+							["auto", "Auto"],
+							["cover", "Cover"],
+							["contain", "Contain"]
+						],
+						"type": "choice",
+						"default": ""
+					},
+					{
+						"id": 15,
+						"name": "outer_background_position",
+						"label": "Outer Background Position",
+						"display": "select",
+						"choices": [
+							["left top", "left top"],
+							["left center", "left center"],
+							["left bottom", "left bottom"],
+							["right top", "right top"],
+							["right center", "right center"],
+							["right bottom", "right bottom"],
+							["center top", "center top"],
+							["center center", "center center"],
+							["center bottom_", "center bottom\t"]
+						],
+						"type": "choice",
+						"default": ""
+					}],
+					"type": "group",
+					"default": {
+						"outer_background_color": {
+							"color": "#f3f3f3",
+							"opacity": 100
+						},
+						"outer_background_image": {
+							"src": "",
+							"alt": null
+						},
+						"outer_background_size": "",
+						"outer_background_position": ""
+					}
+				}],
+				"type": "group",
+				"default": {
+					"outer_background": {
+						"outer_background_color": {
+							"color": "#f3f3f3",
+							"opacity": 100
+						},
+						"outer_background_image": {
+							"src": "",
+							"alt": null
+						},
+						"outer_background_size": "",
+						"outer_background_position": ""
+					}
+				}
+			}
+		],
+		"source": ""
+	},
+	"custom_module_template": "email-settings.html",
+	"files": []
+}

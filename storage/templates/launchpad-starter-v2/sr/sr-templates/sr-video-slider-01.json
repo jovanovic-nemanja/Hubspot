@@ -1,0 +1,930 @@
+{
+    "custom_module": {
+        "author": "bradley@lean-labs.com",
+        "tags": ["ver-1.0.0"],
+        "name": "SR Video Slider 01",
+        "css_assets": [],
+        "editable_contexts": [],
+        "external_js": [],
+        "icon" : "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": [
+            "PAGE",
+            "BLOG_POST",
+            "BLOG_LISTING"
+        ],
+        "js_assets": [],
+        "other_assets": [],
+        "fields": [
+            {
+                "id": "enabled",
+                "name": "enabled",
+                "label": "Enabled",
+                "required": false,
+                "locked": false,
+                "type": "boolean",
+                "default": true
+            },
+            {
+                "id": "design_settings",
+                "name": "design_settings",
+                "label": "Design Settings",
+                "required": false,
+                "locked": false,
+                "children": [
+                    {
+                        "id": "design_settings.sr_module_id",
+                        "name": "sr_module_id",
+                        "label": "ID",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": null
+                    },
+                    {
+                        "id": "design_settings.class",
+                        "name": "class",
+                        "label": "Class",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": null
+                    },
+                    {
+                        "id": "top_bottom_padding",
+                        "name": "top_bottom_padding",
+                        "label": "Top Bottom Padding",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "auto",
+                                "Use default values"
+                            ],
+                            [
+                                "zero",
+                                "No Padding"
+                            ],
+                            [
+                                "half",
+                                "Small padding"
+                            ],
+                            [
+                                "full",
+                                "Large padding"
+                            ],
+                            [
+                                "custom",
+                                "Custom Padding"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "full"
+                    },
+                    {
+                        "id": "design_settings.custom_padding",
+                        "name": "custom_padding",
+                        "label": "Custom Padding",
+                        "help_text": "Top, Right, Bottom, Left",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "visibility": {
+                            "controlling_field": "top_bottom_padding",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "1rem 0rem 1rem 0rem"
+                    },
+                    {
+                        "id": "design_settings.border_top",
+                        "name": "border_top",
+                        "label": "Border Top",
+                        "required": false,
+                        "locked": false,
+                        "type": "boolean",
+                        "default": false
+                    },
+                    {
+                        "id": "design_settings.border_bottom",
+                        "name": "border_bottom",
+                        "label": "Border Bottom",
+                        "required": false,
+                        "locked": false,
+                        "type": "boolean",
+                        "default": false
+                    },
+                    {
+                        "id": "background_option",
+                        "name": "background_option",
+                        "label": "Background Option",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "image",
+                                "Image"
+                            ],
+                            [
+                                "color",
+                                "Color"
+                            ],
+                            [
+                                "custom",
+                                "Custom"
+                            ],
+                            [
+								"gradient", "Gradient"
+							]
+                        ],
+                        "type": "choice",
+                        "default": "color"
+                    },
+                    {
+						"default": {
+							"color": "#0c63ff"
+						},
+						"label": "Background Gradient From",
+						"name": "background_gradient_from",
+						"visibility": {
+							"controlling_field": "background_option",
+							"controlling_value_regex": "gradient",
+							"operator": "EQUAL"
+						},
+						"type": "color"
+					},
+					{
+						"default": {
+							"color": "#1897ff"
+						},
+						"label": "Background Gradient To",
+						"name": "background_gradient_to",
+						"visibility": {
+							"controlling_field": "background_option",
+							"controlling_value_regex": "gradient",
+							"operator": "EQUAL"
+						},
+						"type": "color"
+					},
+                    {
+                        "id": "design_settings.background_image",
+                        "name": "background_image",
+                        "label": "Background Image",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "responsive": false,
+                        "resizable": true,
+                        "type": "image",
+                        "default": {
+                            "src": "",
+                            "alt": ""
+                        }
+                    },
+                    {
+                        "id": "design_settings.background_overlay_color",
+                        "name": "background_overlay_color",
+                        "label": "Background Overlay Color",
+                        "help_text": "Recommended Width: 2880x1920px",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#343a40",
+                            "opacity": 30
+                        }
+                    },
+                    {
+                        "id": "design_settings.background_color",
+                        "name": "background_color",
+                        "label": "Background Color",
+                        "required": true,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "color",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "select",
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "success",
+                                "Success"
+                            ],
+                            [
+                                "info",
+                                "Info"
+                            ],
+                            [
+                                "warning",
+                                "Warning"
+                            ],
+                            [
+                                "danger",
+                                "Danger"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "white"
+                    },
+                    {
+                        "id": "design_settings.background_custom",
+                        "name": "background_custom",
+                        "label": "Background Custom",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#fff"
+                        }
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "top_bottom_padding": "full",
+                    "custom_padding": "1rem 0rem 1rem 0rem",
+                    "border_top": false,
+                    "border_bottom": false,
+                    "background_option": "color",
+                    "background_image": {
+                        "src": "",
+                        "alt": ""
+                    },
+                    "background_overlay_color": {
+                        "color": "#343a40",
+                        "opacity": 30
+                    },
+                    "background_color": "light",
+                    "background_custom": {
+                        "color": "#fff"
+                    }
+                }
+            },
+            {
+                "id": "heading",
+                "name": "heading",
+                "label": "Heading",
+                "required": false,
+                "locked": false,
+                "validation_regex": "",
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "default": "Professional Design"
+            },
+            {
+                "id": "heading_size",
+                "name": "heading_size",
+                "label": "Heading Size",
+                "required": true,
+                "locked": false,
+                "visibility": {
+                    "controlling_field": "heading",
+                    "controlling_value_regex": null,
+                    "operator": null,
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "display": "select",
+                "choices": [
+                    [
+                        "1",
+                        "H1"
+                    ],
+                    [
+                        "2",
+                        "H2"
+                    ],
+                    [
+                        "3",
+                        "H3"
+                    ],
+                    [
+                        "4",
+                        "H4"
+                    ],
+                    [
+                        "5",
+                        "H5"
+                    ],
+                    [
+                        "6",
+                        "H6"
+                    ]
+                ],
+                "type": "choice",
+                "default": "2"
+            },
+			{
+                "name": "heading_display_size",
+                "label": "Heading Display Size",
+                "required": true,
+                "locked": false,
+				"display": "select",
+				"visibility": {
+                    "controlling_field": "heading",
+                    "controlling_value_regex": null,
+                    "operator": null,
+                    "access": null
+                },
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "h1",
+                        "H1"
+                    ],
+                    [
+                        "h2",
+                        "H2"
+                    ],
+                    [
+                        "h3",
+                        "H3"
+                    ],
+                    [
+                        "h4",
+                        "H4"
+                    ],
+                    [
+                        "h5",
+                        "H5"
+                    ],
+                    [
+                        "h6",
+                        "H6"
+                    ],
+                    [
+                        "display-4",
+                        "L"
+                    ],
+                    [
+                        "display-3",
+                        "XL"
+                    ],
+                    [
+                        "display-2",
+                        "XXL"
+                    ],
+                    [
+                        "display-1",
+                        "XXXL"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            },
+            {
+                "id": "description",
+                "name": "description",
+                "label": "Description",
+                "required": false,
+                "locked": false,
+                "type": "richtext",
+                "default": "<p>Easy and fast adjustments of elements is possible with Core template. Find our more about our all-in-one programmatic template.</p>"
+            },
+            {
+                "id": "filters",
+                "name": "filters",
+                "label": "Filters",
+                "required": false,
+                "locked": false,
+                "occurrence": {
+                    "min": null,
+                    "max": null,
+                    "sorting_label_field": null,
+                    "default": 0
+                },
+                "children": [
+                    {
+                        "id": "filters.filters_title",
+                        "name": "filters_title",
+                        "label": "Title",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "placeholder": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Products"
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": null
+            },
+            {
+                "id": "9a82fd4e-b4a6-fe97-e5d3-2a9fcb8ec0d0",
+                "name": "slides",
+                "label": "Slides",
+                "required": false,
+                "locked": false,
+                "occurrence": {
+                    "min": null,
+                    "max": null,
+                    "sorting_label_field": "114c5e56-504d-0a00-278a-2e8810305c96",
+                    "default": 5
+                },
+                "children": [
+                    {
+                        "id": "db5e76fa-187c-1785-d723-12a31f6ea1d2",
+                        "name": "image",
+                        "label": "Image",
+                        "required": false,
+                        "locked": false,
+                        "responsive": true,
+                        "resizable": true,
+                        "type": "image",
+                        "default": {
+                            "size_type": "auto",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-video-slider-01-1.jpg",
+                            "alt": "sr-video-slider-01-1",
+                            "width": 900,
+                            "height": 597,
+                            "max_width": 900,
+                            "max_height": 597
+                        }
+                    },
+                    {
+                        "id": "114c5e56-504d-0a00-278a-2e8810305c96",
+                        "name": "description",
+                        "label": "Description",
+                        "required": false,
+                        "locked": false,
+                        "type": "richtext",
+                        "default": "<p>All of the tips you need to meet your <strong>marketing goals</strong> this year.</p>"
+                    },
+                    {
+                        "picker": "file",
+                        "id": "26b6bd9b-6e0e-0455-469f-69495a028c2e",
+                        "name": "video",
+                        "label": "Video",
+                        "required": false,
+                        "locked": false,
+                        "type": "file",
+                        "default": "https://www.lean-labs.com/hubfs/SR-Showcase-Slack.mp4"
+                    },
+                    {
+                        "id": "6d415c7c-538b-4f46-b8b4-850c34a573fa",
+                        "name": "filters",
+                        "label": "Filters",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "help_text": "Use all lowercase, use - to separate words. And separate filters with a space",
+                        "default": ""
+                    },
+                    {
+                        "id": "cta",
+                        "name": "cta",
+                        "label": "CTA",
+                        "required": false,
+                        "locked": false,
+                        "children": [
+                            {
+                                "id": "cta_type",
+                                "name": "cta_type",
+                                "label": "CTA Type",
+                                "required": true,
+                                "locked": false,
+                                "display": "select",
+                                "choices": [
+                                    [
+                                        "cta",
+                                        "HubSpot CTA"
+                                    ],
+                                    [
+                                        "btn",
+                                        "Button"
+                                    ],
+                                    [
+                                        "none",
+                                        "None"
+                                    ]
+                                ],
+                                "type": "choice",
+                                "default": "btn"
+                            },
+                            {
+                                "id": "slides.cta.cta_style",
+                                "name": "cta_style",
+                                "label": "CTA Style",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "cta_type",
+                                    "controlling_value_regex": "none",
+                                    "operator": "NOT_EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "select",
+                                "choices": [
+                                    [
+                                        "primary",
+                                        "Primary"
+                                    ],
+                                    [
+                                        "secondary",
+                                        "Secondary"
+                                    ],
+                                    [
+                                        "tertiary",
+                                        "Tertiary"
+                                    ],
+                                    [
+                                        "white",
+                                        "White"
+                                    ],
+                                    [
+                                        "black",
+                                        "Black"
+                                    ],
+                                    [
+                                        "outline-primary",
+                                        "Outline Primary"
+                                    ],
+                                    [
+                                        "outline-secondary",
+                                        "Outline Secondary"
+                                    ],
+                                    [
+                                        "outline-tertiary",
+                                        "Outline Tertiary"
+                                    ],
+                                    [
+                                        "outline-white",
+                                        "Outline White"
+                                    ],
+                                    [
+                                        "outline-black",
+                                        "Outline Black"
+                                    ],
+                                    [
+                                        "none",
+                                        "None"
+                                    ]
+                                ],
+                                "type": "choice",
+                                "default": "primary"
+                            },
+                            {
+                                "id": "slides.cta.cta",
+                                "name": "cta",
+                                "label": "CTA",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "cta_type",
+                                    "controlling_value_regex": "cta",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "type": "cta",
+                                "default": ""
+                            },
+                            {
+                                "id": "slides.cta.button_text",
+                                "name": "button_text",
+                                "label": "Button Text",
+                                "required": false,
+                                "locked": false,
+                                "validation_regex": "",
+                                "visibility": {
+                                    "controlling_field": "cta_type",
+                                    "controlling_value_regex": "btn",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "allow_new_line": false,
+                                "show_emoji_picker": false,
+                                "type": "text",
+                                "default": "Learn More"
+                            },
+                            {
+                                "id": "slides.cta.link",
+                                "name": "link",
+                                "label": "Link",
+                                "required": false,
+                                "locked": false,
+                                "validation_regex": "",
+                                "visibility": {
+                                    "controlling_field": "cta_type",
+                                    "controlling_value_regex": "btn",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "allow_new_line": false,
+                                "show_emoji_picker": false,
+                                "type": "text",
+                                "default": "#"
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "cta_type": "btn",
+                            "cta_style": "primary",
+                            "cta": "",
+                            "button_text": "Learn More",
+                            "link": "#"
+                        }
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": [
+                    {
+                        "image": {
+                            "size_type": "auto",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-video-slider-01-1.jpg",
+                            "alt": "sr-video-slider-01-1",
+                            "width": 900,
+                            "height": 597,
+                            "max_width": 900,
+                            "max_height": 597
+                        },
+                        "youtube_id": "ef7tO-4mk_A",
+                        "description": "<p>All of the tips you need to meet your <strong>marketing goals</strong> this year.</p>",
+                        "video": "https://www.lean-labs.com/hubfs/SR-Showcase-Slack.mp4",
+                        "filters": "",
+                        "cta": {
+                            "cta_type": "btn",
+                            "cta_style": "primary",
+                            "cta": "",
+                            "button_text": "Learn More",
+                            "link": "#"
+                        }
+                    },
+                    {
+                        "image": {
+                            "size_type": "auto",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-video-slider-01-2.jpg",
+                            "alt": "sr-video-slider-01-1",
+                            "width": 900,
+                            "height": 597,
+                            "max_width": 900,
+                            "max_height": 597
+                        },
+                        "youtube_id": "ef7tO-4mk_A",
+                        "description": "<p>Learn how to improve your team's <strong>productivity</strong> with this guide.</p>",
+                        "video": "https://www.lean-labs.com/hubfs/Fiit-Video.mp4",
+                        "filters": "",
+                        "cta": {
+                            "cta_type": "btn",
+                            "cta_style": "primary",
+                            "cta": "",
+                            "button_text": "Learn More",
+                            "link": "#"
+                        }
+                    },
+                    {
+                        "image": {
+                            "size_type": "auto",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-video-slider-01-3.jpg",
+                            "alt": "sr-video-slider-01-1",
+                            "width": 900,
+                            "height": 597,
+                            "max_width": 900,
+                            "max_height": 597
+                        },
+                        "youtube_id": "ef7tO-4mk_A",
+                        "description": "<p>Every step you need to take when launching a <strong>high-conversion</strong> website. </p>",
+                        "video": "https://www.lean-labs.com/hubfs/SR-Showcase-Slack.mp4",
+                        "filters": "",
+                        "cta": {
+                            "cta_type": "btn",
+                            "cta_style": "primary",
+                            "cta": "",
+                            "button_text": "Learn More",
+                            "link": "#"
+                        }
+                    },
+                    {
+                        "image": {
+                            "size_type": "auto",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-video-slider-01-4.jpg",
+                            "alt": "sr-video-slider-01-1",
+                            "width": 900,
+                            "height": 597,
+                            "max_width": 900,
+                            "max_height": 597
+                        },
+                        "youtube_id": "ef7tO-4mk_A",
+                        "description": "<p>Watch the demo to <strong>learn</strong> how to use the modules and prototype pages.</p>",
+                        "video": "https://www.lean-labs.com/hubfs/Fiit-Video.mp4",
+                        "filters": "",
+                        "cta": {
+                            "cta_type": "btn",
+                            "cta_style": "primary",
+                            "cta": "",
+                            "button_text": "Learn More",
+                            "link": "#"
+                        }
+                    },
+                    {
+                        "image": {
+                            "size_type": "auto",
+                            "src": "https://www.lean-labs.com/hubfs/sr-assets/images/sr-video-slider-01-5.jpg",
+                            "alt": "sr-video-slider-01-1",
+                            "width": 900,
+                            "height": 597,
+                            "max_width": 900,
+                            "max_height": 597
+                        },
+                        "youtube_id": "ef7tO-4mk_A",
+                        "description": "<p>Our <strong>toolkit</strong> has all of the resources and guidance needed to create a high-conversion website.</p>",
+                        "video": "https://www.lean-labs.com/hubfs/SR-Showcase-Slack.mp4",
+                        "filters": "",
+                        "cta": {
+                            "cta_type": "btn",
+                            "cta_style": "primary",
+                            "cta": "",
+                            "button_text": "Learn More",
+                            "link": "#"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "text_align",
+                "name": "text_align",
+                "label": "Text Align",
+                "required": true,
+                "locked": false,
+                "display": "select",
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "left",
+                        "Left"
+                    ],
+                    [
+                        "center",
+                        "Center"
+                    ],
+                    [
+                        "right",
+                        "Right"
+                    ]
+                ],
+                "type": "choice",
+                "default": "center"
+            },
+            {
+                "id": "text_color",
+                "name": "text_color",
+                "label": "Text Color",
+                "required": true,
+                "locked": false,
+                "display": "select",
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "primary",
+                        "Primary"
+                    ],
+                    [
+                        "secondary",
+                        "Secondary"
+                    ],
+                    [
+                        "tertiary",
+                        "Tertiary"
+                    ],
+                    [
+                        "white",
+                        "White"
+                    ],
+                    [
+                        "black",
+                        "Black"
+                    ],
+                    [
+                        "dark",
+                        "Dark"
+                    ],
+                    [
+                        "light",
+                        "Light"
+                    ],
+                    [
+                        "success",
+                        "Success"
+                    ],
+                    [
+                        "info",
+                        "Info"
+                    ],
+                    [
+                        "warning",
+                        "Warning"
+                    ],
+                    [
+                        "danger",
+                        "Danger"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            }
+        ],
+        "source": ""
+    },
+    "custom_module_template": "sr-video-slider-01.html",
+    "available_builder": true,
+    "category": 9,
+    "files": [
+        {
+            "file": "launchpad-starter-v2/sr/sr-templates/sr-assets/css/slick.css",
+            "folder_paths": "sr-assets/css"
+        },
+        {
+            "file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/slick.min.js",
+            "folder_paths": "sr-assets/js"
+        }
+    ]
+}

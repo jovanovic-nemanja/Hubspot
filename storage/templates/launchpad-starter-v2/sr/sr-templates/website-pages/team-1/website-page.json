@@ -1,0 +1,14 @@
+{
+	"name": "Team v1",
+	"custom_modules": [
+		"sr-nav-dropdown-01.json",
+		"sr-bling-graphic-02.json",
+		"sr-cards-team-02.json",
+		"sr-two-col-07.json",
+		"sr-two-col-gallery-01.json",
+		"sr-offer-bar-03.json",
+		"sr-footer-04.json"
+	],
+	"module_overrides": {},
+	"page_overrides": {}
+}

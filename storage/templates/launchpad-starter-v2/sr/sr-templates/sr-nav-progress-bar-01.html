@@ -1,0 +1,72 @@
+{% if module.enabled %}
+
+	{% require_css %}
+		<style>
+			.sr-nav-progress-bar-01 {
+				position:fixed;
+				top:0;
+				left:0;
+				z-index:99999;
+				width:100%;
+				height: {{module.bar_height}}px;
+				-webkit-appearance:none;
+				border:none;
+				background-color:transparent;
+				color: {{module.bar_color.color}}
+			}
+			.sr-nav-progress-bar-01::-webkit-progress-bar {
+				background-color:transparent
+			}
+			.sr-nav-progress-bar-01::-webkit-progress-value {
+				background-color: {{module.bar_color.color}}
+			}
+			.sr-nav-progress-bar-01::-moz-progress-bar {
+				background-color: {{module.bar_color.color}}
+			}
+		
+		</style>
+	{% end_require_css %}
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-nav-progress-bar-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Nav Progress Bar 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+    {% endif %}
+	{% endif %}
+	
+	<progress id="{%if module.sr_module_id %}{{module.sr_module_id}}{%endif%}" value="0" class="{{name}} sr-nav-progress-bar-01{%if module.class %} {{module.class}}{%endif%}"></progress>
+
+	{% require_js %}
+		<script>
+			var winHeight = $(window).height(),
+				docHeight = $(document).height(),
+				progressBar = $('.sr-nav-progress-bar-01'),
+				max, value;
+
+			/* Set the max scrollable area */
+			max = docHeight - winHeight;
+			progressBar.attr('max', max);
+
+			$(document).on('scroll', function(){
+				value = $(window).scrollTop();
+				{% if module.position  == 'above-nav' %}
+					progressBar.attr('value', value);
+				{% else %}
+					if ($('.pillar-nav-toc-01').length) {
+						var navHeight = $('.pillar-nav-toc-01').outerHeight();
+						progressBar.attr('value', value).css('top', navHeight + 'px');
+					} else {
+						progressBar.attr('value', value);
+					}
+				{% endif %}
+			});
+		</script>
+	{% end_require_js %}
+{% endif %}

@@ -1,0 +1,264 @@
+{% if module.enabled %}
+
+	{% require_css %}
+		<style>
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;    
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			.sr-cards-pricing-02 {
+				overflow: hidden;
+			}
+			.sr-cards-pricing-02 .col-md-6 {
+				background: #e9e9e9;
+				border: 1px solid;
+				border-top: 12px solid #000;
+				padding: 1rem;
+			}
+			.sr-cards-pricing-02 .col-md-4 {
+				border: 2px solid #d8ecff;
+				padding: 2rem 2rem;
+				-webkit-transition: all 0.2s ease;
+				-o-transition: all 0.2s ease;
+				transition: all 0.2s ease;
+				background: #fff;
+				margin: 1rem 0;
+			}
+			.sr-cards-pricing-02 .col-md-4:hover {
+				border: 2px solid;
+				z-index: 1;
+				-webkit-transform: scale(1.05);
+				-ms-transform: scale(1.05);
+				transform: scale(1.05);
+				border-radius: 5px;
+			}
+
+			.hiddenBtn {
+				position: absolute;
+				left: 0;
+				top: 0;
+				height: 100%;
+				width: 100%;
+			}
+
+			.hiddenBtn .hiddenBtn, .hiddenBtn .hiddenBtn:hover {
+				background: transparent;
+				border: 0;
+				font-size: 0px !important;
+				height: 100%;
+				border-radius: 0 !important;
+				opacity: 0;
+				z-index: 1;
+			}
+
+			.sr-cards-pricing-02 .pricing-description p {
+				font-weight: 600;
+				line-height: 2rem;
+				font-size: 2.5rem;
+				margin-top: 1rem;
+				margin-bottom: 2rem;
+			}
+
+			.sr-cards-pricing-02 ul {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				font-size: .8rem;
+				font-weight: 400;
+				line-height: 1rem;
+			}
+			.sr-cards-pricing-02 ul li {
+				border-top: 1px solid rgba(0,0,0,0.05);
+				margin: 1.5rem 0;
+				position: relative;
+				padding-top: 1.5rem;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+			}
+
+			.sr-cards-pricing-02 ul li:before {
+				content: '\f00c';
+				font-family: fontawesome;
+				font-size: 1rem;
+				width: 2rem;
+				height: 2rem;
+				display: block;
+				line-height: 2rem;
+				text-align: center;
+				border-radius: 50%;
+				background-color: #f5f7f9;
+				color: #0c63ff;
+				color: var(--primary);
+				margin-right: 1rem;
+			}
+
+			@media (min-width: 768px) {
+				.sr-cards-pricing-02 .col-md-4 {
+					margin: 0;
+				}
+				.sr-cards-pricing-02 .col-md-4:nth-child(1):not(:hover) {
+					border-right-color: transparent !important;
+				}
+				.sr-cards-pricing-02 .col-md-4:nth-child(3):not(:hover) {
+					border-left-color: transparent !important;
+				}
+			}
+		
+		</style>
+	{% end_require_css %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-cards-pricing-02" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Cards Pricing 02</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+	
+	<div class="sr-cards-pricing-02 {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }} {% endif %} sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.class %}{{ module.design_settings.class }}{% endif %} {% if module.design_settings.border_top %}sr-line-top{% endif %} {% if module.design_settings.border_bottom %}sr-line-bottom{% endif %} prototype-no-background {{ name }}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }}">
+			{% if module.design_settings.container_width != 'max' %}
+			<div class="row">
+				<div class="{{ width_class }}">
+			{% endif %}
+
+					{% if module.heading ||  module.description %}
+					<div class="sr-spacer-bottom-50">
+						{% if module.heading %}
+							<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} heading {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.heading}}</h{{module.heading_size}}>
+						{% endif %}
+
+						{% if module.description %}
+							<div class="description {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %}">{{ module.description}}</div>
+						{% endif %}
+					</div>
+					{% endif %}
+
+					<div class="row">
+						<div class="col-md-4 border-secondary">
+							<div class="pricing-description">
+								<h5>{{ module.plan_1.title }}</h5>
+								<p class="text-primary">{{ module.plan_1.price }} <small>{{ module.plan_1.suffix }}</small></p>
+							</div>
+							<div class="hiddenBtn">
+								{% set href = module.plan_1.link.url.href %}
+								{% if module.plan_1.link.url.type is equalto "EMAIL_ADDRESS" %}
+									{% set href = "mailto:" + href %}
+								{% endif %}
+								<a class="hiddenBtn" href="{{ href }}"
+									{% if module.plan_1.link.open_in_new_tab %}target="_blank"{% endif %}
+									{% if module.plan_1.link.no_follow %}rel="nofollow"{% endif %}
+									>
+								</a>
+							</div>
+							<div class="pricing-features">
+								{{ module.plan_1.features }}
+							</div>
+						</div>
+
+						<div class="col-md-4 border-secondary">
+							<div class="pricing-description">
+								<h5>{{ module.plan_2.title }}</h5>
+								<p class="text-primary">{{ module.plan_2.price }} <small>{{ module.plan_2.suffix }}</small></p>
+							</div>
+							<div class="hiddenBtn">
+								{% set href = module.plan_2.link.url.href %}
+								{% if module.plan_2.link.url.type is equalto "EMAIL_ADDRESS" %}
+									{% set href = "mailto:" + href %}
+								{% endif %}
+								<a class="hiddenBtn" href="{{ href }}"
+									{% if module.plan_2.link.open_in_new_tab %}target="_blank"{% endif %}
+									{% if module.plan_2.link.no_follow %}rel="nofollow"{% endif %}
+									>
+								</a>
+							</div>
+							<div class="pricing-features">
+								{{ module.plan_2.features }}
+							</div>
+						</div>
+
+						<div class="col-md-4 border-secondary">
+							<div class="pricing-description">
+								<h5>{{ module.plan_3.title }}</h5>
+								<p class="text-primary">{{ module.plan_3.price }} <small>{{ module.plan_3.suffix }}</small></p>
+							</div>
+							<div class="hiddenBtn">
+								{% set href = module.plan_3.link.url.href %}
+								{% if module.plan_3.link.url.type is equalto "EMAIL_ADDRESS" %}
+									{% set href = "mailto:" + href %}
+								{% endif %}
+								<a class="hiddenBtn" href="{{ href }}"
+									{% if module.plan_3.link.open_in_new_tab %}target="_blank"{% endif %}
+									{% if module.plan_3.link.no_follow %}rel="nofollow"{% endif %}
+									>
+								</a>
+							</div>
+							<div class="pricing-features">
+								{{ module.plan_3.features }}
+							</div>
+						</div>	
+
+					</div>
+
+			{% if module.design_settings.container_width != 'max' %}
+				</div>
+			</div>
+			{% endif %}
+			
+		</div>
+	</div>
+{% endif %}

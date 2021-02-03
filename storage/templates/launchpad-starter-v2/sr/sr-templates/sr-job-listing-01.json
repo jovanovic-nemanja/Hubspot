@@ -1,0 +1,1039 @@
+{
+    "custom_module": {
+        "author": "reg@lean-labs.com",
+        "tags": ["ver-2.0.0"],
+        "name": "SR Job Listing 01",
+        "css_assets": [],
+        "editable_contexts": [],
+        "external_js": [],
+        "icon": "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+        "purchased": true,
+        "hostTemplateTypes": [
+            "PAGE",
+            "BLOG_POST",
+            "BLOG_LISTING"
+        ],
+        "js_assets": [],
+        "other_assets": [],
+        "fields": [
+            {
+                "id": "enabled",
+                "name": "enabled",
+                "label": "Enabled",
+                "required": false,
+                "locked": false,
+                "display": "checkbox",
+                "type": "boolean",
+                "default": true
+            },
+            {
+                "id": "design_settings",
+                "name": "design_settings",
+                "label": "Design Settings",
+                "required": false,
+                "locked": false,
+                "children": [
+                    {
+                        "id": "design_settings.sr_module_id",
+                        "name": "sr_module_id",
+                        "label": "ID",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": null
+                    },
+                    {
+                        "id": "design_settings.class",
+                        "name": "class",
+                        "label": "Class",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": null
+                    },
+                    {
+                        "id": "design_settings.layout",
+                        "name": "layout",
+                        "label": "Layout",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "container",
+                                "Page"
+                            ],
+                            [
+                                "container-fluid",
+                                "Full Width"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "container"
+                    },
+                    {
+                        "id": "design_settings.container_width",
+                        "name": "container_width",
+                        "label": "Container Width",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "min",
+                                "Minimum"
+                            ],
+                            [
+                                "narrow",
+                                "Narrow"
+                            ],
+                            [
+                                "wide",
+                                "Wide"
+                            ],
+                            [
+                                "max",
+                                "Maximum"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "narrow"
+                    },
+                    {
+                        "id": "design_settings.border_top",
+                        "name": "border_top",
+                        "label": "Border Top",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    {
+                        "id": "design_settings.border_bottom",
+                        "name": "border_bottom",
+                        "label": "Border Bottom",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    {
+                        "id": "design_settings.top_bottom_padding",
+                        "name": "top_bottom_padding",
+                        "label": "Top Bottom Padding",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "auto",
+                                "Use default values"
+                            ],
+                            [
+                                "zero",
+                                "No Padding"
+                            ],
+                            [
+                                "half",
+                                "Small padding"
+                            ],
+                            [
+                                "full",
+                                "Large padding"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "full"
+                    },
+                    {
+                        "id": "background_option",
+                        "name": "background_option",
+                        "label": "Background Option",
+                        "required": true,
+                        "locked": false,
+                        "display": "select",
+                        "choices": [
+                            [
+                                "image",
+                                "Image"
+                            ],
+                            [
+                                "color",
+                                "Color"
+                            ],
+                            [
+                                "custom",
+                                "Custom"
+                            ],
+                            [
+                                "gradient",
+                                "Gradient"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "color"
+                    },
+                    {
+                        "id": "design_settings.background_image",
+                        "name": "background_image",
+                        "label": "Background Image",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "responsive": false,
+                        "resizable": true,
+                        "show_loading": false,
+                        "type": "image",
+                        "default": {
+                            "src": null,
+                            "alt": null
+                        }
+                    },
+                    {
+                        "id": "design_settings.background_gradient_from",
+                        "name": "background_gradient_from",
+                        "label": "Background Gradient From",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "gradient",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#0c63ff"
+                        }
+                    },
+                    {
+                        "id": "design_settings.background_gradient_to",
+                        "name": "background_gradient_to",
+                        "label": "Background Gradient To",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "gradient",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#1897ff"
+                        }
+                    },
+                    {
+                        "id": "design_settings.background_overlay_color",
+                        "name": "background_overlay_color",
+                        "label": "Background Overlay Color",
+                        "help_text": "Recommended Width: 2880x1920px",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#343a40",
+                            "opacity": 30
+                        }
+                    },
+                    {
+                        "id": "design_settings.background_color",
+                        "name": "background_color",
+                        "label": "Background Color",
+                        "required": true,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "color",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "display": "select",
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "success",
+                                "Success"
+                            ],
+                            [
+                                "info",
+                                "Info"
+                            ],
+                            [
+                                "warning",
+                                "Warning"
+                            ],
+                            [
+                                "danger",
+                                "Danger"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "type": "choice",
+                        "default": "light"
+                    },
+                    {
+                        "id": "design_settings.background_custom",
+                        "name": "background_custom",
+                        "label": "Background Custom",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "color",
+                        "default": {
+                            "color": "#fff"
+                        }
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": {
+                    "layout": "container",
+                    "container_width": "narrow",
+                    "border_top": false,
+                    "border_bottom": false,
+                    "top_bottom_padding": "full",
+                    "background_option": "color",
+                    "background_image": {
+                        "src": null,
+                        "alt": null
+                    },
+                    "background_gradient_from": {
+                        "color": "#0c63ff"
+                    },
+                    "background_gradient_to": {
+                        "color": "#1897ff"
+                    },
+                    "background_overlay_color": {
+                        "color": "#343a40",
+                        "opacity": 30
+                    },
+                    "background_color": "light",
+                    "background_custom": {
+                        "color": "#fff"
+                    }
+                }
+            },
+            {
+                "id": "heading",
+                "name": "heading",
+                "label": "Heading",
+                "required": false,
+                "locked": false,
+                "validation_regex": "",
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "default": "Marketing Jobs"
+            },
+            {
+                "id": "heading_size",
+                "name": "heading_size",
+                "label": "Heading Size",
+                "required": true,
+                "locked": false,
+                "visibility": {
+                    "controlling_field": "heading",
+                    "controlling_value_regex": null,
+                    "operator": null,
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "display": "select",
+                "choices": [
+                    [
+                        "1",
+                        "H1"
+                    ],
+                    [
+                        "2",
+                        "H2"
+                    ],
+                    [
+                        "3",
+                        "H3"
+                    ],
+                    [
+                        "4",
+                        "H4"
+                    ],
+                    [
+                        "5",
+                        "H5"
+                    ],
+                    [
+                        "6",
+                        "H6"
+                    ]
+                ],
+                "type": "choice",
+                "default": "2"
+            },
+            {
+                "id": "heading_display_size",
+                "name": "heading_display_size",
+                "label": "Heading Display Size",
+                "required": true,
+                "locked": false,
+                "visibility": {
+                    "controlling_field": "heading",
+                    "controlling_value_regex": null,
+                    "operator": null,
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "display": "select",
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "h1",
+                        "H1"
+                    ],
+                    [
+                        "h2",
+                        "H2"
+                    ],
+                    [
+                        "h3",
+                        "H3"
+                    ],
+                    [
+                        "h4",
+                        "H4"
+                    ],
+                    [
+                        "h5",
+                        "H5"
+                    ],
+                    [
+                        "h6",
+                        "H6"
+                    ],
+                    [
+                        "display-4",
+                        "L"
+                    ],
+                    [
+                        "display-3",
+                        "XL"
+                    ],
+                    [
+                        "display-2",
+                        "XXL"
+                    ],
+                    [
+                        "display-1",
+                        "XXXL"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            },
+            {
+                "id": "description",
+                "name": "description",
+                "label": "Description",
+                "required": false,
+                "locked": false,
+                "type": "richtext",
+                "default": "<p class='lead'>Our Trendsetters: in-tune with the market and our customers to develop products and positioning aligned with their needs.</p>"
+            },
+            {
+                "id": "listing",
+                "name": "listing",
+                "label": "Listing",
+                "required": false,
+                "locked": false,
+                "occurrence": {
+                    "min": null,
+                    "max": null,
+                    "sorting_label_field": null,
+                    "default": 2
+                },
+                "children": [
+                    {
+                        "id": "listing.title",
+                        "name": "title",
+                        "label": "Title",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Inbound Marketer"
+                    },
+                    {
+                        "id": "listing.category",
+                        "name": "category",
+                        "label": "Category",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "Marketing"
+                    },
+                    {
+                        "id": "listing.location",
+                        "name": "location",
+                        "label": "Location",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "New York City"
+                    },
+                    {
+                        "id": "listing.job_text",
+                        "name": "job_text",
+                        "label": "Job Text",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "direct_link",
+                            "controlling_value_regex": "true",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "type": "richtext",
+                        "default": "<h3>Lorem ipsum sit amet dolar</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt orci magna, nec posuere ligula auctor at. Curabitur laoreet semper odio, ac tristique turpis congue ut. Aenean id tellus lorem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>"
+                    },
+                    {
+                        "id": "direct_link",
+                        "name": "direct_link",
+                        "label": "Open in Modal",
+                        "required": false,
+                        "locked": false,
+                        "display": "checkbox",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    {
+                        "id": "listing.job_link",
+                        "name": "job_link",
+                        "label": "Job Link",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "visibility": {
+                            "controlling_field": "direct_link",
+                            "controlling_value_regex": "false",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "default": "mailto:test@test.com"
+                    },
+                    {
+                        "id": "cta_two",
+                        "name": "cta_two",
+                        "label": "Apply Button",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "direct_link",
+                            "controlling_value_regex": "true",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "children": [
+                            {
+                                "id": "cta_type_two",
+                                "name": "cta_type",
+                                "label": "CTA Type",
+                                "required": true,
+                                "locked": false,
+                                "display": "select",
+                                "choices": [
+                                    [
+                                        "cta",
+                                        "HubSpot CTA"
+                                    ],
+                                    [
+                                        "btn",
+                                        "Button"
+                                    ],
+                                    [
+                                        "none",
+                                        "None"
+                                    ]
+                                ],
+                                "type": "choice",
+                                "default": "btn"
+                            },
+                            {
+                                "id": "cta_two.cta_style",
+                                "name": "cta_style",
+                                "label": "CTA Style",
+                                "required": true,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "cta_type_two",
+                                    "controlling_value_regex": "none",
+                                    "operator": "NOT_EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "select",
+                                "choices": [
+                                    [
+                                        "primary",
+                                        "Primary"
+                                    ],
+                                    [
+                                        "secondary",
+                                        "Secondary"
+                                    ],
+                                    [
+                                        "tertiary",
+                                        "Tertiary"
+                                    ],
+                                    [
+                                        "white",
+                                        "White"
+                                    ],
+                                    [
+                                        "black",
+                                        "Black"
+                                    ],
+                                    [
+                                        "outline-primary",
+                                        "Outline Primary"
+                                    ],
+                                    [
+                                        "outline-secondary",
+                                        "Outline Secondary"
+                                    ],
+                                    [
+                                        "outline-tertiary",
+                                        "Outline Tertiary"
+                                    ],
+                                    [
+                                        "outline-white",
+                                        "Outline White"
+                                    ],
+                                    [
+                                        "outline-black",
+                                        "Outline Black"
+                                    ],
+                                    [
+                                        "none",
+                                        "None"
+                                    ]
+                                ],
+                                "type": "choice",
+                                "default": "primary"
+                            },
+                            {
+                                "id": "cta_two.cta",
+                                "name": "cta",
+                                "label": "CTA",
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "cta_type_two",
+                                    "controlling_value_regex": "cta",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "type": "cta",
+                                "default": ""
+                            },
+                            {
+                                "id": "cta_two.button_text",
+                                "name": "button_text",
+                                "label": "Button Text",
+                                "required": false,
+                                "locked": false,
+                                "validation_regex": "",
+                                "visibility": {
+                                    "controlling_field": "cta_type_two",
+                                    "controlling_value_regex": "btn",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "allow_new_line": false,
+                                "show_emoji_picker": false,
+                                "type": "text",
+                                "default": "Apply Now"
+                            },
+                            {
+                                "id": "cta_two.link",
+                                "name": "link",
+                                "label": "Link",
+                                "required": false,
+                                "locked": false,
+                                "validation_regex": "",
+                                "visibility": {
+                                    "controlling_field": "cta_type_two",
+                                    "controlling_value_regex": "btn",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "allow_new_line": false,
+                                "show_emoji_picker": false,
+                                "type": "text",
+                                "default": "mailto:test@test.com"
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "cta_type": "btn",
+                            "cta_style": "primary",
+                            "cta": "",
+                            "button_text": "Apply Now",
+                            "link": "mailto:test@test.com"
+                        }
+                    },
+                    {
+                        "id": "cta_one",
+                        "name": "cta_one",
+                        "label": "Close Button",
+                        "required": false,
+                        "locked": false,
+                        "visibility": {
+                            "controlling_field": "direct_link",
+                            "controlling_value_regex": "true",
+                            "operator": "EQUAL",
+                            "access": null,
+                            "hidden_subfields": null
+                        },
+                        "children": [
+                            {
+                                "id": "cta_type",
+                                "name": "cta_type",
+                                "label": "CTA Type",
+                                "required": true,
+                                "locked": false,
+                                "display": "select",
+                                "choices": [
+                                    [
+                                        "btn",
+                                        "Button"
+                                    ],
+                                    [
+                                        "none",
+                                        "None"
+                                    ]
+                                ],
+                                "type": "choice",
+                                "default": "btn"
+                            },
+                            {
+                                "id": "cta_one.cta_style",
+                                "name": "cta_style",
+                                "label": "CTA Style",
+                                "required": true,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "cta_type",
+                                    "controlling_value_regex": "none",
+                                    "operator": "NOT_EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "display": "select",
+                                "choices": [
+                                    [
+                                        "primary",
+                                        "Primary"
+                                    ],
+                                    [
+                                        "secondary",
+                                        "Secondary"
+                                    ],
+                                    [
+                                        "tertiary",
+                                        "Tertiary"
+                                    ],
+                                    [
+                                        "white",
+                                        "White"
+                                    ],
+                                    [
+                                        "black",
+                                        "Black"
+                                    ],
+                                    [
+                                        "outline-primary",
+                                        "Outline Primary"
+                                    ],
+                                    [
+                                        "outline-secondary",
+                                        "Outline Secondary"
+                                    ],
+                                    [
+                                        "outline-tertiary",
+                                        "Outline Tertiary"
+                                    ],
+                                    [
+                                        "outline-white",
+                                        "Outline White"
+                                    ],
+                                    [
+                                        "outline-black",
+                                        "Outline Black"
+                                    ],
+                                    [
+                                        "none",
+                                        "None"
+                                    ]
+                                ],
+                                "type": "choice",
+                                "default": "tertiary"
+                            },
+                            {
+                                "id": "cta_one.button_text",
+                                "name": "button_text",
+                                "label": "Button Text",
+                                "required": false,
+                                "locked": false,
+                                "validation_regex": "",
+                                "visibility": {
+                                    "controlling_field": "cta_type",
+                                    "controlling_value_regex": "btn",
+                                    "operator": "EQUAL",
+                                    "access": null,
+                                    "hidden_subfields": null
+                                },
+                                "allow_new_line": false,
+                                "show_emoji_picker": false,
+                                "type": "text",
+                                "default": "Close"
+                            }
+                        ],
+                        "tab": "CONTENT",
+                        "type": "group",
+                        "default": {
+                            "cta_type": "btn",
+                            "cta_style": "tertiary",
+                            "button_text": "Close"
+                        }
+                    }
+                ],
+                "tab": "CONTENT",
+                "type": "group",
+                "default": [
+                    {
+                        "title": "Growth Marketer",
+                        "category": "Marketing",
+                        "location": "San Francisco",
+                        "job_text": "<h4>Apply Online</h4><p>To keep visitors coming back, you need to be different. That's why when we start to plan out our website content, we aspire to communicate our unique value and engage the visitor on every single page.The key is keeping the messaging clear, simple, and memorable. You want to focus on the customer, and craft messaging that will show them (not tell them) the value of working with you.</p>",
+                        "direct_link": true,
+                        "job_link": "mailto:test@test.com",
+                        "cta_two": {
+                            "cta_type": "btn",
+                            "cta_style": "primary",
+                            "cta": "",
+                            "button_text": "Apply Now",
+                            "link": "mailto:test@test.com"
+                        },
+                        "cta_one": {
+                            "cta_type": "btn",
+                            "cta_style": "tertiary",
+                            "button_text": "Close"
+                        }
+                    },
+                    {
+                        "title": "Inbound Marketer",
+                        "category": "Marketing",
+                        "location": "New York City",
+                        "job_text": "<h4>Apply Online</h4><p>To keep visitors coming back, you need to be different. That's why when we start to plan out our website content, we aspire to communicate our unique value and engage the visitor on every single page.The key is keeping the messaging clear, simple, and memorable. You want to focus on the customer, and craft messaging that will show them (not tell them) the value of working with you.</p>",
+                        "direct_link": false,
+                        "job_link": "https://www.google.com",
+                        "cta_two": {
+                            "cta_type": "btn",
+                            "cta_style": "primary",
+                            "cta": "",
+                            "button_text": "Apply Now",
+                            "link": "mailto:test@test.com"
+                        },
+                        "cta_one": {
+                            "cta_type": "btn",
+                            "cta_style": "tertiary",
+                            "button_text": "Close"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "text_align",
+                "name": "text_align",
+                "label": "Text Align",
+                "required": true,
+                "locked": false,
+                "display": "select",
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "left",
+                        "Left"
+                    ],
+                    [
+                        "center",
+                        "Center"
+                    ],
+                    [
+                        "right",
+                        "Right"
+                    ]
+                ],
+                "type": "choice",
+                "default": "center"
+            },
+            {
+                "id": "text_color",
+                "name": "text_color",
+                "label": "Text Color",
+                "required": true,
+                "locked": false,
+                "display": "select",
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "primary",
+                        "Primary"
+                    ],
+                    [
+                        "secondary",
+                        "Secondary"
+                    ],
+                    [
+                        "tertiary",
+                        "Tertiary"
+                    ],
+                    [
+                        "white",
+                        "White"
+                    ],
+                    [
+                        "black",
+                        "Black"
+                    ],
+                    [
+                        "dark",
+                        "Dark"
+                    ],
+                    [
+                        "light",
+                        "Light"
+                    ],
+                    [
+                        "success",
+                        "Success"
+                    ],
+                    [
+                        "info",
+                        "Info"
+                    ],
+                    [
+                        "warning",
+                        "Warning"
+                    ],
+                    [
+                        "danger",
+                        "Danger"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            }
+        ],
+        "source": ""
+    },
+    "custom_module_template": "sr-job-listing-01.html",
+    "available_builder": true,
+    "category": 5,
+    "files": [
+        {
+            "file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/ScrollMagic.min.js",
+            "folder_paths": "sr-assets/js"
+        },
+        {
+            "file": "launchpad-starter-v2/sr/sr-templates/sr-assets/js/animation.gsap.min.js",
+            "folder_paths": "sr-assets/js"
+        }
+    ]
+}

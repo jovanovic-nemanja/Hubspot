@@ -1,0 +1,839 @@
+{
+	"custom_module": {
+		"author": "bradley@lean-labs.com",
+		"tags": ["ver-1.0.0"],
+		"name": "SR Cards Testimonial Grid 02",
+		"css_assets": [],
+		"editable_contexts": [],
+		"external_js": [],
+		"icon": "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+		"purchased": true,
+		"hostTemplateTypes": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+		"js_assets": [],
+		"other_assets": [],
+		"fields": [{
+				"default": true,
+				"name": "enabled",
+				"id": "enabled",
+				"label": "Enabled",
+				"locked": false,
+				"type": "boolean",
+				"required": false
+			},
+			{
+				"default": {
+					"layout": "container",
+					"background_image": {
+						"src": "",
+						"alt": ""
+					},
+					"background_overlay_color": {
+						"color": "#343a40",
+						"opacity": 30
+					},
+					"custom_padding": "1rem 0rem 1rem 0rem",
+					"border_bottom": false,
+					"background_color": "light",
+					"top_bottom_padding": "full",
+					"background_option": "color",
+					"background_custom": {
+						"color": "#fff"
+					},
+					"border_top": false,
+					"container_width": "max"
+				},
+				"tab": "CONTENT",
+				"children": [{
+						"allow_new_line": false,
+						"default": null,
+						"validation_regex": "",
+						"name": "sr_module_id",
+						"show_emoji_picker": false,
+						"id": "design_settings.sr_module_id",
+						"label": "ID",
+						"locked": false,
+						"type": "text",
+						"required": false
+					},
+					{
+						"allow_new_line": false,
+						"default": null,
+						"validation_regex": "",
+						"name": "class",
+						"show_emoji_picker": false,
+						"id": "design_settings.class",
+						"label": "Class",
+						"locked": false,
+						"type": "text",
+						"required": false
+					},
+					{
+						"default": "container",
+						"display": "select",
+						"name": "layout",
+						"id": "design_settings.layout",
+						"label": "Layout",
+						"locked": false,
+						"choices": [
+							[
+								"container",
+								"Page"
+							],
+							[
+								"container-fluid",
+								"Full Width"
+							]
+						],
+						"type": "choice",
+						"required": true
+					},
+					{
+						"default": "max",
+						"display": "select",
+						"name": "container_width",
+						"id": "design_settings.container_width",
+						"label": "Container Width",
+						"locked": false,
+						"choices": [
+							[
+								"min",
+								"Minimum"
+							],
+							[
+								"narrow",
+								"Narrow"
+							],
+							[
+								"wide",
+								"Wide"
+							],
+							[
+								"max",
+								"Maximum"
+							]
+						],
+						"type": "choice",
+						"required": true
+					},
+					{
+						"default": "full",
+						"display": "select",
+						"name": "top_bottom_padding",
+						"id": "top_bottom_padding",
+						"label": "Top Bottom Padding",
+						"locked": false,
+						"choices": [
+							[
+								"auto",
+								"Use default values"
+							],
+							[
+								"zero",
+								"No Padding"
+							],
+							[
+								"half",
+								"Small padding"
+							],
+							[
+								"full",
+								"Large padding"
+							],
+							[
+								"custom",
+								"Custom Padding"
+							]
+						],
+						"type": "choice",
+						"required": true
+					},
+					{
+						"allow_new_line": false,
+						"default": "1rem 0rem 1rem 0rem",
+						"validation_regex": "",
+						"visibility": {
+							"controlling_field": "top_bottom_padding",
+							"access": null,
+							"controlling_value_regex": "custom",
+							"hidden_subfields": null,
+							"operator": "EQUAL"
+						},
+						"name": "custom_padding",
+						"show_emoji_picker": false,
+						"id": "design_settings.custom_padding",
+						"label": "Custom Padding",
+						"locked": false,
+						"type": "text",
+						"required": false,
+						"help_text": "Top, Right, Bottom, Left"
+					},
+					{
+						"default": false,
+						"name": "border_top",
+						"id": "design_settings.border_top",
+						"label": "Border Top",
+						"locked": false,
+						"type": "boolean",
+						"required": false
+					},
+					{
+						"default": false,
+						"name": "border_bottom",
+						"id": "design_settings.border_bottom",
+						"label": "Border Bottom",
+						"locked": false,
+						"type": "boolean",
+						"required": false
+					},
+					{
+						"default": "color",
+						"display": "select",
+						"name": "background_option",
+						"id": "background_option",
+						"label": "Background Option",
+						"locked": false,
+						"choices": [
+							[
+								"image",
+								"Image"
+							],
+							[
+								"color",
+								"Color"
+							],
+							[
+								"custom",
+								"Custom"
+							],
+							[
+								"gradient", "Gradient"
+							]
+						],
+						"type": "choice",
+						"required": true
+					},
+					{
+						"default": {
+							"color": "#0c63ff"
+						},
+						"label": "Background Gradient From",
+						"name": "background_gradient_from",
+						"visibility": {
+							"controlling_field": "background_option",
+							"controlling_value_regex": "gradient",
+							"operator": "EQUAL"
+						},
+						"type": "color"
+					},
+					{
+						"default": {
+							"color": "#1897ff"
+						},
+						"label": "Background Gradient To",
+						"name": "background_gradient_to",
+						"visibility": {
+							"controlling_field": "background_option",
+							"controlling_value_regex": "gradient",
+							"operator": "EQUAL"
+						},
+						"type": "color"
+					},
+					{
+						"default": {
+							"src": "",
+							"alt": ""
+						},
+						"visibility": {
+							"controlling_field": "background_option",
+							"access": null,
+							"controlling_value_regex": "image",
+							"hidden_subfields": null,
+							"operator": "EQUAL"
+						},
+						"resizable": true,
+						"responsive": false,
+						"name": "background_image",
+						"id": "design_settings.background_image",
+						"label": "Background Image",
+						"locked": false,
+						"type": "image",
+						"required": false
+					},
+					{
+						"default": {
+							"color": "#343a40",
+							"opacity": 30
+						},
+						"visibility": {
+							"controlling_field": "background_option",
+							"access": null,
+							"controlling_value_regex": "image",
+							"hidden_subfields": null,
+							"operator": "EQUAL"
+						},
+						"name": "background_overlay_color",
+						"id": "design_settings.background_overlay_color",
+						"label": "Background Overlay Color",
+						"locked": false,
+						"type": "color",
+						"required": false
+					},
+					{
+						"default": "light",
+						"visibility": {
+							"controlling_field": "background_option",
+							"access": null,
+							"controlling_value_regex": "color",
+							"hidden_subfields": null,
+							"operator": "EQUAL"
+						},
+						"display": "select",
+						"name": "background_color",
+						"id": "design_settings.background_color",
+						"label": "Background Color",
+						"locked": false,
+						"choices": [
+									[
+										"primary",
+										"Primary"
+									],
+									[
+										"secondary",
+										"Secondary"
+									],
+									[
+										"tertiary",
+										"Tertiary"
+									],
+									[
+										"white",
+										"White"
+									],
+									[
+										"black",
+										"Black"
+									],
+									[
+										"dark",
+										"Dark"
+									],
+									[
+										"light",
+										"Light"
+									],
+									[
+										"success",
+										"Success"
+									],
+									[
+										"info",
+										"Info"
+									],
+									[
+										"warning",
+										"Warning"
+									],
+									[
+										"danger",
+										"Danger"
+									],
+									[
+										"none",
+										"None"
+									]
+						],
+						"type": "choice",
+						"required": true
+					},
+					{
+						"default": {
+							"color": "#fff"
+						},
+						"visibility": {
+							"controlling_field": "background_option",
+							"access": null,
+							"controlling_value_regex": "custom",
+							"hidden_subfields": null,
+							"operator": "EQUAL"
+						},
+						"name": "background_custom",
+						"id": "design_settings.background_custom",
+						"label": "Background Custom",
+						"locked": false,
+						"type": "color",
+						"required": false
+					}
+				],
+				"name": "design_settings",
+				"id": "design_settings",
+				"label": "Design Settings",
+				"locked": false,
+				"type": "group",
+				"required": false
+			},
+			{
+				"allow_new_line": false,
+				"default": "The easiest and fastest way to build on HubSpot",
+				"validation_regex": "",
+				"name": "heading",
+				"show_emoji_picker": false,
+				"id": "heading",
+				"label": "Heading",
+				"locked": false,
+				"type": "text",
+				"required": false
+			},
+			{
+				"default": "2",
+				"visibility": {
+					"controlling_field": "heading",
+					"access": null,
+					"controlling_value_regex": null,
+					"hidden_subfields": null,
+					"operator": "NOT_EMPTY"
+				},
+				"display": "select",
+				"name": "heading_size",
+				"id": "heading_size",
+				"label": "Heading Size",
+				"locked": false,
+				"choices": [
+					[
+						"1",
+						"H1"
+					],
+					[
+						"2",
+						"H2"
+					],
+					[
+						"3",
+						"H3"
+					],
+					[
+						"4",
+						"H4"
+					],
+					[
+						"5",
+						"H5"
+					],
+					[
+						"6",
+						"H6"
+					]
+				],
+				"type": "choice",
+				"required": true
+			},
+			{
+                "name": "heading_display_size",
+                "label": "Heading Display Size",
+                "required": true,
+                "locked": false,
+				"display": "select",
+				"visibility": {
+                    "controlling_field": "heading",
+                    "controlling_value_regex": null,
+                    "operator": null,
+                    "access": null
+                },
+                "choices": [
+                    [
+                        "auto",
+                        "Auto"
+                    ],
+                    [
+                        "h1",
+                        "H1"
+                    ],
+                    [
+                        "h2",
+                        "H2"
+                    ],
+                    [
+                        "h3",
+                        "H3"
+                    ],
+                    [
+                        "h4",
+                        "H4"
+                    ],
+                    [
+                        "h5",
+                        "H5"
+                    ],
+                    [
+                        "h6",
+                        "H6"
+                    ],
+                    [
+                        "display-4",
+                        "L"
+                    ],
+                    [
+                        "display-3",
+                        "XL"
+                    ],
+                    [
+                        "display-2",
+                        "XXL"
+                    ],
+                    [
+                        "display-1",
+                        "XXXL"
+                    ]
+                ],
+                "type": "choice",
+                "default": "auto"
+            },
+			{
+				"default": "",
+				"name": "description",
+				"id": "description",
+				"label": "Description",
+				"locked": false,
+				"type": "richtext",
+				"required": false
+			},
+			{
+				"default": "center",
+				"display": "select",
+				"name": "text_align",
+				"id": "text_align",
+				"label": "Text Align",
+				"locked": false,
+				"choices": [
+					[
+						"auto",
+						"Auto"
+					],
+					[
+						"left",
+						"Left"
+					],
+					[
+						"center",
+						"Center"
+					],
+					[
+						"right",
+						"Right"
+					]
+				],
+				"type": "choice",
+				"required": true
+			},
+			{
+				"default": "auto",
+				"display": "select",
+				"name": "text_color",
+				"id": "text_color",
+				"label": "Text Color",
+				"locked": false,
+				"choices": [
+					[
+						"auto", "Auto"
+					],
+					[
+						"primary", "Primary"
+					],
+					[
+						"secondary", "Secondary"
+					],
+					[
+						"tertiary", "Tertiary"
+					],
+					[
+						"white", "White"
+					],
+					[
+						"black", "Black"
+					],
+					[
+						"dark", "Dark"
+					],
+					[
+						"light", "Light"
+					],
+					[
+						"success", "Success"
+					],
+					[
+						"info", "Info"
+					],
+					[
+						"warning", "Warning"
+					],
+					[
+						"danger", "Danger"
+					]
+				],
+				"type": "choice",
+				"required": true
+			},
+			{
+				"default": [{
+						"team_title": "INTERACTION DESIGNER",
+						"card_content": "<p>The template is really nice and offers quite a large set of options. It's beautiful and the coding is done quickly and seamlessly. Thank you!</p>",
+						"team_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/02.jpg",
+							"alt": "Jovani Tate",
+							"width": "128",
+							"height": "128"
+						},
+						"team_name": "Jovani Tate"
+					},
+					{
+						"team_title": "GRAPHIC DESIGNER",
+						"card_content": "<p>It was easy to put together pages and when I was done, I could just click and have the page automatically created in HubSpot.</p>",
+						"team_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/06.jpg",
+							"alt": "Kaila Terrell",
+							"width": "128",
+							"height": "128"
+						},
+						"team_name": "Kaila Terrell"
+					},
+					{
+						"team_title": "INBOUND WRITER",
+						"card_content": "<p>We built our old site using a template, and it left a lot to be desired. With SprocketRocket, we can go page by page and get the exact flow of content we need.</p>",
+						"team_image": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/05.jpg",
+							"alt": "Hugh Branch",
+							"width": "128",
+							"height": "128"
+						},
+						"team_name": "Hugh Branch"
+					}
+				],
+				"tab": "CONTENT",
+				"children": [{
+						"default": {
+							"src": "https://www.lean-labs.com/hubfs/sr-assets/images/05.jpg",
+							"alt": "Hugh Brancht",
+							"width": "128",
+							"height": "128"
+						},
+						"resizable": true,
+						"responsive": false,
+						"name": "team_image",
+						"id": "card.team_image",
+						"label": "Card Image",
+						"locked": false,
+						"type": "image",
+						"required": false
+					},
+					{
+						"default": "<p>We built our old site using a template, and it left a lot to be desired. With SprocketRocket, we can go page by page and get the exact flow of content we need.</p>",
+						"name": "card_content",
+						"id": "50739904-0312-4de0-bfbc-dd70f65ab7ed",
+						"label": "Card Content",
+						"locked": false,
+						"type": "richtext",
+						"required": false
+					},
+					{
+						"allow_new_line": false,
+						"default": "Hugh Branch",
+						"validation_regex": "",
+						"name": "team_name",
+						"show_emoji_picker": false,
+						"id": "card.team_name",
+						"label": "Card Name",
+						"locked": false,
+						"type": "text",
+						"required": false
+					},
+					{
+						"allow_new_line": false,
+						"default": "INBOUND WRITER",
+						"validation_regex": "",
+						"name": "team_title",
+						"show_emoji_picker": false,
+						"id": "card.team_title",
+						"label": "Card Title",
+						"locked": false,
+						"type": "text",
+						"required": false
+					}
+				],
+				"name": "card",
+				"id": "1",
+				"label": "Card",
+				"occurrence": {
+					"default": 3,
+					"min": null,
+					"max": null,
+					"sorting_label_field": "card.team_name"
+				},
+				"locked": false,
+				"type": "group",
+				"required": false
+			},
+			{
+				"default": {
+					"cta_style": "primary",
+					"cta": "",
+					"cta_type": "btn",
+					"link": "#",
+					"button_text": "Get SprocketRocket"
+				},
+				"tab": "CONTENT",
+				"children": [{
+						"default": "btn",
+						"display": "select",
+						"name": "cta_type",
+						"id": "cta_type",
+						"label": "CTA Type",
+						"locked": false,
+						"choices": [
+							[
+								"cta",
+								"HubSpot CTA"
+							],
+							[
+								"btn",
+								"Button"
+							],
+							[
+								"none",
+								"None"
+							]
+						],
+						"type": "choice",
+						"required": true
+					},
+					{
+						"default": "primary",
+						"visibility": {
+							"controlling_field": "cta_type",
+							"access": null,
+							"controlling_value_regex": "none",
+							"hidden_subfields": null,
+							"operator": "NOT_EQUAL"
+						},
+						"display": "select",
+						"name": "cta_style",
+						"id": "cta.cta_style",
+						"label": "CTA Style",
+						"locked": false,
+						"choices": [
+							[
+								"primary",
+								"Primary"
+							],
+							[
+								"secondary",
+								"Secondary"
+							],
+							[
+								"tertiary",
+								"Tertiary"
+							],
+							[
+								"white",
+								"White"
+							],
+							[
+								"black",
+								"Black"
+							],
+							[
+								"outline-primary",
+								"Outline Primary"
+							],
+							[
+								"outline-secondary",
+								"Outline Secondary"
+							],
+							[
+								"outline-tertiary",
+								"Outline Tertiary"
+							],
+							[
+								"outline-white",
+								"Outline White"
+							],
+							[
+								"outline-black",
+								"Outline Black"
+							],
+							[
+								"none",
+								"None"
+							]
+						],
+						"type": "choice",
+						"required": false
+					},
+					{
+						"default": "",
+						"visibility": {
+							"controlling_field": "cta_type",
+							"access": null,
+							"controlling_value_regex": "cta",
+							"hidden_subfields": null,
+							"operator": "EQUAL"
+						},
+						"name": "cta",
+						"id": "cta.cta",
+						"label": "CTA",
+						"locked": false,
+						"type": "cta",
+						"required": false
+					},
+					{
+						"allow_new_line": false,
+						"default": "Get SprocketRocket",
+						"validation_regex": "",
+						"visibility": {
+							"controlling_field": "cta_type",
+							"access": null,
+							"controlling_value_regex": "btn",
+							"hidden_subfields": null,
+							"operator": "EQUAL"
+						},
+						"name": "button_text",
+						"show_emoji_picker": false,
+						"id": "cta.button_text",
+						"label": "Button Text",
+						"locked": false,
+						"type": "text",
+						"required": false
+					},
+					{
+						"allow_new_line": false,
+						"default": "#",
+						"validation_regex": "",
+						"visibility": {
+							"controlling_field": "cta_type",
+							"access": null,
+							"controlling_value_regex": "btn",
+							"hidden_subfields": null,
+							"operator": "EQUAL"
+						},
+						"name": "link",
+						"show_emoji_picker": false,
+						"id": "cta.link",
+						"label": "Link",
+						"locked": false,
+						"type": "text",
+						"required": false
+					}
+				],
+				"name": "cta",
+				"id": "cta",
+				"label": "CTA",
+				"locked": false,
+				"type": "group",
+				"required": false
+			}
+		],
+		"source": ""
+	},
+	"custom_module_template": "sr-cards-testimonial-grid-02.html",
+	"available_builder": true,
+	"category": 7,
+	"files": []
+}

@@ -1,0 +1,365 @@
+{% if module.enabled %}
+
+	{{ require_js(var.sr_assetDir + '/js/isotope.pkgd.min.js') }}
+
+	{% require_js %}
+		<script type="text/javascript">
+
+			window.addEventListener('load', function () {
+
+				function load_isotope(selector) {
+					$('.{{ name }} .isotope.items').isotope({
+						itemSelector: '.item',
+						filter:  selector,
+						percentPosition: true,
+						layoutMode: 'masonry'
+					});
+				}
+
+				$('.{{ name }} #filterOption1, .{{ name }} #filterOption2').change(function() {
+					var selector = "";
+
+					if ($('.{{ name }} #filterOption1').val()) {
+						selector = "." + $('.{{ name }} #filterOption1').val();
+					}
+					if ($('.{{ name }} #filterOption2').val()){
+						selector += "." + $('.{{ name }} #filterOption2').val();
+					}
+					load_isotope(selector);
+				});
+
+				$(window).on('load resize', function () {
+						load_isotope();
+				});
+
+			});
+		</script>
+	{% end_require_js %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-12' %}
+	{% else %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	{% if module.grid == 'two-col' %}
+		{% set grid = 'col-md-6' %}
+	{% elif module.grid == 'three-col' %}
+		{% set grid = 'col-md-4' %}
+	{% elif module.grid == 'four-col' %}
+		{% set grid = 'col-md-3' %}
+	{% endif %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-cards-filter-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Cards Filter 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+
+	<div class="sr-cards-filter-01 {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.class %}{{ module.design_settings.class }}{% endif %} {% if module.design_settings.border_top %}sr-line-top{% endif %} {% if module.design_settings.border_bottom %}sr-line-bottom{% endif %} prototype-no-background {{ name }}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }}">
+			{% if module.design_settings.container_width != 'max' %}
+				<div class="row">
+					<div class="{{ width_class }}">
+			{% endif %}
+
+						{% if module.heading ||  module.description %}
+							<div class="sr-spacer-bottom-50 {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">
+								{% if module.heading %}
+									<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} heading {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.heading}}</h{{module.heading_size}}>
+								{% endif %}
+								
+								{% if module.description %}
+									<div class="description">{{ module.description}}</div>
+								{% endif %}
+							</div>
+						{% endif %}
+
+						<div class="row hs-form {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">
+							<div class="filter-option col-6 col-md-3 offset-md-3">
+								<select name="filterOption1" id="filterOption1">
+									<option value="">{{ module.filter_option_1_title }}</option>
+									{% for filter_option in module.filter_option_1 %}
+										{% if filter_option.option_tag && filter_option.option %}
+											<option value="{{ filter_option.option_tag }}">{{ filter_option.option }}</option>
+										{% endif %}
+									{% endfor %}
+								</select>
+							</div>
+							<div class="filter-option col-6 col-md-3">
+								<select name="filterOption2" id="filterOption2">
+									<option value="">{{ module.filter_option_2_title }}</option>
+									{% for filter_option in module.filter_option_2 %}
+										{% if filter_option.option_tag && filter_option.option %}
+											<option value="{{ filter_option.option_tag }}">{{ filter_option.option }}</option>
+										{% endif %}
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+
+						<div class="items isotope row">
+							{% for item in module.column %}
+								<div class="item {{ item.tags }} {{ grid }} col-6" style="background: {{ item.brand_color.color }}">
+									<div class="item-inner">
+										<div class="hover {% if item.logo_hover.src %}logohover{% endif%}">
+											{% if item.url %}
+												<a class="tile-link" href="{{ item.url }}" >
+											{% endif %}
+												<div class="card-top">
+													<div class="card-inner">
+														<div class="logo-nohover">
+															{% if item.sr_default_image_size %}
+																{{ var.image(item.logo.src, '150', item.logo.alt, 'class="logo"') }}
+															{% else %}
+																{{ var.image(item.logo.src, item.logo.width, item.logo.alt, 'class="logo"') }}
+															{% endif %}
+														</div>
+														{% if item.logo_hover.src %}
+														<div class="logo-hover">
+															{% if item.sr_default_image_size %}
+																{{ var.image(item.logo_hover.src, '150', item.logo_hover.alt, 'class="logo"') }}
+															{% else %}
+																{{ var.image(item.logo_hover.src, item.logo_hover.width, item.logo_hover.alt, 'class="logo"') }}
+															{% endif %}
+														</div>
+														{% endif %}
+														
+														<p class="small">{{ item.text }}</p>
+													</div>
+												</div>
+											{% if item.url %}
+												</a>
+											{% endif %}
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+			{% if module.design_settings.container_width != 'max' %}
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+
+	{% require_css %}
+		<style type="text/css">
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;    
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});	
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			.sr-cards-filter-01 .items {
+				text-align: center;
+				margin: 2rem 0;
+			}
+			.sr-cards-filter-01 .items .item {
+				border-radius: 0;
+				padding: 0;
+				background: #fff;
+			}
+			.sr-cards-filter-01 .item:after {
+				content: '';
+				border-style: solid;
+				border-width: 0 0 50px 50px;
+				border-color: transparent transparent #555 transparent;
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				opacity: 0;
+			}
+			.sr-cards-filter-01 .item:before {
+				content: '+';
+				position: absolute;
+				bottom: 1px;
+				right: 1px;
+				z-index: 1;
+				color: #fff;
+				width: 25px;
+				height: 25px;
+				font-size: 1.95rem;
+				line-height: 1.5rem;
+				font-weight: 500;
+				opacity: 0;
+			}
+			.sr-cards-filter-01 .item:hover::before, .sr-cards-filter-01 .item:hover::after {
+				opacity: 1;
+			}
+			.sr-cards-filter-01 .item .item-inner {
+				position: relative;
+				background-size: cover;
+				background-position: center;
+				min-height: 275px;
+				background: #fff;
+				-webkit-transition: all 0.2s ease;
+				-o-transition: all 0.2s ease;
+				transition: all 0.2s ease;
+				border: 1px solid #e5e7ea;
+				margin-bottom: -1px;
+				margin-right: -1px;
+			}
+			.sr-cards-filter-01 .items .item:hover .item-inner{
+				background: transparent;
+			}
+			.sr-cards-filter-01 .card-inner {
+				text-align: center;
+				font-size: 1rem;
+			}
+			.sr-cards-filter-01 .item img {
+				max-width: 100%;
+			}
+			.sr-cards-filter-01 .item .hover img.logo {
+				text-align: center;
+				margin: 0 auto 0;
+				-webkit-transition: margin 0.3s linear;
+				transition: margin 0.3s linear;
+			}
+			.sr-cards-filter-01 .item .hover .card-inner {
+				padding: 2rem;
+			}
+			.sr-cards-filter-01 .item .hover p {
+				color: #fff;
+				margin: 0 auto;
+				margin-top: 1rem;
+				-webkit-transition: all 0.4s ease;
+				-o-transition: all 0.4s ease;
+				transition: all 0.4s ease;
+				max-height: 0;
+				opacity: 0;
+			}
+			.sr-cards-filter-01 .item:hover .hover p {
+				max-height: 100px;
+				opacity: 1;
+			}
+			.sr-cards-filter-01 .item .hover .tile-link {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				position: absolute;
+				overflow: hidden;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				text-decoration: none;
+				-webkit-transition: background 0.3s linear;
+				-o-transition: background 0.3s linear;
+				transition: background 0.3s linear;
+				border-bottom: none;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				justify-content: center;
+			}
+			.sr-cards-filter-01 .filter-option:after {
+				position: absolute;
+				right: 19px;
+				top: 50%;
+				transform: translateY(-50%);
+				display: inline-block;
+				font-family: FontAwesome;
+				font-style: normal;
+				font-weight: normal;
+				line-height: 1;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+				content: "\f078";
+				font-size: .75rem;
+			}
+			.sr-cards-filter-01 .filter-option {
+				position: relative;
+				padding-left: 3px;
+				padding-right: 3px;
+			}
+			.sr-cards-filter-01 .item .logo-hover {
+				display: none
+			}
+			.sr-cards-filter-01 .item:hover .hover.logohover .logo-hover {
+				display: block
+			}
+			.sr-cards-filter-01 .item:hover .hover.logohover .logo-nohover {
+				display: none
+			}
+			@media only screen and (max-width: 979px) {
+				.sr-cards-filter-01 .item .item-inner {
+					min-height: 225px;
+				}
+			}
+			@media only screen and (max-width: 768px) {
+				.sr-cards-filter-01 .item .hover .card-inner {
+					padding: 4rem 2rem;
+				}
+			}
+			@media only screen and (min-width: 600px) {
+				.sr-cards-filter-01 .item .hover img.logo {
+					text-align: center;
+					margin: 0 auto 0;
+					-webkit-transition: margin 0.3s linear;
+					transition: margin 0.3s linear;
+				}
+				.sr-cards-filter-01 .item:hover .hover img.logo {
+					margin: 0 auto;
+				}
+			}
+			@media only screen and (min-width: 979px) {
+				.sr-cards-filter-01 .item .hover img.logo {
+					text-align: center;
+					-webkit-transition: margin 0.3s linear;
+					transition: margin 0.3s linear;
+				}
+
+			}
+		
+		</style>
+	{% end_require_css %}
+{% endif %}

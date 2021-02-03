@@ -1,0 +1,262 @@
+{% if module.enabled %}
+
+	{{ require_css(var.sr_assetDir + '/css/slick.css') }}
+	{% require_css %}
+		<style>
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					background: rgba({{ module.design_settings.background_overlay_color.color|convert_rgb }}, {% if module.design_settings.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_overlay_color.opacity }});
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			{% if module.design_settings.top_bottom_padding == "custom" %}
+				.{{ name }} {
+					padding: {{ module.design_settings.custom_padding }};
+				}
+			{% endif %}
+			@media (min-width: 480px) and (max-width: 768px) {
+				.sr-tabs-testimonials-01 .container {
+					max-width: 100%;
+				}
+			}
+
+			.sr-tabs-testimonials-01 .quote-mark {
+				width: 2rem;
+				height: 2rem;
+				margin-bottom: -0.5rem;
+			}
+
+			.sr-tabs-testimonials-01 .quote-mark g {
+				fill: #0C63FF;
+				fill: var(--primary);
+			}
+
+			.sr-tabs-testimonials-01.text-white .quote-mark g,
+			.sr-tabs-testimonials-01.text-light .quote-mark g,
+			.sr-tabs-testimonials-01.text-dark .quote-mark g,
+			.sr-tabs-testimonials-01.text-primary .quote-mark g,
+			.sr-tabs-testimonials-01.text-secondary .quote-mark g,
+			.sr-tabs-testimonials-01.text-info .quote-mark g,
+			.sr-tabs-testimonials-01.text-warning .quote-mark g,
+			.sr-tabs-testimonials-01.text-danger .quote-mark g {
+				fill: currentColor;
+			}
+
+
+			.sr-tabs-testimonials-01 .sr-tabs-testimonials-01-thumbs img {
+				width: 50px !important;
+				height: 50px;
+				border-radius: 50%;
+				margin: 0 5px;
+				outline: none;
+				cursor: pointer;
+			}
+
+			@media (min-width: 480px) {
+				.sr-tabs-testimonials-01 .sr-tabs-testimonials-01-thumbs .slick-track {
+					display: flex;
+					justify-content: center;
+					transform: none !important;
+					flex-wrap: wrap;
+					width: 100% !important;
+				}
+
+				.sr-tabs-testimonials-01.text-left .sr-tabs-testimonials-01-thumbs .slick-track {
+					justify-content: flex-start;
+				}
+				.sr-tabs-testimonials-01.text-right .sr-tabs-testimonials-01-thumbs .slick-track {
+					justify-content: flex-end;
+				}
+
+				.sr-tabs-testimonials-01 .thumbnail-wrapper {
+					width: 60px !important;
+				}
+
+				.sr-tabs-testimonials-01 [class*="-thumbnail-"] {
+					margin: 0 5px 5px;
+				}
+			}
+			.sr-tabs-testimonials-01 .slick-slide {
+				outline: none;
+			}
+
+			.sr-tabs-testimonials-01 .sr-tabs-testimonials-01-thumbs .slick-slide {
+				opacity: 0.25;
+			}
+			.sr-tabs-testimonials-01 .sr-tabs-testimonials-01-thumbs .slick-current {
+				opacity: 1;
+			}
+
+			@media (max-width: 479px) {
+				.sr-tabs-testimonials-01 .sr-tabs-testimonials-01-thumbs {
+					margin-left: -15px;
+					margin-right: -15px;
+				}
+			}
+
+			.sr-tabs-testimonials-01 .sr-tabs-testimonials-01-labels {
+				color: #30343b;
+			}
+		
+		</style>
+	{% end_require_css %}
+
+	{% if module.design_settings.container_width == 'min' %}
+		{% set width_class = 'col-md-6 offset-md-3' %}
+	{% elif module.design_settings.container_width == 'narrow' %}
+		{% set width_class = 'col-md-8 offset-md-2' %}
+	{% elif module.design_settings.container_width == 'wide' %}
+		{% set width_class = 'col-md-10 offset-md-1' %}
+	{% endif %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-tabs-testimonials-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Tabs Testimonials 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+	
+	<div class="sr-tabs-testimonials-01 {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} sr-padding-{{ module.design_settings.top_bottom_padding }} {% if module.design_settings.class %}{{ module.design_settings.class }}{% endif %} {% if module.design_settings.border_top %}sr-line-top{% endif %} {% if module.design_settings.border_bottom %}sr-line-bottom{% endif %} {% if module.text_align != 'auto' %} text-{{ module.text_align }}{% endif %} {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %} {{ name }}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="{{ module.design_settings.layout }}">
+			{% if module.design_settings.container_width != 'max' %}
+				<div class="row">
+					<div class="{{ width_class }}">
+			{% endif %}
+						{% if module.heading %}
+							<h{{module.heading_size}} class="{% if module.heading_display_size != 'auto' %}{{ module.heading_display_size }}{% endif %} heading {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">{{ module.heading }}</h{{module.heading_size}}>
+						{% endif %}
+						{% if module.description %}
+							<div class="description sr-spacer-bottom-25">
+								{{ module.description }}
+							</div>
+						{% endif %}
+
+						<div class="sr-tabs-testimonials-01-wrapper">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 26" class="quote-mark"><g fill="#0C63FF" fill-rule="evenodd"><path d="M9.535 11.543a7.894 7.894 0 0 0-2.181-.318 6.855 6.855 0 0 0-2.735.56c.687-2.517 2.339-6.86 5.629-7.348a.782.782 0 0 0 .637-.563l.72-2.572a.781.781 0 0 0-.647-.984 5.461 5.461 0 0 0-.736-.05c-3.949 0-7.86 4.122-9.51 10.024-.969 3.462-1.253 8.668 1.134 11.945 1.335 1.833 3.283 2.812 5.79 2.91h.03a6.952 6.952 0 0 0 6.67-5.065 6.885 6.885 0 0 0-.634-5.266 6.948 6.948 0 0 0-4.167-3.273zM28.897 14.817a6.947 6.947 0 0 0-4.167-3.274 7.893 7.893 0 0 0-2.18-.318 6.856 6.856 0 0 0-2.736.56c.688-2.517 2.34-6.86 5.63-7.348a.782.782 0 0 0 .637-.563l.719-2.572a.781.781 0 0 0-.646-.984 5.455 5.455 0 0 0-.736-.05c-3.949 0-7.86 4.122-9.51 10.024-.969 3.462-1.253 8.668 1.134 11.945 1.335 1.833 3.283 2.813 5.79 2.91h.03a6.952 6.952 0 0 0 6.67-5.064 6.89 6.89 0 0 0-.635-5.266z"/></g></svg>
+
+
+							<div class="sr-tabs-testimonials-01-quotes sr-spacer-top-25 sr-spacer-bottom-25">
+								{% for item in module.tab_item %}
+									<div class="{{ name }}-testimonial-{{ loop.index }}">
+											{{ item.tab_content }}
+									</div>
+								{% endfor %}
+							</div>
+
+							<div class="sr-tabs-testimonials-01-thumbs">
+								{% for item in module.tab_item %}
+									{% if item.sr_default_image_size %}
+										{{ var.image(item.tab_photo.src, '600', item.tab_photo.alt) }}
+									{% else %}
+										{{ var.image(item.tab_photo.src, item.tab_photo.width, item.tab_photo.alt) }}
+									{% endif %}
+								{% endfor %}
+							</div>
+
+							<div class="sr-tabs-testimonials-01-labels sr-spacer-top-25 {% if module.text_color != 'auto' %}text-{{ module.text_color }}{% endif %}">
+								{% for item in module.tab_item %}
+										<div class="{{ name }}-label-{{ loop.index }}">
+											{{ item.tab_label }}
+										</div>
+								{% endfor %}
+							</div>
+						</div>
+
+
+			{% if module.design_settings.container_width != 'max' %}
+					</div>
+				</div>
+			{% endif %}
+		</div>
+
+	</div>
+
+	{% if module.tab_item|length > 1 %}
+
+		{{ require_js(var.sr_assetDir + '/js/slick.min.js') }}
+		{% require_js %}
+			<script type="text/javascript">
+		    $(document).ready(function(){
+					$('.{{name}} .sr-tabs-testimonials-01-quotes').slick({
+					  slidesToShow: 1,
+					  slidesToScroll: 1,
+					  arrows: false,
+					  fade: {% if module.fade %}true{% else %}false{% endif %},
+					  asNavFor: '.{{name}} .sr-tabs-testimonials-01-thumbs, .{{name}} .sr-tabs-testimonials-01-labels',
+						autoplay: {% if module.autoplay %}true{% else %}false{% endif %},
+						autoplaySpeed: 5000,
+						adaptiveHeight: {% if module.adaptive_height %}true{% else %}false{% endif %}
+					});
+					$('.{{name}} .sr-tabs-testimonials-01-thumbs').slick({
+					  slidesToShow: 5,
+					  slidesToScroll: 1,
+					  asNavFor: '.{{name}} .sr-tabs-testimonials-01-quotes, .{{name}} .sr-tabs-testimonials-01-labels',
+					  dots: false,
+						arrows: false,
+					  centerMode: false,
+					  focusOnSelect: true,
+						autoplay: {% if module.autoplay %}true{% else %}false{% endif %},
+						autoplaySpeed: 5000,
+						responsive: [
+							{
+								breakpoint: 480,
+					      settings: {
+					        centerMode: true,
+									slidesToScroll: 1,
+					        slidesToShow: 3
+					      }
+							}
+						]
+					});
+					$('.{{name}} .sr-tabs-testimonials-01-labels').slick({
+					  slidesToShow: 1,
+					  slidesToScroll: 1,
+					  arrows: false,
+					  fade: {% if module.fade %}true{% else %}false{% endif %},
+					  asNavFor: '.{{name}} .sr-tabs-testimonials-01-thumbs, .{{name}} .sr-tabs-testimonials-01-quotes',
+						autoplay: {% if module.autoplay %}true{% else %}false{% endif %},
+						autoplaySpeed: 5000
+					});
+		    });
+		  </script>
+		{% end_require_js %}
+
+	{% endif %}
+
+{% endif %}

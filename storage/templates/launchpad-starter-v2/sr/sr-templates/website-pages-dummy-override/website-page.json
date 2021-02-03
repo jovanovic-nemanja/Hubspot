@@ -1,0 +1,3497 @@
+{
+    "name": "SR Darth Homepage",
+    "custom_modules": [
+        "sr-base.json",
+        "sr-nav-dropdown-01.json",
+        "sr-hero-01.json",
+        "sr-hero-parallax-01.json",
+        "sr-three-col-02.json",
+        "sr-offer-parallax-01.json",
+        "sr-footer-01.json"
+    ],
+    "module_overrides": {
+        "sr-base.json": {
+            "custom_module": {
+                "author": "cristian@lean-labs.com",
+                "name": "SR Base",
+                "global": true,
+                "override_global": true,
+                "css_assets": [],
+                "editable_contexts": [],
+                "external_js": [],
+                "icon": "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+                "purchased": true,
+                "hostTemplateTypes": [
+                    "PAGE",
+                    "BLOG_POST",
+                    "BLOG_LISTING"
+                ],
+                "js_assets": [],
+                "other_assets": [],
+                "fields": [
+                    {
+                        "id": "6cc03671-b8f9-02d7-f7c9-a2ae9d3a4447",
+                        "name": "color",
+                        "label": "Color",
+                        "sortable": false,
+                        "required": false,
+                        "locked": true,
+                        "children": [
+                            {
+                                "id": "cfd332b2-4104-b79c-5321-9e61ccdd29b2",
+                                "name": "primary",
+                                "label": "Primary",
+                                "sortable": false,
+                                "required": true,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#ff0d59",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "df395e1a-190a-6340-ff14-0bddabcb2419",
+                                "name": "secondary",
+                                "label": "Secondary",
+                                "sortable": false,
+                                "required": true,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#f5f7f9",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "5dfd282f-0b22-8fce-723c-404eb21b87fe",
+                                "name": "success",
+                                "label": "Success",
+                                "sortable": false,
+                                "required": true,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#28a745",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "e52cc834-9475-a834-68a5-3a072a9924c4",
+                                "name": "info",
+                                "label": "Info",
+                                "sortable": false,
+                                "required": true,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#17a2b8",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "9edd5b03-f363-2a8a-c181-987375b5b505",
+                                "name": "warning",
+                                "label": "Warning",
+                                "sortable": false,
+                                "required": true,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#ffc107",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "d64506dd-3940-d510-55fe-c3ccd61b5a0c",
+                                "name": "danger",
+                                "label": "Danger",
+                                "sortable": false,
+                                "required": true,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#dc3545",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "ac257f55-9a7c-0a06-4caa-12f764f43164",
+                                "name": "light",
+                                "label": "Light",
+                                "sortable": false,
+                                "required": true,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#f8f9fa",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "c27c030f-3ff8-d707-88f1-d6a1bf7ca995",
+                                "name": "dark",
+                                "label": "Dark",
+                                "sortable": false,
+                                "required": true,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#343a40",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "5ed6452e-ce52-f9db-dc7e-d55c59f3b16e",
+                                "name": "white",
+                                "label": "White",
+                                "sortable": false,
+                                "required": true,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#ffffff",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "97f6eb51-1cae-0fd6-faa3-7977c31a2d28",
+                                "name": "borders",
+                                "label": "Borders",
+                                "sortable": false,
+                                "required": true,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#e5e7ea",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "96c348ca-e2c4-164f-66d4-505c107deb67",
+                                "name": "body_bg",
+                                "label": "Body Bg",
+                                "sortable": false,
+                                "required": true,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#fff",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "2e42ac7e-7479-1a39-f8d8-d9ee6ea0d95f",
+                                "name": "body_color",
+                                "label": "Body Color",
+                                "sortable": false,
+                                "required": true,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#87909e",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "db18bc0b-f19f-f963-7c98-db8cd0f2a911",
+                                "name": "headings_color",
+                                "label": "Headings Color",
+                                "sortable": false,
+                                "required": true,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#30343b",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "ccb69c8a-2bee-6ac0-e8a1-27a3c4e7fec8",
+                                "name": "lead_color",
+                                "label": "Lead Color",
+                                "sortable": false,
+                                "required": true,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#87909e",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "caa7be52-0258-972d-2652-51478cbef745",
+                                "name": "link_color",
+                                "label": "Link Color",
+                                "sortable": false,
+                                "required": true,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#0c63ff",
+                                    "opacity": 100
+                                }
+                            },
+                            {
+                                "id": "c4717b35-f244-053e-64ed-d58afcdebda0",
+                                "name": "link_hover_color",
+                                "label": "Link Hover Color",
+                                "sortable": false,
+                                "required": true,
+                                "locked": false,
+                                "type": "color",
+                                "default": {
+                                    "color": "#0da6ff",
+                                    "opacity": 100
+                                }
+                            }
+                        ],
+                        "type": "group",
+                        "default": {
+                            "primary": {
+                                "color": "#ff0d59",
+                                "opacity": 100
+                            },
+                            "secondary": {
+                                "color": "#f5f7f9",
+                                "opacity": 100
+                            },
+                            "success": {
+                                "color": "#28a745",
+                                "opacity": 100
+                            },
+                            "info": {
+                                "color": "#17a2b8",
+                                "opacity": 100
+                            },
+                            "warning": {
+                                "color": "#ffc107",
+                                "opacity": 100
+                            },
+                            "danger": {
+                                "color": "#dc3545",
+                                "opacity": 100
+                            },
+                            "light": {
+                                "color": "#f8f9fa",
+                                "opacity": 100
+                            },
+                            "dark": {
+                                "color": "#343a40",
+                                "opacity": 100
+                            },
+                            "white": {
+                                "color": "#ffffff",
+                                "opacity": 100
+                            },
+                            "borders": {
+                                "color": "#e5e7ea",
+                                "opacity": 100
+                            },
+                            "body_bg": {
+                                "color": "#fff",
+                                "opacity": 100
+                            },
+                            "body_color": {
+                                "color": "#87909e",
+                                "opacity": 100
+                            },
+                            "headings_color": {
+                                "color": "#30343b",
+                                "opacity": 100
+                            },
+                            "lead_color": {
+                                "color": "#87909e",
+                                "opacity": 100
+                            },
+                            "link_color": {
+                                "color": "#0c63ff",
+                                "opacity": 100
+                            },
+                            "link_hover_color": {
+                                "color": "#0da6ff",
+                                "opacity": 100
+                            }
+                        }
+                    },
+                    {
+                        "id": "df86beac-6463-c384-7826-05aa029e9985",
+                        "name": "typography",
+                        "label": "Typography",
+                        "sortable": false,
+                        "required": false,
+                        "locked": true,
+                        "children": [
+                            {
+                                "id": "15fcda13-97d9-4d33-8667-27b644313a20",
+                                "name": "primary_font",
+                                "label": "Primary Font",
+                                "help_text": "Font name from Google Fonts",
+                                "sortable": false,
+                                "required": true,
+                                "locked": false,
+                                "validation_regex": "",
+                                "allow_new_line": false,
+                                "show_emoji_picker": false,
+                                "type": "text",
+                                "default": "Montserrat"
+                            },
+                            {
+                                "id": "be3ccf00-cbc3-9de8-13a3-15e81679caf8",
+                                "name": "primary_font_weight",
+                                "label": "Primary Font Weight",
+                                "help_text": "Comma separated font weights",
+                                "sortable": false,
+                                "required": true,
+                                "locked": false,
+                                "validation_regex": "",
+                                "allow_new_line": false,
+                                "show_emoji_picker": false,
+                                "type": "text",
+                                "default": "300, 400, 600, 700"
+                            },
+                            {
+                                "id": "2c3d3916-6aec-bf04-aca5-624f1e90e7d4",
+                                "name": "secondary_font",
+                                "label": "Secondary Font",
+                                "help_text": "Font name from Google Fonts",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "validation_regex": "",
+                                "allow_new_line": false,
+                                "show_emoji_picker": false,
+                                "type": "text",
+                                "default": ""
+                            },
+                            {
+                                "id": "ba3bae95-a440-46b9-39f5-d26fd528dae5",
+                                "name": "secondary_font_weight",
+                                "label": "Secondary Font Weight",
+                                "help_text": "Comma separated font weights",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "validation_regex": "",
+                                "visibility": {
+                                    "controlling_field": "2c3d3916-6aec-bf04-aca5-624f1e90e7d4",
+                                    "controlling_value_regex": null,
+                                    "operator": null,
+                                    "access": null
+                                },
+                                "allow_new_line": false,
+                                "show_emoji_picker": false,
+                                "type": "text",
+                                "default": "400, 500, 600"
+                            },
+                            {
+                                "id": "6ab18295-2011-3250-dbb1-bfb752a33197",
+                                "name": "headings",
+                                "label": "Heading Font",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "2c3d3916-6aec-bf04-aca5-624f1e90e7d4",
+                                    "controlling_value_regex": null,
+                                    "operator": "NOT_EMPTY",
+                                    "access": null
+                                },
+                                "children": [
+                                    {
+                                        "id": "64d1977b-a857-1dc1-b5f5-1485b0c82bd7",
+                                        "name": "separate_font_for_headings",
+                                        "label": "Separate Fonts for Headings",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "visibility": {
+                                            "controlling_field": "2c3d3916-6aec-bf04-aca5-624f1e90e7d4",
+                                            "controlling_value_regex": null,
+                                            "operator": "NOT_EMPTY",
+                                            "access": null
+                                        },
+                                        "type": "boolean",
+                                        "default": true
+                                    },
+                                    {
+                                        "id": "2ee9fe2c-0b93-10e0-27c7-b554e7a26575",
+                                        "name": "heading_font",
+                                        "label": "Heading Font",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "visibility": {
+                                            "controlling_field": "64d1977b-a857-1dc1-b5f5-1485b0c82bd7",
+                                            "controlling_value_regex": "true",
+                                            "operator": "NOT_EQUAL",
+                                            "access": null
+                                        },
+                                        "display": "select",
+                                        "choices": [
+                                            [
+                                                "{{ module.typography.primary_font }}",
+                                                "Primary Font"
+                                            ],
+                                            [
+                                                "{{ module.typography.secondary_font }}",
+                                                "Secondary Font"
+                                            ]
+                                        ],
+                                        "type": "choice",
+                                        "default": "{{ module.typography.primary_font }}"
+                                    }
+                                ],
+                                "type": "group",
+                                "default": {
+                                    "separate_font_for_headings": true,
+                                    "heading_font": "{{ module.typography.primary_font }}"
+                                }
+                            },
+                            {
+                                "id": "4d009442-9e1e-2c86-0a8f-05c2ef9feea4",
+                                "name": "base_font_size",
+                                "label": "Base Font Size",
+                                "sortable": false,
+                                "required": true,
+                                "locked": false,
+                                "display": "text",
+                                "step": 1,
+                                "type": "number",
+                                "default": 16
+                            },
+                            {
+                                "id": "19ef861f-6673-15fa-c1c8-94f450e109f8",
+                                "name": "responsive_typography",
+                                "label": "Responsive Typography",
+                                "sortable": false,
+                                "required": true,
+                                "locked": false,
+                                "type": "boolean",
+                                "default": true
+                            },
+                            {
+                                "id": "62e107a1-1e9e-a715-8881-6646e3815e47",
+                                "name": "small_screens_font_size",
+                                "label": "Small Screens Font Size",
+                                "help_text": "Value in rem",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "19ef861f-6673-15fa-c1c8-94f450e109f8",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": 0.8
+                            },
+                            {
+                                "id": "2c9e5b3e-1bca-ec28-adce-a1003c3f86b9",
+                                "name": "medium_screens_font_size",
+                                "label": "Medium Screens Font Size",
+                                "help_text": "Value in rem",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "19ef861f-6673-15fa-c1c8-94f450e109f8",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null
+                                },
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": 0.9
+                            },
+                            {
+                                "id": "2a79e431-90b0-b770-7ad9-fc9f077001bf",
+                                "name": "show_display_headings",
+                                "label": "Show Display Headings",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "type": "boolean",
+                                "default": true
+                            },
+                            {
+                                "id": "5a8ccae6-f35e-5003-31b7-91f40cc7ff47",
+                                "name": "display1",
+                                "label": "Display 1",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "2a79e431-90b0-b770-7ad9-fc9f077001bf",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null
+                                },
+                                "children": [
+                                    {
+                                        "id": "10c8ce6d-b935-f05e-761d-0b5f1f4a5744",
+                                        "name": "display1_font",
+                                        "label": "Display 1 Font",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "visibility": {
+                                            "controlling_field": "64d1977b-a857-1dc1-b5f5-1485b0c82bd7",
+                                            "controlling_value_regex": "true",
+                                            "operator": "EQUAL",
+                                            "access": null
+                                        },
+                                        "display": "select",
+                                        "choices": [
+                                            [
+                                                "{{ module.typography.primary_font }}",
+                                                "Primary Font"
+                                            ],
+                                            [
+                                                "{{ module.typography.secondary_font }}",
+                                                "Secondary Font"
+                                            ]
+                                        ],
+                                        "type": "choice",
+                                        "default": "{{ module.typography.primary_font }}"
+                                    },
+                                    {
+                                        "id": "2e7fd0db-7007-5f60-99e7-8397f7060711",
+                                        "name": "display1_font_size",
+                                        "label": "Display 1 Font Size",
+                                        "help_text": "Value in rem",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 6
+                                    },
+                                    {
+                                        "id": "0f61abb9-218e-cee9-9392-b6388b92cca4",
+                                        "name": "display1_font_weight",
+                                        "label": "Display 1 Font Weight",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 400
+                                    },
+                                    {
+                                        "id": "f32101b5-2ae9-5acc-beb2-d126fd064f29",
+                                        "name": "italic",
+                                        "label": "Italic",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "type": "boolean",
+                                        "default": false
+                                    }
+                                ],
+                                "type": "group",
+                                "default": {
+                                    "display1_font": "{{ module.typography.primary_font }}",
+                                    "display1_font_size": 6,
+                                    "display1_font_weight": 400,
+                                    "italic": false
+                                }
+                            },
+                            {
+                                "id": "e1112b6a-a522-ce99-cfe1-143423e0574c",
+                                "name": "display2",
+                                "label": "Display 2",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "2a79e431-90b0-b770-7ad9-fc9f077001bf",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null
+                                },
+                                "children": [
+                                    {
+                                        "id": "1e3ddf49-6913-ce25-36fa-3fae4468a8a9",
+                                        "name": "display2_font",
+                                        "label": "Display 2 Font",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "visibility": {
+                                            "controlling_field": "64d1977b-a857-1dc1-b5f5-1485b0c82bd7",
+                                            "controlling_value_regex": "true",
+                                            "operator": "EQUAL",
+                                            "access": null
+                                        },
+                                        "display": "select",
+                                        "choices": [
+                                            [
+                                                "{{ module.typography.primary_font }}",
+                                                "Primary Font"
+                                            ],
+                                            [
+                                                "{{ module.typography.secondary_font }}",
+                                                "Secondary Font"
+                                            ]
+                                        ],
+                                        "type": "choice",
+                                        "default": "{{ module.typography.primary_font }}"
+                                    },
+                                    {
+                                        "id": "0c548b97-6644-58f8-d832-dd404960d657",
+                                        "name": "display2_font_size",
+                                        "label": "Display 2 Font Size",
+                                        "help_text": "Value in rem",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 5.5
+                                    },
+                                    {
+                                        "id": "1dfa4b9e-2ef5-2a5d-237a-6074de173907",
+                                        "name": "display2_font_weight",
+                                        "label": "Display 2 Font Weight",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 400
+                                    },
+                                    {
+                                        "id": "ba806f20-8ece-359a-d506-96d318c384b7",
+                                        "name": "italic",
+                                        "label": "Italic",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "type": "boolean",
+                                        "default": false
+                                    }
+                                ],
+                                "type": "group",
+                                "default": {
+                                    "display2_font": "{{ module.typography.primary_font }}",
+                                    "display2_font_size": 5.5,
+                                    "display2_font_weight": 400,
+                                    "italic": false
+                                }
+                            },
+                            {
+                                "id": "3a3bbf10-170e-7667-dc7e-6af9f574b34b",
+                                "name": "display3",
+                                "label": "Display 3",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "2a79e431-90b0-b770-7ad9-fc9f077001bf",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null
+                                },
+                                "children": [
+                                    {
+                                        "id": "90b6308b-a277-b573-6e62-0df30ec74e8d",
+                                        "name": "display3_font",
+                                        "label": "Display 3 Font",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "visibility": {
+                                            "controlling_field": "64d1977b-a857-1dc1-b5f5-1485b0c82bd7",
+                                            "controlling_value_regex": "true",
+                                            "operator": "EQUAL",
+                                            "access": null
+                                        },
+                                        "display": "select",
+                                        "choices": [
+                                            [
+                                                "{{ module.typography.primary_font }}",
+                                                "Primary Font"
+                                            ],
+                                            [
+                                                "{{ module.typography.secondary_font }}",
+                                                "Secondary Font"
+                                            ]
+                                        ],
+                                        "type": "choice",
+                                        "default": "{{ module.typography.primary_font }}"
+                                    },
+                                    {
+                                        "id": "6e796b6c-22b7-48ca-7ec1-51dc0bb6a0ea",
+                                        "name": "display3_font_size",
+                                        "label": "Display 3 Font Size",
+                                        "help_text": "Value in rem",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 5
+                                    },
+                                    {
+                                        "id": "f38ef287-1fdd-e4d5-7102-65c602c66786",
+                                        "name": "display3_font_weight",
+                                        "label": "Display 3 Font Weight",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 400
+                                    },
+                                    {
+                                        "id": "611e120f-a384-c5bb-6cc7-2ef09a925310",
+                                        "name": "italic",
+                                        "label": "Italic",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "type": "boolean",
+                                        "default": false
+                                    }
+                                ],
+                                "type": "group",
+                                "default": {
+                                    "display3_font": "{{ module.typography.primary_font }}",
+                                    "display3_font_size": 5,
+                                    "display3_font_weight": 400,
+                                    "italic": false
+                                }
+                            },
+                            {
+                                "id": "defa0355-bcc1-7f0a-af00-c5eb76877946",
+                                "name": "display4",
+                                "label": "Display 4",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "visibility": {
+                                    "controlling_field": "2a79e431-90b0-b770-7ad9-fc9f077001bf",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null
+                                },
+                                "children": [
+                                    {
+                                        "id": "8572a25d-9d1c-58c5-6d9d-c009383b0ead",
+                                        "name": "display4_font",
+                                        "label": "Display 4 Font",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "visibility": {
+                                            "controlling_field": "64d1977b-a857-1dc1-b5f5-1485b0c82bd7",
+                                            "controlling_value_regex": "true",
+                                            "operator": "EQUAL",
+                                            "access": null
+                                        },
+                                        "display": "select",
+                                        "choices": [
+                                            [
+                                                "{{ module.typography.primary_font }}",
+                                                "Primary Font"
+                                            ],
+                                            [
+                                                "{{ module.typography.secondary_font }}",
+                                                "Secondary Font"
+                                            ]
+                                        ],
+                                        "type": "choice",
+                                        "default": "{{ module.typography.primary_font }}"
+                                    },
+                                    {
+                                        "id": "526dedff-8b6c-0fba-43fa-6199017475d5",
+                                        "name": "display4_font_size",
+                                        "label": "Display 4 Font Size",
+                                        "help_text": "Value in rem",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 4
+                                    },
+                                    {
+                                        "id": "2c1c5cc1-1b1a-5742-4e31-ae46cc4591ce",
+                                        "name": "display4_font_weight",
+                                        "label": "Display 4 Font Weight",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 400
+                                    },
+                                    {
+                                        "id": "a0bcb3e7-cf31-7ea1-6720-353050e930b0",
+                                        "name": "italic",
+                                        "label": "Italic",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "type": "boolean",
+                                        "default": false
+                                    }
+                                ],
+                                "type": "group",
+                                "default": {
+                                    "display4_font": "{{ module.typography.primary_font }}",
+                                    "display4_font_size": 4,
+                                    "display4_font_weight": 400,
+                                    "italic": false
+                                }
+                            },
+                            {
+                                "id": "3182f59a-b6e2-96bd-b978-c8f0fef8d781",
+                                "name": "h1",
+                                "label": "H1",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "children": [
+                                    {
+                                        "id": "f510978b-d9ee-c8da-58d2-dc25e31e9c67",
+                                        "name": "h1_font",
+                                        "label": "H1 Font",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "visibility": {
+                                            "controlling_field": "64d1977b-a857-1dc1-b5f5-1485b0c82bd7",
+                                            "controlling_value_regex": "true",
+                                            "operator": "EQUAL",
+                                            "access": null
+                                        },
+                                        "display": "select",
+                                        "choices": [
+                                            [
+                                                "{{ module.typography.primary_font }}",
+                                                "Primary Font"
+                                            ],
+                                            [
+                                                "{{ module.typography.secondary_font }}",
+                                                "Secondary Font"
+                                            ]
+                                        ],
+                                        "type": "choice",
+                                        "default": "{{ module.typography.primary_font }}"
+                                    },
+                                    {
+                                        "id": "e42baf75-aafa-c2a5-1409-ed62edb9bda8",
+                                        "name": "h1_font_size",
+                                        "label": "H1 Font Size",
+                                        "help_text": "Value in rem",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 4
+                                    },
+                                    {
+                                        "id": "e27ae67e-b47f-7e7c-fbd3-865528e05c1d",
+                                        "name": "h1_font_weight",
+                                        "label": "H1 Font Weight",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 700
+                                    },
+                                    {
+                                        "id": "02597f63-83fe-5a77-6d37-cc5ba29edd40",
+                                        "name": "italic",
+                                        "label": "Italic",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "type": "boolean",
+                                        "default": false
+                                    }
+                                ],
+                                "type": "group",
+                                "default": {
+                                    "h1_font": "{{ module.typography.primary_font }}",
+                                    "h1_font_size": 4,
+                                    "h1_font_weight": 700,
+                                    "italic": false
+                                }
+                            },
+                            {
+                                "id": "bd002a58-ffcc-e608-4434-13190a496ff0",
+                                "name": "h2",
+                                "label": "H2",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "children": [
+                                    {
+                                        "id": "8b2c7ed7-498e-6a1f-964b-ee24fc1b0214",
+                                        "name": "h2_font",
+                                        "label": "H2 Font",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "visibility": {
+                                            "controlling_field": "64d1977b-a857-1dc1-b5f5-1485b0c82bd7",
+                                            "controlling_value_regex": "true",
+                                            "operator": "EQUAL",
+                                            "access": null
+                                        },
+                                        "display": "select",
+                                        "choices": [
+                                            [
+                                                "{{ module.typography.primary_font }}",
+                                                "Primary Font"
+                                            ],
+                                            [
+                                                "{{ module.typography.secondary_font }}",
+                                                "Secondary Font"
+                                            ]
+                                        ],
+                                        "type": "choice",
+                                        "default": "{{ module.typography.primary_font }}"
+                                    },
+                                    {
+                                        "id": "c65c164d-e99b-bb5b-0e76-c26cb9de4519",
+                                        "name": "h2_font_size",
+                                        "label": "H2 Font Size",
+                                        "help_text": "Value in rem",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 3
+                                    },
+                                    {
+                                        "id": "a47aa338-d865-7888-f14c-99ecaa074eab",
+                                        "name": "h2_font_weight",
+                                        "label": "H2 Font Weight",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 700
+                                    },
+                                    {
+                                        "id": "e579e035-c457-9b0c-156d-4f9d09db31a4",
+                                        "name": "italic",
+                                        "label": "Italic",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "type": "boolean",
+                                        "default": false
+                                    }
+                                ],
+                                "type": "group",
+                                "default": {
+                                    "h2_font": "{{ module.typography.primary_font }}",
+                                    "h2_font_size": 2,
+                                    "h2_font_weight": 600,
+                                    "italic": false
+                                }
+                            },
+                            {
+                                "id": "6a7b14bf-ed4e-bca6-7f3e-c2478063c62c",
+                                "name": "h3",
+                                "label": "H3",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "children": [
+                                    {
+                                        "id": "94481345-8f81-01d8-ae60-aabc92a87cbe",
+                                        "name": "h3_font",
+                                        "label": "H3 Font",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "visibility": {
+                                            "controlling_field": "64d1977b-a857-1dc1-b5f5-1485b0c82bd7",
+                                            "controlling_value_regex": "true",
+                                            "operator": "EQUAL",
+                                            "access": null
+                                        },
+                                        "display": "select",
+                                        "choices": [
+                                            [
+                                                "{{ module.typography.primary_font }}",
+                                                "Primary Font"
+                                            ],
+                                            [
+                                                "{{ module.typography.secondary_font }}",
+                                                "Secondary Font"
+                                            ]
+                                        ],
+                                        "type": "choice",
+                                        "default": "{{ module.typography.primary_font }}"
+                                    },
+                                    {
+                                        "id": "7979bc71-80c9-c0b5-9423-b23a7ec51a1a",
+                                        "name": "h3_font_size",
+                                        "label": "H3 Font Size",
+                                        "help_text": "Value in rem",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 1.75
+                                    },
+                                    {
+                                        "id": "6dd06ced-4ace-2cad-f9e7-e4b981dbbfb4",
+                                        "name": "h3_font_weight",
+                                        "label": "H3 Font Weight",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 600
+                                    },
+                                    {
+                                        "id": "9e54d521-609c-480e-ce69-c93dc4c2445c",
+                                        "name": "italic",
+                                        "label": "Italic",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "type": "boolean",
+                                        "default": false
+                                    }
+                                ],
+                                "type": "group",
+                                "default": {
+                                    "h3_font": "{{ module.typography.primary_font }}",
+                                    "h3_font_size": 1.75,
+                                    "h3_font_weight": 600,
+                                    "italic": false
+                                }
+                            },
+                            {
+                                "id": "80e14e2a-c94c-27fb-6f21-b55d7843b922",
+                                "name": "h4",
+                                "label": "H4",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "children": [
+                                    {
+                                        "id": "d331e235-7a5f-d721-6b01-22604f8ac3e7",
+                                        "name": "h4_font",
+                                        "label": "H4 Font",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "visibility": {
+                                            "controlling_field": "64d1977b-a857-1dc1-b5f5-1485b0c82bd7",
+                                            "controlling_value_regex": "true",
+                                            "operator": "EQUAL",
+                                            "access": null
+                                        },
+                                        "display": "select",
+                                        "choices": [
+                                            [
+                                                "{{ module.typography.primary_font }}",
+                                                "Primary Font"
+                                            ],
+                                            [
+                                                "{{ module.typography.secondary_font }}",
+                                                "Secondary Font"
+                                            ]
+                                        ],
+                                        "type": "choice",
+                                        "default": "{{ module.typography.primary_font }}"
+                                    },
+                                    {
+                                        "id": "cf4766cd-b09b-7f08-521c-78e8c7c23667",
+                                        "name": "h4_font_size",
+                                        "label": "H4 Font Size",
+                                        "help_text": "Value in rem",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 1.5
+                                    },
+                                    {
+                                        "id": "655e954d-d842-73db-9861-db77c092e927",
+                                        "name": "h4_font_weight",
+                                        "label": "H4 Font Weight",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 600
+                                    },
+                                    {
+                                        "id": "8615702e-aa52-8990-b9b0-d3af8f080cc8",
+                                        "name": "italic",
+                                        "label": "Italic",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "type": "boolean",
+                                        "default": false
+                                    }
+                                ],
+                                "type": "group",
+                                "default": {
+                                    "h4_font": "{{ module.typography.primary_font }}",
+                                    "h4_font_size": 1.5,
+                                    "h4_font_weight": 600,
+                                    "italic": false
+                                }
+                            },
+                            {
+                                "id": "9ae72ad4-5937-b759-87fd-13f2ddf7dcd4",
+                                "name": "h5",
+                                "label": "H5",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "children": [
+                                    {
+                                        "id": "7a2df29d-a45f-1cbb-0541-45b97dada0a8",
+                                        "name": "h5_font",
+                                        "label": "H5 Font",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "visibility": {
+                                            "controlling_field": "64d1977b-a857-1dc1-b5f5-1485b0c82bd7",
+                                            "controlling_value_regex": "true",
+                                            "operator": "EQUAL",
+                                            "access": null
+                                        },
+                                        "display": "select",
+                                        "choices": [
+                                            [
+                                                "{{ module.typography.primary_font }}",
+                                                "Primary Font"
+                                            ],
+                                            [
+                                                "{{ module.typography.secondary_font }}",
+                                                "Secondary Font"
+                                            ]
+                                        ],
+                                        "type": "choice",
+                                        "default": "{{ module.typography.primary_font }}"
+                                    },
+                                    {
+                                        "id": "0e7496a8-e6d3-7d68-eee2-9618062c60ab",
+                                        "name": "h5_font_size",
+                                        "label": "H5 Font Size",
+                                        "help_text": "Value in rem",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 1.25
+                                    },
+                                    {
+                                        "id": "16fc6f36-40dc-a6ae-b197-da4515e9ed4a",
+                                        "name": "h5_font_weight",
+                                        "label": "H5 Font Weight",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 600
+                                    },
+                                    {
+                                        "id": "205d39ce-6caf-5a12-b9d7-0560da588cfe",
+                                        "name": "italic",
+                                        "label": "Italic",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "type": "boolean",
+                                        "default": false
+                                    }
+                                ],
+                                "type": "group",
+                                "default": {
+                                    "h5_font": "{{ module.typography.primary_font }}",
+                                    "h5_font_size": 1.25,
+                                    "h5_font_weight": 600,
+                                    "italic": false
+                                }
+                            },
+                            {
+                                "id": "5b95a821-0b0c-aff8-7e3d-a2a3c19ae8e1",
+                                "name": "h6",
+                                "label": "H6",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "children": [
+                                    {
+                                        "id": "9f0280b8-7d54-0ae8-5c0b-c7633f6351f5",
+                                        "name": "h6_font",
+                                        "label": "H6 Font",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "visibility": {
+                                            "controlling_field": "64d1977b-a857-1dc1-b5f5-1485b0c82bd7",
+                                            "controlling_value_regex": "true",
+                                            "operator": "EQUAL",
+                                            "access": null
+                                        },
+                                        "display": "select",
+                                        "choices": [
+                                            [
+                                                "{{ module.typography.primary_font }}",
+                                                "Primary Font"
+                                            ],
+                                            [
+                                                "{{ module.typography.secondary_font }}",
+                                                "Secondary Font"
+                                            ]
+                                        ],
+                                        "type": "choice",
+                                        "default": "{{ module.typography.primary_font }}"
+                                    },
+                                    {
+                                        "id": "53f54f07-7207-e34f-592a-f9fdd08914a3",
+                                        "name": "h6_font_size",
+                                        "label": "H6 Font Size",
+                                        "help_text": "Value in rem",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 1
+                                    },
+                                    {
+                                        "id": "f9deed54-9944-c831-7281-3c47284c5ac3",
+                                        "name": "h6_font_weight",
+                                        "label": "H6 Font Weight",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 600
+                                    },
+                                    {
+                                        "id": "f116b0ed-dbd5-4045-0475-9da4450bbaa0",
+                                        "name": "italic",
+                                        "label": "Italic",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "type": "boolean",
+                                        "default": false
+                                    }
+                                ],
+                                "type": "group",
+                                "default": {
+                                    "h6_font": "{{ module.typography.primary_font }}",
+                                    "h6_font_size": 1,
+                                    "h6_font_weight": 600,
+                                    "italic": false
+                                }
+                            },
+                            {
+                                "id": "0549e7b8-11d5-36d1-9c69-97925ff4e63d",
+                                "name": "blockquote",
+                                "label": "Blockquote",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "children": [
+                                    {
+                                        "id": "703872c3-c49e-19bd-6764-98639f711ecd",
+                                        "name": "blockquote_font",
+                                        "label": "Blockquote Font",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "visibility": {
+                                            "controlling_field": "64d1977b-a857-1dc1-b5f5-1485b0c82bd7",
+                                            "controlling_value_regex": "true",
+                                            "operator": "EQUAL",
+                                            "access": null
+                                        },
+                                        "display": "select",
+                                        "choices": [
+                                            [
+                                                "{{ module.typography.primary_font }}",
+                                                "Primary Font"
+                                            ],
+                                            [
+                                                "{{ module.typography.secondary_font }}",
+                                                "Secondary Font"
+                                            ]
+                                        ],
+                                        "type": "choice",
+                                        "default": "{{ module.typography.primary_font }}"
+                                    },
+                                    {
+                                        "id": "c2d5d1e5-93d3-a0a6-cc38-241cf307d51e",
+                                        "name": "blockquote_font_size",
+                                        "label": "Blockquote Font Size",
+                                        "help_text": "Value in rem",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 1.25
+                                    },
+                                    {
+                                        "id": "5490219c-911d-6645-710a-fd39d6c7811a",
+                                        "name": "blockquote_font_weight",
+                                        "label": "Blockquote Font Weight",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 300
+                                    },
+                                    {
+                                        "id": "5ac79da0-cb66-c75c-5734-d1c6dee882c5",
+                                        "name": "italic",
+                                        "label": "Italic",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "type": "boolean",
+                                        "default": true
+                                    }
+                                ],
+                                "type": "group",
+                                "default": {
+                                    "blockquote_font": "{{ module.typography.primary_font }}",
+                                    "blockquote_font_size": 1.25,
+                                    "blockquote_font_weight": 300,
+                                    "italic": true
+                                }
+                            },
+                            {
+                                "id": "0e27ecb4-447a-f87f-1382-3c524efd5a77",
+                                "name": "lead_paragraph",
+                                "label": "Lead Paragraph",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "children": [
+                                    {
+                                        "id": "257eabb4-cd8f-359f-1c80-7bb45c4398f1",
+                                        "name": "lead_paragraph_font_size",
+                                        "label": "Lead Paragraph Font Size",
+                                        "help_text": "Value in rem",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 1.25
+                                    },
+                                    {
+                                        "id": "d8f5031c-3a90-baee-e1e9-ed5898840a47",
+                                        "name": "lead_paragraph_font_weight",
+                                        "label": "Lead Paragraph Font Weight",
+                                        "sortable": false,
+                                        "required": true,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 400
+                                    },
+                                    {
+                                        "id": "ef67570e-7f41-6038-b2dc-bd0d97177612",
+                                        "name": "italic",
+                                        "label": "Italic",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "type": "boolean",
+                                        "default": false
+                                    }
+                                ],
+                                "type": "group",
+                                "default": {
+                                    "lead_paragraph_font_size": 1.25,
+                                    "lead_paragraph_font_weight": 400,
+                                    "italic": false
+                                }
+                            },
+                            {
+                                "id": "ce3e0607-fe28-c0ca-4975-a1798ed09ddd",
+                                "name": "small_font_size",
+                                "label": "Small Font Size",
+                                "help_text": "Value in rem",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": 0.85
+                            },
+                            {
+                                "id": "46a57311-fea0-6f57-55a2-ee126cccd5ff",
+                                "name": "line_height_percentage",
+                                "label": "Line Height Percentage",
+                                "help_text": "Value in rem",
+                                "sortable": false,
+                                "required": true,
+                                "locked": false,
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": 1.35
+                            },
+                            {
+                                "id": "b855a105-2c62-05a0-e0a7-d9ee9e274190",
+                                "name": "margin_percentage",
+                                "label": "Margin Percentage",
+                                "help_text": "Value in rem",
+                                "sortable": false,
+                                "required": true,
+                                "locked": false,
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": 0.5
+                            }
+                        ],
+                        "type": "group",
+                        "default": {
+                            "primary_font": "Montserrat",
+                            "primary_font_weight": "300, 400, 600, 700",
+                            "secondary_font": "",
+                            "secondary_font_weight": "400, 500, 600",
+                            "headings": {
+                                "separate_font_for_headings": true,
+                                "heading_font": "{{ module.typography.primary_font }}"
+                            },
+                            "base_font_size": 16,
+                            "responsive_typography": true,
+                            "small_screens_font_size": 0.8,
+                            "medium_screens_font_size": 0.9,
+                            "show_display_headings": true,
+                            "display1": {
+                                "display1_font": "{{ module.typography.primary_font }}",
+                                "display1_font_size": 6,
+                                "display1_font_weight": 400,
+                                "italic": false
+                            },
+                            "display2": {
+                                "display2_font": "{{ module.typography.primary_font }}",
+                                "display2_font_size": 5.5,
+                                "display2_font_weight": 400,
+                                "italic": false
+                            },
+                            "display3": {
+                                "display3_font": "{{ module.typography.primary_font }}",
+                                "display3_font_size": 5,
+                                "display3_font_weight": 400,
+                                "italic": false
+                            },
+                            "display4": {
+                                "display4_font": "{{ module.typography.primary_font }}",
+                                "display4_font_size": 4,
+                                "display4_font_weight": 400,
+                                "italic": false
+                            },
+                            "h1": {
+                                "h1_font": "{{ module.typography.primary_font }}",
+                                "h1_font_size": 4,
+                                "h1_font_weight": 700,
+                                "italic": false
+                            },
+                            "h2": {
+                                "h2_font": "{{ module.typography.primary_font }}",
+                                "h2_font_size": 2,
+                                "h2_font_weight": 600,
+                                "italic": false
+                            },
+                            "h3": {
+                                "h3_font": "{{ module.typography.primary_font }}",
+                                "h3_font_size": 1.75,
+                                "h3_font_weight": 600,
+                                "italic": false
+                            },
+                            "h4": {
+                                "h4_font": "{{ module.typography.primary_font }}",
+                                "h4_font_size": 1.5,
+                                "h4_font_weight": 600,
+                                "italic": false
+                            },
+                            "h5": {
+                                "h5_font": "{{ module.typography.primary_font }}",
+                                "h5_font_size": 1.25,
+                                "h5_font_weight": 600,
+                                "italic": false
+                            },
+                            "h6": {
+                                "h6_font": "{{ module.typography.primary_font }}",
+                                "h6_font_size": 1,
+                                "h6_font_weight": 600,
+                                "italic": false
+                            },
+                            "blockquote": {
+                                "blockquote_font": "{{ module.typography.primary_font }}",
+                                "blockquote_font_size": 1.25,
+                                "blockquote_font_weight": 300,
+                                "italic": true
+                            },
+                            "lead_paragraph": {
+                                "lead_paragraph_font_size": 1.25,
+                                "lead_paragraph_font_weight": 400,
+                                "italic": false
+                            },
+                            "small_font_size": 0.85,
+                            "line_height_percentage": 1.35,
+                            "margin_percentage": 0.5
+                        }
+                    },
+                    {
+                        "id": "958dde0c-aee2-f3e8-8342-1e463ff30197",
+                        "name": "buttons_inputs",
+                        "label": "Buttons & Inputs",
+                        "sortable": false,
+                        "required": false,
+                        "locked": true,
+                        "children": [
+                            {
+                                "id": "eb9c88a6-d39a-fb0a-8c7b-b5d507cf0649",
+                                "name": "button_border_radius",
+                                "label": "Button Border Radius",
+                                "help_text": "Value in px",
+                                "sortable": false,
+                                "required": false,
+                                "locked": true,
+                                "validation_regex": "",
+                                "placeholder": "3",
+                                "allow_new_line": false,
+                                "show_emoji_picker": false,
+                                "type": "text",
+                                "default": "0"
+                            },
+                            {
+                                "id": "d9f99a14-f542-8e83-adb5-633f56721e16",
+                                "name": "size_large",
+                                "label": "Size Large",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "children": [
+                                    {
+                                        "id": "760083ad-2a10-d88a-af1f-5e7dea6e8d4a",
+                                        "name": "height",
+                                        "label": "Height",
+                                        "help_text": "Value in px",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 1,
+                                        "type": "number",
+                                        "default": 52
+                                    },
+                                    {
+                                        "id": "8020bd9a-c2f8-24ae-c7a2-2cd3ccc39f1b",
+                                        "name": "font_size",
+                                        "label": "Font Size",
+                                        "help_text": "Value in rem",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 1
+                                    },
+                                    {
+                                        "id": "69dc113b-32cf-54f0-76ee-f6b0877098a8",
+                                        "name": "button_l_r_padding",
+                                        "label": "Button L/R Padding",
+                                        "help_text": "Value in rem",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 1.5
+                                    }
+                                ],
+                                "type": "group",
+                                "default": {
+                                    "height": 52,
+                                    "font_size": 1,
+                                    "button_l_r_padding": 1.5
+                                }
+                            },
+                            {
+                                "id": "79e0381e-826e-a708-e24b-30fdff955f50",
+                                "name": "size_medium",
+                                "label": "Size Medium",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "children": [
+                                    {
+                                        "id": "fccab815-a1db-f252-20c0-cd1defe160d4",
+                                        "name": "height",
+                                        "label": "Height",
+                                        "help_text": "Value in px",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 1,
+                                        "type": "number",
+                                        "default": 46
+                                    },
+                                    {
+                                        "id": "6644ca53-c6b7-7fe5-4057-83a1cc967af6",
+                                        "name": "font_size",
+                                        "label": "Font Size",
+                                        "help_text": "Value in rem",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 0.9
+                                    },
+                                    {
+                                        "id": "d3b03ae5-2b47-881c-955d-c94baee80c27",
+                                        "name": "button_l_r_padding",
+                                        "label": "Button L/R Padding",
+                                        "help_text": "Value in rem",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 0.75
+                                    }
+                                ],
+                                "type": "group",
+                                "default": {
+                                    "height": 46,
+                                    "font_size": 0.9,
+                                    "button_l_r_padding": 0.75
+                                }
+                            },
+                            {
+                                "id": "ba2de6c5-7413-8023-e5aa-a497c5fdfee5",
+                                "name": "size_small",
+                                "label": "Size Small",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "children": [
+                                    {
+                                        "id": "da7494ab-353f-6d9c-fc72-c19e61be9159",
+                                        "name": "height",
+                                        "label": "Height",
+                                        "help_text": "Value in px",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 1,
+                                        "type": "number",
+                                        "default": 38
+                                    },
+                                    {
+                                        "id": "d0bcb26e-62a2-8336-4cf3-0305c15cb024",
+                                        "name": "font_size",
+                                        "label": "Font Size",
+                                        "help_text": "Value in rem",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 0.75
+                                    },
+                                    {
+                                        "id": "74a9ed8d-9cae-7f8a-30ca-86d4b81deeb4",
+                                        "name": "button_l_r_padding",
+                                        "label": "Button L/R Padding",
+                                        "help_text": "Value in rem",
+                                        "sortable": false,
+                                        "required": false,
+                                        "locked": false,
+                                        "display": "text",
+                                        "step": 0,
+                                        "type": "number",
+                                        "default": 1
+                                    }
+                                ],
+                                "type": "group",
+                                "default": {
+                                    "height": 38,
+                                    "font_size": 0.75,
+                                    "button_l_r_padding": 1
+                                }
+                            }
+                        ],
+                        "type": "group",
+                        "default": {
+                            "button_border_radius": "0",
+                            "size_large": {
+                                "height": 52,
+                                "font_size": 1,
+                                "button_l_r_padding": 2.5
+                            },
+                            "size_medium": {
+                                "height": 46,
+                                "font_size": 0.9,
+                                "button_l_r_padding": 1.25
+                            },
+                            "size_small": {
+                                "height": 38,
+                                "font_size": 0.75,
+                                "button_l_r_padding": 1
+                            }
+                        }
+                    },
+                    {
+                        "id": "a4f021ce-fb61-17ed-deae-3a3a989cb34d",
+                        "name": "paddings_spacers",
+                        "label": "Paddings & Spacers",
+                        "sortable": false,
+                        "required": false,
+                        "locked": true,
+                        "children": [
+                            {
+                                "id": "6a1b5c3f-febd-bed7-a236-bb0eec0fb6f5",
+                                "name": "sr_spacer_25",
+                                "label": "SR Spacer 25",
+                                "help_text": "Value in rem",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 1,
+                                "type": "number",
+                                "default": 25
+                            },
+                            {
+                                "id": "b2790956-626f-d59b-4a35-27af916f9650",
+                                "name": "sr_spacer_50",
+                                "label": "SR Spacer 50",
+                                "help_text": "Value in rem",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 1,
+                                "type": "number",
+                                "default": 50
+                            },
+                            {
+                                "id": "efd66f44-7732-ebed-c07b-054e327eb6c0",
+                                "name": "sr_spacer_75",
+                                "label": "SR Spacer 75",
+                                "help_text": "Value in rem",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 1,
+                                "type": "number",
+                                "default": 75
+                            },
+                            {
+                                "id": "f58895fd-8bbe-8d3a-3722-f9a1c965ee86",
+                                "name": "sr_spacer_100",
+                                "label": "SR Spacer 100",
+                                "help_text": "Value in rem",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 1,
+                                "type": "number",
+                                "default": 100
+                            },
+                            {
+                                "id": "b91b9513-ffe8-7007-c096-c41dc75f94e1",
+                                "name": "sr_padding_half",
+                                "label": "SR Padding Half",
+                                "help_text": "Value in rem",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": 3.125
+                            },
+                            {
+                                "id": "b5927007-b544-e916-4810-fb6ce7caf7ce",
+                                "name": "sr_padding_full",
+                                "label": "SR Padding Full",
+                                "help_text": "Value in rem",
+                                "sortable": false,
+                                "required": false,
+                                "locked": false,
+                                "display": "text",
+                                "step": 0,
+                                "type": "number",
+                                "default": 6.25
+                            }
+                        ],
+                        "type": "group",
+                        "default": {
+                            "sr_spacer_25": 25,
+                            "sr_spacer_50": 50,
+                            "sr_spacer_75": 75,
+                            "sr_spacer_100": 100,
+                            "sr_padding_half": 3.125,
+                            "sr_padding_full": 6.25
+                        }
+                    }
+                ],
+                "source": "",
+                "widgetLabel": "3.0.0"
+            },
+            "custom_module_template": "sr-base.html",
+            "files": []
+        },
+        "sr-nav-dropdown-01.json": {
+            "custom_module": {
+                "author": "adrian@lean-labs.com",
+                "name": "SR Navbar Dropdown 01",
+                "css_assets": [],
+                "editable_contexts": [],
+                "external_js": [],
+                "global": true,
+                "override_global": true,
+                "icon": "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+                "purchased": true,
+                "hostTemplateTypes": [
+                    "PAGE",
+                    "BLOG_POST",
+                    "BLOG_LISTING"
+                ],
+                "js_assets": [],
+                "other_assets": [],
+                "fields": [
+                    {
+                        "choices": [
+                            [
+                                "container",
+                                "Page"
+                            ],
+                            [
+                                "no-wrapper",
+                                "Full Width"
+                            ]
+                        ],
+                        "default": "container",
+                        "display": "select",
+                        "label": "Layout",
+                        "name": "layout",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "default": "Sprocket Rocket",
+                        "help_text": "",
+                        "label": "Brand",
+                        "name": "brand",
+                        "type": "text"
+                    },
+                    {
+                        "default": {
+                            "src": "http://staging.leanlabs.info/sr-tmp/sr-white.png",
+                            "alt": "Logo",
+                            "width": "205",
+                            "height": "48"
+                        },
+                        "label": "Brand Image",
+                        "name": "brand_image",
+                        "type": "image"
+                    },
+                    {
+                        "default": "/",
+                        "help_text": "",
+                        "label": "Brand URL",
+                        "name": "brand_url",
+                        "type": "text"
+                    },
+                    {
+                        "default": "",
+                        "help_text": "",
+                        "label": "Menu",
+                        "name": "menu",
+                        "type": "menu"
+                    },
+                    {
+                        "id": "cta",
+                        "name": "cta",
+                        "label": "CTA",
+                        "children": [
+                            {
+                                "id": "cta_type",
+                                "name": "cta_type",
+                                "label": "CTA Type",
+                                "required": true,
+                                "display": "select",
+                                "choices": [
+                                    [
+                                        "cta",
+                                        "HubSpot CTA"
+                                    ],
+                                    [
+                                        "btn",
+                                        "Button"
+                                    ],
+                                    [
+                                        "none",
+                                        "None"
+                                    ]
+                                ],
+                                "type": "choice",
+                                "default": "btn"
+                            },
+                            {
+                                "name": "cta_style",
+                                "label": "CTA Style",
+                                "visibility": {
+                                    "controlling_field": "cta_type",
+                                    "controlling_value_regex": "none",
+                                    "operator": "NOT_EQUAL",
+                                    "access": null
+                                },
+                                "display": "select",
+                                "choices": [
+                                    [
+                                        "primary",
+                                        "Primary"
+                                    ],
+                                    [
+                                        "secondary",
+                                        "Secondary"
+                                    ],
+                                    [
+                                        "tertiary",
+                                        "Tertiary"
+                                    ],
+                                    [
+                                        "white",
+                                        "White"
+                                    ],
+                                    [
+                                        "black",
+                                        "Black"
+                                    ],
+                                    [
+                                        "outline-primary",
+                                        "Outline Primary"
+                                    ],
+                                    [
+                                        "outline-secondary",
+                                        "Outline Secondary"
+                                    ],
+                                    [
+                                        "outline-tertiary",
+                                        "Outline Tertiary"
+                                    ],
+                                    [
+                                        "outline-white",
+                                        "Outline White"
+                                    ],
+                                    [
+                                        "outline-black",
+                                        "Outline Black"
+                                    ],
+                                    [
+                                        "none",
+                                        "None"
+                                    ]
+                                ],
+                                "type": "choice",
+                                "default": "primary"
+                            },
+                            {
+                                "name": "cta",
+                                "label": "CTA",
+                                "visibility": {
+                                    "controlling_field": "cta_type",
+                                    "controlling_value_regex": "cta",
+                                    "operator": "EQUAL",
+                                    "access": null
+                                },
+                                "type": "cta",
+                                "default": ""
+                            },
+                            {
+                                "name": "button_text",
+                                "label": "Button Text",
+                                "visibility": {
+                                    "controlling_field": "cta_type",
+                                    "controlling_value_regex": "btn",
+                                    "operator": "EQUAL",
+                                    "access": null
+                                },
+                                "type": "text",
+                                "default": "Get Started"
+                            },
+                            {
+                                "name": "link",
+                                "label": "Link",
+                                "visibility": {
+                                    "controlling_field": "cta_type",
+                                    "controlling_value_regex": "btn",
+                                    "operator": "EQUAL",
+                                    "access": null
+                                },
+                                "type": "text",
+                                "default": "#"
+                            }
+                        ],
+                        "type": "group",
+                        "default": {
+                            "cta_type": "btn",
+                            "cta_style": "primary",
+                            "cta": "",
+                            "button_text": "Get Started",
+                            "link": "#"
+                        }
+                    },
+                    {
+                        "choices": [
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ]
+                        ],
+                        "default": "dark",
+                        "display": "select",
+                        "label": "Style",
+                        "name": "style",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "default": true,
+                        "help_text": "Keep the menu bar fixed on top of the page as you scroll down",
+                        "label": "Fixed Nav",
+                        "name": "fixed_nav",
+                        "type": "boolean"
+                    },
+                    {
+                        "default": true,
+                        "help_text": "",
+                        "label": "Transparent Background",
+                        "name": "transparent_background",
+                        "type": "boolean"
+                    }
+                ],
+                "source": "",
+                "widgetLabel": "3.1.1"
+            },
+            "custom_module_template": "sr-nav-dropdown-01.html",
+            "available_builder": true,
+            "category": 1,
+            "files": []
+        },
+        "sr-three-col-02.json": {
+            "custom_module": {
+                "author": "adrian@lean-labs.com",
+                "name": "SR Three Col 02",
+                "css_assets": [],
+                "editable_contexts": [],
+                "external_js": [],
+                "icon": "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+                "purchased": true,
+                "hostTemplateTypes": [
+                    "PAGE",
+                    "BLOG_POST",
+                    "BLOG_LISTING"
+                ],
+                "js_assets": [],
+                "other_assets": [],
+                "fields": [
+                    {
+                        "default": true,
+                        "label": "Enabled",
+                        "name": "enabled",
+                        "type": "boolean"
+                    },
+                    {
+                        "default": null,
+                        "label": "Class",
+                        "name": "class",
+                        "type": "text"
+                    },
+                    {
+                        "default": null,
+                        "label": "ID",
+                        "name": "sr_module_id",
+                        "type": "text"
+                    },
+                    {
+                        "choices": [
+                            [
+                                "container",
+                                "Page"
+                            ],
+                            [
+                                "container-fluid",
+                                "Full Width"
+                            ]
+                        ],
+                        "default": "container",
+                        "display": "select",
+                        "label": "Layout",
+                        "name": "layout",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "choices": [
+                            [
+                                "min",
+                                "Minimum"
+                            ],
+                            [
+                                "narrow",
+                                "Narrow"
+                            ],
+                            [
+                                "wide",
+                                "Wide"
+                            ],
+                            [
+                                "max",
+                                "Maximum"
+                            ]
+                        ],
+                        "default": "max",
+                        "display": "select",
+                        "label": "Container Width",
+                        "name": "container_width",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "id": "heading",
+                        "default": "The SprocketRocket Toolkit",
+                        "label": "Heading",
+                        "name": "heading",
+                        "type": "text"
+                    },
+                    {
+                        "choices": [
+                            [
+                                "1",
+                                "H1"
+                            ],
+                            [
+                                "2",
+                                "H2"
+                            ],
+                            [
+                                "3",
+                                "H3"
+                            ],
+                            [
+                                "4",
+                                "H4"
+                            ],
+                            [
+                                "5",
+                                "H5"
+                            ],
+                            [
+                                "6",
+                                "H6"
+                            ]
+                        ],
+                        "default": "3",
+                        "display": "select",
+                        "label": "Heading Size",
+                        "name": "heading_size",
+                        "visibility": {
+                            "controlling_field": "heading",
+                            "controlling_value_regex": null,
+                            "operator": null,
+                            "access": null
+                        },
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "default": "Our toolkit has all the resources and guidance needed to create a high-conversion website.",
+                        "label": "Description",
+                        "name": "description",
+                        "type": "richtext"
+                    },
+                    {
+                        "id": "use_image_as_background",
+                        "default": false,
+                        "label": "Use Image as Background",
+                        "name": "use_image_as_background",
+                        "type": "boolean"
+                    },
+                    {
+                        "id": 1,
+                        "label": "Column",
+                        "name": "column",
+                        "type": "group",
+                        "occurrence": {
+                            "max": 4,
+                            "min": 1,
+                            "sorting_label_field": "col_heading",
+                            "default": 3
+                        },
+                        "children": [
+                            {
+                                "id": "custom_column_size",
+                                "name": "custom_column_size",
+                                "label": "Custom Column Size",
+                                "type": "boolean",
+                                "default": false
+                            },
+                            {
+                                "name": "col_size",
+                                "label": "Col Size",
+                                "visibility": {
+                                    "controlling_field": "custom_column_size",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null
+                                },
+                                "type": "text",
+                                "default": null
+                            },
+                            {
+                                "choices": [
+                                    [
+                                        "auto",
+                                        "Auto"
+                                    ],
+                                    [
+                                        "left",
+                                        "Left"
+                                    ],
+                                    [
+                                        "center",
+                                        "Center"
+                                    ],
+                                    [
+                                        "right",
+                                        "Right"
+                                    ]
+                                ],
+                                "default": "left",
+                                "display": "select",
+                                "label": "Col Text Align",
+                                "name": "col_text_align",
+                                "type": "choice",
+                                "required": true
+                            },
+                            {
+                                "id": "col_media_type",
+                                "choices": [
+                                    [
+                                        "image",
+                                        "Image"
+                                    ],
+                                    [
+                                        "video",
+                                        "Video"
+                                    ],
+                                    [
+                                        "youtube",
+                                        "YouTube"
+                                    ],
+                                    [
+                                        "wistia",
+                                        "Wistia"
+                                    ],
+                                    [
+                                        "none",
+                                        "No Media"
+                                    ]
+                                ],
+                                "default": "image",
+                                "display": "select",
+                                "label": "Col Media Type",
+                                "name": "col_media_type",
+                                "type": "choice",
+                                "required": true
+                            },
+                            {
+                                "default": {
+                                    "color": "#000000",
+                                    "opacity": 50
+                                },
+                                "label": "Col Overlay Color",
+                                "name": "col_overlay_color",
+                                "visibility": {
+                                    "controlling_field": "use_image_as_background",
+                                    "controlling_value_regex": "true",
+                                    "operator": "EQUAL",
+                                    "access": null
+                                },
+                                "type": "color"
+                            },
+                            {
+                                "default": {
+                                    "src": "",
+                                    "alt": "",
+                                    "width": "",
+                                    "height": ""
+                                },
+                                "label": "Col Image",
+                                "name": "col_image",
+                                "type": "image",
+                                "visibility": {
+                                    "controlling_field": "col_media_type",
+                                    "controlling_value_regex": "image",
+                                    "operator": "EQUAL",
+                                    "access": null
+                                }
+                            },
+                            {
+                                "default": true,
+                                "label": "SR Default Image Size",
+                                "name": "sr_default_image_size",
+                                "type": "boolean",
+                                "visibility": {
+                                    "controlling_field": "col_media_type",
+                                    "controlling_value_regex": "image",
+                                    "operator": "EQUAL",
+                                    "access": null
+                                }
+                            },
+                            {
+                                "default": null,
+                                "label": "Col Video ID",
+                                "name": "col_video_id",
+                                "type": "text",
+                                "visibility": {
+                                    "controlling_field": "col_media_type",
+                                    "controlling_value_regex": "wistia|youtube",
+                                    "operator": "MATCHES_REGEX",
+                                    "access": null
+                                }
+                            },
+                            {
+                                "default": {
+                                    "video_poster": {
+                                        "size_type": "auto",
+                                        "src": "",
+                                        "alt": null
+                                    },
+                                    "show_controls": false,
+                                    "loop": false,
+                                    "video": "",
+                                    "muted": false,
+                                    "autoplay": false
+                                },
+                                "visibility": {
+                                    "controlling_field": "col_media_type",
+                                    "access": null,
+                                    "controlling_value_regex": "video",
+                                    "hidden_subfields": null,
+                                    "operator": "EQUAL"
+                                },
+                                "tab": "CONTENT",
+                                "children": [
+                                    {
+                                        "default": {
+                                            "size_type": "auto",
+                                            "src": "",
+                                            "alt": null
+                                        },
+                                        "resizable": true,
+                                        "responsive": true,
+                                        "name": "video_poster",
+                                        "label": "Video Poster",
+                                        "locked": false,
+                                        "type": "image",
+                                        "required": false
+                                    },
+                                    {
+                                        "default": null,
+                                        "name": "video",
+                                        "picker": "file",
+                                        "label": "Video",
+                                        "occurrence": {
+                                            "default": null,
+                                            "min": null,
+                                            "max": null,
+                                            "sorting_label_field": null
+                                        },
+                                        "locked": false,
+                                        "type": "file",
+                                        "required": false
+                                    },
+                                    {
+                                        "default": false,
+                                        "name": "show_controls",
+                                        "label": "Show Controls",
+                                        "locked": false,
+                                        "type": "boolean",
+                                        "required": false
+                                    },
+                                    {
+                                        "default": false,
+                                        "name": "autoplay",
+                                        "label": "Autoplay",
+                                        "locked": false,
+                                        "type": "boolean",
+                                        "required": false
+                                    },
+                                    {
+                                        "default": false,
+                                        "name": "loop",
+                                        "label": "Loop",
+                                        "locked": false,
+                                        "type": "boolean",
+                                        "required": false
+                                    },
+                                    {
+                                        "default": false,
+                                        "name": "muted",
+                                        "label": "Muted",
+                                        "locked": false,
+                                        "type": "boolean",
+                                        "required": false
+                                    }
+                                ],
+                                "name": "video",
+                                "label": "Video",
+                                "locked": false,
+                                "type": "group",
+                                "required": false
+                            },
+                            {
+                                "default": null,
+                                "label": "Col Subheading",
+                                "name": "col_subheading",
+                                "type": "text"
+                            },
+                            {
+                                "id": "col_heading",
+                                "default": null,
+                                "label": "Col Heading",
+                                "name": "col_heading",
+                                "type": "text"
+                            },
+                            {
+                                "choices": [
+                                    [
+                                        "1",
+                                        "H1"
+                                    ],
+                                    [
+                                        "2",
+                                        "H2"
+                                    ],
+                                    [
+                                        "3",
+                                        "H3"
+                                    ],
+                                    [
+                                        "4",
+                                        "H4"
+                                    ],
+                                    [
+                                        "5",
+                                        "H5"
+                                    ],
+                                    [
+                                        "6",
+                                        "H6"
+                                    ]
+                                ],
+                                "default": "3",
+                                "display": "select",
+                                "label": "Col Heading Size",
+                                "name": "col_heading_size",
+                                "visibility": {
+                                    "controlling_field": "col_heading",
+                                    "controlling_value_regex": null,
+                                    "operator": null,
+                                    "access": null
+                                },
+                                "type": "choice",
+                                "required": true
+                            },
+                            {
+                                "id": "",
+                                "default": null,
+                                "label": "Col Content",
+                                "name": "col_content",
+                                "type": "richtext"
+                            },
+                            {
+                                "id": "cta",
+                                "name": "cta",
+                                "label": "CTA",
+                                "children": [
+                                    {
+                                        "id": "cta_type",
+                                        "name": "cta_type",
+                                        "label": "CTA Type",
+                                        "required": true,
+                                        "display": "select",
+                                        "choices": [
+                                            [
+                                                "cta",
+                                                "HubSpot CTA"
+                                            ],
+                                            [
+                                                "btn",
+                                                "Button"
+                                            ],
+                                            [
+                                                "none",
+                                                "None"
+                                            ]
+                                        ],
+                                        "type": "choice",
+                                        "default": "none"
+                                    },
+                                    {
+                                        "name": "cta_style",
+                                        "label": "CTA Style",
+                                        "visibility": {
+                                            "controlling_field": "cta_type",
+                                            "controlling_value_regex": "none",
+                                            "operator": "NOT_EQUAL",
+                                            "access": null
+                                        },
+                                        "display": "select",
+                                        "required": true,
+                                        "choices": [
+                                            [
+                                                "primary",
+                                                "Primary"
+                                            ],
+                                            [
+                                                "secondary",
+                                                "Secondary"
+                                            ],
+                                            [
+                                                "white",
+                                                "White"
+                                            ],
+                                            [
+                                                "outline-primary",
+                                                "Outline Primary"
+                                            ],
+                                            [
+                                                "outline-secondary",
+                                                "Outline Secondary"
+                                            ],
+                                            [
+                                                "outline-white",
+                                                "Outline White"
+                                            ],
+                                            [
+                                                "none",
+                                                "None"
+                                            ]
+                                        ],
+                                        "type": "choice",
+                                        "default": "primary"
+                                    },
+                                    {
+                                        "name": "cta",
+                                        "label": "CTA",
+                                        "visibility": {
+                                            "controlling_field": "cta_type",
+                                            "controlling_value_regex": "cta",
+                                            "operator": "EQUAL",
+                                            "access": null
+                                        },
+                                        "type": "cta",
+                                        "default": ""
+                                    },
+                                    {
+                                        "name": "button_text",
+                                        "label": "Button Text",
+                                        "visibility": {
+                                            "controlling_field": "cta_type",
+                                            "controlling_value_regex": "btn",
+                                            "operator": "EQUAL",
+                                            "access": null
+                                        },
+                                        "type": "text",
+                                        "default": "Learn More"
+                                    },
+                                    {
+                                        "name": "link",
+                                        "label": "Link",
+                                        "visibility": {
+                                            "controlling_field": "cta_type",
+                                            "controlling_value_regex": "btn",
+                                            "operator": "EQUAL",
+                                            "access": null
+                                        },
+                                        "type": "text",
+                                        "default": "#"
+                                    }
+                                ],
+                                "type": "group",
+                                "default": {
+                                    "cta_type": "none",
+                                    "cta_style": "primary",
+                                    "cta": "",
+                                    "button_text": "Learn More",
+                                    "link": "#"
+                                }
+                            }
+                        ],
+                        "default": [
+                            {
+                                "custom_column_size": false,
+                                "col_text_align": "center",
+                                "col_media_type": "image",
+                                "col_overlay_color": {
+                                    "color": "#000000",
+                                    "opacity": 50
+                                },
+                                "col_image": {
+                                    "src": "https://cdn2.hubspot.net/hub/6071950/hubfs/038-geometric.png?width=120&name=038-geometric.png",
+                                    "alt": "",
+                                    "width": "120",
+                                    "height": "120"
+                                },
+                                "sr_default_image_size": false,
+                                "col_video_id": "",
+                                "col_subheading": "",
+                                "col_heading": "Professional Design",
+                                "col_heading_size": "4",
+                                "col_content": "Achieve virtually any look and layout from within the one template.",
+                                "cta": {
+                                    "cta_type": "none",
+                                    "cta_style": "primary",
+                                    "button_text": "Learn More",
+                                    "link": "#"
+                                }
+                            },
+                            {
+                                "custom_column_size": false,
+                                "col_text_align": "center",
+                                "col_media_type": "image",
+                                "col_overlay_color": {
+                                    "color": "#000000",
+                                    "opacity": 50
+                                },
+                                "col_image": {
+                                    "src": "https://cdn2.hubspot.net/hub/6071950/hubfs/054-compass.png?width=104&name=054-compass.png",
+                                    "alt": "",
+                                    "width": "104",
+                                    "height": "120"
+                                },
+                                "sr_default_image_size": false,
+                                "col_video_id": "",
+                                "col_subheading": "",
+                                "col_heading": "Flexible Tools",
+                                "col_heading_size": "4",
+                                "col_content": "Build as many pages as you need for your high-conversion website.",
+                                "cta": {
+                                    "cta_type": "none",
+                                    "cta_style": "primary",
+                                    "button_text": "Learn More",
+                                    "link": "#"
+                                }
+                            },
+                            {
+                                "custom_column_size": false,
+                                "col_text_align": "center",
+                                "col_media_type": "image",
+                                "col_overlay_color": {
+                                    "color": "#000000",
+                                    "opacity": 50
+                                },
+                                "col_image": {
+                                    "src": "https://cdn2.hubspot.net/hub/6071950/hubfs/035-layers.png?width=120&name=035-layers.png",
+                                    "alt": "",
+                                    "width": "120",
+                                    "height": "120"
+                                },
+                                "sr_default_image_size": false,
+                                "col_video_id": "",
+                                "col_subheading": "",
+                                "col_heading": "Unlimited Power",
+                                "col_heading_size": "4",
+                                "col_content": "The design sprints are a white glove service",
+                                "cta": {
+                                    "cta_type": "none",
+                                    "cta_style": "primary",
+                                    "button_text": "Learn More",
+                                    "link": "#"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "choices": [
+                            [
+                                "top",
+                                "Top"
+                            ],
+                            [
+                                "center",
+                                "Center"
+                            ],
+                            [
+                                "bottom",
+                                "Bottom"
+                            ],
+                            [
+                                "stretch",
+                                "Stretch"
+                            ]
+                        ],
+                        "default": "top",
+                        "display": "select",
+                        "label": "Column Vertical Align",
+                        "name": "column_vertical_align",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "choices": [
+                            [
+                                "auto",
+                                "Auto"
+                            ],
+                            [
+                                "left",
+                                "Left"
+                            ],
+                            [
+                                "center",
+                                "Center"
+                            ],
+                            [
+                                "right",
+                                "Right"
+                            ]
+                        ],
+                        "default": "center",
+                        "display": "select",
+                        "label": "Text Align",
+                        "name": "text_align",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "choices": [
+                            [
+                                "auto",
+                                "Auto"
+                            ],
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "success",
+                                "Success"
+                            ],
+                            [
+                                "info",
+                                "Info"
+                            ],
+                            [
+                                "warning",
+                                "Warning"
+                            ],
+                            [
+                                "danger",
+                                "Danger"
+                            ]
+                        ],
+                        "default": "auto",
+                        "display": "select",
+                        "label": "Text Color",
+                        "name": "text_color",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "choices": [
+                            [
+                                "auto",
+                                "Use default values"
+                            ],
+                            [
+                                "zero",
+                                "No Padding"
+                            ],
+                            [
+                                "half",
+                                "Small padding"
+                            ],
+                            [
+                                "full",
+                                "Large padding"
+                            ],
+                            [
+                                "custom",
+                                "Custom Padding"
+                            ]
+                        ],
+                        "id": "top_bottom_padding",
+                        "default": "full",
+                        "display": "select",
+                        "label": "Top Bottom Padding",
+                        "name": "top_bottom_padding",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "name": "custom_padding",
+                        "type": "text",
+                        "label": "Custom Padding",
+                        "help_text": "Top, Right, Bottom, Left",
+                        "visibility": {
+                            "controlling_field": "top_bottom_padding",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL",
+                            "access": null
+                        },
+                        "default": "1rem 0rem 1rem 0rem"
+                    },
+                    {
+                        "default": false,
+                        "label": "Border Top",
+                        "name": "border_top",
+                        "type": "boolean"
+                    },
+                    {
+                        "default": false,
+                        "label": "Border Bottom",
+                        "name": "border_bottom",
+                        "type": "boolean"
+                    },
+                    {
+                        "choices": [
+                            [
+                                "image",
+                                "Image"
+                            ],
+                            [
+                                "color",
+                                "Color"
+                            ],
+                            [
+                                "custom",
+                                "Custom"
+                            ]
+                        ],
+                        "id": "background_option",
+                        "default": "color",
+                        "display": "select",
+                        "label": "Background Option",
+                        "name": "background_option",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "default": {
+                            "src": "",
+                            "alt": ""
+                        },
+                        "label": "Background Image",
+                        "name": "background_image",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL"
+                        },
+                        "type": "image"
+                    },
+                    {
+                        "default": {
+                            "color": "#343a40",
+                            "opacity": 30
+                        },
+                        "label": "Background Overlay Color",
+                        "name": "background_overlay_color",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL"
+                        },
+                        "help_text": "Recommended Width: 2880x1920px",
+                        "type": "color"
+                    },
+                    {
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "success",
+                                "Success"
+                            ],
+                            [
+                                "info",
+                                "Info"
+                            ],
+                            [
+                                "warning",
+                                "Warning"
+                            ],
+                            [
+                                "danger",
+                                "Danger"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "default": "white",
+                        "display": "select",
+                        "label": "Background Color",
+                        "name": "background_color",
+                        "type": "choice",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "color",
+                            "operator": "EQUAL"
+                        },
+                        "required": true
+                    },
+                    {
+                        "default": {
+                            "color": "#fff"
+                        },
+                        "label": "Background Custom",
+                        "name": "background_custom",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL"
+                        },
+                        "type": "color"
+                    },
+                    {
+                        "default": "sr-spacer-top-75",
+                        "label": "sr_spacer",
+                        "name": "sr_spacer",
+                        "type": "text",
+                        "locked": true
+                    }
+                ],
+                "source": "",
+                "widgetLabel": "3.3.2"
+            },
+            "custom_module_template": "sr-multicol-media-01.html",
+            "available_builder": true,
+            "category": 4,
+            "files": []
+        },
+        "sr-footer-01.json": {
+            "custom_module": {
+                "author": "bradley@lean-labs.com",
+                "name": "SR Footer 01",
+                "css_assets": [],
+                "global": true,
+                "override_global": true,
+                "editable_contexts": [],
+                "external_js": [],
+                "icon": "https://www.lean-labs.com/hubfs/srco-assets/sr-logo-icon.svg",
+                "purchased": true,
+                "hostTemplateTypes": [
+                    "PAGE",
+                    "BLOG_POST",
+                    "BLOG_LISTING"
+                ],
+                "js_assets": [],
+                "other_assets": [],
+                "fields": [
+                    {
+                        "default": true,
+                        "label": "Enabled",
+                        "name": "enabled",
+                        "type": "boolean"
+                    },
+                    {
+                        "default": null,
+                        "label": "ID",
+                        "name": "sr_module_id",
+                        "type": "text"
+                    },
+                    {
+                        "default": null,
+                        "label": "Class",
+                        "name": "class",
+                        "type": "text"
+                    },
+                    {
+                        "choices": [
+                            [
+                                "container",
+                                "Page"
+                            ],
+                            [
+                                "container-fluid",
+                                "Full Width"
+                            ]
+                        ],
+                        "default": "container",
+                        "display": "select",
+                        "label": "Layout",
+                        "name": "layout",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "choices": [
+                            [
+                                "min",
+                                "Minimum"
+                            ],
+                            [
+                                "narrow",
+                                "Narrow"
+                            ],
+                            [
+                                "wide",
+                                "Wide"
+                            ],
+                            [
+                                "max",
+                                "Maximum"
+                            ]
+                        ],
+                        "default": "max",
+                        "display": "select",
+                        "label": "Container Width",
+                        "name": "container_width",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "default": "",
+                        "help_text": "",
+                        "label": "Menu",
+                        "name": "menu",
+                        "type": "menu"
+                    },
+                    {
+                        "default": {
+                            "src": "https://cdn2.hubspot.net/hub/6071950/hubfs/sr-white-1.png?width=220&name=sr-white-1.png",
+                            "alt": "Logo",
+                            "width": "205",
+                            "height": "48"
+                        },
+                        "label": "Logo",
+                        "name": "logo",
+                        "type": "image"
+                    },
+                    {
+                        "default": true,
+                        "label": "SR Default Image Size",
+                        "name": "sr_default_image_size",
+                        "type": "boolean"
+                    },
+                    {
+                        "default": "<p class='small'>&copy;{{ year }} Acme Co, Inc. All rights reserved. <a href='/privacy-policy'>Privacy Policy</a></p>",
+                        "label": "Copyright",
+                        "name": "copyright",
+                        "type": "richtext"
+                    },
+                    {
+                        "id": 1,
+                        "label": "Social Icons",
+                        "name": "icons",
+                        "type": "group",
+                        "occurrence": {
+                            "min": 0,
+                            "default": 5
+                        },
+                        "children": [
+                            {
+                                "default": "fa-facebook",
+                                "help_text": "Icon codes can be found here: https://fontawesome.com/v4.7.0/icons/",
+                                "label": "Icon Code",
+                                "name": "icon",
+                                "type": "text"
+                            },
+                            {
+                                "default": "#",
+                                "label": "Link",
+                                "name": "link",
+                                "type": "text"
+                            }
+                        ],
+                        "default": []
+                    },
+                    {
+                        "choices": [
+                            [
+                                "auto",
+                                "Auto"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ]
+                        ],
+                        "default": "auto",
+                        "display": "select",
+                        "label": "Text Color",
+                        "name": "text_color",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "choices": [
+                            [
+                                "auto",
+                                "Use default values"
+                            ],
+                            [
+                                "zero",
+                                "No Padding"
+                            ],
+                            [
+                                "half",
+                                "Small padding"
+                            ],
+                            [
+                                "full",
+                                "Large padding"
+                            ],
+                            [
+                                "custom",
+                                "Custom Padding"
+                            ]
+                        ],
+                        "id": "top_bottom_padding",
+                        "default": "half",
+                        "display": "select",
+                        "label": "Top Bottom Padding",
+                        "name": "top_bottom_padding",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "name": "custom_padding",
+                        "type": "text",
+                        "label": "Custom Padding",
+                        "help_text": "Top, Right, Bottom, Left",
+                        "visibility": {
+                            "controlling_field": "top_bottom_padding",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL",
+                            "access": null
+                        },
+                        "default": "1rem 0rem 1rem 0rem"
+                    },
+                    {
+                        "choices": [
+                            [
+                                "image",
+                                "Image"
+                            ],
+                            [
+                                "color",
+                                "Color"
+                            ],
+                            [
+                                "custom",
+                                "Custom"
+                            ]
+                        ],
+                        "id": "background_option",
+                        "default": "custom",
+                        "display": "select",
+                        "label": "Background Option",
+                        "name": "background_option",
+                        "type": "choice",
+                        "required": true
+                    },
+                    {
+                        "default": {
+                            "src": "",
+                            "alt": ""
+                        },
+                        "label": "Background Image",
+                        "name": "background_image",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL"
+                        },
+                        "type": "image"
+                    },
+                    {
+                        "default": {
+                            "color": "#343a40",
+                            "opacity": 30
+                        },
+                        "label": "Background Overlay Color",
+                        "name": "background_overlay_color",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "image",
+                            "operator": "EQUAL"
+                        },
+                        "help_text": "Recommended Width: 2880x1920px",
+                        "type": "color"
+                    },
+                    {
+                        "choices": [
+                            [
+                                "primary",
+                                "Primary"
+                            ],
+                            [
+                                "secondary",
+                                "Secondary"
+                            ],
+                            [
+                                "tertiary",
+                                "Tertiary"
+                            ],
+                            [
+                                "white",
+                                "White"
+                            ],
+                            [
+                                "black",
+                                "Black"
+                            ],
+                            [
+                                "dark",
+                                "Dark"
+                            ],
+                            [
+                                "light",
+                                "Light"
+                            ],
+                            [
+                                "success",
+                                "Success"
+                            ],
+                            [
+                                "info",
+                                "Info"
+                            ],
+                            [
+                                "warning",
+                                "Warning"
+                            ],
+                            [
+                                "danger",
+                                "Danger"
+                            ],
+                            [
+                                "none",
+                                "None"
+                            ]
+                        ],
+                        "default": "light",
+                        "display": "select",
+                        "label": "Background Color",
+                        "name": "background_color",
+                        "type": "choice",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "color",
+                            "operator": "EQUAL"
+                        },
+                        "required": true
+                    },
+                    {
+                        "default": {
+                            "color": "#000"
+                        },
+                        "label": "Background Custom",
+                        "name": "background_custom",
+                        "visibility": {
+                            "controlling_field": "background_option",
+                            "controlling_value_regex": "custom",
+                            "operator": "EQUAL"
+                        },
+                        "type": "color"
+                    }
+                ],
+                "source": "",
+                "widgetLabel": "3.0.4"
+            },
+            "custom_module_template": "sr-footer-01.html",
+            "available_builder": true,
+            "category": 2,
+            "files": []
+        }
+    },
+    "page_overrides": {
+        "sr-hero-01.json": {
+            "heading": "And then <br class='visible-lg'>there was darkenss.",
+            "content": "",
+            "height": "medium",
+            "background_option": "custom",
+            "background_custom": {
+                "color": "#000"
+            }
+        },
+        "sr-hero-parallax-01.json": {
+            "heading": "",
+            "content": "",
+            "cta_one": {
+                "cta_type": "none"
+            },
+            "cta_two": {
+                "cta_type": "none"
+            },
+            "height": "medium",
+            "background_option": "image",
+            "background_image": {
+                "src": "https://images.unsplash.com/photo-1495639867387-5423d6811583?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80"
+            },
+            "background_overlay_color": {
+                "color": "#000",
+                "opacity": 0
+            }
+        },
+        "sr-three-col-02.json": {
+            "heading": "",
+            "description": "",
+            "text_color": "white",
+            "background_option": "custom",
+            "background_custom": {
+                "color": "#000"
+            }
+        },
+        "sr-offer-parallax-01.json": {
+            "text_color": "white",
+            "parallax_image": {
+                "src": "https://images.unsplash.com/photo-1474314243412-cd4a79f02c6a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2551&q=80"
+            },
+            "content_background_option": "custom",
+            "content_background_custom": {
+                "color": "#5400e6"
+            },
+            "top_bottom_padding": "full",
+            "background_option": "custom",
+            "background_custom": {
+                "color": "#000"
+            }
+        }
+    }
+}

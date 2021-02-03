@@ -1,0 +1,494 @@
+{% if module.enabled %}
+
+	<!-- Label For Modules Data Page -->
+	{% if widget_data.show_labels.value %}
+	{% if module.hidden_name %}
+	<div id="label-{{module.hidden_name|replace(' ', '-')|lower}}" class="sr-module-label bg-secondary border-primary text-center">
+		<h5>{{module.hidden_name}}</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% else %}
+	<div id="label-sr-offer-sticky-form-01" class="sr-module-label bg-secondary border-primary text-center ">
+		<h5>SR Offer Sticky Form 01</h5>
+		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+	</div>
+	{% endif %}
+	{% endif %}
+	
+	<div class="sr-offer-sticky-form-01 {% if module.design_settings.background_option == 'color' %}bg-{{ module.design_settings.background_color }}{% endif %} {% if module.design_settings.class %}{{ module.design_settings.class }}{% endif %} prototype-no-background {{ name }}" {% if module.design_settings.sr_module_id %}id="{{ module.design_settings.sr_module_id }}"{% endif %}>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="offer-content eheight">
+						{% if module.form_content %}
+							<div class="section-form-content {% if module.form_content_text_color != 'auto' %} text-{{ module.form_content_text_color }}{% endif %} {% if module.form_content_text_align != 'auto' %} text-{{ module.form_content_text_align }}{% endif %}">
+								{{ module.form_content }}
+							</div>
+						{% endif %}
+					</div>
+					<div class="offer-content-2 {% if module.offer_content_text_color != 'auto' %}text-{{ module.offer_content_text_color }}{% endif %} {% if module.offer_content_text_align != 'auto' %} text-{{ module.offer_content_text_align }}{% endif %}">
+						{{module.offer_content}}
+					</div>
+				</div>
+				<div class="col-lg-6 form-column">
+					<div class="sr-offer-sticky-form-01-row ">
+						<div class="sr-offer-sticky-form-01-form eheight">
+							<div class="sr-offer-sticky-form-01-form-inner">
+								{% if module.form.form_title %}
+								<h4 class="form-title">{{ module.form.form_title }}</h4>
+								{% endif %}
+
+								{% if module.form.step|length %}
+								<div class="sticky-form-list">
+									<ul>
+										{% for item in module.form.step %}
+											<li class="list{{loop.index}}">{{ item }}</li>
+										{% endfor %}
+									</ul>
+								</div>
+								{% endif %}
+
+								<div class="btn-wrapper btn-{{ module.form.button_style }}-wrapper form-wrapper-lg">
+									{% if hub_id == 123 || !module.form.form.form_id %}
+										<!--[if lte IE 8]>
+										<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+										<![endif]-->
+										<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+										<script>
+										hbspt.forms.create({
+											portalId: "275827",
+											formId: "7d6a7f9b-2da8-4408-a3cb-20ced7c324d6"
+										});
+										</script>
+									{% else %}
+										{% if module.form.form.form_id %}
+											{% form
+												form_key="{{name}}",
+												form_to_use="{{module.form.form.form_id}}"
+												title="{{module.form.title}}"
+												no_title="True"
+												follow_up_type_simple="{{module.form.follow_up_type_simple}}"
+												simple_email_for_live_id="{{module.form.simple_email_for_live_id}}"
+												follow_up_type_automation="{{module.form.follow_up_type_automation}}"
+												response_response_type="{{module.form.form.response_type}}"
+												response_redirect_id="{{module.form.form.redirect_id}}"
+												response_redirect_url="{{module.form.form.redirect_url}}"
+												response_message="{{module.form.form.message}}"
+												notifications_are_overridden="{{module.form.notifications_are_overridden}}"
+												notifications_override_email_addresses="{{module.form.notifications_override_email_addresses}}"
+												gotowebinar_webinar_key="{{module.form.form.gotowebinar_webinar_key}}"
+											%}
+										{% endif %}
+									{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	{% require_css %}
+		<style>
+			body {
+				opacity: 0;
+			}
+			{% if module.design_settings.background_option == 'image' %}
+				.{{ name }} {
+					{{ var.bg_image(module.design_settings.background_image.src, '600') }}
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center;
+					position: relative;
+				}
+				@media (min-width: 768px) {
+					.{{ name }} {
+						{{ var.bg_image(module.design_settings.background_image.src, '1440') }}
+					}
+				}
+				.{{ name }}:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					background: rgba({{ module.background_overlay_color.color|convert_rgb }}, {% if module.background_overlay_color.opacity != '100' %}0.{% endif %}{{ module.background_overlay_color.opacity }});	
+				}
+				.{{ name }} .container, .{{ name }} .container-fluid {
+					position: relative;
+				}
+			{% elif module.design_settings.background_option == 'gradient' %}
+				.{{name}} {
+					background: linear-gradient(-225deg, {{module.design_settings.background_gradient_from.color}} 0%, {{module.design_settings.background_gradient_to.color}} 100%);
+				}
+			{% elif module.design_settings.background_option == 'custom' %}
+				.{{ name }} {
+					background-color: rgba({{ module.design_settings.background_custom.color|convert_rgb }}, {% if module.design_settings.background_custom.opacity != '100' %}0.{% endif %}{{ module.design_settings.background_custom.opacity }});
+				}
+			{% endif %}
+			
+			.section-form-content h1, .section-form-content h2, .section-form-content h3, .section-form-content h4, .section-form-content h5, .section-form-content h6 {
+				margin: 3rem 0 3rem;
+			}
+			
+			{% if module.form_content_text_color != 'auto' %}
+				.section-form-content  h1, .section-form-content  h2, .section-form-content  h3, .section-form-content  h4, .section-form-content  h5, .section-form-content  h6 {
+					color: inherit;
+				}
+			{% endif %}
+
+			{% if module.offer_content_text_color != 'auto' %}
+				.offer-content-2 h1, .offer-content-2 h2, .offer-content-2 h3, .offer-content-2 h4, .offer-content-2 h5, .offer-content-2 h6 {
+					color: inherit;
+				}
+			{% endif %}
+
+			.sr-offer-sticky-form-01 .section-form-content, .sr-offer-sticky-form-01 .offer-content-2 {
+				padding: 3rem 11vw;
+			}
+			.sr-offer-sticky-form-01 .sr-offer-sticky-form-01-form {
+				background: #fff;
+			}
+			.sr-offer-sticky-form-01 .col-lg-6.form-column, .offer-content-2 {
+				background: {{module.offer_background_color.color}};
+			}
+			.sr-offer-sticky-form-01 .col-lg-6 {
+				padding: 0;
+			}
+			.sr-offer-sticky-form-01 form {
+				line-height: 3rem;
+				display: none;
+			}
+			.sr-offer-sticky-form-01-form-inner {
+				width: 50%;
+				padding: 6vh 3vw;
+				margin: 0 auto;
+			}
+			
+			.sr-offer-sticky-form-01 form p {
+				margin: 0;
+			}
+			.sr-offer-sticky-form-01 .form-title {
+				margin-bottom: 2rem;
+			}
+			.sr-offer-sticky-form-01 .field > label, .sr-offer-sticky-form-01 .form-group label {
+				display: inline-block;
+			}
+			.sr-offer-sticky-form-01 .field > label, .sr-offer-sticky-form-01 .form-group label {
+				margin: 0 0 0;
+				color: #30343B;
+				line-height: 1;
+				font-size: 0.875rem;
+			}
+			.sr-offer-sticky-form-01 .hs-form fieldset {
+				max-width: none;
+				padding-left: 0;
+				padding-right: 0;
+			}
+			.sr-offer-sticky-form-01 .sticky-form-list {
+				margin-bottom: .95rem;
+			}
+			.sr-offer-sticky-form-01 .hs-form fieldset .field {
+				margin-bottom: 0;
+			}
+			.sr-offer-sticky-form-01 .sticky-form-list ul {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				-ms-flex-wrap: wrap;
+				flex-wrap: wrap;
+				-webkit-box-orient: horizontal;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: row;
+				flex-direction: row;
+			}
+			.sr-offer-sticky-form-01 .sticky-form-list ul li {
+				text-align: center;
+				border-bottom: 1px solid;
+				-ms-flex: 0 0 33.33%;
+				-webkit-box-flex: 0;
+				flex: 0 0 33.33%;
+				max-width: 33.33%;
+				padding-bottom: .56rem;
+				position: relative;
+			}
+			.sr-offer-sticky-form-01 .sticky-form-list ul li.active {
+				color: {{module.form.step_color.color}};
+			}
+			.sr-offer-sticky-form-01 .sticky-form-list ul li.active:before {
+				content: "";
+				background: {{module.form.step_color.color}};
+				height: 10px;
+				width: 10px;
+				position: absolute;
+				left: 0;
+				bottom: -5px;
+				border-radius: 50%;
+			}
+			.sr-offer-sticky-form-01 .sticky-form-list ul li.active.done {
+				opacity: .2;
+			}
+			.sr-offer-sticky-form-01 .offer-content-2 p:last-child {
+				margin: 0;
+			}
+			.sr-offer-sticky-form-01 fieldset .hs-form-field:last-child .input {
+				margin-right: 0 !important;
+			}
+			.sr-offer-sticky-form-01 form .steps > div > div {
+				display: inline-block;
+			}
+			.sr-offer-sticky-form-01 form .steps > div > div.hs-form-field {
+				padding-right: 0.5rem;
+			}
+			.sr-offer-sticky-form-01 .form-columns-2 .field {
+				width: calc(50% - 5px);
+			}
+			.sr-offer-sticky-form-01 .form-columns-2 .field + .field {
+				margin-left: 0 !Important
+			}
+			.sr-offer-sticky-form-01 form .steps > div > div.hs-form-field label,
+			.sr-offer-sticky-form-01 form .steps > div > div.hs-form-field .hs-error-msgs {
+				display: none;
+				margin: 0;
+			}
+			.sr-offer-sticky-form-01 .hs-form .inputs-list li {
+				line-height: 1;
+				margin-top: .7rem;
+			}
+			.sr-offer-sticky-form-01 label.hs-error-msg {
+				margin: 0;
+			}
+			.sr-offer-sticky-form-01 form .steps > div > div.hs-form-field select,
+			.sr-offer-sticky-form-01 form .steps > div > div.hs-form-field input {
+				margin-right: 0.5rem;
+			}
+			.sr-offer-sticky-form-01 form .steps > div > div.hs-form-field legend {
+				display: none !important;
+			}
+			.sr-offer-sticky-form-01 form .steps > div > div.hs-fieldtype-textarea {
+				display: block;
+				padding-right: 0;
+			}
+			.sr-offer-sticky-form-01 form .steps > div > div.hs-fieldtype-textarea textarea {
+				min-height: 8rem;
+			}
+			.sr-offer-sticky-form-01 form .hs_error_rollup.hs_error_rollup {
+				display: block;
+			}
+			.sr-offer-sticky-form-01 form .error {
+				border-color: red!important;
+			}
+			.sr-offer-sticky-form-01 form .steps > div.actions {
+				display: block;
+				margin-top: 1.75rem;
+			}
+			.sr-offer-sticky-form-01 form .hs_submit.hs_submit,
+			.sr-offer-sticky-form-01 form .hs-submit.hs-submit {
+				display: block;
+			}
+			.sr-offer-sticky-form-01 form .hs_submit.hs_submit .actions,
+			.sr-offer-sticky-form-01 form .hs-submit.hs-submit .actions {
+				text-align: right;
+			}
+			.sr-offer-sticky-form-01 form .hs_submit.hs_submit .actions .hs-button,
+			.sr-offer-sticky-form-01 form .hs-submit.hs-submit .actions .hs-button {
+				width: auto;
+			}
+			.sr-offer-sticky-form-01 input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+				color: #3333334f !important;
+			}
+			.sr-offer-sticky-form-01 input::-moz-placeholder { /* Firefox 19+ */
+				color: #3333334f !important;
+			}
+			.sr-offer-sticky-form-01 input:-ms-input-placeholder { /* IE 10+ */
+				color: #3333334f !important;
+			}
+			.sr-offer-sticky-form-01 input:-moz-placeholder { /* Firefox 18- */
+				color: #3333334f !important;
+			}
+			
+			@media (min-width: 992px) {
+				.sr-offer-sticky-form-01-form-inner {
+					width: 75%;
+					margin: auto auto auto 7.75vw;
+					padding: 0;
+					padding-top: 20.25vh;
+				}
+			}
+			@media (min-width: 1440px) {
+				.sr-offer-sticky-form-01-form-inner {
+					width: 50%;
+    				margin: auto auto auto 7.75vw;
+					padding: 0;
+					padding-top: 20.25vh;
+				}
+			}
+			@media (max-width: 992px) {
+				.scrollmagic-pin-spacer {
+					padding: 0 !important;
+					min-height: 0 !important;
+				}
+				.sr-offer-sticky-form-01 .section-form-content, .sr-offer-sticky-form-01 .offer-content-2 {
+					padding: 6rem 3vw;
+				}
+			}
+			@media (max-width: 767px) {
+				.sr-offer-sticky-form-01-form-inner {
+					width: 100%;
+				}
+			}
+
+		
+		</style>
+	{% end_require_css %}
+
+	{{ require_js(var.sr_assetDir + '/js/ScrollMagic.min.js') }}
+	
+	{% require_js %}
+		<script>
+			
+        
+		{% if request.domain == 'preview.hs-sites.com' %}
+			$(window).bind("load", function () {
+		{% else %}
+			window.addEventListener('message', event => {
+			if(event.data.type === 'hsFormCallback' && event.data.eventName === 'onFormReady') {
+		{% endif %}
+        
+        
+				var w = getViewport();
+				function getViewport() {
+
+					var viewPortWidth;
+
+					// the more standards compliant browsers (mozilla/netscape/opera/IE7) use window.innerWidth and window.innerHeight
+					if (typeof window.innerWidth != 'undefined') {
+						viewPortWidth = window.innerWidth
+					}
+
+					// IE6 in standards compliant mode (i.e. with a valid doctype as the first line in the document)
+					else if (typeof document.documentElement != 'undefined'
+					&& typeof document.documentElement.clientWidth !=
+					'undefined' && document.documentElement.clientWidth != 0) {
+						viewPortWidth = document.documentElement.clientWidth
+					}
+
+					// older versions of IE
+					else {
+						viewPortWidth = document.getElementsByTagName('body')[0].clientWidth
+					}
+					return viewPortWidth;
+				}
+					
+				if(w > 992) {
+					var {{name}}_controller = new ScrollMagic.Controller();
+
+					var {{name}}_scene1 = new ScrollMagic.Scene({
+						triggerElement: ".sr-offer-sticky-form-01",
+						duration: $('.offer-content-2').outerHeight(true) - 1,
+						triggerHook: 0,
+						reverse: true
+					}).setPin(".sr-offer-sticky-form-01-form").addTo({{name}}_controller )
+				}
+      
+				$('.sr-offer-sticky-form-01 form').fadeIn();
+       
+				// Check if there is step2
+				if ($('.{{ name }} legend:contains("step2")').length > 0) {
+
+					var steps;
+					var currentStep = 1;
+
+					// Get steps and wrap them in divs
+					for (var index = 0; index < $('.{{ name }} legend').length + 50; index++) {
+
+						var stepNumber = "step" + index;
+						$('.{{ name }} legend:contains(' + stepNumber + ')').hide().parent('.hs-form-field').parent().wrapAll("<div class='steps step" + index + "' />");
+
+					}
+
+					steps = $('.{{ name }} [class*="step"]').length;
+				
+					$('.{{ name }} .sticky-form-list ul li.list' + currentStep).addClass('active');
+
+					// Add next buttons
+					$('.{{ name }} .steps').each(function (index) {
+						if (index < (steps - 1)) {
+							$('.{{ name }} [class*="step"]:eq(' + index + ')').append("<div class='actions'><a href='#' class='cta_button nextbtn' data-step='" + index + "';>Next Step</a></div>");
+						}
+					})
+
+					$(".{{ name }} .steps:not(:first)").hide();
+					$('.{{ name }} .steps').parent().parent().find(".hs_submit").hide();
+
+					// On click function
+					$(".{{ name }} .nextbtn").click(function (e) {
+						e.preventDefault();
+						var stepTarget = $(this).data("step");
+						var nextStepTarget = stepTarget + 1;
+
+						function checkError() {
+
+							if ($(".{{ name }} .hs-error-msgs").length == 0) {
+								$('.{{ name }} [class*="step"]:eq(' + stepTarget + ')').fadeOut(function () {
+									$('.{{ name }} [class*="step"]:eq(' + nextStepTarget + ')').fadeIn();
+									currentStep++;
+									$('.{{ name }} .sticky-form-list ul li.active').addClass('done');
+									$('.{{ name }} .sticky-form-list ul li.list' + currentStep).addClass('active');
+
+									if (steps == currentStep) {
+										$('.{{ name }} .nextbtn').hide(); // Hide the last next button
+										$('.{{ name }} .steps').parent().parent().find(".hs_submit").show();
+									}
+								});
+							}
+						}
+
+						$('.{{ name }} [class*="step"]:eq(' + stepTarget + ')').each(function (index) {
+							// Trigger form validation
+							$(this).find("input").change();
+							$(this).find("select").change();
+						});
+						setTimeout(checkError, 500); // Add timeout because .hs-error-msgs don't appear instantly
+
+					});
+
+				} else {
+					$('.{{ name }} .hs-field-desc').hide();
+				}
+
+				$('body').css("opacity", "1");
+          
+			{% if request.domain == 'preview.hs-sites.com' %}
+			});
+			{% else %}
+			}});
+			{% endif %}
+     
+
+			(function($){
+				$(window).on('ready load resize', function() {
+					var max = 0, 
+					mobile = $(window).width();
+					$(".eheight").css('min-height', 'inherit');
+
+					if ( mobile > 992 ){
+						$(".eheight").each(function(index, el) {
+							if( $(this).outerHeight() > max ){
+								max = $(this).outerHeight();
+							}
+						});
+						$(".eheight").css('min-height', max);
+					}
+				});
+			 })(jQuery);
+		</script>
+	{% end_require_js %}
+
+{% endif %}
